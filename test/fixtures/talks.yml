@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  brief_description: MyString
+  description: MyString
+  teacher: MyString
+  room: MyString
+  day: 2013-12-21
+  start_time: 2013-12-21 13:35:35
+  end_time: 2013-12-21 13:35:35
+  assisted_by: MyString
+  teacher_contact_info: MyString
+  creation_time: 2013-12-21 13:35:35
+  votes: 1
+  comments: MyString
+  level: 1
+  tags: MyString
+  content_url: MyString
+  active: 
+
+two:
+  title: MyString
+  brief_description: MyString
+  description: MyString
+  teacher: MyString
+  room: MyString
+  day: 2013-12-21
+  start_time: 2013-12-21 13:35:35
+  end_time: 2013-12-21 13:35:35
+  assisted_by: MyString
+  teacher_contact_info: MyString
+  creation_time: 2013-12-21 13:35:35
+  votes: 1
+  comments: MyString
+  level: 1
+  tags: MyString
+  content_url: MyString
+  active: 
