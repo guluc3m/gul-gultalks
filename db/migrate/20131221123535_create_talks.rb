@@ -17,7 +17,7 @@ class CreateTalks < ActiveRecord::Migration
       t.integer :level
       t.string :tags
       t.string :content_url
-      t.bool :active
+      t.boolean :active
 
       t.timestamps
     end
