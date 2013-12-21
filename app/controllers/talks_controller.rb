@@ -1,10 +1,5 @@
-class TalksController < ActiveRecord::Base
+class TalksController < ApplicationController
   def new
     @talk = Talk.new
-    render template: "talks/new"
-  end
-  def index
-    @talk = Talk.new
-    render template: "talks/new"
   end
 end

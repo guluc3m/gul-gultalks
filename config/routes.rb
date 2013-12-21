@@ -1,6 +1,7 @@
 Gultalks::Application.routes.draw do
 
   get "main/talks"
+  get "talks/new"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

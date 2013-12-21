@@ -1,0 +1,51 @@
+= form_for @talk, url: {action: "new"} do |f|
+    %p
+        = f.label :title
+        = f.text_field :title
+
+    %p
+        = f.label :brief_description
+        = f.text_field :brief_description
+
+    %p
+        = f.label :description
+        = f.text_area :description
+
+    %p
+        = f.label :level
+        = f.text_area :level
+
+    %p
+        = f.label :teacher
+        = f.text_field :teacher
+
+    %p
+        = f.label :tags
+        = f.text_field :tags
+
+    %p
+        = f.label :teacher_contact_info
+        = f.email_field :brief_description
+
+    %p
+        = f.label :day
+        = f.text_field :day
+        / Need to change this to use date_field
+
+    %p
+        = f.label :start_time
+        = f.text_field :start_time
+        / Need to change this to use time_field
+
+    %p
+        = f.label :end_time
+        = f.text_field :end_time
+        / Need to change this to use time_field
+
+    %p
+        = f.label :content_url
+        = f.url_field :content_url
+
+    %p.button
+        = f.submit
+
