@@ -39,3 +39,4 @@ gem 'jquery-rails'
 
 gem 'foundation-rails'
 gem 'haml'
+gem 'sqlite3'
