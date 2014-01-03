@@ -7,6 +7,7 @@ gem 'rails', '3.2.6'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
+    gem 'better_errors'
     gem 'sqlite3'
 end
 
@@ -22,7 +23,7 @@ group :assets do
     gem 'coffee-rails', '~> 3.2.1'
 
     # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-    # gem 'therubyracer', :platforms => :ruby
+    gem 'therubyracer', :platforms => :ruby
 
     gem 'uglifier', '>= 1.0.3'
 end
@@ -44,9 +45,8 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
+gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'
-gem 'haml'
-
-gem 'sqlite3'
+gem 'haml-rails'
 gem 'execjs'
-gem 'therubyracer'
+#gem 'therubyracer'
