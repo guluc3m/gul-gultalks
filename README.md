@@ -1,6 +1,11 @@
+#GulTalks
+
+This is the  GUL's Technical Conferences management system 
+- - -
+
 ### Development environment
 
-For build the app in devel or test envs, use the following command:
+For build the app in dev or test envs, use the following command:
 
 ```
 $ bundle install --whitout production
@@ -14,4 +19,4 @@ For build the app in production env, use the following command:
 ```
 $ bundle install --whitout development
 ```
-Now mysql2 is used as db engine instead of sqlite
+Now mysql2 is used as db engine instead of sqlite.
