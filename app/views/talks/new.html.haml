@@ -1,51 +1,127 @@
+.row
+  .medium-7.columns
+    %ul.breadcrumbs
+      %li
+        %a{:href => "/"} Home
+      %li.current
+        %a{:href => "#"} New Talk
+.row
+  .medium-7.columns
+    %p Complete the form to register a new talk
 = form_for @talk, url: {action: "new"} do |f|
-    %p
-        = f.label :title
-        = f.text_field :title
+  .row
+    .large-12.columns.title-field
+      /= f.label :title
+      %label{:for => "title"}
+        %i.fi-bookmark
+        Title
+      /= f.text_field :title
+      %input{:pattern => "[a-zA-Z]+", :required => "", :type => "text"}/
+      /%small.error Name is required and must be a string.
 
-    %p
-        = f.label :brief_description
-        = f.text_field :brief_description
+  .row
+    .large-12.columns
+      /= f.label :brief_description
+      %label{:for => "brief_description"}
+        %i.fi-paperclip
+        Brief description
+      //(chars < 140 desireable)
+      = f.text_field :brief_description
 
-    %p
-        = f.label :description
-        = f.text_area :description
+  .row
+    .large-12.columns
+      /= f.label :description
+      %label{:for => "description"}
+        %i.fi-align-justify
+        Description
+      = f.text_area :description
 
-    %p
-        = f.label :level
-        = f.text_area :level
+  .row
+    .large-12.columns
+      %label
+        %i.fi-link
+        Slides URL
+      %input{:type => "text"}
 
-    %p
-        = f.label :teacher
-        = f.text_field :teacher
+  .row
+    .medium-6.columns
+      = f.label :level
+      /= f.text_area :level
+      %input#level{:type => "range", :step => "2", :min => "0", :max => "10"}
+    .medium-4.left.columns  
+      %p Hacker
 
-    %p
-        = f.label :tags
-        = f.text_field :tags
+  .row
+    .large-12.columns
+      /= f.label :teacher
+      %label
+        %i.fi-torsos
+        Speaker[s]
+      = f.text_field :teacher
 
-    %p
-        = f.label :teacher_contact_info
-        = f.email_field :brief_description
+  .row
+    .large-12.columns
+      /= f.label :tags
+      %label{:for => "tags"}
+        %i.tag-icon
+          \# 
+        Tags 
+      = f.text_field :tags
 
-    %p
-        = f.label :day
-        = f.text_field :day
-        / Need to change this to use date_field
+  .row
+    .large-12.columns
+      %label{:for => "teacher_contact_info"}
+        %i.fi-mail
+        Contact info (e-mail desireable)
+      /= f.label :teacher_contact_info
+      /= f.email_field :brief_description
+      %input{:type => "email", :required => ""}
 
-    %p
-        = f.label :start_time
-        = f.text_field :start_time
-        / Need to change this to use time_field
+  .row
+    .medium-4.columns
+      %label{:for => "talk_day"} 
+        //TODO: Change it to date in model
+        %i.fi-calendar
+        Date
+      /= f.label :day
+      %input{:type => "date", :min => "2014-02-01", :max => "2014-2-08" }
+      /= f.text_field :day
+      / Need to change this to use date_field
+    .medium-4.columns
+      %label{:for => "talk_start_time"}
+        %i.fi-clock
+        Start time
+      /= f.label :start_time
+      %input{:type => "time"}
+      /= f.text_field :start_time
+      / Need to change this to use time_field
+    .medium-4.columns
+      %label{:for => "talk_end_time"}
+        %i.fi-clock
+        End time
+      /= f.label :end_time
+      %input{:type => "time"}
+      /= f.text_field :end_time
+      / Need to change this to use time_field
+  .row
+    .large-12.columns
+      %label{:for => "comments"}
+        %i.fi-comments
+        Comments
+      %textarea
+  .row
+    .large-12.columns.large-centered
+      %input.button.radius.big-button.success{:name => "commit", :type => "submit", :value => "Send talk"}
+    
+    /= f.submit
+    /<input name="commit" type="submit" value="Create Talk">
 
-    %p
-        = f.label :end_time
-        = f.text_field :end_time
-        / Need to change this to use time_field
-
-    %p
-        = f.label :content_url
-        = f.url_field :content_url
-
-    %p.button
-        = f.submit
-
+    //.row.collapse
+    //  .small-3.large-2.columns
+    //    %span.prefix http://
+    //.small-9.large-10.columns
+    //  = f.url_field :content_url
+    //  = f.label :content_url
+    //  = f.url_field :content_url
+    ///%p.button
+    ///  = f.submit
