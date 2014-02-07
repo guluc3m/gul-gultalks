@@ -4,8 +4,14 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
+group :development, :test do
+   gem 'sqlite3'
+   gem 'better_errors'
+end
+# Use mysql2 for production environment 
+group :production do
+ gem 'mysql2'
+end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -48,4 +54,3 @@ gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'
 gem 'haml-rails'
 #gem 'execjs'
-#gem 'therubyracer'
