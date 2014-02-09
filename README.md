@@ -12,6 +12,12 @@ $ bundle install --without production
 ```
 We decide that sqlite is better for development purposes.
 
+#### To run it:
+
+```
+$ rails server -p $PORT
+```
+
 ### Deploy (production enviroment)
 
 For build the app in production env, use the following command:
@@ -20,3 +26,4 @@ For build the app in production env, use the following command:
 $ bundle install --without development
 ```
 Now mysql2 is used as db engine instead of sqlite.
+
