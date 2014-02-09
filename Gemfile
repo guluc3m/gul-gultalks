@@ -10,7 +10,8 @@ group :development, :test do
 end
 # Use mysql2 for production environment 
 group :production do
- gem 'mysql2'
+   gem 'mysql2'
+   gem 'unicorn'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
