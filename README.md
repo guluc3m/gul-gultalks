@@ -15,6 +15,7 @@ We decide that sqlite is better for development purposes.
 #### To run it:
 
 ```
+$ rake db:migrate
 $ rails server -p $PORT
 ```
 
