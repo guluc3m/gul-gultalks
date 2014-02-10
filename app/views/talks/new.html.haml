@@ -47,7 +47,7 @@
     .medium-6.columns
       = f.label :level
       /= f.text_area :level
-      %input#level{:type => "range", :step => "2", :min => "0", :max => "10"}
+      %input#level{:type => "range", :step => "1", :min => "0", :max => "4"}
     .medium-4.left.columns  
       %p Hacker
 
@@ -63,7 +63,7 @@
     .large-12.columns
       /= f.label :tags
       %label{:for => "tags"}
-        %i.tag-icon
+        %span.tag-icon
           \# 
         Tags 
       = f.text_field :tags
