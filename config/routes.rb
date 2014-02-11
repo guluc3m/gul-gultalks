@@ -1,7 +1,6 @@
 Gultalks::Application.routes.draw do
 
   get "talks/index"
-  get "main/talks"
   get "talks/new"
   get "talks/thanks"
   get "talks/show"
