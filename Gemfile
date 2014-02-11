@@ -10,7 +10,8 @@ group :development, :test do
 end
 # Use mysql2 for production environment 
 group :production do
- gem 'mysql2'
+   gem 'mysql2'
+   gem 'unicorn'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -29,6 +30,9 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
+# `attr_accessible` no longer belongs in Rails
+gem 'protected_attributes'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
