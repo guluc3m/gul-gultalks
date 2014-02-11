@@ -22,52 +22,53 @@
           This is a warning tag
           %span.label.alert-box.warning.radius
             WARNING
-%table
-  %thead
-    %tr
-      %th{:width => "360"} Talk
-      /%th Table Header
-      %th{:width => "150"}
-        %i.fi-calendar
-        &
-        %i.fi-clock
-      %th{:width => "40"} Votes
-  %tbody
-    - @talks.each do |talk| 
+= if @talks
+  %table
+    %thead
       %tr
-        %td
-          = talk.title
-        %td
-          = talk.day
-        %td
-          = talk.votes
-        /=link_to() 
-        /  Content Goes Here
-      /%td This is longer content Donec id elit non mi porta gravida at eget metus.
-      /%td Content Goes Here
-    /  %td Content Goes Here
-    %tr
-      %td 
-        %a{:href => "/talks/show"} Content Goes Here
-      %td 
-        .row
-          .small-3.columns 
-            %p 25-3-14 
-          .small-3.columns
-            %p 17:00 to 18:00
-      %td 9
-    /  %td Content Goes Here
-    %tr
-      %td Content Goes Here
-      %td This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.
-      %td Content Goes Here
-    /  %td Content Goes Here
-
-.row
-  .medium-6.medium-centered.columns
-    .panel.callout.radius
-      %h3 The is open
-      %p Be the first to propose a talk!
+        %th{:width => "360"} Talk
+        /%th Table Header
+        %th{:width => "150"}
+          %i.fi-calendar
+          &
+          %i.fi-clock
+        %th{:width => "40"} Votes
+    %tbody
+      - @talks.each do |talk| 
+        %tr
+          %td
+            = talk.title
+          %td
+            = talk.day
+          %td
+            = talk.votes
+          /=link_to() 
+          /  Content Goes Here
+        /%td This is longer content Donec id elit non mi porta gravida at eget metus.
+        /%td Content Goes Here
+      /  %td Content Goes Here
+      %tr
+        %td 
+          %a{:href => "/talks/show"} Content Goes Here
+        %td 
+          .row
+            .small-3.columns 
+              %p 25-3-14 
+            .small-3.columns
+              %p 17:00 to 18:00
+        %td 9
+      /  %td Content Goes Here
+      %tr
+        %td Content Goes Here
+        %td This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.
+        %td Content Goes Here
+      /  %td Content Goes Here
+- else
+  .row
+    .medium-6.medium-centered.columns
+      .panel.callout.radius
+        %h3 The is open
+        %p Be the first to propose a talk!
 
 .row
   .small-12.small-centered.columns

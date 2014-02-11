@@ -8,6 +8,7 @@
 .row
   .medium-7.columns
     %p Complete the form to register a new talk
+///- form_for @talk, url: {action: "create"} do |f|
 = form_for @talk, url: {action: "new"} do |f|
   .row
     .large-12.columns.title-field
