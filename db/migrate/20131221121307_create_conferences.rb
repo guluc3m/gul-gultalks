@@ -3,7 +3,6 @@ class CreateConferences < ActiveRecord::Migration
     create_table :conferences do |t|
       t.string :title
       t.text :description
-      t.date :creation_date
       t.date :start_date
       t.date :end_date
       t.string :coordinator

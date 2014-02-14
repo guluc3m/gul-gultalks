@@ -4,14 +4,13 @@ class CreateTalks < ActiveRecord::Migration
       t.string :title
       t.string :brief_description
       t.string :description
-      t.string :teacher
+      t.string :speaker
       t.string :room
-      t.date :day
+      t.date :date
       t.time :start_time
       t.time :end_time
       t.string :assisted_by
-      t.string :teacher_contact_info
-      t.time :creation_time
+      t.string :speaker_contact_info
       t.integer :votes
       t.string :comments
       t.integer :level
