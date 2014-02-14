@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 $green: #43ac6a;
 $red: #f04124;
 $orange: #f08a24;
@@ -12,6 +13,8 @@ $orange: #f08a24;
 
 .big-button {
     width: 100%;
+    font: normal normal 700 13px/13px "Open Sans",Arial,sans-serif;
+    text-transform: uppercase;
 }
 
 .status-flag {

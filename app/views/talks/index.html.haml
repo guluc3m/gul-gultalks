@@ -52,10 +52,11 @@
           %a{:href => "/talks/show"} Content Goes Here
         %td 
           .row
-            .small-3.columns 
-              %p 25-3-14 
-            .small-3.columns
-              %p 17:00 to 18:00
+            .small-6.columns
+              .small-3.columns 
+                %p 25-3-14 
+              .small-3.columns
+                %p 17:00 to 18:00
         %td 9
       /  %td Content Goes Here
       %tr
@@ -70,8 +71,11 @@
         %h3 The is open
         %p Be the first to propose a talk!
 
+= render "partials/calendar"
+
+
 .row
   .small-12.small-centered.columns
     %a{:href =>"talks/new",:class => "button radius big-button"}
-      %i.fi-plus
+      /%i.fi-plus
       Add talk
