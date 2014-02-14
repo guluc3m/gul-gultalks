@@ -54,11 +54,11 @@
 
   .row
     .large-12.columns
-      /= f.label :teacher
+      /= f.label :speaker
       %label
         %i.fi-torsos
         Speaker[s]
-      = f.text_field :teacher
+      = f.text_field :speaker
 
   .row
     .large-12.columns
@@ -71,10 +71,10 @@
 
   .row
     .large-12.columns
-      %label{:for => "teacher_contact_info"}
+      %label{:for => "speaker_contact_info"}
         %i.fi-mail
         Contact info (e-mail desireable)
-      /= f.label :teacher_contact_info
+      /= f.label :speaker_contact_info
       /= f.email_field :brief_description
       %input{:type => "email", :required => ""}
 
@@ -84,9 +84,9 @@
         //TODO: Change it to date in model
         %i.fi-calendar
         Date
-      /= f.label :day
+      /= f.label :date
       %input{:type => "date", :min => "2014-02-01", :max => "2014-2-08" }
-      /= f.text_field :day
+      /= f.text_field :date
       / Need to change this to use date_field
     .medium-4.columns
       %label{:for => "talk_start_time"}
