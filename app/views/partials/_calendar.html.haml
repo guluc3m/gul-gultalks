@@ -1,16 +1,33 @@
 .row{"data-magellan-expedition" => "fixed"}
   %dl.sub-nav
-    %dd{"data-magellan-arrival" => "build"}
-      %a{:href => "#build"} Build with HTML
-    %dd{"data-magellan-arrival" => "build"}
-      %a{:href => "#build"} Build with HTML
-    %dd{"data-magellan-arrival" => "build"}
-      %a{:href => "#build"} Build with HTML
-    %dd{"data-magellan-arrival" => "js"}
-      %a{:href => "#js"} Arrival 2
+    .small-2.columns
+      %dd{"data-magellan-arrival" => "build"}
+        %a{:href => "#build"} Build with HTML
+    .small-2.columns
+      %dd{"data-magellan-arrival" => "build"}
+        %a{:href => "#build"} Build with HTML
+    .small-2.columns
+      %dd{"data-magellan-arrival" => "build"}
+        %a{:href => "#build"} Build with HTML
+    .small-2.columns
+      %dd{"data-magellan-arrival" => "build"}
+        %a{:href => "#build"} Build with HTML
+    .small-2.columns
+      %dd{"data-magellan-arrival" => "js"}
+        %a{:href => "#js"} Arrival 2
 
 .row
-  .small-6.columns
-    %p 19:00-20:00
-  .small-6.columns
-    %p Title
+  - (0..5).each do
+    .small-2.columns
+      %p 19:00-20:00
+    .small-2.columns
+      %a
+        Title
+    .small-2.columns
+      %p 19:00-20:00
+    .small-2.columns
+      %p Title
+    .small-2.columns
+      %p 19:00-20:00
+    .small-2.columns
+      %p Title
