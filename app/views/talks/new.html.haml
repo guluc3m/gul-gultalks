@@ -9,7 +9,7 @@
   .medium-7.columns
     %p Complete the form to register a new talk
 ///- form_for @talk, url: {action: "create"} do |f|
-= form_for @talk, url: {action: "new"} do |f|
+= form_for @talk, url: {action: "create"} do |f|
   .row
     .large-12.columns.title-field
       /= f.label :title
@@ -80,7 +80,7 @@
 
   .row
     .medium-4.columns
-      %label{:for => "talk_day"} 
+      %label{:for => "talk_date"} 
         //TODO: Change it to date in model
         %i.fi-calendar
         Date

@@ -13,9 +13,9 @@ class TalksController < ApplicationController
   end
 
   def create
-      @talk = Talk.new()
+      @talk = Talk.new(params[:talk])
       @talk.save
-      redirect_to @thaks
+      render 'thanks'
   end
 
 end
