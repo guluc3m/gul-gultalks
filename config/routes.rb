@@ -1,9 +1,6 @@
 Gultalks::Application.routes.draw do
 
-  get "talks/index"
-  get "talks/new"
-  get "talks/thanks"
-  get "talks/show"
+  resources :talks
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -55,7 +52,7 @@ Gultalks::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-    root 'talks#index'
+  root 'talks#index'
 
   # See how all your routes lay out with "rake routes"
 
