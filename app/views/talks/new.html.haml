@@ -16,8 +16,8 @@
       %label{:for => "title"}
         %i.fi-bookmark
         Title
-      /= f.text_field :title
-      %input{:pattern => "[a-zA-Z]+", :required => "", :type => "text"}/
+      = f.text_field :title, :pattern => "[a-zA-Z\s]+", :required => true
+      /%input{:for => "title", :type => "text", :pattern => "[a-zA-Z\s]+", :required => ""}
       /%small.error Name is required and must be a string.
 
   .row
@@ -27,7 +27,8 @@
         %i.fi-paperclip
         Brief description
       //(chars < 140 desireable)
-      = f.text_field :brief_description
+      = f.text_field :brief_description, :required => true
+      /%input{:for => "brief_description", :type => "text", :required => ""}
 
   .row
     .large-12.columns
@@ -35,20 +36,23 @@
       %label{:for => "description"}
         %i.fi-align-justify
         Description
-      = f.text_area :description
+      = f.text_area :description, :required => true
+      /%textarea{:for => "description", :type => "text", :required => ""}
 
   .row
     .large-12.columns
       %label
         %i.fi-link
         Slides URL
-      %input{:type => "text"}
+      = f.text_field :content_url
+      /%input{:type => "text"}
+      /%input{:for => "content_url", :type => "text"}
 
   .row
     .medium-6.columns
       = f.label :level
-      /= f.text_area :level
-      %input#level{:type => "range", :step => "1", :min => "0", :max => "4"}
+      = f.range_field :level, :step => "1", :min => "0", :max => "4"
+      /%input#level{:for => "level", :type => "range", :step => "1", :min => "0", :max => "4"}
     .medium-4.left.columns  
       %p Hacker
 
@@ -59,6 +63,7 @@
         %i.fi-torsos
         Speaker[s]
       = f.text_field :speaker
+      /%input{:for => "speaker", :type => "text"}
 
   .row
     .large-12.columns
@@ -68,6 +73,7 @@
           \# 
         Tags 
       = f.text_field :tags
+      /%input{:for => "tags", :type => "text"}
 
   .row
     .large-12.columns
@@ -75,8 +81,8 @@
         %i.fi-mail
         Contact info (e-mail desireable)
       /= f.label :speaker_contact_info
-      /= f.email_field :brief_description
-      %input{:type => "email", :required => ""}
+      = f.email_field :speaker_contact_info
+      /%input{:for => "speaker_contact_info", :type => "email"}
 
   .row
     .medium-4.columns
@@ -85,31 +91,32 @@
         %i.fi-calendar
         Date
       /= f.label :date
-      %input{:type => "date", :min => "2014-02-01", :max => "2014-2-08" }
-      /= f.text_field :date
+      /%field{:for => "date", :type => "date", :min => "2014-02-01", :max => "2014-2-08" }
+      = f.date_select :date, :start_year => 2014, :order => [:day, :month, :year]
       / Need to change this to use date_field
     .medium-4.columns
       %label{:for => "talk_start_time"}
         %i.fi-clock
         Start time
       /= f.label :start_time
-      %input{:type => "time"}
-      /= f.text_field :start_time
+      /%time_select{:type => "time"}
+      = f.time_select :start_time, :start_hour => 9, :end_hour => 20, :minute_step => 15
       / Need to change this to use time_field
     .medium-4.columns
       %label{:for => "talk_end_time"}
         %i.fi-clock
         End time
       /= f.label :end_time
-      %input{:type => "time"}
-      /= f.text_field :end_time
+      /%input{:type => "time"}
+      = f.time_select :end_time, :start_hour => 9, :end_hour => 20, :minute_step => 15
       / Need to change this to use time_field
   .row
     .large-12.columns
       %label{:for => "comments"}
         %i.fi-comments
         Comments
-      %textarea
+      /%textarea
+      = f.text_area :comments
   .row
     .large-12.columns.large-centered
       %input.button.radius.big-button.success{:name => "commit", :type => "submit", :value => "Send talk"}
