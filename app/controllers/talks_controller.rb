@@ -12,10 +12,18 @@ class TalksController < ApplicationController
 
   end
 
+  def thanks
+
+  end
+
   def create
       @talk = Talk.new(params[:talk])
-      @talk.save
-      render 'thanks'
+      if @talk.save
+        #TOFIX 
+        redirect_to @thanks
+      else
+        render 'new'
+      end
   end
 
 end
