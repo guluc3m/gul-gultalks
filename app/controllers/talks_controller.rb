@@ -9,7 +9,7 @@ class TalksController < ApplicationController
   end
 
   def show
-
+    @talk = Talk.find(params[:id])
   end
 
   def create

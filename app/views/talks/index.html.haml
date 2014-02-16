@@ -37,7 +37,7 @@
       - @talks.each do |talk| 
         %tr
           %td
-            = talk.title
+            = link_to(talk.title, :controller => 'talks', :action => 'show', :id => talk.id)
           %td
             = talk.date
           %td

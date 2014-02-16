@@ -1,22 +1,22 @@
 .row
   .large-12.columns
     %h3
-      This is a talk title
-      /= talk.title
+      = @talk.title
     %h6.subheader
-      This is a brief comment
+      = @talk.brief_description
 .row
   .medium-4.columns
     %ul.no-bullet
       %li
         %i.fi-torso
-        Speaker
+        = @talk.speaker
       %li
         %i.fi-calendar
         Date
       %li
         %i.fi-clock
-        Time  
+          = @talk.start_time
+          = @talk.end_time
 
   .medium-4.columns
     %ul.no-bullet
@@ -36,7 +36,7 @@
 .row
   .large-12.columns
     %p
-      This is a long comment
+      = @talk.comments
 /Ponente: The QVD Team
 /Fecha: 2013-10-24
 /Hora de inicio: 18:00
