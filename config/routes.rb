@@ -1,7 +1,8 @@
 Gultalks::Application.routes.draw do
-
   resources :talks
-
+  resources :conferences do
+    resources :talks
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
