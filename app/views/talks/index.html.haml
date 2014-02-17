@@ -22,7 +22,7 @@
           This is a warning tag
           %span.label.alert-box.warning.radius
             WARNING
-= if @talks
+- if @talks
   %table
     %thead
       %tr
@@ -37,10 +37,10 @@
       - @talks.each do |talk| 
         %tr
           %td
-            = talk.title
+            = link_to talk.title, controller: "talks", action: "show", id: talk.id
           %td
             = talk.date
-          %td
+          %td.text-center
             = talk.votes
           /=link_to() 
           /  Content Goes Here
@@ -71,11 +71,12 @@
         %h3 The is open
         %p Be the first to propose a talk!
 
+//- if @conference.voting_end_date > Date.today 
 = render "partials/calendar"
 
 
 .row
-  .small-12.small-centered.columns
+  .large-6.large-centered.columns
     %a{:href =>"talks/new",:class => "button radius big-button"}
       /%i.fi-plus
       Add talk
