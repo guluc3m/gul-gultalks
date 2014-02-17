@@ -8,17 +8,15 @@
 .row
   .medium-7.columns
     %p Complete the form to register a new talk
-///- form_for @talk, url: {action: "create"} do |f|
-= form_for @talk, url: {action: "create"} do |f|
+= form_for(@talk, url: {action: "create"}, data: {avide: ""}) do |f|
   .row
     .large-12.columns.title-field
       /= f.label :title
-      %label{:for => "title"}
-        %i.fi-bookmark
-        Title
-      = f.text_field :title, :pattern => "[a-zA-Z\s]+", :required => true
+      %i.fi-bookmark
+      Title
+      = f.text_field :title, :pattern => "alpha_numeric", :required => true
       /%input{:for => "title", :type => "text", :pattern => "[a-zA-Z\s]+", :required => ""}
-      /%small.error Name is required and must be a string.
+      %small.error Name is required and must be a string.
 
   .row
     .large-12.columns
@@ -27,8 +25,7 @@
         %i.fi-paperclip
         Brief description
       //(chars < 140 desireable)
-      = f.text_field :brief_description, :required => true
-      /%input{:for => "brief_description", :type => "text", :required => ""}
+      = f.text_field :brief_description, :pattern => "alpha_numeric",:required => true
 
   .row
     .large-12.columns
@@ -36,25 +33,25 @@
       %label{:for => "description"}
         %i.fi-align-justify
         Description
-      = f.text_area :description, :required => true
-      /%textarea{:for => "description", :type => "text", :required => ""}
+      = f.text_area :description, :pattern => "alpha_numeric", :required => true
 
   .row
     .large-12.columns
       %label
         %i.fi-link
         Slides URL
-      = f.text_field :content_url
-      /%input{:type => "text"}
-      /%input{:for => "content_url", :type => "text"}
+      = f.text_field :content_url, :pattern => "url"
 
   .row
     .medium-6.columns
-      = f.label :level
+      %label
+        %i.fi-lightbulb
+        Level
+      /= f.label :level
       = f.range_field :level, :step => "1", :min => "0", :max => "4"
       /%input#level{:for => "level", :type => "range", :step => "1", :min => "0", :max => "4"}
     .medium-4.left.columns  
-      %p Hacker
+      %p Level Name
 
   .row
     .large-12.columns
@@ -63,7 +60,6 @@
         %i.fi-torsos
         Speaker[s]
       = f.text_field :speaker
-      /%input{:for => "speaker", :type => "text"}
 
   .row
     .large-12.columns
@@ -73,7 +69,6 @@
           \# 
         Tags 
       = f.text_field :tags
-      /%input{:for => "tags", :type => "text"}
 
   .row
     .large-12.columns
@@ -81,13 +76,11 @@
         %i.fi-mail
         Contact info (e-mail desireable)
       /= f.label :speaker_contact_info
-      = f.email_field :speaker_contact_info
-      /%input{:for => "speaker_contact_info", :type => "email"}
+      = f.email_field :speaker_contact_info, :pattern => "email"
 
   .row
     .medium-4.columns
       %label{:for => "talk_date"} 
-        //TODO: Change it to date in model
         %i.fi-calendar
         Date
       /= f.label :date
@@ -115,21 +108,18 @@
       %label{:for => "comments"}
         %i.fi-comments
         Comments
-      /%textarea
       = f.text_area :comments
   .row
-    .large-12.columns.large-centered
+    .large-6.columns.large-centered
       %input.button.radius.big-button.success{:name => "commit", :type => "submit", :value => "Send talk"}
     
-    /= f.submit
-    /<input name="commit" type="submit" value="Create Talk">
 
-    //.row.collapse
-    //  .small-3.large-2.columns
-    //    %span.prefix http://
-    //.small-9.large-10.columns
-    //  = f.url_field :content_url
-    //  = f.label :content_url
-    //  = f.url_field :content_url
-    ///%p.button
-    ///  = f.submit
+//.row.collapse
+//  .small-3.large-2.columns
+//    %span.prefix http://
+//.small-9.large-10.columns
+//  = f.url_field :content_url
+//  = f.label :content_url
+//  = f.url_field :content_url
+///%p.button
+///  = f.submit
