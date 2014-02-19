@@ -4,7 +4,11 @@ class TalksController < ApplicationController
 
   def index 
     @talks = Talk.all
-    respond_with @talks
+    respond_to do |format|
+      format.json { render json: @talks }
+      format.xml { render xml: @talks }
+      format.html { respond_with @talks } 
+    end
   end
 
   def new
@@ -12,34 +16,63 @@ class TalksController < ApplicationController
   end
 
   def show
-    respond_with @talk
-  end
-
-  def thanks
-
+    respond_to do |format|
+      format.json { render json: @talk }
+      format.xml { render xml: @talk }
+      format.html { render html: @talk }
+    end
   end
 
   def create
       @talk = Talk.new(params[:talk])
-      if @talk.save
-        respond_with @talk
-        #TOFIX 
-        redirect_to :thanks
-      else
-        respond_with @talk
-        render 'new'
+      respond_to do |format|
+        if @talk.save
+          format.html { render action: "thanks" }
+          format.json { render json: @talk, status: :created }
+          format.xml { render xml: @talk, status: :created }
+       else
+          format.html { render action: "new" }
+          format.json { render json: @talk, status: :unprocessable_entity }
+          format.xml { render xml: @talk, status: :unprocessable_entity }
+        end
       end
+      return
   end
+
   def update
-    @talk.update_attributes(params[:talk])
-    respond_with @talk
+    respond_to do |format|
+      if @talk.update_attributes(params[:user])
+        format.json { head :no_content, status: :ok }
+        format.xml { head :no_content, status: :ok }
+      else
+        format.json { render json: @talk.errors, status: :unprocessable_entity }
+        format.xml { render xml: @talk.errors, status: :unprocessable_entity }
+      end
+    end
   end
+
   def destroy
-    @talk.destroy
-    respond_with @talk
+    respond_to do |format|
+      if @talk.destroy
+        format.json { head :no_content, status: :ok }
+        format.xml { head :no_content, status: :ok }
+      else
+        format.json { render json: @talk.errors, status: :unprocessable_entity }
+        format.xml { render xml: @talk.errors, status: :unprocessable_entity }
+      end
+    end
   end
+
   private
   def get_talk
-    @talk = Talk.find_by_id(params[:id])
+    respond_to do |format|
+      if @talk = Talk.find_by_id(params[:id])
+        format.json { render json: @talk }
+        format.xml { render xml: @talk }
+      else
+        format.json { render json: @talk.errors, status: :unprocessable_entity }
+        format.xml { render xml: @talk.errors, status: :unprocessable_entity }
+      end
+    end
   end
 end
