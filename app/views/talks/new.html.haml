@@ -16,7 +16,7 @@
       Title
       = f.text_field :title, :pattern => "[a-zA-Z\s]+", :required => true
       /%input{:for => "title", :type => "text", :pattern => "[a-zA-Z\s]+", :required => ""}
-      %small.error Name is required and must be a string.
+      %small.error Required.
 
   .row
     .large-12.columns
@@ -52,9 +52,8 @@
         Level
       /= f.label :level
       = f.range_field :level, :step => "1", :min => "0", :max => "4"
+      Level name
       /%input#level{:for => "level", :type => "range", :step => "1", :min => "0", :max => "4"}
-    .medium-4.left.columns  
-      %p Level Name
 
   .row
     .large-12.columns
@@ -77,36 +76,12 @@
     .large-12.columns
       %label{:for => "speaker_contact_info"}
         %i.fi-mail
-        Contact info (e-mail desireable)
+        e-mail
       /= f.label :speaker_contact_info
       /= f.email_field :speaker_contact_info, :pattern => "email"
-      = f.email_field :speaker_contact_info
+      = f.email_field :speaker_contact_info, :required => true
+      %small.error e-mail is required.
 
-  .row
-    .medium-4.columns
-      %label{:for => "talk_date"} 
-        %i.fi-calendar
-        Date
-      /= f.label :date
-      /%field{:for => "date", :type => "date", :min => "2014-02-01", :max => "2014-2-08" }
-      = f.date_select :date, :start_year => 2014, :order => [:day, :month, :year]
-      / Need to change this to use date_field
-    .medium-4.columns
-      %label{:for => "talk_start_time"}
-        %i.fi-clock
-        Start time
-      /= f.label :start_time
-      /%time_select{:type => "time"}
-      = f.time_select :start_time, :start_hour => 9, :end_hour => 20, :minute_step => 15
-      / Need to change this to use time_field
-    .medium-4.columns
-      %label{:for => "talk_end_time"}
-        %i.fi-clock
-        End time
-      /= f.label :end_time
-      /%input{:type => "time"}
-      = f.time_select :end_time, :start_hour => 9, :end_hour => 20, :minute_step => 15
-      / Need to change this to use time_field
   .row
     .large-12.columns
       %label{:for => "comments"}
@@ -116,6 +91,33 @@
   .row
     .large-6.columns.large-centered
       %input.button.radius.big-button.success{:name => "commit", :type => "submit", :value => "Send talk"}
+      
+//  .row
+//    .medium-4.columns
+//      %label{:for => "talk_date"} 
+//        %i.fi-calendar
+//        Date
+//      /= f.label :date
+//      /%field{:for => "date", :type => "date", :min => "2014-02-01", :max => "2014-2-08" }
+//      = f.date_select :date, :start_year => 2014, :order => [:day, :month, :year]
+//      / Need to change this to use date_field
+//    .medium-4.columns
+//      %label{:for => "talk_start_time"}
+//        %i.fi-clock
+//        Start time
+//      /= f.label :start_time
+//      /%time_select{:type => "time"}
+//      = f.time_select :start_time, :start_hour => 9, :end_hour => 20, :minute_step => 15
+//      / Need to change this to use time_field
+//    .medium-4.columns
+//      %label{:for => "talk_end_time"}
+//        %i.fi-clock
+//        End time
+//      /= f.label :end_time
+//      /%input{:type => "time"}
+//      = f.time_select :end_time, :start_hour => 9, :end_hour => 20, :minute_step => 15
+//      / Need to change this to use time_field
+
     
 
 //.row.collapse
