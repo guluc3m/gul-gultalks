@@ -37,7 +37,7 @@
       - @talks.each do |talk| 
         %tr
           %td
-            = link_to talk.title, controller: "talks", action: "show", id: talk.id
+            = link_to(talk.title, :controller => 'talks', :action => 'show', :id => talk.id)
           %td
             = talk.date
           %td.text-center
@@ -52,9 +52,11 @@
 //- if @conference.voting_end_date > Date.today 
 = render "partials/calendar"
 
-
 .row
   .large-6.large-centered.columns
-    %a{:href =>"talks/new",:class => "button radius big-button"}
-      /%i.fi-plus
-      Add talk
+    = link_to "Add talk", "talks/new", :class => "button radius big-button"
+
+    //= link_to("talks/new", :class => "button radius big-button")
+    //%a{:href =>"talks/new",:class => "button radius big-button"}
+    //  /%i.fi-plus
+    //  Add talk
