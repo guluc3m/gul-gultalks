@@ -17,9 +17,14 @@ class TalksController < ApplicationController
 
   def show
     respond_to do |format|
-      format.json { render json: @talk }
-      format.xml { render xml: @talk }
-      format.html { render html: @talk }
+      if @talk
+        format.json { render json: @talk }
+        format.xml { render xml: @talk }
+        format.html { respond_with @talk }
+      else
+        format.json { render json: @talk.errors, status: :unprocessable_entity }
+        format.xml { render xml: @talk.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -65,14 +70,6 @@ class TalksController < ApplicationController
 
   private
   def get_talk
-    respond_to do |format|
-      if @talk = Talk.find_by_id(params[:id])
-        format.json { render json: @talk }
-        format.xml { render xml: @talk }
-      else
-        format.json { render json: @talk.errors, status: :unprocessable_entity }
-        format.xml { render xml: @talk.errors, status: :unprocessable_entity }
-      end
-    end
+    @talk = Talk.find_by_id(params[:id])
   end
 end
