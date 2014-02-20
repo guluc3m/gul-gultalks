@@ -1,22 +1,22 @@
 .row
   .large-12.columns
     %h3
-      = @talk.title
+      = talk.title
     %h6.subheader
-      = @talk.brief_description
+      = talk.brief_description
 .row
   .medium-4.columns
     %ul.no-bullet
       %li
         %i.fi-torso
-        = @talk.speaker
+          = talk.speaker
       %li
         %i.fi-calendar
         Date
       %li
         %i.fi-clock
-          = @talk.start_time
-          = @talk.end_time
+          = talk.start_time
+          = talk.end_time
 
   .medium-4.columns
     %ul.no-bullet
@@ -36,7 +36,7 @@
 .row
   .large-12.columns
     %p
-      = @talk.comments
+      = talk.comments
 /Ponente: The QVD Team
 /Fecha: 2013-10-24
 /Hora de inicio: 18:00
