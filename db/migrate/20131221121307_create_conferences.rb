@@ -1,18 +1,18 @@
 class CreateConferences < ActiveRecord::Migration
   def change
     create_table :conferences do |t|
-      t.string :title
-      t.text :description
+      t.string :title, :limit => 128, :null => false
+      t.text :description, :limit => 1024, :null => false
       t.date :start_date
       t.date :end_date
-      t.string :coordinator
+      t.string :coordinator, :null => false
       t.boolean :active
-      t.boolean :call_for_papers_enabled
+      t.boolean :call_for_papers_enabled, :null => false
       t.boolean :voting_enabled
-      t.date :call_for_papers_start_date
-      t.date :call_for_papers_end_date
-      t.date :voting_start_date
-      t.date :voting_end_date
+      t.date :call_for_papers_start_date, :null => false
+      t.date :call_for_papers_end_date, :null => false
+      t.date :voting_start_date, :null => false
+      t.date :voting_end_date, :null => false
 
       t.timestamps
     end
