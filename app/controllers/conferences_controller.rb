@@ -1,42 +1,49 @@
 class ConferencesController < ApplicationController
+  helper_method :conference, :conferences
   respond_to :html, :json, :xml
-  before_action :get_conference, :only => [:show, :update, :destroy]
 
 
   def index
-    @conferences = Conference.all
-    respond_with @conferences
+    respond_with conferences
   end
 
   def new
-    @conference = Conference.new
+    respond_with conference
   end
 
   def show
-    respond_with @conference
+    respond_with conference
   end
 
+  def thanks
+
+  end
 
   def create
-    @conference = Conference.new(params[:conference])
-    if @conference.save
-      respond_with @conference
-    else
-      respond_with @conference
-    end
+    respond_with conference
   end
-
   def update
-    @conference.update_attributes(params[:conference])
-    puts @conference
-    respond_with @conference
+    conference.update_attributes(params[:conference])
+    respond_with conference
   end
   def destroy
-    @conference.destroy
+    conference.destroy
     respond_with @conference
   end
   private
-  def get_conference
-    @conference = Conference.find_by_id(params[:id])
+  def conference
+    @conference = if  params[:action] =~ /new/
+      Conference.new(params[:conference])
+    elsif params[:action] =~ /create/
+      c=Conference.new(params[:conference])
+      c.save
+      c
+    else
+      Conference.find(params[:id])
+    end
+  end
+
+  def conferences
+    @conferences = Conference.all
   end
 end
