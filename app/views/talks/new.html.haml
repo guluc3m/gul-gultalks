@@ -2,9 +2,9 @@
   .medium-7.columns
     %ul.breadcrumbs
       %li
-        %a{:href => "/"} Home
+        = link_to "Home", "/"
       %li.current
-        %a{:href => "#"} New Talk
+        %p New talk
 .row
   .medium-7.columns
     %p Complete the form to register a new talk
@@ -15,7 +15,6 @@
       %i.fi-bookmark
       Title
       = f.text_field :title, :pattern => "[a-zA-Z\s]+", :required => true
-      /%input{:for => "title", :type => "text", :pattern => "[a-zA-Z\s]+", :required => ""}
       %small.error Name is required and must be a string.
 
   .row
@@ -115,15 +114,6 @@
       = f.text_area :comments
   .row
     .large-6.columns.large-centered
-      %input.button.radius.big-button.success{:name => "commit", :type => "submit", :value => "Send talk"}
+      = f.submit "Send talk", class: "button radius expand success"
+      //%input.button.radius.big-button.success{:name => "commit", :type => "submit", :value => "Send talk"}
     
-
-//.row.collapse
-//  .small-3.large-2.columns
-//    %span.prefix http://
-//.small-9.large-10.columns
-//  = f.url_field :content_url
-//  = f.label :content_url
-//  = f.url_field :content_url
-///%p.button
-///  = f.submit

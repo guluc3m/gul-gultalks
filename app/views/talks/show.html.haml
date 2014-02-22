@@ -9,14 +9,18 @@
     %ul.no-bullet
       %li
         %i.fi-torso
-          = talk.speaker
+        = talk.speaker
       %li
         %i.fi-calendar
-        Date
+        = talk.date
       %li
         %i.fi-clock
+        - if talk.start_time & talk.end_time
           = talk.start_time
+          to
           = talk.end_time
+        - else
+        Not avaliable
 
   .medium-4.columns
     %ul.no-bullet
@@ -26,6 +30,7 @@
         %i.fi-info
       %li
         %i.fi-torsos
+        /- talk.
   .medium-4.columns
     %ul.no-bullet
       %li
@@ -35,7 +40,8 @@
       %li
 .row
   .large-12.columns
-    %p
+    // TODO: to put this inline style in css file
+    %p.text-justify{:style => "word-break:break-all;"}
       = talk.comments
 /Ponente: The QVD Team
 /Fecha: 2013-10-24
@@ -49,8 +55,6 @@
 
 .row
   .large-6.columns
-    %a.button.radius.big-button{:href => "/"}
-      Back to talks
+    = link_to "Back to talks", "/", :class => "button radius expand"
   .large-6.columns
-    %a.button.success.radius.big-button{:href => "/thanks_vote"}
-      Vote
+    = link_to "Vote", "/thanks_vote", :class => "button success radius expand"

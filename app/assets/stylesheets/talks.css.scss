@@ -13,8 +13,7 @@ $orange: #f08a24;
 .top-bar {
     margin-bottom:1em;
 }
-.big-button {
-    width: 100%;
+.button {
     font: normal normal 700 13px/13px "Open Sans",Arial,sans-serif;
     text-transform: uppercase;
 }
@@ -52,5 +51,5 @@ $orange: #f08a24;
     border:none;
     background: none;
     padding-left:0;
-    content: ">>"
+    content: ">" //
 }
