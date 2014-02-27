@@ -15,21 +15,22 @@ class TalksController < ApplicationController
     respond_with talk
   end
 
-  def thanks
-
-  end
-
   def create
-    respond_with talk
+    respond_with(talk) do |format|
+      format.html { render action: "thanks" }
+    end
   end
+
   def update
     talk.update_attributes(params[:talk])
     respond_with talk
   end
+
   def destroy
     talk.destroy
     respond_with @talk
   end
+
   private
   def talk
     @talk = if  params[:action] =~ /new/
