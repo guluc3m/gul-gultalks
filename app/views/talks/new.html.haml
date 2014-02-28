@@ -4,16 +4,20 @@
       %li
         = link_to "Home", "/"
       %li.current
-        %p New talk
+        = link_to "New talk", "#"
 .row
   .medium-7.columns
-    %p Complete the form to register a new talk
+    %p
+      Complete the form to register a new talk.
+    %p
+      * Requiered field
 = form_for(@talk, url: {action: "create"}, data: {avide: ""}) do |f|
   .row
-    .large-12.columns.title-field
+    .large-12.columns
       /= f.label :title
-      %i.fi-bookmark
-      Title
+      %label{:for => "title"}
+        %i.fi-bookmark
+        Title *
       = f.text_field :title, :pattern => "[a-zA-Z\s]+", :required => true
       %small.error Name is required and must be a string.
 
@@ -22,7 +26,7 @@
       /= f.label :brief_description
       %label{:for => "brief_description"}
         %i.fi-paperclip
-        Brief description
+        Brief description *
       //(chars < 140 desireable)
       = f.text_field :brief_description, :pattern => "[a-zA-Z\s]+", :required => true
       /= f.text_field :brief_description, :pattern => "alpha_numeric",:required => true
@@ -32,7 +36,7 @@
       /= f.label :description
       %label{:for => "description"}
         %i.fi-align-justify
-        Description
+        Description *
       /= f.text_area :description, :pattern => "alpha_numeric", :required => true
       = f.text_area :description, :pattern => "[a-zA-Z\s]+", :required => true
 
@@ -45,15 +49,33 @@
       = f.text_field :content_url
 
   .row
-    .medium-6.columns
+    .large-6.columns
       %label
         %i.fi-lightbulb
         Level
       /= f.label :level
-      = f.range_field :level, :step => "1", :min => "0", :max => "4"
-      /%input#level{:for => "level", :type => "range", :step => "1", :min => "0", :max => "4"}
-    .medium-4.left.columns  
-      %p Level Name
+      .row.show-for-touch
+        .large-12.columns
+          = f.range_field :level, :step => "1", :min => "0", :max => "4"
+          %span.level-name
+
+      .row.hide-for-touch
+        .large-12.columns
+          = radio_button("level", "category", "0")
+          %label
+            Noob
+          = radio_button("level", "category", "1")
+          %label
+            Easy
+          = radio_button("level", "category", "2")
+          %label
+            Medium
+          = radio_button("level", "category", "3")
+          %label
+            Hard
+          = radio_button("level", "category", "4")
+          %label
+            Hacker
 
   .row
     .large-12.columns

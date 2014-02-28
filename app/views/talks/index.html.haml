@@ -25,6 +25,8 @@
     //        WARNING
 .row
   .large-12.columns
+    //- if @conferences.voting_end_date >= Date.today
+    = render "partials/calendar"
     - if @talks.count > 0
       %table
         %thead
@@ -52,8 +54,6 @@
             %h3 The call for talks is open
             %p Be the first to propose a talk!
 
-    /- if @conferences.voting_end_date > Date.today
-    = render "partials/calendar"
 
 .row
   .large-6.large-centered.columns
