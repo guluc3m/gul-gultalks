@@ -33,8 +33,8 @@ class TalksController < ApplicationController
 
   private
   def talk
-    @talk = if  params[:action] =~ /new/
-      Talk.new(params[:talk])
+    @talk = if params[:action] =~ /new/
+      Talk.new(params[:talk], :conference_id => params[:con_id])
     elsif params[:action] =~ /create/
       t=Talk.new(params[:talk])
       t.save
@@ -45,6 +45,11 @@ class TalksController < ApplicationController
   end
 
   def talks
-    @talks = Talk.all
+    if params[:conference]
+      @conference = Conference.find(params[:conference])
+      @talks = @conference.talks.all
+    else
+      @talks = Talk.all
+    end
   end
 end

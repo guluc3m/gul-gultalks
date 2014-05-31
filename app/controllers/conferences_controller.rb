@@ -4,7 +4,13 @@ class ConferencesController < ApplicationController
 
 
   def index
-    respond_with conferences
+    conference = Conference.find_by active: 1
+    if conference
+      #redirect_to :controller => "talks", :action => "index", :conference => conference.id
+      redirect_to :action => "show", :id => conference.id
+    else
+      respond_with conferences
+    end
   end
 
   def new
@@ -30,9 +36,10 @@ class ConferencesController < ApplicationController
     conference.destroy
     respond_with @conference
   end
+
   private
   def conference
-    @conference = if  params[:action] =~ /new/
+    @conference = if params[:action] =~ /new/
       Conference.new(params[:conference])
     elsif params[:action] =~ /create/
       c=Conference.new(params[:conference])

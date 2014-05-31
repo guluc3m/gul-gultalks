@@ -1,0 +1,48 @@
+.row
+  .large-12.columns
+    %h3
+      = conference.title
+    %h6.subheader
+      = conference.description
+.row
+  .medium-4.columns
+    %ul.no-bullet
+      %li
+        %i.fi-calendar
+        = conference.start_date
+        >
+        = conference.end_date
+
+  .medium-4.columns
+    %ul.no-bullet
+      %li
+        %i.fi-marker
+      %li
+        %i.fi-info
+      %li
+        %i.fi-torsos
+        /- talk.
+  .medium-4.columns
+    %ul.no-bullet
+      %li
+        %i
+      %li
+        %i
+      %li
+.row
+  .large-12.columns
+/Ponente: The QVD Team
+/Fecha: 2013-10-24
+/Hora de inicio: 18:00
+/Hora de fin: 19:00
+/Aula: 2.3.A.04
+/Conocimientos previos:
+/Nivel (1 = básico, 5 = difícil): 3
+/Referencias:
+/Asistido por:
+
+.row
+  .large-6.columns
+    = link_to "Back to conferences", "/", :class => "button radius expand"
+  .large-6.columns
+    = link_to "Vote", "/thanks_vote", :class => "button success radius expand"

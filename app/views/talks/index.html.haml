@@ -2,30 +2,16 @@
   .large-12.columns
     .medium-5.columns
       %h1
-        talks 2014
+        = @conference.title
       %h3.subheader
         %span.grey> from
-        22
+        = @conference.start_date.strftime("%d")
         %span.grey> to
-        28
+        = @conference.end_date.strftime("%d")
         %span.grey> of
-        april
-    // Proof of concept 
-    //.medium-5.columns
-    //  %ul.no-bullet.text-right
-    //    %li 
-    //      Call for talks
-    //      %span.label.success.radius OPEN
-    //    %li 
-    //      Voting period from XX to XX xxxxx
-    //      %span.label.alert.radius CLOSED
-    //    %li
-    //      This is a warning tag
-    //      %span.label.alert-box.warning.radius
-    //        WARNING
+        = @conference.start_date.strftime("%B")
 .row
   .large-12.columns
-    //- if @conferences.voting_end_date >= Date.today
     = render "partials/calendar"
     - if @talks.count > 0
       %table
@@ -57,4 +43,5 @@
 
 .row
   .large-6.large-centered.columns
-    = link_to "Add talk", "talks/new", :class => "button radius expand"
+    - if @conference.call_for_papers_enabled == true
+      = link_to "Propose talk", "talks/new", :con_id => @conference.id, :class => "button radius expand"

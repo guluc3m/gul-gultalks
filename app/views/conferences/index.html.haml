@@ -1,0 +1,23 @@
+.row
+  .large-12.columns
+    .medium-5.columns
+      %h1
+        Conferences
+.row
+  .large-12.columns
+    = render "partials/calendar"
+    - if @conferences.count > 0
+      %table
+        %thead
+          %tr
+            %th{:width => "360"} Conference
+            /%th Table Header
+            %th{:width => "150"}
+              %i.fi-calendar
+        %tbody
+          - @conferences.each do |conference|
+            %tr
+              %td
+                = link_to conference.title, :controller => 'conferences', :action => 'show', :id => conference.id
+              %td
+                = conference.start_date.strftime("%B %Y")
