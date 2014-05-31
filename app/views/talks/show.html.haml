@@ -55,6 +55,6 @@
 
 .row
   .large-6.columns
-    = link_to "Back to talks", "/", :class => "button radius expand"
+    = link_to "Back to talks", { :controller => 'conferences', :action => 'show', :id => talk.conference_id }, { :class => "button radius expand" }
   .large-6.columns
     = link_to "Vote", "/thanks_vote", :class => "button success radius expand"

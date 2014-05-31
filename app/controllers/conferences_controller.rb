@@ -4,13 +4,7 @@ class ConferencesController < ApplicationController
 
 
   def index
-    conference = Conference.find_by active: 1
-    if conference
-      #redirect_to :controller => "talks", :action => "index", :conference => conference.id
-      redirect_to :action => "show", :id => conference.id
-    else
-      respond_with conferences
-    end
+    respond_with conferences
   end
 
   def new
@@ -21,17 +15,15 @@ class ConferencesController < ApplicationController
     respond_with conference
   end
 
-  def thanks
-
-  end
-
   def create
     respond_with conference
   end
+
   def update
     conference.update_attributes(params[:conference])
     respond_with conference
   end
+
   def destroy
     conference.destroy
     respond_with @conference
@@ -46,7 +38,9 @@ class ConferencesController < ApplicationController
       c.save
       c
     else
-      Conference.find(params[:id])
+      @conference = Conference.find(params[:id])
+      @talks = @conference.talks.all
+      @conference
     end
   end
 

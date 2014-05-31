@@ -3,10 +3,6 @@ class TalksController < ApplicationController
   respond_to :html, :json, :xml
 
 
-  def index
-    respond_with talks
-  end
-
   def new
     respond_with talk
   end
@@ -34,7 +30,7 @@ class TalksController < ApplicationController
   private
   def talk
     @talk = if params[:action] =~ /new/
-      Talk.new(params[:talk], :conference_id => params[:con_id])
+      Talk.new(params[:talk])
     elsif params[:action] =~ /create/
       t=Talk.new(params[:talk])
       t.save
