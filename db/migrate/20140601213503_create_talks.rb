@@ -6,6 +6,7 @@ class CreateTalks < ActiveRecord::Migration
       t.text :description, :limit => 2048, :null => false
       t.string :speaker, :limit => 64, :null => false
       t.string :room
+      t.string :location, :limit => 64
       t.date :date
       t.time :start_time
       t.time :end_time

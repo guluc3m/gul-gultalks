@@ -3,6 +3,7 @@ class CreateConferences < ActiveRecord::Migration
     create_table :conferences do |t|
       t.string :title, :limit => 128, :null => false
       t.text :description, :limit => 1024, :null => false
+      t.text :location, :limit => 64, :null => false
       t.date :start_date
       t.date :end_date
       t.string :coordinator, :null => false
