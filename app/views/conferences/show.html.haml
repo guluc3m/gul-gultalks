@@ -50,4 +50,4 @@
     = link_to "Conference list", { :controller => 'conferences', :action => 'index' }, { :class => "button radius expand" }
   .large-6.columns
     - if @conference.call_for_papers_enabled
-      = link_to "Propose talk", { :controller => 'talks', :action => 'new' }, { :class => "button success radius expand" }
+      = link_to "Propose talk", { :controller => 'talks', :action => 'new', :conference_id => @conference.id }, { :class => "button success radius expand" }

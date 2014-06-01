@@ -33,6 +33,7 @@ class TalksController < ApplicationController
       Talk.new(params[:talk])
     elsif params[:action] =~ /create/
       t=Talk.new(params[:talk])
+      t.conference_id = params[:conference_id]
       t.save
       t
     else

@@ -8,7 +8,7 @@
       - mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS] Subject title" 
 .row
   .large-6.columns
-    = link_to "Back to talks", "/", :class => "button radius expand"
+    = link_to "Back to talks", { :controller => 'conferences', :action => 'show', :id => @talk.conference_id }, { :class => "button radius expand" }
   .large-6.columns
-    = link_to "Add more talks", "/talks/new", :class => "button success radius expand"
+    = link_to "Propose another talk", { :controller => 'talks', :action => 'new' }, { :class => "button success radius expand" }
 //TODO: some other features?  

@@ -11,7 +11,7 @@
       Complete the form to register a new talk.
     %p
       * Requiered field
-= form_for(@talk, url: {action: "create"}, data: {avide: ""}) do |f|
+= form_for(@talk, url: {controller: "talks", action: "create"}, data: {avide: ""}) do |f|
   .row
     .large-12.columns
       /= f.label :title
