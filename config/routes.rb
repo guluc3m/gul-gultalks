@@ -1,5 +1,5 @@
 Gultalks::Application.routes.draw do
-  resources :talks
+  #resources :talks
   resources :conferences do
     resources :talks
   end
