@@ -2,6 +2,11 @@ class TalksController < ApplicationController
   helper_method :talk, :talks
   respond_to :html, :json, :xml
 
+  def index
+    respond_with(talks) do |format|
+      format.html { redirect_to :controller => "conferences", :action => "show", :id => params[:conference_id] }
+    end
+  end
 
   def new
     respond_with talk
@@ -42,8 +47,8 @@ class TalksController < ApplicationController
   end
 
   def talks
-    if params[:conference]
-      @conference = Conference.find(params[:conference])
+    if params[:conference_id]
+      @conference = Conference.find(params[:conference_id])
       @talks = @conference.talks.all
     else
       @talks = Talk.all
