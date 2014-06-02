@@ -5,12 +5,12 @@
     %h6.subheader
       = @conference.description
     %h3.subheader
-      %span.grey> from
-      = @conference.start_date.strftime("%d")
-      %span.grey> to
-      = @conference.end_date.strftime("%d")
-      %span.grey> of
-      = @conference.start_date.strftime("%B")
+      %span.grey>= t("date.from")
+      = l @conference.start_date, :format => :day_only
+      %span.grey>= t("date.to")
+      = l @conference.end_date, :format => :day_only
+      %span.grey>= t("date.of")
+      = l @conference.start_date, :format => :month_only
 
 .row
   .large-12.columns
@@ -19,35 +19,39 @@
       %table
         %thead
           %tr
-            %th{:width => "360"} Talk
-            /%th Table Header
+            %th{:width => "360"}
+              = t("Talk")
             %th{:width => "150"}
               %i.fi-calendar
               &
               %i.fi-clock
-            %th{:width => "40"} Votes
+            %th{:width => "40"}
+              = t("Votes")
         %tbody
           - @talks.each do |talk|
             %tr
               %td
                 = link_to talk.title, :controller => 'talks', :action => 'show', :id => talk.id, :conference_id => @conference.id
               %td
-                = talk.date
+                - if talk.date
+                  = l talk.date
               %td.text-center
                 = talk.votes
     - else
       .row
         .medium-6.medium-centered.columns
           .panel.callout.radius
-            %h3 The call for talks is open
-            %p Be the first to propose a talk!
+            %h3
+              = t("conference.call_for_talks_open")
+            %p
+              = t("conference.first_to_propose")
 
 .row
   .large-12.columns
 
 .row
   .large-6.columns
-    = link_to "Conference list", { :controller => 'conferences', :action => 'index' }, { :class => "button radius expand" }
+    = link_to t("conference.list"), { :controller => 'conferences', :action => 'index' }, { :class => "button radius expand" }
   .large-6.columns
     - if @conference.call_for_papers_enabled
-      = link_to "Propose talk", { :controller => 'talks', :action => 'new', :conference_id => @conference.id }, { :class => "button success radius expand" }
+      = link_to t("conference.propose_talk"), { :controller => 'talks', :action => 'new', :conference_id => @conference.id }, { :class => "button success radius expand" }

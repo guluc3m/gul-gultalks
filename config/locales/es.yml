@@ -1,0 +1,50 @@
+es:
+  Conference: "Jornada"
+  Conferences: "Jornadas"
+  conference:
+    call_for_talks_open: "El call for talks está abierto"
+    first_to_propose: "¡Sé el primero en proponer una charla!"
+    list: "Lista de jornadas"
+    propose_talk: "Proponer charla"
+  date:
+    formats:
+      default: ! '%d/%m/%Y'
+      day_only: ! '%d'
+      long: ! '%d de %B de %Y'
+      month_only: ! '%B'
+      month_year: ! '%B de %Y'
+      short: ! '%d de %b'
+    order:
+    - :day
+    - :month
+    - :year
+    from: "del"
+    to: "al"
+    of: "de"
+  home: "Inicio"
+  talk:
+    back_to_talks: "Volver a las charlas"
+    complete_form: "Completa el formulario para registrar una nueva charla"
+    form_brief_description: "Descripción corta *"
+    form_comments: "Comentarios"
+    form_contact: "Información de contacto (preferible e-mail)"
+    form_description: "Descripción *"
+    form_level: "Nivel"
+    form_speakers: "Ponente[s]"
+    form_tags: "Etiquetas"
+    form_title: "Título *"
+    form_url: "URL diapositivas"
+    level_easy: "Fácil"
+    level_hacker: "Hacker"
+    level_hard: "Difícil"
+    level_medium: "Medio"
+    level_noob: "Novato"
+    new_talk: "Nueva charla"
+    required_field: "* Campo obligatorio"
+    send_talk: "Enviar charla"
+  Talk: "Charla"
+  Talks: "Charlas"
+  time:
+    to: "a"
+  to_vote: "Votar"
+  Votes: "Votos"

@@ -2,22 +2,23 @@
   .medium-7.columns
     %ul.breadcrumbs
       %li
-        = link_to "Home", "/"
+        = link_to t("home"), "/"
       %li.current
-        = link_to "New talk", "#"
+        = link_to t("talk.new_talk"), "#"
 .row
   .medium-7.columns
     %p
-      Complete the form to register a new talk.
+      = t("talk.complete_form")
     %p
-      * Requiered field
+      = t("talk.required_field")
+
 = form_for(@talk, url: {controller: "talks", action: "create"}, data: {avide: ""}) do |f|
   .row
     .large-12.columns
       /= f.label :title
       %label{:for => "title"}
         %i.fi-bookmark
-        Title *
+        = t("talk.form_title")
       = f.text_field :title, :pattern => "[a-zA-Z\s]+", :required => true
       %small.error Name is required and must be a string.
 
@@ -26,7 +27,7 @@
       /= f.label :brief_description
       %label{:for => "brief_description"}
         %i.fi-paperclip
-        Brief description *
+        = t("talk.form_brief_description")
       //(chars < 140 desireable)
       = f.text_field :brief_description, :pattern => "[a-zA-Z\s]+", :required => true
       /= f.text_field :brief_description, :pattern => "alpha_numeric",:required => true
@@ -36,7 +37,7 @@
       /= f.label :description
       %label{:for => "description"}
         %i.fi-align-justify
-        Description *
+        = t("talk.form_description")
       /= f.text_area :description, :pattern => "alpha_numeric", :required => true
       = f.text_area :description, :pattern => "[a-zA-Z\s]+", :required => true
 
@@ -44,7 +45,7 @@
     .large-12.columns
       %label
         %i.fi-link
-        Slides URL
+        = t("talk.form_url")
       /= f.text_field :content_url, :pattern => "url"
       = f.text_field :content_url
 
@@ -52,7 +53,7 @@
     .large-6.columns
       %label
         %i.fi-lightbulb
-        Level
+        = t("talk.form_level")
       /= f.label :level
       .row.show-for-touch
         .large-12.columns
@@ -63,26 +64,26 @@
         .large-12.columns
           = radio_button("level", "category", "0")
           %label
-            Noob
+            = t("talk.level_noob")
           = radio_button("level", "category", "1")
           %label
-            Easy
+            = t("talk.level_easy")
           = radio_button("level", "category", "2")
           %label
-            Medium
+            = t("talk.level_medium")
           = radio_button("level", "category", "3")
           %label
-            Hard
+            = t("talk.level_hard")
           = radio_button("level", "category", "4")
           %label
-            Hacker
+            = t("talk.level_hacker")
 
   .row
     .large-12.columns
       /= f.label :speaker
       %label
         %i.fi-torsos
-        Speaker[s]
+        = t("talk.form_speakers")
       = f.text_field :speaker
 
   .row
@@ -91,14 +92,14 @@
       %label{:for => "tags"}
         %span.tag-icon
           \# 
-        Tags 
+        = t("talk.form_tags") 
       = f.text_field :tags
 
   .row
     .large-12.columns
       %label{:for => "speaker_contact_info"}
         %i.fi-mail
-        Contact info (e-mail desireable)
+        = t("talk.form_contact")
       /= f.label :speaker_contact_info
       /= f.email_field :speaker_contact_info, :pattern => "email"
       = f.email_field :speaker_contact_info
@@ -107,8 +108,8 @@
     .large-12.columns
       %label{:for => "comments"}
         %i.fi-comments
-        Comments
+        = t("talk.form_comments")
       = f.text_area :comments
   .row
     .large-6.columns.large-centered
-      = f.submit "Send talk", class: "button radius expand success"    
+      = f.submit t("talk.send_talk"), class: "button radius expand success"    

@@ -1,5 +1,50 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  Conference: "Conference"
+  Conferences: "Conferences"
+  conference:
+    call_for_talks_open: "The call for talks is open"
+    first_to_propose: "Be the first to propose a talk!"
+    list: "Conference list"
+    propose_talk: "Propose talk"
+  date:
+    formats:
+      default: ! '%Y-%m-%d'
+      day_only: ! '%d'
+      long: ! '%B %d, %Y'
+      month_only: ! '%B'
+      month_year: ! '%B %Y'
+      short: ! '%b %d'
+    order:
+    - :year
+    - :month
+    - :day
+    from: "from"
+    to: "to"
+    of: "of"
+  home: "Home"
+  talk:
+    back_to_talks: "Back to talks"
+    complete_form: "Complete the form to register a new talk"
+    form_brief_description: "Brief description *"
+    form_comments: "Comments"
+    form_contact: "Contact info (e-mail desireable)"
+    form_description: "Description *"
+    form_level: "Level"
+    form_speakers: "Speaker[s]"
+    form_tags: "Tags"
+    form_title: "Title *"
+    form_url: "Slides URL"
+    level_easy: "Easy"
+    level_hacker: "Hacker"
+    level_hard: "Hard"
+    level_medium: "Medium"
+    level_noob: "Noob"
+    new_talk: "New talk"
+    required_field: "* Requiered field"
+    send_talk: "Send talk"
+  Talk: "Talk"
+  Talks: "Talks"
+  time:
+    to: "to"
+  to_vote: "Vote"
+  Votes: "Votes"

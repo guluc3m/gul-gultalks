@@ -12,12 +12,13 @@
         = talk.speaker
       %li
         %i.fi-calendar
-        = talk.date
+        - if talk.date
+          = l talk.date, :format => :long
       %li
         %i.fi-clock
         - if talk.start_time && talk.end_time
           = talk.start_time.strftime('%R')
-          to
+          = t("time.to")
           = talk.end_time.strftime('%R')
         - else
           Not avaliable
@@ -55,7 +56,7 @@
 
 .row
   .large-6.columns
-    = link_to "Back to talks", { :controller => 'conferences', :action => 'show', :id => talk.conference_id }, { :class => "button radius expand" }
+    = link_to t("talk.back_to_talks"), { :controller => 'conferences', :action => 'show', :id => talk.conference_id }, { :class => "button radius expand" }
   .large-6.columns
     - if Conference.find(talk.conference_id).voting_enabled
-      = link_to "Vote", "/thanks_vote", :class => "button success radius expand"
+      = link_to t("to_vote"), "/thanks_vote", :class => "button success radius expand"

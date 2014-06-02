@@ -2,7 +2,7 @@
   .large-12.columns
     .medium-5.columns
       %h1
-        Conferences
+        = t("Conferences")
 .row
   .large-12.columns
     = render "partials/calendar"
@@ -10,8 +10,8 @@
       %table
         %thead
           %tr
-            %th{:width => "360"} Conference
-            /%th Table Header
+            %th{:width => "360"}
+              = t("Conference")
             %th{:width => "150"}
               %i.fi-calendar
         %tbody
@@ -20,4 +20,4 @@
               %td
                 = link_to conference.title, :controller => 'conferences', :action => 'show', :id => conference.id
               %td
-                = conference.start_date.strftime("%B %Y")
+                = l conference.start_date, :format => :month_year
