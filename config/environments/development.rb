@@ -34,4 +34,7 @@ Gultalks::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Set what locales are available in the environment
+  config.i18n.available_locales = [:en, :es]
 end
