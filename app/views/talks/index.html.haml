@@ -43,5 +43,5 @@
 
 .row
   .large-6.large-centered.columns
-    - if @conference.call_for_papers_enabled == true
+    - if @conference.call_for_papers_enabled
       = link_to "Propose talk", "talks/new", :con_id => @conference.id, :class => "button radius expand"
