@@ -1,4 +1,11 @@
 .row
+  .medium-7.columns
+    %ul.breadcrumbs
+      %li
+        = link_to t("home"), "/"
+      %li.current
+        = link_to @conference.title, "#"
+.row
   .large-12.columns
     %h1
       = @conference.title

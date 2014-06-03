@@ -1,5 +1,14 @@
 .row
   .medium-7.columns
+    %ul.breadcrumbs
+      %li
+        = link_to t("home"), "/"
+      %li
+        = link_to Conference.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => @talk.conference_id
+      %li.current
+        = link_to t("talk.new_talk"), "#"
+.row
+  .medium-7.columns
     %h1 
       = t("thanks.thank_you")
     %p 

@@ -3,6 +3,8 @@
     %ul.breadcrumbs
       %li
         = link_to t("home"), "/"
+      %li
+        = link_to Conference.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
       %li.current
         = link_to t("talk.new_talk"), "#"
 .row
