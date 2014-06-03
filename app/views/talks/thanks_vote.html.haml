@@ -6,7 +6,7 @@
       = t("thanks.vote_msg")
     %p
       = t("thanks.thanks_msg")
-      - mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS]"
+      = mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS]"
 .row
   .large-6.columns
     = link_to t("talk.back_to_talks"), "/", :class => "button radius expand"
