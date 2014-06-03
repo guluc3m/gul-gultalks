@@ -42,6 +42,7 @@ en:
     new_talk: "New talk"
     required_field: "* Requiered field"
     send_talk: "Send talk"
+    not_avaliable: "Not avaliable"
   Talk: "Talk"
   Talks: "Talks"
   time:
@@ -55,3 +56,4 @@ en:
     vote_thanks: "Thanks for vote!"
     vote_msg: "Thanks for your vote. To avoid fraud in the voting process, you will recibe a confirmation e-mail to validate the vote."
     propose_another_talk: "Propose another talk"
+  be_first: "Be the first to propose a talk!"

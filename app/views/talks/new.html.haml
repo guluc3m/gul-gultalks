@@ -54,7 +54,6 @@
       %label
         %i.fi-lightbulb
         = t("talk.form_level")
-      /= f.label :level
       .row.show-for-touch
         .large-12.columns
           = f.range_field :level, :step => "1", :min => "0", :max => "4"
@@ -80,7 +79,6 @@
 
   .row
     .large-12.columns
-      /= f.label :speaker
       %label
         %i.fi-torsos
         = t("talk.form_speakers")
@@ -88,7 +86,6 @@
 
   .row
     .large-12.columns
-      /= f.label :tags
       %label{:for => "tags"}
         %span.tag-icon
           \# 
