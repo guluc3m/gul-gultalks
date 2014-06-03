@@ -48,3 +48,10 @@ en:
     to: "to"
   to_vote: "Vote"
   Votes: "Votes"
+  thanks:
+    thank_you: "Thank you!"
+    thanks_msg: "Thank you for register your talk. Soon you will recibe a confirmation e-mail."
+    contact_msg: "If you need help, do not hesitate to write to"
+    vote_thanks: "Thanks for vote!"
+    vote_msg: "Thanks for your vote. To avoid fraud in the voting process, you will recibe a confirmation e-mail to validate the vote."
+    propose_another_talk: "Propose another talk"

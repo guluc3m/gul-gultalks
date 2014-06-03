@@ -1,14 +1,14 @@
 .row
   .medium-7.columns
-    %h1 thank you!
+    %h1 
+      = t("thanks.thank_you")
     %p 
-      Thank you for register your talk. Soon you will recibe a confirmation e-mail.
+      = t("thanks.thanks_msg")
     %p
-      If you need help, do not hesitate to write to
-      - mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS] Subject title" 
+      = t("thanks.contact_msg")
+      - mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS]" 
 .row
   .large-6.columns
-    = link_to "Back to talks", { :controller => 'conferences', :action => 'show', :id => @talk.conference_id }, { :class => "button radius expand" }
+    = link_to t("talk.back_to_talks"), { :controller => 'conferences', :action => 'show', :id => @talk.conference_id }, { :class => "button radius expand" }
   .large-6.columns
     = link_to "Propose another talk", { :controller => 'talks', :action => 'new' }, { :class => "button success radius expand" }
-//TODO: some other features?  

@@ -48,3 +48,11 @@ es:
     to: "a"
   to_vote: "Votar"
   Votes: "Votos"
+  thanks:
+    thank_you: "¡Gracias!"
+    thanks_msg: "Gracias por incluir la charla. Pronto recibirás un e-mail de confirmación."
+    contact_msg: "Si tiene alguna duda, no dude en escribir a"
+    vote_thanks: "¡Gracias por votar!"
+    vote_msg: "Gracias por tu voto. Para evitar el fraude en el proceso de votación, recibriás un e-mail de confirmación para validar tu voto."
+    propose_another_talk: "Proponer otra charla"
+ 

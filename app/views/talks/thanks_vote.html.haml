@@ -1,12 +1,12 @@
 .row
   .medium-7.columns
-    %h1 thanks for vote!
+    %h1
+      = t("thanks.vote_thanks")
     %p 
-      Thanks for your vote. To avoid fraud in the voting process, you will recibe a confirmation e-mail to validate the vote.
+      = t("thanks.vote_msg")
     %p
-      If you need help, do not hesitate to write to
-      - mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS] Subject title"
+      = t("thanks.thanks_msg")
+      - mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS]"
 .row
   .large-6.columns
-    = link_to "Back to talks", "/", :class => "button radius expand"
-//TODO: some other features?  
+    = link_to t("talk.back_to_talks"), "/", :class => "button radius expand"
