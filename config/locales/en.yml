@@ -5,6 +5,7 @@ en:
     call_for_talks_open: "The call for talks is open"
     first_to_propose: "Be the first to propose a talk!"
     list: "Conference list"
+    propose_another_talk: "Propose another talk"
     propose_talk: "Propose talk"
   date:
     formats:
@@ -44,14 +45,13 @@ en:
     send_talk: "Send talk"
   Talk: "Talk"
   Talks: "Talks"
+  thanks:
+    contact_msg: "If you need help, do not hesitate to write to"
+    thank_you: "Thank you!"
+    thanks_msg: "Thank you for proposing a talk. Soon you will recieve a confirmation e-mail."
+    vote_thanks: "Thank you for voting!"
+    vote_msg: "Thank you for your vote. To avoid fraud in the voting process, you will recieve a confirmation e-mail to validate the vote."
   time:
     to: "to"
   to_vote: "Vote"
   Votes: "Votes"
-  thanks:
-    thank_you: "Thank you!"
-    thanks_msg: "Thank you for register your talk. Soon you will recibe a confirmation e-mail."
-    contact_msg: "If you need help, do not hesitate to write to"
-    vote_thanks: "Thanks for vote!"
-    vote_msg: "Thanks for your vote. To avoid fraud in the voting process, you will recibe a confirmation e-mail to validate the vote."
-    propose_another_talk: "Propose another talk"

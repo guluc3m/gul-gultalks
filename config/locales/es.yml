@@ -5,6 +5,7 @@ es:
     call_for_talks_open: "El call for talks está abierto"
     first_to_propose: "¡Sé el primero en proponer una charla!"
     list: "Lista de jornadas"
+    propose_another_talk: "Proponer otra charla"
     propose_talk: "Proponer charla"
   date:
     formats:
@@ -46,13 +47,11 @@ es:
   Talks: "Charlas"
   time:
     to: "a"
+  thanks:
+    contact_msg: "Si tienes alguna duda, no dudes en escribir a"
+    thank_you: "¡Gracias!"
+    thanks_msg: "Gracias por proponer una charla. Pronto recibirás un e-mail de confirmación."
+    vote_thanks: "¡Gracias por votar!"
+    vote_msg: "Gracias por tu voto. Para evitar el fraude en el proceso de votación, recibriás un e-mail de confirmación para validar tu voto." 
   to_vote: "Votar"
   Votes: "Votos"
-  thanks:
-    thank_you: "¡Gracias!"
-    thanks_msg: "Gracias por incluir la charla. Pronto recibirás un e-mail de confirmación."
-    contact_msg: "Si tiene alguna duda, no dude en escribir a"
-    vote_thanks: "¡Gracias por votar!"
-    vote_msg: "Gracias por tu voto. Para evitar el fraude en el proceso de votación, recibriás un e-mail de confirmación para validar tu voto."
-    propose_another_talk: "Proponer otra charla"
- 

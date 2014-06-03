@@ -36,7 +36,7 @@ Conference.create(
       :coordinator => '',
       :active => true,
       :call_for_papers_enabled => true,
-      :voting_enabled => false,
+      :voting_enabled => true,
       :call_for_papers_start_date => '2014-09-10',
       :call_for_papers_end_date => '2014-09-20',
       :voting_start_date => '2014-09-21',
