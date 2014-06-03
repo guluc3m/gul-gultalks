@@ -43,15 +43,16 @@ es:
     new_talk: "Nueva charla"
     required_field: "* Campo obligatorio"
     send_talk: "Enviar charla"
+    not_avaliable: "No disponible"
   Talk: "Charla"
   Talks: "Charlas"
-  time:
-    to: "a"
   thanks:
     contact_msg: "Si tienes alguna duda, no dudes en escribir a"
     thank_you: "¡Gracias!"
     thanks_msg: "Gracias por proponer una charla. Pronto recibirás un e-mail de confirmación."
+    vote_msg: "Gracias por tu voto. Para evitar el fraude en el proceso de votación, recibirás un e-mail de confirmación para validar tu voto." 
     vote_thanks: "¡Gracias por votar!"
-    vote_msg: "Gracias por tu voto. Para evitar el fraude en el proceso de votación, recibriás un e-mail de confirmación para validar tu voto." 
+  time:
+    to: "a"
   to_vote: "Votar"
   Votes: "Votos"

@@ -43,14 +43,15 @@ en:
     new_talk: "New talk"
     required_field: "* Requiered field"
     send_talk: "Send talk"
+    not_avaliable: "Not avaliable"
   Talk: "Talk"
   Talks: "Talks"
   thanks:
     contact_msg: "If you need help, do not hesitate to write to"
     thank_you: "Thank you!"
     thanks_msg: "Thank you for proposing a talk. Soon you will recieve a confirmation e-mail."
-    vote_thanks: "Thank you for voting!"
     vote_msg: "Thank you for your vote. To avoid fraud in the voting process, you will recieve a confirmation e-mail to validate the vote."
+    vote_thanks: "Thank you for voting!"
   time:
     to: "to"
   to_vote: "Vote"
