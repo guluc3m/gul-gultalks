@@ -38,7 +38,7 @@
           - @talks.each do |talk|
             %tr
               %td
-                = link_to talk.title, :controller => 'talks', :action => 'show', :id => talk.id, :conference_id => @conference.id
+                = link_to talk.title, :controller => 'talks', :action => 'show', :id => talk, :conference_id => @conference
               %td
                 - if talk.date
                   = l talk.date
@@ -61,4 +61,4 @@
     = link_to t("conference.list"), { :controller => 'conferences', :action => 'index' }, { :class => "button radius expand" }
   .large-6.columns
     - if @conference.call_for_papers_enabled
-      = link_to t("conference.propose_talk"), { :controller => 'talks', :action => 'new', :conference_id => @conference.id }, { :class => "button success radius expand" }
+      = link_to t("conference.propose_talk"), { :controller => 'talks', :action => 'new', :conference_id => @conference }, { :class => "button success radius expand" }

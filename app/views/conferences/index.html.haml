@@ -25,6 +25,6 @@
           - @conferences.each do |conference|
             %tr
               %td
-                = link_to conference.title, :controller => 'conferences', :action => 'show', :id => conference.id
+                = link_to conference.title, :controller => 'conferences', :action => 'show', :id => conference
               %td
                 = l conference.start_date, :format => :month_year

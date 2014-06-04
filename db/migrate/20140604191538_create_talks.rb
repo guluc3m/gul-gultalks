@@ -18,6 +18,8 @@ class CreateTalks < ActiveRecord::Migration
       t.string :tags, :limit => 64
       t.string :content_url
       t.boolean :active, :default => true
+      t.integer :conference_id
+      t.string :slug
 
       t.timestamps
     end

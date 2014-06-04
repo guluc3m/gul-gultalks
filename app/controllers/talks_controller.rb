@@ -38,12 +38,12 @@ class TalksController < ApplicationController
       Talk.new(params[:talk])
     elsif params[:action] =~ /create/
       t=Talk.new(params[:talk])
-      t.conference_id = params[:conference_id]
-      t.location = Conference.find(params[:conference_id]).location
+      t.conference_id = Conference.friendly.find(params[:conference_id]).id
+      t.location = Conference.friendly.find(params[:conference_id]).location
       t.save
       t
     else
-      Talk.find(params[:id])
+      Talk.friendly.find(params[:id])
     end
   end
 

@@ -14,6 +14,7 @@ class CreateConferences < ActiveRecord::Migration
       t.date :call_for_papers_end_date, :null => false
       t.date :voting_start_date, :null => false
       t.date :voting_end_date, :null => false
+      t.string :slug
 
       t.timestamps
     end
