@@ -45,6 +45,6 @@ class ConferencesController < ApplicationController
   end
 
   def conferences
-    @conferences = Conference.all
+    @conferences = Conference.all(:order => 'start_date DESC')
   end
 end
