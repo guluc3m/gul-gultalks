@@ -92,8 +92,6 @@
       %label{:for => "speaker_contact_info"}
         %i.fi-mail
         = t("talk.form_contact")
-      /= f.label :speaker_contact_info
-      /= f.email_field :speaker_contact_info, :pattern => "email"
       = f.email_field :speaker_contact_info, label: false
 
   .row

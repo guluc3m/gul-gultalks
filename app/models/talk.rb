@@ -5,8 +5,7 @@ class Talk < ActiveRecord::Base
   friendly_id :title, :use => [:slugged, :scoped], :scope => :conference
 
   validates :title,
-            format: { with: /\A[a-z\W\d]+\z/i, message: "First name can't be blank", },
-
+            format: { with: /\A[a-z\W\d]+\z/i },
             presence: true,
             uniqueness: { scope: :conference }
 
@@ -17,5 +16,9 @@ class Talk < ActiveRecord::Base
   validates :description,
             format: { with: /\A[a-z\W\d]+\z/i },
             presence: true
+
+  validates :speaker_contact_info,
+            allow_blank: true,
+            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
             
 end
