@@ -41,7 +41,7 @@ en:
     level_medium: "Medium"
     level_noob: "Noob"
     new_talk: "New talk"
-    required_field: "* Requiered field"
+    required_field: "* Required field"
     send_talk: "Send talk"
     not_avaliable: "Not avaliable"
   Talk: "Talk"
