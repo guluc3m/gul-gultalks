@@ -56,6 +56,7 @@ end
 
 gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'
+gem 'foundation_rails_helper'
 gem 'haml-rails'
 gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 #http accept language to have the locale set from browser
