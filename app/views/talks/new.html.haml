@@ -17,31 +17,24 @@
 = form_for(@talk, url: {controller: "talks", action: "create"}, data: {avide: ""}) do |f|
   .row
     .large-12.columns
-      /= f.label :title
       %label{:for => "title"}
         %i.fi-bookmark
         = t("talk.form_title")
-      = f.text_field :title, :pattern => "[a-zA-Z\s]+", :required => true
-      %small.error Name is required and must be a string.
+      = f.text_field :title, label: false
 
   .row
     .large-12.columns
-      /= f.label :brief_description
       %label{:for => "brief_description"}
         %i.fi-paperclip
         = t("talk.form_brief_description")
-      //(chars < 140 desireable)
-      = f.text_field :brief_description, :pattern => "[a-zA-Z\s]+", :required => true
-      /= f.text_field :brief_description, :pattern => "alpha_numeric",:required => true
+      = f.text_field :brief_description, label: false
 
   .row
     .large-12.columns
-      /= f.label :description
       %label{:for => "description"}
         %i.fi-align-justify
         = t("talk.form_description")
-      /= f.text_area :description, :pattern => "alpha_numeric", :required => true
-      = f.text_area :description, :pattern => "[a-zA-Z\s]+", :required => true
+      = f.text_area :description, label: false
 
   .row
     .large-12.columns
@@ -49,7 +42,7 @@
         %i.fi-link
         = t("talk.form_url")
       /= f.text_field :content_url, :pattern => "url"
-      = f.text_field :content_url
+      = f.text_field :content_url, label: false
 
   .row
     .large-6.columns
@@ -84,7 +77,7 @@
       %label
         %i.fi-torsos
         = t("talk.form_speakers")
-      = f.text_field :speaker
+      = f.text_field :speaker, label: false
 
   .row
     .large-12.columns
@@ -92,7 +85,7 @@
         %span.tag-icon
           \# 
         = t("talk.form_tags") 
-      = f.text_field :tags
+      = f.text_field :tags, label: false
 
   .row
     .large-12.columns
@@ -101,14 +94,14 @@
         = t("talk.form_contact")
       /= f.label :speaker_contact_info
       /= f.email_field :speaker_contact_info, :pattern => "email"
-      = f.email_field :speaker_contact_info
+      = f.email_field :speaker_contact_info, label: false
 
   .row
     .large-12.columns
       %label{:for => "comments"}
         %i.fi-comments
         = t("talk.form_comments")
-      = f.text_area :comments
+      = f.text_area :comments, label: false
   .row
     .large-6.columns.large-centered
       = f.submit t("talk.send_talk"), class: "button radius expand success"    
