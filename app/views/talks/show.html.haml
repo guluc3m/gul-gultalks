@@ -17,14 +17,14 @@
   .medium-4.columns
     %ul.no-bullet
       %li
-        %i.fi-torso
+        %i.fa.fa-users
         = talk.speaker
       %li
-        %i.fi-calendar
+        %i.fa.fa-calendar
         - if talk.date
           = l talk.date, :format => :long
       %li
-        %i.fi-clock
+        %i.fa.fa-clock-o
         - if talk.start_time && talk.end_time
           = talk.start_time.strftime('%R')
           = t("time.to")
@@ -35,16 +35,18 @@
   .medium-4.columns
     %ul.no-bullet
       %li
-        %i.fi-marker
+        %i.fa.fa-map-marker
+          = talk.location
       %li
-        %i.fi-info
+        %i.fa.fa-info
       %li
-        %i.fi-torsos
+        %i.fa.fa-torsos
         /- talk.
   .medium-4.columns
     %ul.no-bullet
       %li
-        %i
+        %i.fa.fa-language
+          -# = talk.language
       %li
         %i
       %li

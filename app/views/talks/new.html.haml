@@ -18,7 +18,7 @@
   .row
     .large-12.columns
       %label{:for => "title"}
-        %i.fi-bookmark
+        %i.fa.fa-bookmark.fa-lg
         = t("talk.form_title")
       = f.text_field :title, :label => false, :pattern => "extended_alphanumeric", :required => true
       %small.error
@@ -27,7 +27,7 @@
   .row
     .large-12.columns
       %label{:for => "brief_description"}
-        %i.fi-paperclip
+        %i.fa.fa-paperclip.fa-lg
         = t("talk.form_brief_description")
       = f.text_field :brief_description, :label => false, :pattern => "extended_alphanumeric", :required => true
       %small.error
@@ -36,7 +36,7 @@
   .row
     .large-12.columns
       %label{:for => "description"}
-        %i.fi-align-justify
+        %i.fa.fa-bars.fa-lg
         = t("talk.form_description")
       = f.text_area :description, :label => false, :pattern => "extended_alphanumeric", :required => true
       %small.error
@@ -45,7 +45,7 @@
   .row
     .large-12.columns
       %label
-        %i.fi-link
+        %i.fa.fa-link.fa-lg
         = t("talk.form_url")
       = f.text_field :content_url, :label => false, :pattern => "url"
       %small.error
@@ -54,8 +54,9 @@
   .row
     .large-6.columns
       %label
-        %i.fi-lightbulb
+        %i.fa.fa-lightbulb-o.fa-lg
         = t("talk.form_level")
+
       .row.show-for-touch
         .large-12.columns
           = f.range_field :level, :step => "1", :min => "0", :max => "4"
@@ -78,38 +79,34 @@
           = radio_button("level", "category", "4")
           %label
             = t("talk.level_hacker")
-    .large-6.columns
-      %label
-        %i
-        = t("talk.language")
       .row
         .large-12.columns
-          %select
-          -# = f.select(:language, options_for_select([['Spanish',1], ['English',2]]))
-
+          %label
+            %i.fa.fa-language.fa-lg
+            = t("talk.language")
+            %select
+            -# = f.select(:language, options_for_select([['Spanish',1], ['English',2]]))
 
   .row
     .large-12.columns
       %label
-        %i.fi-torsos
+        %i.fa.fa-users.fa-lg
         = t("talk.form_speakers")
       = f.text_field :speaker, :label => false, :pattern => "extended_alpha"
       %small.error
         = t("talk.speaker_requirements")
 
-
   .row
     .large-12.columns
       %label{:for => "tags"}
-        %span.tag-icon
-          \# 
+        %i.fa.fa-slack.fa-lg
         = t("talk.form_tags") 
       = f.text_field :tags, :label => false
 
   .row
     .large-12.columns
       %label{:for => "speaker_contact_info"}
-        %i.fi-mail
+        %i.fa.fa-envelope.fa-lg
         = t("talk.form_contact")
       = f.text_field :speaker_contact_info, :label => false, :pattern => "extended_email"
       %small.error
@@ -118,7 +115,7 @@
   .row
     .large-12.columns
       %label{:for => "comments"}
-        %i.fi-comments
+        %i.fa.fa-comments.fa-lg
         = t("talk.form_comments")
       = f.text_area :comments, :label => false, :pattern => "extended_alphanumeric"
       %small.error
@@ -126,7 +123,7 @@
   .row
     .large-12.columns
       -# = f.check_box 
-      %p Quiero recibir un certificado como ponente
+      %p Quiero solicitar un certificado como ponente
   .row
     .large-6.columns.large-centered
       = f.submit t("talk.send_talk"), class: "button radius expand success"    
