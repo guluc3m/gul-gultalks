@@ -14,5 +14,14 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
-
-$(function(){ $(document).foundation(); });
+$(function(){ $(document)
+  .foundation({
+    abide : {
+      patterns: {
+        extended_alpha: /^[a-z\W]+$/i,
+        extended_alphanumeric: /^[a-z0-9\W]+$/i,
+        extended_email: /.+@.+\..+/i
+      }
+    }
+  });
+});

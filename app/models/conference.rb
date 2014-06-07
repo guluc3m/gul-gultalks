@@ -4,5 +4,5 @@ class Conference < ActiveRecord::Base
   has_many :talks
   validates_presence_of :title, :description
   validates_uniqueness_of :title
-  friendly_id :title, :use => :slugged  
+  friendly_id :title, :use => :slugged
 end

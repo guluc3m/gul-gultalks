@@ -18,11 +18,7 @@ class TalksController < ApplicationController
 
   def create
     respond_with(talk) do |format|
-      if talk.valid?
-          format.html { render action: "thanks" }
-      else
-          format.html { render action: "new" }
-      end
+      format.html { render action: "thanks" }
     end
   end
 
