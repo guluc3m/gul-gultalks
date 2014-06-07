@@ -71,6 +71,15 @@
           = radio_button("level", "category", "4")
           %label
             = t("talk.level_hacker")
+    .large-6.columns
+      %label
+        %i
+        = t("talk.language")
+      .row
+        .large-12.columns
+          %select
+          -# = f.select(:language, options_for_select([['Spanish',1], ['English',2]]))
+
 
   .row
     .large-12.columns
@@ -101,5 +110,10 @@
         = t("talk.form_comments")
       = f.text_area :comments, label: false
   .row
+    .large-12.columns
+      -# = f.check_box 
+      %p Quiero recibir un certificado como ponente
+  .row
     .large-6.columns.large-centered
       = f.submit t("talk.send_talk"), class: "button radius expand success"    
+
