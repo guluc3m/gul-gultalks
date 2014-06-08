@@ -23,6 +23,7 @@ es:
     to: "al"
     of: "de"
   home: "Inicio"
+  not_available: "No disponible"
   talk:
     back_to_talks: "Volver a las charlas"
     brief_description_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
@@ -47,7 +48,6 @@ es:
     level_medium: "Medio"
     level_noob: "Novato"
     new_talk: "Nueva charla"
-    not_avaliable: "No disponible"
     send_talk: "Enviar charla"
     speaker_requirements: "Sólo puede contener caracteres literales y guiones"
     title_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"

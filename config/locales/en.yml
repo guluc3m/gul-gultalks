@@ -23,6 +23,7 @@ en:
     to: "to"
     of: "of"
   home: "Home"
+  not_available: "Not avaliable"
   talk:
     back_to_talks: "Back to talks"
     brief_description_requirements: "Can only contain alphanumeric characters and hyphens"
@@ -47,7 +48,6 @@ en:
     level_medium: "Medium"
     level_noob: "Noob"
     new_talk: "New talk"
-    not_avaliable: "Not avaliable"
     send_talk: "Send talk"
     speaker_requirements: "Can only contain literal characters and hyphens"
     title_requirements: "Can only contain alphanumeric characters and hyphens"
