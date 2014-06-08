@@ -54,7 +54,8 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'foundation-icons-sass-rails'
+#gem 'foundation-icons-sass-rails'
+gem 'font-awesome-rails'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem 'haml-rails'

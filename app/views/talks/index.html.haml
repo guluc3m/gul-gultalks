@@ -29,6 +29,8 @@
             %tr
               %td
                 = link_to talk.title, :controller => 'talks', :action => 'show', :id => talk.id
+                %p 
+                  = talk.brief_description
               %td
                 = talk.date
               %td.text-center
@@ -40,8 +42,6 @@
             %h3 The call for talks is open
             %p
               = t("be_first")
-
-
 .row
   .large-6.large-centered.columns
     - if @conference.call_for_papers_enabled
