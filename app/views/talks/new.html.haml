@@ -1,5 +1,5 @@
 .row
-  .medium-7.columns
+  .medium-12.columns
     %ul.breadcrumbs
       %li
         = link_to t("home"), "/"
@@ -79,13 +79,12 @@
           = radio_button("level", "category", "4")
           %label
             = t("talk.level_hacker")
-      .row
-        .large-12.columns
-          %label
-            %i.fa.fa-language.fa-lg
-            = t("talk.language")
-            %select
-            -# = f.select(:language, options_for_select([['Spanish',1], ['English',2]]))
+    .large-6.columns
+      %label
+        %i.fa.fa-language.fa-lg
+        = t("talk.language")
+        %select
+          -# = f.select(:language, options_for_select([['Spanish',1], ['English',2]]))
 
   .row
     .large-12.columns

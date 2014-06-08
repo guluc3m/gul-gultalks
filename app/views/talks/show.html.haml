@@ -1,5 +1,5 @@
 .row
-  .medium-7.columns
+  .medium-12.columns
     %ul.breadcrumbs
       %li
         = link_to t("home"), "/"
@@ -37,6 +37,7 @@
       %li
         %i.fa.fa-map-marker
           = talk.location
+          -# = auto_link "¿Cómo llegar?", :link => "www.openstreetmaps.com" 
       %li
         %i.fa.fa-info
       %li
@@ -54,7 +55,7 @@
   .large-12.columns
     // TODO: to put this inline style in css file
     %p.text-justify{:style => "word-break:break-all;"}
-      = talk.comments
+      = talk.description
 /Ponente: The QVD Team
 /Fecha: 2013-10-24
 /Hora de inicio: 18:00
