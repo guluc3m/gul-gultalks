@@ -56,19 +56,11 @@
     // TODO: to put this inline style in css file
     %p.text-justify{:style => "word-break:break-all;"}
       = talk.description
-/Ponente: The QVD Team
-/Fecha: 2013-10-24
-/Hora de inicio: 18:00
-/Hora de fin: 19:00
-/Aula: 2.3.A.04
-/Conocimientos previos:
-/Nivel (1 = básico, 5 = difícil): 3
-/Referencias:
-/Asistido por:
 
 .row
   .large-6.columns
     = link_to t("talk.back_to_talks"), { :controller => 'conferences', :action => 'show', :id => params[:conference_id] }, { :class => "button radius expand" }
   .large-6.columns
     - if Conference.find(talk.conference_id).voting_enabled
-      = link_to t("to_vote"), "/thanks_vote", :class => "button success radius expand"
+      = link_to t("to_vote"), { :controller => "talks", :action => "vote"}, {:class => "button success radius expand"} 
+      -# = link_to t("to_vote"), "/thanks_vote", :class => "button success radius expand" 

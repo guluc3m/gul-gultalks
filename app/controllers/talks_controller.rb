@@ -20,6 +20,7 @@ class TalksController < ApplicationController
     respond_with(talk) do |format|
       format.html { render action: "thanks" }
     end
+    Notifier.confirmation_talk(talk)
   end
 
   def update
@@ -32,12 +33,18 @@ class TalksController < ApplicationController
     respond_with @talk
   end
 
+  def vote
+    talk.update_attributes(vote: talk.vote + 1)
+    respond_with thanks_vote
+    Notifier.confirmation_vote(talk)
+  end
+
   private
   def talk
     @talk = if params[:action] =~ /new/
       Talk.new(params[:talk])
     elsif params[:action] =~ /create/
-      t=Talk.new(params[:talk])
+      t = Talk.new(params[:talk])
       t.conference_id = Conference.friendly.find(params[:conference_id]).id
       t.location = Conference.friendly.find(params[:conference_id]).location
       t.save

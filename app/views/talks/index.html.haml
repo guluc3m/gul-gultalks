@@ -39,9 +39,10 @@
       .row
         .medium-6.medium-centered.columns
           .panel.callout.radius
-            %h3 The call for talks is open
+            %h3
+              = t("call_for_talks_open")
             %p
-              = t("be_first")
+              = t("first_to_propose")
 .row
   .large-6.large-centered.columns
     - if @conference.call_for_papers_enabled
