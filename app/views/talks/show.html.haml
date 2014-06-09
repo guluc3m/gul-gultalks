@@ -62,5 +62,5 @@
     = link_to t("talk.back_to_talks"), { :controller => 'conferences', :action => 'show', :id => params[:conference_id] }, { :class => "button radius expand" }
   .large-6.columns
     - if Conference.find(talk.conference_id).voting_enabled
-      = link_to t("to_vote"), { :controller => "talks", :action => "vote"}, {:class => "button success radius expand"} 
+      = link_to t("to_vote"), { :controller => "talks", :action => "vote" }, {:class => "button success radius expand" } 
       -# = link_to t("to_vote"), "/thanks_vote", :class => "button success radius expand" 

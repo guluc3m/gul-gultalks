@@ -34,6 +34,14 @@ class TalksController < ApplicationController
   end
 
   def vote
+    if Conference.friendly.find(params[:conference_id]).voting_enabled
+      respond_with talk
+    else
+      redirect_to :controller => "talks", :action => "show", :id => params[:id]
+    end
+  end
+
+  def vote_old
     talk.update_attributes(vote: talk.vote + 1)
     respond_with thanks_vote
     Notifier.confirmation_vote(talk)
@@ -56,7 +64,7 @@ class TalksController < ApplicationController
 
   def talks
     if params[:conference_id]
-      conference = Conference.find(params[:conference_id])
+      conference = Conference.friendly.find(params[:conference_id])
       @talks = conference.talks.all
     else
       @talks = Talk.all

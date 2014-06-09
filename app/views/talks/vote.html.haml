@@ -1,0 +1,12 @@
+.row
+  .medium-12.columns
+    %ul.breadcrumbs
+      %li
+        = link_to t("home"), "/"
+      %li
+        = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
+      %li
+        = link_to talk.title, :controller => 'talks', :action => 'show', :id => talk, :conference_id => params[:conference_id]
+      %li.current
+        = t("to_vote")
+
