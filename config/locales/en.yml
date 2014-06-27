@@ -64,3 +64,5 @@ en:
     to: "to"
   to_vote: "Vote"
   Votes: "Votes"
+  cancelled: "Cancelled"
+  new: "News"

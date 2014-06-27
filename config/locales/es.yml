@@ -64,3 +64,5 @@ es:
     to: "a"
   to_vote: "Votar"
   Votes: "Votos"
+  cancelled: "Cancelado"
+  new: "Nuevo"

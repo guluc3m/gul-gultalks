@@ -1,10 +1,10 @@
-.row
-  .medium-7.columns
-    %ul.breadcrumbs
-      %li
-        = link_to t("home"), "/"
-      %li.current
-        = @conference.title
+/ .row
+/   .medium-7.columns
+/     %ul.breadcrumbs
+/       %li
+/         = link_to t("home"), "/"
+/       %li.current
+/         = @conference.title
 .row
   .large-12.columns
     %h1
@@ -39,6 +39,15 @@
             %tr
               %td
                 = link_to talk.title, :controller => 'talks', :action => 'show', :id => talk, :conference_id => @conference
+                - if talk.created_at.today?
+                  %span.success.radius.label.bold
+                    = t("new")
+                    /- if talk.cancelled?
+                  %span.alert.radius.label
+                    = t("cancelled")
+                %h5
+                  %small
+                    = talk.brief_description
               %td
                 - if talk.date
                   = l talk.date
@@ -52,9 +61,6 @@
               = t("conference.call_for_talks_open")
             %p
               = t("conference.first_to_propose")
-
-.row
-  .large-12.columns
 
 .row
   .large-6.columns

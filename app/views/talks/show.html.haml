@@ -11,20 +11,28 @@
   .large-12.columns
     %h3
       = talk.title
+      - if @talk.created_at.today?
+        %span.success.radius.label
+          = t("new")
+        %span.alert.radius.label
+          = t("cancelled")
     %h6.subheader
       = talk.brief_description
 .row
   .medium-4.columns
     %ul.no-bullet
       %li
-        %i.fa.fa-users
+        %i.fa.fa-users.fa-lg
         = talk.speaker
       %li
-        %i.fa.fa-calendar
+        %i.fa.fa-calendar.fa-lg
         - if talk.date
           = l talk.date, :format => :long
+        - else
+          = t("not_available")
+      
       %li
-        %i.fa.fa-clock-o
+        %i.fa.fa-clock-o.fa-lg
         - if talk.start_time && talk.end_time
           = talk.start_time.strftime('%R')
           = t("time.to")
@@ -35,21 +43,22 @@
   .medium-4.columns
     %ul.no-bullet
       %li
-        %i.fa.fa-map-marker
+        %i.fa.fa-map-marker.fa-lg
           = talk.location
           -# = auto_link "¿Cómo llegar?", :link => "www.openstreetmaps.com" 
       %li
-        %i.fa.fa-info
+        %i.fa.fa-info.fa-lg
       %li
         %i.fa.fa-torsos
         /- talk.
   .medium-4.columns
     %ul.no-bullet
       %li
-        %i.fa.fa-language
+        %i.fa.fa-language.fa-lg
           -# = talk.language
       %li
-        %i
+        %i.fa.fa-lightbulb-o.fa-lg
+   
       %li
 .row
   .large-12.columns
@@ -63,4 +72,3 @@
   .large-6.columns
     - if Conference.find(talk.conference_id).voting_enabled
       = link_to t("to_vote"), { :controller => "talks", :action => "vote" }, {:class => "button success radius expand" } 
-      -# = link_to t("to_vote"), "/thanks_vote", :class => "button success radius expand" 
