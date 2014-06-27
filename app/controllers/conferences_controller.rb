@@ -2,7 +2,6 @@ class ConferencesController < ApplicationController
   helper_method :conference, :conferences
   respond_to :html, :json, :xml
 
-
   def index
     respond_with conferences
   end
@@ -34,7 +33,7 @@ class ConferencesController < ApplicationController
     @conference = if params[:action] =~ /new/
       Conference.new(params[:conference])
     elsif params[:action] =~ /create/
-      c=Conference.new(params[:conference])
+      c = Conference.new(params[:conference])
       c.save
       c
     else
@@ -45,6 +44,6 @@ class ConferencesController < ApplicationController
   end
 
   def conferences
-    @conferences = Conference.all(:order => 'start_date DESC')
+    @conferences = Conference.all.order('start_date DESC')
   end
 end

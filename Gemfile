@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.1'
+gem 'rails', '4.1.1'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
@@ -65,3 +65,5 @@ gem 'http_accept_language'
 
 # SEO friendly URLs
 gem 'friendly_id', '~> 5.0.0'
+
+gem "binding_of_caller" #TOFIX: patch remove as soon as possile
