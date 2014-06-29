@@ -59,7 +59,8 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => true)
 Talk.create(
       :title => 'Illumos y openindiana',
       :brief_description => 'Este muerto esta muy vivo',
@@ -78,7 +79,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Gestionando la configuracion de nuestros servidores con Puppet',
       :brief_description => 'Gestion con Puppet',
@@ -97,7 +100,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => false)
+      
 Talk.create(
       :title => 'Entendiendo y optimizando MySQL',
       :brief_description => 'MySQL',
@@ -116,7 +121,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Sistemas de control de versiones',
       :brief_description => 'Git',
@@ -135,7 +142,8 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => false)
 Talk.create(
       :title => 'Edicion de audio con Audacity',
       :brief_description => 'Audacity',
@@ -154,7 +162,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Introduccion al desarrollo web',
       :brief_description => 'Uso de Symfony',
@@ -173,7 +183,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Desarrollando aplicaciones con Android',
       :brief_description => 'Android',
@@ -211,7 +223,8 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => false)
 Talk.create(
       :title => 'Qt para interfaces graficas',
       :brief_description => 'Uso de Qt en diferentes lenguajes',
@@ -230,7 +243,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Pandora',
       :brief_description => 'La caja',
@@ -249,7 +264,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Empaquetango y distribuyendo software PHP',
       :brief_description => 'Distribucion mediante PEAR',
@@ -268,7 +285,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Creacion de bibliotecas PHP escritas en C',
       :brief_description => 'PHP y C',
@@ -287,7 +306,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Pruebas unitarias y cobertura',
       :brief_description => 'Uso de PHP Unit',
@@ -306,7 +327,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Introduccion a Arduino',
       :brief_description => 'Arduino',
@@ -325,7 +348,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 1)
+      :conference_id => 1,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Introduccion a Linux',
       :brief_description => 'Breve introduccion a Linux',
@@ -344,7 +369,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 2)
+      :conference_id => 2,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Curso de C',
       :brief_description => 'Introduccion al lenguaje de programacion C',
@@ -363,7 +390,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 2)
+      :conference_id => 2,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Licencias al desnudo',
       :brief_description => 'Introduccion a las licencias de software',
@@ -382,7 +411,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 2)
+      :conference_id => 2,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Introduccion a lenguajes funcionales',
       :brief_description => 'Scala',
@@ -401,7 +432,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 2)
+      :conference_id => 2,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Promesas en javascript',
       :brief_description => 'Introduccion',
@@ -420,7 +453,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 2)
+      :conference_id => 2,
+      :cancelled => false)
+      
 Talk.create(
       :title => 'Bitcoin',
       :brief_description => 'Introduccion a Bitcoin',
@@ -439,7 +474,8 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 2)
+      :conference_id => 2,
+      :cancelled => false)
 Talk.create(
       :title => 'Seguridad Informatica',
       :brief_description => 'Introduccion a seguridad',
@@ -458,7 +494,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 2)
+      :conference_id => 2,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Zoe',
       :brief_description => 'Introduccion a Zoe',
@@ -477,7 +515,9 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 2)
+      :conference_id => 2,
+      :cancelled => true)
+      
 Talk.create(
       :title => 'Diseño Web',
       :brief_description => 'Introduccion',
@@ -496,7 +536,8 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 2)
+      :conference_id => 2,
+      :cancelled => true)
 Talk.create(
       :title => 'Android',
       :brief_description => 'Introduccion al desarrollo con Android',
@@ -515,7 +556,8 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 2)
+      :conference_id => 2,
+      :cancelled => false)
 Talk.create(
       :title => 'WebRTC',
       :brief_description => 'Introduccion a WebRTC',
@@ -534,7 +576,8 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 2)
+      :conference_id => 2,
+      :cancelled => true)
 Talk.create(
       :title => 'Arduino',
       :brief_description => 'Introduccion a Arduino',
@@ -553,7 +596,8 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 2)
+      :conference_id => 2,
+      :cancelled => false)
 Talk.create(
       :title => 'Como funciona un ordenador y Como montar el tuyo desde cero',
       :brief_description => 'Introduccion',
@@ -572,4 +616,5 @@ Talk.create(
       :tags => '',
       :content_url => '',
       :active => true,
-      :conference_id => 2)
+      :conference_id => 2,
+      :cancelled => true)

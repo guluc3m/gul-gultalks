@@ -1,6 +1,6 @@
 class Talk < ActiveRecord::Base
   extend FriendlyId
- attr_accessible :active, :assisted_by, :brief_description, :comments, :conference_id, :content_url, :date, :description, :end_time, :id, :level, :location, :room, :start_time, :speaker, :speaker_contact_info, :tags, :title, :votes
+ attr_accessible :active, :assisted_by, :brief_description, :comments, :conference_id, :content_url, :date, :description, :end_time, :id, :level, :location, :room, :start_time, :speaker, :speaker_contact_info, :tags, :title, :votes, :cancelled
   belongs_to :conference
   friendly_id :title, :use => [:slugged, :scoped], :scope => :conference
 

@@ -42,7 +42,7 @@
                 - if talk.created_at.today?
                   %span.success.radius.label.bold
                     = t("new")
-                    /- if talk.cancelled?
+                - if talk.cancelled?
                   %span.alert.radius.label
                     = t("cancelled")
                 %h5

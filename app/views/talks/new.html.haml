@@ -20,7 +20,7 @@
         = t("talk.form_title")
         %small
           = t("talk.form_required")
-      = f.text_field :title, :label => false, :pattern => "extended_alphanumeric", :required => true
+      = f.text_field :title, :label => false, :pattern => "extended_alphanumeric", :required => true, :class => "radius"
       %small.error
         = t("talk.title_requirements")
 
@@ -31,7 +31,7 @@
         = t("talk.form_brief_description")
         %small
           = t("talk.form_required")
-      = f.text_field :brief_description, :label => false, :pattern => "extended_alphanumeric", :required => true
+      = f.text_field :brief_description, :label => false, :pattern => "extended_alphanumeric", :required => true, :class => "radius"
       %small.error
         = t("talk.brief_description_requirements")
 
@@ -42,7 +42,7 @@
         = t("talk.form_description")
         %small
           = t("talk.form_required")
-      = f.text_area :description, :label => false, :pattern => "extended_alphanumeric", :required => true
+      = f.text_area :description, :label => false, :pattern => "extended_alphanumeric", :required => true, :class => "radius"
       %small.error
         = t("talk.description_requirements")
 
@@ -51,7 +51,7 @@
       %label
         %i.fa.fa-link.fa-lg
         = t("talk.form_url")
-      = f.text_field :content_url, :label => false, :pattern => "url"
+      = f.text_field :content_url, :label => false, :pattern => "url", :class => "radius"
       %small.error
         = t("talk.url_requirements")
 
@@ -95,7 +95,7 @@
       %label
         %i.fa.fa-users.fa-lg
         = t("talk.form_speakers")
-      = f.text_field :speaker, :label => false, :pattern => "extended_alpha"
+      = f.text_field :speaker, :label => false, :pattern => "extended_alpha", :class => "radius"
       %small.error
         = t("talk.speaker_requirements")
 
@@ -104,14 +104,14 @@
       %label{:for => "tags"}
         %i.fa.fa-slack.fa-lg
         = t("talk.form_tags") 
-      = f.text_field :tags, :label => false
+      = f.text_field :tags, :label => false, :class => "radius"
 
   .row
     .large-12.columns
       %label{:for => "speaker_contact_info"}
         %i.fa.fa-envelope.fa-lg
         = t("talk.form_contact")
-      = f.text_field :speaker_contact_info, :label => false, :pattern => "extended_email"
+      = f.text_field :speaker_contact_info, :label => false, :pattern => "extended_email", :class => "radius"
       %small.error
         = t("talk.email_requirements")
 
@@ -120,7 +120,7 @@
       %label{:for => "comments"}
         %i.fa.fa-comments.fa-lg
         = t("talk.form_comments")
-      = f.text_area :comments, :label => false, :pattern => "extended_alphanumeric"
+      = f.text_area :comments, :label => false, :pattern => "extended_alphanumeric", :class => "radius"
       %small.error
         = t("talk.comments_requirements")
   .row

@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131221124707) do
+ActiveRecord::Schema.define(version: 20140629135748) do
 
   create_table "conferences", force: true do |t|
     t.string   "title",                      limit: 128,  null: false
     t.text     "description",                limit: 1024, null: false
+    t.string   "location",                   limit: 32,   null: false
     t.date     "start_date"
     t.date     "end_date"
     t.string   "coordinator",                             null: false
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 20131221124707) do
     t.date     "call_for_papers_end_date",                null: false
     t.date     "voting_start_date",                       null: false
     t.date     "voting_end_date",                         null: false
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -36,6 +38,7 @@ ActiveRecord::Schema.define(version: 20131221124707) do
     t.text     "description",          limit: 2048,                null: false
     t.string   "speaker",              limit: 64,                  null: false
     t.string   "room"
+    t.string   "location",             limit: 64
     t.date     "date"
     t.time     "start_time"
     t.time     "end_time"
@@ -47,9 +50,11 @@ ActiveRecord::Schema.define(version: 20131221124707) do
     t.string   "tags",                 limit: 64
     t.string   "content_url"
     t.boolean  "active",                            default: true
+    t.integer  "conference_id"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "conference_id"
+    t.boolean  "cancelled"
   end
 
 end
