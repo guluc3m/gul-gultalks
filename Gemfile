@@ -66,4 +66,5 @@ gem 'http_accept_language'
 # SEO friendly URLs
 gem 'friendly_id', '~> 5.0.0'
 
-gem "binding_of_caller" #TOFIX: patch remove as soon as possile
+#gem 'countries_and_languages', :require => 'countries_and_languages/rails'
+
