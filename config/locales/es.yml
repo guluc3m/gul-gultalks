@@ -15,6 +15,7 @@ es:
       month_only: ! '%B'
       month_year: ! '%B de %Y'
       short: ! '%d de %b'
+      year: ! '%Y'
     order:
     - :day
     - :month
