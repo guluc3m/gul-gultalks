@@ -2,7 +2,7 @@
   .medium-12.columns
     %ul.breadcrumbs
       %li
-        = link_to t("home"), "/"
+        = link_to t("home"), root_path
       %li
         = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
       %li.current
@@ -18,6 +18,6 @@
       = mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS]" 
 .row
   .large-6.columns
-    = link_to t("talk.back_to_talks"), { :controller => 'conferences', :action => 'show', :id => params[:conference_id] }, { :class => "button radius expand" }
+    = link_to t("talk.back_to_talks"), { :controller => 'conferences', :action => 'show', :id => params[:conference_id] }, class: "button radius expand"
   .large-6.columns
-    = link_to t("conference.propose_another_talk"), { :controller => 'talks', :action => 'new' }, { :class => "button success radius expand" }
+    = link_to t("conference.propose_another_talk"), { :controller => 'talks', :action => 'new' }, class: "button success radius expand"

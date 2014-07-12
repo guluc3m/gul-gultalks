@@ -1,12 +1,44 @@
-.row
+.row.show-for-landscape
   .medium-12.columns
     %ul.breadcrumbs
       %li
-        = link_to t("home"), "/"
+        = link_to t("home"), root_path
       %li
         = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
       %li
         = link_to talk.title, :controller => 'talks', :action => 'show', :id => talk, :conference_id => params[:conference_id]
       %li.current
         = t("to_vote")
+.row
+  .medium-9.columns
+    %h1
+      = t("thanks.thank_you")
+    %p
+      = t("thanks.vote_msg")
+    .row
+      .medium-6.columns
+        %label
+          %i.fa.fa-envelope.fa-lg
+          = t("talk.form_contact")
+    .row
+      .large-8.columns
+        .row.collapse
+          .small-10.columns
+            = email_field_tag 'email', nil, class: 'radius', style: 'border-right: 0; border-bottom-right-radius: 0; border-top-right-radius: 0;'
+          .small-2.columns
+            = submit_tag "enviar", class: 'button radius success postfix'
 
+/ .row
+/   .medium-9.columns
+/     %p
+/       = t("thanks.vote_msg")
+.row
+  .medium-9.columns
+    %p
+      = t("thanks.contact_msg")
+      = mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS]" 
+.row
+  .large-6.columns
+    = link_to t("talk.back_to_talks"), { :controller => 'conferences', :action => 'show', :id => params[:conference_id] }, class: "button radius expand"
+  .large-6.columns
+    = link_to t("conference.propose_another_talk"), { :controller => 'talks', :action => 'new' }, class: "button success radius expand"

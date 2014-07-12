@@ -2,7 +2,7 @@
   .medium-12.columns
     %ul.breadcrumbs
       %li
-        = link_to t("home"), "/"
+        = link_to t("home"), root_path
       %li
         = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
       %li.current
@@ -20,7 +20,7 @@
         = t("talk.form_title")
         %small
           = t("talk.form_required")
-      = f.text_field :title, :label => false, :pattern => "extended_alphanumeric", :required => true, :class => "radius"
+      = f.text_field :title, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius", :autofocus => true
       %small.error
         = t("talk.title_requirements")
 
@@ -31,7 +31,7 @@
         = t("talk.form_brief_description")
         %small
           = t("talk.form_required")
-      = f.text_field :brief_description, :label => false, :pattern => "extended_alphanumeric", :required => true, :class => "radius"
+      = f.text_field :brief_description, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius"
       %small.error
         = t("talk.brief_description_requirements")
 
@@ -42,20 +42,70 @@
         = t("talk.form_description")
         %small
           = t("talk.form_required")
-      = f.text_area :description, :label => false, :pattern => "extended_alphanumeric", :required => true, :class => "radius"
+      = f.text_area :description, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius"
       %small.error
         = t("talk.description_requirements")
+
+  .row
+    .large-5.columns
+      %label
+        %i.fa.fa-users.fa-lg
+        = t("talk.form_speakers")
+      = f.text_field :speaker, :label => false, :pattern => "extended_alpha", class: "radius"
+      %small.error
+        = t("talk.speaker_requirements")
+
+    .large-5.columns
+      %label{:for => "speaker_contact_info"}
+        %i.fa.fa-envelope.fa-lg
+        = t("talk.form_contact")
+      = f.text_field :speaker_contact_info, :label => false, :pattern => "extended_email", class: "radius"
+      %small.error
+        = t("talk.email_requirements")
+        
+    .large-2.columns
+      .button.large.radius.expand
+        %i.fa.fa-plus.fa-lg
+  .row
+    .large-12.columns
+      .panel.radius
+        %ul
+          %li 
+            %span #1. Ponente
+            %a.fa.fa-pencil
+            %a.fa.fa-times
 
   .row
     .large-12.columns
       %label
         %i.fa.fa-link.fa-lg
         = t("talk.form_url")
-      = f.text_field :content_url, :label => false, :pattern => "url", :class => "radius"
+      = f.text_field :content_url, :label => false, :pattern => "url", class: "radius"
       %small.error
         = t("talk.url_requirements")
-
   .row
+    .large-12.columns
+      %label{:for => "tags"}
+        %i.fa.fa-tags.fa-lg
+        = t("talk.form_tags") 
+      = f.text_field :tags, label: false, class: "radius"
+  .row
+    .large-3.columns
+      %label
+        %i.fa.fa-language.fa-lg
+        = t("talk.language")
+      %select
+        = options_for_select([['Spanish',1], ['English',2]])
+        / = select("language", options_for_select([['Spanish',1], ['English',2]]))
+        / = f.select_tag(:language, options_for_select(languages))
+
+    .large-3.columns
+      %label
+        %i.fa.fa-clock-o.fa-lg
+        Duration
+      %select
+        = options_for_select([['30 min',1], ['1 hora',2]])
+       
     .large-6.columns
       %label
         %i.fa.fa-lightbulb-o.fa-lg
@@ -83,44 +133,13 @@
           = radio_button("level", "category", "4")
           %label
             = t("talk.level_hacker")
-    .large-6.columns
-      %label
-        %i.fa.fa-language.fa-lg
-        = t("talk.language")
-        %select
-          -# = f.select(:language, options_for_select([['Spanish',1], ['English',2]]))
-
-  .row
-    .large-12.columns
-      %label
-        %i.fa.fa-users.fa-lg
-        = t("talk.form_speakers")
-      = f.text_field :speaker, :label => false, :pattern => "extended_alpha", :class => "radius"
-      %small.error
-        = t("talk.speaker_requirements")
-
-  .row
-    .large-12.columns
-      %label{:for => "tags"}
-        %i.fa.fa-slack.fa-lg
-        = t("talk.form_tags") 
-      = f.text_field :tags, :label => false, :class => "radius"
-
-  .row
-    .large-12.columns
-      %label{:for => "speaker_contact_info"}
-        %i.fa.fa-envelope.fa-lg
-        = t("talk.form_contact")
-      = f.text_field :speaker_contact_info, :label => false, :pattern => "extended_email", :class => "radius"
-      %small.error
-        = t("talk.email_requirements")
 
   .row
     .large-12.columns
       %label{:for => "comments"}
         %i.fa.fa-comments.fa-lg
         = t("talk.form_comments")
-      = f.text_area :comments, :label => false, :pattern => "extended_alphanumeric", :class => "radius"
+      = f.text_area :comments, label: false, :pattern => "extended_alphanumeric", class: "radius"
       %small.error
         = t("talk.comments_requirements")
   .row
@@ -128,6 +147,10 @@
       / = f.check_box
       %p Quiero solicitar un certificado como ponente
   .row
+    .large-12.columns
+      / = f.check_box
+      %p Acepto las conficioens de privacidad
+      
+  .row
     .large-6.columns.large-centered
-      = f.submit t("talk.send_talk"), class: "button radius expand success"    
-
+      = f.submit t("talk.send_talk"), class: "button radius expand success"

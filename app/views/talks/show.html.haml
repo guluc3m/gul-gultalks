@@ -2,7 +2,7 @@
   .medium-12.columns
     %ul.breadcrumbs
       %li
-        = link_to t("home"), "/"
+        = link_to t("home"), root_path
       %li
         = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
       %li.current
@@ -14,6 +14,7 @@
       - if @talk.created_at.today?
         %span.success.radius.label
           = t("new")
+      - if @talk.cancelled?
         %span.alert.radius.label
           = t("cancelled")
     %h6.subheader
@@ -30,7 +31,6 @@
           = l talk.date, :format => :long
         - else
           = t("not_available")
-      
       %li
         %i.fa.fa-clock-o.fa-lg
         - if talk.start_time && talk.end_time
@@ -44,8 +44,8 @@
     %ul.no-bullet
       %li
         %i.fa.fa-map-marker.fa-lg
-          = talk.location
-          -# = auto_link "¿Cómo llegar?", :link => "www.openstreetmaps.com" 
+        = talk.location
+        = link_to "¿Cómo llegar?", :link => "http://www.openstreetmaps.com" 
       %li
         %i.fa.fa-info.fa-lg
       %li
@@ -58,17 +58,31 @@
           -# = talk.language
       %li
         %i.fa.fa-lightbulb-o.fa-lg
-   
+
       %li
 .row
-  .large-12.columns
+  .large-12.columns 
     // TODO: to put this inline style in css file
     %p.text-justify{:style => "word-break:break-all;"}
       = talk.description
 
 .row
+  .large-12.columns
+    - (0...6).each do
+      .label.secondary.radius
+        Tag
+.row
+  .large-4.columns
+    - if Conference.find(talk.conference_id).voting_enabled
+      = link_to t("to_vote"), { :controller => "talks", :action => "vote" }, class: "button success radius expand" 
+
+.row
+  .large-12.columns
+    = render "partials/public_comments"
+
+.row
   .large-6.columns
     = link_to t("talk.back_to_talks"), { :controller => 'conferences', :action => 'show', :id => params[:conference_id] }, { :class => "button radius expand" }
-  .large-6.columns
-    - if Conference.find(talk.conference_id).voting_enabled
-      = link_to t("to_vote"), { :controller => "talks", :action => "vote" }, {:class => "button success radius expand" } 
+  / .large-6.columns
+  /   - if Conference.find(talk.conference_id).voting_enabled
+  /     = link_to t("to_vote"), { :controller => "talks", :action => "vote" }, {:class => "button success radius expand" }
