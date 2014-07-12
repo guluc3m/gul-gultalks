@@ -13,7 +13,10 @@ class TalksController < ApplicationController
   end
 
   def show
-    respond_with talk
+    respond_with(talk) do |format|
+      format.json { render json: talk.as_json(methods: :tag_list) }
+      format.xml { render xml: talk.to_xml(methods: :tag_list) }
+    end
   end
 
   def create
@@ -50,6 +53,11 @@ class TalksController < ApplicationController
   # end
 
   private
+  def as_json(options = { })
+
+
+  end
+
   def talk
     @talk = if params[:action] =~ /new/
       Talk.new(params[:talk])

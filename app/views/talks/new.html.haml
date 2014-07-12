@@ -87,8 +87,11 @@
     .large-12.columns
       %label{:for => "tags"}
         %i.fa.fa-tags.fa-lg
-        = t("talk.form_tags") 
+        = t("talk.form_tags")
+      %span
+        = t("talk.form_tag_format")
       = f.text_field :tags, label: false, class: "radius"
+
   .row
     .large-3.columns
       %label

@@ -71,6 +71,7 @@
     - talk.tag_list.each do |tag|
       .label.secondary.radius
         = tag
+
 .row
   .large-4.columns
     - if Conference.find(talk.conference_id).voting_enabled

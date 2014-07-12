@@ -41,6 +41,7 @@ es:
     form_required: "Requerido"
     form_speakers: "Ponente[s]"
     form_tags: "Etiquetas"
+    form_tag_format: "Cada etiqueta debe estar separada por una coma (,)"
     form_title: "Título"
     form_url: "URL del contenido"
     level_easy: "Fácil"

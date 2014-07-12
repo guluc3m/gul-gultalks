@@ -41,6 +41,7 @@ en:
     form_required: "Required"
     form_speakers: "Speaker[s]"
     form_tags: "Tags"
+    form_tag_format: "Each tag must be separated by a comma (,)"
     form_title: "Title"
     form_url: "Content URL"
     level_easy: "Easy"
