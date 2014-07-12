@@ -68,3 +68,5 @@ gem 'friendly_id', '~> 5.0.0'
 
 #gem 'countries_and_languages', :require => 'countries_and_languages/rails'
 
+# Tags
+gem 'acts-as-taggable-on'

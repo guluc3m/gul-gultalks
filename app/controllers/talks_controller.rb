@@ -57,6 +57,7 @@ class TalksController < ApplicationController
       t = Talk.new(params[:talk])
       t.conference_id = Conference.friendly.find(params[:conference_id]).id
       t.location = Conference.friendly.find(params[:conference_id]).location
+      t.tag_list.add(params[:talk][:tags], parse: true)
       t.save
       t
     else
