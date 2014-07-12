@@ -52,9 +52,9 @@ ActiveRecord::Schema.define(version: 20140629135748) do
     t.boolean  "active",                            default: true
     t.integer  "conference_id"
     t.string   "slug"
+    t.boolean  "cancelled"                          default: false null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "cancelled"
   end
 
 end
