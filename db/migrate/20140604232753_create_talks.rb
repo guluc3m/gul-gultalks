@@ -15,7 +15,6 @@ class CreateTalks < ActiveRecord::Migration
       t.integer :votes, :default => 0, :null => false
       t.text :comments, :limit => 2048
       t.integer :level, :null => false
-      t.string :tags, :limit => 64
       t.string :content_url
       t.boolean :active, :default => true
       t.integer :conference_id
