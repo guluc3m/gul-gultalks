@@ -3,7 +3,13 @@
   %head
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %title= content_for?(:title) ? yield(:title) : "Gultalks"
+    / %meta{:content => "#{@conference.title}", :property => "og:title"}/
+    %meta{:content => "article", :property => "og:type"}/
+    %meta{:content => "http://www.example.com/", :property => "og:url"}/
+    %meta{:content => "http://example.com/image.jpg", :property => "og:image"}/
+    %meta{:content => "Description Here", :property => "og:description"}/
+    %title= content_for?(:title) ? yield(:title) : "GulTalks |"
+    / %title= @conference.title
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
@@ -134,15 +140,20 @@
         %hr/
         .row
           .large-6.columns
-          © Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid.
-          .large-6.columns
-            %ul.inline-list.right
-              %li
-                %a{:href => "#"} Section 1
-              %li
-                %a{:href => "#"} Section 2
-              %li
-                %a{:href => "#"} Section 3
-              %li
-                %a{:href => "#"} Section 4
+            %h4.subheader
+              %small
+                © Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid. 2007 -
+                = Time.now().year
+          / Fortunes
+          #fortunes.large-6.columns
+            = render "partials/fortunes"
+            / %ul.inline-list.right
+            /  %li
+            /    %a{:href => "#"} Section 1
+            /  %li
+            /    %a{:href => "#"} Section 2
+            /  %li
+            /    %a{:href => "#"} Section 3
+            /  %li
+            /    %a{:href => "#"} Section 4
     = javascript_include_tag "application"
