@@ -1,34 +1,60 @@
-.row.show-for-touch
-  .row{"data-magellan-expedition" => "fixed"}
-    %dl.sub-nav
-      .small-2.columns
-        %dd{"data-magellan-arrival" => "build"}
-          %a{:href => "#build"} Build with HTML
-      .small-2.columns
-        %dd{"data-magellan-arrival" => "build"}
-          %a{:href => "#build"} Build with HTML
-      .small-2.columns
-        %dd{"data-magellan-arrival" => "build"}
-          %a{:href => "#build"} Build with HTML
-      .small-2.columns
-        %dd{"data-magellan-arrival" => "build"}
-          %a{:href => "#build"} Build with HTML
-      .small-2.columns
-        %dd{"data-magellan-arrival" => "js"}
-          %a{:href => "#js"} Arrival 2
-  
+.row.show-for-touch{"data-magellan-expedition" => "fixed"}
   .row
-    - (0..5).each do
-      .small-2.columns
-        %p 19:00-20:00
-      .small-2.columns
-        %a
-          Title
-      .small-2.columns
-        %p 19:00-20:00
-      .small-2.columns
-        %p Title
-      .small-2.columns
-        %p 19:00-20:00
-      .small-2.columns
-        %p Title
+    .large-12.columns
+      %dl.sub-nav
+        .small-2.columns.left.text-center
+          %dd{"data-magellan-arrival" => "monday"}
+            %a{:href => "#monday"} Lunes
+        .small-2.columns.left.text-center
+          %dd{"data-magellan-arrival" => "build"}
+            %a{:href => "#build"} Martes
+        .small-3.columns.left.text-center
+          %dd{"data-magellan-arrival" => "build"}
+            %a{:href => "#build"} Miércoles
+        .small-2.columns.left.text-center
+          %dd{"data-magellan-arrival" => "build"}
+            %a{:href => "#build"} Jueves
+        .small-2.columns.left.text-center
+          %dd{"data-magellan-arrival" => "build"}
+            %a{:href => "#build"} Viernes
+      
+  .row
+    .large-12.columns
+      - (0..5).each do
+        .row
+          .row
+            .small-3.columns
+              %span.text-center 19:00-20:00
+            .small-9.columns
+              %a
+                Title
+          .row
+            .small-3.columns
+              %span.text-center 19:00-20:00
+            .small-9.columns
+              %a
+                Title
+          .row
+            .small-3.columns
+              %span.text-center 19:00-20:00
+            .small-9.columns
+              %a
+                Title
+          %hr
+
+.row.hidden-for-touch
+  .large-12.columns
+    %table
+      %thead
+        %tr
+          %th.text-center
+            %i.fa.fa-clock-o.fa-l
+          - (0...5).each do |i|
+            %th.text-center{:width => "260"}
+              lunes #{conference.start_date.day + i}
+              /= conference.start_date.day
+
+      %tbody
+        - (0..5).each do
+          %td
+     
