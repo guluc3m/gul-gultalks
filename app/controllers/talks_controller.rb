@@ -17,10 +17,10 @@ class TalksController < ApplicationController
   end
 
   def create
+    Notifier.confirmation_talk(talk).deliver
     respond_with(talk) do |format|
       format.html { render action: "thanks" }
     end
-    Notifier.confirmation_talk(talk)
   end
 
   def update
@@ -35,17 +35,19 @@ class TalksController < ApplicationController
 
   def vote
     if Conference.friendly.find(params[:conference_id]).voting_enabled
+      # Generate random key, pass the output as arg to Notifier
+      Notifier.confirmation_vote(talk).deliver
       respond_with talk
     else
       redirect_to :controller => "talks", :action => "show", :id => params[:id]
     end
   end
 
-  def vote_old
-    talk.update_attributes(vote: talk.vote + 1)
-    respond_with thanks_vote
-    Notifier.confirmation_vote(talk)
-  end
+  # def vote_old
+  #   talk.update_attributes(vote: talk.vote + 1)
+  #   respond_with thanks_vote
+  #   Notifier.confirmation_vote(talk)
+  # end
 
   private
   def talk
