@@ -5,6 +5,8 @@ class TalksController < ApplicationController
   def index
     respond_with(talks) do |format|
       format.html { redirect_to :controller => "conferences", :action => "show", :id => params[:conference_id] }
+      format.json { render json: talks.as_json(methods: :tag_list) }
+      format.xml { render xml: talks.to_xml(methods: :tag_list) }
     end
   end
 
@@ -51,12 +53,6 @@ class TalksController < ApplicationController
   #   respond_with thanks_vote
   #   Notifier.confirmation_vote(talk)
   # end
-
-  private
-  def as_json(options = { })
-
-
-  end
 
   def talk
     @talk = if params[:action] =~ /new/
