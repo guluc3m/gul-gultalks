@@ -2,7 +2,7 @@
   .medium-7.columns
     %ul.breadcrumbs
       %li
-        = link_to t("home"), "/"
+        = link_to t("home"), root_path
       %li.current
         = t("conference.list")
 .row
@@ -12,19 +12,27 @@
         = t("Conferences")
 .row
   .large-12.columns
-    = render "partials/calendar"
-    - if @conferences.count > 0
-      %table
-        %thead
-          %tr
-            %th{:width => "360"}
-              = t("Conference")
-            %th{:width => "150"}
-              %i.fa.fa-calendar
-        %tbody
-          - @conferences.each do |conference|
-            %tr
-              %td
-                = link_to conference.title, :controller => 'conferences', :action => 'show', :id => conference
-              %td
-                = l conference.start_date, :format => :month_year
+    %ul.large-block-grid-4{"data-equalizer" => ""}
+      - @conferences.each do |conference|
+        - unless conference.active
+          %li.panel.radius{"data-equalizer-watch" => ""}
+            %h3
+              = link_to conference.title, :controller => 'conferences', :action => 'show', :id => conference
+              / = l conference.start_date, :format => :year
+
+/ %table
+/   %thead
+/     %tr
+/       %th{:width => "960"}
+/         %i.fa.fa-calendar
+/         = t("Conference")
+/   %tbody
+/     - @conferences.each do |conference|
+/       %tr
+/         %td
+/           = l conference.start_date, :format => :year
+/           %span
+
+/           = link_to conference.title, :controller => 'conferences', :action => 'show', :id => conference
+/           %td
+/             = l conference.start_date, :format => :month_year

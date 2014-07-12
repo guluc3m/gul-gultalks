@@ -5,7 +5,7 @@
 /         = link_to t("home"), "/"
 /       %li.current
 /         = @conference.title
-.row
+.row.hide-for-small-only
   .large-12.columns
     %h1
       = @conference.title
@@ -13,25 +13,35 @@
       = @conference.description
     %h3.subheader
       %span.grey>= t("date.from")
-      = l @conference.start_date, :format => :day_only
+      /= l @conference.start_date, :format => :day_only
+      = conference.start_date.day
       %span.grey>= t("date.to")
-      = l @conference.end_date, :format => :day_only
+      /= l @conference.end_date, :format => :day_only
+      = conference.end_date.day
       %span.grey>= t("date.of")
       = l @conference.start_date, :format => :month_only
 
 .row
   .large-12.columns
+    //if conference.start_date.today?
     = render "partials/calendar"
+    - if @conference.active?
+      .row
+        .large-12.large-centered.columns
+          %h1
+            Faltan
+            =  @conference.call_for_papers_start_date.mjd - DateTime.now.mjd
+            días
     - if @talks.count > 0
       %table
         %thead
           %tr
-            %th{:width => "360"}
+            %th{:width => "900"}
               = t("Talk")
-            %th{:width => "150"}
-              %i.fa.fa-calendar
-              &
-              %i.fa.fa-clock-o
+            / %th{:width => "150"}
+            /   %i.fa.fa-calendar
+            /   &
+            /   %i.fa.fa-clock-o
             %th{:width => "40"}
               = t("Votes")
         %tbody
@@ -39,20 +49,27 @@
             %tr
               %td
                 = link_to talk.title, :controller => 'talks', :action => 'show', :id => talk, :conference_id => @conference
-                - if talk.created_at.today?
+                - if !talk.cancelled? and talk.created_at.today?
                   %span.success.radius.label.bold
                     = t("new")
                 - if talk.cancelled?
                   %span.alert.radius.label
                     = t("cancelled")
+                %span.warning.radius.label
+                  Taller
                 %h5
                   %small
                     = talk.brief_description
-              %td
-                - if talk.date
-                  = l talk.date
+              / %td
+              /   - if talk.date
+              /     = l talk.date
               %td.text-center
                 = talk.votes
+    - elsif #@conference.call_for_papers_start_date.today?
+      .row
+        .large-8.large-centered.columns
+          %h1 Faltan 
+          =  @conference.call_for_papers_start_date.mjd - DateTime.now.mjd
     - else
       .row
         .medium-6.medium-centered.columns
