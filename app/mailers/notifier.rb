@@ -7,7 +7,7 @@ class Notifier < ActionMailer::Base
 
   end
 
-  def confirmation_talk(recipient)
+  def confirmation_event(recipient)
       mail(to: recipient.speaker_contact_info, subject: '[GUL] Gracias por proponer tu charla -')           
   end
 

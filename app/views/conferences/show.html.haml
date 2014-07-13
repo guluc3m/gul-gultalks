@@ -32,12 +32,12 @@
             Faltan
             =  @conference.call_for_papers_start_date.mjd - DateTime.now.mjd
             días
-    - if @talks.count > 0
+    - if @events.count > 0
       %table
         %thead
           %tr
             %th{:width => "900"}
-              = t("Talk")
+              = t("Event")
             / %th{:width => "150"}
             /   %i.fa.fa-calendar
             /   &
@@ -45,26 +45,26 @@
             %th{:width => "40"}
               = t("Votes")
         %tbody
-          - @talks.each do |talk|
+          - @events.each do |event|
             %tr
               %td
-                = link_to talk.title, :controller => 'talks', :action => 'show', :id => talk, :conference_id => @conference
-                - if !talk.cancelled? and talk.created_at.today?
+                = link_to event.title, :controller => 'events', :action => 'show', :id => event, :conference_id => @conference
+                - if !event.cancelled? and event.created_at.today?
                   %span.success.radius.label.bold
                     = t("new")
-                - if talk.cancelled?
+                - if event.cancelled?
                   %span.alert.radius.label
                     = t("cancelled")
                 %span.warning.radius.label
                   Taller
                 %h5
                   %small
-                    = talk.brief_description
+                    = event.brief_description
               / %td
-              /   - if talk.date
-              /     = l talk.date
+              /   - if event.date
+              /     = l event.date
               %td.text-center
-                = talk.votes
+                = event.votes
     - elsif #@conference.call_for_papers_start_date.today?
       .row
         .large-8.large-centered.columns
@@ -75,7 +75,7 @@
         .medium-6.medium-centered.columns
           .panel.callout.radius
             %h3
-              = t("conference.call_for_talks_open")
+              = t("conference.call_for_events_open")
             %p
               = t("conference.first_to_propose")
 
@@ -84,4 +84,4 @@
     = link_to t("conference.list"), { :controller => 'conferences', :action => 'index' }, { :class => "button radius expand" }
   .large-6.columns
     - if @conference.call_for_papers_enabled
-      = link_to t("conference.propose_talk"), { :controller => 'talks', :action => 'new', :conference_id => @conference }, { :class => "button success radius expand" }
+      = link_to t("conference.propose_event"), { :controller => 'events', :action => 'new', :conference_id => @conference }, { :class => "button success radius expand" }

@@ -6,62 +6,62 @@
       %li
         = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
       %li.current
-        = t("talk.new_talk")
+        = t("event.new_event")
 .row
   .medium-7.columns
     %p
-      = t("talk.complete_form")
+      = t("event.complete_form")
 
-= form_for(@talk, url: {controller: "talks", action: "create"}, data: {abide: ""}) do |f|
+= form_for(@event, url: {controller: "events", action: "create"}, data: {abide: ""}) do |f|
   .row
     .large-12.columns
       %label{:for => "title"}
         %i.fa.fa-bookmark.fa-lg
-        = t("talk.form_title")
+        = t("event.form_title")
         %small
-          = t("talk.form_required")
+          = t("event.form_required")
       = f.text_field :title, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius", :autofocus => true
       %small.error
-        = t("talk.title_requirements")
+        = t("event.title_requirements")
 
   .row
     .large-12.columns
       %label{:for => "brief_description"}
         %i.fa.fa-paperclip.fa-lg
-        = t("talk.form_brief_description")
+        = t("event.form_brief_description")
         %small
-          = t("talk.form_required")
+          = t("event.form_required")
       = f.text_field :brief_description, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius"
       %small.error
-        = t("talk.brief_description_requirements")
+        = t("event.brief_description_requirements")
 
   .row
     .large-12.columns
       %label{:for => "description"}
         %i.fa.fa-bars.fa-lg
-        = t("talk.form_description")
+        = t("event.form_description")
         %small
-          = t("talk.form_required")
+          = t("event.form_required")
       = f.text_area :description, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius"
       %small.error
-        = t("talk.description_requirements")
+        = t("event.description_requirements")
 
   .row
     .large-5.columns
       %label
         %i.fa.fa-users.fa-lg
-        = t("talk.form_speakers")
+        = t("event.form_speakers")
       = f.text_field :speaker, :label => false, :pattern => "extended_alpha", class: "radius"
       %small.error
-        = t("talk.speaker_requirements")
+        = t("event.speaker_requirements")
 
     .large-5.columns
       %label{:for => "speaker_contact_info"}
         %i.fa.fa-envelope.fa-lg
-        = t("talk.form_contact")
+        = t("event.form_contact")
       = f.text_field :speaker_contact_info, :label => false, :pattern => "extended_email", class: "radius"
       %small.error
-        = t("talk.email_requirements")
+        = t("event.email_requirements")
 
     .large-2.columns
       .button.large.radius.expand
@@ -79,24 +79,24 @@
     .large-12.columns
       %label
         %i.fa.fa-link.fa-lg
-        = t("talk.form_url")
+        = t("event.form_url")
       = f.text_field :content_url, :label => false, :pattern => "url", class: "radius"
       %small.error
-        = t("talk.url_requirements")
+        = t("event.url_requirements")
   .row
     .large-12.columns
       %label{:for => "tags"}
         %i.fa.fa-tags.fa-lg
-        = t("talk.form_tags")
+        = t("event.form_tags")
       %span
-        = t("talk.form_tag_format")
+        = t("event.form_tag_format")
       = f.text_field :tags, label: false, class: "radius"
 
   .row
     .large-3.columns
       %label
         %i.fa.fa-language.fa-lg
-        = t("talk.language")
+        = t("event.language")
       %select
         = options_for_select([['Spanish',1], ['English',2]])
         / = select("language", options_for_select([['Spanish',1], ['English',2]]))
@@ -112,7 +112,7 @@
     .large-6.columns
       %label
         %i.fa.fa-lightbulb-o.fa-lg
-        = t("talk.form_level")
+        = t("event.form_level")
 
       .row.show-for-touch
         .large-12.columns
@@ -123,28 +123,28 @@
         .large-12.columns
           = radio_button("level", "category", "0")
           %label
-            = t("talk.level_noob")
+            = t("event.level_noob")
           = radio_button("level", "category", "1")
           %label
-            = t("talk.level_easy")
+            = t("event.level_easy")
           = radio_button("level", "category", "2")
           %label
-            = t("talk.level_medium")
+            = t("event.level_medium")
           = radio_button("level", "category", "3")
           %label
-            = t("talk.level_hard")
+            = t("event.level_hard")
           = radio_button("level", "category", "4")
           %label
-            = t("talk.level_hacker")
+            = t("event.level_hacker")
 
   .row
     .large-12.columns
       %label{:for => "comments"}
         %i.fa.fa-comments.fa-lg
-        = t("talk.form_comments")
+        = t("event.form_comments")
       = f.text_area :comments, label: false, :pattern => "extended_alphanumeric", class: "radius"
       %small.error
-        = t("talk.comments_requirements")
+        = t("event.comments_requirements")
   .row
     .large-12.columns
       / = f.check_box
@@ -156,4 +156,4 @@
       
   .row
     .large-6.columns.large-centered
-      = f.submit t("talk.send_talk"), class: "button radius expand success"
+      = f.submit t("event.send_event"), class: "button radius expand success"

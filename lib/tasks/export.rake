@@ -18,26 +18,26 @@ namespace :export do
       :voting_start_date => '#{con.voting_start_date}',
       :voting_end_date => '#{con.voting_end_date}')"
     end
-    Talk.order(:id).all.each do |talk|
-      puts "Talk.create(
-      :title => '#{talk.title}',
-      :brief_description => '#{talk.brief_description}',
-      :description => '#{talk.description}',
-      :speaker => '#{talk.speaker}',
-      :room => '#{talk.room}',
-      :location => '#{talk.location}',
-      :date => '#{talk.date}',
-      :start_time => '#{talk.start_time}',
-      :end_time => '#{talk.end_time}',
-      :assisted_by => '#{talk.assisted_by}',
-      :speaker_contact_info => '#{talk.speaker_contact_info}',
-      :votes => #{talk.votes},
-      :comments => '#{talk.comments}',
-      :level => #{talk.level},
-      :tags => '#{talk.tags}',
-      :content_url => '#{talk.content_url}',
-      :active => #{talk.active},
-      :conference_id => #{talk.conference_id})"
+    Event.order(:id).all.each do |event|
+      puts "Event.create(
+      :title => '#{event.title}',
+      :brief_description => '#{event.brief_description}',
+      :description => '#{event.description}',
+      :speaker => '#{event.speaker}',
+      :room => '#{event.room}',
+      :location => '#{event.location}',
+      :date => '#{event.date}',
+      :start_time => '#{event.start_time}',
+      :end_time => '#{event.end_time}',
+      :assisted_by => '#{event.assisted_by}',
+      :speaker_contact_info => '#{event.speaker_contact_info}',
+      :votes => #{event.votes},
+      :comments => '#{event.comments}',
+      :level => #{event.level},
+      :tags => '#{event.tags}',
+      :content_url => '#{event.content_url}',
+      :active => #{event.active},
+      :conference_id => #{event.conference_id})"
     end      
   end
 end

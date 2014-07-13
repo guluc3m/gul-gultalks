@@ -1,7 +1,6 @@
 Gultalks::Application.routes.draw do
-  #resources :talks
   resources :conferences do
-    resources :talks do
+    resources :events do
       member do
         get 'vote'
         post 'vote'

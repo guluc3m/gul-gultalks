@@ -38,7 +38,7 @@ class ConferencesController < ApplicationController
       c
     else
       @conference = Conference.friendly.find(params[:id])
-      @talks = @conference.talks.all
+      @events = @conference.events.all
       @conference
     end
   end

@@ -6,37 +6,37 @@
       %li
         = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
       %li.current
-        = talk.title
+        = event.title
 .row
   .large-12.columns
     %h3
-      = talk.title
-      - if @talk.created_at.today?
+      = event.title
+      - if @event.created_at.today?
         %span.success.radius.label
           = t("new")
-      - if @talk.cancelled?
+      - if @event.cancelled?
         %span.alert.radius.label
           = t("cancelled")
     %h6.subheader
-      = talk.brief_description
+      = event.brief_description
 .row
   .medium-4.columns
     %ul.no-bullet
       %li
         %i.fa.fa-users.fa-lg
-        = talk.speaker
+        = event.speaker
       %li
         %i.fa.fa-calendar.fa-lg
-        - if talk.date
-          = l talk.date, :format => :long
+        - if event.date
+          = l event.date, :format => :long
         - else
           = t("not_available")
       %li
         %i.fa.fa-clock-o.fa-lg
-        - if talk.start_time && talk.end_time
-          = talk.start_time.strftime('%R')
+        - if event.start_time && event.end_time
+          = event.start_time.strftime('%R')
           = t("time.to")
-          = talk.end_time.strftime('%R')
+          = event.end_time.strftime('%R')
         - else
           = t("not_available")
 
@@ -44,18 +44,18 @@
     %ul.no-bullet
       %li
         %i.fa.fa-map-marker.fa-lg
-        = talk.location
+        = event.location
         = link_to "¿Cómo llegar?", :link => "http://www.openstreetmaps.com" 
       %li
         %i.fa.fa-info.fa-lg
       %li
         %i.fa.fa-torsos
-        /- talk.
+        /- event.
   .medium-4.columns
     %ul.no-bullet
       %li
         %i.fa.fa-language.fa-lg
-          -# = talk.language
+          -# = event.language
       %li
         %i.fa.fa-lightbulb-o.fa-lg
 
@@ -64,18 +64,18 @@
   .large-12.columns
     // TODO: to put this inline style in css file
     %p.text-justify{:style => "word-break:break-all;"}
-      = talk.description
+      = event.description
 
 .row
   .large-12.columns
-    - talk.tag_list.each do |tag|
+    - event.tag_list.each do |tag|
       .label.secondary.radius
         = tag
 
 .row
   .large-4.columns
-    - if Conference.find(talk.conference_id).voting_enabled
-      = link_to t("to_vote"), { :controller => "talks", :action => "vote" }, class: "button success radius expand" 
+    - if Conference.find(event.conference_id).voting_enabled
+      = link_to t("to_vote"), { :controller => "events", :action => "vote" }, class: "button success radius expand" 
 
 .row
   .large-12.columns
@@ -83,7 +83,7 @@
 
 .row
   .large-6.columns
-    = link_to t("talk.back_to_talks"), { :controller => 'conferences', :action => 'show', :id => params[:conference_id] }, { :class => "button radius expand" }
+    = link_to t("event.back_to_events"), { :controller => 'conferences', :action => 'show', :id => params[:conference_id] }, { :class => "button radius expand" }
   / .large-6.columns
-  /   - if Conference.find(talk.conference_id).voting_enabled
-  /     = link_to t("to_vote"), { :controller => "talks", :action => "vote" }, {:class => "button success radius expand" }
+  /   - if Conference.find(event.conference_id).voting_enabled
+  /     = link_to t("to_vote"), { :controller => "events", :action => "vote" }, {:class => "button success radius expand" }

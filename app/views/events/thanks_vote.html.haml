@@ -6,7 +6,7 @@
       %li
         = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
       %li.current
-        = t("talk.new_talk")
+        = t("event.new_event")
 .row
   .medium-12.columns
     %h1
@@ -18,4 +18,4 @@
       = mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS]"
 .row
   .large-6.columns
-    = link_to t("talk.back_to_talks"), "/", :class => "button radius expand"
+    = link_to t("event.back_to_events"), "/", :class => "button radius expand"

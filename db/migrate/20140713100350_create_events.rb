@@ -1,6 +1,6 @@
-class CreateTalks < ActiveRecord::Migration
+class CreateEvents < ActiveRecord::Migration
   def change
-    create_table :talks do |t|
+    create_table :events do |t|
       t.string :title, :limit => 128 ,:null => false
       t.string :brief_description, :null => false
       t.text :description, :limit => 2048, :null => false
@@ -18,6 +18,7 @@ class CreateTalks < ActiveRecord::Migration
       t.string :content_url
       t.boolean :active, :default => true
       t.integer :conference_id
+      t.boolean :cancelled, :default => false
       t.string :slug
 
       t.timestamps
