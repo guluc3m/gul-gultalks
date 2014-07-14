@@ -22,7 +22,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    Notifier.confirmation_event(event).deliver
     respond_with(event) do |format|
       format.html { render action: "thanks" }
     end
@@ -41,7 +40,6 @@ class EventsController < ApplicationController
   def vote
     if Conference.friendly.find(params[:conference_id]).voting_enabled
       # Generate random key, pass the output as arg to Notifier
-      Notifier.confirmation_vote(event).deliver
       respond_with event
     else
       redirect_to :controller => "events", :action => "show", :id => params[:id]

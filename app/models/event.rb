@@ -34,5 +34,21 @@ class Event < ActiveRecord::Base
   validates :comments,
             allow_blank: true,
             format: { with: /\A[a-z0-9\W]+\z/i }
+
+  after_create :validate_event
+
+  private
+
+  def send_verify_email
+      token = 
+      Notification.confirmation_event(self, token).deliver
+
+      
+  end
+
+  def generate_token
+      t = SecureRandom.urlsafe_base64
+      t
+  end
             
 end
