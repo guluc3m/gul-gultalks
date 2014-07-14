@@ -2,11 +2,11 @@ en:
   Conference: "Conference"
   Conferences: "Conferences"
   conference:
-    call_for_talks_open: "The call for talks is open"
-    first_to_propose: "Be the first to propose a talk!"
+    call_for_events_open: "The call for events is open"
+    first_to_propose: "Be the first to propose an event!"
     list: "Conference list"
-    propose_another_talk: "Propose another talk"
-    propose_talk: "Propose talk"
+    propose_another_event: "Propose another event"
+    propose_event: "Propose event"
   date:
     formats:
       default: ! '%Y-%m-%d'
@@ -25,11 +25,11 @@ en:
     of: "of"
   home: "Home"
   not_available: "Not avaliable"
-  talk:
-    back_to_talks: "Back to talks"
+  event:
+    back_to_events: "Back to events"
     brief_description_requirements: "Can only contain alphanumeric characters and hyphens"
     comments_requirements: "Can only contain alphanumeric characters and hyphens"
-    complete_form: "Complete the form to register a new talk"
+    complete_form: "Complete the form to register a new event"
     description_requirements: "Can only contain alphanumeric characters and hyphens"
     email_requirements: "Not a valid email address"
     form_brief_description: "Brief description"
@@ -49,17 +49,17 @@ en:
     level_hard: "Hard"
     level_medium: "Medium"
     level_noob: "Noob"
-    new_talk: "New talk"
-    send_talk: "Send talk"
+    new_event: "New event"
+    send_event: "Send event"
     speaker_requirements: "Can only contain literal characters and hyphens"
     title_requirements: "Can only contain alphanumeric characters and hyphens"
     url_requirements: "Not a valid URL"
-  Talk: "Talk"
-  Talks: "Talks"
+  Event: "Event"
+  Events: "Events"
   thanks:
     contact_msg: "If you need help, do not hesitate to write to"
     thank_you: "Thank you!"
-    thanks_msg: "Thank you for proposing a talk. Soon you will recieve a confirmation e-mail."
+    thanks_msg: "Thank you for proposing an event. Soon you will recieve a confirmation e-mail."
     vote_msg: "Thank you for your vote. To avoid fraud in the voting process, you will recieve a confirmation e-mail to validate the vote."
     vote_thanks: "Thank you for voting!"
   time:

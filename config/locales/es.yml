@@ -2,11 +2,11 @@ es:
   Conference: "Jornada"
   Conferences: "Jornadas"
   conference:
-    call_for_talks_open: "El call for talks está abierto"
-    first_to_propose: "¡Sé el primero en proponer una charla!"
+    call_for_events_open: "El call for events está abierto"
+    first_to_propose: "¡Sé el primero en proponer un evento!"
     list: "Lista de jornadas"
-    propose_another_talk: "Proponer otra charla"
-    propose_talk: "Proponer charla"
+    propose_another_event: "Proponer otro evento"
+    propose_event: "Proponer evento"
   date:
     formats:
       default: ! '%d/%m/%Y'
@@ -25,11 +25,11 @@ es:
     of: "de"
   home: "Inicio"
   not_available: "No disponible"
-  talk:
-    back_to_talks: "Volver a las charlas"
+  event:
+    back_to_events: "Volver a los eventos"
     brief_description_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     comments_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
-    complete_form: "Completa el formulario para registrar una nueva charla"
+    complete_form: "Completa el formulario para registrar un nuevo evento"
     description_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     email_requirements: "No es una dirección de correo electrónico válida"
     form_brief_description: "Descripción corta"
@@ -49,17 +49,17 @@ es:
     level_hard: "Difícil"
     level_medium: "Medio"
     level_noob: "Novato"
-    new_talk: "Nueva charla"
-    send_talk: "Enviar charla"
+    new_event: "Nuevo evento"
+    send_event: "Enviar evento"
     speaker_requirements: "Sólo puede contener caracteres literales y guiones"
     title_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     url_requirements: "No es una URL válida"
-  Talk: "Charla"
-  Talks: "Charlas"
+  Event: "Evento"
+  Events: "Eventos"
   thanks:
     contact_msg: "Si tienes alguna duda, no dudes en escribir a"
     thank_you: "¡Gracias!"
-    thanks_msg: "Gracias por proponer una charla. Pronto recibirás un e-mail de confirmación."
+    thanks_msg: "Gracias por proponer un evento. Pronto recibirás un e-mail de confirmación."
     vote_msg: "Gracias por tu voto. Para evitar el fraude en el proceso de votación, recibirás un e-mail de confirmación para validar tu voto." 
     vote_thanks: "¡Gracias por votar!"
   time:
