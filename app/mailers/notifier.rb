@@ -9,7 +9,7 @@ class Notifier < ActionMailer::Base
   end
 
   def confirmation_event(event, key)
-      @event = talk
+      @event = event
       @key  = key
       mail(to: @talk.speaker_contact_info, subject: '[GUL-TALKS] Gracias por proponer tu charla')
   end
