@@ -36,14 +36,15 @@
       %table
         %thead
           %tr
-            %th{:width => "900"}
+            %th{:width => "980"}
               = t("Event")
             / %th{:width => "150"}
             /   %i.fa.fa-calendar
             /   &
             /   %i.fa.fa-clock-o
-            %th{:width => "40"}
-              = t("Votes")
+            - if @conference.voting_enabled
+              %th{:width => "40"}
+                = t("Votes")
         %tbody
           - @events.each do |event|
             %tr
@@ -63,13 +64,14 @@
               / %td
               /   - if event.date
               /     = l event.date
-              %td.text-center
-                = event.votes
+              - if @conference.voting_enabled
+                %td.text-center
+                  = event.votes
     - elsif #@conference.call_for_papers_start_date.today?
       .row
         .large-8.large-centered.columns
           %h1 Faltan 
-          =  @conference.call_for_papers_start_date.mjd - DateTime.now.mjd
+          = @conference.call_for_papers_start_date.mjd - DateTime.now.mjd
     - else
       .row
         .medium-6.medium-centered.columns

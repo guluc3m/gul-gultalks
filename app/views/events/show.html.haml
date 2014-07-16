@@ -77,9 +77,7 @@
     - if Conference.find(event.conference_id).voting_enabled
       = link_to t("to_vote"), { :controller => "events", :action => "vote" }, class: "button success radius expand" 
 
-.row
-  .large-12.columns
-    = render "partials/public_comments"
+= render "partials/public_comments"
 
 .row
   .large-6.columns
