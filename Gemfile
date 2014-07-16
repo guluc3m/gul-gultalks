@@ -70,3 +70,7 @@ gem 'friendly_id', '~> 5.0.0'
 
 # Tags
 gem 'acts-as-taggable-on'
+
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'devise'
+gem 'devise-i18n'
