@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
   acts_as_taggable
- attr_accessible :active, :assisted_by, :brief_description, :comments, :conference_id, :content_url, :date, :description, :end_time, :id, :level, :location, :room, :start_time, :speaker, :speaker_contact_info, :tags, :title, :votes, :cancelled
+ attr_accessible :active, :assisted_by, :brief_description, :comments, :conference_id, :content_url, :date, :description, :end_time, :id, :level, :location, :room, :slug, :start_time, :speaker, :speaker_contact_info, :tags, :title, :votes, :cancelled
   attr_accessor :tags
   belongs_to :conference
   friendly_id :title, :use => [:slugged, :scoped], :scope => :conference
@@ -40,7 +40,7 @@ class Event < ActiveRecord::Base
   private
   def event_verify_email
       token = generate_token
-      Notification.confirmation_event(self, token).deliver
+      Notifier.confirmation_event(self, token).deliver
   end
 
   def generate_token
