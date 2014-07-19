@@ -35,15 +35,12 @@ class Event < ActiveRecord::Base
             allow_blank: true,
             format: { with: /\A[a-z0-9\W]+\z/i }
 
-  after_create :validate_event
+  after_create :event_verify_email
 
   private
-
-  def send_verify_email
-      token = 
+  def event_verify_email
+      token = generate_token
       Notification.confirmation_event(self, token).deliver
-
-      
   end
 
   def generate_token
