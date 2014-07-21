@@ -1,8 +1,9 @@
 Gultalks::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :conferences do
-    resources :events do
+  resources :conferences, path: '/conferences', only: [:index]
+  resources :conferences, path: '', except: [:index] do
+    resources :events, path: '', except: [:index] do
       member do
         get 'vote'
         post 'vote'
