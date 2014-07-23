@@ -9,7 +9,7 @@
         = event.title
 .row
   .large-12.columns
-    %h3
+    %h2
       = event.title
       - if @event.created_at.today?
         %span.success.radius.label
@@ -45,7 +45,7 @@
       %li
         %i.fa.fa-map-marker.fa-lg
         = event.location
-        = link_to "¿Cómo llegar?", :link => "http://www.openstreetmaps.com" 
+        /= redirect_to "¿Cómo llegar?", :link => "http://www.openstreetmaps.com" 
       %li
         %i.fa.fa-info.fa-lg
       %li
@@ -58,6 +58,8 @@
           -# = event.language
       %li
         %i.fa.fa-lightbulb-o.fa-lg
+        %span{:style => "text-transform:capitalize;"}
+          = t("event.levels")[event.level]
 
       %li
 .row
