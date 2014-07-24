@@ -121,21 +121,11 @@
 
       .row.hide-for-touch
         .large-12.columns
-          = radio_button("level", "category", "0")
-          %label
-            = t("event.level_noob")
-          = radio_button("level", "category", "1")
-          %label
-            = t("event.level_easy")
-          = radio_button("level", "category", "2")
-          %label
-            = t("event.level_medium")
-          = radio_button("level", "category", "3")
-          %label
-            = t("event.level_hard")
-          = radio_button("level", "category", "4")
-          %label
-            = t("event.level_hacker")
+          - (0...5).each do |i|
+            = radio_button("level", "category", "#{i}")
+            %label{:style => "text-transform:capitalize;"}
+              = t("event.levels")[i]
+         
 
   .row
     .large-12.columns
