@@ -30,9 +30,10 @@
         .large-12.large-centered.columns
           %h1
             Faltan
-            =  @conference.call_for_papers_start_date.mjd - DateTime.now.mjd
-            días
-    - if @events.count > 0
+            = distance_of_time_in_words_to_now(@conference.call_for_papers_start_date)
+            /= @conference.call_for_papers_start_date.mjd - DateTime.now.mjd
+            /días
+    - if !@events.count.zero?
       %table
         %thead
           %tr
@@ -51,13 +52,14 @@
               %td
                 = link_to event.title, :controller => 'events', :action => 'show', :id => event, :conference_id => @conference
                 - if !event.cancelled? and event.created_at.today?
-                  %span.success.radius.label.bold
-                    = t("new")
+                  %span.success.radius.label
+                    = t("event.status.new").humanize
                 - if event.cancelled?
                   %span.alert.radius.label
-                    = t("cancelled")
+                    = t("event.status.cancelled").humanize
                 %span.warning.radius.label
-                  Taller
+                  %i.fa.fa-wrench.fa-lg
+                  = t("event.type.workshop").humanize
                 %h5
                   %small
                     = event.brief_description
@@ -67,11 +69,13 @@
               - if @conference.voting_enabled
                 %td.text-center
                   = event.votes
+      = will_paginate @events
     - elsif #@conference.call_for_papers_start_date.today?
       .row
         .large-8.large-centered.columns
           %h1 Faltan 
           = @conference.call_for_papers_start_date.mjd - DateTime.now.mjd
+
     - else
       .row
         .medium-6.medium-centered.columns

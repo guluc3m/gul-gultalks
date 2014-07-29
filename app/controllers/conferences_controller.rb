@@ -38,7 +38,8 @@ class ConferencesController < ApplicationController
       c
     else
       @conference = Conference.friendly.find(params[:id])
-      @events = @conference.events.all
+      #TOFIX: json or xml must show all entries
+      @events = @conference.events.all.paginate(page: params[:page], per_page: 5)
       @conference
     end
   end
