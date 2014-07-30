@@ -23,8 +23,8 @@ es:
     from: "del"
     to: "al"
     of: "de"
-    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
-    abbr_day_names: [Dom, Lun, Mar, Mié, Jue, Vie, Sáb]
+    day_names: [Lunes, Martes, Miércoles, Jueves, Viernes, Sábado, Domingo ]
+    abbr_day_names: [Lun, Mar, Mié, Jue, Vie, Sáb, Dom]
   home: "Inicio"
   not_available: "No disponible"
   event:
@@ -36,9 +36,13 @@ es:
     email_requirements: "No es una dirección de correo electrónico válida"
     form_brief_description: "Descripción corta"
     form_comments: "Comentarios"
-    form_contact: "Correo electrónico de contacto"
+    form_contact: "Correo electrónico"
     form_description: "Descripción"
     form_language: "Idioma"
+    languages: 
+      es: "español"
+      en: "inglés"
+    form_duration: "duración"
     form_level: "Nivel"
     form_required: "Requerido"
     form_speakers: "Ponente[s]"
@@ -52,17 +56,26 @@ es:
     speaker_requirements: "Sólo puede contener caracteres literales y guiones"
     title_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     url_requirements: "No es una URL válida"
+    type:
+      workshop: "taller"
+      conference: "charla"
+    status:
+      cancelled: "cancelado"
+      new: "nuevo"
+    comments:
+      name: "nombre"
+      comment: "comentario"
+      post: "publicar"
   Event: "Evento"
   Events: "Eventos"
   thanks:
     contact_msg: "Si tienes alguna duda, no dudes en escribir a"
     thank_you: "¡Gracias!"
     thanks_msg: "Gracias por proponer un evento. Pronto recibirás un e-mail de confirmación."
-    vote_msg: "Gracias por tu voto. Para evitar el fraude en el proceso de votación, recibirás un e-mail de confirmación para validar tu voto." 
-    vote_thanks: "¡Gracias por votar!"
+    thank_you_vote: "Gracias por tu voto"
+    vote_msg: "Para evitar el fraude en el proceso de votación, recibirás un e-mail de confirmación para validar tu voto." 
+    #vote_thanks: "¡Gracias por votar!"
   time:
     to: "a"
   to_vote: "Votar"
   Votes: "Votos"
-  cancelled: "Cancelado"
-  new: "Nuevo"

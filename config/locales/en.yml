@@ -34,9 +34,12 @@ en:
     email_requirements: "Not a valid email address"
     form_brief_description: "Brief description"
     form_comments: "Comments"
-    form_contact: "Contact email address"
+    form_contact: "Email address"
     form_description: "Description"
     form_language: "Language"
+    languages: 
+      es: "spanish"
+      en: "english"
     form_level: "Level"
     form_required: "Required"
     form_speakers: "Speaker[s]"
@@ -50,6 +53,7 @@ en:
     speaker_requirements: "Can only contain literal characters and hyphens"
     title_requirements: "Can only contain alphanumeric characters and hyphens"
     url_requirements: "Not a valid URL"
+
   Event: "Event"
   Events: "Events"
   thanks:
