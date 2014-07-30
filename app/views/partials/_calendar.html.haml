@@ -1,23 +1,14 @@
-.row.show-for-touch{"data-magellan-expedition" => "fixed"}
+.show-for-touch{"data-magellan-expedition" => "fixed"}
   .row
     .large-12.columns
       %dl.sub-nav
-        .small-2.columns.left.text-center
-          %dd{"data-magellan-arrival" => "monday"}
-            %a{:href => "#monday"} Lunes
-        .small-2.columns.left.text-center
-          %dd{"data-magellan-arrival" => "build"}
-            %a{:href => "#build"} Martes
-        .small-3.columns.left.text-center
-          %dd{"data-magellan-arrival" => "build"}
-            %a{:href => "#build"} Miércoles
-        .small-2.columns.left.text-center
-          %dd{"data-magellan-arrival" => "build"}
-            %a{:href => "#build"} Jueves
-        .small-2.columns.left.text-center
-          %dd{"data-magellan-arrival" => "build"}
-            %a{:href => "#build"} Viernes
-      
+        - (0...5).each do |i|
+          .small-2.columns.left.text-center
+            %dd{"data-magellan-arrival" => "monday"}
+              %a{:href => "#{t('date.abbr_day_names')[i]}"}
+                = t('date.abbr_day_names')[i]
+                #{conference.start_date.day + i}
+
   .row
     .large-12.columns
       - (0..5).each do
@@ -48,13 +39,19 @@
       %thead
         %tr
           %th.text-center
-            %i.fa.fa-clock-o.fa-l
+            %i.fa.fa-clock-o.fa-lg
           - (0...5).each do |i|
             %th.text-center{:width => "260"}
-              lunes #{conference.start_date.day + i}
-              /= conference.start_date.day
+              = t("date.day_names")[i] # TOFIX: put Monday as first day or the week
+              = conference.start_date.day + i
 
       %tbody
-        - (0..5).each do
-          %td
-     
+      - (0...(5)).each do
+        %tr
+          - (0...1).each do
+            %td
+              21:00
+          - (0...5).each do
+            %td
+              test
+                     
