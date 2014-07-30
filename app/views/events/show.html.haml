@@ -13,27 +13,29 @@
       = event.title
       - if @event.created_at.today?
         %span.success.radius.label
-          = t("new")
+          = t("event.status.new").humanize
       - if @event.cancelled?
         %span.alert.radius.label
-          = t("cancelled")
+          = t("event.status.cancelled").humanize
     %h6.subheader
       = event.brief_description
+    %hr
 .row
   .medium-4.columns
     %ul.no-bullet
       %li
-        %i.fa.fa-users.fa-lg
+        %i.fa.fa-users.fa-fw.fa-lg.subheader
         = event.speaker
       %li
-        %i.fa.fa-calendar.fa-lg
+        %i.fa.fa-calendar.fa-fw.fa-lg.subheader
         - if event.date
           = l event.date, :format => :long
         - else
           = t("not_available")
       %li
-        %i.fa.fa-clock-o.fa-lg
+        %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
         - if event.start_time && event.end_time
+          = t("time.from")
           = event.start_time.strftime('%R')
           = t("time.to")
           = event.end_time.strftime('%R')
@@ -43,23 +45,33 @@
   .medium-4.columns
     %ul.no-bullet
       %li
-        %i.fa.fa-map-marker.fa-lg
+        %i.fa.fa-map-marker.fa-fw.fa-lg.subheader
         = event.location
         /= redirect_to "¿Cómo llegar?", :link => "http://www.openstreetmaps.com" 
       %li
-        %i.fa.fa-info.fa-lg
+        %i.fa.fa-info.fa-fw.fa-lg.subheader
+        test
       %li
-        %i.fa.fa-torsos
+        %i.fa.fa-building.fa-fw.fa-lg.subheader
+        test
+        %i.label.radius.success.fa.fa-wheelchair
         /- event.
   .medium-4.columns
     %ul.no-bullet
       %li
-        %i.fa.fa-language.fa-lg
-          -# = event.language
+        %i.fa.fa-language.fa-fw.fa-lg.subheader
+        test
+        /=
+        /= event.language
       %li
-        %i.fa.fa-lightbulb-o.fa-lg
-        %span{:style => "text-transform:capitalize;"}
-          = t("event.levels")[event.level]
+        %i.fa.fa-lightbulb-o.fa-fw.fa-lg.subheader
+        /= t("envent.level").humanize
+        Nivel:
+        = t("event.levels")[event.level].humanize
+        
+        /%span{:style => "text-transform:capitalize;"}
+        /%span
+        /  = t("event.levels")[event.level].humanize
 
       %li
 .row
@@ -69,14 +81,13 @@
       = event.description
 
 .row
-  .large-12.columns
+  .large-6.columns
     - event.tag_list.each do |tag|
       .label.secondary.radius
         = tag
 
-.row
   .large-4.columns
-    - if Conference.find(event.conference_id).voting_enabled
+    - if Conference.find(event.conference_id).voting_enabled && !event.cancelled
       = link_to t("to_vote"), { :controller => "events", :action => "vote" }, class: "button success radius expand" 
 
 = render "partials/public_comments"

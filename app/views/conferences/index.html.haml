@@ -12,10 +12,10 @@
         = t("Conferences")
 .row
   .large-12.columns
-    %ul.large-block-grid-4{"data-equalizer" => ""}
+    %ul.large-block-grid-4
       - @conferences.each do |conference|
         - unless conference.active
-          %li.panel.radius{"data-equalizer-watch" => ""}
+          %li.panel.radius
             %h3
               = link_to conference.title, :controller => 'conferences', :action => 'show', :id => conference
               / = l conference.start_date, :format => :year

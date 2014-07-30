@@ -10,7 +10,7 @@
       %li.current
         = t("to_vote")
 .row
-  .medium-9.columns
+  .medium-12.columns
     %h1
       = t("thanks.thank_you")
     %p
@@ -18,15 +18,15 @@
     .row
       .medium-6.columns
         %label
-          %i.fa.fa-envelope.fa-lg
+          %i.fa.fa-envelope.fa-fw.fa-lg
           = t("event.form_contact")
     .row
-      .large-8.columns
+      .large-6.columns
         .row.collapse
           .small-10.columns
             = email_field_tag 'email', nil, class: 'radius', style: 'border-right: 0; border-bottom-right-radius: 0; border-top-right-radius: 0;'
           .small-2.columns
-            = submit_tag "enviar", class: 'button radius success postfix'
+            = submit_tag 'Send', class: 'button radius success postfix'
 
 / .row
 /   .medium-9.columns
