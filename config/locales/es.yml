@@ -71,6 +71,7 @@ es:
       name: "nombre"
       comment: "comentario"
       post: "publicar"
+      send_comment: "enviar comentario"
   Event: "Evento"
   Events: "Eventos"
   thanks:
