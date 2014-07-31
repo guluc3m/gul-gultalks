@@ -67,11 +67,7 @@
         %i.fa.fa-lightbulb-o.fa-fw.fa-lg.subheader
         /= t("envent.level").humanize
         Nivel:
-        = t("event.levels")[event.level].humanize
-        
-        /%span{:style => "text-transform:capitalize;"}
-        /%span
-        /  = t("event.levels")[event.level].humanize
+        = t("event.levels.#{event.level}").humanize
 
       %li
 .row

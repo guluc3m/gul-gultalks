@@ -50,7 +50,12 @@ es:
     form_tag_format: "Cada etiqueta debe estar separada por una coma (,)"
     form_title: "Título"
     form_url: "URL del contenido"
-    levels: [novato, fácil, medio, difícil, hacker]
+    levels:
+      noob: novato
+      easy: fácil
+      medium: medio
+      hard: difícil
+      hacker: hacker
     new_event: "Nuevo evento"
     send_event: "Enviar evento"
     speaker_requirements: "Sólo puede contener caracteres literales y guiones"

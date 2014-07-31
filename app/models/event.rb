@@ -35,6 +35,8 @@ class Event < ActiveRecord::Base
             allow_blank: true,
             format: { with: /\A[a-z0-9\W]+\z/i }
 
+  enum level: [:noob, :easy, :medium, :hard, :hacker]
+
   after_create :event_verify_email
 
   private

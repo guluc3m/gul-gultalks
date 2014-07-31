@@ -40,6 +40,7 @@ en:
     languages: 
       es: "spanish"
       en: "english"
+    form_duration: "duration"
     form_level: "Level"
     form_required: "Required"
     form_speakers: "Speaker[s]"
@@ -47,7 +48,12 @@ en:
     form_tag_format: "Each tag must be separated by a comma (,)"
     form_title: "Title"
     form_url: "Content URL"
-    levels: [noob, easy, medium, hard, hacker]
+    levels:
+      noob: noob
+      easy: easy
+      medium: medium
+      hard: hard
+      hacker: hacker
     new_event: "New event"
     send_event: "Send event"
     speaker_requirements: "Can only contain literal characters and hyphens"
