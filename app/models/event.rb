@@ -6,6 +6,8 @@ class Event < ActiveRecord::Base
   belongs_to :conference
   friendly_id :title, :use => [:slugged, :scoped], :scope => :conference
 
+  TOKEN_LENGTH=32
+
   validates :title,
             format: { with: /\A[a-z0-9\W]+\z/i },
             presence: true,
@@ -35,19 +37,35 @@ class Event < ActiveRecord::Base
             allow_blank: true,
             format: { with: /\A[a-z0-9\W]+\z/i }
 
-  enum level: [:noob, :easy, :medium, :hard, :hacker]
+  #validates :language,
+  #          allow_blank: false
 
-  after_create :event_verify_email
+  enum level: [:noob, :easy, :medium, :hard, :hacker]
+  
+  #validates :terms_of_service, acceptance: { accept: 'yes' }
+
+  #before_create :lang_filter  
+
+  after_create :verify_event
 
   private
-  def event_verify_email
+  def verify_event
       token = generate_token
       Notifier.confirmation_event(self, token).deliver
   end
 
+  #def generate_token
+  #    self.t = SecureRandom.urlsafe_base64(32, false)
+  #    generate_token if VerifyEvent.exist?(token: self.token)
+  #end
+
   def generate_token
-      t = SecureRandom.urlsafe_base64
-      t
+        t = SecureRandom.urlsafe_base64
+        t
   end
-            
+  
+  def lang_filter
+    I18n.t("event.languages").keys.include?(:language)
+  end
+  
 end
