@@ -4,6 +4,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :title, :limit => 128 ,:null => false
       t.string :brief_description, :null => false
       t.text :description, :limit => 2048, :null => false
+      t.integer :subclass, :null => false
       t.string :speaker, :limit => 64, :null => false
       t.string :room
       t.string :location, :limit => 64

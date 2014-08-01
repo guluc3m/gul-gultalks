@@ -125,10 +125,7 @@
       .row.show-for-touch
         .large-12.columns
           = select("event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]})
-          /= f.range_field :level, :step => "1", :min => "0", :max => Event.levels.count
-          /= f.select :level, Eve
           /%span.level-name
-            
 
       .row.hide-for-touch
         .large-12.columns
