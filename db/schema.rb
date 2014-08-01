@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716010902) do
+ActiveRecord::Schema.define(version: 20140729144844) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20140716010902) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "language",             limit: 2
   end
 
   create_table "taggings", force: true do |t|
@@ -108,5 +109,15 @@ ActiveRecord::Schema.define(version: 20140716010902) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "verify_events", force: true do |t|
+    t.integer  "event_id"
+    t.string   "email"
+    t.string   "token",        limit: 32
+    t.boolean  "validated",               default: false
+    t.datetime "validated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
