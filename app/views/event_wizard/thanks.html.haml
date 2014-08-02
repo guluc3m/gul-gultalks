@@ -8,11 +8,77 @@
       %li.current
         = t("event.new_event")
 
-= session.inspect
+.row
+  .large-12.columns
+    %label{:for => "title"}
+      %i.fa.fa-bookmark.fa-fw.fa-lg
+      = t("event.form_title")
+    = session[:event_wizard][:event]["title"]
+
+.row
+  .large-12.columns
+    %label{:for => "brief_description"}
+      %i.fa.fa-paperclip.fa-fw.fa-lg
+      = t("event.form_brief_description")
+    = session[:event_wizard][:event]["brief_description"]
+
+.row
+  .large-12.columns
+    %label{:for => "description"}
+      %i.fa.fa-bars.fa-fw.fa-lg
+      = t("event.form_description")
+    = session[:event_wizard][:event]["description"]
+
+.row
+  .large-6.columns
+    %label{:for => "speaker"}
+      %i.fa.fa-users.fa-fw.fa-lg
+      = t("event.form_speakers")
+    = session[:event_wizard][:event]["speaker"]
+
+  .large-6.columns
+    %label{:for => "speaker_contact_info"}
+      %i.fa.fa-envelope.fa-fw.fa-lg
+      = t("event.form_contact")
+    = session[:event_wizard][:event]["speaker_contact_info"]
+
+.row
+  .large-12.columns
+    %label
+      %i.fa.fa-link.fa-fw.fa-lg
+      = t("event.form_url")
+    = session[:event_wizard][:event]["content_url"]
+
+.row
+  .large-12.columns
+    %label{:for => "tags"}
+      %i.fa.fa-tags.fa-fw.fa-lg
+      = t("event.form_tags")
+    = session[:event_wizard][:tags]
+
+.row
+  .large-6.columns
+    %label
+      %i.fa.fa-language.fa-fw.fa-lg
+      = t("event.form_language")
+    = session[:event_wizard][:event]["language"]
+
+  .large-6.columns
+    %label
+      %i.fa.fa-clock-o.fa-fw.fa-lg
+      = t("event.form_duration")
+    = session[:event_wizard][:event]["duration"]
+
+.row
+  .large-12.columns
+    %label{:for => "comments"}
+      %i.fa.fa-comments.fa-fw.fa-lg
+      = t("event.form_comments")
+    = session[:event_wizard][:event]["comments"]
 
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
 
   .row
-    .large-6.columns
+    .large-12.columns
       = f.submit t("event.send_event"), class: "button radius expand success"
 
