@@ -28,10 +28,13 @@ es:
   home: "Inicio"
   not_available: "No disponible"
   event:
+    are_you_speaker: "¿Vas a ser el ponente de este evento?"
     back_to_events: "Volver a los eventos"
     brief_description_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     comments_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     complete_form: "Completa el formulario para registrar un nuevo evento"
+    complete_basic_form: "Completa el formulario con información básica del evento"
+    complete_detailed_form: "Completa el formulario con información detallada del evento"
     description_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     email_requirements: "No es una dirección de correo electrónico válida"
     form_brief_description: "Descripción corta"
@@ -39,31 +42,35 @@ es:
     form_contact: "Correo electrónico"
     form_description: "Descripción"
     form_language: "Idioma"
-    languages: 
-      es: "español"
-      en: "inglés"
     form_duration: "duración"
     form_level: "Nivel"
     form_required: "Requerido"
     form_speakers: "Ponente[s]"
+    form_subclass: "Tipo de evento"
     form_tags: "Etiquetas"
     form_tag_format: "Cada etiqueta debe estar separada por una coma (,)"
     form_title: "Título"
     form_url: "URL del contenido"
+    i_am_proposing: "No, sólo lo estoy proponiendo"
+    i_am_speaker: "Sí, voy a ser el ponente"
+    languages: 
+      es: "español"
+      en: "inglés"
     levels:
-      noob: novato
-      easy: fácil
-      medium: medio
-      hard: difícil
-      hacker: hacker
+      noob: "novato"
+      easy: "fácil"
+      medium: "medio"
+      hard: "difícil"
+      hacker: "hacker"
     new_event: "Nuevo evento"
+    next_step: "Siguiente paso"
     send_event: "Enviar evento"
     speaker_requirements: "Sólo puede contener caracteres literales y guiones"
+    subclasses:
+      talk: "charla"
+      workshop: "taller"
     title_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     url_requirements: "No es una URL válida"
-    type:
-      workshop: "taller"
-      conference: "charla"
     status:
       cancelled: "cancelado"
       new: "nuevo"

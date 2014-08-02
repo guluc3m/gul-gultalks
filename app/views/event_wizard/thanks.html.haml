@@ -1,0 +1,18 @@
+.row
+  .medium-12.columns
+    %ul.breadcrumbs
+      %li
+        = link_to t("home"), root_path
+      %li
+        = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
+      %li.current
+        = t("event.new_event")
+
+= session.inspect
+
+= form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
+
+  .row
+    .large-6.columns
+      = f.submit t("event.send_event"), class: "button radius expand success"
+

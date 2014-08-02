@@ -1,0 +1,57 @@
+.row
+  .medium-12.columns
+    %ul.breadcrumbs
+      %li
+        = link_to t("home"), root_path
+      %li
+        = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
+      %li.current
+        = t("event.new_event")
+.row
+  .medium-7.columns
+    %h5.subheader
+      = t("event.complete_basic_form")
+
+= form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
+  .row
+    .large-12.columns
+      %label{:for => "title"}
+        %i.fa.fa-bookmark.fa-fw.fa-lg
+        = t("event.form_title")
+        %small
+          = t("event.form_required")
+      = f.text_field :title, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius", :autofocus => true
+      %small.error
+        = t("event.title_requirements")
+
+  .row
+    .large-12.columns
+      %label{:for => "brief_description"}
+        %i.fa.fa-paperclip.fa-fw.fa-lg
+        = t("event.form_brief_description")
+        %small
+          = t("event.form_required")
+        %span#char-counter
+      = f.text_field :brief_description, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius lettrify"
+      %small.error
+        = t("event.brief_description_requirements")
+
+  .row
+    .large-12.columns
+      %label{:for => "description"}
+        %i.fa.fa-bars.fa-fw.fa-lg
+        = t("event.form_description")
+        %small
+          = t("event.form_required")
+      = f.text_area :description, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius", size: "10x8"
+      %small.error
+        = t("event.description_requirements")
+
+  .row
+    .large-12.columns
+      = check_box("eula", "accepted", { class: 'eula_check' }, "yes", "no")
+      %span Acepto las condiciones de privacidad
+      
+  .row
+    .large-6.columns.large-centered
+      = f.submit t("event.next_step"), class: "button radius expand success"

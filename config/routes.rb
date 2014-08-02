@@ -3,12 +3,13 @@ Gultalks::Application.routes.draw do
   ActiveAdmin.routes(self)
   resources :conferences, path: '/conferences', only: [:index]
   resources :conferences, path: '', except: [:index] do
-    resources :events, path: '', except: [:index] do
+    resources :events, path: '', except: [:index, :new] do
       member do
         get 'vote'
         post 'vote'
       end
     end
+    resources :event_wizard, path: '/new', except: [:index]
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
