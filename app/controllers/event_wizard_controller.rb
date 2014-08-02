@@ -23,6 +23,9 @@ class EventWizardController < ApplicationController
     @event = WizardEvent.new(session[:event_wizard][:event])
     if params[:event]
       @event.attributes = params[:event]
+      if params[:event][:tags]
+        session[:event_wizard][:tags] = params[:event][:tags]
+      end
     end
     @event.conference_id = Conference.friendly.find(params[:conference_id]).id
     @event.location = Conference.friendly.find(params[:conference_id]).location

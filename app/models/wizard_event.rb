@@ -15,6 +15,8 @@ class WizardEvent < Event
     if step == steps.last
       obj = @@parent.new(accessible_attributes)
 
+      # Add tags
+      obj.tag_list.add(session["#{underscored_name}_wizard".to_sym][:tags], parse: true)
       session.delete("#{underscored_name}_wizard".to_sym) if obj.save
     else
       session["#{underscored_name}_wizard".to_sym][underscored_name.to_sym] = accessible_attributes
