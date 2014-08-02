@@ -4,7 +4,7 @@
       %li
         = link_to t("home"), root_path
       %li
-        = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
+        = link_to Conference.friendly.find(params[:conference_id]).title, controller: 'conferences', action: 'show', id: params[:conference_id]
       %li.current
         = t("event.new_event")
 .row
@@ -36,7 +36,7 @@
       %label{:for => "speaker"}
         %i.fa.fa-users.fa-fw.fa-lg
         = t("event.form_speakers")
-      = f.text_field :speaker, :label => false, :pattern => "extended_alpha", class: "radius"
+      = f.text_field :speaker, label: false, maxlength: 64, pattern: "extended_alpha", class: "radius"
       %small.error
         = t("event.speaker_requirements")
 
@@ -44,28 +44,16 @@
       %label{:for => "speaker_contact_info"}
         %i.fa.fa-envelope.fa-fw.fa-lg
         = t("event.form_contact")
-      = f.text_field :speaker_contact_info, :label => false, :pattern => "extended_email", class: "radius"
+      = f.text_field :speaker_contact_info, label: false, maxlength: 64, pattern: "extended_email", class: "radius"
       %small.error
         = t("event.email_requirements")
-
-    /    .large-2.columns
-    /      .button.large.radius.expand
-    /        %i.fa.fa-plus.fa-lg
-    /  .row
-    /    .large-12.columns
-    /      .panel.radius
-    /        %ul
-    /          %li
-    /            %span #1. Ponente
-    /            %a.fa.fa-pencil
-    /            %a.fa.fa-times
 
   .row
     .large-12.columns
       %label
         %i.fa.fa-link.fa-fw.fa-lg
         = t("event.form_url")
-      = f.url_field :content_url, :label => false, :pattern => "url", class: "radius"
+      = f.url_field :content_url, label: false, maxlength: 128, pattern: "url", class: "radius"
       %small.error
         = t("event.url_requirements")
   .row
@@ -73,7 +61,7 @@
       %label{:for => "tags"}
         %i.fa.fa-tags.fa-fw.fa-lg
         = t("event.form_tags")
-      = f.text_field :tags, label: false, class: "radius", placeholder: t("event.form_tag_format")
+      = f.text_field :tags, label: false, maxlength: 128, class: "radius", placeholder: t("event.form_tag_format")
       %small.error
         = t("error")
 
@@ -123,7 +111,7 @@
       %label{:for => "comments"}
         %i.fa.fa-comments.fa-fw.fa-lg
         = t("event.form_comments")
-      = f.text_area :comments, label: false, :pattern => "extended_alphanumeric", class: "radius", size: "10x6"
+      = f.text_area :comments, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius", size: "10x6"
       %small.error
         = t("event.comments_requirements")
   .row

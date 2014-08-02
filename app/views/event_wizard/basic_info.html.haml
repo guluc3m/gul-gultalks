@@ -4,7 +4,7 @@
       %li
         = link_to t("home"), root_path
       %li
-        = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
+        = link_to Conference.friendly.find(params[:conference_id]).title, controller: 'conferences', action: 'show', id: params[:conference_id]
       %li.current
         = t("event.new_event")
 .row
@@ -20,7 +20,7 @@
         = t("event.form_title")
         %small
           = t("event.form_required")
-      = f.text_field :title, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius", :autofocus => true
+      = f.text_field :title, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius", autofocus: true
       %small.error
         = t("event.title_requirements")
 
@@ -32,7 +32,7 @@
         %small
           = t("event.form_required")
         %span#char-counter
-      = f.text_field :brief_description, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius lettrify"
+      = f.text_field :brief_description, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius lettrify"
       %small.error
         = t("event.brief_description_requirements")
 
@@ -43,7 +43,7 @@
         = t("event.form_description")
         %small
           = t("event.form_required")
-      = f.text_area :description, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius", size: "10x8"
+      = f.text_area :description, label: false, maxlength: 700, pattern: "extended_alphanumeric", required: true, class: "radius", size: "10x8"
       %small.error
         = t("event.description_requirements")
 
