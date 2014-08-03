@@ -20,10 +20,12 @@
         = t("event.form_title")
         %small
           = t("event.form_required")
+        %i.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
       = f.text_field :title, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius", autofocus: true
       %small.error
         = t("event.title_requirements")
-
+      #char-counter.right
+        128
   .row
     .large-12.columns
       %label{:for => "brief_description"}
@@ -31,10 +33,12 @@
         = t("event.form_brief_description")
         %small
           = t("event.form_required")
-        %span#char-counter
+        %dd.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
       = f.text_field :brief_description, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius lettrify"
       %small.error
         = t("event.brief_description_requirements")
+      #char-counter.right
+        128
 
   .row
     .large-12.columns
@@ -43,15 +47,23 @@
         = t("event.form_description")
         %small
           = t("event.form_required")
+        %span.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
       = f.text_area :description, label: false, maxlength: 700, pattern: "extended_alphanumeric", required: true, class: "radius", size: "10x8"
       %small.error
         = t("event.description_requirements")
 
-  .row
-    .large-12.columns
-      = check_box("eula", "accepted", { class: 'eula_check' }, "yes", "no")
-      %span Acepto las condiciones de privacidad
+  //.row
+  //  .large-12.columns
+  //    = check_box("eula", "accepted", { class: 'eula_check' }, "yes", "no")
+  //    %span Acepto las condiciones de privacidad
       
   .row
-    .large-6.columns.large-centered
-      = f.submit t("event.next_step"), class: "button radius expand success"
+    .large-3.right.columns
+      = f.button class: "button radius expand success" do
+        = content_tag(:span, t("event.next_step"))
+        %span.fa.fa-chevron-right.fa-fw.fa-lg
+
+    .large-3.columns.left
+      = f.button class: "button radius expand" do
+        %span.fa.fa-chevron-left.fa-fw.fa-lg
+        = content_tag(:span, t("back"))
