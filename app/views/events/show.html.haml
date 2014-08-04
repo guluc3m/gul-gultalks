@@ -95,8 +95,8 @@
   /.row
   .large-9.columns
     // TODO: to put this inline style in css file
-    %p.text-justify{:style => "word-break:break-all;"}
-      = event.description
+    %p.text-justify
+      = simple_format(event.description).html_safe
 
 .row
   .large-4.large-offset-3.columns

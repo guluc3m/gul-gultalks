@@ -3,6 +3,10 @@ class EventWizardController < ApplicationController
 
   steps :basic_info, :speaker, :detailed_info, :thanks
 
+  def finish_wizard_path
+    conference_path(params[:conference_id])
+  end
+
   def new
     event = WizardEvent.new
 
@@ -34,6 +38,22 @@ class EventWizardController < ApplicationController
     @event.steps = steps
     @event.session = session
 
-    render_wizard @event
+    do_step(@event)
   end
+
+  def do_step(event)
+    if event.step == event.steps.last
+      # Last step, need to verify reCAPTCHA
+      if verify_recaptcha
+        # Valid reCAPTCHA
+        render_wizard event
+      else
+        # Invalid reCAPTCHA
+        render_wizard
+      end
+    else
+      # Don't need to verify anything
+      render_wizard event
+    end
+  end    
 end
