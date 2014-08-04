@@ -51,8 +51,10 @@ class Event < ActiveRecord::Base
 
   private
   def verify_event
-      token = generate_token
-      Notifier.confirmation_event(self, token).deliver
+      unless self.speaker_contact_info.blank?
+        token = generate_token
+        Notifier.confirmation_event(self, token).deliver
+      end
   end
 
   #def generate_token
