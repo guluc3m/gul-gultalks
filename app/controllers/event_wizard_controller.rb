@@ -3,6 +3,10 @@ class EventWizardController < ApplicationController
 
   steps :basic_info, :speaker, :detailed_info, :thanks
 
+  def finish_wizard_path
+    conference_path(params[:conference_id])
+  end
+
   def new
     event = WizardEvent.new
 
