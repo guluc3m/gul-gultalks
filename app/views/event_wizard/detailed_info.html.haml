@@ -36,7 +36,9 @@
       %label{:for => "speaker"}
         %i.fa.fa-users.fa-fw.fa-lg
         = t("event.form_speakers")
-      = f.text_field :speaker, label: false, maxlength: 64, pattern: "extended_alpha", class: "radius"
+        %small
+          = t("event.form_required")
+      = f.text_field :speaker, label: false, maxlength: 64, pattern: "extended_alpha", required: true, class: "radius"
       %small.error
         = t("event.speaker_requirements")
 
@@ -44,7 +46,9 @@
       %label{:for => "speaker_contact_info"}
         %i.fa.fa-envelope.fa-fw.fa-lg
         = t("event.form_contact")
-      = f.text_field :speaker_contact_info, label: false, maxlength: 64, pattern: "extended_email", class: "radius"
+        %small
+          = t("event.form_required")
+      = f.text_field :speaker_contact_info, label: false, maxlength: 64, pattern: "extended_email", required: true, class: "radius"
       %small.error
         = t("event.email_requirements")
 
