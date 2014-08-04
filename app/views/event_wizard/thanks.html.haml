@@ -78,6 +78,8 @@
 
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
 
+  = recaptcha_tags(ssl: true)
+
   .row
     .large-12.columns
       = f.submit t("event.send_event"), class: "button radius expand success"
