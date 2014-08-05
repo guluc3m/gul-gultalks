@@ -3,9 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-$green: #43ac6a;
-$red: #f04124;
-$orange: #f08a24;
+//$green: #43ac6a;
+//$red: #f04124;
+//$orange: #f08a24;
 
 .grey {
     color:cadetblue;
@@ -13,10 +13,10 @@ $orange: #f08a24;
 .top-bar {
     margin-bottom:1em;
 }
-.button {
-    font: normal normal 700 13px/13px "Open Sans",Arial,sans-serif;
-    text-transform: uppercase;
-}
+//.button {
+//    font: normal normal 700 13px/13px "Open Sans",Arial,sans-serif;
+//    text-transform: uppercase;
+//}
 
 .status-flag {
     padding: 2px;
@@ -30,26 +30,16 @@ $orange: #f08a24;
     }
 }
 
-[class^='fi-'], .tag-icon{
-    font-size:large;
-}
-
-.open {background:$green}
-.closed {background:$red}
-
 // New Talk Form
-#level {
-    width: 75%;
-}
+
 
 .tag-icon {
     font-weight: bold;
     font-size: 21px;
 }
 
-.breadcrumbs {
-    border:none;
-    background: none;
-    padding-left:0;
-    content: ">" //
-}
+//.breadcrumbs {
+//  border:none;
+//  background: none;
+//  padding-left:0;
+//}
