@@ -1,0 +1,69 @@
+.row
+  .medium-12.columns
+    %ul.breadcrumbs
+      %li
+        = link_to t("home"), root_path
+      %li
+        = link_to Conference.friendly.find(params[:conference_id]).title, controller: 'conferences', action: 'show', id: params[:conference_id]
+      %li.current
+        = t("event.new_event")
+.row
+  .medium-7.columns
+    %h5.subheader
+      = t("event.complete_basic_form")
+
+= form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
+  .row
+    .large-12.columns
+      %label{:for => "title"}
+        %i.fa.fa-bookmark.fa-fw.fa-lg
+        = t("event.form_title")
+        %small
+          = t("event.form_required")
+        %i.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
+      = f.text_field :title, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius", autofocus: true
+      %small.error
+        = t("event.title_requirements")
+      #char-counter.right
+        128
+  .row
+    .large-12.columns
+      %label{:for => "brief_description"}
+        %i.fa.fa-paperclip.fa-fw.fa-lg
+        = t("event.form_brief_description")
+        %small
+          = t("event.form_required")
+        %dd.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
+      = f.text_field :brief_description, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius lettrify"
+      %small.error
+        = t("event.brief_description_requirements")
+      #char-counter.right
+        128
+
+  .row
+    .large-12.columns
+      %label{:for => "description"}
+        %i.fa.fa-bars.fa-fw.fa-lg
+        = t("event.form_description")
+        %small
+          = t("event.form_required")
+        %span.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
+      = f.text_area :description, label: false, maxlength: 700, pattern: "extended_alphanumeric", required: true, class: "radius", size: "10x8"
+      %small.error
+        = t("event.description_requirements")
+
+  //.row
+  //  .large-12.columns
+  //    = check_box("eula", "accepted", { class: 'eula_check' }, "yes", "no")
+  //    %span Acepto las condiciones de privacidad
+      
+  .row
+    .large-3.right.columns
+      = f.button class: "button radius expand success" do
+        = content_tag(:span, t("event.next_step"))
+        %span.fa.fa-chevron-right.fa-fw.fa-lg
+
+    .large-3.columns.left
+      = f.button class: "button radius expand" do
+        %span.fa.fa-chevron-left.fa-fw.fa-lg
+        = content_tag(:span, t("back"))

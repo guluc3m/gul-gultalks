@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
   acts_as_taggable
- attr_accessible :active, :assisted_by, :brief_description, :comments, :conference_id, :content_url, :date, :description, :end_time, :id, :level, :location, :room, :slug, :start_time, :speaker, :speaker_contact_info, :tags, :title, :votes, :cancelled
+ attr_accessible :active, :assisted_by, :brief_description, :comments, :conference_id, :content_url, :date, :description, :end_time, :id, :level, :location, :room, :slug, :start_time, :speaker, :speaker_contact_info, :subclass, :tags, :title, :votes, :cancelled
   attr_accessor :tags
   belongs_to :conference
   friendly_id :title, :use => [:slugged, :scoped], :scope => :conference
@@ -41,17 +41,20 @@ class Event < ActiveRecord::Base
   #          allow_blank: false
 
   enum level: [:noob, :easy, :medium, :hard, :hacker]
+  enum subclass: [:talk, :workshop]
   
   #validates :terms_of_service, acceptance: { accept: 'yes' }
 
-  #before_create :lang_filter  
+  #before_create :lang_filter
 
   after_create :verify_event
 
   private
   def verify_event
-      token = generate_token
-      Notifier.confirmation_event(self, token).deliver
+      unless self.speaker_contact_info.blank?
+        token = generate_token
+        Notifier.confirmation_event(self, token).deliver
+      end
   end
 
   #def generate_token

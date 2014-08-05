@@ -9,23 +9,26 @@
         = event.title
 .row
   .large-12.columns
+    - if @event.created_at.today?
+      %span.success.radius.label
+        = t("event.status.new").humanize
+    - if @event.cancelled?
+      %span.alert.radius.label
+        = t("event.status.cancelled").humanize
     %h2
       = event.title
-      - if @event.created_at.today?
-        %span.success.radius.label
-          = t("event.status.new").humanize
-      - if @event.cancelled?
-        %span.alert.radius.label
-          = t("event.status.cancelled").humanize
     %h6.subheader
       = event.brief_description
+    %span
+      Por
+      = event.speaker
     %hr
 .row
-  .medium-4.columns
+  .large-3.columns
     %ul.no-bullet
-      %li
-        %i.fa.fa-users.fa-fw.fa-lg.subheader
-        = event.speaker
+      /%li
+      /  %i.fa.fa-users.fa-fw.fa-lg.subheader
+      /  = event.speaker
       %li
         %i.fa.fa-calendar.fa-fw.fa-lg.subheader
         - if event.date
@@ -41,22 +44,34 @@
           = event.end_time.strftime('%R')
         - else
           = t("not_available")
-
-  .medium-4.columns
-    %ul.no-bullet
       %li
         %i.fa.fa-map-marker.fa-fw.fa-lg.subheader
         = event.location
-        /= redirect_to "¿Cómo llegar?", :link => "http://www.openstreetmaps.com" 
-      %li
-        %i.fa.fa-info.fa-fw.fa-lg.subheader
-        test
+        /= link_to "¿Cómo llegar?", "http://www.openstreetmaps.org",  data: { "modal-id" =>"map-modal" } 
+        = link_to "¿Cómo llegar?", "http://www.openstreetmaps.org",  data: { "reveal-id" =>"map-modal" } 
+        /%a{"data-reveal-id" => "map-modal", :href => "#"} Click Me For A Modal
+        #map-modal.reveal-modal{"data-reveal" => ""}
+          %h1.subheader Mapa
+          %hr/
+          %p Your couch.  It is mine.
+          %iframe{:frameborder => "0", :height => "350", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "http://www.openstreetmap.org/export/embed.html?bbox=-3.7745869159698486%2C40.32920685790656%2C-3.759984970092773%2C40.33579063582344&amp;layer=mapnik&amp;marker=40.33249473785238%2C-3.7672805786132812", :style => "border: 1px solid black", :width => "425"}
+          %br/
+          %small
+            %a{:href => "http://www.openstreetmap.org/?mlat=40.33249&amp;mlon=-3.76728#map=17/40.33250/-3.76729&amp;layers=N"} Ver mapa más grande
+            %a.close-reveal-modal ×
+
       %li
         %i.fa.fa-building.fa-fw.fa-lg.subheader
-        test
-        %i.label.radius.success.fa.fa-wheelchair
-        /- event.
-  .medium-4.columns
+        - if event.room?
+          Aula:
+          = event.room
+          %i.label.radius.success.fa.fa-wheelchair
+        - else
+          Aula no disponible
+
+
+
+    /.medium-4.columns
     %ul.no-bullet
       %li
         %i.fa.fa-language.fa-fw.fa-lg.subheader
@@ -65,24 +80,39 @@
         /= event.language
       %li
         %i.fa.fa-lightbulb-o.fa-fw.fa-lg.subheader
-        /= t("envent.level").humanize
+          /= t("envent.level").humanize
         Nivel:
         = t("event.levels.#{event.level}").humanize
 
+    %ul.no-bullet
       %li
-.row
-  .large-12.columns
+        /%i.fa.fa-info.fa-fw.fa-lg.subheader
+        - event.tag_list.each do |tag|
+          .label.secondary.radius
+            = tag
+
+
+  /.row
+  .large-9.columns
     // TODO: to put this inline style in css file
-    %p.text-justify{:style => "word-break:break-all;"}
-      = event.description
+    %p.text-justify
+      = simple_format(event.description).html_safe
 
 .row
-  .large-6.columns
-    - event.tag_list.each do |tag|
-      .label.secondary.radius
-        = tag
+  .large-4.large-offset-3.columns
+    .fa.fa-download.fa-fw.fa-lg.subheader
+    %span material
 
-  .large-4.columns
+%hr
+/%br
+
+/.row
+/  .large-6.columns
+/    - event.tag_list.each do |tag|
+/      .label.secondary.radius
+/        = tag
+.row
+  .large-4.columns.right
     - if Conference.find(event.conference_id).voting_enabled && !event.cancelled
       = link_to t("to_vote"), { :controller => "events", :action => "vote" }, class: "button success radius expand" 
 

@@ -4,55 +4,41 @@
       %li
         = link_to t("home"), root_path
       %li
-        = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
+        = link_to Conference.friendly.find(params[:conference_id]).title, controller: 'conferences', action: 'show', id: params[:conference_id]
       %li.current
         = t("event.new_event")
 .row
   .medium-7.columns
     %h5.subheader
-      = t("event.complete_form")
+      = t("event.complete_detailed_form")
 
-= form_for(@event, url: {controller: "events", action: "create"}, data: {abide: ""}) do |f|
-  .row
-    .large-12.columns
-      %label{:for => "title"}
-        %i.fa.fa-bookmark.fa-fw.fa-lg
-        = t("event.form_title")
-        %small
-          = t("event.form_required")
-      = f.text_field :title, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius", :autofocus => true
-      %small.error
-        = t("event.title_requirements")
+= form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
 
   .row
     .large-12.columns
-      %label{:for => "brief_description"}
-        %i.fa.fa-paperclip.fa-fw.fa-lg
-        = t("event.form_brief_description")
-        %small
-          = t("event.form_required")
-        %span#char-counter
-      = f.text_field :brief_description, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius lettrify"
-      %small.error
-        = t("event.brief_description_requirements")
+      %label
+        %i.fa.fa-thumb-tack.fa-lg
+        = t("event.form_subclass")
 
-  .row
-    .large-12.columns
-      %label{:for => "description"}
-        %i.fa.fa-bars.fa-fw.fa-lg
-        = t("event.form_description")
-        %small
-          = t("event.form_required")
-      = f.text_area :description, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius", size: "10x8"
-      %small.error
-        = t("event.description_requirements")
+      .row.show-for-touch
+        .large-12.columns
+          = select("event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]})
+
+      .row.hide-for-touch
+        .large-12.columns
+          - Event.subclasses.keys.each do |s|
+            = radio_button("event", "subclass", "#{s}")
+            %label
+              = t("event.subclasses.#{s}").humanize
 
   .row
     .large-6.columns
       %label{:for => "speaker"}
         %i.fa.fa-users.fa-fw.fa-lg
         = t("event.form_speakers")
-      = f.text_field :speaker, :label => false, :pattern => "extended_alpha", class: "radius"
+        %small
+          = t("event.form_required")
+      = f.text_field :speaker, label: false, maxlength: 64, pattern: "extended_alpha", required: true, class: "radius"
       %small.error
         = t("event.speaker_requirements")
 
@@ -60,28 +46,18 @@
       %label{:for => "speaker_contact_info"}
         %i.fa.fa-envelope.fa-fw.fa-lg
         = t("event.form_contact")
-      = f.text_field :speaker_contact_info, :label => false, :pattern => "extended_email", class: "radius"
+        %small
+          = t("event.form_required")
+      = f.text_field :speaker_contact_info, label: false, maxlength: 64, pattern: "extended_email", required: true, class: "radius"
       %small.error
         = t("event.email_requirements")
-
-    /    .large-2.columns
-    /      .button.large.radius.expand
-    /        %i.fa.fa-plus.fa-lg
-    /  .row
-    /    .large-12.columns
-    /      .panel.radius
-    /        %ul
-    /          %li
-    /            %span #1. Ponente
-    /            %a.fa.fa-pencil
-    /            %a.fa.fa-times
 
   .row
     .large-12.columns
       %label
         %i.fa.fa-link.fa-fw.fa-lg
         = t("event.form_url")
-      = f.url_field :content_url, :label => false, :pattern => "url", class: "radius"
+      = f.url_field :content_url, label: false, maxlength: 128, pattern: "url", class: "radius"
       %small.error
         = t("event.url_requirements")
   .row
@@ -89,7 +65,7 @@
       %label{:for => "tags"}
         %i.fa.fa-tags.fa-fw.fa-lg
         = t("event.form_tags")
-      = f.text_field :tags, label: false, class: "radius", placeholder: t("event.form_tag_format")
+      = f.text_field :tags, label: false, maxlength: 128, class: "radius", placeholder: t("event.form_tag_format")
       %small.error
         = t("error")
 
@@ -139,7 +115,7 @@
       %label{:for => "comments"}
         %i.fa.fa-comments.fa-fw.fa-lg
         = t("event.form_comments")
-      = f.text_area :comments, label: false, :pattern => "extended_alphanumeric", class: "radius", size: "10x6"
+      = f.text_area :comments, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius", size: "10x6"
       %small.error
         = t("event.comments_requirements")
   .row
@@ -153,4 +129,4 @@
       
   .row
     .large-6.columns.large-centered
-      = f.submit t("event.send_event"), class: "button radius expand success"
+      = f.submit t("event.next_step"), class: "button radius expand success"

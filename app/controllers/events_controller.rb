@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    respond_with event
+    redirect_to
   end
 
   def show

@@ -59,7 +59,7 @@
                     = t("event.status.cancelled").humanize
                 %span.warning.radius.label
                   %i.fa.fa-wrench.fa-lg
-                  = t("event.type.workshop").humanize
+                  = t("event.subclasses.workshop").humanize
                 %h5
                   %small
                     = event.brief_description
@@ -90,4 +90,4 @@
     = link_to t("conference.list"), { :controller => 'conferences', :action => 'index' }, { :class => "button radius expand" }
   .large-6.columns
     - if @conference.call_for_papers_enabled
-      = link_to t("conference.propose_event"), { :controller => 'events', :action => 'new', :conference_id => @conference }, { :class => "button success radius expand" }
+      = link_to t("conference.propose_event"), new_conference_event_wizard_path(conference_id: @conference), { :class => "button success radius expand" }

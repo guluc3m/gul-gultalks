@@ -76,3 +76,9 @@ gem 'devise'
 gem 'devise-i18n'
 
 gem 'will_paginate'
+
+# Form Wizard
+gem 'wicked'
+
+# reCAPTCHA
+gem "recaptcha", :require => "recaptcha/rails"
