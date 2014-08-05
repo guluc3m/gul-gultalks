@@ -1,37 +1,26 @@
-.show-for-touch{"data-magellan-expedition" => "fixed"}
-  .row
-    .large-12.columns
-      %dl.sub-nav
-        - (0...5).each do |i|
-          .small-2.columns.left.text-center
-            %dd{"data-magellan-arrival" => "monday"}
-              %a{:href => "#{t('date.abbr_day_names')[i]}"}
-                = t('date.abbr_day_names')[i]
-                #{conference.start_date.day + i}
+/.show-for-touch{"data-magellan-expedition" => "fixed"}
+.row
+  .large-12.columns
+    %dl.sub-nav
+      - (0...5).each do |i|
+        .small-2.columns.left.text-center
+          %dd{"data-magellan-arrival" => "monday"}
+            %a{:href => "#{t('date.abbr_day_names')[i]}"}
+              = t('date.abbr_day_names')[i]
+              #{conference.start_date.day + i}
 
-  .row
-    .large-12.columns
-      - (0..5).each do
+.row
+  .large-12.columns
+    - (0..5).each do
+      - (0...3).each do
         .row
-          .row
-            .small-3.columns
-              %span.text-center 19:00-20:00
-            .small-9.columns
+          .small-3.columns
+            %dd 19:00
+            %dd.subheader to 20:00
+          .small-9.columns
+            .panel.radius
               %a
                 Title
-          .row
-            .small-3.columns
-              %span.text-center 19:00-20:00
-            .small-9.columns
-              %a
-                Title
-          .row
-            .small-3.columns
-              %span.text-center 19:00-20:00
-            .small-9.columns
-              %a
-                Title
-          %hr
 
 .row.hidden-for-touch
   .large-12.columns
@@ -46,7 +35,7 @@
               = conference.start_date.day + i
 
       %tbody
-      - (0...(5)).each do
+      - (0...5).each do
         %tr
           - (0...1).each do
             %td
@@ -54,4 +43,4 @@
           - (0...5).each do
             %td
               test
-                     
+                  
