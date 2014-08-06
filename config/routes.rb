@@ -3,6 +3,7 @@ Gultalks::Application.routes.draw do
   ActiveAdmin.routes(self)
   resources :conferences, path: '/conferences', only: [:index]
   resources :conferences, path: '', except: [:index] do
+    resources :events, path: '/events', only: [:index]
     resources :events, path: '', except: [:index, :new] do
       member do
         get 'vote'
