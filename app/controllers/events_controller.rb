@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    # Do nothing
+    redirect_to new_conference_event_wizard_path
   end
 
   def show
