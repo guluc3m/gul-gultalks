@@ -15,7 +15,7 @@
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
   .row
     .large-12.columns
-      %label{:for => "title"}
+      %label{for: "title"}
         %i.fa.fa-bookmark.fa-fw.fa-lg
         = t("event.form_title")
         %small
@@ -28,7 +28,7 @@
         128
   .row
     .large-12.columns
-      %label{:for => "brief_description"}
+      %label{for: "brief_description"}
         %i.fa.fa-paperclip.fa-fw.fa-lg
         = t("event.form_brief_description")
         %small
@@ -38,11 +38,11 @@
       %small.error
         = t("event.brief_description_requirements")
       #char-counter.right
-        /128
+        128
 
   .row
     .large-12.columns
-      %label{:for => "description"}
+      %label{for: "description"}
         %i.fa.fa-bars.fa-fw.fa-lg
         = t("event.form_description")
         %small

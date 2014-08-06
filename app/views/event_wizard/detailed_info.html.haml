@@ -4,7 +4,7 @@
       %li
         = link_to t("home"), root_path
       %li
-        = link_to Conference.friendly.find(params[:conference_id]).title, controller: 'conferences', action: 'show', id: params[:conference_id]
+        = link_to Conference.friendly.find(params[:conference_id]).title, conference_path(params[:conference_id])
       %li.current
         = t("event.new_event")
 .row
@@ -33,7 +33,7 @@
 
   .row
     .large-6.columns
-      %label{:for => "speaker"}
+      %label{for: "speaker"}
         %i.fa.fa-users.fa-fw.fa-lg
         = t("event.form_speakers")
         %small
@@ -43,7 +43,7 @@
         = t("event.speaker_requirements")
 
     .large-6.columns
-      %label{:for => "speaker_contact_info"}
+      %label{for: "speaker_contact_info"}
         %i.fa.fa-envelope.fa-fw.fa-lg
         = t("event.form_contact")
         %small
@@ -62,7 +62,7 @@
         = t("event.url_requirements")
   .row
     .large-12.columns
-      %label{:for => "tags"}
+      %label{for: "tags"}
         %i.fa.fa-tags.fa-fw.fa-lg
         = t("event.form_tags")
       = f.text_field :tags, label: false, maxlength: 128, class: "radius", placeholder: t("event.form_tag_format")
@@ -112,7 +112,7 @@
 
   .row
     .large-12.columns
-      %label{:for => "comments"}
+      %label{for: "comments"}
         %i.fa.fa-comments.fa-fw.fa-lg
         = t("event.form_comments")
       = f.text_area :comments, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius", size: "10x6"

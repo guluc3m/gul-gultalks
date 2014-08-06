@@ -4,14 +4,14 @@ class EventsController < ApplicationController
 
   def index
     respond_with(events) do |format|
-      format.html { redirect_to :controller => "conferences", :action => "show", :id => params[:conference_id] }
+      format.html { redirect_to conference_path(params[:conference_id]) }
       format.json { render json: events.as_json(methods: :tag_list) }
       format.xml { render xml: events.to_xml(methods: :tag_list) }
     end
   end
 
   def new
-    redirect_to
+    # Do nothing
   end
 
   def show
