@@ -4,7 +4,7 @@
       %li
         = link_to t("home"), root_path
       %li
-        = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
+        = link_to Conference.friendly.find(params[:conference_id]).title, conference_path(params[:conference_id])
       %li.current
         = t("event.new_event")
 
@@ -15,7 +15,7 @@
 
 .row
   .large-6.columns
-    = link_to t("event.i_am_speaker"), next_wizard_path, { :class => "button radius expand" }
+    = link_to t("event.i_am_speaker"), next_wizard_path, { class: "button radius expand" }
   .large-6.columns
-    = link_to t("event.i_am_proposing"), wizard_path(:thanks), { :class => "button success radius expand" }
+    = link_to t("event.i_am_proposing"), wizard_path(:thanks), { class: "button success radius expand" }
 

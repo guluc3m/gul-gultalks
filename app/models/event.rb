@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
  attr_accessible :active, :assisted_by, :brief_description, :comments, :conference_id, :content_url, :date, :description, :end_time, :id, :level, :location, :room, :slug, :start_time, :speaker, :speaker_contact_info, :subclass, :tags, :title, :votes, :cancelled
   attr_accessor :tags
   belongs_to :conference
-  friendly_id :title, :use => [:slugged, :scoped], :scope => :conference
+  friendly_id :title, use: [:slugged, :scoped], scope: :conference
 
   TOKEN_LENGTH=32
 
@@ -50,13 +50,6 @@ class Event < ActiveRecord::Base
   after_create :verify_event
 
   private
-  def verify_event
-      unless self.speaker_contact_info.blank?
-        token = generate_token
-        Notifier.confirmation_event(self, token).deliver
-      end
-  end
-
   #def generate_token
   #    self.t = SecureRandom.urlsafe_base64(32, false)
   #    generate_token if VerifyEvent.exist?(token: self.token)
@@ -66,9 +59,19 @@ class Event < ActiveRecord::Base
         t = SecureRandom.urlsafe_base64
         t
   end
-  
+
   def lang_filter
     I18n.t("event.languages").keys.include?(:language)
   end
-  
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed?
+  end
+
+  def verify_event
+      unless self.speaker_contact_info.blank?
+        token = generate_token
+        Notifier.confirmation_event(self, token).deliver
+      end
+  end
 end

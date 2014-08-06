@@ -4,9 +4,9 @@ class HomeController < ApplicationController
   def index
     conference = Conference.find_by active: true
     if conference
-      redirect_to :controller => 'conferences', :action => 'show', :id => conference
+      redirect_to conference_path(conference)
     else
-      redirect_to :controller => 'conferences', :action => 'index'
+      redirect_to conferences_path
     end
   end
 end

@@ -4,7 +4,7 @@
       %li
         = link_to t("home"), root_path
       %li
-        = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
+        = link_to Conference.friendly.find(params[:conference_id]).title, conference_path(params[:conference_id])
       %li.current
         = event.title
 .row
@@ -38,7 +38,7 @@
       %li
         %i.fa.fa-calendar.fa-fw.fa-lg.subheader
         - if event.date
-          = l event.date, :format => :long
+          = l event.date, format: :long
         - else
           = t("not_available")
       %li
@@ -139,13 +139,13 @@
     %hr
   .large-4.columns.right
     - if Conference.find(event.conference_id).voting_enabled && !event.cancelled
-      = link_to t("to_vote"), { :controller => "events", :action => "vote" }, class: "button success radius expand" 
+      = link_to t("to_vote"), vote_conference_event_path, class: "button success radius expand" 
 
 = render "partials/public_comments"
 
 .row
   .large-6.columns
-    = link_to t("event.back_to_events"), { :controller => 'conferences', :action => 'show', :id => params[:conference_id] }, { :class => "button radius expand" }
+    = link_to t("event.back_to_events"), conference_path(params[:conference_id]), class: "button radius expand"
   / .large-6.columns
   /   - if Conference.find(event.conference_id).voting_enabled
   /     = link_to t("to_vote"), { :controller => "events", :action => "vote" }, {:class => "button success radius expand" }

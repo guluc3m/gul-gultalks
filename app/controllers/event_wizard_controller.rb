@@ -17,10 +17,14 @@ class EventWizardController < ApplicationController
   end
 
   def show
-    @event = WizardEvent.new(session[:event_wizard].try(:[], [:event]))
-    @step = step
+    if !Conference.friendly.find(params[:conference_id]).active
+      redirect_to conference_path(params[:conference_id])
+    else
+      @event = WizardEvent.new(session[:event_wizard].try(:[], [:event]))
+      @step = step
 
-    render_wizard
+      render_wizard
+    end
   end
 
   def update
