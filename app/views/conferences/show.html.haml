@@ -11,6 +11,8 @@
       = @conference.title
     %h6.subheader
       = @conference.description
+    %hr
+
     %h3.subheader
       %span.grey>= t("date.from")
       /= l @conference.start_date, :format => :day_only
@@ -56,6 +58,7 @@
                     = t("event.status.new").humanize
                 - if event.cancelled?
                   %span.alert.radius.label
+                    %i.fa.fa-lock.fa-lg
                     = t("event.status.cancelled").humanize
                 %span.warning.radius.label
                   %i.fa.fa-wrench.fa-lg
@@ -69,7 +72,9 @@
               - if @conference.voting_enabled
                 %td.text-center
                   = event.votes
-      = will_paginate @events
+        .row
+          .large-6.columns-centered.columns
+            = will_paginate @events, :container => false, class: "pagination-centered"
     - elsif #@conference.call_for_papers_start_date.today?
       .row
         .large-8.large-centered.columns
@@ -84,6 +89,8 @@
               = t("conference.call_for_events_open")
             %p
               = t("conference.first_to_propose")
+
+        
 
 .row
   .large-6.columns
