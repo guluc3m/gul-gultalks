@@ -4,7 +4,7 @@
       %li
         = link_to t("home"), root_path
       %li
-        = link_to Conference.friendly.find(params[:conference_id]).title, controller: 'conferences', action: 'show', id: params[:conference_id]
+        = link_to Conference.friendly.find(params[:conference_id]).title, conference_path(params[:conference_id])
       %li.current
         = t("event.new_event")
 .row
@@ -15,7 +15,7 @@
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
   .row
     .large-12.columns
-      %label{:for => "title"}
+      %label{for: "title"}
         %i.fa.fa-bookmark.fa-fw.fa-lg
         = t("event.form_title")
         %small
@@ -28,7 +28,7 @@
         128
   .row
     .large-12.columns
-      %label{:for => "brief_description"}
+      %label{for: "brief_description"}
         %i.fa.fa-paperclip.fa-fw.fa-lg
         = t("event.form_brief_description")
         %small
@@ -42,7 +42,7 @@
 
   .row
     .large-12.columns
-      %label{:for => "description"}
+      %label{for: "description"}
         %i.fa.fa-bars.fa-fw.fa-lg
         = t("event.form_description")
         %small
@@ -64,6 +64,6 @@
         %span.fa.fa-chevron-right.fa-fw.fa-lg
 
     .large-3.columns.left
-      = f.button class: "button radius expand" do
+      = link_to conference_path(params[:conference_id]), { class: "button radius expand" } do
         %span.fa.fa-chevron-left.fa-fw.fa-lg
-        = content_tag(:span, t("back"))
+        = t("back").humanize

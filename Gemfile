@@ -75,6 +75,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise'
 gem 'devise-i18n'
 
+# Web Pagination
 gem 'will_paginate'
 
 # Form Wizard
@@ -82,3 +83,6 @@ gem 'wicked'
 
 # reCAPTCHA
 gem "recaptcha", :require => "recaptcha/rails"
+
+# 
+#gem 'lettrics'

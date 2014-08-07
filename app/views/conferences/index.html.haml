@@ -17,7 +17,7 @@
         - unless conference.active
           %li.panel.radius
             %h3
-              = link_to conference.title, :controller => 'conferences', :action => 'show', :id => conference
+              = link_to conference.title, conference_path(conference)
               / = l conference.start_date, :format => :year
 
 / %table

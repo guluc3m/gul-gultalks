@@ -2,7 +2,7 @@
 /   .medium-7.columns
 /     %ul.breadcrumbs
 /       %li
-/         = link_to t("home"), "/"
+/         = link_to t("home"), root_path
 /       %li.current
 /         = @conference.title
 .row.hide-for-small-only
@@ -11,6 +11,8 @@
       = @conference.title
     %h6.subheader
       = @conference.description
+    %hr
+
     %h3.subheader
       %span.grey>= t("date.from")
       /= l @conference.start_date, :format => :day_only
@@ -19,7 +21,7 @@
       /= l @conference.end_date, :format => :day_only
       = conference.end_date.day
       %span.grey>= t("date.of")
-      = l @conference.start_date, :format => :month_only
+      = l @conference.start_date, format: :month_only
 
 .row
   .large-12.columns
@@ -37,25 +39,26 @@
       %table
         %thead
           %tr
-            %th{:width => "980"}
+            %th{width: "980"}
               = t("Event")
             / %th{:width => "150"}
             /   %i.fa.fa-calendar
             /   &
             /   %i.fa.fa-clock-o
             - if @conference.voting_enabled
-              %th{:width => "40"}
+              %th{width: "40"}
                 = t("Votes")
         %tbody
           - @events.each do |event|
             %tr
               %td
-                = link_to event.title, :controller => 'events', :action => 'show', :id => event, :conference_id => @conference
+                = link_to event.title, conference_event_path(@conference, event)
                 - if !event.cancelled? and event.created_at.today?
                   %span.success.radius.label
                     = t("event.status.new").humanize
                 - if event.cancelled?
                   %span.alert.radius.label
+                    %i.fa.fa-lock.fa-lg
                     = t("event.status.cancelled").humanize
                 %span.warning.radius.label
                   %i.fa.fa-wrench.fa-lg
@@ -69,7 +72,9 @@
               - if @conference.voting_enabled
                 %td.text-center
                   = event.votes
-      = will_paginate @events
+        .row
+          .large-6.columns-centered.columns
+            = will_paginate @events, :container => false, class: "pagination-centered"
     - elsif #@conference.call_for_papers_start_date.today?
       .row
         .large-8.large-centered.columns
@@ -85,9 +90,11 @@
             %p
               = t("conference.first_to_propose")
 
+        
+
 .row
   .large-6.columns
-    = link_to t("conference.list"), { :controller => 'conferences', :action => 'index' }, { :class => "button radius expand" }
+    = link_to t("conference.list"), conferences_path, { class: "button radius expand" }
   .large-6.columns
     - if @conference.call_for_papers_enabled
-      = link_to t("conference.propose_event"), new_conference_event_wizard_path(conference_id: @conference), { :class => "button success radius expand" }
+      = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), { class: "button success radius expand" }
