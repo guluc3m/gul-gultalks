@@ -24,8 +24,8 @@ es:
     from: "del"
     to: "al"
     of: "de"
-    day_names: [Lunes, Martes, Miércoles, Jueves, Viernes, Sábado, Domingo ]
-    abbr_day_names: [Lun, Mar, Mié, Jue, Vie, Sáb, Dom]
+    # day_names: [Lunes, Martes, Miércoles, Jueves, Viernes, Sábado, Domingo ]
+    # abbr_day_names: [Lun, Mar, Mié, Jue, Vie, Sáb, Dom]
   home: "Inicio"
   not_available: "No disponible"
   event:
