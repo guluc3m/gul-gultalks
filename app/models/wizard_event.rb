@@ -16,10 +16,11 @@ class WizardEvent < Event
       obj = @@parent.new(accessible_attributes)
 
       # Add tags
-      obj.tag_list.add(session["#{underscored_name}_wizard".to_sym][:tags], parse: true)
-      session.delete("#{underscored_name}_wizard".to_sym) if obj.save
+      obj.tag_list.add(session["event_wizard"]["tags"], parse: true)
+      session.delete("event_wizard") if obj.save
     else
-      session["#{underscored_name}_wizard".to_sym][underscored_name.to_sym] = accessible_attributes
+      #session["#{underscored_name}_wizard".to_sym][underscored_name.to_sym] = accessible_attributes
+      session["event_wizard"]["event"] = accessible_attributes 
     end
   end
 

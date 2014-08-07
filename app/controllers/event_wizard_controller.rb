@@ -10,8 +10,8 @@ class EventWizardController < ApplicationController
   def new
     event = WizardEvent.new
 
-    session[:event_wizard] ||= {}
-    session[:event_wizard][:event] = event.accessible_attributes
+    session["event_wizard"] ||= {}
+    session["event_wizard"]["event"] = event.accessible_attributes
 
     redirect_to wizard_path(steps.first)
   end
@@ -20,7 +20,7 @@ class EventWizardController < ApplicationController
     if !Conference.friendly.find(params[:conference_id]).active
       redirect_to conference_path(params[:conference_id])
     else
-      @event = WizardEvent.new(session[:event_wizard].try(:[], [:event]))
+      @event = WizardEvent.new(session["event_wizard"].try(:[], ["event"]))
       @step = step
 
       render_wizard
@@ -28,11 +28,11 @@ class EventWizardController < ApplicationController
   end
 
   def update
-    @event = WizardEvent.new(session[:event_wizard][:event])
+    @event = WizardEvent.new(session["event_wizard"]["event"])
     if params[:event]
-      @event.attributes = params[:event]
+      @event.attributes = params["event"]
       if params[:event][:tags]
-        session[:event_wizard][:tags] = params[:event][:tags]
+        session["event_wizard"]["tags"] = params[:event][:tags]
       end
     end
     @event.conference_id = Conference.friendly.find(params[:conference_id]).id
