@@ -18,6 +18,7 @@ class EventsController < ApplicationController
     respond_with(event) do |format|
       format.json { render json: event.as_json(methods: :tag_list) }
       format.xml { render xml: event.to_xml(methods: :tag_list) }
+      format.ics { render ics: event.to_ics(methods: :tag_list) }
     end
   end
 
@@ -40,7 +41,9 @@ class EventsController < ApplicationController
   def vote
     if Conference.friendly.find(params[:conference_id]).voting_enabled
       # Generate random key, pass the output as arg to Notifier
-      respond_with event
+      respond_with(event) do |format|
+        format.html { render action: "thanks" }
+      end
     else
       redirect_to :controller => "events", :action => "show", :id => params[:id]
     end

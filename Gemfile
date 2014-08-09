@@ -81,6 +81,9 @@ gem 'will_paginate'
 # Form Wizard
 gem 'wicked'
 
+# iCalendar
+gem 'icalendar'
+
 # reCAPTCHA
 gem "recaptcha", :require => "recaptcha/rails"
 

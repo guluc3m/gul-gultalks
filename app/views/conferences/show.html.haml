@@ -26,6 +26,8 @@
 .row
   .large-12.columns
     //if conference.start_date.today?
+    /= link_to "ICS", :controller => 'events', :action => :show, :format => :ics
+    
     = render "partials/calendar"
     - if @conference.active?
       .row
