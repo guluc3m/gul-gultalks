@@ -1,6 +1,6 @@
 class ConferencesController < ApplicationController
   helper_method :conference, :conferences
-  respond_to :html, :json, :xml
+  respond_to :html, :json, :xml, :ics
 
   def index
     respond_with conferences
@@ -11,7 +11,9 @@ class ConferencesController < ApplicationController
   end
 
   def show
-    respond_with conference
+    respond_with(conference) do |format|
+      format.ics { render text: conference.to_ics }
+    end
   end
 
   def create
