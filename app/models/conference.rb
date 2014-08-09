@@ -1,6 +1,5 @@
 class Conference < ActiveRecord::Base
   extend FriendlyId
-  Mime::Type.register "text/calendar", :ics
   attr_accessible :active, :call_for_papers_enabled, :call_for_papers_end_date, :call_for_papers_start_date, :coordinator, :description, :end_date, :location, :slug, :start_date, :title, :voting_enabled, :voting_end_date, :voting_start_date
   has_many :events
   validates_presence_of :title, :description
@@ -8,9 +7,8 @@ class Conference < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   def to_ics
-    events = self.events.all
     calendar = Icalendar::Calendar.new
-    events.each do |e|
+    self.events.where(selected: true).each do |e|
       new_event = calendar.event
       new_event.dtstart = e.start_time.strftime("%Y%m%dT%H%M%S")
       new_event.dtend = e.end_time.strftime("%Y%m%dT%H%M%S")
