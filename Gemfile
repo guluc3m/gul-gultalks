@@ -74,7 +74,7 @@ gem 'acts-as-taggable-on'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise'
 gem 'devise-i18n'
-
+gem 'activevalidators'
 # Web Pagination
 gem 'will_paginate'
 
@@ -87,5 +87,5 @@ gem 'icalendar'
 # reCAPTCHA
 gem "recaptcha", :require => "recaptcha/rails"
 
-# 
+#
 #gem 'lettrics'
