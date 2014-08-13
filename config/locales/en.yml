@@ -3,11 +3,24 @@ en:
   Conference: "Conference"
   Conferences: "Conferences"
   conference:
+    call_for_events_end_date: "Call for events end date"
     call_for_events_open: "The call for events is open"
+    call_for_events_start_date: "Call for events start date"
+    coordinator: "Coordinator"
+    description: "Descripción"
+    end_date: "End date"
     first_to_propose: "Be the first to propose an event!"
     list: "Conference list"
     propose_another_event: "Propose another event"
     propose_event: "Propose event"
+    start_date: "Start date"
+    status:
+      active: "Active"
+      call_for_events_enabled: "Call for papers enabled"
+      voting_enabled: "Voting enabled"
+    title: "Title"
+    voting_end_date: "Voting end date"
+    voting_start_date: "Voting start date"
   date:
     formats:
       default: ! '%Y-%m-%d'

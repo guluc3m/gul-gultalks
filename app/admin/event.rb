@@ -34,5 +34,4 @@ ActiveAdmin.register Event do
     end
     f.actions
   end
-  
 end

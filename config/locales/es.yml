@@ -3,11 +3,24 @@ es:
   Conference: "Jornada"
   Conferences: "Jornadas"
   conference:
+    call_for_events_end_date: "Fecha de finalización del call for events"
     call_for_events_open: "El call for events está abierto"
+    call_for_events_start_date: "Fecha de inicio del call for events"
+    coordinator: "Coordinador"
+    description: "Descripción"
+    end_date: "Fecha de finalización"
     first_to_propose: "¡Sé el primero en proponer un evento!"
     list: "Lista de jornadas"
     propose_another_event: "Proponer otro evento"
     propose_event: "Proponer evento"
+    start_date: "Fecha de inicio"
+    status:
+      active: "Activa"
+      call_for_events_enabled: "Call for events habilitado"
+      voting_enabled: "Votaciones habilitadas"
+    title: "Título"
+    voting_end_date: "Fecha de finalización de votaciones"
+    voting_start_date: "Fecha de inicio de votaciones"
   date:
     formats:
       default: ! '%d/%m/%Y'
