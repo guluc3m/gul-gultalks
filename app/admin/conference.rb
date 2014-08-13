@@ -6,6 +6,20 @@ ActiveAdmin.register Conference do
     end
   end
 
+  index do
+    selectable_column
+    column :title
+    column :start_date
+    column :end_date
+    column :active
+    column :call_for_papers_enabled
+    column :voting_enabled
+    actions
+  end
+
+  filter :title
+  filter :start_date
+
   form do |f|
     f.inputs do
       f.input :title, label: t('conference.title')

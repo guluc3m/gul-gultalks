@@ -6,6 +6,22 @@ ActiveAdmin.register Event do
     end
   end
 
+  index do
+    selectable_column
+    column :title
+    column :subclass
+    column :level
+    column :speaker
+    column :speaker_contact_info
+    column :active
+    column :cancelled
+    column :accepted
+    actions
+  end
+
+  filter :title
+  filter :date
+
   form do |f|
     f.inputs "Info" do
       f.input :conference_id, label: t('Conference'), as: :select, collection: Conference.all
