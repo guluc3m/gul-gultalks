@@ -111,4 +111,5 @@ es:
   time:
     to: "a"
   to_vote: "Votar"
+  user: "Usuario"
   votes: "Votos"

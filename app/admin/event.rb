@@ -1,4 +1,4 @@
-ActiveAdmin.register Event, as: I18n.t('Event') do
+ActiveAdmin.register Event do
 
   controller do
     def find_resource

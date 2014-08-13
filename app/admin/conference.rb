@@ -1,4 +1,4 @@
-ActiveAdmin.register Conference, as: I18n.t('Conference') do
+ActiveAdmin.register Conference do
 
   controller do
     def find_resource

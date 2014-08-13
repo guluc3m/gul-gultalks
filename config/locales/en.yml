@@ -108,4 +108,5 @@ en:
   time:
     to: "to"
   to_vote: "Vote"
+  user: "User"
   votes: "Votes"

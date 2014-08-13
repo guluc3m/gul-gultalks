@@ -89,3 +89,6 @@ gem "recaptcha", :require => "recaptcha/rails"
 
 #
 #gem 'lettrics'
+
+# User authentication
+gem 'cancancan', '~> 1.9'
