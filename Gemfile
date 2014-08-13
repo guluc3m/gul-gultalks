@@ -5,13 +5,15 @@ gem 'rails', '4.1.4'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
-   gem 'sqlite3'
-   gem 'better_errors'
+    gem 'sqlite3'
+    gem 'better_errors'
+    gem 'binding_of_caller'
+    # gem 'meta_request'
 end
 # Use mysql2 for production environment 
 group :production do
-   gem 'mysql2'
-   gem 'unicorn'
+    gem 'mysql2'
+    gem 'unicorn'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -38,8 +40,8 @@ gem 'protected_attributes'
 gem 'jbuilder', '~> 1.2'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+    # bundle exec rake doc:rails generates the API under doc/api.
+    gem 'sdoc', require: false
 end
 
 # Use ActiveModel has_secure_password
