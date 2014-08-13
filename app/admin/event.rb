@@ -13,6 +13,7 @@ ActiveAdmin.register Event do
     column :level
     column :speaker
     column :speaker_contact_info
+    column :room
     column :active
     column :cancelled
     column :accepted
