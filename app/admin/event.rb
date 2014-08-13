@@ -24,7 +24,7 @@ ActiveAdmin.register Event, as: I18n.t('Event') do
     f.inputs "Organization" do
       f.input :active, label: t('event.status.active'), as: :radio
       f.input :cancelled, label: t('event.status.cancelled'), as: :radio
-      f.input :selected, label: t('event.status.accepted'), as: :radio
+      f.input :accepted, label: t('event.status.accepted'), as: :radio
       f.input :location, label: t('location')
       f.input :room, label: t('event.room')
       f.input :date, label: t('date')

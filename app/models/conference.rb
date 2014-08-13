@@ -8,7 +8,7 @@ class Conference < ActiveRecord::Base
 
   def to_ics
     calendar = Icalendar::Calendar.new
-    self.events.where(selected: true).each do |e|
+    self.events.where(accepted: true).each do |e|
       new_event = calendar.event
       new_event.dtstart = e.start_time.strftime("%Y%m%dT%H%M%S")
       new_event.dtend = e.end_time.strftime("%Y%m%dT%H%M%S")
