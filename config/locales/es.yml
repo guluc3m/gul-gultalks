@@ -1,4 +1,10 @@
 es:
+  active_admin:
+    access_denied:
+      message: "No dispones de los permisos necesarios"
+    roles:
+      admin: "administrador"
+      mod: "moderador"
   back: "atrás"
   Conference: "Jornada"
   Conferences: "Jornadas"

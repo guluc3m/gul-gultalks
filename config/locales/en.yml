@@ -1,4 +1,10 @@
 en:
+  active_admin:
+    access_denied:
+      message: "You do not have the required permissions"
+    roles:
+      admin: "administrator"
+      mod: "moderator"
   back: "back"
   Conference: "Conference"
   Conferences: "Conferences"

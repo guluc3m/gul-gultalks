@@ -1,10 +1,11 @@
 class AdminUser < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  ROLES = %i[admin mod]
   attr_accessible :email, :password, :password_confirmation, :role
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
+
+  enum role: [:admin, :mod]
 
   def admin?
     if self.role == "admin"

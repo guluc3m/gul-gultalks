@@ -1,5 +1,4 @@
 ActiveAdmin.register AdminUser do
-  permit_params :email, :password, :password_confirmation
 
   index do
     selectable_column
@@ -22,7 +21,7 @@ ActiveAdmin.register AdminUser do
       f.input :email
       f.input :password
       f.input :password_confirmation
-      #f.input :role, as: :radio, collection: AdminUser.roles.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}
+      f.input :role, as: :radio, collection: AdminUser.roles.keys.collect {|r| [t("active_admin.roles.#{r}").humanize, r]}
     end
     f.actions
   end
