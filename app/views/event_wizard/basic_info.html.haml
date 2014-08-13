@@ -17,9 +17,9 @@
     .large-12.columns
       %label{for: "title"}
         %i.fa.fa-bookmark.fa-fw.fa-lg
-        = t("event.form_title")
+        = t("event.title")
         %small
-          = t("event.form_required")
+          = t("event.required")
         %i.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
       = f.text_field :title, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius", autofocus: true
       %small.error
@@ -30,9 +30,9 @@
     .large-12.columns
       %label{for: "brief_description"}
         %i.fa.fa-paperclip.fa-fw.fa-lg
-        = t("event.form_brief_description")
+        = t("event.brief_description")
         %small
-          = t("event.form_required")
+          = t("event.required")
         %dd.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
       = f.text_field :brief_description, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius lettrify"
       %small.error
@@ -44,9 +44,9 @@
     .large-12.columns
       %label{for: "description"}
         %i.fa.fa-bars.fa-fw.fa-lg
-        = t("event.form_description")
+        = t("event.description")
         %small
-          = t("event.form_required")
+          = t("event.required")
         %span.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
       = f.text_area :description, label: false, maxlength: 700, pattern: "extended_alphanumeric", required: true, class: "radius", size: "10x8"
       %small.error

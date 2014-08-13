@@ -10,7 +10,7 @@
           .large-4.columns
             %label{:for => "name"}
               %i.fa.fa-user.fa-fw.fa-lg
-              = t("event.comments.name").humanize
+              = t("event.comment.name").humanize
               %small
                 = t("event.form_required")
             = text_field :title, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius"
@@ -21,7 +21,7 @@
           .large-6.columns
             %label{:for => "description"}
               %i.fa.fa-comment.fa-fw.fa-lg
-              = t("event.comments.comment").humanize
+              = t("event.comment.comment").humanize
               %small
                 = t("event.form_required")
             = text_area(:description, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius", rows: 40)
@@ -29,4 +29,4 @@
               = t("event.description_requirements")
         .row
           .large-6.columns
-            = f.submit(t("event.comments.post").humanize, class: "button radius success right")
+            = f.submit(t("event.comment.post").humanize, class: "button radius success right")

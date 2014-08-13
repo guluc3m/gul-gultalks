@@ -18,7 +18,7 @@
     .large-12.columns
       %label
         %i.fa.fa-thumb-tack.fa-lg
-        = t("event.form_subclass")
+        = t("event.subclass")
 
       .row.show-for-touch
         .large-12.columns
@@ -35,9 +35,9 @@
     .large-6.columns
       %label{for: "speaker"}
         %i.fa.fa-users.fa-fw.fa-lg
-        = t("event.form_speakers")
+        = t("event.speakers")
         %small
-          = t("event.form_required")
+          = t("event.required")
       = f.text_field :speaker, label: false, maxlength: 64, pattern: "extended_alpha", required: true, class: "radius"
       %small.error
         = t("event.speaker_requirements")
@@ -45,9 +45,9 @@
     .large-6.columns
       %label{for: "speaker_contact_info"}
         %i.fa.fa-envelope.fa-fw.fa-lg
-        = t("event.form_contact")
+        = t("event.contact")
         %small
-          = t("event.form_required")
+          = t("event.required")
       = f.text_field :speaker_contact_info, label: false, maxlength: 64, pattern: "extended_email", required: true, class: "radius"
       %small.error
         = t("event.email_requirements")
@@ -56,7 +56,7 @@
     .large-12.columns
       %label
         %i.fa.fa-link.fa-fw.fa-lg
-        = t("event.form_url")
+        = t("event.url")
       = f.url_field :content_url, label: false, maxlength: 128, pattern: "url", class: "radius"
       %small.error
         = t("event.url_requirements")
@@ -64,8 +64,8 @@
     .large-12.columns
       %label{for: "tags"}
         %i.fa.fa-tags.fa-fw.fa-lg
-        = t("event.form_tags")
-      = f.text_field :tags, label: false, maxlength: 128, class: "radius", placeholder: t("event.form_tag_format")
+        = t("event.tags")
+      = f.text_field :tags, label: false, maxlength: 128, class: "radius", placeholder: t("event.tag_format")
       %small.error
         = t("error")
 
@@ -73,7 +73,7 @@
     .large-3.columns
       %label
         %i.fa.fa-language.fa-fw.fa-lg
-        = t("event.form_language")
+        = t("event.language")
       /= select("language", "language_id", t("event.language_id").each_pair {|k,v| [ k, k ] }, { include_blank: true })
       %select 
         - t("event.languages").each_pair do |k, v|
@@ -89,14 +89,14 @@
     .large-3.columns
       %label
         %i.fa.fa-clock-o.fa-fw.fa-lg
-        = t("event.form_duration").humanize
+        = t("event.duration").humanize
       %select
         = options_for_select([['30 min',1], ['1 hora',2]])
 
     .large-6.columns
       %label
         %i.fa.fa-lightbulb-o.fa-lg
-        = t("event.form_level")
+        = t("event.level")
 
       .row.show-for-touch
         .large-12.columns
@@ -114,7 +114,7 @@
     .large-12.columns
       %label{for: "comments"}
         %i.fa.fa-comments.fa-fw.fa-lg
-        = t("event.form_comments")
+        = t("event.comments")
       = f.text_area :comments, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius", size: "10x6"
       %small.error
         = t("event.comments_requirements")
