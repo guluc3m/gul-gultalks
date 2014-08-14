@@ -1,0 +1,27 @@
+#recaptcha_widget.recaptcha_widget{style: "display:none"}
+  #recaptcha_image
+  .recaptcha_only_if_incorrect_sol{style: "color:red"} Incorrect. Please try again.
+  .recaptcha_input
+    %label.recaptcha_only_if_image{for: "recaptcha_response_field"} Enter the words above:
+    %label.recaptcha_only_if_audio{for: "recaptcha_response_field"} Enter the numbers you hear:
+    %input#recaptcha_response_field{name: "recaptcha_response_field", type: "text"}/
+  %ul.recaptcha_options
+    %li
+      %a{href: "javascript:Recaptcha.reload()"}
+        %i.fa.fa-refresh.fa-fw
+        %span.captcha_hide Get another CAPTCHA
+    %li.recaptcha_only_if_image
+      %a{href: "javascript:Recaptcha.switch_type('audio')"}
+        %i.fa.fa-volume-up.fa-fw
+        %span.captcha_hide Get an audio CAPTCHA
+    %li.recaptcha_only_if_audio
+      %a{href: "javascript:Recaptcha.switch_type('image')"}
+        %i.fa.fa-picture-o.fa-fw
+        %span.captcha_hide Get an image CAPTCHA
+    %li
+      %a{href: "javascript:Recaptcha.showhelp()"}
+        %i.fa.fa-question-circle.fa-fw
+        %span.captcha_hide Help
+
+= recaptcha_tags ssl: true, display: { theme: "custom", custom_theme_widget: "recaptcha_widget"}
+
