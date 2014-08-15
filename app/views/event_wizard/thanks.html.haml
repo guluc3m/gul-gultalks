@@ -37,10 +37,10 @@
     = session["event_wizard"]["event"]["speaker"]
 
   .large-6.columns
-    %label{:for => "speaker_contact_info"}
+    %label{:for => "email"}
       %i.fa.fa-envelope.fa-fw.fa-lg
       = t("event.contact")
-    = session["event_wizard"]["event"]["speaker_contact_info"]
+    = session["event_wizard"]["event"]["email"]
 
 .row
   .large-12.columns
@@ -76,11 +76,18 @@
       = t("event.comments")
     = session["event_wizard"]["event"]["comments"]
 
+- unless session["event_wizard"]["errors"].nil? || session["event_wizard"]["errors"].empty? 
+  .row
+    .large-12.columns
+    - session["event_wizard"]["errors"].each do |err|
+      .alert-box
+        = err
+
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
 
   .row
     .large-12.columns
-      = recaptcha_tags(ssl: true)
+      = render 'partials/recaptcha'
 
   .row
     .large-12.columns
