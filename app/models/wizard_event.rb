@@ -15,6 +15,9 @@ class WizardEvent < Event
     if step == steps.last
       obj = @@parent.new(accessible_attributes)
 
+      # Set errors if any
+      session["event_wizard"]["errors"] = obj.errors
+
       # Add tags
       obj.tag_list.add(session["event_wizard"]["tags"], parse: true)
       session.delete("event_wizard") if obj.save

@@ -74,17 +74,7 @@
       %label
         %i.fa.fa-language.fa-fw.fa-lg
         = t("event.language")
-      /= select("language", "language_id", t("event.language_id").each_pair {|k,v| [ k, k ] }, { include_blank: true })
-      %select 
-        - t("event.languages").each_pair do |k, v|
-          %option{value: k}
-            = v.humanize
-      /     %span
-      /       = "#{k} -- #{v}"
-      /       /= options_for_select([[t('event.language')[k], k], ['English',2]])
-      /       / = select("language", options_for_select([['Spanish',1], ['English',2]]))
-      /       / = f.select_tag(:language, options_for_select(languages))
-
+      = select("event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]})
 
     .large-3.columns
       %label

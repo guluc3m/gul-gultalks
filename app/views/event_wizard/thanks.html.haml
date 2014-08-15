@@ -76,6 +76,13 @@
       = t("event.comments")
     = session["event_wizard"]["event"]["comments"]
 
+- unless session["event_wizard"]["errors"].nil? || session["event_wizard"]["errors"].empty? 
+  .row
+    .large-12.columns
+    - session["event_wizard"]["errors"].each do |err|
+      .alert-box
+        = err
+
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
 
   .row
