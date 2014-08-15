@@ -42,6 +42,9 @@ class EventWizardController < ApplicationController
     @event.steps = steps
     @event.session = session
 
+    # Clear previous session errors
+    session["event_wizard"]["errors"] = nil
+
     do_step(@event)
   end
 
@@ -55,6 +58,7 @@ class EventWizardController < ApplicationController
         # Invalid reCAPTCHA
         render_wizard
       end
+
     else
       # Don't need to verify anything
       render_wizard event

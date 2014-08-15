@@ -12,7 +12,7 @@ ActiveAdmin.register Event do
     column :subclass
     column :level
     column :speaker
-    column :speaker_contact_info
+    column :email
     column :room
     column :active
     column :cancelled
@@ -29,10 +29,10 @@ ActiveAdmin.register Event do
       f.input :title, label: t('event.title')
       f.input :brief_description, label: t('event.brief_description')
       f.input :description, label: t('event.description') 
-      f.input :subclass, label: t('event.subclass'), as: :radio, collection: Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}
-      f.input :level, label: t('event.subclass'), as: :radio, collection: Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}
+      f.input :subclass, label: t('event.subclass'), as: :radio, collection: Event.subclasses.keys.collect {|s| [t('event.subclasses.#{s}').humanize, s]}
+      f.input :level, label: t('event.subclass'), as: :radio, collection: Event.levels.keys.collect {|l| [t('event.levels.#{l}').humanize, l]}
       f.input :speaker, label: t('event.speaker')
-      f.input :speaker_contact_info, label: t('event.contact')
+      f.input :email, label: t('event.contact')
       f.input :content_url, label: t('event.url')
       f.input :comments, label: t('event.comments')
       f.input :votes, label: t('votes')

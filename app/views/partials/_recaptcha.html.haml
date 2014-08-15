@@ -1,0 +1,35 @@
+#recaptcha_widget.recaptcha_widget{ style: "display:none" }
+  #recaptcha_image
+  .recaptcha_only_if_incorrect_sol{ style: "color:red" }
+    = t("recaptcha.incorrect")
+
+  .recaptcha_input
+    %label.recaptcha_only_if_image{ for: "recaptcha_response_field" } 
+      = t("recaptcha.enter_words")
+    %label.recaptcha_only_if_audio{ for: "recaptcha_response_field" } 
+      = t("recaptcha.enter_numbers")
+    %input#recaptcha_response_field{ name: "recaptcha_response_field", type: "text" }/
+
+  %ul.recaptcha_options
+    %li
+      %a{ href: "javascript:Recaptcha.reload()" }
+        %i.fa.fa-refresh.fa-fw
+        %span.captcha_hide
+          = t("recaptcha.another")
+    %li.recaptcha_only_if_image
+      %a{ href: "javascript:Recaptcha.switch_type('audio')" }
+        %i.fa.fa-volume-up.fa-fw
+        %span.captcha_hide
+          = t("recaptcha.audio")
+    %li.recaptcha_only_if_audio
+      %a{ href: "javascript:Recaptcha.switch_type('image')" }
+        %i.fa.fa-picture-o.fa-fw
+        %span.captcha_hide
+          = t("recaptcha.image")
+    %li
+      %a{href: "javascript:Recaptcha.showhelp()"}
+        %i.fa.fa-question-circle.fa-fw
+        %span.captcha_hide
+          = t("recaptcha.help")
+
+= recaptcha_tags ssl: true, display: { theme: "custom", custom_theme_widget: "recaptcha_widget" }
