@@ -105,6 +105,14 @@ en:
   home: "Home"
   location: "Location"
   not_available: "Not available"
+  recaptcha:
+    another: "Get another CAPTCHA"
+    audio: "Get an audio CAPTCHA"
+    enter_numbers: "Enter the numbers you hear:"
+    enter_words: "Enter the words above:"
+    help: "Help"
+    image: "Get an image CAPTCHA"
+    incorrect: "Incorrect. Please try again."
   thanks:
     contact_msg: "If you need help, do not hesitate to write to"
     thank_you: "Thank you!"

@@ -107,6 +107,14 @@ es:
   home: "Inicio"
   location: "Lugar"
   not_available: "No disponible"
+  recaptcha:
+    another: "Obtener una pista nueva"
+    audio: "Obtener una pista sonora"
+    enter_numbers: "Introduce los números que escuches:"
+    enter_words: "Introduce las palabras de encima:"
+    help: "Ayuda"
+    image: "Obtener una pista de imagen"
+    incorrect: "Incorrecto. Por favor, prueba otra vez."
   thanks:
     contact_msg: "Si tienes alguna duda, no dudes en escribir a"
     thank_you: "¡Gracias!"
