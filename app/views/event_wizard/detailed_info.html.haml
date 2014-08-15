@@ -43,12 +43,12 @@
         = t("event.speaker_requirements")
 
     .large-6.columns
-      %label{for: "speaker_contact_info"}
+      %label{for: "email"}
         %i.fa.fa-envelope.fa-fw.fa-lg
         = t("event.contact")
         %small
           = t("event.required")
-      = f.text_field :speaker_contact_info, label: false, maxlength: 64, pattern: "extended_email", required: true, class: "radius"
+      = f.text_field :email, label: false, maxlength: 64, pattern: "extended_email", required: true, class: "radius"
       %small.error
         = t("event.email_requirements")
 

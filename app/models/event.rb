@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
   acts_as_taggable
- attr_accessible :accepted, :active, :assisted_by, :brief_description, :comments, :conference_id, :content_url, :date, :description, :end_time, :id, :level, :location, :room, :slug, :start_time, :speaker, :speaker_contact_info, :subclass, :tags, :title, :votes, :cancelled
+ attr_accessible :accepted, :active, :assisted_by, :brief_description, :comments, :conference_id, :content_url, :date, :description, :email, :end_time, :id, :level, :location, :room, :slug, :start_time, :speaker, :subclass, :tags, :title, :votes, :cancelled
   attr_accessor :tags
   belongs_to :conference
   friendly_id :title, use: [:slugged, :scoped], scope: :conference
@@ -29,7 +29,7 @@ class Event < ActiveRecord::Base
             allow_blank: true,
             format: { with: /\A[a-z\W]+\z/i }
 
-  validates :speaker_contact_info,
+  validates :email,
             email: true,
             allow_blank: true
 
@@ -86,7 +86,7 @@ class Event < ActiveRecord::Base
   end
 
   def verify_event
-      unless self.speaker_contact_info.blank?
+      unless self.email.blank?
         token = generate_token
         Notifier.confirmation_event(self, token).deliver
       end
