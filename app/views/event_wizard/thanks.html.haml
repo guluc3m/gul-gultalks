@@ -10,71 +10,95 @@
 
 .row
   .large-12.columns
-    %label{:for => "title"}
-      %i.fa.fa-bookmark.fa-fw.fa-lg
-      = t("event.title")
-    = session["event_wizard"]["event"]["title"]
+    %h2.subheader Placeholder
+    %hr
+.row
+  .large-12.columns
+    %p Gracias por 
 
 .row
   .large-12.columns
-    %label{:for => "brief_description"}
-      %i.fa.fa-paperclip.fa-fw.fa-lg
-      = t("event.brief_description")
-    = session["event_wizard"]["event"]["brief_description"]
-
+    = field_set_tag 'Your details', class: "subheader" do
+      .row
+        .large-6.columns
+          %label{:for => "speaker"}
+            %i.fa.fa-users.fa-fw.fa-lg
+            = t("event.speakers")
+          %p
+            = session["event_wizard"]["event"]["speaker"]
+      
+        .large-6.columns
+          %label{:for => "email"}
+            %i.fa.fa-envelope.fa-fw.fa-lg
+            = t("event.contact")
+          = session["event_wizard"]["event"]["email"]
 .row
   .large-12.columns
-    %label{:for => "description"}
-      %i.fa.fa-bars.fa-fw.fa-lg
-      = t("event.description")
-    = session["event_wizard"]["event"]["description"]
+    = field_set_tag 'Your details', class: "subheader" do
+      .row
+        .large-12.columns
+          %label{:for => "title"}
+            %i.fa.fa-bookmark.fa-fw.fa-lg
+            = t("event.title")
+          %p
+            = session["event_wizard"]["event"]["title"]
+      
+      .row
+        .large-12.columns
+          %label{:for => "brief_description"}
+            %i.fa.fa-paperclip.fa-fw.fa-lg
+            = t("event.brief_description")
+          %p
+            = session["event_wizard"]["event"]["brief_description"]
+      
+      .row
+        .large-12.columns
+          %label{:for => "description"}
+            %i.fa.fa-bars.fa-fw.fa-lg
+            = t("event.description")
+          %p
+            = session["event_wizard"]["event"]["description"]
+    
 
-.row
-  .large-6.columns
-    %label{:for => "speaker"}
-      %i.fa.fa-users.fa-fw.fa-lg
-      = t("event.speakers")
-    = session["event_wizard"]["event"]["speaker"]
+      .row
+        .large-12.columns
+          %label
+            %i.fa.fa-link.fa-fw.fa-lg
+            = t("event.url")
+          = session["event_wizard"]["event"]["content_url"]
+      
+      .row
+        .large-12.columns
+          %label{:for => "tags"}
+            %i.fa.fa-tags.fa-fw.fa-lg
+            = t("event.tags")
+          %p
+            - tags = session["event_wizard"]["tags"].split(",").collect(&:strip)
+            - tags.each do |t|
+              .label.secondary.radius 
+                = p t
+             
+          /= session["event_wizard"]["tags"]
+      
+      .row
+        .large-4.columns
+          %label
+            %i.fa.fa-language.fa-fw.fa-lg
+            = t("event.language")
+          = t("event.languages.#{session["event_wizard"]["event"]["language"]}").humanize
 
-  .large-6.columns
-    %label{:for => "email"}
-      %i.fa.fa-envelope.fa-fw.fa-lg
-      = t("event.contact")
-    = session["event_wizard"]["event"]["email"]
-
-.row
-  .large-12.columns
-    %label
-      %i.fa.fa-link.fa-fw.fa-lg
-      = t("event.url")
-    = session["event_wizard"]["event"]["content_url"]
-
-.row
-  .large-12.columns
-    %label{:for => "tags"}
-      %i.fa.fa-tags.fa-fw.fa-lg
-      = t("event.tags")
-    = session["event_wizard"]["tags"]
-
-.row
-  .large-6.columns
-    %label
-      %i.fa.fa-language.fa-fw.fa-lg
-      = t("event.language")
-    = session["event_wizard"]["event"]["language"]
-
-  .large-6.columns
-    %label
-      %i.fa.fa-clock-o.fa-fw.fa-lg
-      = t("event.duration")
-    = session["event_wizard"]["event"]["duration"]
-
-.row
-  .large-12.columns
-    %label{:for => "comments"}
-      %i.fa.fa-comments.fa-fw.fa-lg
-      = t("event.comments")
-    = session["event_wizard"]["event"]["comments"]
+        .large-4.columns
+          %label
+            %i.fa.fa-clock-o.fa-fw.fa-lg
+            = t("event.duration")
+          = session["event_wizard"]["event"]["duration"]
+      
+      .row
+        .large-12.columns
+          %label{:for => "comments"}
+            %i.fa.fa-comments.fa-fw.fa-lg
+            = t("event.comments")
+          = session["event_wizard"]["event"]["comments"]
 
 - unless session["event_wizard"]["errors"].nil? || session["event_wizard"]["errors"].empty? 
   .row
@@ -84,7 +108,6 @@
         = err
 
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
-
   .row
     .large-12.columns
       = render 'partials/recaptcha'

@@ -9,24 +9,26 @@
         .row
           .large-4.columns
             %label{:for => "name"}
-              %i.fa.fa-user.fa-fw.fa-lg
+              %i.fa.fa-user.fa-fw.fa-lg.subheader
               = t("event.comment.name").humanize
               %small
                 = t("event.form_required")
-            = text_field :title, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius"
+            = text_field :title, :label => false, :pattern => "extended_alphanumeric", :required => true, :class => "radius"
             %small.error
               = t("event.title_requirements")
       
         .row
           .large-6.columns
             %label{:for => "description"}
-              %i.fa.fa-comment.fa-fw.fa-lg
+              %i.fa.fa-comment.fa-fw.fa-lg.subheader
               = t("event.comment.comment").humanize
               %small
                 = t("event.form_required")
-            = text_area(:description, :label => false, :pattern => "extended_alphanumeric", :required => true, class: "radius", rows: 40)
+            = text_area(:description, :label => false, :pattern => "extended_alphanumeric", :required => true, :class => "radius", rows: 40)
             %small.error
               = t("event.description_requirements")
         .row
+          .large-4.columns
+            = render "partials/recaptcha"
           .large-6.columns
             = f.submit(t("event.comment.post").humanize, class: "button radius success right")

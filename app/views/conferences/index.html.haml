@@ -5,20 +5,20 @@
         = link_to t("home"), root_path
       %li.current
         = t("conference.list")
-.row
   .large-12.columns
     .medium-5.columns
-      %h1
+      %h1.subheader
         = t("Conferences")
-.row
-  .large-12.columns
-    %ul.large-block-grid-4
-      - @conferences.each do |conference|
-        - unless conference.active
-          %li.panel.radius
-            %h3
-              = link_to conference.title, conference_path(conference)
-              / = l conference.start_date, :format => :year
+    %hr
+
+    .large-12.columns
+      .large-block-grid-4
+        - @conferences.each do |conference|
+          - unless conference.active
+            .panel.radius.expand
+              %h4
+                = link_to conference.title, conference_path(conference)
+                / = l conference.start_date, :format => :year
 
 / %table
 /   %thead

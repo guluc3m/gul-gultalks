@@ -69,6 +69,7 @@ es:
     i_am_proposing: "No, sólo lo estoy proponiendo"
     i_am_speaker: "Sí, voy a ser el ponente"
     language: "Idioma"
+    # Write here the availabe languages
     languages: 
       es: "español"
       en: "inglés"
@@ -106,7 +107,7 @@ es:
   Events: "Eventos"
   home: "Inicio"
   location: "Lugar"
-  not_available: "No disponible"
+  not_available: "no disponible"
   recaptcha:
     another: "Obtener una pista nueva"
     audio: "Obtener una pista sonora"

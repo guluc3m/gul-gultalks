@@ -5,7 +5,7 @@
 /         = link_to t("home"), root_path
 /       %li.current
 /         = @conference.title
-.row.hide-for-small-only
+.row
   .large-12.columns
     %h1
       = @conference.title
@@ -26,8 +26,6 @@
 .row
   .large-12.columns
     //if conference.start_date.today?
-    = link_to "ICS", conference_path(params[:id], format: :ics)
-    
     = render "partials/calendar"
     - if @conference.active?
       .row
@@ -62,7 +60,7 @@
                   %span.alert.radius.label
                     %i.fa.fa-lock.fa-lg
                     = t("event.status.cancelled").humanize
-                %span.warning.radius.label
+                %span.info.radius.label
                   %i.fa.fa-wrench.fa-lg
                   = t("event.subclasses.workshop").humanize
                 %h5
@@ -91,8 +89,6 @@
               = t("conference.call_for_events_open")
             %p
               = t("conference.first_to_propose")
-
-        
 
 .row
   .large-6.columns

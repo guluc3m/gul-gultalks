@@ -7,8 +7,13 @@
         = link_to Conference.friendly.find(params[:conference_id]).title, conference_path(params[:conference_id])
       %li.current
         = t("event.new_event")
+
 .row
-  .medium-7.columns
+  .large-12.columns
+    %h2.subheader Placeholder
+    %hr
+.row
+  .large-12.columns
     %h5.subheader
       = t("event.complete_detailed_form")
 
