@@ -125,7 +125,11 @@
     .row
       .large-4.large-offset-3.columns
         .fa.fa-download.fa-fw.fa-lg.subheader
-        %span material
+        %span
+          - if event.content_url
+            = link_to event.content_url, event.content_url, target: "_blank"
+          - else
+            = t("not_available")
     
 /%br
 
