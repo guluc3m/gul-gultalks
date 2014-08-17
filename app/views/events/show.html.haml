@@ -145,7 +145,7 @@
     - if Conference.find(event.conference_id).voting_enabled && !event.cancelled
       = link_to t("to_vote"), vote_conference_event_path, class: "button success radius expand" 
 
-= render "partials/public_comments"
+= render_comments
 
 .row
   .large-6.columns

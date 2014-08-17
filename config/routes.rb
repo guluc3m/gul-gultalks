@@ -5,6 +5,7 @@ Gultalks::Application.routes.draw do
   resources :conferences, path: '', except: [:index] do
     resources :events, path: '/events', only: [:index]
     resources :events, path: '', except: [:index] do
+      resources :public_comments, path: '/comments'
       member do
         get 'vote'
         post 'vote'
