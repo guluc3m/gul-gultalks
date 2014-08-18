@@ -65,6 +65,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
 
 Event.create(
@@ -88,6 +89,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -111,6 +113,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => false)
       
 Event.create(
@@ -134,6 +137,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -157,6 +161,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => false)
 
 Event.create(
@@ -180,6 +185,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -203,6 +209,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -225,6 +232,7 @@ Event.create(
       :content_url => '',
       :active => true,
       :accepted => true,
+      :language => 'es',
       :conference_id => 1)
 
 Event.create(
@@ -248,6 +256,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => false)
 
 Event.create(
@@ -271,6 +280,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -294,6 +304,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -317,6 +328,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => false,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -340,6 +352,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -363,6 +376,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => false,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -386,6 +400,7 @@ Event.create(
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -409,6 +424,7 @@ Event.create(
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -432,6 +448,7 @@ Event.create(
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -455,6 +472,7 @@ Event.create(
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -478,6 +496,7 @@ Event.create(
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -501,6 +520,7 @@ Event.create(
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => false)
       
 Event.create(
@@ -524,6 +544,7 @@ Event.create(
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => false)
 
 Event.create(
@@ -547,6 +568,7 @@ Event.create(
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -570,6 +592,7 @@ Event.create(
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -593,6 +616,7 @@ Event.create(
       :active => true,
       :conference_id => 2,
       :accepted => false,
+      :language => 'es',
       :cancelled => true)
 
 Event.create(
@@ -616,6 +640,7 @@ Event.create(
       :active => true,
       :conference_id => 2,
       :accepted => false,
+      :language => 'es',
       :cancelled => false)
 
 Event.create(
@@ -639,6 +664,7 @@ Event.create(
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
 
 Event.create(
@@ -662,6 +688,7 @@ Event.create(
       :active => true,
       :conference_id => 2,
       :accepted => false,
+      :language => 'es',
       :cancelled => false)
 
 Event.create(
@@ -685,4 +712,5 @@ Event.create(
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
