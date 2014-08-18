@@ -1,3 +1,14 @@
+/ Display comment list
+- PublicComment.where(event_id: Event.friendly.find(params[:id]).id, ancestry: nil).order("created_at desc").each do |comment|
+  .row
+    .large-6.columns
+      %i.fa.fa-user.fa-fw.fa-lg
+      = comment.name
+  .row
+    .large-6.columns
+      %i.fa.fa-comment.fa-fw.fa-lg
+      = simple_format(comment.comment).html_safe    
+
 - if @event.active?
   .row
     .large-12.columns
@@ -5,30 +16,42 @@
         .large-6.columns
           %h4.subheader Comenta
           %hr
-      = form_for(@event, url: {controller: "events", action: "create"}, data: {abide: ""}) do |f|
+      = form_for(@public_comment, url: {controller: "public_comments", action: "create", event_id: params[:id]}, data: {abide: ""}) do |f|
         .row
           .large-4.columns
-            %label{:for => "name"}
+            %label{for: "name"}
               %i.fa.fa-user.fa-fw.fa-lg.subheader
               = t("event.comment.name").humanize
               %small
-                = t("event.form_required")
-            = text_field :title, :label => false, :pattern => "extended_alphanumeric", :required => true, :class => "radius"
+                = t("event.required")
+            = f.text_field :name, label: false, pattern: "extended_alphanumeric", required: true, class: "radius"
             %small.error
-              = t("event.title_requirements")
+              = t("event.comment.requirements")
       
         .row
           .large-6.columns
-            %label{:for => "description"}
+            %label{for: "email"}
+              %i.fa.fa-envelope.fa-fw.fa-lg.subheader
+              = t("event.comment.email").humanize
+              %small
+                = t("event.required")
+            = f.text_field :email, label: false, pattern: "extended_email", required: false, class: "radius"
+            %small.error
+              = t("event.comment.requirements")
+
+        .row
+          .large-6.columns
+            %label{for: "comment"}
               %i.fa.fa-comment.fa-fw.fa-lg.subheader
               = t("event.comment.comment").humanize
               %small
-                = t("event.form_required")
-            = text_area(:description, :label => false, :pattern => "extended_alphanumeric", :required => true, :class => "radius", rows: 40)
+                = t("event.required")
+            = f.text_area :comment, label: false, pattern: "extended_alphanumeric", required: true, class: "radius", size: "10x8"
             %small.error
-              = t("event.description_requirements")
+              = t("event.comment.requirements")
         .row
           .large-4.columns
             = render "partials/recaptcha"
           .large-6.columns
             = f.submit(t("event.comment.post").humanize, class: "button radius success right")
+

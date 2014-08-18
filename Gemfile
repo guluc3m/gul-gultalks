@@ -94,3 +94,6 @@ gem "recaptcha", :require => "recaptcha/rails"
 
 # User authentication
 gem 'cancancan', '~> 1.9'
+
+# Public comments
+gem 'ancestry'

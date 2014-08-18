@@ -80,7 +80,7 @@
 
         %li
           %i.fa.fa-building.fa-fw.fa-lg.subheader
-          - if event.room?
+          - if event.room.present?
             Aula:
             = event.room
             %i.label.radius.success.fa.fa-wheelchair
@@ -119,28 +119,20 @@
       
 
       .success.radius.label
-        %p
-          = event.votes
-        %span
-          VOTOS
-      
+        = event.votes
+        %strong
+          = t('vote', count: event.votes ).upcase
 
-
-
-
-    
-/%br
-
-/.row
-/  .large-6.columns
-/    - event.tag_list.each do |tag|
-/      .label.secondary.radius
-/        = tag
 .row
   .large-12.columns
     %span
       %i.fa.fa-download.fa-fw.fa-lg.subheader
-      material
+      %span
+        //TODO: check 'link_to_if' out
+        - if event.content_url.present?
+          = link_to event.content_url, event.content_url, target: "_blank"
+        - else
+          = t("not_available").humanize
   .large-12.columns
     %span
       %i.fa.fa-code.fa-fw.fa-lg.subheader
@@ -151,7 +143,7 @@
     - if Conference.find(event.conference_id).voting_enabled && !event.cancelled
       = link_to t("to_vote"), vote_conference_event_path, class: "button success radius expand" 
 
-= render "partials/public_comments"
+= render_comments
 
 .row
   .large-6.columns

@@ -54,7 +54,9 @@ en:
       name: "Name"
       comment: "Comment"
       post: "Post"
-      send_comment: "Send comentario"
+      send_comment: "Send comment"
+      email: "email"
+      requirements: "Can only contain alphanumeric characters and hyphens"
     comments_requirements: "Can only contain alphanumeric characters and hyphens"
     complete_basic_form: "Complete the form with basic information for the event"
     complete_detailed_form: "Complete the form with detailed information for the event"
@@ -123,4 +125,6 @@ en:
     to: "to"
   to_vote: "Vote"
   user: "User"
-  votes: "Votes"
+  vote:
+    one: "vote"
+    other: "votes"

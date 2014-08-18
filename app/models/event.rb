@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
   attr_accessor :tags
   belongs_to :conference
   friendly_id :title, use: [:slugged, :scoped], scope: :conference
+  has_many :public_comments
 
   TOKEN_LENGTH=32
 
