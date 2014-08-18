@@ -1,0 +1,7 @@
+.media-body
+  %h4.media-heading=comment.name
+  %i= comment.created_at.strftime('%b %d, %Y at %H:%M')
+  %p= simple_format comment.content
+  .actions
+    = link_to "Reply", new_conference_event_comment_path(params[:conference_id], params[:id], :parent_id => comment)
+  = nested_comments comment.children

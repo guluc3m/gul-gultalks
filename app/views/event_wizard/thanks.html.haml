@@ -98,7 +98,7 @@
           %label{:for => "comments"}
             %i.fa.fa-comments.fa-fw.fa-lg
             = t("event.comments")
-          = session["event_wizard"]["event"]["comments"]
+          = session["event_wizard"]["event"]["notes"]
 
 - unless session["event_wizard"]["errors"].nil? || session["event_wizard"]["errors"].empty? 
   .row

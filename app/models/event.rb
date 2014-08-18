@@ -1,11 +1,11 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
   acts_as_taggable
- attr_accessible :accepted, :active, :assisted_by, :brief_description, :comments, :conference_id, :content_url, :date, :description, :email, :end_time, :id, :language, :level, :location, :room, :slug, :start_time, :speaker, :subclass, :tags, :title, :votes, :cancelled
+ attr_accessible :accepted, :active, :assisted_by, :brief_description, :conference_id, :content_url, :date, :description, :email, :end_time, :id, :language, :level, :location, :notes, :room, :slug, :start_time, :speaker, :subclass, :tags, :title, :votes, :cancelled
   attr_accessor :tags
   belongs_to :conference
   friendly_id :title, use: [:slugged, :scoped], scope: :conference
-  has_many :public_comments
+  has_many :comments, as: :commentable, dependent: :destroy
 
   TOKEN_LENGTH=32
 

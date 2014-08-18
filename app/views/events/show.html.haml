@@ -143,7 +143,10 @@
     - if Conference.find(event.conference_id).voting_enabled && !event.cancelled
       = link_to t("to_vote"), vote_conference_event_path, class: "button success radius expand" 
 
-= render_comments
+= nested_comments @comments
+
+- if @event.active?
+  = render "comments/form"
 
 .row
   .large-6.columns

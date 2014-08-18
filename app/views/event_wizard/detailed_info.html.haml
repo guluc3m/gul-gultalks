@@ -110,7 +110,7 @@
       %label{for: "comments"}
         %i.fa.fa-comments.fa-fw.fa-lg
         = t("event.comments")
-      = f.text_area :comments, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius", size: "10x6"
+      = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius", size: "10x6"
       %small.error
         = t("event.comments_requirements")
   .row

@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  include Gultalks::Commentable
   helper_method :event, :events
   respond_to :html, :json, :xml
 

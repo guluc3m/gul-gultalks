@@ -1,0 +1,49 @@
+.row
+  .large-12.columns
+    .row
+      .large-6.columns
+        %h4.subheader Comenta
+        %hr
+    = form_for([@commentable, @comment], url: {controller: "comments", action: "create", event_id: params[:id] || params[:event_id]}, data: {abide: ""}) do |f|
+
+      = f.hidden_field :parent_id
+
+      .row
+        .large-4.columns
+          %label{for: "name"}
+            %i.fa.fa-user.fa-fw.fa-lg.subheader
+            = t("event.comment.name").humanize
+            %small
+              = t("event.required")
+          = f.text_field :name, label: false, pattern: "extended_alphanumeric", required: true, class: "radius"
+          %small.error
+            = t("event.comment.requirements")
+    
+      .row
+        .large-6.columns
+          %label{for: "email"}
+            %i.fa.fa-envelope.fa-fw.fa-lg.subheader
+            = t("event.comment.email").humanize
+            %small
+              = t("event.required")
+          = f.text_field :email, label: false, pattern: "extended_email", required: false, class: "radius"
+          %small.error
+            = t("event.comment.requirements")
+
+      .row
+        .large-6.columns
+          %label{for: "content"}
+            %i.fa.fa-comment.fa-fw.fa-lg.subheader
+            = t("event.comment.comment").humanize
+            %small
+              = t("event.required")
+          = f.text_area :content, label: false, pattern: "extended_alphanumeric", required: true, class: "radius", size: "10x8"
+          %small.error
+            = t("event.comment.requirements")
+
+      .row
+        .large-4.columns
+          = render "partials/recaptcha"
+        .large-6.columns
+          = f.submit(t("event.comment.post").humanize, class: "button radius success right")
+
