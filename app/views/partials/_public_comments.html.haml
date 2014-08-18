@@ -32,7 +32,7 @@
           .large-6.columns
             %label{for: "comment"}
               %i.fa.fa-comment.fa-fw.fa-lg
-              = t("event.comment.email").humanize
+              = t("event.comment.comment").humanize
               %small
                 = t("event.form_required")
             = f.text_area :comment, label: false, pattern: "extended_alphanumeric", required: true, class: "radius", size: "10x8"
