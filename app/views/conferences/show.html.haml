@@ -74,7 +74,7 @@
                   = event.votes
         .row
           .large-6.columns-centered.columns
-            = will_paginate @events, :container => false, class: "pagination-centered"
+            = will_paginate @events, renderer: FoundationPagination::Rails, container: false, class: "pagination-centered"
     - elsif #@conference.call_for_papers_start_date.today?
       .row
         .large-8.large-centered.columns

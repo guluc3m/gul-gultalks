@@ -79,6 +79,7 @@ gem 'devise-i18n'
 gem 'activevalidators'
 # Web Pagination
 gem 'will_paginate'
+gem 'will_paginate-foundation'
 
 # Form Wizard
 gem 'wicked'
