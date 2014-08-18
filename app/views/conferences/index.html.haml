@@ -1,14 +1,13 @@
 .row
-  .medium-7.columns
+  .large-12.columns
     %ul.breadcrumbs
       %li
         = link_to t("home"), root_path
       %li.current
         = t("conference.list")
   .large-12.columns
-    .medium-5.columns
-      %h1.subheader
-        = t("Conferences")
+    %h1.subheader
+      Antiguas ediciones
     %hr
 
     .large-12.columns
@@ -16,8 +15,15 @@
         - @conferences.each do |conference|
           - unless conference.active
             .panel.radius.expand
+              -# = image_tag("http://placehold.it/230x320")
               %h4
                 = link_to conference.title, conference_path(conference)
+              %p
+                /= event.subclass.eql?("talk").count
+                /charlas
+
+                /= event.subclass.eql?("workshop").count
+                /talleres
                 / = l conference.start_date, :format => :year
 
 / %table

@@ -18,6 +18,10 @@
         = t("event.status.cancelled").humanize
     %h2
       = event.title
+      = highlight('you searched for: rails', 'rails')
+      = highlight('You searched for: rails', 'rails', highlighter: '<a href="search?q=\1">\1</a>')
+
+
 
     %h6.subheader
       = event.brief_description
@@ -104,11 +108,20 @@
             
         %li
           %i.fa.fa-globe.fa-fw.fa-lg.subheader
-          = t("event.languages.#{event.language}").humanize
+          - if event.language.present?
+            = t("event.languages.#{event.language}").humanize
+          - else
+            = t('not_available').humanize
+
         %li
           %i.fa.fa-lightbulb-o.fa-fw.fa-lg.subheader
-          Nivel:
-          = t("event.levels.#{event.level}").humanize
+          - if event.level.present?
+            Nivel:
+            = t("event.levels.#{event.level}").humanize
+          - else
+            = t('not_available').humanize
+
+
 
       %ul.no-bullet
         %li

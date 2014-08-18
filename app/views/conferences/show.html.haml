@@ -29,12 +29,10 @@
     = render "partials/calendar"
     - if @conference.active?
       .row
-        .large-12.large-centered.columns
+        .large-8.large-centered.columns
           %h1
             Faltan
             = distance_of_time_in_words_to_now(@conference.call_for_papers_start_date)
-            /= @conference.call_for_papers_start_date.mjd - DateTime.now.mjd
-            /días
     - if !@events.count.zero?
       %table
         %thead
@@ -61,14 +59,14 @@
                     %i.fa.fa-lock.fa-lg
                     = t("event.status.cancelled").humanize
                 %span.info.radius.label
-                  %i.fa.fa-wrench.fa-lg
-                  = t("event.subclasses.workshop").humanize
+                  - if event.subclass.eql?("workshop")
+                    %i.fa.fa-wrench.fa-lg
+                  - if event.subclass.eql?("talk")
+                    %i.fa.fa-bullhorn.fa-lg
+                  = t("event.subclasses.#{event.subclass}").humanize
                 %h5
                   %small
                     = event.brief_description
-              / %td
-              /   - if event.date
-              /     = l event.date
               - if @conference.voting_enabled
                 %td.text-center
                   = event.votes
