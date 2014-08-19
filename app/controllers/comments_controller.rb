@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
       #if name =~ /(.+)_id$/
       if ["parent_id", "commentable_id"].include? name
         return name.find(value)
-      elsif name == "event_id"
+      elsif name.eql?("event_id")
         return Event.friendly.find(value)
       end
     end

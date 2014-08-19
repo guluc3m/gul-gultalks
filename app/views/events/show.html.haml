@@ -18,11 +18,6 @@
         = t("event.status.cancelled").humanize
     %h2
       = event.title
-      = highlight('you searched for: rails', 'rails')
-      = highlight('You searched for: rails', 'rails', highlighter: '<a href="search?q=\1">\1</a>')
-
-
-
     %h6.subheader
       = event.brief_description
     .row
@@ -35,10 +30,7 @@
           %i.fa.fa-support.fa-fw.fa-lg.subheader
           Charla asistida por: menganito
     %hr
-/.row
-/  %p.large-5.large-offset-8.columns
-/    %i.fa.fa-support.fa-fw.fa-lg.subheader
-/    Charla asistida por: menganito
+
 .row
   .large-8.columns
     // TODO: to put this inline style in css file
@@ -48,9 +40,6 @@
   .large-4.columns
     .panel.radius
       %ul.no-bullet
-        /%li
-        /  %i.fa.fa-users.fa-fw.fa-lg.subheader
-        /  = event.speaker
         %li
           %i.fa.fa-calendar.fa-fw.fa-lg.subheader
           - if event.date
@@ -140,12 +129,11 @@
   .large-12.columns
     %span
       %i.fa.fa-download.fa-fw.fa-lg.subheader
-      %span
-        //TODO: check 'link_to_if' out
-        - if event.content_url.present?
-          = link_to event.content_url, event.content_url, target: "_blank"
-        - else
-          = t("not_available").humanize
+      //TODO: check 'link_to_if' out
+      - if event.content_url.present?
+        = link_to event.content_url, event.content_url, target: "_blank"
+      - else
+        = t("not_available").humanize
   .large-12.columns
     %span
       %i.fa.fa-code.fa-fw.fa-lg.subheader
