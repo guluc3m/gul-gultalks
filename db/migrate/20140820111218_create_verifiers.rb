@@ -13,6 +13,6 @@ class CreateVerifiers < ActiveRecord::Migration
   end
 
   def self.up
-    add_index :single_verification, [:email, :event_id, :verify_type]
+    add_index :verifications, [:email, :event_id, :verify_type]
   end
 end
