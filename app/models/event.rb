@@ -49,6 +49,7 @@ class Event < ActiveRecord::Base
 
   #before_create :lang_filter
 
+  before_create :set_active
   after_create :verify_event
 
 
@@ -79,14 +80,30 @@ class Event < ActiveRecord::Base
         t
   end
 
+  def set_active
+    # Set active if there is no speaker
+    if self.speaker.blank?
+      self.active = true
+    else
+      # Require verification from the speaker
+      self.active = false
+    end
+
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
   end
 
   def verify_event
-      unless self.email.blank?
-        token = generate_token
-        Notifier.confirmation_event(self, token).deliver
+    unless self.email.blank? || self.active
+    #token = generate_token
+
+      ver = Verifier.new
+      ver.email = self.email
+      ver.event_id = self.id
+      ver.verified = false
+      ver.verify_type = "event"
+      ver.save
+      #Notifier.confirmation_event(self, token).deliver
       end
   end
 end
