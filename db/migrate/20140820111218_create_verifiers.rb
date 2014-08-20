@@ -11,4 +11,8 @@ class CreateVerifiers < ActiveRecord::Migration
       t.timestamps
     end
   end
+
+  def self.up
+    add_index :single_verification, [:email, :event_id, :verify_type]
+  end
 end
