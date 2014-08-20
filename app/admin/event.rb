@@ -34,7 +34,7 @@ ActiveAdmin.register Event do
       f.input :speaker, label: t('event.speaker')
       f.input :email, label: t('event.contact')
       f.input :content_url, label: t('event.url')
-      f.input :comments, label: t('event.comments')
+      f.input :notes, label: t('event.comments')
       f.input :votes, label: t('votes')
       f.input :slug, label: "Slug"
     end
