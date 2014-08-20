@@ -1,6 +1,6 @@
 require 'active_support/concern'
  
-module Gultalks::Commentable
+module Commentable
   extend ActiveSupport::Concern
  
   included do
