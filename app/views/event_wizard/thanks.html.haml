@@ -76,8 +76,7 @@
             - tags = session["event_wizard"]["tags"].split(",").collect(&:strip)
             - tags.each do |t|
               .label.secondary.radius 
-                %strong
-                  = p t
+                = p t
              
           /= session["event_wizard"]["tags"]
       
@@ -115,4 +114,6 @@
 
   .row
     .large-12.columns
-      = f.submit t("event.send_event"), class: "button radius expand success"
+      // TODO: i18n
+      -# = f.submit_tag t("event.send_event"), class: "button radius expand success", data: {disable_with: "Plase wait..."}
+      = f.submit t("event.send_event"), class: "button radius expand success", data: {disable_with: "Plase wait..."}
