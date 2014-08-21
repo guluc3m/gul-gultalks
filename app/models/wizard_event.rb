@@ -20,6 +20,16 @@ class WizardEvent < Event
 
       # Add tags
       obj.tag_list.add(session["event_wizard"]["tags"], parse: true)
+
+      # Set active if depending on email present or not
+      if obj.speaker.blank?
+        # No speaker, active
+        obj.active = true
+      else
+        # Require verification from the speaker
+        obj.active = false
+      end
+
       session.delete("event_wizard") if obj.save
     else
       #session["#{underscored_name}_wizard".to_sym][underscored_name.to_sym] = accessible_attributes

@@ -69,24 +69,14 @@ class Event < ActiveRecord::Base
 
 
   private
-  #def generate_token
-  #    self.t = SecureRandom.urlsafe_base64(32, false)
-  #    generate_token if VerifyEvent.exist?(token: self.token)
-  #end
-
-  def generate_token
-        t = SecureRandom.urlsafe_base64
-        t
-  end
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
   end
 
   def verify_event
-      unless self.email.blank?
-        token = generate_token
-        Notifier.confirmation_event(self, token).deliver
-      end
+    unless self.email.blank? || self.active
+      ver = Verifier.create(email: self.email, event_id: self.id, verified: false, verify_type: "event")
+    end
   end
 end

@@ -4,34 +4,39 @@
       %li
         = link_to t("home"), root_path
       %li
-        = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
+        = link_to Conference.friendly.find(params[:conference_id]).title, conference_path(params[:conference_id])
       %li
-        = link_to event.title, :controller => 'events', :action => 'show', :id => event, :conference_id => params[:conference_id]
+        = link_to event.title, conference_event_path(params[:conference_id], params[:id])
       %li.current
         = t("to_vote")
+
+- flash.each do |name, msg|
+  .row
+    .large-12.columns
+      .alert-box
+        = msg
+
 .row
   .medium-12.columns
     %h1
-      = t("thanks.thank_you")
+      = t("to_vote")
     %p
       = t("thanks.vote_msg")
     .row
       .medium-6.columns
         %label
           %i.fa.fa-envelope.fa-fw.fa-lg
-          = t("event.form_contact")
-    .row
-      .large-6.columns
-        .row.collapse
-          .small-10.columns
-            = email_field_tag 'email', nil, class: 'radius', style: 'border-right: 0; border-bottom-right-radius: 0; border-top-right-radius: 0;'
-          .small-2.columns
-            = submit_tag 'Send', class: 'button radius success postfix'
+          = t("vote.email")
 
-/ .row
-/   .medium-9.columns
-/     %p
-/       = t("thanks.vote_msg")
+= form_tag send_vote_conference_event_path(params[:conference_id], params[:id]) do
+  .row
+    .large-6.columns
+      .row.collapse
+        .small-9.columns
+          = email_field_tag "email", nil, class: "radius", style: "border-right: 0; border-bottom-right-radius: 0; border-top-right-radius: 0;", required: true, maxlength: 64
+        .small-3.columns
+          = submit_tag t("vote.send_vote"), class: "button radius success postfix"
+
 .row
   .medium-9.columns
     %p
@@ -39,6 +44,4 @@
       = mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS]" 
 .row
   .large-6.columns
-    = link_to t("event.back_to_events"), { :controller => 'conferences', :action => 'show', :id => params[:conference_id] }, class: "button radius expand"
-  .large-6.columns
-    = link_to t("conference.propose_another_event"), { :controller => 'events', :action => 'new' }, class: "button success radius expand"
+    = link_to t("event.back_to_event"), conference_event_path(params[:conference_id], params[:id]), :class => "button radius expand"
