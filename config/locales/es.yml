@@ -48,6 +48,7 @@ es:
   event:
     are_you_speaker: "¿Vas a ser el ponente de este evento?"
     assistant: "Asistente"
+    back_to_event: "Volver al evento"
     back_to_events: "Volver a los eventos"
     brief_description: "Descripción corta"
     brief_description_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
@@ -123,14 +124,18 @@ es:
     thanks_msg: "Gracias por proponer un evento. Pronto recibirás un e-mail de confirmación."
     thank_you_vote: "Gracias por tu voto"
     vote_msg: "Para evitar el fraude en el proceso de votación, recibirás un e-mail de confirmación para validar tu voto." 
-    #vote_thanks: "¡Gracias por votar!"
+    vote_thanks: "¡Gracias por votar!"
+    vote_thanks_msg: "Recuerda comprobar tu bandeja de entrada para validar tu voto."
   time:
     to: "a"
   to_vote: "Votar"
   user: "Usuario"
   vote:
+    email: "Email"
+    invalid_email: "Email inválido"
     one: "voto"
     other: "votos"
+    send_vote: "Enviar voto"
   will_paginate:
     previous_label: "&#8592; Anterior"
     next_label: "Siguiente &#8594;"

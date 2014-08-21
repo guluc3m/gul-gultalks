@@ -9,7 +9,7 @@ Gultalks::Application.routes.draw do
       resources :comments, path: '/comments'
       member do
         get 'vote'
-        post 'vote'
+        post 'send_vote'
       end
     end
     resources :event_wizard, path: '/new'
