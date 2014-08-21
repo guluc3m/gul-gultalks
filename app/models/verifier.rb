@@ -8,7 +8,8 @@ class Verifier < ActiveRecord::Base
   validates :email,
             presence: true,
             allow_blank: false,
-            email: true
+            email: true,
+            uniqueness: {scope: [:event_id, :verify_type]}
 
   validates :event_id,
             presence: true,
