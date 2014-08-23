@@ -3,134 +3,71 @@
   %head
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    /%meta{:content => "#{@conference.title}", :property => "og:title"}/
+    -# %meta{:content => "#{@conference.title}", :property => "og:title"}/
     %meta{:content => "article", :property => "og:type"}/
     %meta{:content => "http://www.example.com/", :property => "og:url"}/
     %meta{:content => "http://example.com/image.jpg", :property => "og:image"}/
     %meta{:content => "Description Here", :property => "og:description"}/
-    /%title= content_for?(:title) ? yield(:title) : "GulTalks | #{@conference.title}"
-    / %title= @conference.title
+    -# %title= content_for?(:title) ? yield(:title) : "GulTalks | #{@conference.title} - #{@conference.start_date.year}"
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
   %body
     / Header and Nav
-    %nav.top-bar{"data-topbar" => ""}
-      %ul.title-area
-        / Title Area
-        %li.name
-          %h1
-            %a{:href => "/"}
-              GulTalks
-        %li.toggle-topbar.menu-icon
-          %a{:href => "#"}
-            %span Menu
-      %section.top-bar-section
-        / Left Nav Section
-        %ul.left
-          %li.divider
-          %li.has-dropdown
-            %a.active{:href => "#"} Main Item 1
-            %ul.dropdown
-              %li
-                %label Section Name
-              %li
-                %a{:href => "#"} Dropdown Level 1
-              %li
-                %a{:href => "#"} Dropdown Option
-              %li
-                %a{:href => "#"} Dropdown Option
-              %li.divider
-              %li
-                %label Section Name
-              %li
-                %a{:href => "#"} Dropdown Option
-              %li
-                %a{:href => "#"} Dropdown Option
-              %li
-                %a{:href => "#"} Dropdown Option
-              %li.divider
-              %li
-                %a{:href => "#"} See all →
-          %li.divider
-          %li
-            %a{:href => "#"} Main Item 2
-          %li.divider
-          %li.has-dropdown
-            %a{:href => "#"} Main Item 3
-            %ul.dropdown
-              %li
-                %a{:href => "#"} Dropdown Option
-              %li
-                %a{:href => "#"} Dropdown Option
-              %li
-                %a{:href => "#"} Dropdown Option
-              %li.divider
-              %li
-                %a{:href => "#"} See all →
-        / Right Nav Section
-        /%ul.right
-        /  %li.divider
-        /  %li.has-dropdown
-        /    %a{:href => "#"} Main Item 4
-        /    %ul.dropdown
-        /      %li
-        /        %label Section Name
-        /      %li.has-dropdown
-        /        %a{:href => "#"} Has Dropdown, Level 1
-        /        %ul.dropdown
-        /          %li
-        /            %a{:href => "#"} Dropdown Options
-        /          %li
-        /            %a{:href => "#"} Dropdown Options
-        /          %li.has-dropdown
-        /            %a{:href => "#"} Has Dropdown, Level 2
-        /            %ul.dropdown.test
-        /              %li
-        /                %a{:href => "#"} Subdropdown Option
-        /              %li
-        /                %a{:href => "#"} Subdropdown Option
-        /              %li
-        /                %a{:href => "#"} Subdropdown Option
-        /          %li
-        /            %a{:href => "#"} Subdropdown Option
-        /          %li
-        /            %a{:href => "#"} Subdropdown Option
-        /          %li
-        /            %a{:href => "#"} Subdropdown Option
-        /      %li
-        /        %a{:href => "#"} Dropdown Option
-        /      %li
-        /        %a{:href => "#"} Dropdown Option
-        /      %li.divider
-        /      %li
-        /        %label Section Name
-        /      %li
-        /        %a{:href => "#"} Dropdown Option
-        /      %li
-        /        %a{:href => "#"} Dropdown Option
-        /      %li
-        /        %a{:href => "#"} Dropdown Option
-        /      %li.divider
-        /      %li
-        /        %a{:href => "#"} See all →
-        /  %li.divider
-        /  %li
-        /    %a{:href => "#"} Main Item 5
-        /  %li.divider
-        /  %li.has-dropdown
-        /    %a{:href => "#"} Main Item 6
-        /    %ul.dropdown
-        /      %li
-        /        %a{:href => "#"} Dropdown Option
-        /      %li
-        /        %a{:href => "#"} Dropdown Option
-        /      %li
-        /        %a{:href => "#"} Dropdown Option
-        /      %li.divider
-        /      %li
-        /        %a{:href => "#"} See all →
-      / End Header and Nav
+    = render "partials/header"
+    -# %ul.title-area
+    -#   / Title Area
+    -#   %li.name
+    -#     %h1
+    -#       %a{:href => "/"}
+    -#         GulTalks
+    -# %li.toggle-topbar.menu-icon
+    -#   %a{:href => "#"}
+    -#     %span Menu
+    -# %section.top-bar-section
+    -#   / Left Nav Section
+    -#   %ul.left
+    -#     %li.divider
+    -#     %li.has-dropdown
+    -#       %a.active{:href => "#"} Main Item 1
+    -#       %ul.dropdown
+    -#         %li
+    -#           %label Section Name
+    -#         %li
+    -#           %a{:href => "#"} Dropdown Level 1
+    -#         %li
+    -#           %a{:href => "#"} Dropdown Option
+    -#         %li
+    -#           %a{:href => "#"} Dropdown Option
+    -#         %li.divider
+    -#         %li
+    -#           %label Section Name
+    -#         %li
+    -#           %a{:href => "#"} Dropdown Option
+    -#         %li
+    -#           %a{:href => "#"} Dropdown Option
+    -#         %li
+    -#           %a{:href => "#"} Dropdown Option
+    -#         %li.divider
+    -#         %li
+    -#           %a{:href => "#"} See all →
+    -#     %li.divider
+    -#     %li
+    -#       %a{:href => "#"} Main Item 2
+    -#     %li.divider
+    -#     %li.has-dropdown
+    -#       %a{:href => "#"} Main Item 3
+    -#       %ul.dropdown
+    -#         %li
+    -#           %a{:href => "#"} Dropdown Option
+    -#         %li
+    -#           %a{:href => "#"} Dropdown Option
+    -#         %li
+    -#           %a{:href => "#"} Dropdown Option
+    -#         %li.divider
+    -#         %li
+    -#           %a{:href => "#"} See all →
+    / End Header and Nav
     /.row
     /  .large-12.columns
     = yield
@@ -146,13 +83,13 @@
                 = Time.now().year
             / Fortunes
             #fortunes.large-6.columns
-              = render "partials/fortunes"
+              -# = render "partials/fortunes"
       .row
         .small-1.small-centered.columns
           %span.fa-stack.fa-fw.fa-lg
             %i.fa.fa-circle.fa-stack-2x{style: "color:#d8d8d8"}
-            %i.fa.fa-linux.fa-stack-2x.fa-inverse
-            / %ul.inline-list.right
+              %i.fa.fa-linux.fa-stack-2x.fa-inverse
+                / %ul.inline-list.right
             /  %li
             /    %a{:href => "#"} Section 1
             /  %li
