@@ -1,8 +1,12 @@
+%br
+%br
 .row
   .large-12.columns
     .row
       .large-6.columns
-        %h4.subheader Comenta
+        %h4.subheader
+          %i.fa.fa-comments-o
+          Comenta
         %hr
     = form_for([@commentable, @comment], url: {controller: "comments", action: "create", event_id: params[:id] || params[:event_id]}, data: {abide: ""}) do |f|
 
