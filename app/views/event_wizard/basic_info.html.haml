@@ -22,6 +22,24 @@
       = t("event.complete_basic_form")
 
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
+
+  .row
+    .large-12.columns
+      %label
+        %i.fa.fa-thumb-tack.fa-lg
+        = t("event.subclass")
+
+      .row.show-for-touch
+        .large-12.columns
+          = select("event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]})
+
+      .row.hide-for-touch
+        .large-12.columns
+          - Event.subclasses.keys.each do |s|
+            = radio_button("event", "subclass", "#{s}")
+            %label
+              = t("event.subclasses.#{s}").humanize
+
   .row
     .large-12.columns
       %label{for: "title"}
