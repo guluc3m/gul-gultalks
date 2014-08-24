@@ -61,5 +61,9 @@ module Gultalks
     config.assets.version = '1.0'
 
     config.middleware.use HttpAcceptLanguage::Middleware
+
+    # Default mailer config
+    # TODO: put it in secrets file?
+    config.action_mailer.default_url_options = { host: 'gul.es' }
   end
 end
