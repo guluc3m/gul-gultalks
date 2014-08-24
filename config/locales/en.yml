@@ -103,6 +103,8 @@ en:
     title_requirements: "Can only contain alphanumeric characters and hyphens"
     url: "Content URL"
     url_requirements: "Not a valid URL"
+    validation_email: "Email address for validation"
+    validation_email_explanation: "You need to validate the event through a link that will be sent to this email address."
   Event: "Event"
   Events: "Events"
   home: "Home"
