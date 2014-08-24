@@ -105,6 +105,8 @@ es:
     title_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     url: "URL del contenido"
     url_requirements: "No es una URL válida"
+    validation_email: "Correo electrónico para validación"
+    validation_email_explanation: "Es necesario que valides el evento mediante un enlace que se enviará a esta dirección de correo."
   Event: "Evento"
   Events: "Eventos"
   home: "Inicio"
