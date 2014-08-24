@@ -94,3 +94,7 @@ gem "recaptcha", :require => "recaptcha/rails"
 
 # User authentication
 gem 'cancancan', '~> 1.9'
+
+# LaTeX for Rails
+gem 'rails-latex'
+

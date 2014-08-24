@@ -1,0 +1,57 @@
+\documentclass[12pt,a4paper,oneside,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[pdftex]{graphicx}
+\usepackage{makeidx}
+\usepackage{booktabs}
+\usepackage{eso-pic}
+\usepackage{geometry}
+
+\pagestyle{empty}
+
+%\renewcommand\today{21 de septiembre de 2006}
+\newcommand\firmante{Samuel Rodriguez Sevilla}
+\newcommand\cargo{presidente}
+\newcommand\ponente{<%= @event.speaker.humanize %>}
+\newcommand\ponencia{<%= @event.title.humanize %>}
+\newcommand\jornadas{XII}
+\newcommand\mes{marzo}
+%\newcommand\anio{2009}
+\newcommand\tipo{asistente}
+\newcommand\accion{}
+
+
+\begin{document}
+	%\AddToShipoutPicture{\put(\LenToUnit{.15\paperwidth},\LenToUnit{.80\paperheight}){\includegraphics[width=3cm]{gulGrande.pdf}}}
+        %\includegraphics[height=2.5cm]{gulGrande.pdf}\\
+	% \begin{figure}
+	%   \centering
+	%   \includegraphics[height=2.5cm]{gulGrande.pdf}
+	% \end{figure}
+        % \rule[5mm]{15cm}{.3mm}
+
+	\bigskip
+	\centerline{\firmante, en calidad de \cargo\ del}
+	\centerline{\textbf{Grupo de Usuarios de Linux}}
+	\centerline{\textbf{de la Universidad Carlos III de Madrid}.}
+
+	\vspace{2cm}
+	\centerline{\textbf{\Large CERTIFICO}}
+	\vspace{1cm}
+
+	\paragraph{}Que \ponente\ ha \tipo\ las “\jornadas\ Jornadas Técnicas del GUL”, que tuvieron lugar durante el mes de \mes\ de \anio, \accion\ la ponencia:
+
+	\vspace{7mm}
+	\centerline{\textit{\large \ponencia}}
+	\vspace{3mm}
+
+	\paragraph{}Y para que conste a los efectos oportunos, sello y firmo el presente.
+	
+	\bigskip
+	\centerline{En <%= @event.location %>, a __ de _________ \the\year.}
+	\vspace{3cm}
+
+	\centerline{Fdo: \firmante}
+	\centerline{(\cargo)}
+
+\end{document}
