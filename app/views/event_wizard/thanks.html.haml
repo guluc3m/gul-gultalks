@@ -119,6 +119,17 @@
 
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
   .row
+    .large-6.columns
+      %label{for: "email"}
+        %i.fa.fa-envelope.fa-fw.fa-lg
+        = t("event.contact")
+        %small
+          = t("event.required")
+      = f.text_field :validation_email, label: false, maxlength: 64, pattern: "extended_email", required: true, class: "radius", value: session["event_wizard"]["event"]["email"]
+      %small.error
+        = t("event.email_requirements")
+
+  .row
     .large-12.columns
       = render 'partials/recaptcha'
 
