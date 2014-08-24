@@ -1,37 +1,60 @@
 /.show-for-touch{"data-magellan-expedition" => "fixed"}
+- days = (conference.end_date.mjd - conference.start_date.mjd).to_i
+
+.row
+  .small-4.columns
+    = link_to "Descargar calendario (iCal)", conference_path(params[:id], format: :ics)
+
 .row
   .large-12.columns
     %dl.sub-nav
-      - (0...5).each do |i|
+      - (0..days).each do |i|
         .small-2.columns.left.text-center
           %dd{"data-magellan-arrival" => "monday"}
             %a{:href => "#{t('date.abbr_day_names')[i]}"}
-              = t('date.abbr_day_names')[i]
+              = t('date.abbr_day_names')[i].humanize
               #{conference.start_date.day + i}
 
 .row
   .large-12.columns
-    - (0..5).each do
-      - (0...3).each do
-        .row
-          .small-3.columns
-            %dd 19:00
-            %dd.subheader to 20:00
-          .small-9.columns
-            .panel.radius
-              %a
-                Title
-
-.row.hidden-for-touch
+    -# - (0..days).each do
+    - @events.each do |event|
+      - if event.accepted?
+        - (0...3).each do
+          .row
+            .small-3.columns
+              - if event.start_time.nil? || event.end_time.nil?
+                %dd.subheader
+                  = t('not_available').humanize
+              - else
+                %dd
+                  = event.start_time.to_s(:time)
+                %dd.subheader
+                  to 
+                  = event.end_time.to_s(:time)
+            .small-9.columns
+              .panel.radius
+                .row
+                  .medium-5.columns
+                    = link_to event.title, conference_event_path(@conference, event)
+                .row
+                  .medium-5.columns
+                    %small.subheader
+                      Aula
+                      - if event.room.present?
+                        = event.room
+                      - else
+                        = t('not_available')
+.row.hidden-for-small
   .large-12.columns
     %table
       %thead
         %tr
           %th.text-center
             %i.fa.fa-clock-o.fa-lg
-          - (0...5).each do |i|
+          - (0..days).each do |i|
             %th.text-center{:width => "260"}
-              = t("date.day_names")[i] # TOFIX: put Monday as first day or the week
+              = t("date.day_names")[i].humanize # TOFIX: put Monday as first day or the week
               = conference.start_date.day + i
 
       %tbody

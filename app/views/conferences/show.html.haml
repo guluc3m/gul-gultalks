@@ -5,7 +5,7 @@
 /         = link_to t("home"), root_path
 /       %li.current
 /         = @conference.title
-.row.hide-for-small-only
+.row
   .large-12.columns
     %h1
       = @conference.title
@@ -26,17 +26,13 @@
 .row
   .large-12.columns
     //if conference.start_date.today?
-    = link_to "ICS", conference_path(params[:id], format: :ics)
-    
     = render "partials/calendar"
     - if @conference.active?
       .row
-        .large-12.large-centered.columns
+        .large-8.large-centered.columns
           %h1
             Faltan
             = distance_of_time_in_words_to_now(@conference.call_for_papers_start_date)
-            /= @conference.call_for_papers_start_date.mjd - DateTime.now.mjd
-            /días
     - if !@events.count.zero?
       %table
         %thead
@@ -62,21 +58,21 @@
                   %span.alert.radius.label
                     %i.fa.fa-lock.fa-lg
                     = t("event.status.cancelled").humanize
-                %span.warning.radius.label
-                  %i.fa.fa-wrench.fa-lg
-                  = t("event.subclasses.workshop").humanize
+                %span.info.radius.label
+                  - if event.subclass.eql?("workshop")
+                    %i.fa.fa-wrench.fa-lg
+                  - if event.subclass.eql?("talk")
+                    %i.fa.fa-bullhorn.fa-lg
+                  = t("event.subclasses.#{event.subclass}").humanize
                 %h5
                   %small
                     = event.brief_description
-              / %td
-              /   - if event.date
-              /     = l event.date
               - if @conference.voting_enabled
                 %td.text-center
                   = event.votes
         .row
           .large-6.columns-centered.columns
-            = will_paginate @events, :container => false, class: "pagination-centered"
+            = will_paginate @events, renderer: FoundationPagination::Rails, container: false, class: "pagination-centered"
     - elsif #@conference.call_for_papers_start_date.today?
       .row
         .large-8.large-centered.columns
@@ -91,8 +87,6 @@
               = t("conference.call_for_events_open")
             %p
               = t("conference.first_to_propose")
-
-        
 
 .row
   .large-6.columns

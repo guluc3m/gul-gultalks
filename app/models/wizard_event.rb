@@ -20,9 +20,12 @@ class WizardEvent < Event
 
       # Add tags
       obj.tag_list.add(session["event_wizard"]["tags"], parse: true)
-      session.delete("event_wizard") if obj.save
+
+      # Validation email
+      validation_email = session["event_wizard"]["validation_email"]
+
+      session.delete("event_wizard") if obj.save_and_verify(validation_email)
     else
-      #session["#{underscored_name}_wizard".to_sym][underscored_name.to_sym] = accessible_attributes
       session["event_wizard"]["event"] = accessible_attributes 
     end
   end

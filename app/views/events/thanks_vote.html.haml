@@ -1,21 +1,22 @@
-.row
+.row.show-for-landscape
   .medium-12.columns
     %ul.breadcrumbs
       %li
-        = link_to t("home"), "/"
+        = link_to t("home"), root_path
       %li
-        = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
+        = link_to Conference.friendly.find(params[:conference_id]).title, conference_path(params[:conference_id])
+      %li
+        = link_to event.title, conference_event_path(params[:conference_id], params[:id])
       %li.current
-        = t("event.new_event")
+        = t("to_vote")
+
 .row
   .medium-12.columns
     %h1
       = t("thanks.vote_thanks")
     %p 
-      = t("thanks.vote_msg")
-    %p
-      = t("thanks.thanks_msg")
-      = mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS]"
+      = t("thanks.vote_thanks_msg")
+
 .row
   .large-6.columns
-    = link_to t("event.back_to_events"), "/", :class => "button radius expand"
+    = link_to t("event.back_to_event"), conference_event_path(params[:conference_id], params[:id]), :class => "button radius expand"

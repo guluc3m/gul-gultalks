@@ -79,6 +79,7 @@ gem 'devise-i18n'
 gem 'activevalidators'
 # Web Pagination
 gem 'will_paginate'
+gem 'will_paginate-foundation'
 
 # Form Wizard
 gem 'wicked'
@@ -98,3 +99,5 @@ gem 'cancancan', '~> 1.9'
 # LaTeX for Rails
 gem 'rails-latex'
 
+# Public comments
+gem 'ancestry'

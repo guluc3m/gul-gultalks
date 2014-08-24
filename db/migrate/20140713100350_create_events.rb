@@ -10,14 +10,14 @@ class CreateEvents < ActiveRecord::Migration
       t.string :email, limit: 64
       t.string :content_url, limit: 128
       t.string :language, limit: 2
-      t.text :comments, limit: 300
+      t.text :notes, limit: 300
       t.integer :votes, default: 0, null: false
       t.string :location, limit: 64
       t.string :room
       t.date :date
       t.time :start_time
       t.time :end_time
-      t.boolean :active, default: true
+      t.boolean :active, default: false
       t.boolean :cancelled, default: false
       t.boolean :accepted, default: false
       t.string :assisted_by

@@ -58,13 +58,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 25,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
 
 Event.create(
@@ -81,13 +82,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 20,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -104,13 +106,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 21,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => false)
       
 Event.create(
@@ -127,13 +130,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 22,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -150,13 +154,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 20,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => false)
 
 Event.create(
@@ -173,13 +178,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 19,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -196,13 +202,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 23,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -219,12 +226,13 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 20,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :accepted => true,
+      :language => 'es',
       :conference_id => 1)
 
 Event.create(
@@ -241,13 +249,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 19,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => false)
 
 Event.create(
@@ -264,13 +273,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 10,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -287,13 +297,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 11,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -310,13 +321,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 12,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => false,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -333,13 +345,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 11,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -356,13 +369,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 9,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => false,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -379,13 +393,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 10,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 1,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -402,13 +417,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 25,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -425,13 +441,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 30,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -448,13 +465,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 26,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -471,13 +489,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 20,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -494,13 +513,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 21,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => false)
       
 Event.create(
@@ -517,13 +537,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 31,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => false)
 
 Event.create(
@@ -540,13 +561,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 35,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -563,13 +585,14 @@ Event.create(
       :assisted_by => 'Zoe',
       :email => '',
       :votes => 34,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
       
 Event.create(
@@ -586,13 +609,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 31,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 2,
       :accepted => false,
+      :language => 'es',
       :cancelled => true)
 
 Event.create(
@@ -609,13 +633,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 27,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 2,
       :accepted => false,
+      :language => 'es',
       :cancelled => false)
 
 Event.create(
@@ -632,13 +657,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 29,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)
 
 Event.create(
@@ -655,13 +681,14 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 30,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 2,
       :accepted => false,
+      :language => 'es',
       :cancelled => false)
 
 Event.create(
@@ -678,11 +705,12 @@ Event.create(
       :assisted_by => '',
       :email => '',
       :votes => 34,
-      :comments => '',
+      :notes => '',
       :level => 2,
       :tags => '',
       :content_url => '',
       :active => true,
       :conference_id => 2,
       :accepted => true,
+      :language => 'es',
       :cancelled => true)

@@ -141,10 +141,9 @@
           %hr/
           .row
             .large-6.columns
-              %h4.subheader
-                %small
-                  © Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid. 2007 -
-                  = Time.now().year
+              %small.subheader
+                © Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid. 2007 -
+                = Time.now().year
             / Fortunes
             #fortunes.large-6.columns
               = render "partials/fortunes"

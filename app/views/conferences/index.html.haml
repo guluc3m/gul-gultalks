@@ -1,38 +1,23 @@
 .row
-  .medium-7.columns
+  .large-12.columns
     %ul.breadcrumbs
       %li
         = link_to t("home"), root_path
       %li.current
         = t("conference.list")
-.row
   .large-12.columns
-    .medium-5.columns
-      %h1
-        = t("Conferences")
-.row
-  .large-12.columns
-    %ul.large-block-grid-4
-      - @conferences.each do |conference|
-        - unless conference.active
-          %li.panel.radius
-            %h3
-              = link_to conference.title, conference_path(conference)
-              / = l conference.start_date, :format => :year
+    %h1.subheader
+      Antiguas ediciones
+    %hr
 
-/ %table
-/   %thead
-/     %tr
-/       %th{:width => "960"}
-/         %i.fa.fa-calendar
-/         = t("Conference")
-/   %tbody
-/     - @conferences.each do |conference|
-/       %tr
-/         %td
-/           = l conference.start_date, :format => :year
-/           %span
-
-/           = link_to conference.title, :controller => 'conferences', :action => 'show', :id => conference
-/           %td
-/             = l conference.start_date, :format => :month_year
+    .large-12.columns
+      .large-block-grid-4
+        - @conferences.each do |conference|
+          - unless conference.active
+            .panel.radius.expand
+              -# = image_tag("http://placehold.it/230x320")
+              %h4
+                = link_to conference.title, conference_path(conference)
+              %p
+                = conference.events.where(accepted: true, subclass: 0).count
+                = conference.events.where(accepted: true, subclass: 1).count

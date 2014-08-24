@@ -10,80 +10,128 @@
 
 .row
   .large-12.columns
-    %label{:for => "title"}
-      %i.fa.fa-bookmark.fa-fw.fa-lg
-      = t("event.title")
-    = session["event_wizard"]["event"]["title"]
-
+    %h2.subheader Placeholder
+    %hr
 .row
   .large-12.columns
-    %label{:for => "brief_description"}
-      %i.fa.fa-paperclip.fa-fw.fa-lg
-      = t("event.brief_description")
-    = session["event_wizard"]["event"]["brief_description"]
+    // TODO: translate
+    - if session["event_wizard"]["errors"].nil? || session["event_wizard"]["errors"].empty? 
+      %p.subheader
+        Revisa los datos que se muestran a continuación. Si desas hacer algún cambio, puedes volver y modificalo.
+    - else
+      .alert-box.alert.radius
+        .row
+          .small-1.columns
+            %i.fa.fa-warning.fa-3x
+          .small-11.columns
+            %ul.no-bullet
+              - session["event_wizard"]["errors"].each do |err|
+                %li
+                  - if err.eql? "title"
+                    Revisa el título
+                  = err
 
-.row
-  .large-12.columns
-    %label{:for => "description"}
-      %i.fa.fa-bars.fa-fw.fa-lg
-      = t("event.description")
-    = session["event_wizard"]["event"]["description"]
-
-.row
-  .large-6.columns
-    %label{:for => "speaker"}
-      %i.fa.fa-users.fa-fw.fa-lg
-      = t("event.speakers")
-    = session["event_wizard"]["event"]["speaker"]
-
-  .large-6.columns
-    %label{:for => "email"}
-      %i.fa.fa-envelope.fa-fw.fa-lg
-      = t("event.contact")
-    = session["event_wizard"]["event"]["email"]
-
-.row
-  .large-12.columns
-    %label
-      %i.fa.fa-link.fa-fw.fa-lg
-      = t("event.url")
-    = session["event_wizard"]["event"]["content_url"]
-
-.row
-  .large-12.columns
-    %label{:for => "tags"}
-      %i.fa.fa-tags.fa-fw.fa-lg
-      = t("event.tags")
-    = session["event_wizard"]["tags"]
-
-.row
-  .large-6.columns
-    %label
-      %i.fa.fa-language.fa-fw.fa-lg
-      = t("event.language")
-    = session["event_wizard"]["event"]["language"]
-
-  .large-6.columns
-    %label
-      %i.fa.fa-clock-o.fa-fw.fa-lg
-      = t("event.duration")
-    = session["event_wizard"]["event"]["duration"]
-
-.row
-  .large-12.columns
-    %label{:for => "comments"}
-      %i.fa.fa-comments.fa-fw.fa-lg
-      = t("event.comments")
-    = session["event_wizard"]["event"]["comments"]
-
-- unless session["event_wizard"]["errors"].nil? || session["event_wizard"]["errors"].empty? 
+- unless session["event_wizard"]["event"]["speaker"].nil?
   .row
     .large-12.columns
-    - session["event_wizard"]["errors"].each do |err|
-      .alert-box
-        = err
+      = field_set_tag 'Your details', class: "subheader" do
+        .row
+          .large-6.columns
+            %label{:for => "speaker"}
+              %i.fa.fa-users.fa-fw.fa-lg
+              = t("event.speakers")
+            %p
+              = session["event_wizard"]["event"]["speaker"]
+        
+          .large-6.columns
+            %label{:for => "email"}
+              %i.fa.fa-envelope.fa-fw.fa-lg
+              = t("event.contact")
+            = session["event_wizard"]["event"]["email"]
+
+.row
+  .large-12.columns
+    = field_set_tag 'Your details', class: "subheader" do
+      .row
+        .large-12.columns
+          %label{:for => "title"}
+            %i.fa.fa-bookmark.fa-fw.fa-lg
+            = t("event.title")
+          %p
+            = session["event_wizard"]["event"]["title"]
+      
+      .row
+        .large-12.columns
+          %label{:for => "brief_description"}
+            %i.fa.fa-paperclip.fa-fw.fa-lg
+            = t("event.brief_description")
+          %p
+            = session["event_wizard"]["event"]["brief_description"]
+      
+      .row
+        .large-12.columns
+          %label{:for => "description"}
+            %i.fa.fa-bars.fa-fw.fa-lg
+            = t("event.description")
+          %p
+            = session["event_wizard"]["event"]["description"]
+    
+      - unless session["event_wizard"]["event"]["speaker"].nil?
+        .row
+          .large-12.columns
+            %label
+              %i.fa.fa-link.fa-fw.fa-lg
+              = t("event.url")
+            = session["event_wizard"]["event"]["content_url"]
+        
+        .row
+          .large-12.columns
+            %label{:for => "tags"}
+              %i.fa.fa-tags.fa-fw.fa-lg
+              = t("event.tags")
+            %p
+              - tags = session["event_wizard"]["tags"].split(",").collect(&:strip)
+              - tags.each do |t|
+                .label.secondary.radius 
+                  %strong
+                    = t
+               
+        .row
+          .large-4.columns
+            %label
+              %i.fa.fa-globe.fa-fw.fa-lg
+              = t("event.language")
+            = t("event.languages.#{session["event_wizard"]["event"]["language"]}").humanize
+
+          .large-4.columns
+            %label
+              %i.fa.fa-clock-o.fa-fw.fa-lg
+              = t("event.duration")
+            = session["event_wizard"]["event"]["duration"]
+
+        .row
+          .large-12.columns
+            %label{:for => "comments"}
+              %i.fa.fa-comments.fa-fw.fa-lg
+              = t("event.comments")
+            = session["event_wizard"]["event"]["notes"]
+
 
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
+  .row
+    .large-6.columns
+      %label{for: "email"}
+        %i.fa.fa-envelope.fa-fw.fa-lg
+        = t("event.validation_email")
+        %small
+          = t("event.required")
+      = f.text_field :validation_email, label: false, maxlength: 64, pattern: "extended_email", required: true, class: "radius", value: session["event_wizard"]["event"]["email"]
+      %small.error
+        = t("event.email_requirements")
+
+    .large-6.columns
+      %label
+        = t("event.validation_email_explanation")
 
   .row
     .large-12.columns
@@ -91,4 +139,6 @@
 
   .row
     .large-12.columns
-      = f.submit t("event.send_event"), class: "button radius expand success"
+      // TODO: i18n
+      -# = f.submit_tag t("event.send_event"), class: "button radius expand success", data: {disable_with: "Plase wait..."}
+      = f.submit t("event.send_event"), class: "button radius expand success", data: {disable_with: "Plase wait..."}

@@ -31,10 +31,16 @@ class EventWizardController < ApplicationController
     @event = WizardEvent.new(session["event_wizard"]["event"])
     if params[:event]
       @event.attributes = params["event"]
+      # Event taggings
       if params[:event][:tags]
         session["event_wizard"]["tags"] = params[:event][:tags]
       end
+      # Email used for validation
+      if params[:event][:validation_email]
+        session["event_wizard"]["validation_email"] = params[:event][:validation_email]
+      end
     end
+
     @event.conference_id = Conference.friendly.find(params[:conference_id]).id
     @event.location = Conference.friendly.find(params[:conference_id]).location
 

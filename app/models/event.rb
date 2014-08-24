@@ -1,10 +1,11 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
   acts_as_taggable
- attr_accessible :accepted, :active, :assisted_by, :brief_description, :comments, :conference_id, :content_url, :date, :description, :email, :end_time, :id, :language, :level, :location, :room, :slug, :start_time, :speaker, :subclass, :tags, :title, :votes, :cancelled
-  attr_accessor :tags
+ attr_accessible :accepted, :active, :assisted_by, :brief_description, :conference_id, :content_url, :date, :description, :email, :end_time, :id, :language, :level, :location, :notes, :room, :slug, :start_time, :speaker, :subclass, :tags, :title, :validation_email, :votes, :cancelled
+  attr_accessor :tags, :validation_email
   belongs_to :conference
   friendly_id :title, use: [:slugged, :scoped], scope: :conference
+  has_many :comments, as: :commentable, dependent: :destroy
 
   TOKEN_LENGTH=32
 
@@ -48,7 +49,7 @@ class Event < ActiveRecord::Base
 
   #before_create :lang_filter
 
-  after_create :verify_event
+  #after_create :verify_event
 
 
   #def to_ics
@@ -67,25 +68,22 @@ class Event < ActiveRecord::Base
   #end
 
 
-  private
-  #def generate_token
-  #    self.t = SecureRandom.urlsafe_base64(32, false)
-  #    generate_token if VerifyEvent.exist?(token: self.token)
-  #end
-
-  def generate_token
-        t = SecureRandom.urlsafe_base64
-        t
+  #
+  # Should only be called by the WizardEvent model when saving an Event
+  #
+  def save_and_verify(email)
+    if self.save
+      # Generate Verifier
+      ver = Verifier.create(email: email, event_id: self.id, verified: false, verify_type: "event")
+      return true
+    else
+      return false
+    end 
   end
+
+  private
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
-  end
-
-  def verify_event
-      unless self.email.blank?
-        token = generate_token
-        Notifier.confirmation_event(self, token).deliver
-      end
   end
 end

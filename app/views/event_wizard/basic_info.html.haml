@@ -1,18 +1,45 @@
+
+
 .row
   .medium-12.columns
     %ul.breadcrumbs
-      %li
-        = link_to t("home"), root_path
+      -# %li
+      -#   = link_to t("home"), root_path
       %li
         = link_to Conference.friendly.find(params[:conference_id]).title, conference_path(params[:conference_id])
       %li.current
         = t("event.new_event")
+
+
 .row
-  .medium-7.columns
+  .large-12.columns
+    %h2.subheader Placeholder
+    %hr
+
+.row
+  .large-12.columns
     %h5.subheader
       = t("event.complete_basic_form")
 
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
+
+  .row
+    .large-12.columns
+      %label
+        %i.fa.fa-thumb-tack.fa-lg
+        = t("event.subclass")
+
+      .row.show-for-touch
+        .large-12.columns
+          = select("event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]})
+
+      .row.hide-for-touch
+        .large-12.columns
+          - Event.subclasses.keys.each do |s|
+            = radio_button("event", "subclass", "#{s}")
+            %label
+              = t("event.subclasses.#{s}").humanize
+
   .row
     .large-12.columns
       %label{for: "title"}
@@ -24,7 +51,7 @@
       = f.text_field :title, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius", autofocus: true
       %small.error
         = t("event.title_requirements")
-      #char-counter.right
+      .char-counter.right
         128
   .row
     .large-12.columns
@@ -37,7 +64,7 @@
       = f.text_field :brief_description, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius lettrify"
       %small.error
         = t("event.brief_description_requirements")
-      #char-counter.right
+      .char-counter.right
         128
 
   .row

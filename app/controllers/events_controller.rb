@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  include Gultalks::Commentable
   helper_method :event, :events
   respond_to :html, :json, :xml
 
@@ -42,18 +43,24 @@ class EventsController < ApplicationController
     if Conference.friendly.find(params[:conference_id]).voting_enabled
       # Generate random key, pass the output as arg to Notifier
       respond_with(event) do |format|
-        format.html { render action: "thanks" }
+        format.html { render action: "vote" }
       end
     else
-      redirect_to :controller => "events", :action => "show", :id => params[:id]
+      redirect_to conference_event_path(params[:conference_id], params[:id])
     end
   end
 
-  # def vote_old
-  #   talk.update_attributes(vote: talk.vote + 1)
-  #   respond_with thanks_vote
-  #   Notifier.confirmation_vote(talk)
-  # end
+  def send_vote
+    # Used to generate the Verifier and send the email to validate the vote
+    ver = Verifier.new(email: params[:email], event_id: Event.friendly.find(params[:id]).id, verified: false, verify_type: "vote")
+
+    if ver.save
+      render "thanks_vote"
+    else
+      flash[:error] = t("vote.invalid_email")
+      redirect_to action: "vote"
+    end
+  end
 
   def event
     @event = if params[:action] =~ /new/

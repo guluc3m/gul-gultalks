@@ -1,13 +1,15 @@
 Gultalks::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  match 'verify', to: 'verifier#verify', via: :get, path: '/verify'
   resources :conferences, path: '/conferences', only: [:index]
   resources :conferences, path: '', except: [:index] do
     resources :events, path: '/events', only: [:index]
     resources :events, path: '', except: [:index] do
+      resources :comments, path: '/comments'
       member do
         get 'vote'
-        post 'vote'
+        post 'send_vote'
       end
     end
     resources :event_wizard, path: '/new'

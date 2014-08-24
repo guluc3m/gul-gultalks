@@ -7,29 +7,17 @@
         = link_to Conference.friendly.find(params[:conference_id]).title, conference_path(params[:conference_id])
       %li.current
         = t("event.new_event")
+
 .row
-  .medium-7.columns
+  .large-12.columns
+    %h2.subheader Placeholder
+    %hr
+.row
+  .large-12.columns
     %h5.subheader
       = t("event.complete_detailed_form")
 
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
-
-  .row
-    .large-12.columns
-      %label
-        %i.fa.fa-thumb-tack.fa-lg
-        = t("event.subclass")
-
-      .row.show-for-touch
-        .large-12.columns
-          = select("event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]})
-
-      .row.hide-for-touch
-        .large-12.columns
-          - Event.subclasses.keys.each do |s|
-            = radio_button("event", "subclass", "#{s}")
-            %label
-              = t("event.subclasses.#{s}").humanize
 
   .row
     .large-6.columns
@@ -72,7 +60,7 @@
   .row
     .large-3.columns
       %label
-        %i.fa.fa-language.fa-fw.fa-lg
+        %i.fa.fa-globe.fa-fw.fa-lg
         = t("event.language")
       = select("event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]})
 
@@ -105,7 +93,7 @@
       %label{for: "comments"}
         %i.fa.fa-comments.fa-fw.fa-lg
         = t("event.comments")
-      = f.text_area :comments, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius", size: "10x6"
+      = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius", size: "10x6"
       %small.error
         = t("event.comments_requirements")
   .row
