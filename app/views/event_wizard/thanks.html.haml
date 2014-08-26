@@ -142,3 +142,9 @@
       // TODO: i18n
       -# = f.submit_tag t("event.send_event"), class: "button radius expand success", data: {disable_with: "Plase wait..."}
       = f.submit t("event.send_event"), class: "button radius expand success", data: {disable_with: "Plase wait..."}
+
+/= session["event_wizard"].inspect
+/= session["event_wizard"]["speakers_attributes"]
+- session["event_wizard"]["speakers_attributes"].keys.each do |k|
+  .row
+    = session["event_wizard"]["speakers_attributes"][k]["name"]

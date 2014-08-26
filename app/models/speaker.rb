@@ -1,5 +1,5 @@
 class Speaker < ActiveRecord::Base
-  #attr_accessible :confirmed, :email, :event_id, :name, :surname
+  attr_accessible :confirmed, :email, :event_id, :name, :surname
   belongs_to :event
 
 

@@ -1,0 +1,33 @@
+.nested-fields
+  .row
+    .large-4.columns
+      %label{for: "name"}
+        %i.fa.fa-users.fa-fw.fa-lg
+        = t("[Name]")
+        %small
+          = t("event.required")
+      = f.text_field :name, label: false, maxlength: 28, pattern: "extended_alpha", required: true, class: "radius"
+      %small.error
+        = t("event.speaker_requirements")
+
+    .large-4.columns
+      %label{for: "surname"}
+        %i.fa.fa-users.fa-fw.fa-lg
+        = t("[Surname]")
+        %small
+          = t("event.required")
+      = f.text_field :surname, label: false, maxlength: 36, pattern: "extended_alpha", required: true, class: "radius"
+      %small.error
+        = t("event.speaker_requirements")
+
+    .large-4.columns
+      %label{for: "email"}
+        %i.fa.fa-envelope.fa-fw.fa-lg
+        = t("[Email]")
+        %small
+          = t("event.required")
+      = f.text_field :email, label: false, maxlength: 64, pattern: "extended_email", required: true, class: "radius"
+      %small.error
+        = t("event.email_requirements")
+
+  = link_to_remove_association "remove speaker", f

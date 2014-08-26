@@ -39,6 +39,10 @@ class EventWizardController < ApplicationController
       if params[:event][:validation_email]
         session["event_wizard"]["validation_email"] = params[:event][:validation_email]
       end
+      # Speakers for the event
+      if params[:event][:speakers_attributes]
+        session["event_wizard"]["speakers_attributes"] = params[:event][:speakers_attributes]
+      end
     end
 
     @event.conference_id = Conference.friendly.find(params[:conference_id]).id
