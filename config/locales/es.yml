@@ -87,8 +87,6 @@ es:
     required: "Requerido"
     room: "Clase"
     send_event: "Enviar evento"
-    speakers: "Ponente[s]"
-    speaker_requirements: "Sólo puede contener caracteres literales y guiones"
     start_time: "Hora de inicio"
     status:
       accepted: "Aceptado"
@@ -124,7 +122,9 @@ es:
     add: "Añadir ponente"
     confirmed: "Confirmado"
     email: "Email"
+    email_requirements: "Not a valid email address"
     name: "Nombre"
+    name_requirements: "Sólo puede contener caracteres literales y guiones"
     remove: "Eliminar ponente"
     surname: "Apellido(s)"
   Speaker: "Ponente"

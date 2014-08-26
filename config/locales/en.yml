@@ -85,8 +85,6 @@ en:
     required: "Required"
     room: "Room"
     send_event: "Send event"
-    speakers: "Speaker[s]"
-    speaker_requirements: "Can only contain literal characters and hyphens"
     start_time: "Start time"
     status:
       accepted: "Accepted"
@@ -122,7 +120,9 @@ en:
     add: "Add speaker"
     confirmed: "Confirmed"
     email: "Email"
+    email_requirements: "Not a valid email address"
     name: "Name"
+    name_requirements: "Can only contain literal characters and hyphens"
     remove_speaker: "Remove speaker"
     surname: "Surname(s)"
   Speaker: "Speaker"
