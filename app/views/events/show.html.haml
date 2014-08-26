@@ -125,12 +125,11 @@
             .label.info.radius
               = tag.humanize
 
-      - unless @event.speaker.blank?
-        .success.radius.label
-          %p
-            = event.votes
-            %strong
-              = t('vote', count: event.votes ).upcase
+      .success.radius.label
+        %p
+          = event.votes
+          %strong
+            = t('vote', count: event.votes ).upcase
 
 .row
   .large-12.columns
@@ -155,7 +154,7 @@
   .large-4.columns.right
     - if Conference.find(event.conference_id).voting_enabled 
       - unless @event.cancelled
-        - if @event.speaker.blank?
+        - if !@event.speaker?
           = link_to "#", class: "button success radius expand" do
             %i.fa.fa-child.fa-lg
             Quiero impartir la charla
@@ -168,7 +167,7 @@
 
 = nested_comments @comments
 
-- if @event.active?
+- if Conference.find(@event.conference_id).active?
   = render "comments/form"
 
 .row

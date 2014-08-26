@@ -86,7 +86,7 @@
           .panel.radius
             %ul.no-bullet
               - @events.map do |event|
-                - unless event.active?
+                - if event.shown? && !event.speaker?
                   %li
                     = link_to event.title, conference_event_path(@conference, event)
                     %span.info.radius.label

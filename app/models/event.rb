@@ -77,6 +77,15 @@ class Event < ActiveRecord::Base
     return Speaker.where(event_id: self, confirmed: true)
   end
 
+  def speaker?
+    sp = Speaker.where(event_id: self, confirmed: true).first
+    if sp.nil?
+      return false
+    else
+      return true
+    end
+  end
+
   private
 
   def should_generate_new_friendly_id?
