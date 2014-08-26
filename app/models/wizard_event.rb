@@ -25,7 +25,9 @@ class WizardEvent < Event
       validation_email = session["event_wizard"]["validation_email"]
 
       # Speakers
-      obj.speakers_attributes = session["event_wizard"]["speakers_attributes"]
+      unless session["event_wizard"]["speakers_attributes"].nil?
+        obj.speakers_attributes = session["event_wizard"]["speakers_attributes"]
+      end
 
       session.delete("event_wizard") if obj.save_and_verify(validation_email)
     else

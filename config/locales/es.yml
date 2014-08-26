@@ -120,6 +120,15 @@ es:
     help: "Ayuda"
     image: "Obtener una pista de imagen"
     incorrect: "Incorrecto. Por favor, prueba otra vez."
+  speaker:
+    add: "Añadir ponente"
+    confirmed: "Confirmado"
+    email: "Email"
+    name: "Nombre"
+    remove: "Eliminar ponente"
+    surname: "Apellido(s)"
+  Speaker: "Ponente"
+  Speakers: "Ponentes"
   thanks:
     contact_msg: "Si tienes alguna duda, no dudes en escribir a"
     thank_you: "¡Gracias!"
