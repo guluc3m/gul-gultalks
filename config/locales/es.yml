@@ -112,8 +112,6 @@ es:
     required: "Requerido"
     room: "Aula"
     send_event: "Enviar evento"
-    speakers: "Ponente[s]"
-    speaker_requirements: "Sólo puede contener caracteres literales y guiones"
     start_time: "Hora de inicio"
     status:
       accepted: "Aceptado"
@@ -145,6 +143,17 @@ es:
     help: "Ayuda"
     image: "Obtener una pista de imagen"
     incorrect: "Incorrecto. Por favor, prueba otra vez."
+  speaker:
+    add: "Añadir ponente"
+    confirmed: "Confirmado"
+    email: "Email"
+    email_requirements: "Not a valid email address"
+    name: "Nombre"
+    name_requirements: "Sólo puede contener caracteres literales y guiones"
+    remove: "Eliminar ponente"
+    surname: "Apellido(s)"
+  Speaker: "Ponente"
+  Speakers: "Ponentes"
   thanks:
     contact_msg: "Si tienes alguna duda, no dudes en escribir a"
     thank_you: "¡Gracias!"

@@ -19,26 +19,11 @@
 
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
 
-  .row
-    .large-6.columns
-      %label{for: "speaker"}
-        %i.fa.fa-users.fa-fw.fa-lg
-        = t("event.speakers")
-        %small
-          = t("event.required")
-      = f.text_field :speaker, label: false, maxlength: 64, pattern: "extended_alpha", required: true, class: "radius"
-      %small.error
-        = t("event.speaker_requirements")
-
-    .large-6.columns
-      %label{for: "email"}
-        %i.fa.fa-envelope.fa-fw.fa-lg
-        = t("event.contact")
-        %small
-          = t("event.required")
-      = f.text_field :email, label: false, maxlength: 64, pattern: "extended_email", required: true, class: "radius"
-      %small.error
-        = t("event.email_requirements")
+  #speakers
+    = f.fields_for :speakers do |speaker|
+      = render "speaker_fields", f: speaker
+    .links
+      = link_to_add_association t("speaker.add"), f, :speakers
 
   .row
     .large-12.columns

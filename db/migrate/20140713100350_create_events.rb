@@ -6,8 +6,6 @@ class CreateEvents < ActiveRecord::Migration
       t.text :description, limit: 700, null: false
       t.integer :subclass, default: 0, null: false
       t.integer :level, default: 2, null: false
-      t.string :speaker, limit: 64
-      t.string :email, limit: 64
       t.string :content_url, limit: 128
       t.string :language, limit: 2
       t.text :notes, limit: 300

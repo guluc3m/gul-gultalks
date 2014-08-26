@@ -8,8 +8,8 @@ class Notifier < ActionMailer::Base
 
   end
 
-  def confirmation_event(event, token)
-      @event = event
+  def confirmation_event(event_id, token)
+      @event = Event.find(event_id)
       @token = token
       cert_name = "#{@event.title.parameterize.underscore}-gul-cert.pdf"
       pdf_attachment = lesc(File.read('app/views/layouts/certs/cert_template.erbtex'))
@@ -20,10 +20,15 @@ class Notifier < ActionMailer::Base
       }
 
       # It fails!?!?!
-      # email_with_name = "#{@event.speaker} <#{@event.email}>"
+      Speaker.where(event_id: event_id).map do |speaker|
+        @speaker = speaker
+        email_with_name = "#{@speaker.name} <#{@speaker.email}>"
+
+        mail(to: email_with_name, subject: "Gracias por proponer tu charla")
+      end
 
       # TODO: add email_with_name instead email
-      mail(to: @event.email, subject: "Gracias por proponer tu charla")
+      #mail(to: @event.email, subject: "Gracias por proponer tu charla")
   end
 
   private

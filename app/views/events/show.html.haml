@@ -26,16 +26,15 @@
       = event.title
     %h6.subheader
       = event.brief_description
-    - if !event.speaker.blank?
-      .row
-        .large-6.columns
-          %span
-            Por
-            = event.speaker
-        .large-6.columns
-          %span.right
-            %i.fa.fa-support.fa-fw.subheader
-            Charla asistida por menganito
+
+    .row
+      .large-6.columns
+        %span
+          = event.speakers.map{|speaker| "#{speaker.name} #{speaker.surname}"}.join(", ")
+      .large-6.columns
+        %span.right
+          %i.fa.fa-support.fa-fw.fa-lg.subheader
+          Charla asistida por: menganito
     %hr
 
 .row
