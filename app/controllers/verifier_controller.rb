@@ -10,7 +10,8 @@ class VerifierController < ApplicationController
 
       if verifier.verify_type.eql? "event"
         # Validate the event
-        event.update_attribute(:active, true)
+        event.update_attribute(:verified, true)
+        event.update_attribute(:shown, true)
         verifier.update_attribute(:verified, true)
         render "event_verified"
 

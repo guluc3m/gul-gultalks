@@ -17,7 +17,8 @@ ActiveAdmin.register Event do
     column :speaker
     column :email
     column :room
-    column :active
+    column :shown
+    column :verified
     column :cancelled
     column :accepted
     actions
@@ -40,7 +41,8 @@ ActiveAdmin.register Event do
       f.input :slug, label: "Slug"
     end
     f.inputs "Organization" do
-      f.input :active, label: t("event.status.active"), as: :radio
+      f.input :shown, label: t("event.status.shown"), as: :radio
+      f.input :verified, label: t("event.status.verified"), as: :radio
       f.input :cancelled, label: t("event.status.cancelled"), as: :radio
       f.input :accepted, label: t("event.status.accepted"), as: :radio
       f.input :location, label: t("location")

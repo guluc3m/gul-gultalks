@@ -15,7 +15,8 @@ class CreateEvents < ActiveRecord::Migration
       t.date :date
       t.time :start_time
       t.time :end_time
-      t.boolean :active, default: false
+      t.boolean :shown, default: false
+      t.boolean :verified, default: false
       t.boolean :cancelled, default: false
       t.boolean :accepted, default: false
       t.string :assisted_by

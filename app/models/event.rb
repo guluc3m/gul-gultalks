@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
   acts_as_taggable
- attr_accessible :accepted, :active, :assisted_by, :brief_description, :conference_id, :content_url, :date, :description, :end_time, :id, :language, :level, :location, :notes, :room, :slug, :start_time, :speakers_attributes, :subclass, :tags, :title, :validation_email, :votes, :cancelled
+ attr_accessible :accepted, :assisted_by, :brief_description, :cancelled, :conference_id, :content_url, :date, :description, :end_time, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_time, :speakers_attributes, :subclass, :tags, :title, :validation_email, :verified, :votes
   attr_accessor :tags, :validation_email
   belongs_to :conference
   friendly_id :title, use: [:slugged, :scoped], scope: :conference
@@ -74,7 +74,7 @@ class Event < ActiveRecord::Base
   end
 
   def speakers
-    return Speaker.where(event_id: self)
+    return Speaker.where(event_id: self, confirmed: true)
   end
 
   private

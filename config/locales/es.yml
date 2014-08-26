@@ -118,6 +118,8 @@ es:
       active: "Activo"
       cancelled: "Cancelado"
       new: "Nuevo"
+      shown: "Mostrado"
+      verified: "Verificado"
     subclass: "Tipo de evento"
     subclasses:
       talk: "Charla"

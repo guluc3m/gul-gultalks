@@ -91,6 +91,8 @@ en:
       active: "Active"
       cancelled: "Cancelled"
       new: "New"
+      shown: "Shown"
+      verified: "Verified"
     subclass: "Event type"
     subclasses:
       talk: "Talk"
