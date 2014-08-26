@@ -12,6 +12,12 @@
     - if @event.created_at.today?
       %span.success.radius.label
         = t("event.status.new").humanize
+    %span.info.radius.label
+      - if @event.subclass.eql?("workshop")
+        %i.fa.fa-wrench.fa-lg
+      - if @event.subclass.eql?("talk")
+        %i.fa.fa-bullhorn.fa-lg
+      = t("event.subclasses.#{event.subclass}").humanize
     - if @event.cancelled?
       %span.alert.radius.label
         %i.fa.fa-lock.fa-lg
@@ -20,15 +26,16 @@
       = event.title
     %h6.subheader
       = event.brief_description
-    .row
-      .large-6.columns
-        %span
-          Por
-          = event.speaker
-      .large-6.columns
-        %span.right
-          %i.fa.fa-support.fa-fw.fa-lg.subheader
-          Charla asistida por: menganito
+    - if !event.speaker.blank?
+      .row
+        .large-6.columns
+          %span
+            Por
+            = event.speaker
+        .large-6.columns
+          %span.right
+            %i.fa.fa-support.fa-fw.subheader
+            Charla asistida por menganito
     %hr
 
 .row
@@ -45,22 +52,23 @@
           - if event.date
             = l event.date, format: :long
           - else
-            = t("not_available")
+            = t("not_available").humanize
         %li
           %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
           - if event.start_time.present? && event.end_time.present?
-            = t("time.from")
+            = t("time.from").humanize
             = event.start_time.strftime('%R')
             = t("time.to")
             = event.end_time.strftime('%R')
           - else
-            = t("not_available")
+            = t("not_available").humanize
         %li
           %i.fa.fa-map-marker.fa-fw.fa-lg.subheader
           = event.location
           /= link_to "¿Cómo llegar?", "http://www.openstreetmaps.org",  data: { "modal-id" =>"map-modal" } 
           = link_to "¿Cómo llegar?", "http://www.openstreetmaps.org",  data: { "reveal-id" => "map-modal" } 
           /%a{"data-reveal-id" => "map-modal", :href => "#"} Click Me For A Modal
+          / TODO: put modal in patial
           #map-modal.reveal-modal.medium{"data-reveal" => ""}
             %h1.subheader Mapa
             %hr/
@@ -78,7 +86,8 @@
             = event.room
             %i.label.radius.success.fa.fa-wheelchair
           - else
-            Aula no disponible
+            = t('event.room').humanize
+            = t('not_available')
 
 
 
@@ -110,25 +119,24 @@
           - else
             = t('not_available').humanize
 
-
-
       %ul.no-bullet
         %li
           /%i.fa.fa-info.fa-fw.fa-lg.subheader
-          - event.tag_list.each do |tag|
+          - event.tag_list.map do |tag|
             .label.info.radius
-              = tag
-      
+              = tag.humanize
 
-      .success.radius.label
-        = event.votes
-        %strong
-          = t('vote', count: event.votes ).upcase
+      - unless @event.speaker.blank?
+        .success.radius.label
+          %p
+            = event.votes
+            %strong
+              = t('vote', count: event.votes ).upcase
 
 .row
   .large-12.columns
     %span
-      %i.fa.fa-download.fa-fw.fa-lg.subheader
+      %i.fa.fa-download.fa-fw.subheader
       //TODO: check 'link_to_if' out
       - if event.content_url.present?
         = link_to event.content_url, event.content_url, target: "_blank"
@@ -136,13 +144,28 @@
         = t("not_available").humanize
   .large-12.columns
     %span
-      %i.fa.fa-code.fa-fw.fa-lg.subheader
-      Código
+      %i.fa.fa-code.fa-fw.subheader
+      = t("not_available").humanize
   .large-12.columns
     %hr
+
+  .large-3.columns.text-center.left
+    = link_to conference_path(params[:conference_id]), { class: "button radius expand" } do
+      %span.fa.fa-chevron-left.fa-fw.fa-lg
+      = t("event.back_to_events").humanize
   .large-4.columns.right
-    - if Conference.find(event.conference_id).voting_enabled && !event.cancelled
-      = link_to t("to_vote"), vote_conference_event_path, class: "button success radius expand" 
+    - if Conference.find(event.conference_id).voting_enabled 
+      - unless @event.cancelled
+        - if @event.speaker.blank?
+          = link_to "#", class: "button success radius expand" do
+            %i.fa.fa-child.fa-lg
+            Quiero impartir la charla
+        - else
+          = link_to t("to_vote"), vote_conference_event_path, class: "button success radius expand" 
+      - else
+        = link_to "#", disabled: true, class: "button success radius expand" do
+          %i.fa.fa-lock.fa-lg
+          = t("to_vote")
 
 = nested_comments @comments
 
@@ -150,8 +173,10 @@
   = render "comments/form"
 
 .row
-  .large-6.columns
-    = link_to t("event.back_to_events"), conference_path(params[:conference_id]), class: "button radius expand"
+  .large-4.columns.text-center.left
+    = link_to conference_path(params[:conference_id]), { class: "button radius expand" } do
+      %span.fa.fa-chevron-left.fa-fw.fa-lg
+      = t "event.back_to_events" 
   / .large-6.columns
   /   - if Conference.find(event.conference_id).voting_enabled
   /     = link_to t("to_vote"), { :controller => "events", :action => "vote" }, {:class => "button success radius expand" }
