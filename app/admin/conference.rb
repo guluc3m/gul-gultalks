@@ -1,5 +1,7 @@
 ActiveAdmin.register Conference do
 
+  menu :label => proc{ t("Conferences") }
+
   controller do
     def find_resource
       scoped_collection.friendly.find(params[:id])

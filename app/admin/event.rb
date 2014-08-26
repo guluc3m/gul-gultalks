@@ -1,4 +1,7 @@
 ActiveAdmin.register Event do
+    
+  menu :label => proc{ t("events") }
+
 
   controller do
     def find_resource
