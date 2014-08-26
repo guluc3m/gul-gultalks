@@ -23,8 +23,7 @@
     .row
       .large-6.columns
         %span
-          Por
-          = event.speaker
+          = event.speakers.map{|speaker| "#{speaker.name} #{speaker.surname}"}.join(", ")
       .large-6.columns
         %span.right
           %i.fa.fa-support.fa-fw.fa-lg.subheader
