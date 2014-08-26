@@ -5,6 +5,29 @@ es:
     roles:
       admin: "administrador"
       mod: "moderador"
+  # Emails
+  notifier:
+    tag: "[GUL-TALKS]"
+    confirmation_vote:
+      subject: "Gracias por votar"
+      body: |
+          "Hola.
+
+           Gracias por votar las charla '%{talk_name}'
+
+           Por favor, haz click en el enlace para validar tu voto.
+           "
+      footer: ""
+    confirmation_event:
+      subject: ""
+      body: |
+          "Hola %{name}.
+          
+           Muchas gracias por proponer tu charla.
+           Por favor, haz click en el enlace para validar tu voto.
+
+          "
+      footer: ""
   back: "atrás"
   Conference: "Jornada"
   Conferences: "Jornadas"
@@ -47,7 +70,9 @@ es:
     abbr_day_names: [lun, mar, mié, jue, vie, sáb, dom]
   event:
     are_you_speaker: "¿Vas a ser el ponente de este evento?"
-    assistant: "Asistente"
+    asssist:
+      one: "asistente"
+      other: "asistentes"
     back_to_event: "Volver al evento"
     back_to_events: "Volver a los eventos"
     brief_description: "Descripción corta"
@@ -85,7 +110,7 @@ es:
     new_event: "Nuevo evento"
     next_step: "Siguiente paso"
     required: "Requerido"
-    room: "Clase"
+    room: "Aula"
     send_event: "Enviar evento"
     speakers: "Ponente[s]"
     speaker_requirements: "Sólo puede contener caracteres literales y guiones"
@@ -129,12 +154,13 @@ es:
     vote_thanks: "¡Gracias por votar!"
     vote_thanks_msg: "Recuerda comprobar tu bandeja de entrada para validar tu voto."
   time:
+    from: "de"
     to: "a"
   to_vote: "Votar"
   user: "Usuario"
   vote:
     email: "Email"
-    invalid_email: "Email inválido"
+    invalid_email: "Email no válido"
     one: "voto"
     other: "votos"
     send_vote: "Enviar voto"
