@@ -74,7 +74,7 @@
         = t("event.description")
         %small
           = t("event.required")
-        %span.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
+        %i.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
       = f.text_area :description, label: false, maxlength: 700, pattern: "extended_alphanumeric", required: true, class: "radius", size: "10x8"
       %small.error
         = t("event.description_requirements")
@@ -86,7 +86,7 @@
       
   .row
     .large-3.right.columns
-      = f.button class: "button radius expand success" do
+      = f.button class: "button radius expand success", data: { disable_with: "Processing..." } do
         = content_tag(:span, t("event.next_step"))
         %span.fa.fa-chevron-right.fa-fw.fa-lg
 

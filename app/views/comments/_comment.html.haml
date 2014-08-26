@@ -13,7 +13,11 @@
         %p
           = simple_format comment.content
         .actions
-          = link_to "Reply", new_conference_event_comment_path(params[:conference_id], params[:id], :parent_id => comment)
+          = link_to "Reply", new_conference_event_comment_path(params[:conference_id], params[:id], parent_id: comment)
+      .small-2.columns
+        %small
+          /= comment.created_at.strftime('%b %d, %Y at %H:%M')
+          = comment.created_at.to_s(:long)
     .row
       .medium-6.medium-offset-1.columns
         = nested_comments comment.children

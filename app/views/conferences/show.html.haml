@@ -9,9 +9,9 @@
   .large-12.columns
     %h1
       = @conference.title
-    %h6.subheader
-      = @conference.description
-    %hr
+    -# %h6.subheader
+    -#   = @conference.description
+    -# %hr
 
     %h3.subheader
       %span.grey>= t("date.from")
@@ -22,6 +22,7 @@
       = conference.end_date.day
       %span.grey>= t("date.of")
       = l @conference.start_date, format: :month_only
+    %hr
 
 .row
   .large-12.columns
@@ -30,24 +31,29 @@
     - if @conference.active?
       .row
         .large-8.large-centered.columns
-          %h1
-            Faltan
-            = distance_of_time_in_words_to_now(@conference.call_for_papers_start_date)
-    - if !@events.count.zero?
+          .panel.callout.radius
+            %h1.text-center
+              = distance_of_time_in_words_to_now(@conference.call_for_papers_start_date)
+    - if @events.count.zero?
+      .row
+        .medium-6.medium-centered.columns
+          .panel.callout.radius
+            %h3
+              = t("conference.call_for_events_open")
+            %p
+              = t("conference.first_to_propose")
+
+    - else
       %table
         %thead
           %tr
             %th{width: "980"}
               = t("Event")
-            / %th{:width => "150"}
-            /   %i.fa.fa-calendar
-            /   &
-            /   %i.fa.fa-clock-o
             - if @conference.voting_enabled
               %th{width: "40"}
                 = t("votes")
         %tbody
-          - @events.each do |event|
+          - @events.map do |event|
             %tr
               %td
                 = link_to event.title, conference_event_path(@conference, event)
@@ -70,23 +76,26 @@
               - if @conference.voting_enabled
                 %td.text-center
                   = event.votes
-        .row
-          .large-6.columns-centered.columns
-            = will_paginate @events, renderer: FoundationPagination::Rails, container: false, class: "pagination-centered"
-    - elsif #@conference.call_for_papers_start_date.today?
       .row
-        .large-8.large-centered.columns
-          %h1 Faltan 
-          = @conference.call_for_papers_start_date.mjd - DateTime.now.mjd
+        .large-6.columns-centered.columns
+          = will_paginate @events, renderer: FoundationPagination::Rails, container: false, class: "pagination-centered"
+      .row
+        .large-12.columns
+          %p
+            Los sigientes eventos no tienen ponente o responsable para llevarlos a cabo. Si crees que puedes presentar la charla o ayudar en el taller no lo dudes y haz tu propuesta.
+          .panel.radius
+            %ul.no-bullet
+              - @events.map do |event|
+                - unless event.active?
+                  %li
+                    = link_to event.title, conference_event_path(@conference, event)
+                    %span.info.radius.label
+                      - if event.subclass.eql?("workshop")
+                        %i.fa.fa-wrench.fa-lg
+                      - if event.subclass.eql?("talk")
+                        %i.fa.fa-bullhorn.fa-lg
+                      = t("event.subclasses.#{event.subclass}").humanize
 
-    - else
-      .row
-        .medium-6.medium-centered.columns
-          .panel.callout.radius
-            %h3
-              = t("conference.call_for_events_open")
-            %p
-              = t("conference.first_to_propose")
 
 .row
   .large-6.columns
@@ -94,3 +103,4 @@
   .large-6.columns
     - if @conference.call_for_papers_enabled
       = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), { class: "button success radius expand" }
+      /  %span.fa.fa-chevron-left.fa-fw.fa-lg
