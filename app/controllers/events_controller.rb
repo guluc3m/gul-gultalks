@@ -85,4 +85,8 @@ class EventsController < ApplicationController
       @events = Event.all
     end
   end
+
+  def event_params
+    params.require(:event).permit(speakers_attributes: [:id, :email, :name, :surname, :_destroy])
+  end
 end

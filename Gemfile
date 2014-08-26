@@ -88,7 +88,7 @@ gem 'wicked'
 gem 'icalendar'
 
 # reCAPTCHA
-gem "recaptcha", :require => "recaptcha/rails"
+gem 'recaptcha', :require => 'recaptcha/rails'
 
 #
 #gem 'lettrics'
@@ -101,3 +101,6 @@ gem 'rails-latex'
 
 # Public comments
 gem 'ancestry'
+
+# Multiple speakers in form
+gem 'cocoon'
