@@ -28,7 +28,7 @@ class Event < ActiveRecord::Base
             url: true,
             allow_blank: true
 
-  validates :comments,
+  validates :notes,
             allow_blank: true,
             format: { with: /\A[a-z0-9\W]+\z/i }
 

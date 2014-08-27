@@ -12,31 +12,39 @@ class WizardEvent < Event
   end
 
   def save
-    if step == steps.last
-      obj = @@parent.new(accessible_attributes)
+    valid?
 
-      # Set errors if any
-      session["event_wizard"]["errors"] = obj.errors
+    remove_errors_from_other_steps
 
-      # Add tags
-      obj.tag_list.add(session["event_wizard"]["tags"], parse: true)
+    if errors.empty?
+      if step == steps.last
+        obj = @@parent.new(accessible_attributes)
 
-      # Validation email
-      validation_email = session["event_wizard"]["validation_email"]
+        # Add tags
+        obj.tag_list.add(session["event_wizard"]["tags"], parse: true)
 
-      # Speakers
-      unless session["event_wizard"]["speakers_attributes"].nil?
-        obj.speakers_attributes = session["event_wizard"]["speakers_attributes"]
+        # Validation email
+        validation_email = session["event_wizard"]["validation_email"]
+
+        # Speakers
+        unless session["event_wizard"]["speakers_attributes"].nil?
+          obj.speakers_attributes = session["event_wizard"]["speakers_attributes"]
+        end
+
+        session.delete("event_wizard") if obj.save_and_verify(validation_email)
+      else
+        session["event_wizard"]["event"] = accessible_attributes 
       end
-
-      session.delete("event_wizard") if obj.save_and_verify(validation_email)
-    else
-      session["event_wizard"]["event"] = accessible_attributes 
     end
   end
 
   def accessible_attributes
     acc_attr  = @@parent.accessible_attributes
     attributes.reject! { |key| !acc_attr.member?(key) }
+  end
+
+  def remove_errors_from_other_steps
+    other_step_validation_keys = (errors.messages.keys - validations[step])
+    errors.messages.reject! { |key| other_step_validation_keys.include?(key) }
   end
 end

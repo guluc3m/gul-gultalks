@@ -5,6 +5,14 @@ es:
     roles:
       admin: "administrador"
       mod: "moderador"
+  activerecord:
+    attributes:
+      event:
+        brief_description: "Descripción corta"
+        content_url: "URL del contenido"
+        description: "Descripción"
+        notes: "Comentarios"
+        title: "Título"
   # Emails
   notifier:
     tag: "[GUL-TALKS]"

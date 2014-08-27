@@ -5,6 +5,14 @@ en:
     roles:
       admin: "administrator"
       mod: "moderator"
+  activerecord:
+    attributes:
+      event:
+        brief_description: "Brief description"
+        content_url: "Content URL"
+        description: "Description"
+        notes: "Comments"
+        title: "Title"
   back: "back"
   Conference: "Conference"
   Conferences: "Conferences"

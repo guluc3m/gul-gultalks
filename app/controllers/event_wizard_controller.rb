@@ -51,9 +51,7 @@ class EventWizardController < ApplicationController
     @event.step = step
     @event.steps = steps
     @event.session = session
-
-    # Clear previous session errors
-    session["event_wizard"]["errors"] = nil
+    @event.validations = validations
 
     do_step(@event)
   end
@@ -74,4 +72,13 @@ class EventWizardController < ApplicationController
       render_wizard event
     end
   end    
+
+  def validations
+    {
+      basic_info: [:title, :brief_description, :description],
+      detailed_info: [:content_url, :notes, :language],
+      speaker: [],
+      thanks: [:title, :brief_description, :description, :content_url, :notes, :language]
+    }
+  end
 end

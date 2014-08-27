@@ -78,7 +78,7 @@
                   = event.votes
       .row
         .large-6.columns-centered.columns
-          = will_paginate @events, renderer: FoundationPagination::Rails, container: false, class: "pagination-centered"
+          = will_paginate @events.where(shown: true), renderer: FoundationPagination::Rails, container: false, class: "pagination-centered"
       .row
         .large-12.columns
           %p
