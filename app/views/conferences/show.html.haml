@@ -51,9 +51,9 @@
               = t("Event")
             - if @conference.voting_enabled
               %th{width: "40"}
-                = t("votes")
+                = t("vote.other").humanize
         %tbody
-          - @events.map do |event|
+          - @events.where(shown: true).map do |event|
             %tr
               %td
                 = link_to event.title, conference_event_path(@conference, event)

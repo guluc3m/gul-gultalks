@@ -133,10 +133,12 @@ en:
     contact_msg: "If you need help, do not hesitate to write to"
     thank_you: "Thank you!"
     thanks_msg: "Thank you for proposing an event. Soon you will recieve a confirmation e-mail."
+    thank_you_vote: "Thank you for your vote"
     vote_msg: "Thank you for your vote. To avoid fraud in the voting process, you will recieve a confirmation e-mail to validate the vote."
     vote_thanks: "Thank you for voting!"
     vote_thanks_msg: "Remember to check your inbox in order to validate your vote."
   time:
+    from: "from"
     to: "to"
   to_vote: "Vote"
   user: "User"
