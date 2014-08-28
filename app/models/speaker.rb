@@ -3,11 +3,18 @@ class Speaker < ActiveRecord::Base
   belongs_to :event
 
 
-  #validates :email,
-  #          email: true,
-  #          allow_blank: true
+  validates :email,
+            presence: true,
+            allow_blank: false,
+            email: true,
+            uniqueness: {scope: [:event_id]}
+
+  validates :event_id,
+            presence: true,
+            allow_blank: false
 
   #validates :name,
+  #          presence: true,
   #          allow_blank: false,
   #          format: { with: /\A[a-z\W]+\z/i }
 

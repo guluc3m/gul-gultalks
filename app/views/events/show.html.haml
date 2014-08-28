@@ -155,7 +155,7 @@
     - if Conference.find(event.conference_id).voting_enabled 
       - unless @event.cancelled
         - if !@event.speaker?
-          = link_to "#", class: "button success radius expand" do
+          = link_to propose_speaker_conference_event_path, class: "button success radius expand" do
             %i.fa.fa-child.fa-lg
             Quiero impartir la charla
         - else

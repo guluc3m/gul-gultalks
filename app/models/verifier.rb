@@ -33,6 +33,8 @@ class Verifier < ActiveRecord::Base
          Notifier.confirmation_event(self.event_id, token).deliver
        elsif self.verify_type.eql? "vote"
          Notifier.confirmation_vote(self.event_id, token).deliver
+       elsif self.verify_type.eql? "speaker"
+         # TODO: Send notification to speaker
        end
    end
 

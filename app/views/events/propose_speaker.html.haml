@@ -1,0 +1,67 @@
+.row.show-for-landscape
+  .medium-12.columns
+    %ul.breadcrumbs
+      %li
+        = link_to t("home"), root_path
+      %li
+        = link_to Conference.friendly.find(params[:conference_id]).title, conference_path(params[:conference_id])
+      %li
+        = link_to event.title, conference_event_path(params[:conference_id], params[:id])
+      %li.current
+        = t("to_vote")
+
+- flash.each do |name, msg|
+  .row
+    .large-12.columns
+      .alert-box.alert.radius
+        = msg
+
+.row
+  .medium-12.columns
+    %h1
+      = t("to_vote")
+    %hr
+    %p
+      = t("thanks.vote_msg")
+    .row
+      .medium-6.columns
+        %label
+          %i.fa.fa-envelope.fa-fw.fa-lg.subheader
+          = t("vote.email")
+
+= form_tag send_speaker_conference_event_path(params[:conference_id], params[:id]) do
+  .row
+    .large-4.columns
+      %label{for: "name"}
+        %i.fa.fa-users.fa-fw.fa-lg
+        = t("speaker.name")
+        %small
+          = t("event.required")
+      = text_field_tag "name", nil, class: "radius", style: "border-right: 0; border-bottom-right-radius: 0; border-top-right-radius: 0;", required: true, maxlength: 64
+
+    .large-4.columns
+      %label{for: "surname"}
+        %i.fa.fa-users.fa-fw.fa-lg
+        = t("speaker.surname")
+        %small
+          = t("event.required")
+      = text_field_tag "surname", nil, class: "radius", style: "border-right: 0; border-bottom-right-radius: 0; border-top-right-radius: 0;", required: true, maxlength: 64
+
+    .large-4.columns
+      %label{for: "email"}
+        %i.fa.fa-envelope.fa-fw.fa-lg
+        = t("speaker.email")
+        %small
+          = t("event.required")
+      = email_field_tag "email", nil, class: "radius", style: "border-right: 0; border-bottom-right-radius: 0; border-top-right-radius: 0;", required: true, maxlength: 64
+
+
+  .row
+    .large-6.columns
+      = submit_tag "[Send speaker]", class: "button radius success expand"
+
+.row
+  .large-3.columns
+    = link_to conference_path(params[:conference_id]), { class: "button radius expand" } do
+      %span.fa.fa-chevron-left.fa-fw.fa-lg
+      = t("event.back_to_event").humanize

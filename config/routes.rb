@@ -8,6 +8,8 @@ Gultalks::Application.routes.draw do
     resources :events, path: '', except: [:index] do
       resources :comments, path: '/comments'
       member do
+        get 'propose_speaker'
+        post 'send_speaker'
         get 'vote'
         post 'send_vote'
       end
