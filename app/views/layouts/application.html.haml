@@ -29,8 +29,11 @@
           %ul.off-canvas-list
             %li
               %label GulTalks
-            %li.has-submenu
+            %li
+              = link_to "inicio", root_path
+            %li
               = link_to t("conference.list"), conferences_path
+
               -# %ul.left-submenu
               -#   %li.back
               -#     %a{:href => "#"} Back
@@ -51,13 +54,13 @@
               -#     %a{:href => "#"} ...
             %li
               -# = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), { class: "button success tiny radius expand" }
+            %li
+              %label Options
               / TODO: fix route
+              %br
               .row
                 .columns
                   = link_to t("conference.propose_event"), "#", { class: "button success tiny radius expand" }
-            %li.has-submenu
-              .row
-                .columns
                   = link_to "Admin", "/admin", { class: "button secondary tiny radius expand"}
                 -# = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), { class: "button success radius expand" }
         %aside.right-off-canvas-menu
