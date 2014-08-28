@@ -14,63 +14,79 @@
     = csrf_meta_tags
   %body
     / Header and Nav
-    = render "partials/header"
-    -# %ul.title-area
-    -#   / Title Area
-    -#   %li.name
-    -#     %h1
-    -#       %a{:href => "/"}
-    -#         GulTalks
-    -# %li.toggle-topbar.menu-icon
-    -#   %a{:href => "#"}
-    -#     %span Menu
-    -# %section.top-bar-section
-    -#   / Left Nav Section
-    -#   %ul.left
-    -#     %li.divider
-    -#     %li.has-dropdown
-    -#       %a.active{:href => "#"} Main Item 1
-    -#       %ul.dropdown
-    -#         %li
-    -#           %label Section Name
-    -#         %li
-    -#           %a{:href => "#"} Dropdown Level 1
-    -#         %li
-    -#           %a{:href => "#"} Dropdown Option
-    -#         %li
-    -#           %a{:href => "#"} Dropdown Option
-    -#         %li.divider
-    -#         %li
-    -#           %label Section Name
-    -#         %li
-    -#           %a{:href => "#"} Dropdown Option
-    -#         %li
-    -#           %a{:href => "#"} Dropdown Option
-    -#         %li
-    -#           %a{:href => "#"} Dropdown Option
-    -#         %li.divider
-    -#         %li
-    -#           %a{:href => "#"} See all →
-    -#     %li.divider
-    -#     %li
-    -#       %a{:href => "#"} Main Item 2
-    -#     %li.divider
-    -#     %li.has-dropdown
-    -#       %a{:href => "#"} Main Item 3
-    -#       %ul.dropdown
-    -#         %li
-    -#           %a{:href => "#"} Dropdown Option
-    -#         %li
-    -#           %a{:href => "#"} Dropdown Option
-    -#         %li
-    -#           %a{:href => "#"} Dropdown Option
-    -#         %li.divider
-    -#         %li
-    -#           %a{:href => "#"} See all →
-    / End Header and Nav
-    /.row
-    /  .large-12.columns
-    = yield
+    .off-canvas-wrap{"data-offcanvas" => ""}
+      .inner-wrap
+        %nav.tab-bar
+          %section.left-small
+            %a.left-off-canvas-toggle.menu-icon
+              %span
+          %section.middle.tab-bar-section
+            %h1.title
+              = link_to "GulTalks", root_path
+        %aside.left-off-canvas-menu
+          %ul.off-canvas-list
+            %li
+              %label Foundation
+            %li.has-submenu
+              %a{:href => "#"} The Psychohistorians
+              %ul.left-submenu
+                %li.back
+                  %a{:href => "#"} Back
+                %li
+                  %label Level 1
+                %li
+                  %a{:href => "#"} Link 1
+                %li.has-submenu
+                  %a{:href => "#"} Link 2 w/ submenu
+                  %ul.left-submenu
+                    %li.back
+                      %a{:href => "#"} Back
+                    %li
+                      %label Level 2
+                    %li
+                      %a{:href => "#"} ...
+                %li
+                  %a{:href => "#"} ...
+            %li
+              %a{:href => "#"} The Encyclopedists
+            %li
+              %a{:href => "#"} The Mayors
+            %li
+              %a{:href => "#"} The Traders
+            %li
+              %a{:href => "#"} The Merchant Princes
+        %aside.right-off-canvas-menu
+          %ul.off-canvas-list
+            %li
+              %label Users
+            %li
+              %a{:href => "#"} Hari Seldon
+            %li.has-submenu
+              %a{:href => "#"} R. Giskard Reventlov
+              %ul.right-submenu
+                %li.back
+                  %a{:href => "#"} Back
+                %li
+                  %label Level 1
+                %li
+                  %a{:href => "#"} Link 1
+                %li.has-submenu
+                  %a{:href => "#"} Link 2 w/ submenu
+                  %ul.right-submenu
+                    %li.back
+                      %a{:href => "#"} Back
+                    %li
+                      %label Level 2
+                    %li
+                      %a{:href => "#"} ...
+                %li
+                  %a{:href => "#"} ...
+            %li
+              %a{:href => "#"} ...
+        / End Header and Nav
+        %section.main-section
+        = yield
+        %a.exit-off-canvas
     / Footer
     %footer
       .row

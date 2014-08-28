@@ -34,7 +34,7 @@
           .panel.callout.radius
             %h1.text-center
               = distance_of_time_in_words_to_now(@conference.call_for_papers_start_date)
-    - elsif @events.count.zero?
+    - if @events.where(shown: true).count.zero?
       .row
         .medium-6.medium-centered.columns
           .panel.callout.radius
