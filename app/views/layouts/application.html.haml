@@ -21,40 +21,45 @@
             %a.left-off-canvas-toggle.menu-icon
               %span
           %section.middle.tab-bar-section
-            %h1.title
-              = link_to "GulTalks", root_path
+            = link_to root_path do
+              %h1.title
+                GulTalks
+
         %aside.left-off-canvas-menu
           %ul.off-canvas-list
             %li
-              %label Foundation
+              %label GulTalks
             %li.has-submenu
-              %a{:href => "#"} The Psychohistorians
-              %ul.left-submenu
-                %li.back
-                  %a{:href => "#"} Back
-                %li
-                  %label Level 1
-                %li
-                  %a{:href => "#"} Link 1
-                %li.has-submenu
-                  %a{:href => "#"} Link 2 w/ submenu
-                  %ul.left-submenu
-                    %li.back
-                      %a{:href => "#"} Back
-                    %li
-                      %label Level 2
-                    %li
-                      %a{:href => "#"} ...
-                %li
-                  %a{:href => "#"} ...
+              = link_to t("conference.list"), conferences_path
+              -# %ul.left-submenu
+              -#   %li.back
+              -#     %a{:href => "#"} Back
+              -#   %li
+              -#     %label Level 1
+              -#   %li
+              -#     %a{:href => "#"} Link 1
+              -#   %li.has-submenu
+              -#     %a{:href => "#"} Link 2 w/ submenu
+              -#     %ul.left-submenu
+              -#       %li.back
+              -#         %a{:href => "#"} Back
+              -#       %li
+              -#         %label Level 2
+              -#       %li
+              -#         %a{:href => "#"} ...
+              -#   %li
+              -#     %a{:href => "#"} ...
             %li
-              %a{:href => "#"} The Encyclopedists
-            %li
-              %a{:href => "#"} The Mayors
-            %li
-              %a{:href => "#"} The Traders
-            %li
-              %a{:href => "#"} The Merchant Princes
+              -# = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), { class: "button success tiny radius expand" }
+              / TODO: fix route
+              .row
+                .columns
+                  = link_to t("conference.propose_event"), "#", { class: "button success tiny radius expand" }
+            %li.has-submenu
+              .row
+                .columns
+                  = link_to "Admin", "/admin", { class: "button secondary tiny radius expand"}
+                -# = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), { class: "button success radius expand" }
         %aside.right-off-canvas-menu
           %ul.off-canvas-list
             %li
@@ -87,31 +92,31 @@
         %section.main-section
         = yield
         %a.exit-off-canvas
-    / Footer
-    %footer
-      .row
-        .large-12.columns
-          %hr/
+        / Footer
+        %footer
           .row
-            .large-6.columns
-              %small.subheader
-                © Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid. 2007 -
-                = Time.now().year
-            / Fortunes
-            #fortunes.large-6.columns
-              -# = render "partials/fortunes"
-      .row
-        .small-1.small-centered.columns
-          %span.fa-stack.fa-fw.fa-lg
-            %i.fa.fa-circle.fa-stack-2x{style: "color:#d8d8d8"}
-              %i.fa.fa-linux.fa-stack-2x.fa-inverse
-                / %ul.inline-list.right
-            /  %li
-            /    %a{:href => "#"} Section 1
-            /  %li
-            /    %a{:href => "#"} Section 2
-            /  %li
-            /    %a{:href => "#"} Section 3
-            /  %li
-            /    %a{:href => "#"} Section 4
-    = javascript_include_tag "application"
+            .large-12.columns
+              %hr/
+              .row
+                .large-6.columns
+                  %small.subheader
+                    © Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid. 2007 -
+                    = Time.now().year
+                / Fortunes
+                #fortunes.large-6.columns
+                  = render "partials/fortunes"
+          .row
+            .small-1.small-centered.columns
+              %span.fa-stack.fa-fw.fa-lg
+                %i.fa.fa-circle.fa-stack-2x{style: "color:#d8d8d8"}
+                  %i.fa.fa-linux.fa-stack-2x.fa-inverse
+                    / %ul.inline-list.right
+                /  %li
+                /    %a{:href => "#"} Section 1
+                /  %li
+                /    %a{:href => "#"} Section 2
+                /  %li
+                /    %a{:href => "#"} Section 3
+                /  %li
+                /    %a{:href => "#"} Section 4
+        = javascript_include_tag "application"
