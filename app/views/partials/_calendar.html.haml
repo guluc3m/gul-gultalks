@@ -3,40 +3,38 @@
 
 .row
   .small-4.columns
-    = link_to "Descargar calendario (iCal)", conference_path(params[:id], format: :ics)
-
+    = link_to "Descargar calendario (iCal)", conference_path(params[:id], format: :ics), {class:"button secondary tiny radius"}
 .row
-  .large-12.columns
+  .large-12.columns{"data-magellan-expedition" => "fixed" }
     %dl.sub-nav
       - (0..days).each do |i|
-        .small-2.columns.left.text-center
-          %dd{"data-magellan-arrival" => "monday"}
-            %a{:href => "#{t('date.abbr_day_names')[i]}"}
-              = t('date.abbr_day_names')[i].humanize
-              #{conference.start_date.day + i}
+        -# .small-2.columns.left.text-center
+        %dd{"data-magellan-arrival" => "#{t('date.abbr_day_names')[i]}", style: "margin-left: 0.5rem"}
+          = link_to("##{t('date.abbr_day_names')[i]}") do
+            = t('date.abbr_day_names')[i].humanize
+            #{conference.start_date.day + i}
 
 .row
   .large-12.columns
-    -# - (0..days).each do
     - @events.each do |event|
-      - if event.accepted?
-        - (0...3).each do
+      - (0..days).each do |i|
+        - if event.accepted?
           .row
             .small-3.columns
               - if event.start_time.nil? || event.end_time.nil?
                 %dd.subheader
                   = t('not_available').humanize
+              - elsif event.end_time > DateTime.now
+                Finalizado
               - else
                 %dd
                   = event.start_time.to_s(:time)
                 %dd.subheader
-                  to 
+                  = t "time.to" 
                   = event.end_time.to_s(:time)
-            .small-9.columns
+            .small-9.columns{"data-magellan-destination" => "#{t('date.abbr_day_names')[i]}"}
               .panel.radius
-                .row
-                  .medium-5.columns
-                    = link_to event.title, conference_event_path(@conference, event)
+                = link_to event.title, conference_event_path(@conference, event)
                 .row
                   .medium-5.columns
                     %small.subheader
@@ -44,7 +42,10 @@
                       - if event.room.present?
                         = event.room
                       - else
-                        = t('not_available')
+                        = t "not_available"
+      %br
+      %br
+
 .row.hidden-for-small
   .large-12.columns
     %table
