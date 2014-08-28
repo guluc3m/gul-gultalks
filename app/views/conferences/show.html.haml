@@ -28,13 +28,13 @@
   .large-12.columns
     //if conference.start_date.today?
     = render "partials/calendar"
-    - if @conference.active?
+    - if !@conference.active?
       .row
         .large-8.large-centered.columns
           .panel.callout.radius
             %h1.text-center
               = distance_of_time_in_words_to_now(@conference.call_for_papers_start_date)
-    - if @events.count.zero?
+    - elsif @events.count.zero?
       .row
         .medium-6.medium-centered.columns
           .panel.callout.radius
@@ -57,19 +57,7 @@
             %tr
               %td
                 = link_to event.title, conference_event_path(@conference, event)
-                - if !event.cancelled? and event.created_at.today?
-                  %span.success.radius.label
-                    = t("event.status.new").humanize
-                - if event.cancelled?
-                  %span.alert.radius.label
-                    %i.fa.fa-lock.fa-lg
-                    = t("event.status.cancelled").humanize
-                %span.info.radius.label
-                  - if event.subclass.eql?("workshop")
-                    %i.fa.fa-wrench.fa-lg
-                  - if event.subclass.eql?("talk")
-                    %i.fa.fa-bullhorn.fa-lg
-                  = t("event.subclasses.#{event.subclass}").humanize
+                -# = render "partials/status_tags"
                 %h5
                   %small
                     = event.brief_description
@@ -79,6 +67,7 @@
       .row
         .large-6.columns-centered.columns
           = will_paginate @events.where(shown: true), renderer: FoundationPagination::Rails, container: false, class: "pagination-centered"
+    - if @events.map{|event| !event.speaker?}.count.nonzero?
       .row
         .large-12.columns
           %p

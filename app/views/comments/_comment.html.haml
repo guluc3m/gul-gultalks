@@ -9,7 +9,7 @@
           = comment.name
         %small
           /= comment.created_at.strftime('%b %d, %Y at %H:%M')
-          = l comment.created_at, :format => :long
+          = l comment.created_at.to_s(:long)
         %p
           = simple_format comment.content
         .actions
