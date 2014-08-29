@@ -27,21 +27,33 @@
     %h6.subheader
       = event.brief_description
 
-    .row
-      .large-6.columns
-        %span
-          = event.speakers.map{|speaker| "#{speaker.name} #{speaker.surname}"}.join(", ")
-      .large-6.columns
-        %span.right
-          %i.fa.fa-support.fa-fw.fa-lg.subheader
-          Charla asistida por: menganito
+    - if event.speakers.present?
+      .row
+        .large-6.columns
+          %span
+            = event.speakers.map{|speaker| "#{speaker.name} #{speaker.surname}"}.join(", ")
+        .large-6.columns
+          %span.right
+            %i.fa.fa-support.fa-fw.subheader
+            - if event.assisted_by.present?
+              Asistida por:
+              = event.assisted_by
+            - else
+              Asistente/s no asigando
+    - else
+      .row
+        .large-6.columns
+          Sin ponente
+
     %hr
 
 .row
   .large-8.columns
-    // TODO: to put this inline style in css file
-    %span.text-justify
+    .text-justify
       = simple_format(event.description).html_safe
+    -# .row
+    -#   .columns
+    -#     %div{:style => "position: absolute; bottom: 0; width: 100%; height: 50px; border: 1px solid red;"}
 
   .large-4.columns
     .panel.radius
@@ -87,8 +99,6 @@
           - else
             = t('event.room').humanize
             = t('not_available')
-
-
 
       /.medium-4.columns
       %ul.no-bullet
@@ -170,7 +180,7 @@
 - if Conference.find(@event.conference_id).active?
   = render "comments/form"
 
-.row
-  / .large-6.columns
-  /   - if Conference.find(event.conference_id).voting_enabled
-  /     = link_to t("to_vote"), { :controller => "events", :action => "vote" }, {:class => "button success radius expand" }
+/.row
+/ .large-6.columns
+/   - if Conference.find(event.conference_id).voting_enabled
+/     = link_to t("to_vote"), { :controller => "events", :action => "vote" }, {:class => "button success radius expand" }
