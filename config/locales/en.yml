@@ -51,9 +51,9 @@ en:
   Conference: "Conference"
   Conferences: "Conferences"
   conference:
-    call_for_events_end_date: "Call for events end date"
-    call_for_events_open: "The call for events is open"
-    call_for_events_start_date: "Call for events start date"
+    call_for_papers_end_date: "Call for papers end date"
+    call_for_papers_open: "The call for papers is open"
+    call_for_papers_start_date: "Call for papers start date"
     coordinator: "Coordinator"
     description: "Descripción"
     end_date: "End date"
@@ -64,7 +64,8 @@ en:
     start_date: "Start date"
     status:
       active: "Active"
-      call_for_events_enabled: "Call for papers enabled"
+      call_for_papers_enabled: "Call for papers enabled"
+      show_calendar: "Show calendar"
       voting_enabled: "Voting enabled"
     title: "Title"
     voting_end_date: "Voting end date"

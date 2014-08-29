@@ -51,9 +51,9 @@ es:
   Conference: "Jornada"
   Conferences: "Jornadas"
   conference:
-    call_for_events_end_date: "Fecha de finalización del call for events"
-    call_for_events_open: "El call for events está abierto"
-    call_for_events_start_date: "Fecha de inicio del call for events"
+    call_for_papers_end_date: "Fecha de finalización del call for papers"
+    call_for_papers_open: "El call for papers está abierto"
+    call_for_papers_start_date: "Fecha de inicio del call for papers"
     coordinator: "Coordinador"
     description: "Descripción"
     end_date: "Fecha de finalización"
@@ -64,7 +64,8 @@ es:
     start_date: "Fecha de inicio"
     status:
       active: "Activa"
-      call_for_events_enabled: "Call for events habilitado"
+      call_for_papers_enabled: "Call for papers habilitado"
+      show_calendar: "Mostrar calendario"
       voting_enabled: "Votaciones habilitadas"
     title: "Título"
     voting_end_date: "Fecha de finalización de votaciones"
