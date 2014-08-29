@@ -3,7 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.string :title, limit: 128 , null: false
       t.string :brief_description, null: false
-      t.text :description, limit: 700, null: false
+      t.text :description, limit: 1400, null: false
       t.integer :subclass, default: 0, null: false
       t.integer :level, default: 2, null: false
       t.string :content_url, limit: 128
