@@ -1,6 +1,6 @@
 ActiveAdmin.register Event do
     
-  menu :label => proc{ t("events") }
+  menu :label => proc{ t("Events") }
 
 
   controller do
@@ -31,7 +31,7 @@ ActiveAdmin.register Event do
     f.inputs "Info" do
       f.input :conference_id, label: t("Conference"), as: :select, collection: Conference.all
       f.input :title, label: t("event.title")
-      f.input :brief_description, label: t("event.brief_description")
+      f.input :summary, label: t("event.summary")
       f.input :description, label: t("event.description") 
       f.input :subclass, label: t("event.subclass"), as: :radio, collection: Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}
       f.input :level, label: t("event.subclass"), as: :radio, collection: Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}
