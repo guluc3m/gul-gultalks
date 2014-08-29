@@ -39,6 +39,28 @@ class EventsController < ApplicationController
     respond_with @event
   end
 
+  def propose_speaker
+    if Conference.friendly.find(params[:conference_id]).call_for_papers_enabled
+      respond_with(event) do |format|
+        format.html { render action: "propose_speaker" }
+      end
+    else
+      redirect_to conference_event_path(params[:conference_id], params[:id])
+    end
+  end
+
+  def send_speaker
+    sp = Speaker.new(name: params[:name], surname: params[:surname], email: params[:email], confirmed: false, event_id: Event.friendly.find(params[:id]).id)
+    ver = Verifier.new(email: params[:email], event_id: Event.friendly.find(params[:id]).id, verified: false, verify_type: "speaker")
+
+    if sp.save && ver.save
+      render "thanks_speaker"
+    else
+      flash[:error] = "Error adding speaker"
+      redirect_to action: "propose_speaker"
+    end
+  end
+
   def vote
     if Conference.friendly.find(params[:conference_id]).voting_enabled
       # Generate random key, pass the output as arg to Notifier
