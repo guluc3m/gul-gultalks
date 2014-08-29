@@ -8,7 +8,7 @@ en:
   activerecord:
     attributes:
       event:
-        brief_description: "Brief description"
+        summary: "Summary"
         content_url: "Content URL"
         description: "Description"
         notes: "Comments"
@@ -91,8 +91,6 @@ en:
     assistant: "Asistente"
     back_to_event: "Back to event"
     back_to_events: "Back to events"
-    brief_description: "Brief description"
-    brief_description_requirements: "Can only contain alphanumeric characters and hyphens"
     comments: "Comments"
     comment:
       name: "Name"
@@ -140,6 +138,8 @@ en:
     subclasses:
       talk: "Talk"
       workshop: "Workshop"
+    summary: "Summary"
+    summary_requirements: "Can only contain alphanumeric characters and hyphens"
     tags: "Tags"
     tag_format: "Each tag must be separated by a comma (,)"
     title: "Title"

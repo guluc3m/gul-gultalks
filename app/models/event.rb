@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
   acts_as_taggable
- attr_accessible :accepted, :assisted_by, :brief_description, :cancelled, :conference_id, :content_url, :date, :description, :end_time, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_time, :speakers_attributes, :subclass, :tags, :title, :validation_email, :verified, :votes
+ attr_accessible :accepted, :assisted_by, :cancelled, :conference_id, :content_url, :date, :description, :end_time, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_time, :speakers_attributes, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes
   attr_accessor :tags, :validation_email
   belongs_to :conference
   friendly_id :title, use: [:slugged, :scoped], scope: :conference
@@ -15,10 +15,6 @@ class Event < ActiveRecord::Base
             format: { with: /\A[a-z0-9\W]+\z/i },
             presence: true,
             uniqueness: { scope: :conference }
-
-  validates :brief_description,
-            format: { with: /\A[a-z0-9\W]+\z/i },
-            presence: true
 
   validates :description,
             format: { with: /\A[a-z0-9\W]+\z/i },
@@ -35,6 +31,11 @@ class Event < ActiveRecord::Base
   validates :language,
             allow_blank: true,
             inclusion: { in: I18n.t("event.languages").keys.collect {|l| l.to_s} }
+
+
+  validates :summary,
+            format: { with: /\A[a-z0-9\W]+\z/i },
+            presence: true
 
   enum level: [:noob, :easy, :medium, :hard, :hacker]
   enum subclass: [:talk, :workshop]

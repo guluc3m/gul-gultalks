@@ -59,15 +59,15 @@
         128
   .row
     .large-12.columns
-      %label{for: "brief_description"}
+      %label{for: "summary"}
         %i.fa.fa-paperclip.fa-fw.fa-lg
-        = t("event.brief_description")
+        = t("event.summary")
         %small
           = t("event.required")
         %dd.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
-      = f.text_field :brief_description, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius lettrify"
+      = f.text_field :summary, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius lettrify"
       %small.error
-        = t("event.brief_description_requirements")
+        = t("event.summary_requirements")
       .char-counter.right
         128
 

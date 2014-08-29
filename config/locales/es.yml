@@ -8,7 +8,7 @@ es:
   activerecord:
     attributes:
       event:
-        brief_description: "Descripción corta"
+        summary: "Resumen"
         content_url: "URL del contenido"
         description: "Descripción"
         notes: "Comentarios"
@@ -95,8 +95,6 @@ es:
       other: "asistentes"
     back_to_event: "Volver al evento"
     back_to_events: "Volver a los eventos"
-    brief_description: "Descripción corta"
-    brief_description_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     comments: "Comentarios"
     comment:
       name: "Nombre"
@@ -144,6 +142,8 @@ es:
     subclasses:
       talk: "Charla"
       workshop: "Taller"
+    summary: "Resumen"
+    summary_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     tags: "Etiquetas"
     tag_format: "Cada etiqueta debe estar separada por una coma (,)"
     title: "Título"

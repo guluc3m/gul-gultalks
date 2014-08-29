@@ -49,7 +49,7 @@ Conference.create(
 
 Event.create(
       :title => 'Herramientas libres para desarrollar las practicas',
-      :brief_description => 'Uso de software libre en practicas',
+      :summary => 'Uso de software libre en practicas',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '2.3.C03',
@@ -71,7 +71,7 @@ Event.create(
 
 Event.create(
       :title => 'Illumos y openindiana',
-      :brief_description => 'Este muerto esta muy vivo',
+      :summary => 'Este muerto esta muy vivo',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
       :room => '2.3.C03',
@@ -94,7 +94,7 @@ Event.create(
       
 Event.create(
       :title => 'Gestionando la configuracion de nuestros servidores con Puppet',
-      :brief_description => 'Gestion con Puppet',
+      :summary => 'Gestion con Puppet',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
       :room => '2.3.C03',
@@ -117,7 +117,7 @@ Event.create(
       
 Event.create(
       :title => 'Entendiendo y optimizando MySQL',
-      :brief_description => 'MySQL',
+      :summary => 'MySQL',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '2.3.C03',
@@ -140,7 +140,7 @@ Event.create(
       
 Event.create(
       :title => 'Sistemas de control de versiones',
-      :brief_description => 'Git',
+      :summary => 'Git',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
       :room => '2.3.C03',
@@ -163,7 +163,7 @@ Event.create(
 
 Event.create(
       :title => 'Edicion de audio con Audacity',
-      :brief_description => 'Audacity',
+      :summary => 'Audacity',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
       :room => '2.3.C03',
@@ -186,7 +186,7 @@ Event.create(
       
 Event.create(
       :title => 'Introduccion al desarrollo web',
-      :brief_description => 'Uso de Symfony',
+      :summary => 'Uso de Symfony',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '2.3.C03',
@@ -209,7 +209,7 @@ Event.create(
       
 Event.create(
       :title => 'Desarrollando aplicaciones con Android',
-      :brief_description => 'Android',
+      :summary => 'Android',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
       :room => '2.3.C03',
@@ -231,7 +231,7 @@ Event.create(
 
 Event.create(
       :title => 'Breve introduccion a ITIL',
-      :brief_description => 'Metodologia para sysadmins',
+      :summary => 'Metodologia para sysadmins',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '2.3.C03',
@@ -254,7 +254,7 @@ Event.create(
 
 Event.create(
       :title => 'Qt para interfaces graficas',
-      :brief_description => 'Uso de Qt en diferentes lenguajes',
+      :summary => 'Uso de Qt en diferentes lenguajes',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '',
@@ -277,7 +277,7 @@ Event.create(
       
 Event.create(
       :title => 'Pandora',
-      :brief_description => 'La caja',
+      :summary => 'La caja',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '',
@@ -300,7 +300,7 @@ Event.create(
       
 Event.create(
       :title => 'Empaquetango y distribuyendo software PHP',
-      :brief_description => 'Distribucion mediante PEAR',
+      :summary => 'Distribucion mediante PEAR',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
       :room => '',
@@ -323,7 +323,7 @@ Event.create(
       
 Event.create(
       :title => 'Creacion de bibliotecas PHP escritas en C',
-      :brief_description => 'PHP y C',
+      :summary => 'PHP y C',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
       :room => '',
@@ -346,7 +346,7 @@ Event.create(
       
 Event.create(
       :title => 'Pruebas unitarias y cobertura',
-      :brief_description => 'Uso de PHP Unit',
+      :summary => 'Uso de PHP Unit',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '',
@@ -369,7 +369,7 @@ Event.create(
       
 Event.create(
       :title => 'Introduccion a Arduino',
-      :brief_description => 'Arduino',
+      :summary => 'Arduino',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '',
@@ -392,7 +392,7 @@ Event.create(
       
 Event.create(
       :title => 'Introduccion a Linux',
-      :brief_description => 'Breve introduccion a Linux',
+      :summary => 'Breve introduccion a Linux',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '7.2.J01',
@@ -415,7 +415,7 @@ Event.create(
       
 Event.create(
       :title => 'Curso de C',
-      :brief_description => 'Introduccion al lenguaje de programacion C',
+      :summary => 'Introduccion al lenguaje de programacion C',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '7.2.J01',
@@ -438,7 +438,7 @@ Event.create(
       
 Event.create(
       :title => 'Licencias al desnudo',
-      :brief_description => 'Introduccion a las licencias de software',
+      :summary => 'Introduccion a las licencias de software',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '7.2.J01',
@@ -461,7 +461,7 @@ Event.create(
       
 Event.create(
       :title => 'Introduccion a lenguajes funcionales',
-      :brief_description => 'Scala',
+      :summary => 'Scala',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '7.2.J01',
@@ -484,7 +484,7 @@ Event.create(
       
 Event.create(
       :title => 'Promesas en javascript',
-      :brief_description => 'Introduccion',
+      :summary => 'Introduccion',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '7.2.J01',
@@ -507,7 +507,7 @@ Event.create(
       
 Event.create(
       :title => 'Bitcoin',
-      :brief_description => 'Introduccion a Bitcoin',
+      :summary => 'Introduccion a Bitcoin',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '7.1.J06',
@@ -530,7 +530,7 @@ Event.create(
 
 Event.create(
       :title => 'Seguridad Informatica',
-      :brief_description => 'Introduccion a seguridad',
+      :summary => 'Introduccion a seguridad',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '7.1.J06',
@@ -553,7 +553,7 @@ Event.create(
       
 Event.create(
       :title => 'Zoe',
-      :brief_description => 'Introduccion a Zoe',
+      :summary => 'Introduccion a Zoe',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
       :room => '7.1.J06',
@@ -576,7 +576,7 @@ Event.create(
       
 Event.create(
       :title => 'Diseño Web',
-      :brief_description => 'Introduccion',
+      :summary => 'Introduccion',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '7.2.J01',
@@ -599,7 +599,7 @@ Event.create(
 
 Event.create(
       :title => 'Android',
-      :brief_description => 'Introduccion al desarrollo con Android',
+      :summary => 'Introduccion al desarrollo con Android',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
       :room => '7.2.J01',
@@ -622,7 +622,7 @@ Event.create(
 
 Event.create(
       :title => 'WebRTC',
-      :brief_description => 'Introduccion a WebRTC',
+      :summary => 'Introduccion a WebRTC',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
       :room => '7.2.J01',
@@ -645,7 +645,7 @@ Event.create(
 
 Event.create(
       :title => 'Arduino',
-      :brief_description => 'Introduccion a Arduino',
+      :summary => 'Introduccion a Arduino',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
       :room => '7.2.J01',
@@ -668,7 +668,7 @@ Event.create(
 
 Event.create(
       :title => 'Como funciona un ordenador y Como montar el tuyo desde cero',
-      :brief_description => 'Introduccion',
+      :summary => 'Introduccion',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
       :room => '7.2.J01',

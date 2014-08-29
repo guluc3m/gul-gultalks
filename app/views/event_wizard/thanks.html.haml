@@ -71,11 +71,11 @@
       
       .row
         .large-12.columns
-          %label{:for => "brief_description"}
+          %label{:for => "summary"}
             %i.fa.fa-paperclip.fa-fw.fa-lg
-            = t("event.brief_description")
+            = t("event.summary")
           %p
-            = session["event_wizard"]["event"]["brief_description"]
+            = session["event_wizard"]["event"]["summary"]
       
       .row
         .large-12.columns
