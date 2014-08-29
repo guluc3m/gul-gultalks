@@ -79,7 +79,7 @@
         %small
           = t("event.required")
         %i.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
-      = f.text_area :description, label: false, maxlength: 700, pattern: "extended_alphanumeric", required: true, class: "radius", size: "10x8"
+      = f.text_area :description, label: false, maxlength: 1400, pattern: "extended_alphanumeric", required: true, class: "radius", size: "10x8"
       %small.error
         = t("event.description_requirements")
 

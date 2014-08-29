@@ -104,3 +104,6 @@ gem 'ancestry'
 
 # Multiple speakers in form
 gem 'cocoon'
+
+# Session storage
+gem 'activerecord-session_store'

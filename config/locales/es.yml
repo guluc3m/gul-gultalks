@@ -15,27 +15,38 @@ es:
         title: "Título"
   # Emails
   notifier:
-    tag: "[GUL-TALKS]"
-    confirmation_vote:
-      subject: "Gracias por votar"
-      body: |
-          "Hola.
-
-           Gracias por votar las charla '%{talk_name}'
-
-           Por favor, haz click en el enlace para validar tu voto.
-           "
-      footer: ""
     confirmation_event:
-      subject: ""
+      subject: "Confirmación de evento"
       body: |
-          "Hola %{name}.
-          
-           Muchas gracias por proponer tu charla.
-           Por favor, haz click en el enlace para validar tu voto.
+        Hola.
 
-          "
+        Muchas gracias por proponer el evento '%{event_title}'.
+        Por favor, visita el siguiente enlace para validarlo.
+
+        %{validation_url}
       footer: ""
+    confirmation_speaker:
+      subject: "Confirmación de ponencia"
+      body: |
+        Hola %{name}.
+
+        Se ha recibido una propuesta para que seas el ponente de '%{event_title}'.
+        Si deseas hacerte cargo de ello, por favor, visita el siguiente enlace.
+
+        %{validation_url}
+      footer: ""
+    confirmation_vote:
+      subject: "Confirmación de voto"
+      body: |
+        Hola.
+
+        Gracias por votar el evento '%{event_title}'
+
+        Por favor, visita el siguiente enlace para validar tu voto.
+
+        %{validation_url}
+      footer: ""
+    tag: "[GUL-TALKS]"
   back: "atrás"
   Conference: "Jornada"
   Conferences: "Jornadas"

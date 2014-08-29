@@ -3,15 +3,15 @@ class Speaker < ActiveRecord::Base
   belongs_to :event
 
 
-  validates :email,
-            presence: true,
-            allow_blank: false,
-            email: true,
-            uniqueness: {scope: [:event_id]}
+  #validates :email,
+  #          presence: true,
+  #         allow_blank: false,
+  #          email: true,
+  #          uniqueness: {scope: [:event_id]}
 
-  validates :event_id,
-            presence: true,
-            allow_blank: false
+  #validates :event_id,
+  #          presence: true,
+  #          allow_blank: false
 
   #validates :name,
   #          presence: true,
