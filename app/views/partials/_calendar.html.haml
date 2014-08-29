@@ -16,35 +16,34 @@
 
 .row
   .large-12.columns
-    - @events.each do |event|
+    - @calendar_events.each do |event|
       - (0..days).each do |i|
-        - if event.accepted?
-          .row
-            .small-3.columns
-              - if event.start_time.nil? || event.end_time.nil?
-                %dd.subheader
-                  = t('not_available').humanize
-              - elsif event.end_time > DateTime.now
-                Finalizado
-              - else
-                %dd
-                  = event.start_time.to_s(:time)
-                %dd.subheader
-                  = t "time.to" 
-                  = event.end_time.to_s(:time)
-            .small-9.columns{"data-magellan-destination" => "#{t('date.abbr_day_names')[i]}"}
-              .panel.radius
-                = link_to event.title, conference_event_path(@conference, event)
-                .row
-                  .medium-5.columns
-                    %small.subheader
-                      Aula
-                      - if event.room.present?
-                        = event.room
-                      - else
-                        = t "not_available"
-      %br
-      %br
+        .row
+          .small-3.columns
+            - if event.start_time.nil? || event.end_time.nil?
+              %dd.subheader
+                = t('not_available').humanize
+            - elsif event.end_time > DateTime.now
+              Finalizado
+            - else
+              %dd
+                = event.start_time.to_s(:time)
+              %dd.subheader
+                = t "time.to" 
+                = event.end_time.to_s(:time)
+          .small-9.columns{"data-magellan-destination" => "#{t('date.abbr_day_names')[i]}"}
+            .panel.radius
+              = link_to event.title, conference_event_path(@conference, event)
+              .row
+                .medium-5.columns
+                  %small.subheader
+                    Aula
+                    - if event.room.present?
+                      = event.room
+                    - else
+                      = t "not_available"
+    %br
+    %br
 
 .row.hidden-for-small
   .large-12.columns

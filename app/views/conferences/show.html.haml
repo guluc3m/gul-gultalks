@@ -34,7 +34,7 @@
           .panel.callout.radius
             %h1.text-center
               = distance_of_time_in_words_to_now(@conference.call_for_papers_start_date)
-    - if @events.where(shown: true).count.zero?
+    - if @paginated_events.count.zero?
       .row
         .medium-6.medium-centered.columns
           .panel.callout.radius
@@ -53,7 +53,7 @@
               %th{width: "40"}
                 = t("vote.other").humanize
         %tbody
-          - @events.where(shown: true).map do |event|
+          - @paginated_events.map do |event|
             %tr
               %td
                 = link_to event.title, conference_event_path(@conference, event)
@@ -66,16 +66,16 @@
                   = event.votes
       .row
         .large-6.columns-centered.columns
-          = will_paginate @events.where(shown: true), renderer: FoundationPagination::Rails, container: false, class: "pagination-centered"
-    - if @events.map{|event| !event.speaker?}.count.nonzero?
+          = will_paginate @paginated_events, renderer: FoundationPagination::Rails, container: false, class: "pagination-centered"
+    - if @paginated_events.map{|event| !event.speaker?}.count.nonzero?
       .row
         .large-12.columns
           %p
             Los sigientes eventos no tienen ponente o responsable para llevarlos a cabo. Si crees que puedes presentar la charla o ayudar en el taller no lo dudes y haz tu propuesta.
           .panel.radius
             %ul.no-bullet
-              - @events.map do |event|
-                - if event.shown? && !event.speaker?
+              - @paginated_events.map do |event|
+                - if !event.speaker?
                   %li
                     = link_to event.title, conference_event_path(@conference, event)
                     %span.info.radius.label
