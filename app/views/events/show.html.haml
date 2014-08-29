@@ -77,41 +77,42 @@
           %i.fa.fa-map-marker.fa-fw.fa-lg.subheader
           = event.location
           /= link_to "¿Cómo llegar?", "http://www.openstreetmaps.org",  data: { "modal-id" =>"map-modal" } 
-          = link_to "¿Cómo llegar?", "http://www.openstreetmaps.org",  data: { "reveal-id" => "map-modal" } 
+          = link_to "¿Cómo llegar?", "#",  data: { "reveal-id" => "map-modal" } 
+          = render "partials/map_modal"
           /%a{"data-reveal-id" => "map-modal", :href => "#"} Click Me For A Modal
-          / TODO: put modal in patial
-          #map-modal.reveal-modal.medium{"data-reveal" => ""}
-            %h1.subheader Mapa
-            %hr/
-            %p Your couch.  It is mine.
-            %iframe{:frameborder => "0", :height => "350", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "http://www.openstreetmap.org/export/embed.html?bbox=-3.7745869159698486%2C40.32920685790656%2C-3.759984970092773%2C40.33579063582344&amp;layer=mapnik&amp;marker=40.33249473785238%2C-3.7672805786132812", :style => "border: 1px solid black", :width => "425"}
-            %br/
-            %small
-              %a{:href => "http://www.openstreetmap.org/?mlat=40.33249&amp;mlon=-3.76728#map=17/40.33250/-3.76729&amp;layers=N"} Ver mapa más grande
-              %a.close-reveal-modal ×
 
         %li
           %i.fa.fa-building.fa-fw.fa-lg.subheader
           - if event.room.present?
             Aula:
             = event.room
+            // TODO: write a scope like "room.accesible?"
             %i.label.radius.success.fa.fa-wheelchair
           - else
             = t('event.room').humanize
             = t('not_available')
 
-      /.medium-4.columns
       %ul.no-bullet
         %li
           // TODO: culd be great with "link_to_if" method
-          - if (event.start_time..event.end_time).cover?(Time.now)
-            = link_to data: { "reveal-id" => "video-modal" } do 
-              .button.tiny.alert.radius
-                %i.fa.fa-youtube-play.fa-fw.fa-lg
-                %strong Ver en directo
+          - if (event.start_time..event.end_time).cover?(Time.now) and event.live_video.present?
+            .show-for-medium-up
+              = link_to("#", data: { "reveal-id" => "video-modal" }) do 
+                .button.tiny.alert.radius
+                  %i.fa.fa-youtube-play.fa-fw.fa-lg
+                  %strong Ver en directo
+              = render "partials/video_modal"
+            .show-for-small-only
+              = link_to("http://techslides.com/demos/sample-videos/small.webm", target: "_blank" ) do 
+                .button.tiny.alert.radius
+                  %i.fa.fa-youtube-play.fa-fw.fa-lg
+                  %strong Ver en directo
           - else
             %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
-            = t('not_available').humanize
+            - if event.video.present?
+              = render "partials/video_modal"
+            - else
+              = t('not_available').humanize
             
         %li
           %i.fa.fa-globe.fa-fw.fa-lg.subheader

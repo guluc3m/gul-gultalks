@@ -10,6 +10,9 @@ class CreateEvents < ActiveRecord::Migration
       t.string :language, limit: 2
       t.text :notes, limit: 300
       t.integer :votes, default: 0, null: false
+      t.string :live_video, limit: 128
+      t.string :video, limit: 128
+      t.string :code_url, limit: 128
       t.string :location, limit: 64
       t.string :room
       t.date :date
