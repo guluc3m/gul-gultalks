@@ -13,6 +13,40 @@ en:
         description: "Description"
         notes: "Comments"
         title: "Title"
+  # Emails
+  notifier:
+    confirmation_event:
+      subject: "Event confirmation"
+      body: |
+        Hello.
+
+        Thank you for proposing the event '%{event_title}'.
+        Please, visit the following link in order to validate it.
+
+        %{validation_url}
+      footer: ""
+    confirmation_speaker:
+      subject: "Speaker confirmation"
+      body: |
+        Hello %{name}.
+
+        We have received a proposal for you to be the speaker of '%{event_title}'.
+        If you wish to take care of it, please visit the following link.
+
+        %{validation_url}
+      footer: ""
+    confirmation_vote:
+      subject: "Vote confirmation"
+      body: |
+        Hello.
+
+        Thank you for voting the event '%{event_title}'
+
+        Please, visit the following link in order to validate your vote.
+
+        %{validation_url}
+      footer: ""
+    tag: "[GUL-TALKS]"
   back: "back"
   Conference: "Conference"
   Conferences: "Conferences"

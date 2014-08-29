@@ -30,11 +30,11 @@ class Verifier < ActiveRecord::Base
    private
    def send_verification
        if self.verify_type.eql? "event"
-         Notifier.confirmation_event(self.event_id, token).deliver
+         Notifier.confirmation_event(self).deliver
        elsif self.verify_type.eql? "vote"
-         Notifier.confirmation_vote(self.event_id, token).deliver
+         Notifier.confirmation_vote(self).deliver
        elsif self.verify_type.eql? "speaker"
-         # TODO: Send notification to speaker
+         Notifier.confirmation_speaker(self).deliver
        end
    end
 

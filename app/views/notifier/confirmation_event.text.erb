@@ -1,7 +1,1 @@
-Hello <%= @speaker.name %>,
-
-Thank you for register your event!
-
-Validate your event
-
-<%= @token %>
+<%= t("notifier.confirmation_event.body", event_title: @event.title, validation_url: @url) %>
