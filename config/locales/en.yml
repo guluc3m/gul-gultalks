@@ -189,6 +189,11 @@ en:
     to: "to"
   to_vote: "Vote"
   user: "User"
+  verifier:
+    event: "Thank you for verifying the event!"
+    invalid: "Invalid verification code"
+    speaker: "Thank you for verifying your attendance!"
+    vote: "Thank you for verifying your vote!"
   vote:
     email: "Email"
     invalid_email: "Invalid email"

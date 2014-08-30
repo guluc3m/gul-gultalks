@@ -194,6 +194,11 @@ es:
     to: "a"
   to_vote: "Votar"
   user: "Usuario"
+  verifier:
+    event: "¡Gracias por verificar el evento!"
+    invalid: "Código de verificación no válido"
+    speaker: "¡Gracias por verificar to asistencia!"
+    vote: "¡Gracias por verificar to voto!"
   vote:
     email: "Email"
     invalid_email: "Email no válido"
