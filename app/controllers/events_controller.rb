@@ -3,40 +3,12 @@ class EventsController < ApplicationController
   helper_method :event, :events
   respond_to :html, :json, :xml
 
-  def index
-    respond_with(events) do |format|
-      format.html { redirect_to conference_path(params[:conference_id]) }
-      format.json { render json: events.as_json(methods: :tag_list) }
-      format.xml { render xml: events.to_xml(methods: :tag_list) }
-    end
-  end
-
-  def new
-    redirect_to new_conference_event_wizard_path
-  end
-
   def show
     respond_with(event) do |format|
       format.json { render json: event.as_json(methods: :tag_list) }
       format.xml { render xml: event.to_xml(methods: :tag_list) }
       format.ics { render ics: event.to_ics(methods: :tag_list) }
     end
-  end
-
-  def create
-    respond_with(event) do |format|
-      format.html { render action: "thanks" }
-    end
-  end
-
-  def update
-    event.update_attributes(params[:event])
-    respond_with event
-  end
-
-  def destroy
-    event.destroy
-    respond_with @event
   end
 
   def propose_speaker
@@ -84,6 +56,35 @@ class EventsController < ApplicationController
     end
   end
 
+  #def index
+  #  respond_with(events) do |format|
+  #    format.html { redirect_to conference_path(params[:conference_id]) }
+  #    format.json { render json: events.as_json(methods: :tag_list) }
+  #    format.xml { render xml: events.to_xml(methods: :tag_list) }
+  #  end
+  #end
+
+  #def new
+  #  redirect_to new_conference_event_wizard_path
+  #end
+
+  #def create
+  #  respond_with(event) do |format|
+  #    format.html { render action: "thanks" }
+  #  end
+  #end
+
+  #def update
+  #  event.update_attributes(params[:event])
+  #  respond_with event
+  #end
+
+  #def destroy
+  #  event.destroy
+  #  respond_with @event
+  #end
+
+  private
   def event
     @event = if params[:action] =~ /new/
       Event.new(params[:event])

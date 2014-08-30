@@ -6,29 +6,29 @@ class ConferencesController < ApplicationController
     respond_with conferences
   end
 
-  def new
-    respond_with conference
-  end
-
   def show
     respond_with(conference) do |format|
       format.ics { render text: conference.to_ics }
     end
   end
 
-  def create
-    respond_with conference
-  end
+  #def new
+  #  respond_with conference
+  #end
 
-  def update
-    conference.update_attributes(params[:conference])
-    respond_with conference
-  end
+  #def create
+  #  respond_with conference
+  #end
 
-  def destroy
-    conference.destroy
-    respond_with @conference
-  end
+  #def update
+  #  conference.update_attributes(params[:conference])
+  #   respond_with conference
+  #end
+
+  #def destroy
+  #  conference.destroy
+  #  respond_with @conference
+  #end
 
   private
   def conference
