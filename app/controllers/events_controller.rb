@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     if sp.save && ver.save
       render "thanks_speaker"
     else
-      flash[:error] = "Error adding speaker"
+      flash[:error] = t("speaker.invalid")
       redirect_to action: "propose_speaker"
     end
   end

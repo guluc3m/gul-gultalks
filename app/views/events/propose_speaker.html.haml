@@ -8,7 +8,7 @@
       %li
         = link_to event.title, conference_event_path(params[:conference_id], params[:id])
       %li.current
-        = t("to_vote")
+        = t("speaker.propose")
 
 - flash.each do |name, msg|
   .row
@@ -19,15 +19,10 @@
 .row
   .medium-12.columns
     %h1
-      = t("to_vote")
+      = t("speaker.propose")
     %hr
     %p
-      = t("thanks.vote_msg")
-    .row
-      .medium-6.columns
-        %label
-          %i.fa.fa-envelope.fa-fw.fa-lg.subheader
-          = t("vote.email")
+      = t("speaker.propose_msg")
 
 = form_tag send_speaker_conference_event_path(params[:conference_id], params[:id]) do
   .row
@@ -37,7 +32,7 @@
         = t("speaker.name")
         %small
           = t("event.required")
-      = text_field_tag "name", nil, class: "radius", style: "border-right: 0; border-bottom-right-radius: 0; border-top-right-radius: 0;", required: true, maxlength: 64
+      = text_field_tag "name", nil, class: "radius", required: true, maxlength: 64
 
     .large-4.columns
       %label{for: "surname"}
@@ -45,7 +40,7 @@
         = t("speaker.surname")
         %small
           = t("event.required")
-      = text_field_tag "surname", nil, class: "radius", style: "border-right: 0; border-bottom-right-radius: 0; border-top-right-radius: 0;", required: true, maxlength: 64
+      = text_field_tag "surname", nil, class: "radius", required: true, maxlength: 64
 
     .large-4.columns
       %label{for: "email"}
@@ -53,12 +48,12 @@
         = t("speaker.email")
         %small
           = t("event.required")
-      = email_field_tag "email", nil, class: "radius", style: "border-right: 0; border-bottom-right-radius: 0; border-top-right-radius: 0;", required: true, maxlength: 64
+      = email_field_tag "email", nil, class: "radius", required: true, maxlength: 64
 
 
   .row
     .large-6.columns
-      = submit_tag "[Send speaker]", class: "button radius success expand"
+      = submit_tag t("speaker.propose"), class: "button radius success expand"
 
 .row
   .large-3.columns

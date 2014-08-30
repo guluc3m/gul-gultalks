@@ -8,14 +8,14 @@
       %li
         = link_to event.title, conference_event_path(params[:conference_id], params[:id])
       %li.current
-        = t("to_vote")
+        = t("speaker.propose")
 
 .row
   .medium-12.columns
     %h1
-      = "[Thank you for proposing a speaker]"
+      = t("thanks.speaker_thanks")
     %p 
-      = "[Thanks"]
+      = t("thanks.speaker_thanks_msg")
 
 .row
   .large-6.columns

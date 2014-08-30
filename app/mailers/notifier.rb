@@ -19,7 +19,7 @@ class Notifier < ActionMailer::Base
 
   def confirmation_speaker(verifier)
     @event = Event.find(verifier.event_id)
-    @speaker = Speaker.where(event_id: speaker.event_id, email: verifier.email)
+    @speaker = Speaker.find_by(event_id: verifier.event_id, email: verifier.email)
     @url = verify_url(event_id: verifier.event_id, email: verifier.email, token: verifier.token, verify_type: "speaker")
 
     email_with_name = "#{@speaker.name} <#{@speaker.email}>"
