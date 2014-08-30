@@ -57,7 +57,7 @@
             %tr
               %td
                 = link_to event.title, conference_event_path(@conference, event)
-                -# = render "partials/status_tags"
+                = render partial: "partials/status_tags", locals: {event: event}
                 %h5
                   %small
                     = event.summary
