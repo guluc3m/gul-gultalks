@@ -8,10 +8,9 @@
       %li.current
         = t("event.new_event")
 
-
 .row
   .large-12.columns
-    %h2.subheader Placeholder
+    %h2.subheader Información básica
     %hr
 
 .row
@@ -32,17 +31,20 @@
       %label
         %i.fa.fa-thumb-tack.fa-lg
         = t("event.subclass")
+        %small
+          = t("event.required")
+        %i.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
 
-      .row.show-for-touch
-        .large-12.columns
-          = select("event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]})
+      .row
+        .large-3.columns
+          = select("event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]},{ include_blank: true })
 
-      .row.hide-for-touch
-        .large-12.columns
-          - Event.subclasses.keys.each do |s|
-            = radio_button("event", "subclass", "#{s}")
-            %label
-              = t("event.subclasses.#{s}").humanize
+      -# .row.hide-for-touch
+      -#   .large-12.columns
+      -#     - Event.subclasses.keys.each do |s|
+      -#       = radio_button("event", "subclass", "#{s}")
+      -#       %label
+      -#         = t("event.subclasses.#{s}").humanize
 
   .row
     .large-12.columns
@@ -52,11 +54,11 @@
         %small
           = t("event.required")
         %i.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
-      = f.text_field :title, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius", autofocus: true
+      = f.text_field :title, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius"
       %small.error
         = t("event.title_requirements")
-      .char-counter.right
-        128
+      -# .char-counter.right
+      -#   128
   .row
     .large-12.columns
       %label{for: "summary"}
@@ -68,8 +70,8 @@
       = f.text_field :summary, label: false, maxlength: 128, pattern: "extended_alphanumeric", required: true, class: "radius lettrify"
       %small.error
         = t("event.summary_requirements")
-      .char-counter.right
-        128
+      -# .char-counter.right
+      -#   128
 
   .row
     .large-12.columns
@@ -82,11 +84,6 @@
       = f.text_area :description, label: false, maxlength: 1400, pattern: "extended_alphanumeric", required: true, class: "radius", size: "10x8"
       %small.error
         = t("event.description_requirements")
-
-  //.row
-  //  .large-12.columns
-  //    = check_box("eula", "accepted", { class: 'eula_check' }, "yes", "no")
-  //    %span Acepto las condiciones de privacidad
       
   .row
     .large-3.right.columns
