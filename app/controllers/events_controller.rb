@@ -22,8 +22,12 @@ class EventsController < ApplicationController
   end
 
   def send_speaker
-    sp = Speaker.new(name: params[:name], surname: params[:surname], email: params[:email], confirmed: false, event_id: Event.friendly.find(params[:id]).id)
-    ver = Verifier.new(email: params[:email], event_id: Event.friendly.find(params[:id]).id, verified: false, verify_type: "speaker")
+    # Used to generate the Verifier and send the email to validate/confirm the speaker
+    @event = Event.friendly.find(params[:id])
+    @conference = Conference.find(@event.conference_id)
+
+    sp = Speaker.new(name: params[:name], surname: params[:surname], email: params[:email], confirmed: false, event_id: @event.id)
+    ver = Verifier.new(email: params[:email], event_id: @event.id, verified: false, verify_type: "speaker")
 
     if sp.save && ver.save
       render "thanks_speaker"
@@ -46,7 +50,10 @@ class EventsController < ApplicationController
 
   def send_vote
     # Used to generate the Verifier and send the email to validate the vote
-    ver = Verifier.new(email: params[:email], event_id: Event.friendly.find(params[:id]).id, verified: false, verify_type: "vote")
+    @event = Event.friendly.find(params[:id])
+    @conference = Conference.find(@event.conference_id)
+
+    ver = Verifier.new(email: params[:email], event_id: @event.id, verified: false, verify_type: "vote")
 
     if ver.save
       render "thanks_vote"
@@ -86,6 +93,7 @@ class EventsController < ApplicationController
 
   private
   def event
+    @conference = Conference.friendly.find(params[:conference_id])
     @event = if params[:action] =~ /new/
       Event.new(params[:event])
     elsif params[:action] =~ /create/

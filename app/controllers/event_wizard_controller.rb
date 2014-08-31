@@ -17,8 +17,9 @@ class EventWizardController < ApplicationController
   end
 
   def show
-    if !Conference.friendly.find(params[:conference_id]).active
-      redirect_to conference_path(params[:conference_id])
+    @conference = Conference.friendly.find(params[:conference_id])
+    if !@conference.active
+      redirect_to conference_path(@conference)
     else
       @event = WizardEvent.new(session["event_wizard"].try(:[], ["event"]))
       @step = step

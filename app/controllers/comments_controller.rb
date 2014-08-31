@@ -12,6 +12,9 @@ class CommentsController < ApplicationController
   end
 
   def new
+    @event = Event.friendly.find(params[:event_id])
+    @conference = Conference.find(@event.conference_id)
+
     @parent_id = params.delete(:parent_id)
     @commentable = find_commentable
     @comment = Comment.new( :parent_id => @parent_id,

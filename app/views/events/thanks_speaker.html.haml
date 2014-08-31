@@ -6,9 +6,9 @@
       %li
         = link_to t("home"), root_path
       %li
-        = link_to Conference.friendly.find(params[:conference_id]).title, conference_path(params[:conference_id])
+        = link_to @conference.title, conference_path(@conference)
       %li
-        = link_to event.title, conference_event_path(params[:conference_id], params[:id])
+        = link_to @event.title, conference_event_path(@conference, @event)
       %li.current
         = t("speaker.propose")
 
@@ -21,4 +21,4 @@
 
 .row
   .large-6.columns
-    = link_to t("event.back_to_event"), conference_event_path(params[:conference_id], params[:id]), :class => "button radius expand"
+    = link_to t("event.back_to_event"), conference_event_path(@conference, @event), class: "button radius expand"
