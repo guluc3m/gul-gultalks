@@ -1,8 +1,9 @@
 .row
   .medium-12.columns
-    %p
-      = "Thank you for verifying your vote!"
+    %h3
+      = t("verifier.vote")
+%br
 
 .row
   .large-6.columns
-    = link_to "Home", root_path, class: "button radius expand"
+    = link_to t("home"), root_path, class: "button radius expand"

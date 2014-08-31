@@ -3,40 +3,12 @@ class EventsController < ApplicationController
   helper_method :event, :events
   respond_to :html, :json, :xml
 
-  def index
-    respond_with(events) do |format|
-      format.html { redirect_to conference_path(params[:conference_id]) }
-      format.json { render json: events.as_json(methods: :tag_list) }
-      format.xml { render xml: events.to_xml(methods: :tag_list) }
-    end
-  end
-
-  def new
-    redirect_to new_conference_event_wizard_path
-  end
-
   def show
     respond_with(event) do |format|
       format.json { render json: event.as_json(methods: :tag_list) }
       format.xml { render xml: event.to_xml(methods: :tag_list) }
       format.ics { render ics: event.to_ics(methods: :tag_list) }
     end
-  end
-
-  def create
-    respond_with(event) do |format|
-      format.html { render action: "thanks" }
-    end
-  end
-
-  def update
-    event.update_attributes(params[:event])
-    respond_with event
-  end
-
-  def destroy
-    event.destroy
-    respond_with @event
   end
 
   def propose_speaker
@@ -50,13 +22,17 @@ class EventsController < ApplicationController
   end
 
   def send_speaker
-    sp = Speaker.new(name: params[:name], surname: params[:surname], email: params[:email], confirmed: false, event_id: Event.friendly.find(params[:id]).id)
-    ver = Verifier.new(email: params[:email], event_id: Event.friendly.find(params[:id]).id, verified: false, verify_type: "speaker")
+    # Used to generate the Verifier and send the email to validate/confirm the speaker
+    @event = Event.friendly.find(params[:id])
+    @conference = Conference.find(@event.conference_id)
+
+    sp = Speaker.new(name: params[:name], surname: params[:surname], email: params[:email], confirmed: false, event_id: @event.id)
+    ver = Verifier.new(email: params[:email], event_id: @event.id, verified: false, verify_type: "speaker")
 
     if sp.save && ver.save
       render "thanks_speaker"
     else
-      flash[:error] = "Error adding speaker"
+      flash[:error] = t("speaker.invalid")
       redirect_to action: "propose_speaker"
     end
   end
@@ -74,7 +50,10 @@ class EventsController < ApplicationController
 
   def send_vote
     # Used to generate the Verifier and send the email to validate the vote
-    ver = Verifier.new(email: params[:email], event_id: Event.friendly.find(params[:id]).id, verified: false, verify_type: "vote")
+    @event = Event.friendly.find(params[:id])
+    @conference = Conference.find(@event.conference_id)
+
+    ver = Verifier.new(email: params[:email], event_id: @event.id, verified: false, verify_type: "vote")
 
     if ver.save
       render "thanks_vote"
@@ -84,7 +63,37 @@ class EventsController < ApplicationController
     end
   end
 
+  #def index
+  #  respond_with(events) do |format|
+  #    format.html { redirect_to conference_path(params[:conference_id]) }
+  #    format.json { render json: events.as_json(methods: :tag_list) }
+  #    format.xml { render xml: events.to_xml(methods: :tag_list) }
+  #  end
+  #end
+
+  #def new
+  #  redirect_to new_conference_event_wizard_path
+  #end
+
+  #def create
+  #  respond_with(event) do |format|
+  #    format.html { render action: "thanks" }
+  #  end
+  #end
+
+  #def update
+  #  event.update_attributes(params[:event])
+  #  respond_with event
+  #end
+
+  #def destroy
+  #  event.destroy
+  #  respond_with @event
+  #end
+
+  private
   def event
+    @conference = Conference.friendly.find(params[:conference_id])
     @event = if params[:action] =~ /new/
       Event.new(params[:event])
     elsif params[:action] =~ /create/

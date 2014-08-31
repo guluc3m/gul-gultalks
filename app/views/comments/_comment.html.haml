@@ -8,16 +8,11 @@
         %h4.subheader
           = comment.name
         %small
-          /= comment.created_at.strftime('%b %d, %Y at %H:%M')
-          = l comment.created_at.to_s(:long)
+          = comment.created_at.to_s(:long)
         %p
           = simple_format comment.content
         .actions
-          = link_to "Reply", new_conference_event_comment_path(params[:conference_id], params[:id], parent_id: comment)
-      .small-2.columns
-        %small
-          /= comment.created_at.strftime('%b %d, %Y at %H:%M')
-          = comment.created_at.to_s(:long)
+          = link_to "Reply", new_comment_path(@conference, @event, parent_id: comment)
     .row
       .medium-6.medium-offset-1.columns
         = nested_comments comment.children

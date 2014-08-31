@@ -3,7 +3,7 @@ class Notifier < ActionMailer::Base
 
   def confirmation_event(verifier)
       @event = Event.find(verifier.event_id)
-      @url = verify_url(event_id: verifier.event_id, email: verifier.email, token: verifier.token, verify_type: "event")
+      @url = verify_url(token: verifier.token)
 
       cert_name = "#{@event.title.parameterize.underscore}-gul-cert.pdf"
       pdf_attachment = lesc(File.read('app/views/layouts/certs/cert_template.erbtex'))
@@ -19,8 +19,8 @@ class Notifier < ActionMailer::Base
 
   def confirmation_speaker(verifier)
     @event = Event.find(verifier.event_id)
-    @speaker = Speaker.where(event_id: speaker.event_id, email: verifier.email)
-    @url = verify_url(event_id: verifier.event_id, email: verifier.email, token: verifier.token, verify_type: "speaker")
+    @speaker = Speaker.find_by(event_id: verifier.event_id, email: verifier.email)
+    @url = verify_url(token: verifier.token)
 
     email_with_name = "#{@speaker.name} <#{@speaker.email}>"
     mail(to: email_with_name, subject: t("notifier.tag") + " " + t("notifier.confirmation_speaker.subject"))
@@ -28,7 +28,7 @@ class Notifier < ActionMailer::Base
 
   def confirmation_vote(verifier)
       @event = Event.find(verifier.event_id)
-      @url = verify_url(event_id: verifier.event_id, email: verifier.email, token: verifier.token, verify_type: "vote")
+      @url = verify_url(token: verifier.token)
       mail(to: verifier.email, subject: t("notifier.tag") + " " + t("notifier.confirmation_vote.subject"))
   end
 

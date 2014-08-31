@@ -1,10 +1,12 @@
+- page_title t("event.new_event")
+
 .row
   .medium-12.columns
     %ul.breadcrumbs
       %li
         = link_to t("home"), root_path
       %li
-        = link_to Conference.friendly.find(params[:conference_id]).title, conference_path(params[:conference_id])
+        = link_to @conference.title, conference_path(@conference)
       %li.current
         = t("event.new_event")
 
