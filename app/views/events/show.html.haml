@@ -139,10 +139,18 @@
         = link_to event.content_url, event.content_url, target: "_blank"
       - else
         = t("not_available").humanize
-  .large-12.columns
-    %span
-      %i.fa.fa-code.fa-fw.subheader
-      = t("not_available").humanize
+
+  - if event.code_url.present?
+    .large-12.columns
+      %span
+        %i.fa.fa-code.fa-fw.subheader
+          = link_to event.code_url, event.code, target: "_blank"
+  - else
+    .large-12.columns
+      %span
+        %i.fa.fa-code.fa-fw.subheader
+        = t('code').humanize
+        = t("not_available")
   .large-12.columns
     %hr
 
