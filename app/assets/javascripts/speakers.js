@@ -1,3 +1,8 @@
+$(document).ready(function(){
+  // Add one speaker by default
+  $('a.add_fields').trigger('click');
+});
+
 $(function() {
   // limits the number of categories
   $('#speakers').bind('cocoon:after-insert', function() {

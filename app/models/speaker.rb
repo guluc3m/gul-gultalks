@@ -5,7 +5,7 @@ class Speaker < ActiveRecord::Base
 
   #validates :email,
   #          presence: true,
-  #         allow_blank: false,
+  #          allow_blank: false,
   #          email: true,
   #          uniqueness: {scope: [:event_id]}
 
