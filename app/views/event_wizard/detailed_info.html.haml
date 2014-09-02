@@ -21,11 +21,13 @@
 
 = form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
 
-  #speakers
-    = f.fields_for :speakers do |speaker|
-      = render "speaker_fields", f: speaker
-    .links
-      = link_to_add_association t("speaker.add"), f, :speakers
+  .row
+    .large-12.columns
+      #speakers
+        = f.fields_for :speakers do |speaker|
+          = render "speaker_fields", f: speaker
+        .links
+          = link_to_add_association t("speaker.add"), f, :speakers
 
   .row
     .large-12.columns
