@@ -127,6 +127,7 @@ es:
       hacker: "hacker"
     new_event: "Nuevo evento"
     next_step: "Siguiente paso"
+    notes_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     required: "Requerido"
     room: "Aula"
     send_event: "Enviar evento"
