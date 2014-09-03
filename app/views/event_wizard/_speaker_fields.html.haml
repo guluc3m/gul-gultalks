@@ -6,9 +6,7 @@
         = t("speaker.name")
         %small
           = t("event.required")
-      = f.text_field :name, label: false, maxlength: 28, pattern: "extended_alpha", required: true, class: "radius"
-      %small.error
-        = t("speaker.name_requirements")
+      = f.text_field :name, label: false, maxlength: 28, required: true, class: "radius"
 
       = link_to_remove_association t("speaker.remove"), f, class: "button small radius"
 
@@ -16,11 +14,7 @@
       %label{for: "surname"}
         %i.fa.fa-users.fa-fw.fa-lg
         = t("speaker.surname")
-        %small
-          = t("event.required")
-      = f.text_field :surname, label: false, maxlength: 36, pattern: "extended_alpha", required: true, class: "radius"
-      %small.error
-        = t("speaker.name_requirements")
+      = f.text_field :surname, label: false, maxlength: 36, class: "radius"
 
     .large-4.columns
       %label{for: "email"}
@@ -28,6 +22,4 @@
         = t("speaker.email")
         %small
           = t("event.required")
-      = f.text_field :email, label: false, maxlength: 64, pattern: "extended_email", required: true, class: "radius"
-      %small.error
-        = t("speaker.email_requirements")
+      = f.text_field :email, label: false, maxlength: 64, required: true, type: "email", class: "radius"

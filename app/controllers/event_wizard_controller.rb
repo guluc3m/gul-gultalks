@@ -29,6 +29,7 @@ class EventWizardController < ApplicationController
   end
 
   def update
+    @conference = Conference.friendly.find(params[:conference_id])
     @event = WizardEvent.new(session["event_wizard"]["event"])
     if params[:event]
       @event.attributes = params["event"]
@@ -46,8 +47,8 @@ class EventWizardController < ApplicationController
       end
     end
 
-    @event.conference_id = Conference.friendly.find(params[:conference_id]).id
-    @event.location = Conference.friendly.find(params[:conference_id]).location
+    @event.conference_id = @conference.id
+    @event.location = @conference.location
 
     @event.step = step
     @event.steps = steps
