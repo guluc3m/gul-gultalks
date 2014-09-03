@@ -127,7 +127,7 @@
             = session["event_wizard"]["event"]["notes"]
 
 
-= form_for(@event, url: wizard_path, method: :put, data: {abide: ""}) do |f|
+= form_for(@event, url: wizard_path, method: :put) do |f|
   .row
     .large-6.columns
       %label{for: "email"}
@@ -135,9 +135,7 @@
         = t("event.validation_email")
         %small
           = t("event.required")
-      = f.text_field :validation_email, label: false, maxlength: 64, pattern: "extended_email", required: true, class: "radius", value: session["event_wizard"]["event"]["email"]
-      %small.error
-        = t("event.email_requirements")
+      = f.text_field :validation_email, label: false, maxlength: 64, required: true, type: "email", class: "radius", value: session["event_wizard"]["event"]["email"]
 
     .large-6.columns
       %label
