@@ -18,6 +18,7 @@
     .off-canvas-wrap{"data-offcanvas" => ""}
       .inner-wrap
         %nav.tab-bar
+          -# %nav.top-bar{"data-topbar" => "", role:"navigation", "data-options" => "sticky_on: large"}
           %section.left-small
             %a.left-off-canvas-toggle.menu-icon
               %span
@@ -31,7 +32,7 @@
             %li
               %label GulTalks
             %li
-              = link_to "inicio", root_path
+              = link_to t("home"), root_path
             %li
               = link_to t("conference.list"), conferences_path
 
@@ -57,43 +58,16 @@
               -# = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), { class: "button success tiny radius expand" }
             %li
               %label Options
-              / TODO: fix route
               %br
               .row
                 .columns
+                  / FIXME: fix route
                   = link_to t("conference.propose_event"), "#", { class: "button success tiny radius expand" }
                   = link_to "Admin", "/admin", { class: "button secondary tiny radius expand"}
                 -# = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), { class: "button success radius expand" }
-        %aside.right-off-canvas-menu
-          %ul.off-canvas-list
-            %li
-              %label Users
-            %li
-              %a{:href => "#"} Hari Seldon
-            %li.has-submenu
-              %a{:href => "#"} R. Giskard Reventlov
-              %ul.right-submenu
-                %li.back
-                  %a{:href => "#"} Back
-                %li
-                  %label Level 1
-                %li
-                  %a{:href => "#"} Link 1
-                %li.has-submenu
-                  %a{:href => "#"} Link 2 w/ submenu
-                  %ul.right-submenu
-                    %li.back
-                      %a{:href => "#"} Back
-                    %li
-                      %label Level 2
-                    %li
-                      %a{:href => "#"} ...
-                %li
-                  %a{:href => "#"} ...
-            %li
-              %a{:href => "#"} ...
         / End Header and Nav
         %section.main-section
+        %br
         = yield
         %a.exit-off-canvas
         / Footer

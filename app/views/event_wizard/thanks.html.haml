@@ -104,8 +104,7 @@
               - tags = session["event_wizard"]["tags"].split(",").collect(&:strip)
               - tags.each do |t|
                 .label.secondary.radius 
-                  %strong
-                    = t
+                  = t
                
         .row
           .large-4.columns
@@ -149,7 +148,11 @@
       = render 'partials/recaptcha'
 
   .row
-    .large-12.columns
+    .large-3.columns.right
       // TODO: i18n
       -# = f.submit_tag t("event.send_event"), class: "button radius expand success", data: {disable_with: "Plase wait..."}
-      = f.submit t("event.send_event"), class: "button radius expand success", data: {disable_with: "Plase wait..."}
+      = f.button type: "submit", class: "button radius expand success", data: {disable_with: "Plase wait..."} do
+        = content_tag(:span, t("event.send_event"))
+        %i.fa.fa-share.fa-fw.fa-lg
+      -# = f.submit t("event.send_event"), class: "button radius expand success", data: {disable_with: "Plase wait..."}
+
