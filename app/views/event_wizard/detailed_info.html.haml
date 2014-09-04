@@ -45,35 +45,32 @@
       = f.text_field :tags, label: false, maxlength: 128, class: "radius", placeholder: t("event.tag_format")
 
   .row
-    .large-3.columns
-      %label
+    .large-4.columns
+      %label{for: "language"}
         %i.fa.fa-globe.fa-fw.fa-lg
         = t("event.language")
-      = select("event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]})
+      = select("event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]},{include_blank: true, selected: "selected"}, class: "radius")
 
-    .large-3.columns
-      %label
+    .large-4.columns
+      %label{for: "duroation"}
         %i.fa.fa-clock-o.fa-fw.fa-lg
         = t("event.duration").humanize
       %select
-        = options_for_select([['30 min',1], ['1 hora',2]])
+        = options_for_select([['30 min',1], ['1 hora',2]],  class: "radius")
 
-    .large-6.columns
-      %label
+    .large-4.columns
+      %label{for: "level"}
         %i.fa.fa-lightbulb-o.fa-lg
         = t("event.level")
+      = select("event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}, {include_blank: true, selected: "selected"}, class: "radius", label: false)
+      /%span.level-name
 
-      .row.show-for-touch
-        .large-12.columns
-          = select("event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]})
-          /%span.level-name
-
-      .row.hide-for-touch
-        .large-12.columns
-          - Event.levels.keys.each do |l|
-            = radio_button("event", "level", "#{l}")
-            %label
-              = t("event.levels.#{l}").humanize
+      -# .row.hide-for-touch
+      -#   .large-12.columns
+      -#     - Event.levels.keys.each do |l|
+      -#       = radio_button("event", "level", "#{l}")
+      -#       %label
+      -#         = t("event.levels.#{l}").humanize
 
   .row
     .large-12.columns
@@ -93,5 +90,7 @@
       %span Acepto las condiciones de privacidad
       
   .row
-    .large-6.columns.large-centered
-      = f.submit t("event.next_step"), class: "button radius expand success"
+    .large-3.columns.right
+      = f.button type: "submit",  class: "button radius expand success", data: { disable_with: "Processing..." } do
+        = content_tag(:span, t("event.next_step"))
+        %span.fa.fa-chevron-right.fa-fw.fa-lg

@@ -30,16 +30,15 @@
 
   .row
     .large-12.columns
-      %label
-        %i.fa.fa-thumb-tack.fa-lg
+      %label{for: "subclass"}
+        %i.fa.fa-thumb-tack.fa-fw.fa-lg
         = t("event.subclass")
         %small
           = t("event.required")
-        %i.fa.fa-question-circle.fa-fw{"data-tooltip" => "", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
-
+        %i.fa.fa-question-circle.fa-fw{"data-tooltip" => "true", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
       .row
         .large-3.columns
-          = select("event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]},{ include_blank: true })
+          = select("event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}, {include_blank: true, selected: "selected"}, class: "radius", required: true, label:false)
 
       -# .row.hide-for-touch
       -#   .large-12.columns
@@ -56,9 +55,9 @@
         %small
           = t("event.required")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.title_requirements")}
-      = f.text_field :title, label: false, maxlength: 128, required: true, class: "radius", autofocus: true
-      .char-counter.right
-        128
+      = f.text_field :title, label: false, maxlength: 128, required: true, class: "radius"
+      -# .char-counter.right
+      -#   128
 
   .row
     .large-12.columns
@@ -69,8 +68,8 @@
           = t("event.required")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.summary_requirements")}
       = f.text_field :summary, label: false, maxlength: 128, required: true, class: "radius lettrify"
-      .char-counter.right
-        128
+      -# .char-counter.right
+      -#   128
 
 
   .row
@@ -90,7 +89,7 @@
 
       
   .row
-    .large-3.right.columns
+    .large-3.columns.right
       = f.button class: "button radius expand success", data: { disable_with: "Processing..." } do
         = content_tag(:span, t("event.next_step"))
         %span.fa.fa-chevron-right.fa-fw.fa-lg
