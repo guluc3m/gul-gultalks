@@ -1,6 +1,6 @@
 - page_title t("event.new_event")
 
-.row
+.row.show-for-medium-up.show-landscape-only
   .medium-12.columns
     %ul.breadcrumbs
       -# %li
@@ -12,11 +12,9 @@
 
 .row
   .large-12.columns
-    %h2.subheader Información básica
+    .columns
+      %h2.subheader Información básica
     %hr
-
-.row
-  .large-12.columns
     %h5.subheader
       = t("event.complete_basic_form")
 

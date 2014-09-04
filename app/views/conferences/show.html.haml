@@ -28,8 +28,8 @@
 
 .row
   .large-12.columns
-    //if conference.start_date.today?
-    = render "partials/calendar"
+    - if @conference.start_date.today?
+      = render "partials/calendar"
     - if !@conference.active?
       .row
         .large-8.large-centered.columns
@@ -49,10 +49,10 @@
       %table
         %thead
           %tr
-            %th{width: "980"}
+            %th{scope: "column"}
               = t("Event")
             - if @conference.voting_enabled
-              %th{width: "40"}
+              %th.text-center{scope: "column", width: "90"}
                 = t("vote.other").humanize
         %tbody
           - @paginated_events.map do |event|
@@ -72,9 +72,14 @@
     - if @paginated_events.map{|event| !event.speaker?}.count.nonzero?
       .row
         .large-12.columns
+          %h4.subheader 
+            %i.fa.fa-child.fa-fw.fa-lg
+            Eventos sin ponente
+          %hr
+
           %p
-            Los sigientes eventos no tienen ponente o responsable para llevarlos a cabo. Si crees que puedes presentar la charla o ayudar en el taller no lo dudes y haz tu propuesta.
-          .panel.radius
+            Los siguientes eventos no tienen ponente o responsable para llevarlos a cabo. Si crees que puedes presentar la charla o ayudar en el taller no lo dudes y haz tu propuesta.
+          .panel.radius{style: "background-color: #f9f9f9"}
             %ul.no-bullet
               - @paginated_events.map do |event|
                 - if !event.speaker?
