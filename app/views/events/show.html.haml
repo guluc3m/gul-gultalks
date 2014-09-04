@@ -157,22 +157,26 @@
     %hr
 
   .large-3.columns.text-center.left
-    = link_to conference_path(@conference), { class: "button radius expand" } do
+    = link_to conference_path(@conference), class: "button radius expand" do
       %span.fa.fa-chevron-left.fa-fw.fa-lg
       = t("event.back_to_events").humanize
-  .large-4.columns.right
-    - if @conference.voting_enabled 
-      - unless @event.cancelled
-        - if !@event.speaker?
-          = link_to propose_speaker_conference_event_path, class: "button success radius expand" do
-            %i.fa.fa-child.fa-lg
-            Quiero impartir la charla
-        - else
-          = link_to t("to_vote"), vote_conference_event_path, class: "button success radius expand" 
-      - else
+
+  - unless @event.cancelled
+
+    - if @conference.voting_enabled
+      .large-4.columns.right
+        = link_to t("to_vote"), vote_conference_event_path, class: "button success radius expand"
+    - else
+      .large-4.columns.right
         = link_to "#", disabled: true, class: "button success radius expand" do
           %i.fa.fa-lock.fa-lg
           = t("to_vote")
+
+    - if !@event.speaker? && @conference.call_for_papers_enabled
+      .large-4.columns.right
+        = link_to propose_speaker_conference_event_path, class: "button radius expand" do
+          %i.fa.fa-child.fa-lg
+          = t("speaker.propose")
 
 = nested_comments @comments
 
