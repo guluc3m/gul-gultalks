@@ -4,15 +4,19 @@ class EventsController < ApplicationController
   respond_to :html, :json, :xml
 
   def show
-    respond_with(event) do |format|
-      format.json { render json: event.as_json(methods: :tag_list) }
-      format.xml { render xml: event.to_xml(methods: :tag_list) }
-      format.ics { render ics: event.to_ics(methods: :tag_list) }
+    if Event.friendly.find(params[:id]).shown
+      respond_with(event) do |format|
+        format.json { render json: event.as_json(methods: :tag_list) }
+        format.xml { render xml: event.to_xml(methods: :tag_list) }
+        format.ics { render ics: event.to_ics(methods: :tag_list) }
+      end
+    else
+      redirect_to conference_path(params[:conference_id])
     end
   end
 
   def propose_speaker
-    if Conference.friendly.find(params[:conference_id]).call_for_papers_enabled
+    if Conference.friendly.find(params[:conference_id]).call_for_papers_enabled && !Event.friendly.find(params[:id]).speaker?
       respond_with(event) do |format|
         format.html { render action: "propose_speaker" }
       end

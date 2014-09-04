@@ -49,10 +49,12 @@
       %label{for: "language"}
         %i.fa.fa-globe.fa-fw.fa-lg.subheader
         = t("event.language")
-      = select("event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]},{include_blank: true, selected: "selected"}, class: "radius")
+        %small
+          = t("event.required")
+      = select("event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]},{include_blank: true, selected: "selected"}, required: true, class: "radius")
 
     .large-4.columns
-      %label{for: "duroation"}
+      %label{for: "duration"}
         %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
         = t("event.duration").humanize
       %select
@@ -62,7 +64,9 @@
       %label{for: "level"}
         %i.fa.fa-lightbulb-o.fa-lg.subheader
         = t("event.level")
-      = select("event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}, { selected: "selected"}, class: "radius", label: false)
+        %small
+          = t("event.required")
+      = select("event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
       /%span.level-name
 
       -# .row.hide-for-touch

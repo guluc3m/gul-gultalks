@@ -52,6 +52,7 @@ class EventWizardController < ApplicationController
 
     @event.step = step
     @event.steps = steps
+
     @event.session = session
     @event.validations = validations
 
@@ -77,7 +78,7 @@ class EventWizardController < ApplicationController
 
   def validations
     {
-      basic_info: [:title, :brief_description, :description],
+      basic_info: [:title, :brief_description, :description, :subclass],
       detailed_info: [:content_url, :notes, :language],
       speaker: [],
       thanks: [:title, :brief_description, :description, :content_url, :notes, :language]

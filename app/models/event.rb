@@ -32,6 +32,8 @@ class Event < ActiveRecord::Base
             allow_blank: true,
             inclusion: { in: I18n.t("event.languages").keys.collect {|l| l.to_s} }
 
+  validates :subclass,
+            presence: true
 
   validates :summary,
             format: { with: /\A[a-z0-9\W]+\z/i },
