@@ -11,22 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729144844) do
-
-  create_table "active_admin_comments", force: true do |t|
-    t.string   "namespace"
-    t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
-    t.integer  "author_id"
-    t.string   "author_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+ActiveRecord::Schema.define(version: 20140829092552) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -39,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140729144844) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "role",                   default: 1,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,16 +32,28 @@ ActiveRecord::Schema.define(version: 20140729144844) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
+  create_table "comments", force: true do |t|
+    t.string   "name",             limit: 64,  null: false
+    t.string   "email",            limit: 64
+    t.text     "content",          limit: 256
+    t.string   "ancestry"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "conferences", force: true do |t|
     t.string   "title",                      limit: 128,  null: false
     t.text     "description",                limit: 1024, null: false
     t.string   "location",                   limit: 32,   null: false
-    t.date     "start_date"
-    t.date     "end_date"
+    t.date     "start_date",                              null: false
+    t.date     "end_date",                                null: false
     t.string   "coordinator",                             null: false
-    t.boolean  "active"
+    t.boolean  "active",                                  null: false
     t.boolean  "call_for_papers_enabled",                 null: false
-    t.boolean  "voting_enabled"
+    t.boolean  "voting_enabled",                          null: false
+    t.boolean  "show_calendar",                           null: false
     t.date     "call_for_papers_start_date",              null: false
     t.date     "call_for_papers_end_date",                null: false
     t.date     "voting_start_date",                       null: false
@@ -66,28 +64,52 @@ ActiveRecord::Schema.define(version: 20140729144844) do
   end
 
   create_table "events", force: true do |t|
-    t.string   "title",                limit: 128,                  null: false
-    t.string   "brief_description",                                 null: false
-    t.text     "description",          limit: 2048,                 null: false
-    t.string   "speaker",              limit: 64,                   null: false
+    t.string   "title",         limit: 128,                  null: false
+    t.string   "summary",                                    null: false
+    t.text     "description",   limit: 1400,                 null: false
+    t.integer  "subclass",                   default: 0,     null: false
+    t.integer  "level",                      default: 2,     null: false
+    t.string   "content_url",   limit: 128
+    t.string   "language",      limit: 2
+    t.text     "notes",         limit: 300
+    t.integer  "votes",                      default: 0,     null: false
+    t.string   "live_video",    limit: 128
+    t.string   "video",         limit: 128
+    t.string   "code_url",      limit: 128
+    t.string   "location",      limit: 64
     t.string   "room"
-    t.string   "location",             limit: 64
     t.date     "date"
     t.time     "start_time"
     t.time     "end_time"
+    t.boolean  "shown",                      default: false
+    t.boolean  "verified",                   default: false
+    t.boolean  "cancelled",                  default: false
+    t.boolean  "accepted",                   default: false
     t.string   "assisted_by"
-    t.string   "speaker_contact_info",                              null: false
-    t.integer  "votes",                             default: 0,     null: false
-    t.text     "comments",             limit: 2048
-    t.integer  "level",                                             null: false
-    t.string   "content_url"
-    t.boolean  "active",                            default: true
-    t.integer  "conference_id"
-    t.boolean  "cancelled",                         default: false
     t.string   "slug"
+    t.integer  "conference_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "language",             limit: 2
+  end
+
+  create_table "sessions", force: true do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
+
+  create_table "speakers", force: true do |t|
+    t.string   "name",       limit: 28,                null: false
+    t.string   "surname",    limit: 36
+    t.string   "email",      limit: 64,                null: false
+    t.integer  "event_id",                             null: false
+    t.boolean  "confirmed",             default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", force: true do |t|
@@ -110,12 +132,12 @@ ActiveRecord::Schema.define(version: 20140729144844) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
-  create_table "verify_events", force: true do |t|
-    t.integer  "event_id"
-    t.string   "email"
-    t.string   "token",        limit: 32
-    t.boolean  "validated",               default: false
-    t.datetime "validated_at"
+  create_table "verifiers", force: true do |t|
+    t.string   "email",                                  null: false
+    t.integer  "event_id",                               null: false
+    t.string   "token",       limit: 32,                 null: false
+    t.boolean  "verified",               default: false, null: false
+    t.string   "verify_type",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
