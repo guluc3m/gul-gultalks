@@ -8,6 +8,7 @@ class AdminAbility
     elsif user.mod?
       can :read, ActiveAdmin::Page, name: "Dashboard"
       can :manage, Event
+      can :manage, Speaker
     end
   end
 end
