@@ -32,14 +32,14 @@
   .row
     .large-12.columns
       %label
-        %i.fa.fa-link.fa-fw.fa-lg
+        %i.fa.fa-link.fa-fw.fa-lg.subheader
         = t("event.url")
       = f.url_field :content_url, label: false, maxlength: 128, type: "url", class: "radius"
 
   .row
     .large-12.columns
       %label{for: "tags"}
-        %i.fa.fa-tags.fa-fw.fa-lg
+        %i.fa.fa-tags.fa-fw.fa-lg.subheader
         = t("event.tags")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.tag_format")}
       = f.text_field :tags, label: false, maxlength: 128, class: "radius", placeholder: t("event.tag_format")
@@ -47,20 +47,20 @@
   .row
     .large-4.columns
       %label{for: "language"}
-        %i.fa.fa-globe.fa-fw.fa-lg
+        %i.fa.fa-globe.fa-fw.fa-lg.subheader
         = t("event.language")
       = select("event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]},{include_blank: true, selected: "selected"}, class: "radius")
 
     .large-4.columns
       %label{for: "duroation"}
-        %i.fa.fa-clock-o.fa-fw.fa-lg
+        %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
         = t("event.duration").humanize
       %select
         = options_for_select([['30 min',1], ['1 hora',2]],  class: "radius")
 
     .large-4.columns
       %label{for: "level"}
-        %i.fa.fa-lightbulb-o.fa-lg
+        %i.fa.fa-lightbulb-o.fa-lg.subheader
         = t("event.level")
       = select("event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}, {include_blank: true, selected: "selected"}, class: "radius", label: false)
       /%span.level-name
@@ -75,7 +75,7 @@
   .row
     .large-12.columns
       %label{for: "comments"}
-        %i.fa.fa-comments.fa-fw.fa-lg
+        %i.fa.fa-comments.fa-fw.fa-lg.subheader
         = t("event.comments")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.notes_requirements")}
       = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius", size: "10x6"
