@@ -2,8 +2,8 @@ require 'bundler/capistrano'
 
 set :application, "gul-talks"
 
-set :scm, :git
-set :repository, "git@github."
+set :scm, :none
+set :repository, "."
 set :deploy_via, :copy
 
 set :deploy_to, "/home/gultalks/test"
