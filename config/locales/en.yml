@@ -105,6 +105,14 @@ en:
     description: "Description"
     description_requirements: "Can only contain alphanumeric characters and hyphens"
     duration: "Duration"
+    durations:
+      unspecified_duration: "unspecified"
+      t_0: "less than 30 minutes"
+      t_1: "30 minutes"
+      t_2: "1 hour"
+      t_3: "1 hour and 30 minutes"
+      t_4: "2 hours"
+      t_5: "more than 2 hours"
     email_requirements: "Not a valid email address"
     end_time: "End time"
     i_am_proposing: "No, I am just proposing it"
@@ -115,7 +123,7 @@ en:
       en: "english"
     level: "Level"
     levels:
-      undefined: "undefined"
+      unspecified_level: "unspecified"
       noob: "noob"
       easy: "easy"
       medium: "medium"

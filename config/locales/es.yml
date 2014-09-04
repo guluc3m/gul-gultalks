@@ -109,6 +109,14 @@ es:
     description: "Descripción"
     description_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     duration: "Duración"
+    durations:
+      unspecified_duration: "sin especificar"
+      t_0: "menos de 30 minutos"
+      t_1: "30 minutos"
+      t_2: "1 hora"
+      t_3: "1 hora y 30 minutos"
+      t_4: "2 horas"
+      t_5: "más de 2 horas"
     email_requirements: "No es una dirección de correo electrónico válida"
     end_time: "Hora de finalización"
     i_am_proposing: "No, sólo lo estoy proponiendo"
@@ -120,7 +128,7 @@ es:
       en: "inglés"
     level: "Nivel"
     levels:
-      undefined: "sin definir"
+      unspecified_level: "sin especificar"
       noob: "novato"
       easy: "fácil"
       medium: "medio"

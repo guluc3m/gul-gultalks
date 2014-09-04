@@ -56,13 +56,8 @@
             = t("not_available").humanize
         %li
           %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
-          - if event.start_time.present? && event.end_time.present?
-            = t("time.from").humanize
-            = event.start_time.strftime('%R')
-            = t("time.to")
-            = event.end_time.strftime('%R')
-          - else
-            = t("not_available").humanize
+          = t("event.duration") + ":"
+          = t("event.durations.#{event.duration}").humanize
         %li
           %i.fa.fa-map-marker.fa-fw.fa-lg.subheader
           = event.location

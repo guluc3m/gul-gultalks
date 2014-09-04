@@ -56,9 +56,10 @@
     .large-4.columns
       %label{for: "duration"}
         %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
-        = t("event.duration").humanize
-      %select
-        = options_for_select([['30 min',1], ['1 hora',2]],  class: "radius")
+        = t("event.duration")
+        %small
+          = t("event.required")
+      = select("event", "duration", Event.durations.keys.collect {|d| [t("event.durations.#{d}").humanize, d]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
 
     .large-4.columns
       %label{for: "level"}
