@@ -1,18 +1,10 @@
 - page_title t("event.new_event")
-
-.row
-  .medium-12.columns
-    %ul.breadcrumbs
-      %li
-        = link_to t("home"), root_path
-      %li
-        = link_to @conference.title, conference_path(@conference)
-      %li.current
-        = t("event.new_event")
+= render partial: "breadcrumbs"
 
 .row
   .large-12.columns
-    %h2.subheader Placeholder
+    %h2.subheader
+      = t('event.thanks')
     %hr
 .row
   .large-12.columns

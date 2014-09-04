@@ -1,15 +1,5 @@
 - page_title t("event.new_event")
-
-.row.show-for-medium-up.show-landscape-only
-  .medium-12.columns
-    %ul.breadcrumbs
-      -# %li
-      -#   = link_to t("home"), root_path
-      %li
-        = link_to @conference.title, conference_path(@conference)
-      %li.current
-        = t("event.new_event")
-
+= render partial: "breadcrumbs"
 .row
   .large-12.columns
     .columns
