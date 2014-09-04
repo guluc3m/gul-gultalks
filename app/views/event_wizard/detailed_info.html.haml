@@ -62,7 +62,7 @@
       %label{for: "level"}
         %i.fa.fa-lightbulb-o.fa-lg.subheader
         = t("event.level")
-      = select("event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}, {include_blank: true, selected: "selected"}, class: "radius", label: false)
+      = select("event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}, { selected: "selected"}, class: "radius", label: false)
       /%span.level-name
 
       -# .row.hide-for-touch

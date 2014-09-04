@@ -120,6 +120,7 @@ es:
       en: "inglés"
     level: "Nivel"
     levels:
+      undefined: "sin definir"
       noob: "novato"
       easy: "fácil"
       medium: "medio"

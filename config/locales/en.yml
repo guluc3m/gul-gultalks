@@ -115,6 +115,7 @@ en:
       en: "english"
     level: "Level"
     levels:
+      undefined: "undefined"
       noob: "noob"
       easy: "easy"
       medium: "medium"

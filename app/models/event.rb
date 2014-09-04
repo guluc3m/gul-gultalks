@@ -37,7 +37,7 @@ class Event < ActiveRecord::Base
             format: { with: /\A[a-z0-9\W]+\z/i },
             presence: true
 
-  enum level: [:noob, :easy, :medium, :hard, :hacker]
+  enum level: [:undefined, :noob, :easy, :medium, :hard, :hacker]
   enum subclass: [:talk, :workshop]
   
   #validates :terms_of_service, acceptance: { accept: 'yes' }
