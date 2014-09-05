@@ -45,12 +45,12 @@
             %p
               = t("conference.first_to_propose")
 
-    - else
+    - elsif @paginated_events.map{|event| event.speaker?}.count.nonzero?
       %table
         %thead
           %tr
             %th{scope: "column"}
-              = t("Event")
+              = t("Events")
             - if @conference.voting_enabled
               %th.text-center{scope: "column", width: "90"}
                 = t("vote.other").humanize
@@ -69,7 +69,7 @@
       .row
         .large-6.columns-centered.columns
           = will_paginate @paginated_events, renderer: FoundationPagination::Rails, container: false, class: "pagination-centered"
-    - if @paginated_events.map{|event| !event.speaker?}.count.nonzero?
+    - if @pending_events.map{|event| !event.speaker?}.count.nonzero?
       .row
         .large-12.columns
           %h4.subheader 
@@ -81,7 +81,7 @@
             Los siguientes eventos no tienen ponente o responsable para llevarlos a cabo. Si crees que puedes presentar la charla o ayudar en el taller no lo dudes y haz tu propuesta.
           .panel.radius{style: "background-color: #f9f9f9"}
             %ul.no-bullet
-              - @paginated_events.map do |event|
+              - @pending_events.map do |event|
                 - if !event.speaker?
                   %li
                     = link_to event.title, conference_event_path(@conference, event)

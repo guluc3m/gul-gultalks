@@ -40,9 +40,11 @@ class ConferencesController < ApplicationController
       c
     else
       @conference = Conference.friendly.find(params[:id])
-      #TOFIX: json or xml must show all entries
+      # TOFIX: json or xml must show all entries
       @calendar_events = @conference.events.where(shown: true, accepted: true)
-      @paginated_events = @conference.events.where(shown: true).paginate(page: params[:page], per_page: 5)
+      @paginated_events = @conference.events.where(shown: true, verified: true).paginate(page: params[:page], per_page: 8)
+      # FIXME: Show only events with no speaker
+      @pending_events = @conference.events.where(shown: true, verified: true)
       @conference
     end
   end
