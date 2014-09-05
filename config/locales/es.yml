@@ -10,6 +10,7 @@ es:
       event:
         summary: "Resumen"
         content_url: "URL del contenido"
+        code: "código"
         description: "Descripción"
         notes: "Comentarios"
         title: "Título"
@@ -24,7 +25,6 @@ es:
         Por favor, visita el siguiente enlace para validarlo.
 
         %{validation_url}
-      footer: ""
     confirmation_speaker:
       subject: "Confirmación de ponencia"
       body: |
@@ -34,7 +34,6 @@ es:
         Si deseas hacerte cargo de ello, por favor, visita el siguiente enlace.
 
         %{validation_url}
-      footer: ""
     confirmation_vote:
       subject: "Confirmación de voto"
       body: |
@@ -45,7 +44,9 @@ es:
         Por favor, visita el siguiente enlace para validar tu voto.
 
         %{validation_url}
-      footer: ""
+    footer: |
+      --
+      Grupo de Usuarios de la Universidad Carlos III de Madrid 
     tag: "[GUL-TALKS]"
   back: "atrás"
   Conference: "Jornada"
@@ -141,6 +142,7 @@ es:
       shown: "Mostrado"
       verified: "Verificado"
     subclass: "Tipo de evento"
+    title_requirements: "Elige un tipo de evento"
     subclasses:
       talk: "Charla"
       workshop: "Taller"

@@ -10,6 +10,7 @@ en:
       event:
         summary: "Summary"
         content_url: "Content URL"
+        code: "code"
         description: "Description"
         notes: "Comments"
         title: "Title"
@@ -136,6 +137,7 @@ en:
       shown: "Shown"
       verified: "Verified"
     subclass: "Event type"
+    subclass_requirements: "Choose one event type"
     subclasses:
       talk: "Talk"
       workshop: "Workshop"
