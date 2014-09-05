@@ -1,7 +1,7 @@
 - page_title @event.title
 
 .row
-  .medium-12.columns
+  .columns.show-for-medium-up
     %ul.breadcrumbs
       %li
         = link_to t("home"), root_path
@@ -12,6 +12,11 @@
 .row
   .large-12.columns
     = render 'partials/status_tags'
+    .visible-for-medium-up.right
+      = link_to '#' do
+        %i.fa.fa-twitter.fa-lg
+      = link_to '#' do
+        %i.fa.fa-facebook.fa-lg
     %h2
       = event.title
     %h6.subheader
@@ -23,7 +28,14 @@
           %span
             = event.speakers.map{|speaker| "#{speaker.name} #{speaker.surname}"}.join(", ")
         .large-6.columns
-          %span.right
+          %span.show-for-small-only
+            %i.fa.fa-support.fa-fw.subheader
+            - if event.assisted_by.present?
+              Asistida por:
+              = event.assisted_by
+            - else
+              Asistente/s no asigando
+          %span.show-for-medium-up.right
             %i.fa.fa-support.fa-fw.subheader
             - if event.assisted_by.present?
               Asistida por:
@@ -126,11 +138,9 @@
             .label.info.radius
               = tag.humanize
 
-      .success.radius.label
-        %p
-          = event.votes
-          %strong
-            = t('vote', count: event.votes ).upcase
+      .success.radius.label.large
+        = event.votes
+        = t('vote', count: event.votes ).upcase
 
 .row
   .large-12.columns
@@ -156,24 +166,25 @@
   .large-12.columns
     %hr
 
-  .large-3.columns.text-center.left
-    = link_to conference_path(@conference), class: "button radius expand" do
-      %span.fa.fa-chevron-left.fa-fw.fa-lg
-      = t("event.back_to_events").humanize
+  .visible-for-medium-up
+    .large-3.columns.left
+      = link_to conference_path(@conference), class: "button radius expand" do
+        %span.fa.fa-chevron-left.fa-fw.fa-lg
+        = t("event.back_to_events").humanize
 
   - unless @event.cancelled
 
     - if @conference.voting_enabled
-      .large-4.columns.right
+      .large-3.columns.right
         = link_to t("to_vote"), vote_conference_event_path, class: "button success radius expand"
     - else
-      .large-4.columns.right
+      .large-3.columns.right
         = link_to "#", disabled: true, class: "button success radius expand" do
           %i.fa.fa-lock.fa-lg
           = t("to_vote")
 
     - if !@event.speaker? && @conference.call_for_papers_enabled
-      .large-4.columns.right
+      .large-3.columns.right
         = link_to propose_speaker_conference_event_path, class: "button radius expand" do
           %i.fa.fa-child.fa-lg
           = t("speaker.propose")
