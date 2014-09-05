@@ -10,7 +10,7 @@ en:
       event:
         summary: "Summary"
         content_url: "Content URL"
-        code: "code"
+        code: "Code"
         description: "Description"
         notes: "Comments"
         title: "Title"
@@ -25,7 +25,6 @@ en:
         Please, visit the following link in order to validate it.
 
         %{validation_url}
-      footer: ""
     confirmation_speaker:
       subject: "Speaker confirmation"
       body: |
@@ -35,7 +34,6 @@ en:
         If you wish to take care of it, please visit the following link.
 
         %{validation_url}
-      footer: ""
     confirmation_vote:
       subject: "Vote confirmation"
       body: |
@@ -46,7 +44,9 @@ en:
         Please, visit the following link in order to validate your vote.
 
         %{validation_url}
-      footer: ""
+    footer: |
+      --
+      Grupo de Usuarios de la Universidad Carlos III de Madrid 
     tag: "[GUL-TALKS]"
   back: "back"
   Conference: "Conference"
@@ -157,9 +157,13 @@ en:
     title_requirements: "Can only contain alphanumeric characters and hyphens"
     url: "Content URL"
     url_requirements: "Not a valid URL"
+    code: "code"
+    code_requirements: "Not a valid URL"
     validation_email: "Email address for validation"
     validation_email_explanation: "You need to validate the event through a link that will be sent to this email address."
-  Event: "Event"
+  Event:
+    one: "Event"
+    other: "Events"
   Events: "Events"
   home: "Home"
   location: "Location"
@@ -183,6 +187,7 @@ en:
     propose: "Propose speaker"
     remove_speaker: "Remove speaker"
     twitter: "Twitter"
+    unassigned: "Speaker needed"
   Speaker: "Speaker"
   Speakers: "Speakers"
   thanks:
