@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
   acts_as_taggable
- attr_accessible :accepted, :assisted_by, :cancelled, :conference_id, :content_url, :date, :description, :end_time, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_time, :speakers_attributes, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes
+ attr_accessible :accepted, :assisted_by, :cancelled, :conference_id, :content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :speakers_attributes, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes
   attr_accessor :tags, :validation_email
   belongs_to :conference
   friendly_id :title, use: [:slugged, :scoped], scope: :conference
@@ -39,7 +39,8 @@ class Event < ActiveRecord::Base
             format: { with: /\A[a-z0-9\W]+\z/i },
             presence: true
 
-  enum level: [:undefined, :noob, :easy, :medium, :hard, :hacker]
+  enum duration: [:unspecified_duration, :t_0, :t_1, :t_2, :t_3, :t_4, :t_5]
+  enum level: [:unspecified_level, :noob, :easy, :medium, :hard, :hacker]
   enum subclass: [:talk, :workshop]
   
   #validates :terms_of_service, acceptance: { accept: 'yes' }

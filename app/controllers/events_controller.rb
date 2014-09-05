@@ -122,6 +122,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(speakers_attributes: [:id, :email, :name, :surname, :_destroy])
+    params.require(:event).permit(speakers_attributes: [:id, :email, :name, :twitter, :_destroy])
   end
 end

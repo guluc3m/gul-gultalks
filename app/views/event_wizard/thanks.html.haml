@@ -37,13 +37,6 @@
                 = t("speaker.name")
               %p
                 = session["event_wizard"]["speakers_attributes"][speaker]["name"]
-
-            .large-4.columns
-              %label{:for => "surname"}
-                %i.fa.fa-users.fa-fw.fa-lg
-                = t("speaker.surname")
-              %p
-                = session["event_wizard"]["speakers_attributes"][speaker]["surname"]
           
             .large-4.columns
               %label{:for => "email"}
@@ -51,6 +44,13 @@
                 = t("event.contact")
               %p
                 = session["event_wizard"]["speakers_attributes"][speaker]["email"]
+
+            .large-4.columns
+              %label{:for => "twitter"}
+                %i.fa.fa-users.fa-fw.fa-lg
+                = t("speaker.twitter")
+              %p
+                = session["event_wizard"]["speakers_attributes"][speaker]["twitter"]
 
 .row
   .large-12.columns
@@ -104,12 +104,6 @@
               %i.fa.fa-globe.fa-fw.fa-lg
               = t("event.language")
             = t("event.languages.#{session["event_wizard"]["event"]["language"]}").humanize
-
-          .large-4.columns
-            %label
-              %i.fa.fa-clock-o.fa-fw.fa-lg
-              = t("event.duration")
-            = session["event_wizard"]["event"]["duration"]
 
         .row
           .large-12.columns

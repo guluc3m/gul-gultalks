@@ -28,7 +28,7 @@
 
 .row
   .large-12.columns
-    - if @conference.start_date.today?
+    - if @conference.show_calendar?
       = render "partials/calendar"
     - if !@conference.active?
       .row

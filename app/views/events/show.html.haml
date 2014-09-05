@@ -26,7 +26,15 @@
       .row
         .large-6.columns
           %span
-            = event.speakers.map{|speaker| "#{speaker.name} #{speaker.surname}"}.join(", ")
+            - event.speakers.each_with_index.map do |speaker, index|
+              = speaker.name
+              - if !speaker.twitter.empty?
+                = "("
+                = link_to "@#{speaker.twitter}", "https://twitter.com/#{speaker.twitter}", target: "_blank"
+                = ")"
+              - unless index+1 == event.speakers.length
+                = ", "
+
         .large-6.columns
           %span.show-for-small-only
             %i.fa.fa-support.fa-fw.subheader
@@ -62,19 +70,14 @@
       %ul.no-bullet
         %li
           %i.fa.fa-calendar.fa-fw.fa-lg.subheader
-          - if event.date
-            = l event.date, format: :long
+          - if event.start_dtime
+            = l event.start_dtime.to_date, format: :long
           - else
             = t("not_available").humanize
         %li
           %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
-          - if event.start_time.present? && event.end_time.present?
-            = t("time.from").humanize
-            = event.start_time.strftime('%R')
-            = t("time.to")
-            = event.end_time.strftime('%R')
-          - else
-            = t("not_available").humanize
+          = t("event.duration") + ":"
+          = t("event.durations.#{event.duration}").humanize
         %li
           %i.fa.fa-map-marker.fa-fw.fa-lg.subheader
           = event.location
@@ -97,7 +100,7 @@
       %ul.no-bullet
         %li
           // TODO: culd be great with "link_to_if" method
-          - if (event.start_time..event.end_time).cover?(Time.now) and event.live_video.present?
+          - if (event.start_dtime..event.end_dtime).cover?(Time.now) and event.live_video.present?
             .show-for-medium-up
               = link_to("#", data: { "reveal-id" => "video-modal" }) do 
                 .button.tiny.alert.radius
