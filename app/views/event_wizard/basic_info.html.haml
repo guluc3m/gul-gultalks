@@ -23,7 +23,7 @@
         = t("event.subclass")
         %small
           = t("event.required")
-        %i.fa.fa-question-circle.fa-fw{"data-tooltip" => "true", "data-options"=>"disable_for_touch:true", class: "has-tip tip-right radius", "title" => "Tooltips are awesome, you should totally use them!"}
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.subclass_requirements"), class: "radius"}
       .row
         .large-3.columns
           = select("event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}, {include_blank: true, selected: "selected"}, class: "radius", required: true, label:false)
@@ -42,7 +42,7 @@
         = t("event.title")
         %small
           = t("event.required")
-        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.title_requirements")}
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.title_requirements"), class: "radius"}
       = f.text_field :title, label: false, maxlength: 128, required: true, class: "radius"
       -# .char-counter.right
       -#   128
@@ -54,7 +54,7 @@
         = t("event.summary")
         %small
           = t("event.required")
-        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.summary_requirements")}
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.summary_requirements"), class: "radius"}
       = f.text_field :summary, label: false, maxlength: 128, required: true, class: "radius lettrify"
       -# .char-counter.right
       -#   128
