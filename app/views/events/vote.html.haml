@@ -19,10 +19,11 @@
         = msg
 
 .row
-  .medium-12.columns
-    %h1
+  .large-12.columns
+    %h1.subheader
       = t("to_vote")
     %hr
+  .large-12.columns
     %p
       = t("thanks.vote_msg")
     .row
@@ -34,9 +35,9 @@
 = form_tag send_vote_conference_event_path(@conference, @event) do
   .row
     .large-6.columns
-      .row.collapse
+      .row.collapse.postfix-radius
         .small-9.columns
-          = email_field_tag "email", nil, class: "radius", style: "border-right: 0; border-bottom-right-radius: 0; border-top-right-radius: 0;", required: true, type: "email", maxlength: 64
+          = email_field_tag "email", nil, class: "radius", required: true, type: "email", maxlength: 64
         .small-3.columns
           = submit_tag t("vote.send_vote"), class: "button radius success postfix"
 

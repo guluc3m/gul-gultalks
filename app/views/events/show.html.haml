@@ -3,8 +3,8 @@
 .row
   .columns.show-for-medium-up
     %ul.breadcrumbs
-      %li
-        = link_to t("home"), root_path
+      -# %li
+      -#   = link_to t("home"), root_path
       %li
         = link_to @conference.title, conference_path(@conference)
       %li.current
@@ -12,11 +12,11 @@
 .row
   .large-12.columns
     = render 'partials/status_tags'
-    .visible-for-medium-up.right
+    %span.label.radius.secondary.visible-for-medium-up.right
       = link_to '#' do
-        %i.fa.fa-twitter.fa-lg
+        %i.fa.fa-twitter.fa-2x
       = link_to '#' do
-        %i.fa.fa-facebook.fa-lg
+        %i.fa.fa-facebook.fa-2x
     %h2
       = event.title
     %h6.subheader
@@ -28,7 +28,7 @@
           %span
             - event.speakers.each_with_index.map do |speaker, index|
               = speaker.name
-              - if !speaker.twitter.empty?
+              - if speaker.twitter.present?
                 = "("
                 = link_to "@#{speaker.twitter}", "https://twitter.com/#{speaker.twitter}", target: "_blank"
                 = ")"
@@ -42,18 +42,21 @@
               Asistida por:
               = event.assisted_by
             - else
-              Asistente/s no asigando
+              = t('event.assist.unassigned')
           %span.show-for-medium-up.right
             %i.fa.fa-support.fa-fw.subheader
             - if event.assisted_by.present?
-              Asistida por:
+              = t('event.assist.assisted_by')
               = event.assisted_by
             - else
-              Asistente/s no asigando
+              = t('event.assist.unassigned')
     - else
       .row
-        .large-6.columns
-          Sin ponente
+        .columns
+          %span.label.alert.radius
+            %i.fa.fa-child.fa-lg.fa-fw
+            %b
+              = t('speaker.unassigned').humanize
 
     %hr
 
@@ -76,20 +79,18 @@
             = t("not_available").humanize
         %li
           %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
-          = t("event.duration") + ":"
-          = t("event.durations.#{event.duration}").humanize
+          = t("event.duration") + ":" + t("event.durations.#{event.duration}").humanize
         %li
           %i.fa.fa-map-marker.fa-fw.fa-lg.subheader
           = event.location
-          /= link_to "¿Cómo llegar?", "http://www.openstreetmaps.org",  data: { "modal-id" =>"map-modal" } 
           = link_to "¿Cómo llegar?", "#",  data: { "reveal-id" => "map-modal" } 
           = render "partials/map_modal"
-          /%a{"data-reveal-id" => "map-modal", :href => "#"} Click Me For A Modal
+         
 
         %li
           %i.fa.fa-building.fa-fw.fa-lg.subheader
           - if event.room.present?
-            Aula:
+            = t('event.room') + ":"
             = event.room
             // TODO: write a scope like "room.accesible?"
             %i.label.radius.success.fa.fa-wheelchair
@@ -142,8 +143,9 @@
               = tag.humanize
 
       .success.radius.label.large
-        = event.votes
-        = t('vote', count: event.votes ).upcase
+        %b
+          = event.votes
+          = t('vote', count: event.votes ).upcase
 
 .row
   .large-12.columns
@@ -164,7 +166,7 @@
     .large-12.columns
       %span
         %i.fa.fa-code.fa-fw.subheader
-        = t('code').humanize
+        = t('event.code').humanize
         = t("not_available")
   .large-12.columns
     %hr
@@ -176,10 +178,11 @@
         = t("event.back_to_events").humanize
 
   - unless @event.cancelled
-
     - if @conference.voting_enabled
       .large-3.columns.right
-        = link_to t("to_vote"), vote_conference_event_path, class: "button success radius expand"
+        = link_to  vote_conference_event_path, class: "button success radius expand" do
+          %b
+            = t("to_vote")
     - else
       .large-3.columns.right
         = link_to "#", disabled: true, class: "button success radius expand" do

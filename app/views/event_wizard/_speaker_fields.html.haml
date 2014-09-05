@@ -21,7 +21,14 @@
         %label{for: "twitter"}
           %i.fa.fa-twitter.fa-fw.fa-lg.subheader
           = t("speaker.twitter")
-        = f.text_field :twitter, label: false, maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})", class: "radius"
+        .row.collapse.prefix-radius
+          .small-2.columns
+            %span.prefix @
+          .small-10.columns
+            = f.text_field :twitter, label: false, maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})", class: "radius"
 
-        = link_to_remove_association f, class: "button tiny radius" do
-          %i.fa.fa-minus.fa-fw.fa-lg
+        .right
+          = link_to_remove_association f, class: "button alert tiny radius" do
+            %i.fa.fa-trash.fa-fw.fa-lg
+            Eliminar
+            -# = t('delete').humanize

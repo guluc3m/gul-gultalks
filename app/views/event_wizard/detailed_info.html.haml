@@ -17,7 +17,7 @@
       #speakers
         = f.fields_for :speakers do |speaker|
           = render "speaker_fields", f: speaker
-        .links
+        .links.right
           = link_to_add_association t("speaker.add"), f, :speakers, class: "button small radius success"
 
   .row
