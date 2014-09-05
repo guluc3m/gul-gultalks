@@ -1,4 +1,5 @@
 class ConferencesController < ApplicationController
+  require 'will_paginate/array'
   helper_method :conference, :conferences
   respond_to :html, :json, :xml, :ics
 
@@ -42,9 +43,8 @@ class ConferencesController < ApplicationController
       @conference = Conference.friendly.find(params[:id])
       # TOFIX: json or xml must show all entries
       @calendar_events = @conference.events.where(shown: true, accepted: true)
-      @paginated_events = @conference.events.where(shown: true, verified: true).paginate(page: params[:page], per_page: 8)
-      # FIXME: Show only events with no speaker
-      @pending_events = @conference.events.where(shown: true, verified: true)
+      @paginated_events = @conference.events.select{ |event| event.speaker? && event.shown && event.verified }.paginate(page: params[:page], per_page: 8)
+      @pending_events = @conference.events.select{ |event| !event.speaker? && event.shown && event.verified }
       @conference
     end
   end
