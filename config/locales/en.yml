@@ -114,7 +114,7 @@ en:
       t_4: "2 hours"
       t_5: "more than 2 hours"
     email_requirements: "Not a valid email address"
-    end_time: "End time"
+    end_datetime: "End date and time"
     i_am_proposing: "No, I am just proposing it"
     i_am_speaker: "Yes, I am going to be the speaker"
     language: "Language"
@@ -135,7 +135,7 @@ en:
     required: "Required"
     room: "Room"
     send_event: "Send event"
-    start_time: "Start time"
+    start_datetime: "Start date and time"
     status:
       accepted: "Accepted"
       active: "Active"

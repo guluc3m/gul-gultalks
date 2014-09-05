@@ -16,9 +16,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :code_url, limit: 128
       t.string :location, limit: 64
       t.string :room
-      t.date :date
-      t.time :start_time
-      t.time :end_time
+      t.datetime :start_dtime
+      t.datetime :end_dtime
       t.boolean :shown, default: false
       t.boolean :verified, default: false
       t.boolean :cancelled, default: false

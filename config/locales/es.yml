@@ -118,7 +118,7 @@ es:
       t_4: "2 horas"
       t_5: "más de 2 horas"
     email_requirements: "No es una dirección de correo electrónico válida"
-    end_time: "Hora de finalización"
+    end_datetime: "Fecha y hora de finalización"
     i_am_proposing: "No, sólo lo estoy proponiendo"
     i_am_speaker: "Sí, voy a ser el ponente"
     language: "Idioma"
@@ -140,7 +140,7 @@ es:
     required: "Requerido"
     room: "Aula"
     send_event: "Enviar evento"
-    start_time: "Hora de inicio"
+    start_datetime: "Fecha y hora de inicio"
     status:
       accepted: "Aceptado"
       active: "Activo"

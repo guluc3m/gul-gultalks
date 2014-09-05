@@ -48,9 +48,8 @@ ActiveAdmin.register Event do
       f.input :accepted, label: t("event.status.accepted"), as: :radio
       f.input :location, label: t("location")
       f.input :room, label: t("event.room")
-      f.input :date, label: t("date")
-      f.input :start_time, label: t("event.start_time")
-      f.input :end_time, label: t("event.end_time")
+      f.input :start_dtime, label: t("event.start_datetime")
+      f.input :end_dtime, label: t("event.end_datetime")
       f.input :assisted_by, label: t("event.assistant")
     end
     f.actions

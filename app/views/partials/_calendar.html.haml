@@ -20,17 +20,17 @@
       - (0..days).each do |i|
         .row
           .small-3.columns
-            - if event.start_time.nil? || event.end_time.nil?
+            - if event.start_dtime.nil? || event.end_dtime.nil?
               %dd.subheader
                 = t('not_available').humanize
-            - elsif event.end_time > DateTime.now
+            - elsif event.end_dtime > DateTime.now
               Finalizado
             - else
               %dd
-                = event.start_time.to_s(:time)
+                = event.start_dtime.to_s(:time)
               %dd.subheader
                 = t "time.to" 
-                = event.end_time.to_s(:time)
+                = event.end_dtime.to_s(:time)
           .small-9.columns{"data-magellan-destination" => "#{t('date.abbr_day_names')[i]}"}
             .panel.radius
               = link_to event.title, conference_event_path(@conference, event)

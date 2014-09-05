@@ -50,8 +50,8 @@
       %ul.no-bullet
         %li
           %i.fa.fa-calendar.fa-fw.fa-lg.subheader
-          - if event.date
-            = l event.date, format: :long
+          - if event.start_dtime
+            = l event.start_dtime.to_date, format: :long
           - else
             = t("not_available").humanize
         %li
@@ -80,7 +80,7 @@
       %ul.no-bullet
         %li
           // TODO: culd be great with "link_to_if" method
-          - if (event.start_time..event.end_time).cover?(Time.now) and event.live_video.present?
+          - if (event.start_dtime..event.end_dtime).cover?(Time.now) and event.live_video.present?
             .show-for-medium-up
               = link_to("#", data: { "reveal-id" => "video-modal" }) do 
                 .button.tiny.alert.radius
