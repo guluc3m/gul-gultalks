@@ -21,7 +21,15 @@
       .row
         .large-6.columns
           %span
-            = event.speakers.map{|speaker| "#{speaker.name} #{speaker.surname}"}.join(", ")
+            - event.speakers.each_with_index.map do |speaker, index|
+              = speaker.name
+              - if !speaker.twitter.empty?
+                = "("
+                = link_to "@#{speaker.twitter}", "https://twitter.com/#{speaker.twitter}", target: "_blank"
+                = ")"
+              - unless index+1 == event.speakers.length
+                = ", "
+
         .large-6.columns
           %span.right
             %i.fa.fa-support.fa-fw.subheader

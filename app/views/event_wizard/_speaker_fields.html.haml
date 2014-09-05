@@ -7,13 +7,7 @@
           = t("speaker.name")
           %small
             = t("event.required")
-        = f.text_field :name, label: false, maxlength: 28, required: true, class: "radius"
-
-      .large-4.columns
-        %label{for: "surname"}
-          %i.fa.fa-users.fa-fw.fa-lg.subheader
-          = t("speaker.surname")
-        = f.text_field :surname, label: false, maxlength: 36, class: "radius"
+        = f.text_field :name, label: false, maxlength: 64, required: true, class: "radius"
 
       .large-4.columns
         %label{for: "email"}
@@ -22,6 +16,12 @@
           %small
             = t("event.required")
         = f.text_field :email, label: false, maxlength: 64, required: true, type: "email", class: "radius"
+
+      .large-4.columns
+        %label{for: "twitter"}
+          %i.fa.fa-twitter.fa-fw.fa-lg.subheader
+          = t("speaker.twitter")
+        = f.text_field :twitter, label: false, maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})", class: "radius"
 
         = link_to_remove_association f, class: "button tiny radius" do
           %i.fa.fa-minus.fa-fw.fa-lg

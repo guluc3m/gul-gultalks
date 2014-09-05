@@ -180,7 +180,7 @@ en:
     name_requirements: "Can only contain literal characters and hyphens"
     propose: "Propose speaker"
     remove_speaker: "Remove speaker"
-    surname: "Surname(s)"
+    twitter: "Twitter"
   Speaker: "Speaker"
   Speakers: "Speakers"
   thanks:

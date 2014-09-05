@@ -5,8 +5,8 @@ ActiveAdmin.register Speaker do
   index do
     selectable_column
     column :name
-    column :surname
     column :email
+    column :twitter
     column :event_id
     column :confirmed
     actions
@@ -18,8 +18,8 @@ ActiveAdmin.register Speaker do
   form do |f|
     f.inputs "Info" do
       f.input :name, label: t("speaker.name")
-      f.input :surname, label: t("speaker.surname")
       f.input :email, label: t("speaker.email")
+      f.input :twitter, label: t("speaker.twitter")
       f.input :event_id, label: t("Event"), as: :select, collection: Event.all
       f.input :confirmed, label: t("speaker.confirmed"), as: :radio
     end

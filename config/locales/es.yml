@@ -186,7 +186,7 @@ es:
     propose: "Proponer ponente"
     propose_msg: "Indica a continuación la información del ponente que quieres proponer para este evento"
     remove: "Eliminar ponente"
-    surname: "Apellido(s)"
+    twitter: "Twitter"
   Speaker: "Ponente"
   Speakers: "Ponentes"
   thanks:
