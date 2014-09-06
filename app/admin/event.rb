@@ -12,8 +12,9 @@ ActiveAdmin.register Event do
   index do
     selectable_column
     column :title
-    column :subclass
-    column :level
+    # column :subclass {|event| status_tag('active', :ok, label: event.subclass) }
+    column (t "event.subclass") {|event| status_tag('active', :yes, :label => t("event.subclasses.#{event.subclass}")) }
+    column (t "event.level") {|event| t("event.levels.#{event.level}").humanize }
     column :speaker
     column :email
     column :room
