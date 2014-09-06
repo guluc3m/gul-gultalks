@@ -30,13 +30,17 @@ class EventsController < ApplicationController
     @event = Event.friendly.find(params[:id])
     @conference = Conference.find(@event.conference_id)
 
-    sp = Speaker.new(name: params[:name], surname: params[:surname], email: params[:email], confirmed: false, event_id: @event.id)
+    sp = Speaker.new(name: params[:name], email: params[:email], twitter: params[:twitter], confirmed: false, event_id: @event.id)
     ver = Verifier.new(email: params[:email], event_id: @event.id, verified: false, verify_type: "speaker")
 
-    if sp.save && ver.save
-      render "thanks_speaker"
+    if verify_recaptcha
+      if sp.save && ver.save
+        render "thanks_speaker"
+      else
+        flash[:error] = t("speaker.invalid")
+        redirect_to action: "propose_speaker"
+      end
     else
-      flash[:error] = t("speaker.invalid")
       redirect_to action: "propose_speaker"
     end
   end
@@ -59,10 +63,14 @@ class EventsController < ApplicationController
 
     ver = Verifier.new(email: params[:email], event_id: @event.id, verified: false, verify_type: "vote")
 
-    if ver.save
-      render "thanks_vote"
+    if verify_recaptcha
+      if ver.save
+        render "thanks_vote"
+      else
+        flash[:error] = t("vote.invalid_email")
+        redirect_to action: "vote"
+      end
     else
-      flash[:error] = t("vote.invalid_email")
       redirect_to action: "vote"
     end
   end

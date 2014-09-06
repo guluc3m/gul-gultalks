@@ -38,8 +38,13 @@
       .row.collapse.postfix-radius
         .small-9.columns
           = email_field_tag "email", nil, class: "radius", required: true, type: "email", maxlength: 64
+
         .small-3.columns
           = submit_tag t("vote.send_vote"), class: "button radius success postfix"
+
+        .row
+          .large-12.columns
+            = render 'partials/recaptcha'
 
 .row
   .medium-9.columns
