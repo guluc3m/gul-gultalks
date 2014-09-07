@@ -7,6 +7,7 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :subclass, default: 0, null: false
       t.integer :level, default: 0, null: false
       t.string :content_url, limit: 128
+      t.string :code, limit: 128
       t.string :language, limit: 2
       t.text :notes, limit: 300
       t.integer :duration, default: 0, null: false

@@ -10,7 +10,7 @@ class CreateConferences < ActiveRecord::Migration
       t.boolean :active, null: false
       t.boolean :call_for_papers_enabled, null: false
       t.boolean :voting_enabled, null: false
-      t.boolean :show_calendar, null: false
+      t.boolean :show_calendar, null: false, default: false
       t.date :call_for_papers_start_date, null: false
       t.date :call_for_papers_end_date, null: false
       t.date :voting_start_date, null: false
