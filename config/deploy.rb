@@ -16,6 +16,7 @@ set :user, "gultalks"
 role :web, "noguera.gul.es" 
 role :db, "noguera.gul.es", :primary=> true
 
+before "deploy:assets:precompile"
 after "deploy", "deploy:restart" 
 after "deploy", "db:migrate"
 after "deploy", "db:seed"
@@ -24,7 +25,7 @@ namespace :deploy do
     task :restart, :roles => :web do
         run "touch #{deploy_to}/current/tmp/restart.txt"
     end
-    desc "reload the database with seed data"
+    desc "Reload the database with seed data"
     task :seed do
         run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
     end
