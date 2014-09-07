@@ -15,8 +15,6 @@ ActiveAdmin.register Event do
     # column :subclass {|event| status_tag('active', :ok, label: event.subclass) }
     column (t "event.subclass") {|event| status_tag('active', :yes, :label => t("event.subclasses.#{event.subclass}")) }
     column (t "event.level") {|event| t("event.levels.#{event.level}").humanize }
-    column :speaker
-    column :email
     column :room
     column :shown
     column :verified
