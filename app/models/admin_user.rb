@@ -5,7 +5,7 @@ class AdminUser < ActiveRecord::Base
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
 
-  enum role: [:admin, :mod]
+  enum role: [:admin, :assistant]
 
   def admin?
     if self.role == "admin"
@@ -15,8 +15,8 @@ class AdminUser < ActiveRecord::Base
     end
   end
 
-  def mod?
-    if self.role == "mod"
+  def assistant?
+    if self.role == "assistant"
       return true
     else
       return false

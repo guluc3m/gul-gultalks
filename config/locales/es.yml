@@ -4,7 +4,7 @@ es:
       message: "No dispones de los permisos necesarios"
     roles:
       admin: "administrador"
-      mod: "moderador"
+      assistant: "asistente"
   activerecord:
     attributes:
       event:
