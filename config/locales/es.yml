@@ -188,7 +188,7 @@ es:
     add: "Añadir ponente"
     confirmed: "Confirmado"
     email: "Email"
-    email_requirements: "Not a valid email address"
+    email_requirements: "No es una dirección de e-mail válida"
     invalid: "Ponente no válido"
     name: "Nombre"
     name_requirements: "Sólo puede contener caracteres literales y guiones"
@@ -214,10 +214,19 @@ es:
     to: "a"
   to_vote: "Votar"
   user: "Usuario"
+  Verifiers: "Verificadores"
   verifier:
+    email: "E-mail"
     event: "¡Gracias por verificar el evento!"
     invalid: "Código de verificación no válido"
     speaker: "¡Gracias por verificar to asistencia!"
+    token: "Token"
+    type: "Tipo" 
+    types:
+        event: "evento"
+        speaker: "ponente"
+        vote: "voto"
+    verified: "Verificado"
     vote: "¡Gracias por verificar to voto!"
   vote:
     email: "Email"
