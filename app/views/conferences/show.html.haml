@@ -106,7 +106,7 @@
   -# .large-6.columns
   -#   = link_to t("conference.list"), conferences_path, { class: "button radius expand" }
   -# - if !(Date.today >= @conference.start_date)
-  .large-5.columns-centered.columns
+  .large-6.large-centered.columns
     - if @conference.call_for_papers_enabled
       = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), { class: "button success radius expand" }
       /  %span.fa.fa-chevron-left.fa-fw.fa-lg

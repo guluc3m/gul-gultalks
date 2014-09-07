@@ -39,7 +39,7 @@
           %span.show-for-small-only
             %i.fa.fa-support.fa-fw.subheader
             - if event.assisted_by.present?
-              Asistida por:
+              = t('event.assist.assisted_by')
               = event.assisted_by
             - else
               = t('event.assist.unassigned')
@@ -109,7 +109,7 @@
                   %strong Ver en directo
               = render "partials/video_modal"
             .show-for-small-only
-              = link_to("http://techslides.com/demos/sample-videos/small.webm", target: "_blank" ) do 
+              = link_to(live_video, target: "_blank" ) do 
                 .button.tiny.alert.radius
                   %i.fa.fa-youtube-play.fa-fw.fa-lg
                   %strong Ver en directo
@@ -195,7 +195,9 @@
           %i.fa.fa-child.fa-lg
           = t("speaker.propose")
 
-= nested_comments @comments
+  .large-12.columns
+    %hr{style: "border-style: dashed"}
+    = nested_comments @comments
 
 - if @conference.active?
   = render "comments/form"

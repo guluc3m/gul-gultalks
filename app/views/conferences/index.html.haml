@@ -16,12 +16,16 @@
 
     .columns
       .large-block-grid-4
-        - @conferences.each do |conference|
-          - unless conference.active
-            .panel.radius.expand
-              -# = image_tag("http://placehold.it/230x320")
-              %h4
-                = link_to conference.title, conference_path(conference)
-              %p
-                = conference.events.where(accepted: true, subclass: 0).count
-                = conference.events.where(accepted: true, subclass: 1).count
+        - unless @conferences.count.zero?
+          - @conferences.each do |conference|
+            - unless conference.active
+              .panel.radius.expand
+                -# = image_tag("http://placehold.it/230x320")
+                %h4
+                  = link_to conference.title, conference_path(conference)
+                %p
+                  = conference.events.where(accepted: true, subclass: 0).count
+                  = conference.events.where(accepted: true, subclass: 1).count
+        - else
+          %p
+            Parece que no hay ediciones pasadas.
