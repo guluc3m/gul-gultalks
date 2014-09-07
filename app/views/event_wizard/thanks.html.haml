@@ -25,7 +25,7 @@
                     Revisa el título
                   = err
 
-- unless session["event_wizard"]["speakers_attributes"].nil?
+- unless session["event_wizard"]["speakers_attributes"].nil? || session["event_wizard"]["speakers_attributes"].empty?
   .row
     .large-12.columns
       = field_set_tag t("Speakers"), class: "subheader" do
@@ -79,7 +79,7 @@
           %p
             = session["event_wizard"]["event"]["description"]
     
-      - unless session["event_wizard"]["speakers_attributes"].empty?
+      - unless session["event_wizard"]["speakers_attributes"].nil? || session["event_wizard"]["speakers_attributes"].empty?
         .row
           .large-12.columns
             %label
