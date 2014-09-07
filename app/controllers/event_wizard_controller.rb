@@ -21,7 +21,7 @@ class EventWizardController < ApplicationController
     if !@conference.active
       redirect_to conference_path(@conference)
     else
-      @event = WizardEvent.new(session["event_wizard"].try(:[], ["event"]))
+      @event = WizardEvent.new(session["event_wizard"].try(:[], "event"))
       @step = step
 
       render_wizard
