@@ -18,7 +18,7 @@ class EventWizardController < ApplicationController
 
   def show
     @conference = Conference.friendly.find(params[:conference_id])
-    if !@conference.active
+    if !@conference.call_for_papers_enabled
       redirect_to conference_path(@conference)
     else
       @event = WizardEvent.new(session["event_wizard"].try(:[], "event"))

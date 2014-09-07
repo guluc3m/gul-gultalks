@@ -61,8 +61,8 @@
               %br
               .row
                 .columns
-                  - if @conference.call_for_papers_enabled
-                    = link_to t("conference.propose_event"),new_conference_event_path(conference_id: @conference), { class: "button success tiny radius expand" }
+                  - if Conference.find_by(call_for_papers_enabled: true)
+                    = link_to t("conference.propose_event"),new_conference_event_path(Conference.find_by(call_for_papers_enabled: true)), { class: "button success tiny radius expand" }
                   = link_to "Admin", "/admin", { class: "button secondary tiny radius expand"}
                 -# = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), { class: "button success radius expand" }
         / End Header and Nav
