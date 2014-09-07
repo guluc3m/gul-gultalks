@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
   acts_as_taggable
- attr_accessible :accepted, :assisted_by, :cancelled, :conference_id, :content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :speakers_attributes, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes
+ attr_accessible :accepted, :assisted_by, :cancelled, :conference_id, :code,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :speakers_attributes, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes
   attr_accessor :tags, :validation_email
   belongs_to :conference
   friendly_id :title, use: [:slugged, :scoped], scope: :conference
@@ -21,6 +21,10 @@ class Event < ActiveRecord::Base
             presence: true
 
   validates :content_url,
+            url: true,
+            allow_blank: true
+
+  validates :code,
             url: true,
             allow_blank: true
 
@@ -48,29 +52,14 @@ class Event < ActiveRecord::Base
   #before_create :lang_filter
 
 
-  #def to_ics
-  #  event = Icalendar::Event.new
-  #  event.start = self.date.strftime("%Y%m%dT%H%M%S")
-  #  event.end = self.end_date.strftime("%Y%m%dT%H%M%S")
-  #  event.summary = self.title
-  #  event.description = self.summary
-  #  event.location = self.location
-  #  event.klass = "PUBLIC"
-  #  event.created = self.created_at
-  #  event.last_modified = self.updated_at
-  #  event.uid = event.url = "#{PUBLIC_URL}events/#{self.id}"
-  #  event.add_comment("AF83 - Shake your digital, we do WowWare")
-  #  event
-  #end
-
-
   #
   # Should only be called by the WizardEvent model when saving an Event
   #
   def save_and_verify(email)
     if self.save
       # Generate Verifier
-      ver = Verifier.create(email: email, event_id: self.id, verified: false, verify_type: "event")
+      # FIXME: if Verifier fails return false?
+      Verifier.create(email: email, event_id: self.id, verified: false, verify_type: "event")
       return true
     else
       return false

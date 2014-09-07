@@ -3,7 +3,8 @@
 
 .row
   .large-12.columns
-    %h2.subheader Placeholder
+    %h2.subheader 
+      = t("event.detailed_info").humanize
     %hr
 .row
   .large-12.columns
@@ -22,10 +23,17 @@
 
   .row
     .large-12.columns
-      %label
+      %label{for: "content_url"}
         %i.fa.fa-link.fa-fw.fa-lg.subheader
         = t("event.url")
       = f.url_field :content_url, label: false, maxlength: 128, type: "url", class: "radius"
+  .row
+    .large-12.columns
+      %label{for: "code"}
+        %i.fa.fa-code.fa-fw.fa-lg.subheader
+        = t("event.code")
+      = f.url_field :code, label: false, maxlength: 128, type: "url", class: "radius"
+
 
   .row
     .large-12.columns
