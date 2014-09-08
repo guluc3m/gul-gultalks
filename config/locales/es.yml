@@ -45,7 +45,7 @@ es:
         code: "Código"
         code_url: "URL del código original"
         conference_id: "Jornada"
-        content_url: "URL del contenido"
+        content_url: "Material de apoyo"
         created_at: "Creado"
         description: "Descripción"
         duration: "Duración"
