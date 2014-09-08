@@ -126,7 +126,7 @@ es:
     description: "Descripción"
     end_date: "Fecha de finalización"
     first_to_propose: "¡Sé el primero en proponer un evento!"
-    list: "Lista de jornadas"
+    list: "Ediciones anteriores"
     propose_another_event: "Proponer otro evento"
     propose_event: "Proponer evento"
     start_date: "Fecha de inicio"
@@ -270,6 +270,7 @@ es:
   Speakers: "Ponentes"
   thanks:
     contact_msg: "Si tienes alguna pregunta, no dudes en escribir a"
+    proposal: "Gracias por tu propuesta para '%{event_title}'"
     speaker_thanks: "¡Gracias por proponer un ponente!"
     speaker_thanks_msg: "El ponente recibirá un e-mail de confirmación para validar la propuesta."
     thank_you: "¡Gracias!"

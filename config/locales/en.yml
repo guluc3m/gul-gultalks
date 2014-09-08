@@ -116,7 +116,7 @@ en:
     description: "Descripción"
     end_date: "End date"
     first_to_propose: "Be the first to propose an event!"
-    list: "Conference list"
+    list: "Previous editions"
     propose_another_event: "Propose another event"
     propose_event: "Propose event"
     start_date: "Start date"
@@ -252,6 +252,7 @@ en:
   Speakers: "Speakers"
   thanks:
     contact_msg: "If you need help, do not hesitate to write to"
+    proposal: "Thank you for proposing '%{event_title}'"
     speaker_thanks: "Thank you for proposing a speaker!"
     speaker_thanks_msg: "The speaker will receive a confirmation email with a link to validate the proposal."
     thank_you: "Thank you!"
