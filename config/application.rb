@@ -64,6 +64,6 @@ module Gultalks
 
     # Default mailer config
     # TODO: put it in secrets file?
-    config.action_mailer.default_url_options = { host: 'gul.es' }
+    config.action_mailer.default_url_options = { host: Rails.application.secrets[:host]}
   end
 end

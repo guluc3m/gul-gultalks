@@ -22,9 +22,10 @@ Rails.application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = true
 
+  config.assets.compress = true
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
+  config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
@@ -66,7 +67,8 @@ Rails.application.configure do
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
-  config.i18n.fallbacks = true
+  # config.i18n.fallbacks = true
+  config.i18n.fallbacks = false
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
@@ -86,8 +88,21 @@ Rails.application.configure do
   # #   location: '/usr/sbin/sendmail',
   # #   arguments: '-i -t'
   # # }
-  # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.raise_delivery_errors = true
-  # config.action_mailer.default_options = {from: 'no-reply@example.com'}
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:              Rails.application.secrets[:mailer][:adress],
+      port:                 Rails.application.secrets[:mailer][:port],
+      domain:               Rails.application.secrets[:mailer][:domain],
+      user_name:            Rails.application.secrets[:mailer][:user],
+      password:             Rails.application.secrets[:mailer][:user],
+      authentication:       'plain',
+      enable_starttls_auto: true 
+  }
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.observers = [""]
+  config.action_mailer.default_options = {from: 'no-reply@' + Rails.application.secrets[:mailer][:domain]}
 
 end
