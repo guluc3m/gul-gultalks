@@ -103,6 +103,6 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.observers = [""]
-  config.action_mailer.default_options = {from: "no-reply@%{Rails.application.secrets[:mailer][:noreply_domain]}"}
+  config.action_mailer.default_options = {from: Rails.application.secrets[:mailer][:no_reply]}
 
 end
