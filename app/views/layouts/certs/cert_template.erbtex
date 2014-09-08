@@ -14,9 +14,9 @@
 \newcommand\cargo{presidente}
 \newcommand\ponente{<%= @event.speaker.humanize %>}
 \newcommand\ponencia{<%= @event.title.humanize %>}
-\newcommand\jornadas{XII}
+\newcommand\jornadas{<%= RomanNumerals.to_roman((@event.stat_dtime.year - 2002) * 2 %>}
 \newcommand\mes{marzo}
-%\newcommand\anio{2009}
+%\newcommand\anio{<%= @event.star_dtime.year %>}
 \newcommand\tipo{asistente}
 \newcommand\accion{}
 

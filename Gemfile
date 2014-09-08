@@ -111,3 +111,6 @@ gem 'activerecord-session_store'
 
 # Production environment variables
 gem 'figaro'
+
+# Roman Numbers (for calculate editions)
+# gem 'roman-numerals'

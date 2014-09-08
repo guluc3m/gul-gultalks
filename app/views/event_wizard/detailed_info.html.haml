@@ -15,11 +15,13 @@
 
   .row
     .large-12.columns
+      %span 
+        Sólo se pueden añadir hasta un máximo de 5 integrantes por actividad. 
       #speakers
         = f.fields_for :speakers do |speaker|
           = render "speaker_fields", f: speaker
         .links.right
-          = link_to_add_association t("speaker.add"), f, :speakers, class: "button small radius success"
+          = link_to_add_association t("speaker.add"), f, :speakers, class: "button tiny radius"
 
   .row
     .large-12.columns
@@ -86,15 +88,22 @@
 
   .row
     .large-12.columns
-      = check_box("cert", "accepted", { class: 'eula_check' }, "yes", "no")
-      %span Quiero solicitar un certificado como ponente
-  .row
-    .large-12.columns
-      = check_box("eula", "accepted", { class: 'eula_check' }, "yes", "no")
-      %span Acepto las condiciones de privacidad
+      .show-for-touch.hide-for-medium-up
+        .switch.radius.small
+          // FIXME: !?!?! 
+          %label#cert_accepted Quiero solicitar un certificado como ponente
+          = check_box("cert", "accepted", { class: '' }, "no", "yes")
+        %small Quiero solicitar un certificado como ponente
+      .show-for-medium-up
+        = check_box("cert", "accepted", { class: '' }, "no", "yes")
+        %label Quiero solicitar un certificado como ponente
+  -# .row
+  -#   .large-12.columns
+  -#     = check_box("eula", "accepted", { class: 'eula_check' }, "yes", "no")
+  -#     %span Acepto las condiciones de privacidad
       
   .row
     .large-3.columns.right
-      = f.button type: "submit",  class: "button radius expand success", data: { disable_with: "Processing..." } do
+      = f.button type: "submit",  class: "button radius expand success" do
         = content_tag(:span, t("event.next_step"))
         %span.fa.fa-chevron-right.fa-fw.fa-lg
