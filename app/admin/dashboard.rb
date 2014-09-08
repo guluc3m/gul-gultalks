@@ -10,7 +10,7 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
-        panel "Recent events" do
+        panel t("event.recent") do
           table_for Event.where(verified: true).order('created_at DESC').limit(8) do
              # column("State") {|event| event.status}
                 # = link_to event.title, conference_event_path(@conference, event)
@@ -24,9 +24,14 @@ ActiveAdmin.register_page "Dashboard" do
           # .to_sentence(:two_words_connector => ' through ')
         end
       end
+
       column do
-          panel "Recent events" do
-              para "Welcome to ActiveAdmin."
+          panel t("event.missing_speaker") do
+            table_for Event.select{ |event| event.verified && !event.cancelled && !event.speaker? } do
+              column(t "event.Event" ) {|event| status_tag('active', :published, :class => 'important', :label => t("event.subclasses.#{event.subclass}"))}
+              column(t "event.title" ) {|event| link_to event.title, admin_event_path(event)}
+              column(t "event.date") {|event| event.created_at.to_s(:short)}
+            end
           end
       end
 

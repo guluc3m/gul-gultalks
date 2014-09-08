@@ -26,6 +26,7 @@ class Verifier < ActiveRecord::Base
   #          presence: true,
   #          allow_blank: false
 
+  enum types: [:event, :speaker, :vote] 
 
    private
    def send_verification
