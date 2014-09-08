@@ -1,10 +1,17 @@
 /.show-for-touch{"data-magellan-expedition" => "fixed"}
 - days = (conference.end_date.mjd - conference.start_date.mjd).to_i
 
-.row
-  .small-4.columns
+.row.hidden-for-large-up.show-for-portrait
+  .large-12.columns.large-centered
     = link_to "Descargar calendario (iCal)", conference_path(params[:id], format: :ics), {class:"button secondary tiny radius"}
-.row
+.row.show-for-large-up
+  .large-12.columns
+    .right
+      = link_to  conference_path(params[:id], format: :ics) do
+        %i.fa.fa-calendar.fa-fw
+        = "Descargar calendario (iCal)"
+
+.row.hidden-for-large-up.show-for-portrait
   .large-12.columns{"data-magellan-expedition" => "fixed" }
     %dl.sub-nav
       - (0..days).each do |i|
@@ -14,7 +21,7 @@
             = t('date.abbr_day_names')[i].humanize
             #{conference.start_date.day + i}
 
-.row
+.row.hidden-for-large-up.show-for-portrait
   .large-12.columns
     - @calendar_events.each do |event|
       - (0..days).each do |i|
@@ -45,23 +52,22 @@
     %br
     %br
 
-.row.hidden-for-small
+.row.hidden-for-small.show-for-landscape
   .large-12.columns
     %table
       %thead
         %tr
-          %th.text-center
+          %th.text-center{ width: "90"}
             %i.fa.fa-clock-o.fa-lg
           - (0..days).each do |i|
-            %th.text-center{:width => "260"}
+            %th.text-center
               = t("date.day_names")[i].humanize # TOFIX: put Monday as first day or the week
               = conference.start_date.day + i
-
       %tbody
       - (0...5).each do
         %tr
           - (0...1).each do
-            %td
+            %td.schedule-time
               21:00
           - (0...5).each do
             %td
