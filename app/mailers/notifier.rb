@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default from: 'no-reply@example.com' #TOFIX: {DOMAIN_ENV}
+  # default from: 'no-reply@example.com' #TOFIX: {DOMAIN_ENV}
 
   def confirmation_event(verifier)
       @event = Event.find(verifier.event_id)
