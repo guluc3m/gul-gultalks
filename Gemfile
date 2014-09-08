@@ -108,3 +108,6 @@ gem 'cocoon'
 
 # Session storage
 gem 'activerecord-session_store'
+
+# Production environment variables
+gem 'figaro'

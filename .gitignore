@@ -115,3 +115,5 @@ tramp
 # AUCTeX auto folder
 /auto/
 
+# Production environment variables
+config/application.yml
