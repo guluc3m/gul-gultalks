@@ -4,15 +4,16 @@
 .row
   .large-12.columns
     %h2.subheader
-      = t('event.thanks')
+      = t("thanks.proposal", event_title: @event.title)
     %hr
-.row
-  .large-12.columns
-    // TODO: translate
-    - if session["event_wizard"]["errors"].nil? || session["event_wizard"]["errors"].empty? 
-      %p.subheader
-        Revisa los datos que se muestran a continuación. Si desas hacer algún cambio, puedes volver y modificalo.
-    - else
+
+- unless @event.errors.nil? || @event.errors.empty?
+  .row
+    .large-12.columns
+      // TODO: translate
+      -# - if session["event_wizard"]["errors"].nil? || session["event_wizard"]["errors"].empty? 
+        %p.subheader
+          Revisa los datos que se muestran a continuación. Si desas hacer algún cambio, puedes volver y modificalo.
       .alert-box.alert.radius
         .row
           .small-1.columns
@@ -21,11 +22,12 @@
             %ul.no-bullet
               - session["event_wizard"]["errors"].each do |err|
                 %li
-                  - if err.eql? "title"
+                  -# - if err.eql? "title"
                     Revisa el título
                   = err
 
-- unless session["event_wizard"]["speakers_attributes"].nil? || session["event_wizard"]["speakers_attributes"].empty?
+
+-# - unless session["event_wizard"]["speakers_attributes"].nil? || session["event_wizard"]["speakers_attributes"].empty?
   .row
     .large-12.columns
       = field_set_tag t("Speakers"), class: "subheader" do
@@ -52,7 +54,7 @@
               %p
                 = session["event_wizard"]["speakers_attributes"][speaker]["twitter"]
 
-.row
+-# .row
   .large-12.columns
     = field_set_tag 'Your details', class: "subheader" do
       .row

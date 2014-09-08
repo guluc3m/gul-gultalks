@@ -270,6 +270,7 @@ es:
   Speakers: "Ponentes"
   thanks:
     contact_msg: "Si tienes alguna pregunta, no dudes en escribir a"
+    proposal: "Gracias por tu propuesta para '%{event_title}'"
     speaker_thanks: "¡Gracias por proponer un ponente!"
     speaker_thanks_msg: "El ponente recibirá un e-mail de confirmación para validar la propuesta."
     thank_you: "¡Gracias!"
