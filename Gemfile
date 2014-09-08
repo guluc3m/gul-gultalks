@@ -113,4 +113,4 @@ gem 'activerecord-session_store'
 gem 'figaro'
 
 # Roman Numbers (for calculate editions)
-# gem 'roman-numerals'
+gem 'roman-numerals'
