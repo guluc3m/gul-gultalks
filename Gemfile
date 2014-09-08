@@ -108,3 +108,6 @@ gem 'cocoon'
 
 # Session storage
 gem 'activerecord-session_store'
+
+# Roman Numbers (for calculate editions)
+# gem 'roman-numerals'
