@@ -16,7 +16,7 @@ set :user, "gultalks"
 role :web, "noguera.gul.es" 
 role :db, "noguera.gul.es", :primary=> true
 
-before "deploy:assets:precompile"
+# before "deploy:assets:precompile"
 after "deploy", "deploy:restart" 
 after "deploy", "db:migrate"
 after "deploy", "db:seed"
