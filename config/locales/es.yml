@@ -126,7 +126,7 @@ es:
     description: "Descripción"
     end_date: "Fecha de finalización"
     first_to_propose: "¡Sé el primero en proponer un evento!"
-    list: "Lista de jornadas"
+    list: "Ediciones anteriores"
     propose_another_event: "Proponer otro evento"
     propose_event: "Proponer evento"
     start_date: "Fecha de inicio"

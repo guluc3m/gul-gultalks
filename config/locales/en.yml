@@ -116,7 +116,7 @@ en:
     description: "Descripción"
     end_date: "End date"
     first_to_propose: "Be the first to propose an event!"
-    list: "Conference list"
+    list: "Previous editions"
     propose_another_event: "Propose another event"
     propose_event: "Propose event"
     start_date: "Start date"
