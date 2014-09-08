@@ -93,16 +93,16 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       address:              Rails.application.secrets[:mailer][:address],
       port:                 Rails.application.secrets[:mailer][:port],
-      domain:               Rails.application.secrets[:mailer][:domain],
       user_name:            Rails.application.secrets[:mailer][:user],
-      password:             Rails.application.secrets[:mailer][:user],
+      password:             Rails.application.secrets[:mailer][:password],
       authentication:       'plain',
-      enable_starttls_auto: true 
+      enable_starttls_auto: true, 
+      openssl_verify_mode:  'none'
   }
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.observers = [""]
-  config.action_mailer.default_options = {from: 'no-reply@' + Rails.application.secrets[:mailer][:domain]}
+  config.action_mailer.default_options = {from: "no-reply@%{Rails.application.secrets[:mailer][:noreply_domain]}"}
 
 end
