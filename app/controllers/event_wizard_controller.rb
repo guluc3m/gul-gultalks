@@ -10,7 +10,7 @@ class EventWizardController < ApplicationController
   def new
     event = WizardEvent.new
 
-    session["event_wizard"] ||= {}
+    session["event_wizard"] = {}
     session["event_wizard"]["event"] = event.accessible_attributes
 
     redirect_to wizard_path(steps.first)
