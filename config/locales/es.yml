@@ -84,12 +84,13 @@ es:
   # Emails
   notifier:
     confirmation_event:
-      subject: "Confirmación de evento"
+      subject: "Confirmación de actividad"
       body: |
         Hola.
 
-        Muchas gracias por proponer el evento '%{event_title}'.
-        Por favor, visita el siguiente enlace para validarlo.
+        Muchas gracias por proponer la actividad '%{event_title}'.
+
+        Por favor, visita el siguiente enlace para validarlo y comprobar que no eres un robot.
 
         %{validation_url}
     confirmation_speaker:
@@ -98,6 +99,7 @@ es:
         Hola %{name}.
 
         Se ha recibido una propuesta para que seas el ponente de '%{event_title}'.
+
         Si deseas hacerte cargo de ello, por favor, visita el siguiente enlace.
 
         %{validation_url}
@@ -106,14 +108,15 @@ es:
       body: |
         Hola.
 
-        Gracias por votar el evento '%{event_title}'
+        Gracias por votar la actividad '%{event_title}'
 
         Por favor, visita el siguiente enlace para validar tu voto.
 
         %{validation_url}
     footer: |
       --
-      Grupo de Usuarios de la Universidad Carlos III de Madrid 
+      Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid
+      Visita <a href="http://gul.es/">gul.es</a>
     tag: "[GUL-TALKS]"
   back: "atrás"
   Conference: "Jornada"
@@ -125,10 +128,10 @@ es:
     coordinator: "Coordinador"
     description: "Descripción"
     end_date: "Fecha de finalización"
-    first_to_propose: "¡Sé el primero en proponer un evento!"
+    first_to_propose: "¡Sé el primero en proponer una actividad!"
     list: "Ediciones anteriores"
-    propose_another_event: "Proponer otro evento"
-    propose_event: "Proponer evento"
+    propose_another_event: "Proponer otra actividad"
+    propose_event: "Proponer actividad"
     start_date: "Fecha de inicio"
     status:
       active: "Activa"
@@ -157,14 +160,14 @@ es:
     day_names: [lunes, martes, miércoles, jueves, viernes, sábado, domingo]
     abbr_day_names: [lun, mar, mié, jue, vie, sáb, dom]
   event:
-    are_you_speaker: "¿Vas a ser el ponente de este evento?"
+    are_you_speaker: "¿Vas a ser el ponente de esta actividad?"
     asssist:
       one: "asistente"
       other: "asistentes"
       unassigned: "Asistente no asignado"
       assisted_by: "asistido por"
-    back_to_event: "Volver al evento"
-    back_to_events: "Volver a los eventos"
+    back_to_event: "Volver a la actividad"
+    back_to_events: "Volver a las actividades"
     comments: "Comentarios"
     comment:
       name: "Nombre"
@@ -173,8 +176,8 @@ es:
       send_comment: "Enviar comentario"
       requirements: "Sólo puede contener caracteres alfanuméricos y guiones."
       email: "Correo electrónico"
-    complete_basic_form: "Completa el formulario con información básica del evento."
-    complete_detailed_form: "Completa el formulario con información detallada del evento."
+    complete_basic_form: "Completa el formulario con información básica de la actividad."
+    complete_detailed_form: "Completa el formulario con información detallada de la actividad."
     detailed_info: "Información detallada"
     contact: "Correo electrónico"
     description: "Descripción"
@@ -205,14 +208,14 @@ es:
       medium: "medio"
       hard: "difícil"
       hacker: "hacker"
-    missing_speaker: "Eventos sin ponente"
-    new_event: "Nuevo evento"
+    missing_speaker: "Actividades sin ponente"
+    new_event: "Nueva actividad"
     next_step: "Siguiente paso"
     notes_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
-    recent: "Eventos recientes"
+    recent: "Actividades recientes"
     required: "Requerido"
     room: "Aula"
-    send_event: "Enviar evento"
+    send_event: "Enviar actividad"
     start_datetime: "Fecha y hora de inicio"
     status:
       accepted: "Aceptado"
@@ -221,8 +224,8 @@ es:
       new: "Nuevo"
       shown: "Mostrado"
       verified: "Verificado"
-    subclass: "Tipo de evento"
-    title_requirements: "Elige un tipo de evento"
+    subclass: "Tipo de actividad"
+    title_requirements: "Elige el tipo de actividad"
     subclasses:
       talk: "Charla"
       workshop: "Taller"
@@ -233,15 +236,15 @@ es:
     title: "Título"
     title_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     url: "URL del contenido"
-    url_requirements: "No es una URL válida"
+    url_requirements: "No es una URL válida, debe empezar por http://"
     code: "código"
-    code_requirements: "No es una URL válida"
+    code_requirements: "No es una URL válida, debe empezar por http://"
     validation_email: "Correo electrónico para validación"
-    validation_email_explanation: "Es necesario que valides el evento mediante un enlace que se enviará a esta dirección de correo."
+    validation_email_explanation: "Es necesario que valides la actividad mediante un enlace que se enviará a esta dirección de correo."
   Event: 
-    one: "Evento"
-    other: "Eventos"
-  Events: "Eventos"
+    one: "actividad"
+    other: "actividades"
+  Events: "actividades"
   home: "Inicio"
   location: "Lugar"
   not_available: "no disponible"
@@ -262,7 +265,7 @@ es:
     name: "Nombre"
     name_requirements: "Sólo puede contener caracteres literales y guiones"
     propose: "Proponer ponente"
-    propose_msg: "Indica a continuación la información del ponente que quieres proponer para este evento"
+    propose_msg: "Indica a continuación la información del ponente que quieres proponer para esta actividad"
     remove: "Eliminar ponente"
     twitter: "Twitter"
     unassigned: "Falta ponente"
@@ -274,7 +277,7 @@ es:
     speaker_thanks: "¡Gracias por proponer un ponente!"
     speaker_thanks_msg: "El ponente recibirá un e-mail de confirmación para validar la propuesta."
     thank_you: "¡Gracias!"
-    thanks_msg: "Gracias por proponer un evento. Pronto recibirás un e-mail de confirmación."
+    thanks_msg: "Gracias por proponer una actividad. Pronto recibirás un e-mail de confirmación."
     thank_you_vote: "Gracias por tu voto"
     vote_msg: "Para evitar el fraude en el proceso de votación, recibirás un e-mail de confirmación para validar tu voto." 
     vote_thanks: "¡Gracias por votar!"
@@ -287,13 +290,13 @@ es:
   Verifiers: "Verificadores"
   verifier:
     email: "E-mail"
-    event: "¡Gracias por verificar el evento!"
+    event: "¡Gracias por verificar la actividad!"
     invalid: "Código de verificación no válido"
     speaker: "¡Gracias por verificar to asistencia!"
     token: "Token"
     type: "Tipo" 
     types:
-        event: "evento"
+        event: "actividad"
         speaker: "ponente"
         vote: "voto"
     verified: "Verificado"

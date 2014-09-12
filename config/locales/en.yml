@@ -62,23 +62,23 @@ en:
       speaker:
         confirmed: "Confirmed"
         email: "Email"
-        event_id: "Event"
+        event_id: "Activity"
         name: "Name"
         twitter: "Twitter"
       verifier:
         email: "Email"
-        event_id: "Event"
+        event_id: "Activity"
         token: "Token"
         verified: "Verified"
         verify_type: "Verification type"
   # Emails
   notifier:
     confirmation_event:
-      subject: "Event confirmation"
+      subject: "Activity confirmation"
       body: |
         Hello.
 
-        Thank you for proposing the event '%{event_title}'.
+        Thank you for proposing the activity '%{event_title}'.
         Please, visit the following link in order to validate it.
 
         %{validation_url}
@@ -96,7 +96,7 @@ en:
       body: |
         Hello.
 
-        Thank you for voting the event '%{event_title}'
+        Thank you for voting the activity '%{event_title}'
 
         Please, visit the following link in order to validate your vote.
 
@@ -115,10 +115,10 @@ en:
     coordinator: "Coordinator"
     description: "Descripción"
     end_date: "End date"
-    first_to_propose: "Be the first to propose an event!"
+    first_to_propose: "Be the first to propose an activity!"
     list: "Previous editions"
-    propose_another_event: "Propose another event"
-    propose_event: "Propose event"
+    propose_another_event: "Propose another activity"
+    propose_event: "Propose activity"
     start_date: "Start date"
     status:
       active: "Active"
@@ -145,10 +145,10 @@ en:
     to: "to"
     of: "of"
   event:
-    are_you_speaker: "Are you going to be the speaker for this event?"
+    are_you_speaker: "Are you going to be the speaker for this activity?"
     assistant: "Asistente"
-    back_to_event: "Back to event"
-    back_to_events: "Back to events"
+    back_to_event: "Back to activity"
+    back_to_events: "Back to activities"
     comments: "Comments"
     comment:
       name: "Name"
@@ -157,8 +157,8 @@ en:
       send_comment: "Send comment"
       email: "email"
       requirements: "Can only contain alphanumeric characters and hyphens."
-    complete_basic_form: "Complete the form with basic information for the event."
-    complete_detailed_form: "Complete the form with detailed information for the event."
+    complete_basic_form: "Complete the form with basic information for the activity."
+    complete_detailed_form: "Complete the form with detailed information for the activity."
     detailed_info: "Detailed info"
     contact: "Email address"
     description: "Description"
@@ -188,14 +188,14 @@ en:
       medium: "medium"
       hard: "hard"
       hacker: "hacker"
-    missing_speaker: "Events without speaker"
-    new_event: "New event"
+    missing_speaker: "Activities without speaker"
+    new_event: "New activity"
     next_step: "Next step"
     notes_requirements: "Can only contain alphanumeric characters and hyphens"
-    recent: "Recent events"
+    recent: "Recent activities"
     required: "Required"
     room: "Room"
-    send_event: "Send event"
+    send_event: "Send activity"
     start_datetime: "Start date and time"
     status:
       accepted: "Accepted"
@@ -204,8 +204,8 @@ en:
       new: "New"
       shown: "Shown"
       verified: "Verified"
-    subclass: "Event type"
-    subclass_requirements: "Choose one event type"
+    subclass: "Activity type"
+    subclass_requirements: "Choose one activity type"
     subclasses:
       talk: "Talk"
       workshop: "Workshop"
@@ -220,11 +220,11 @@ en:
     code: "code"
     code_requirements: "Not a valid URL"
     validation_email: "Email address for validation"
-    validation_email_explanation: "You need to validate the event through a link that will be sent to this email address."
+    validation_email_explanation: "You need to validate the activity through a link that will be sent to this email address."
   Event:
-    one: "Event"
-    other: "Events"
-  Events: "Events"
+    one: "Activity"
+    other: "Activities"
+  Events: "Activities"
   home: "Home"
   location: "Location"
   not_available: "Not available"
@@ -256,7 +256,7 @@ en:
     speaker_thanks: "Thank you for proposing a speaker!"
     speaker_thanks_msg: "The speaker will receive a confirmation email with a link to validate the proposal."
     thank_you: "Thank you!"
-    thanks_msg: "Thank you for proposing an event. Soon you will recieve a confirmation e-mail."
+    thanks_msg: "Thank you for proposing an activity. Soon you will recieve a confirmation e-mail."
     thank_you_vote: "Thank you for your vote"
     vote_msg: "Thank you for your vote. To avoid fraud in the voting process, you will recieve a confirmation e-mail to validate the vote."
     vote_thanks: "Thank you for voting!"
@@ -269,13 +269,13 @@ en:
   Verifiers: "Verifiers"
   verifier:
     email: "Email"
-    event: "Thank you for verifying the event!"
+    event: "Thank you for verifying the activity!"
     invalid: "Invalid verification code"
     speaker: "Thank you for verifying your attendance!"
     token: "Token"
     type: "Type"
     types:
-        event: "event"
+        event: "activity"
         speaker: "speaker"
         vote: "vote"
     verified: "Verified"
