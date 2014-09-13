@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
   acts_as_taggable
- attr_accessible :accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :speakers_attributes, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes
+ attr_accessible :accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :speakers_attributes, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes, :wizard_status
   attr_accessor :tags, :validation_email
   belongs_to :conference
   friendly_id :title, use: [:slugged, :scoped], scope: :conference
@@ -9,39 +9,45 @@ class Event < ActiveRecord::Base
   has_many :speakers
   accepts_nested_attributes_for :speakers, reject_if: :all_blank, allow_destroy: true
 
-  TOKEN_LENGTH=32
-
   validates :title,
             format: { with: /\A[a-z0-9\W]+\z/i },
             presence: true,
-            uniqueness: { scope: :conference }
+            uniqueness: { scope: :conference },
+            if: :complete_or_basic?
 
   validates :description,
             format: { with: /\A[a-z0-9\W]+\z/i },
-            presence: true
+            presence: true,
+            if: :complete_or_basic?
 
   validates :content_url,
             url: true,
-            allow_blank: true
+            allow_blank: true,
+            if: :complete_or_detailed?
 
   validates :code,
             url: true,
-            allow_blank: true
+            allow_blank: true,
+            if: :complete_or_detailed?
 
   validates :notes,
             allow_blank: true,
-            format: { with: /\A[a-z0-9\W]+\z/i }
+            format: { with: /\A[a-z0-9\W]+\z/i },
+            if: :complete_or_detailed?
 
   validates :language,
             allow_blank: true,
-            inclusion: { in: I18n.t("event.languages").keys.collect {|l| l.to_s} }
+            inclusion: { in: I18n.t("event.languages").keys.collect {|l| l.to_s} },
+            if: :complete_or_detailed?
 
   validates :subclass,
-            presence: true
+            presence: true,
+            if: :complete_or_basic?
 
   validates :summary,
             format: { with: /\A[a-z0-9\W]+\z/i },
-            presence: true
+            presence: true,
+            if: :complete_or_basic?
 
   enum duration: [:unspecified_duration, :t_0, :t_1, :t_2, :t_3, :t_4, :t_5]
   enum level: [:unspecified_level, :noob, :easy, :medium, :hard, :hacker]
@@ -51,6 +57,26 @@ class Event < ActiveRecord::Base
 
   #before_create :lang_filter
 
+
+  #
+  # Either the event has been completely created or is in the "basic information" step of the wizard
+  #
+  def complete_or_basic?
+    wizard_status == "basic" || wizard_status == "thanks" || complete?
+  end
+
+  #
+  # Either the event has been completely created or is in the "detailed information" step of the wizard
+  def complete_or_detailed?
+    wizard_status == "detailed" || wizard_status == "thanks" || complete?
+  end
+
+  #
+  # Complete object
+  #
+  def complete?
+    wizard_status == "complete"
+  end
 
   #
   # Should only be called by the WizardEvent model when saving an Event

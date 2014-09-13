@@ -26,6 +26,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :assisted_by
       t.string :slug
       t.integer :conference_id
+      t.string :wizard_status, default: "complete", null: false
 
       t.timestamps
     end

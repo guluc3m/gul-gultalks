@@ -10,6 +10,8 @@
 
 = form_for(@event, url: wizard_path, method: :put) do |f|
 
+  = f.hidden_field :event_id, :value => params[:event_id]
+
   - @event.errors.full_messages.each do |msg|
     .row
       .large-12.columns
