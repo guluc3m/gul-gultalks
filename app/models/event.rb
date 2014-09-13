@@ -57,6 +57,7 @@ class Event < ActiveRecord::Base
 
   #before_create :lang_filter
   after_save :send_verifier, if: :wizard_ended? 
+  after_save :set_taggings, if: :wizard_detailed?
 
   #
   # Either the event has been completely created or is in the "basic information" step of the wizard
@@ -85,6 +86,13 @@ class Event < ActiveRecord::Base
     wizard_status == "end"
   end
 
+  #
+  # Wizard has been through detailed information step
+  #
+  def wizard_detailed?
+    wizard_status == "detailed"
+  end
+
   def speakers
     return Speaker.where(event_id: self, confirmed: true)
   end
@@ -105,6 +113,13 @@ class Event < ActiveRecord::Base
   #
   def send_verifier
     Verifier.create(email: validation_email, event_id: self.id, verified: false, verify_type: "event")
+  end
+
+  #
+  # Set taggings for the new object
+  #
+  def set_taggings
+    tag_list.add(tags, parse: true)
   end
 
   def should_generate_new_friendly_id?
