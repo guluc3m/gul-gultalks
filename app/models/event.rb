@@ -56,19 +56,19 @@ class Event < ActiveRecord::Base
   #validates :terms_of_service, acceptance: { accept: 'yes' }
 
   #before_create :lang_filter
-
+  after_save :send_verifier, if: :wizard_ended? 
 
   #
   # Either the event has been completely created or is in the "basic information" step of the wizard
   #
   def complete_or_basic?
-    wizard_status == "basic" || wizard_status == "thanks" || complete?
+    wizard_status == "basic" || complete?
   end
 
   #
   # Either the event has been completely created or is in the "detailed information" step of the wizard
   def complete_or_detailed?
-    wizard_status == "detailed" || wizard_status == "thanks" || complete?
+    wizard_status == "detailed" || complete?
   end
 
   #
@@ -79,17 +79,10 @@ class Event < ActiveRecord::Base
   end
 
   #
-  # Should only be called by the WizardEvent model when saving an Event
+  # Wizard has ended
   #
-  def save_and_verify(email)
-    if self.save
-      # Generate Verifier
-      # FIXME: if Verifier fails return false?
-      Verifier.create(email: email, event_id: self.id, verified: false, verify_type: "event")
-      return true
-    else
-      return false
-    end 
+  def wizard_ended?
+    wizard_status == "end"
   end
 
   def speakers
@@ -106,6 +99,13 @@ class Event < ActiveRecord::Base
   end
 
   private
+
+  #
+  # Send a verification email to the provided address
+  #
+  def send_verifier
+    Verifier.create(email: validation_email, event_id: self.id, verified: false, verify_type: "event")
+  end
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?

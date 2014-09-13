@@ -1,11 +1,9 @@
 class WizardController < ApplicationController
   include Wicked::Wizard
 
-  steps :basic_info, :speaker, :detailed_info, :thanks
+  steps :basic_info, :speaker, :detailed_info, :end
 
   def finish_wizard_path
-    # Generate verifiers
-    puts params[:event][:validation_email]
     conference_path(params[:conference_id])
   end
 
@@ -35,7 +33,7 @@ class WizardController < ApplicationController
     elsif step.to_s == "detailed_info"
       @event.update_attributes(wizard_status: "detailed")
     elsif step == steps.last
-      @event.update_attributes(wizard_status: "thanks")
+        @event.update_attributes(wizard_status: "end")
     end 
 
     @event.update_attributes(params[:event])

@@ -19,6 +19,7 @@ class VerifierController < ApplicationController
           # Validate the event
           event.update_attribute(:verified, true)
           event.update_attribute(:shown, true)
+          event.update_attribute(:wizard_status, "complete")
           verifier.update_attribute(:verified, true)
           render "event_verified"
 
