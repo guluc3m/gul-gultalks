@@ -33,7 +33,7 @@ class WizardController < ApplicationController
     elsif step.to_s == "detailed_info"
       @event.update_attributes(wizard_status: "detailed")
     elsif step == steps.last
-        @event.update_attributes(wizard_status: "end")
+      @event.update_attributes(wizard_status: "end")
     end 
 
     @event.update_attributes(params[:event])

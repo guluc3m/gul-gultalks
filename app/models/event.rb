@@ -63,13 +63,13 @@ class Event < ActiveRecord::Base
   # Either the event has been completely created or is in the "basic information" step of the wizard
   #
   def complete_or_basic?
-    wizard_status == "basic" || complete?
+    wizard_status == "basic" || wizard_ended? || complete?
   end
 
   #
   # Either the event has been completely created or is in the "detailed information" step of the wizard
   def complete_or_detailed?
-    wizard_status == "detailed" || complete?
+    wizard_status == "detailed" || wizard_ended? || complete?
   end
 
   #
@@ -93,10 +93,16 @@ class Event < ActiveRecord::Base
     wizard_status == "detailed"
   end
 
+  #
+  # List of confirmed speakers
+  #
   def speakers
     return Speaker.where(event_id: self, confirmed: true)
   end
 
+  #
+  # Whether the event has at least one confirmed speaker or not
+  #
   def speaker?
     sp = Speaker.where(event_id: self, confirmed: true).first
     if sp.nil?
@@ -122,6 +128,9 @@ class Event < ActiveRecord::Base
     tag_list.add(tags, parse: true)
   end
 
+  #
+  # (Re)generate the slug where needed
+  #
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
   end

@@ -20,7 +20,7 @@
             %i.fa.fa-warning.fa-3x
           .small-11.columns
             %ul.no-bullet
-              - session["event_wizard"]["errors"].each do |err|
+              - @event.errors.each do |err|
                 %li
                   -# - if err.eql? "title"
                     Revisa el título
