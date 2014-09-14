@@ -55,7 +55,6 @@ class Event < ActiveRecord::Base
   
   #validates :terms_of_service, acceptance: { accept: 'yes' }
 
-  #before_create :lang_filter
   after_save :send_verifier_remove_session, if: :wizard_ended? 
 
   #
@@ -119,6 +118,7 @@ class Event < ActiveRecord::Base
   def send_verifier_remove_session
     Verifier.create(email: validation_email, event_id: self.id, verified: false, verify_type: "event")
     WizardSession.find_by(event_id: self.id).destroy
+    self.update_attributes(wizard_status: "complete")
   end
 
   #

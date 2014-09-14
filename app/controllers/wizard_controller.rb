@@ -4,8 +4,6 @@ class WizardController < ApplicationController
   steps :basic_info, :speaker, :detailed_info, :end
 
   def finish_wizard_path
-    @event = Event.find(params[:event_id])
-    @event.update_attributes(wizard_status: "complete")
     conference_path(params[:conference_id])
   end
 
