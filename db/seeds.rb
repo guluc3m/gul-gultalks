@@ -67,6 +67,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
 
 Event.create(
@@ -90,6 +91,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -113,6 +115,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => false)
       
 Event.create(
@@ -136,6 +139,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -159,6 +163,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => false)
 
 Event.create(
@@ -182,6 +187,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -205,6 +211,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -227,6 +234,7 @@ Event.create(
       :verified => true,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :conference_id => 1)
 
 Event.create(
@@ -250,6 +258,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => false)
 
 Event.create(
@@ -274,6 +283,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -298,6 +308,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -322,6 +333,7 @@ Event.create(
       :conference_id => 1,
       :accepted => false,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -346,6 +358,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -370,6 +383,7 @@ Event.create(
       :conference_id => 1,
       :accepted => false,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -394,6 +408,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -417,6 +432,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -440,6 +456,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -463,6 +480,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -486,6 +504,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -509,6 +528,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => false)
       
 Event.create(
@@ -532,6 +552,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => false)
 
 Event.create(
@@ -555,6 +576,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -578,6 +600,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
       
 Event.create(
@@ -601,6 +624,7 @@ Event.create(
       :conference_id => 2,
       :accepted => false,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
 
 Event.create(
@@ -624,6 +648,7 @@ Event.create(
       :conference_id => 2,
       :accepted => false,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => false)
 
 Event.create(
@@ -647,6 +672,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
 
 Event.create(
@@ -670,6 +696,7 @@ Event.create(
       :conference_id => 2,
       :accepted => false,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => false)
 
 Event.create(
@@ -693,4 +720,5 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
+      :wizard_status => "complete",
       :cancelled => true)
