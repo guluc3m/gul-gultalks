@@ -4,17 +4,21 @@ class WizardController < ApplicationController
   steps :basic_info, :speaker, :detailed_info, :end
 
   def finish_wizard_path
+    @event = Event.find(params[:event_id])
+    @event.update_attributes(wizard_status: "complete")
     conference_path(params[:conference_id])
   end
 
   def create
     @event = Event.create(wizard_status: "new", title: "", description: "", summary: "")
+    # Create session-wizard relation
+    WizardSession.create(event_id: @event.id, session_id: session.id)
     redirect_to wizard_path(steps.first, event_id: @event.id)
   end
 
   def show
     @conference = Conference.friendly.find(params[:conference_id])
-    if !@conference.call_for_papers_enabled
+    if !@conference.call_for_papers_enabled || !WizardSession.exists?(event_id: params[:event_id], session_id: session.id) 
       redirect_to conference_path(@conference)
     else
       @event = Event.find(params[:event_id])
@@ -26,17 +30,18 @@ class WizardController < ApplicationController
     @conference = Conference.friendly.find(params[:conference_id])
     @event = Event.find(params[:event_id]) 
 
-    if step.to_s == "basic_info"
-      @event.update_attributes(wizard_status: "basic")
-      @event.update_attributes(conference_id: @conference.id)
-      @event.update_attributes(location: @conference.location)
-    elsif step.to_s == "detailed_info"
-      @event.update_attributes(wizard_status: "detailed")
-    elsif step == steps.last
-      @event.update_attributes(wizard_status: "end")
-    end 
+    @event.assign_attributes(params[:event])
 
-    @event.update_attributes(params[:event])
+    if step.to_s == "basic_info"
+      @event.wizard_status = "basic"
+      @event.conference_id = @conference.id
+      @event.location = @conference.location
+    elsif step.to_s == "detailed_info"
+      @event.wizard_status = "detailed"
+      @event.tag_list.add(@event.tags, parse: true)
+    elsif step == steps.last
+      @event.wizard_status = "end"
+    end 
 
     do_step @event
   end

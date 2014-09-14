@@ -56,8 +56,7 @@ class Event < ActiveRecord::Base
   #validates :terms_of_service, acceptance: { accept: 'yes' }
 
   #before_create :lang_filter
-  after_save :send_verifier, if: :wizard_ended? 
-  after_save :set_taggings, if: :wizard_detailed?
+  after_save :send_verifier_remove_session, if: :wizard_ended? 
 
   #
   # Either the event has been completely created or is in the "basic information" step of the wizard
@@ -115,17 +114,11 @@ class Event < ActiveRecord::Base
   private
 
   #
-  # Send a verification email to the provided address
+  # Send a verification email to the provided address and remove the wizard session
   #
-  def send_verifier
+  def send_verifier_remove_session
     Verifier.create(email: validation_email, event_id: self.id, verified: false, verify_type: "event")
-  end
-
-  #
-  # Set taggings for the new object
-  #
-  def set_taggings
-    tag_list.add(tags, parse: true)
+    WizardSession.find_by(event_id: self.id).destroy
   end
 
   #
