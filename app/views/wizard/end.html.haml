@@ -20,7 +20,7 @@
             %i.fa.fa-warning.fa-3x
           .small-11.columns
             %ul.no-bullet
-              - session["event_wizard"]["errors"].each do |err|
+              - @event.errors.each do |err|
                 %li
                   -# - if err.eql? "title"
                     Revisa el título
@@ -123,7 +123,7 @@
         = t("event.validation_email")
         %small
           = t("event.required")
-      = f.text_field :validation_email, label: false, maxlength: 64, required: true, type: "email", class: "radius", value: session["event_wizard"]["event"]["email"]
+      = f.text_field :validation_email, label: false, maxlength: 64, required: true, type: "email", class: "radius"
 
     .large-6.columns
       %label

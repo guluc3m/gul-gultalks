@@ -5,8 +5,9 @@ Gultalks::Application.routes.draw do
   match 'verify', to: 'verifier#verify', via: :get, path: '/verify'
 
   # Event wizard
-  match 'new_conference_event', to: 'event_wizard#new', via: :get, path: '/:conference_id/new'
-  resources :event_wizard, path: '/:conference_id/new', except: [:new]
+  match 'new_conference_event', to: 'wizard#create', via: :get, path: '/:conference_id/new'
+  # resources :event_wizard, path: '/:conference_id/new', except: [:new]
+  resources :wizard, path: '/:conference_id/new/:event_id/', except: [:new]
 
   # Conferences
   match 'conferences', to: 'conferences#index', via: :get, path: '/conferences'
