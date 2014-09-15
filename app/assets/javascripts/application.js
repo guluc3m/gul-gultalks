@@ -15,6 +15,7 @@
 //= require foundation
 //= require_tree .
 //= require cocoon
+//= require lettrics
 $(function(){ $(document)
   .foundation({
     abide : {

@@ -3,13 +3,15 @@
 
 .row
   .large-12.columns
-    %h2.subheader 
+    %h1.subheader 
       = t("event.detailed_info").humanize
-    %hr
-.row
-  .large-12.columns
     %h5.subheader
       = t("event.complete_detailed_form")
+    %hr
+-# .row
+-#   .large-12.columns
+-#     %h5.subheader
+-#       = t("event.complete_detailed_form")
 
 = form_for(@event, url: wizard_path, method: :put) do |f|
 
@@ -28,13 +30,17 @@
       %label{for: "content_url"}
         %i.fa.fa-link.fa-fw.fa-lg.subheader
         = t("event.url")
-      = f.url_field :content_url, label: false, maxlength: 128, type: "url", class: "radius"
+        .right
+          %sub#content_url-counter 128
+      = f.url_field :content_url, label: false, maxlength: 128, type: "url", plceholder: "http://", class: "radius lettrify", data: { counter: "#content_url-counter"}
   .row
     .large-12.columns
       %label{for: "code"}
         %i.fa.fa-code.fa-fw.fa-lg.subheader
         = t("event.code")
-      = f.url_field :code, label: false, maxlength: 128, type: "url", class: "radius"
+        .right
+          %sub#code-counter 128
+      = f.url_field :code, label: false, maxlength: 128, type: "url", placeholder: "http://"class: "radius lettrify", data: { counter: "#code-counter"}
 
 
   .row
@@ -43,7 +49,9 @@
         %i.fa.fa-tags.fa-fw.fa-lg.subheader
         = t("event.tags")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.tag_format")}
-      = f.text_field :tags, label: false, maxlength: 128, class: "radius", placeholder: t("event.tag_format")
+        .right
+          %sub#tags-counter 128
+      = f.text_field :tags, label: false, maxlength: 128, class: "radius lettrify", placeholder: t("event.tag_format"), data: { counter: "#tags-counter"}
 
   .row
     .large-4.columns
@@ -84,16 +92,18 @@
         %i.fa.fa-comments.fa-fw.fa-lg.subheader
         = t("event.comments")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.notes_requirements")}
-      = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius", size: "10x6"
+        .right
+          %sub#comments-counter 300
+      = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius lettrify", size: "10x6", data: { counter: "#comments-counter"}
 
   .row
     .large-12.columns
       .show-for-touch.hide-for-medium-up
         .switch.radius.small
           // FIXME: !?!?! 
-          %label#cert_accepted Quiero solicitar un certificado como ponente
+          %label{for: "cert_accepted"}
           = check_box("cert", "accepted", { class: '' }, "no", "yes")
-        %small Quiero solicitar un certificado como ponente
+          Quiero solicitar un certificado como ponente
       .show-for-medium-up
         = check_box("cert", "accepted", { class: '' }, "no", "yes")
         %label Quiero solicitar un certificado como ponente

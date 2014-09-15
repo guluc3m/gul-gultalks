@@ -91,8 +91,8 @@ gem 'icalendar'
 # reCAPTCHA
 gem 'recaptcha', :require => 'recaptcha/rails'
 
-#
-#gem 'lettrics'
+# Character countdown 
+gem 'lettrics'
 
 # User authentication
 gem 'cancancan', '~> 1.9'

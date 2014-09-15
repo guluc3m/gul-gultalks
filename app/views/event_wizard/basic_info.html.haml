@@ -2,11 +2,10 @@
 = render partial: "breadcrumbs"
 .row
   .large-12.columns
-    .columns
-      %h2.subheader Información básica
-    %hr
+    %h1.subheader Información básica
     %h5.subheader
       = t("event.complete_basic_form")
+    %hr
 
 = form_for(@event, url: wizard_path, method: :put) do |f|
 
@@ -43,9 +42,9 @@
         %small
           = t("event.required")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.title_requirements"), class: "radius"}
-      = f.text_field :title, label: false, maxlength: 128, required: true, class: "radius"
-      -# .char-counter.right
-      -#   128
+        .right
+          %sub#tile-counter 128
+      = f.text_field :title, label: false, required: true, class: "radius lettrify", data: { counter: "#tile-counter"}
 
   .row
     .large-12.columns
@@ -55,9 +54,9 @@
         %small
           = t("event.required")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.summary_requirements"), class: "radius"}
-      = f.text_field :summary, label: false, maxlength: 128, required: true, class: "radius lettrify"
-      -# .char-counter.right
-      -#   128
+        .right
+          %sub#summary-counter 128
+      = f.text_field :summary, label: false, maxlength: 128, required: true, class: "radius lettrify", data: { counter: "#summary-counter"}
 
 
   .row
@@ -68,7 +67,9 @@
         %small
           = t("event.required")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.description_requirements")}
-      = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius", size: "10x8"
+        .right
+          %sub#description-counter 1400
+      = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius lettrify", size: "10x8", data: { counter: "#description-counter"}
 
   //.row
   //  .large-12.columns

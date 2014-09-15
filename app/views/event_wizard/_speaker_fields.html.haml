@@ -7,7 +7,9 @@
           = t("speaker.name")
           %small
             = t("event.required")
-        = f.text_field :name, label: false, maxlength: 64, required: true, class: "radius"
+          .right
+            %sub#name-counter 64
+        = f.text_field :name, label: false, maxlength: 64, required: true, class: "radius lettrify", data: { counter: "#name-counter"}
 
       .large-4.columns
         %label{for: "email"}
@@ -15,7 +17,9 @@
           = t("speaker.email")
           %small
             = t("event.required")
-        = f.text_field :email, label: false, maxlength: 64, required: true, type: "email", class: "radius"
+          .right
+            %sub#email-counter 64
+        = f.text_field :email, label: false, maxlength: 64, required: true, type: "email", class: "radius", data: { counter: "#email-counter"}
 
       .large-4.columns
         %label{for: "twitter"}
@@ -23,7 +27,8 @@
           = t("speaker.twitter")
         .row.collapse.prefix-radius
           .small-2.columns
-            %span.prefix @
+            %span.prefix
+              %i.fa.fa-at.fa-fw.subheader
           .small-10.columns
             = f.text_field :twitter, label: false, maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})", class: "radius"
 
