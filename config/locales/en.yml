@@ -59,6 +59,7 @@ en:
         verified: "Verified"
         video: "Video"
         votes: "Votes"
+        wizard_status: "Wizard status"
       speaker:
         confirmed: "Confirmed"
         email: "Email"
