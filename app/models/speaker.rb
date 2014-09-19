@@ -1,5 +1,4 @@
 class Speaker < ActiveRecord::Base
-  attr_accessible :confirmed, :email, :event_id, :name, :twitter
   belongs_to :event
 
 

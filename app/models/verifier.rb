@@ -1,7 +1,6 @@
 class Verifier < ActiveRecord::Base
   after_create :send_verification
   before_create :generate_token
-  # attr_accessible :email, :event_id, :token, :verified, :verify_type
 
   TOKEN_LENGTH=32
 

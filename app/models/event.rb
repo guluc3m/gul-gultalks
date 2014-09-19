@@ -1,7 +1,6 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
   acts_as_taggable
- # attr_accessible :accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :speakers_attributes, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes, :wizard_status
   attr_accessor :tags, :validation_email
   belongs_to :conference
   friendly_id :title, use: [:slugged, :scoped], scope: :conference
