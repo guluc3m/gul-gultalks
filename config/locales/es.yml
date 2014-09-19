@@ -168,6 +168,7 @@ es:
       assisted_by: "asistido por"
     back_to_event: "Volver a la actividad"
     back_to_events: "Volver a las actividades"
+    basic_info: "Información básica"
     comments: "Comentarios"
     comment:
       name: "Nombre"

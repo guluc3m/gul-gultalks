@@ -149,6 +149,7 @@ en:
     assistant: "Asistente"
     back_to_event: "Back to activity"
     back_to_events: "Back to activities"
+    basic_info: "Basic information"
     comments: "Comments"
     comment:
       name: "Name"
