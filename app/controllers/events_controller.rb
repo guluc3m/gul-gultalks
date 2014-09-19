@@ -107,9 +107,9 @@ class EventsController < ApplicationController
   def event
     @conference = Conference.friendly.find(params[:conference_id])
     @event = if params[:action] =~ /new/
-      Event.new(params[:event])
+      Event.new(event_params)
     elsif params[:action] =~ /create/
-      e = Event.new(params[:event])
+      e = Event.new(event_params)
       e.conference_id = Conference.friendly.find(params[:conference_id]).id
       e.location = Conference.friendly.find(params[:conference_id]).location
       e.tag_list.add(params[:event][:tags], parse: true)
@@ -130,6 +130,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(speakers_attributes: [:id, :email, :name, :twitter, :_destroy])
+    params.require(:event).permit(:accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes, :wizard_status, speakers_attributes: [:confirmed, :email, :event_id, :name, :twitter])
   end
 end

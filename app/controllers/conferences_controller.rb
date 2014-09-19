@@ -34,9 +34,9 @@ class ConferencesController < ApplicationController
   private
   def conference
     @conference = if params[:action] =~ /new/
-      Conference.new(params[:conference])
+      Conference.new(conference_params)
     elsif params[:action] =~ /create/
-      c = Conference.new(params[:conference])
+      c = Conference.new(conference_params)
       c.save
       c
     else
@@ -51,5 +51,9 @@ class ConferencesController < ApplicationController
 
   def conferences
     @conferences = Conference.all.order('start_date DESC')
+  end
+
+  def conference_params
+    params.require(:conference).permit(:active, :call_for_papers_enabled, :call_for_papers_end_date, :call_for_papers_start_date, :coordinator, :description, :end_date, :location, :show_calendar, :slug, :start_date, :title, :voting_enabled, :voting_end_date, :voting_start_date)
   end
 end

@@ -1,4 +1,5 @@
 ActiveAdmin.register Speaker do
+  permit_params :confirmed, :email, :event_id, :name, :twitter
 
   menu :label => proc{ t("Speakers") }
 

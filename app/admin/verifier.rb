@@ -1,4 +1,5 @@
 ActiveAdmin.register Verifier do
+  permit_params :email, :event_id, :verified, :verify_type
 
   menu :label => proc{ t("Verifiers") }
 

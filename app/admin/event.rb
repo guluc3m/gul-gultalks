@@ -1,5 +1,5 @@
 ActiveAdmin.register Event do
-    
+ permit_params :accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes, :wizard_status
   menu :label => proc{ t("Events") }
 
 

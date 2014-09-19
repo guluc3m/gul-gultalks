@@ -28,7 +28,7 @@ class WizardController < ApplicationController
     @conference = Conference.friendly.find(params[:conference_id])
     @event = Event.find(params[:event_id]) 
 
-    @event.assign_attributes(params[:event])
+    @event.assign_attributes(event_params)
 
     if step.to_s == "basic_info"
       @event.wizard_status = "basic"
@@ -59,5 +59,9 @@ class WizardController < ApplicationController
       # Don't need to verify anything
       render_wizard event
     end
-  end    
+  end
+
+  def event_params
+    params.require(:event).permit(:accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes, :wizard_status, speakers_attributes: [:confirmed, :email, :event_id, :name, :twitter])
+  end
 end
