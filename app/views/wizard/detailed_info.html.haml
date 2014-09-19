@@ -15,6 +15,12 @@
 
 = form_for(@event, url: wizard_path, method: :put) do |f|
 
+  - @event.errors.full_messages.each do |msg|
+    .row
+      .large-12.columns
+        .alert-box.alert.radius
+          = msg
+
   .row
     .large-12.columns
       %span 
