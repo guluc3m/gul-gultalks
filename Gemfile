@@ -98,7 +98,8 @@ gem 'lettrics'
 gem 'cancancan', '~> 1.9'
 
 # LaTeX for Rails
-gem 'rails-latex'
+#gem 'rails-latex'
+gem 'prawn'
 
 # Public comments
 gem 'ancestry'
