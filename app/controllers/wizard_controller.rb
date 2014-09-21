@@ -62,6 +62,6 @@ class WizardController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes, :wizard_status, speakers_attributes: [:confirmed, :email, :event_id, :name, :twitter])
+    params.require(:event).permit(:accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes, :wizard_status, speakers_attributes: [:certificate, :confirmed, :email, :event_id, :name, :twitter])
   end
 end

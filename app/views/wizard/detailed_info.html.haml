@@ -101,22 +101,6 @@
         .right
           %sub#comments-counter 300
       = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius lettrify", size: "10x6", data: { counter: "#comments-counter"}
-
-  .row
-    .large-12.columns
-      .show-for-touch.hide-for-medium-up
-        .switch.radius.small
-          // FIXME: !?!?! 
-          %label{for: "cert_accepted"}
-          = check_box("cert", "accepted", { class: '' }, "no", "yes")
-          Quiero solicitar un certificado como ponente
-      .show-for-medium-up
-        = check_box("cert", "accepted", { class: '' }, "no", "yes")
-        %label Quiero solicitar un certificado como ponente
-  -# .row
-  -#   .large-12.columns
-  -#     = check_box("eula", "accepted", { class: 'eula_check' }, "yes", "no")
-  -#     %span Acepto las condiciones de privacidad
       
   .row
     .large-3.columns.right

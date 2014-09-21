@@ -29,7 +29,9 @@ class Verifier < ActiveRecord::Base
 
    private
    def send_verification
-       if self.verify_type.eql? "event"
+       if self.verify_type.eql? "certificate"
+         Notifier.confirmation_certificate(self).deliver
+       elsif self.verify_type.eql? "event"
          Notifier.confirmation_event(self).deliver
        elsif self.verify_type.eql? "vote"
          Notifier.confirmation_vote(self).deliver

@@ -30,7 +30,7 @@ class EventsController < ApplicationController
     @event = Event.friendly.find(params[:id])
     @conference = Conference.find(@event.conference_id)
 
-    sp = Speaker.new(name: params[:name], email: params[:email], twitter: params[:twitter], confirmed: false, event_id: @event.id)
+    sp = Speaker.new(name: params[:name], email: params[:email], twitter: params[:twitter], certificate: params[:certificate], confirmed: false, event_id: @event.id)
     ver = Verifier.new(email: params[:email], event_id: @event.id, verified: false, verify_type: "speaker")
 
     if verify_recaptcha
@@ -130,6 +130,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes, :wizard_status, speakers_attributes: [:confirmed, :email, :event_id, :name, :twitter])
+    params.require(:event).permit(:accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes, :wizard_status, speakers_attributes: [:certificate, :confirmed, :email, :event_id, :name, :twitter])
   end
 end

@@ -61,6 +61,7 @@ en:
         votes: "Votes"
         wizard_status: "Wizard status"
       speaker:
+        certificate: "Activity certificate"
         confirmed: "Confirmed"
         email: "Email"
         event_id: "Activity"
@@ -74,6 +75,17 @@ en:
         verify_type: "Verification type"
   # Emails
   notifier:
+    confirmation_certificate:
+      subject: "Certificate confirmation"
+      body: |
+        Hello %{name}.
+
+        We have received a certificate request for the activity '%{event_title}'.
+        Please visit the following link in order to validate it.
+
+        %{validation_url}
+
+        Once validated, you will receive the certificate in your email address.
     confirmation_event:
       subject: "Activity confirmation"
       body: |
@@ -97,11 +109,17 @@ en:
       body: |
         Hello.
 
-        Thank you for voting the activity '%{event_title}'
+        Thank you for voting the activity '%{event_title}'.
 
         Please, visit the following link in order to validate your vote.
 
         %{validation_url}
+    send_certificate:
+      subject: "Activity certificate"
+      body: |
+        Hello %{name}.
+
+        Attached you will find the certificate corresponding to the activity '%{event_title}'.
     footer: |
       --
       Grupo de Usuarios de la Universidad Carlos III de Madrid 
@@ -240,6 +258,7 @@ en:
     incorrect: "Incorrect. Please try again."
   speaker:
     add: "Add speaker"
+    certificate: "Activity certificate"
     confirmed: "Confirmed"
     email: "Email"
     email_requirements: "Not a valid email address"
@@ -270,6 +289,7 @@ en:
   user: "User"
   Verifiers: "Verifiers"
   verifier:
+    certificate: "Thank you, you will soon receive the activity certificate in your email"
     email: "Email"
     event: "Thank you for verifying the activity!"
     invalid: "Invalid verification code"

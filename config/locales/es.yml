@@ -67,6 +67,7 @@ es:
         votes: "Votos"
         wizard_status: "Estado del asistente"
       speaker:
+        certificate: "Certificado de actividad"
         confirmed: "Confirmado"
         created_at: "Creado"
         email: "E-mail"
@@ -84,6 +85,17 @@ es:
         verify_type: "Tipo de verificación"
   # Emails
   notifier:
+    confirmation_certificate:
+      subject: "Confirmación de certificado"
+      body: |
+        Hola.
+
+        Hemos recibido una petición de certificado para la actividad '%{event_title}'.
+        Por favor, visita el siguiente enlace para validarla.
+
+        %{validation_url}
+
+        Una vez validada, recibirás el certificado en tu dirección de e-mail.
     confirmation_event:
       subject: "Confirmación de actividad"
       body: |
@@ -114,6 +126,12 @@ es:
         Por favor, visita el siguiente enlace para validar tu voto.
 
         %{validation_url}
+    send_certificate:
+      subject: "Certificado de actividad"
+      body: |
+        Hola %{name}.
+
+        Adjunto encontrarás el certificado para la actividad '%{event_title}'.
     footer: |
       --
       Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid
@@ -260,6 +278,7 @@ es:
     incorrect: "Incorrecto. Por favor, prueba otra vez."
   speaker:
     add: "Añadir ponente"
+    certificate: "Certificado de actividad"
     confirmed: "Confirmado"
     email: "Email"
     email_requirements: "No es una dirección de e-mail válida"
@@ -291,10 +310,11 @@ es:
   user: "Usuario"
   Verifiers: "Verificadores"
   verifier:
+    certificate: "Gracias, pronto recibirás en tu e-mail el certificado de la actividad"
     email: "E-mail"
     event: "¡Gracias por verificar la actividad!"
     invalid: "Código de verificación no válido"
-    speaker: "¡Gracias por verificar to asistencia!"
+    speaker: "¡Gracias por verificar tu asistencia!"
     token: "Token"
     type: "Tipo" 
     types:
