@@ -45,7 +45,7 @@ class Notifier < ActionMailer::Base
     @speaker = speaker
 
     cert_name = "#{@event.title.parameterize.underscore}-gul-cert.pdf"
-    attachments[cert_name] = SpeakerCert.new(@event).render
+    attachments[cert_name] = SpeakerCert.new(@event, @speaker).render
 
     email_with_name = "#{@speaker.name} <#{@speaker.email}>"
     mail(to: email_with_name, subject: t("notifier.tag") + " " + t("notifier.send_certificate.subject"))
