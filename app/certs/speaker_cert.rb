@@ -11,7 +11,7 @@ class SpeakerCert < Prawn::Document
   end
 
   def header
-    text "Samuel Rodriguez Sevilla, en calidad de presidente del", align: :center
+    text "#{Rails.application.secrets.org_president}, en calidad de presidente del", align: :center
     text "Grupo de Usuarios de Linux", style: :bold, align: :center
     text "de la Universidad Carlos III de Madrid", style: :bold, align: :center
   end
@@ -21,7 +21,7 @@ class SpeakerCert < Prawn::Document
     text "CERTIFICO", size: 18, style: :bold, align: :center
 
     move_down 30
-    text "Que  #{@speaker.name}  ha asistido a las '#{RomanNumerals.to_roman(@conference.start_date.year - 2002)} Jornadas Técnicas del GUL', que tuvieron lugar durante el mes #{@conference.start_date.month} de #{@conference.start_date.year}, impartiendo la ponencia:", align: :center
+    text "Que  #{@speaker.name}  ha asistido a las '#{RomanNumerals.to_roman(@conference.start_date.year - 2002)} Jornadas Técnicas del GUL', que tuvieron lugar durante el mes #{@conference.start_date.month} de #{@conference.start_date.year}, presentando la ponencia:", align: :center
 
     move_down 40
     text "#{@event.title}", size: 16, style: :italic, align: :center
@@ -33,7 +33,7 @@ class SpeakerCert < Prawn::Document
   def footer
     move_down 70
     text "En #{@event.location} a ___ de _________ de 2014.", align: :center
-    text "Fdo: Samuel Rodriguez Sevilla", align: :center
-    text "(presidente", align: :center
+    text "Fdo: #{Rails.application.secrets.org_president}", align: :center
+    text "(presidente)", align: :center
   end
 end
