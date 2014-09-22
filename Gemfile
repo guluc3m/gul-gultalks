@@ -115,3 +115,6 @@ gem 'figaro'
 
 # Roman Numbers (for calculate editions)
 gem 'roman-numerals'
+
+# Cookie notice
+gem 'cookies_eu'
