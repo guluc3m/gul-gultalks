@@ -8,8 +8,8 @@
         = link_to t("home"), root_path
       %li
         = link_to @conference.title, conference_path(@conference)
-      %li
-        = link_to @event.title, conference_event_path(@conference, @event)
+      -# %li
+      -#   = link_to @event.title, conference_event_path(@conference, @event)
       %li.current
         = t("speaker.propose")
 
@@ -17,11 +17,14 @@
   .row
     .large-12.columns
       .alert-box.alert.radius
-        = msg
+        .large-2.columns
+          %i.fa.fa-warning.fa-fw.fa-lg
+        .large-10.columns
+          = msg
 
 .row
   .medium-12.columns
-    %h1
+    %h1.subheader
       = t("speaker.propose")
     %hr
     %p
