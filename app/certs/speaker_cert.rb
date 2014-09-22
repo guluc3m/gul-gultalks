@@ -21,7 +21,7 @@ class SpeakerCert < Prawn::Document
     text "CERTIFICO", size: 18, style: :bold, align: :center
 
     move_down 30
-    text "Que  #{@speaker.name}  ha asistido a las '#{RomanNumerals.to_roman(@conference.start_date.year - 2002)} Jornadas Técnicas del GUL', que tuvieron lugar durante el mes #{@conference.start_date.month} de #{@conference.start_date.year}, presentando la ponencia:", align: :center
+    text "Que  #{@speaker.name}  ha asistido a las '#{RomanNumerals.to_roman(@conference.start_date.year - 2002)} Jornadas Técnicas del GUL', que tuvieron lugar durante el mes de #{@conference.start_date.strftime("%B")} de #{@conference.start_date.year}, presentando la ponencia:", align: :center
 
     move_down 40
     text "#{@event.title}", size: 16, style: :italic, align: :center
@@ -33,6 +33,8 @@ class SpeakerCert < Prawn::Document
   def footer
     move_down 70
     text "En #{@event.location} a ___ de _________ de 2014.", align: :center
+
+    move_down 20
     text "Fdo: #{Rails.application.secrets.org_president}", align: :center
     text "(presidente)", align: :center
   end
