@@ -98,7 +98,8 @@ gem 'lettrics'
 gem 'cancancan', '~> 1.9'
 
 # LaTeX for Rails
-gem 'rails-latex'
+#gem 'rails-latex'
+gem 'prawn'
 
 # Public comments
 gem 'ancestry'
@@ -114,3 +115,6 @@ gem 'figaro'
 
 # Roman Numbers (for calculate editions)
 gem 'roman-numerals'
+
+# Cookie notice
+gem 'cookies_eu'

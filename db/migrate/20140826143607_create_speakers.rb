@@ -6,6 +6,7 @@ class CreateSpeakers < ActiveRecord::Migration
       t.string :email, limit: 64, null: false
       t.string :twitter, limit: 64
       t.integer :event_id, null: false
+      t.boolean :certificate, default: false
       t.boolean :confirmed, default: true
 
       t.timestamps

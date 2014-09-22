@@ -4,7 +4,7 @@
 .row
   .large-12.columns
     %h1.subheader 
-      = t("event.detailed_info").humanize
+      = t("event.detailed_info")
     %h5.subheader
       = t("event.complete_detailed_form")
     %hr
@@ -14,6 +14,12 @@
 -#       = t("event.complete_detailed_form")
 
 = form_for(@event, url: wizard_path, method: :put) do |f|
+
+  - @event.errors.full_messages.each do |msg|
+    .row
+      .large-12.columns
+        .alert-box.alert.radius
+          = msg
 
   .row
     .large-12.columns
@@ -95,22 +101,6 @@
         .right
           %sub#comments-counter 300
       = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius lettrify", size: "10x6", data: { counter: "#comments-counter"}
-
-  .row
-    .large-12.columns
-      .show-for-touch.hide-for-medium-up
-        .switch.radius.small
-          // FIXME: !?!?! 
-          %label{for: "cert_accepted"}
-          = check_box("cert", "accepted", { class: '' }, "no", "yes")
-          Quiero solicitar un certificado como ponente
-      .show-for-medium-up
-        = check_box("cert", "accepted", { class: '' }, "no", "yes")
-        %label Quiero solicitar un certificado como ponente
-  -# .row
-  -#   .large-12.columns
-  -#     = check_box("eula", "accepted", { class: 'eula_check' }, "yes", "no")
-  -#     %span Acepto las condiciones de privacidad
       
   .row
     .large-3.columns.right

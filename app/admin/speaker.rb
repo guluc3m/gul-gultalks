@@ -1,4 +1,5 @@
 ActiveAdmin.register Speaker do
+  permit_params :confirmed, :email, :event_id, :name, :twitter
 
   menu :label => proc{ t("Speakers") }
 
@@ -8,6 +9,7 @@ ActiveAdmin.register Speaker do
     column :email
     column :twitter
     column :event_id
+    column :certificate
     column :confirmed
     actions
   end
@@ -21,6 +23,7 @@ ActiveAdmin.register Speaker do
       f.input :email, label: t("speaker.email")
       f.input :twitter, label: t("speaker.twitter")
       f.input :event_id, label: t("Event"), as: :select, collection: Event.all
+      f.input :certificate, label: t("speaker.certificate"), as: :radio
       f.input :confirmed, label: t("speaker.confirmed"), as: :radio
     end
     f.actions

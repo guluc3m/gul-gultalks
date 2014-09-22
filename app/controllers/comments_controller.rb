@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
   def create
     @commentable = find_commentable
-    @comment = @commentable.comments.build(params[:comment])
+    @comment = @commentable.comments.build(comment_params)
     if @comment.save
       flash[:notice] = "Successfully created comment."
       redirect_to conference_event_url(params[:conference_id], params[:event_id])
@@ -36,5 +36,9 @@ class CommentsController < ApplicationController
       end
     end
     nil
+  end
+
+  def comment_params
+    params.require(:comment).permit(:content, :email, :event_id, :name, :parent_id)
   end
 end

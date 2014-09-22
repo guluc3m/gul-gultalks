@@ -59,6 +59,12 @@
           = text_field_tag "twitter", nil, class: "radius", maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})"
 
   .row
+    .large-4.columns
+      = check_box_tag "certificate", nil
+      %label{for: "certificate"}
+        = t("speaker.certificate")
+
+  .row
     .large-12.columns
       = render 'partials/recaptcha'
 

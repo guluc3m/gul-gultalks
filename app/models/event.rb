@@ -1,7 +1,6 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
   acts_as_taggable
- attr_accessible :accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :speakers_attributes, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes, :wizard_status
   attr_accessor :tags, :validation_email
   belongs_to :conference
   friendly_id :title, use: [:slugged, :scoped], scope: :conference
@@ -113,10 +112,13 @@ class Event < ActiveRecord::Base
   private
 
   #
-  # Send a verification email to the provided address and remove the wizard session
+  # Send a verification email to the provided address, send certificate verifications (if any) and remove the wizard session
   #
   def send_verifier_remove_session
     Verifier.create(email: validation_email, event_id: self.id, verified: false, verify_type: "event")
+    Speaker.where(event_id: self, certificate: true).map do |sp|
+      Verifier.create(email: sp.email, event_id: self.id, verified: false, verify_type: "certificate")
+    end
     WizardSession.find_by(event_id: self.id).destroy
     self.update_attributes(wizard_status: "complete")
   end

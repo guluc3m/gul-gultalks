@@ -1,7 +1,6 @@
 class Verifier < ActiveRecord::Base
   after_create :send_verification
   before_create :generate_token
-  attr_accessible :email, :event_id, :token, :verified, :verify_type
 
   TOKEN_LENGTH=32
 
@@ -30,7 +29,9 @@ class Verifier < ActiveRecord::Base
 
    private
    def send_verification
-       if self.verify_type.eql? "event"
+       if self.verify_type.eql? "certificate"
+         Notifier.confirmation_certificate(self).deliver
+       elsif self.verify_type.eql? "event"
          Notifier.confirmation_event(self).deliver
        elsif self.verify_type.eql? "vote"
          Notifier.confirmation_vote(self).deliver

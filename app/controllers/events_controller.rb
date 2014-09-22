@@ -30,7 +30,7 @@ class EventsController < ApplicationController
     @event = Event.friendly.find(params[:id])
     @conference = Conference.find(@event.conference_id)
 
-    sp = Speaker.new(name: params[:name], email: params[:email], twitter: params[:twitter], confirmed: false, event_id: @event.id)
+    sp = Speaker.new(name: params[:name], email: params[:email], twitter: params[:twitter], certificate: params[:certificate], confirmed: false, event_id: @event.id)
     ver = Verifier.new(email: params[:email], event_id: @event.id, verified: false, verify_type: "speaker")
 
     if verify_recaptcha
@@ -107,9 +107,9 @@ class EventsController < ApplicationController
   def event
     @conference = Conference.friendly.find(params[:conference_id])
     @event = if params[:action] =~ /new/
-      Event.new(params[:event])
+      Event.new(event_params)
     elsif params[:action] =~ /create/
-      e = Event.new(params[:event])
+      e = Event.new(event_params)
       e.conference_id = Conference.friendly.find(params[:conference_id]).id
       e.location = Conference.friendly.find(params[:conference_id]).location
       e.tag_list.add(params[:event][:tags], parse: true)
@@ -130,6 +130,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(speakers_attributes: [:id, :email, :name, :twitter, :_destroy])
+    params.require(:event).permit(:accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes, :wizard_status, speakers_attributes: [:certificate, :confirmed, :email, :event_id, :name, :twitter])
   end
 end

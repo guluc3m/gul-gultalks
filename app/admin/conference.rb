@@ -1,4 +1,5 @@
 ActiveAdmin.register Conference do
+  permit_params :active, :call_for_papers_enabled, :call_for_papers_end_date, :call_for_papers_start_date, :coordinator, :description, :end_date, :location, :title, :show_calendar, :slug, :start_date, :voting_enabled, :voting_end_date, :voting_start_date
 
   menu :label => proc{ t("Conferences") }
 
