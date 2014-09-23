@@ -83,6 +83,19 @@ es:
         updated_at: "Última actualización"
         verified: "Verificado"
         verify_type: "Tipo de verificación"
+  certificates:
+    speaker:
+      header: "%{chairperson}, en calidad de presidente del"
+      organization: |
+        Grupo de Usuarios de Linux
+        de la Universidad Carlos III de Madrid
+      i_certify: "CERTIFICO"
+      speaker_info: "Que  %{name}  ha asistido a las '%{conference_num} Jornadas Técnicas del GUL', que tuvieron lugar durante el mes de %{month} de %{year}, presentando la ponencia:" 
+      i_sign: "Y para que conste a los efectos oportunos, sello y firmo el presente."
+      signature_details: "En %{location} a ___ de _________ de %{year}."
+      signature: |
+        Fdo: %{chairperson}
+        (presidente)
   # Emails
   notifier:
     confirmation_certificate:

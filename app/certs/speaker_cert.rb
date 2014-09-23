@@ -11,31 +11,29 @@ class SpeakerCert < Prawn::Document
   end
 
   def header
-    text "#{Rails.application.secrets.org_president}, en calidad de presidente del", align: :center
-    text "Grupo de Usuarios de Linux", style: :bold, align: :center
-    text "de la Universidad Carlos III de Madrid", style: :bold, align: :center
+    text I18n.t("certificates.speaker.header", chairperson: Rails.application.secrets.org_chairperson), align: :center
+    text I18n.t("certificates.speaker.organization"), style: :bold, align: :center
   end
 
   def certificate
     move_down 50
-    text "CERTIFICO", size: 18, style: :bold, align: :center
+    text I18n.t("certificates.speaker.i_certify"), size: 18, style: :bold, align: :center
 
     move_down 30
-    text "Que  #{@speaker.name}  ha asistido a las '#{RomanNumerals.to_roman(@conference.start_date.year - 2002)} Jornadas Técnicas del GUL', que tuvieron lugar durante el mes de #{@conference.start_date.strftime("%B")} de #{@conference.start_date.year}, presentando la ponencia:", align: :center
+    text I18n.t("certificates.speaker.speaker_info", name: @speaker.name, conference_num:  RomanNumerals.to_roman(@conference.start_date.year - 2002), month: @conference.start_date.strftime("%B"), year: @conference.start_date.year), align: :center
 
     move_down 40
     text "#{@event.title}", size: 16, style: :italic, align: :center
 
     move_down 40
-    text "Y para que conste a los efectos oportunos, sello y firmo el presente.", align: :center
+    text I18n.t("certificates.speaker.i_sign"), align: :center
   end
 
   def footer
     move_down 70
-    text "En #{@event.location} a ___ de _________ de 2014.", align: :center
+    text I18n.t("certificates.speaker.signature_details", location: @event.location, year: @conference.start_date.year), align: :center
 
     move_down 20
-    text "Fdo: #{Rails.application.secrets.org_president}", align: :center
-    text "(presidente)", align: :center
+    text I18n.t("certificates.speaker.signature", chairperson: Rails.application.secrets.org_chairperson), align: :center
   end
 end
