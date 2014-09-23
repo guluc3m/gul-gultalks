@@ -14,14 +14,6 @@ class Notifier < ActionMailer::Base
     @event = Event.find(verifier.event_id)
     @url = verify_url(token: verifier.token)
 
-    cert_name = "#{@event.title.parameterize.underscore}-gul-cert.pdf"
-    pdf_attachment = lesc(File.read('app/views/layouts/certs/cert_template.erbtex'))
-
-    attachments[cert_name] = {
-        :mime_type => 'application/pdf', 
-        :content => pdf_attachment
-    }
-  
     mail(to: verifier.email, subject: t("notifier.tag") + " " + t("notifier.confirmation_event.subject"))
   end
 

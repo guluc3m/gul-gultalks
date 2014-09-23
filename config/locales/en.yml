@@ -73,6 +73,19 @@ en:
         token: "Token"
         verified: "Verified"
         verify_type: "Verification type"
+  certificates:
+    speaker:
+      header: "%{chairperson}, as chairperson of the"
+      organization: |
+        Grupo de Usuarios de Linux
+        de la Universidad Carlos III de Madrid
+      i_certify: "CERTIFY"
+      speaker_info: "That  %{name}  has attended the '%{conference_num} Jornadas Técnicas del GUL', that took place during the month of %{month} of %{year}, presenting the lecture:" 
+      i_sign: "And for the record for the appropriate purposes, I sign and seal this document."
+      signature_details: "In %{location} on the  ___ of _________  %{year}."
+      signature: |
+        Signed: %{chairperson}
+        (chairperson)
   # Emails
   notifier:
     confirmation_certificate:
