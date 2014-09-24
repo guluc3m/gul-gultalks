@@ -18,5 +18,5 @@
 //= require lettrics
 //= require cookies_eu
 $(function(){ $(document)
-
+  .foundation({});
 });
