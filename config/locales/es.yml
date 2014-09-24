@@ -342,6 +342,8 @@ es:
     one: "voto"
     other: "votos"
     send_vote: "Enviar voto"
+  warning:
+    no_conferences: "No se ha podido recuperar ninguna edición."
   will_paginate:
     previous_label: "&#8592; Anterior"
     next_label: "Siguiente &#8594;"

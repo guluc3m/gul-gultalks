@@ -9,9 +9,8 @@
         = t("conference.list")
 .row
   .large-12.columns
-    .columns
-      %h1.subheader
-        = t("conference.list")
+    %h1.subheader
+      = t("conference.list")
     %hr
 
     .columns
@@ -27,5 +26,8 @@
                   = conference.events.where(accepted: true, subclass: 0).count
                   = conference.events.where(accepted: true, subclass: 1).count
         - else
-          %p
-            Parece que no hay ediciones pasadas.
+          .row
+            .large-12.columns
+              .alert-box.radius
+                %i.fa.fa-warning.pull-left.fa-2x
+                = t("warning.no_conferences")
