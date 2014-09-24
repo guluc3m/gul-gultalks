@@ -176,6 +176,8 @@ es:
   date:
     formats:
       default: ! '%d/%m/%Y'
+      day_name: ! '%A'
+      day_name_num: ! '%A %d'
       day_only: ! '%d'
       long: ! '%d de %B de %Y'
       month_only: ! '%B'
@@ -189,8 +191,8 @@ es:
     from: "del"
     to: "al"
     of: "de"
-    day_names: [lunes, martes, miércoles, jueves, viernes, sábado, domingo]
-    abbr_day_names: [lun, mar, mié, jue, vie, sáb, dom]
+    # day_names: [lunes, martes, miércoles, jueves, viernes, sábado, domingo]
+    # abbr_day_names: [lun, mar, mié, jue, vie, sáb, dom]
   event:
     are_you_speaker: "¿Vas a ser el ponente de esta actividad?"
     asssist:

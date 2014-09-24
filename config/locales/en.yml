@@ -163,6 +163,8 @@ en:
   date:
     formats:
       default: ! '%Y-%m-%d'
+      day_name: ! '%A'
+      day_name_num: ! '%A %d' 
       day_only: ! '%d'
       long: ! '%B %d, %Y'
       month_only: ! '%B'

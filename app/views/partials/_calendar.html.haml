@@ -72,4 +72,23 @@
           - (0...5).each do
             %td
               test
-                  
+
+
+.row.hidden-for-small.show-for-landscape
+  -# .large-12.columns
+    %ul.inline-list
+      - (0..days).each do |i|
+        %li
+          = t("date.day_names")[i].humanize
+          = conference.start_date.day + i
+
+  - (@conference.start_date..@conference.end_date).each do |d|
+    .large-2.columns{class: ("end" if d == @conference.end_date)}
+      %dl
+        %dt
+          = l(d, format: :day_name_num)
+        - @calendar_events.select{ |event| event.start_dtime.day == d.day }.map do |e|
+          %dd
+            = e.title
+            %br
+            = "#{e.start_dtime.time.strftime("%H:%M")} - #{e.end_dtime.time.strftime("%H:%M")}"
