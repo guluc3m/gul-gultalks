@@ -118,3 +118,6 @@ gem 'roman-numerals'
 
 # Cookie notice
 gem 'cookies_eu'
+
+# Url shortener
+gem 'bitly'
