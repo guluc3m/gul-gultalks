@@ -13,9 +13,9 @@
   .large-12.columns
     = render 'partials/status_tags'
     %span.label.radius.secondary.visible-for-medium-up.right
-      = link_to '#' do
+      = link_to "http://twitter.com/home?status=#{@event.title}: #{conference_event_url(@conference, @event)} - via @guluc3m", target: "_blank" do
         %i.fa.fa-twitter.fa-2x
-      = link_to '#' do
+      = link_to "https://www.facebook.com/sharer/sharer.php?u=#{@event.title}: #{conference_event_url(@conference, @event)} - via @guluc3m", target: "_blank" do
         %i.fa.fa-facebook.fa-2x
     %h2
       = event.title
