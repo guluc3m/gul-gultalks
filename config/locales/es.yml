@@ -196,7 +196,7 @@ es:
   # abbr_day_names: [lun, mar, mié, jue, vie, sáb, dom]
   event:
     are_you_speaker: "¿Vas a ser el ponente de esta actividad?"
-    asssist:
+    assist:
       one: "asistente"
       other: "asistentes"
       unassigned: "Asistente no asignado"
@@ -245,6 +245,7 @@ es:
       hard: "difícil"
       hacker: "hacker"
     missing_speaker: "Actividades sin ponente"
+    missing_speaker_msg: "Las siguientes actividades no tienen ponente o responsable para llevarlas a cabo. Si crees que puedes presentar la charla o ayudar en el taller no lo dudes y haz tu propuesta."
     new_event: "Nueva actividad"
     next_step: "Siguiente paso"
     notes_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"

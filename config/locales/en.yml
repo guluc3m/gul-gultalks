@@ -180,7 +180,11 @@ en:
     of: "of"
   event:
     are_you_speaker: "Are you going to be the speaker for this activity?"
-    assistant: "Asistente"
+    assist:
+      one: "assistant"
+      other: "assistants"
+      unassigned: "Assistant unasigned"
+      assisted_by: "assisted by"
     back_to_event: "Back to activity"
     back_to_events: "Back to activities"
     basic_info: "Basic information"
@@ -224,6 +228,7 @@ en:
       hard: "hard"
       hacker: "hacker"
     missing_speaker: "Activities without speaker"
+    missing_speaker_msg: "The following activities are missing a speaker that carries them out. If you believe you can present the talk or help in the workshop, do not hesitate to present your proposal."
     new_event: "New activity"
     next_step: "Next step"
     notes_requirements: "Can only contain alphanumeric characters and hyphens"
