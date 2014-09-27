@@ -18,10 +18,10 @@
     %h3.subheader
       %span.grey>= t("date.from")
       /= l @conference.start_date, :format => :day_only
-      = conference.start_date.day
+      = @conference.start_date.day
       %span.grey>= t("date.to")
       /= l @conference.end_date, :format => :day_only
-      = conference.end_date.day
+      = @conference.end_date.day
       %span.grey>= t("date.of")
       = l @conference.start_date, format: :month_only
     %hr

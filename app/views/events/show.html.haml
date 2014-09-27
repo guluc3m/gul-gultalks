@@ -8,46 +8,46 @@
       %li
         = link_to @conference.title, conference_path(@conference)
       %li.current
-        = event.title
+        = @event.title
 .row
   .large-12.columns
-    = render 'partials/status_tags'
+    = render 'partials/status_tags', event: @event
     %span.label.radius.secondary.visible-for-medium-up.right
-      = link_to "http://twitter.com/home?status=#{@event.title.truncate(30, separator: ' ')} #{url_shortener(conference_event_url(@conference, @event))} - via @guluc3m", target: "_blank" do
+      = link_to "http://twitter.com/home?status=#{@event.title.truncate(30, separator: ' ')} #{@short_url} - via @guluc3m", target: "_blank" do
         %i.fa.fa-twitter.fa-2x
-      = link_to "https://www.facebook.com/sharer/sharer.php?u=#{@event.title} #{url_shortener(conference_event_url(@conference, @event))} - via @guluc3m", target: "_blank" do
+      = link_to "https://www.facebook.com/sharer/sharer.php?u=#{@event.title} #{@short_url} - via @guluc3m", target: "_blank" do
         %i.fa.fa-facebook.fa-2x
     %h2
-      = event.title
+      = @event.title
     %h6.subheader
-      = event.summary
+      = @event.summary
 
-    - if event.speakers.present?
+    - if @event.speakers.present?
       .row
         .large-6.columns
           %span
-            - event.speakers.each_with_index.map do |speaker, index|
+            - @event.speakers.each_with_index.map do |speaker, index|
               = speaker.name
               - if speaker.twitter.present?
                 = "("
                 = link_to "@#{speaker.twitter}", "https://twitter.com/#{speaker.twitter}", target: "_blank"
                 = ")"
-              - unless index+1 == event.speakers.length
+              - unless index+1 == @event.speakers.length
                 = ", "
 
         .large-6.columns
           %span.show-for-small-only
             %i.fa.fa-support.fa-fw.subheader
-            - if event.assisted_by.present?
+            - if @event.assisted_by.present?
               = t('event.assist.assisted_by')
-              = event.assisted_by
+              = @event.assisted_by
             - else
               = t('event.assist.unassigned')
           %span.show-for-medium-up.right
             %i.fa.fa-support.fa-fw.subheader
-            - if event.assisted_by.present?
+            - if @event.assisted_by.present?
               = t('event.assist.assisted_by')
-              = event.assisted_by
+              = @event.assisted_by
             - else
               = t('event.assist.unassigned')
     - else
@@ -63,7 +63,7 @@
 .row
   .large-8.columns
     .text-justify
-      = simple_format(event.description).html_safe
+      = simple_format(@event.description).html_safe
     -# .row
     -#   .columns
     -#     %div{:style => "position: absolute; bottom: 0; width: 100%; height: 50px; border: 1px solid red;"}
@@ -73,28 +73,27 @@
       %ul.no-bullet
         %li
           %i.fa.fa-calendar.fa-fw.fa-lg.subheader
-          - if event.start_dtime
-            = l event.start_dtime.to_date, format: :long
+          - if @event.start_dtime
+            = l @event.start_dtime.to_date, format: :long
           - else
             = t("not_available").humanize
         %li
           %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
-          - unless !event.start_dtime || !event.end_dtime
-            = "#{event.start_dtime.strftime("%H:%M")} - #{event.end_dtime.strftime("%H:%M")}" 
+          - unless !@event.start_dtime || !@event.end_dtime
+            = "#{@event.start_dtime.strftime("%H:%M")} - #{@event.end_dtime.strftime("%H:%M")}" 
           - else
             = t("not_available").humanize
         %li
           %i.fa.fa-map-marker.fa-fw.fa-lg.subheader
-          = event.location
+          = @event.location
           = link_to "¿Cómo llegar?", "#",  data: { "reveal-id" => "map-modal" } 
           = render "partials/map_modal"
          
-
         %li
           %i.fa.fa-building.fa-fw.fa-lg.subheader
-          - if event.room.present?
+          - if @event.room.present?
             = t('event.room') + ":"
-            = event.room
+            = @event.room
             // TODO: write a scope like "room.accesible?"
             %i.label.radius.success.fa.fa-wheelchair
           - else
@@ -104,7 +103,7 @@
       %ul.no-bullet
         %li
           // TODO: culd be great with "link_to_if" method
-          - if (event.start_dtime..event.end_dtime).cover?(Time.now) and event.live_video.present?
+          - if (@event.start_dtime..@event.end_dtime).cover?(Time.now) and @event.live_video.present?
             .show-for-medium-up
               = link_to("#", data: { "reveal-id" => "video-modal" }) do 
                 .button.tiny.alert.radius
@@ -112,59 +111,59 @@
                   %strong Ver en directo
               = render "partials/video_modal"
             .show-for-small-only
-              = link_to(live_video, target: "_blank" ) do 
+              = link_to(@event.live_video, target: "_blank" ) do 
                 .button.tiny.alert.radius
                   %i.fa.fa-youtube-play.fa-fw.fa-lg
                   %strong Ver en directo
           - else
             %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
-            - if event.video.present?
+            - if @event.video.present?
               = render "partials/video_modal"
             - else
               = t('not_available').humanize
             
         %li
           %i.fa.fa-globe.fa-fw.fa-lg.subheader
-          - if event.language.present?
-            = t("event.languages.#{event.language}").humanize
+          - if @event.language.present?
+            = t("event.languages.#{@event.language}").humanize
           - else
             = t('not_available').humanize
 
         %li
           %i.fa.fa-lightbulb-o.fa-fw.fa-lg.subheader
-          - if event.level.present?
+          - if @event.level.present?
             Nivel:
-            = t("event.levels.#{event.level}").humanize
+            = t("event.levels.#{@event.level}").humanize
           - else
             = t('not_available').humanize
 
       %ul.no-bullet
         %li
           /%i.fa.fa-info.fa-fw.fa-lg.subheader
-          - event.tag_list.map do |tag|
+          - @event.tag_list.map do |tag|
             .label.info.radius
               = tag.humanize
 
       .success.radius.label.large
         %b
-          = event.votes
-          = t('vote', count: event.votes ).upcase
+          = @event.votes
+          = t('vote', count: @event.votes ).upcase
 
 .row
   .large-12.columns
     %span
       %i.fa.fa-download.fa-fw.subheader
       //TODO: check 'link_to_if' out
-      - if event.content_url.present?
-        = link_to event.content_url, event.content_url, target: "_blank"
+      - if @event.content_url.present?
+        = link_to @event.content_url, @event.content_url, target: "_blank"
       - else
         = t("not_available").humanize
 
-  - if event.code_url.present?
+  - if @event.code_url.present?
     .large-12.columns
       %span
         %i.fa.fa-code.fa-fw.subheader
-          = link_to event.code_url, event.code, target: "_blank"
+          = link_to @event.code_url, @event.code, target: "_blank"
   - else
     .large-12.columns
       %span

@@ -1,27 +1,36 @@
 class EventsController < ApplicationController
   include Gultalks::Commentable
-  helper_method :event, :events
+  # helper_method :event, :events
   respond_to :html, :json, :xml
 
   def show
-    if Event.friendly.find(params[:id]).shown
-      respond_with(event) do |format|
-        format.json { render json: event.as_json(methods: :tag_list) }
-        format.xml { render xml: event.to_xml(methods: :tag_list) }
-        format.ics { render ics: event.to_ics(methods: :tag_list) }
+    @event = Event.friendly.find(params[:id])
+    @conference = Conference.friendly.find(params[:conference_id])
+    @short_url = url_shortener(@conference, @event)
+
+    if @event.shown
+      respond_with(@event) do |format|
+        format.json { render json: @event.as_json(methods: :tag_list) }
+        format.xml { render xml: @event.to_xml(methods: :tag_list) }
+        format.ics { render ics: @event.to_ics(methods: :tag_list) }
       end
     else
-      redirect_to conference_path(params[:conference_id])
+      redirect_to conference_path(@conference)
     end
   end
 
   def propose_speaker
-    if Conference.friendly.find(params[:conference_id]).call_for_papers_enabled && !Event.friendly.find(params[:id]).speaker?
-      respond_with(event) do |format|
+    @event = Event.friendly.find(params[:id])
+    @conference = Conference.friendly.find(params[:conference_id])
+
+    # if Conference.friendly.find(params[:conference_id]).call_for_papers_enabled && !Event.friendly.find(params[:id]).speaker?
+    #   respond_with(event) do |format|
+    if @conference.call_for_papers_enabled && !@event.speaker?
+      respond_to do |format|
         format.html { render action: "propose_speaker" }
       end
     else
-      redirect_to conference_event_path(params[:conference_id], params[:id])
+      redirect_to conference_event_path(@conference, @event)
     end
   end
 
@@ -46,13 +55,18 @@ class EventsController < ApplicationController
   end
 
   def vote
-    if Conference.friendly.find(params[:conference_id]).voting_enabled
+    @event = Event.friendly.find(params[:id])
+    @conference = Conference.friendly.find(params[:conference_id])
+
+    # if Conference.friendly.find(params[:conference_id]).voting_enabled
+    if @conference.voting_enabled
       # Generate random key, pass the output as arg to Notifier
-      respond_with(event) do |format|
+      # respond_with(event) do |format|
+      respond_to do |format|
         format.html { render action: "vote" }
       end
     else
-      redirect_to conference_event_path(params[:conference_id], params[:id])
+      redirect_to conference_event_path(@conference, @event)
     end
   end
 
@@ -104,29 +118,38 @@ class EventsController < ApplicationController
   #end
 
   private
-  def event
-    @conference = Conference.friendly.find(params[:conference_id])
-    @event = if params[:action] =~ /new/
-      Event.new(event_params)
-    elsif params[:action] =~ /create/
-      e = Event.new(event_params)
-      e.conference_id = Conference.friendly.find(params[:conference_id]).id
-      e.location = Conference.friendly.find(params[:conference_id]).location
-      e.tag_list.add(params[:event][:tags], parse: true)
-      e.save
-      e
-    else
-      Event.friendly.find(params[:id])
-    end
-  end
+  # def event
+  #   @conference = Conference.friendly.find(params[:conference_id])
+  #   @event = if params[:action] =~ /new/
+  #     Event.new(event_params)
+  #   elsif params[:action] =~ /create/
+  #     e = Event.new(event_params)
+  #     e.conference_id = Conference.friendly.find(params[:conference_id]).id
+  #     e.location = Conference.friendly.find(params[:conference_id]).location
+  #     e.tag_list.add(params[:event][:tags], parse: true)
+  #     e.save
+  #     e
+  #   else
+  #     @shortened_url = conference_event_url(@conference
+  #     Event.friendly.find(params[:id])
+  #   end
+  # end
 
-  def events
-    if params[:conference_id]
-      conference = Conference.friendly.find(params[:conference_id])
-      @events = conference.events.all
-    else
-      @events = Event.all
-    end
+  # def events
+  #   if params[:conference_id]
+  #     conference = Conference.friendly.find(params[:conference_id])
+  #     @events = conference.events.all
+  #   else
+  #     @events = Event.all
+  #   end
+  # end
+
+  #
+  # Shorten given Url using bit.ly
+  #
+  def url_shortener(conference, event)
+    bitly = Bitly.client
+    bitly.shorten(conference_event_url(conference, event))
   end
 
   def event_params
