@@ -31,13 +31,24 @@
               %i.fa.fa-at.fa-fw.subheader
           .small-10.columns
             = f.text_field :twitter, label: false, maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})", class: "radius"
-
+ 
+    .row
+      .large-12.columns
         .left
-          %label{for: "certificate"}
-          = f.check_box :certificate
+          .hide-for-touch
+            = f.check_box :certificate, label: false
+            // FIXME!!
+            %label{for: "certificate"}
+              = t('speaker.request_certificate').humanize
+          .show-for-touch
+            .switch.radius.small
+              // FIXME: generate Foundation randmom_str as ID
+              %input{id: "switch", type: "checkbox"}
+                %label{for: "switch"}
+              %label{for: "certificate"}
+                = t('speaker.request_certificate').humanize
 
         .right
           = link_to_remove_association f, class: "button alert tiny radius" do
             %i.fa.fa-trash.fa-fw.fa-lg
-            Eliminar
-            -# = t('delete').humanize
+            = t('delete').humanize

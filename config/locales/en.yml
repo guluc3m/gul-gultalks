@@ -321,6 +321,8 @@ en:
     one: "vote"
     other: "votes"
     send_vote: "Send vote"
+  warning:
+      up_to_five: "You can add up to 5 members per activity."
   will_paginate:
     previous_label: "&#8592; Previous"
     next_label: "Next &#8594;"

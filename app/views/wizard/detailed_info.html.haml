@@ -23,13 +23,15 @@
 
   .row
     .large-12.columns
-      %span 
-        Sólo se pueden añadir hasta un máximo de 5 integrantes por actividad. 
+      .alert-box.radius{data: {alert: ""}}
+        %i.fa.fa-hand-o-right.fa-lg.fa-fw
+        = t("warning.up_to_five")
+        %a.close{href:""} ×
       #speakers
         = f.fields_for :speakers do |speaker|
           = render "speaker_fields", f: speaker
         .links.right
-          = link_to_add_association t("speaker.add"), f, :speakers, class: "button tiny radius"
+          = link_to_add_association t("speaker.add"), f, :speakers, class: "button small radius"
 
   .row
     .large-12.columns
@@ -78,7 +80,7 @@
 
     .large-4.columns
       %label{for: "level"}
-        %i.fa.fa-lightbulb-o.fa-lg.subheader
+        %i.fa.fa-lightbulb-o.fa-fw.fa-lg.subheader
         = t("event.level")
         %small
           = t("event.required")
