@@ -33,7 +33,7 @@ ActiveAdmin.register Event do
       f.input :summary, label: t("event.summary")
       f.input :description, label: t("event.description") 
       f.input :subclass, label: t("event.subclass"), as: :select, collection: Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}
-      f.input :level, label: t("event.subclass"), as: :select, collection: Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}
+      f.input :level, label: t("event.level"), as: :select, collection: Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}
       f.input :duration, label: t("event.duration"), as: :select, collection: Event.durations.keys.collect {|d| [t("event.durations.#{d}").humanize, d]}
       f.input :content_url, label: t("event.url")
       f.input :code, label: t("event.code").humanize

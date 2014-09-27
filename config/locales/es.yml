@@ -176,6 +176,8 @@ es:
   date:
     formats:
       default: ! '%d/%m/%Y'
+      day_name: ! '%A'
+      day_name_num: ! '%A %d'
       day_only: ! '%d'
       long: ! '%d de %B de %Y'
       month_only: ! '%B'
@@ -189,9 +191,9 @@ es:
     from: "del"
     to: "al"
     of: "de"
-    day_names: [lunes, martes, miércoles, jueves, viernes, sábado, domingo]
-    abbr_day_names: [lun, mar, mié, jue, vie, sáb, dom]
   delete: "eliminar"
+  # day_names: [lunes, martes, miércoles, jueves, viernes, sábado, domingo]
+  # abbr_day_names: [lun, mar, mié, jue, vie, sáb, dom]
   event:
     are_you_speaker: "¿Vas a ser el ponente de esta actividad?"
     asssist:
@@ -344,7 +346,8 @@ es:
     other: "votos"
     send_vote: "Enviar voto"
   warning:
-      up_to_five: "Sólo se pueden añadir hasta un máximo de 5 integrantes por actividad." 
+    up_to_five: "Sólo se pueden añadir hasta un máximo de 5 integrantes por actividad." 
+    no_conferences: "No se ha podido recuperar ninguna edición."
   will_paginate:
     previous_label: "&#8592; Anterior"
     next_label: "Siguiente &#8594;"

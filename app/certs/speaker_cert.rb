@@ -20,7 +20,7 @@ class SpeakerCert < Prawn::Document
     text I18n.t("certificates.speaker.i_certify"), size: 18, style: :bold, align: :center
 
     move_down 30
-    text I18n.t("certificates.speaker.speaker_info", name: @speaker.name, conference_num:  RomanNumerals.to_roman(@conference.start_date.year - 2002), month: @conference.start_date.strftime("%B"), year: @conference.start_date.year), align: :center
+    text I18n.t("certificates.speaker.speaker_info", name: @speaker.name, conference_num:  RomanNumerals.to_roman(@conference.start_date.year - 2002), month: I18n.l(@conference.start_date, format: :month_only), year: @conference.start_date.year), align: :center
 
     move_down 40
     text "#{@event.title}", size: 16, style: :italic, align: :center

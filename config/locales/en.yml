@@ -163,6 +163,8 @@ en:
   date:
     formats:
       default: ! '%Y-%m-%d'
+      day_name: ! '%A'
+      day_name_num: ! '%A %d' 
       day_only: ! '%d'
       long: ! '%B %d, %Y'
       month_only: ! '%B'
@@ -322,7 +324,8 @@ en:
     other: "votes"
     send_vote: "Send vote"
   warning:
-      up_to_five: "You can add up to 5 members per activity."
+    up_to_five: "You can add up to 5 members per activity."
+    no_conferences: "Unable to recovering any edition."
   will_paginate:
     previous_label: "&#8592; Previous"
     next_label: "Next &#8594;"
