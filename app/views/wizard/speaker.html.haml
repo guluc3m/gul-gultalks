@@ -2,13 +2,18 @@
 = render partial: "breadcrumbs"
 
 .row
-  .medium-7.columns
+  .medium-12.columns
     %h5.subheader
       = t("event.are_you_speaker")
+    %hr
 
 .row
   .large-6.columns
-    = link_to t("event.i_am_speaker"), next_wizard_path, { class: "button radius expand" }
-  .large-6.columns
-    = link_to t("event.i_am_proposing"), wizard_path(:end), { class: "button success radius expand" }
+    = link_to wizard_path(:end), { class: "button radius expand" } do
+      %span.fa.fa-reply.fa-fw.fa-lg
+      = t("event.i_am_proposing") 
 
+  .large-6.columns
+    = link_to next_wizard_path, { class: "button radius success expand" } do
+      = t("event.i_am_speaker")
+      %span.fa.fa-chevron-right.fa-fw.fa-lg
