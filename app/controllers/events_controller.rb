@@ -149,7 +149,8 @@ class EventsController < ApplicationController
   #
   def url_shortener(conference, event)
     bitly = Bitly.client
-    bitly.shorten(conference_event_url(conference, event))
+    url = bitly.shorten(conference_event_url(conference, event))
+    url.short_url
   end
 
   def event_params
