@@ -1,6 +1,10 @@
 Gultalks::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  # API Documentation
+  match 'apidocs', to: 'api_docs#index', via: :get, path: '/apidocs'
+
   # Verifiers
   match 'verify', to: 'verifier#verify', via: :get, path: '/verify'
 
