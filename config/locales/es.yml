@@ -262,7 +262,7 @@ es:
       shown: "Mostrado"
       verified: "Verificado"
     subclass: "Tipo de actividad"
-    title_requirements: "Elige el tipo de actividad"
+    subclass_requirements: "Elige el tipo de actividad"
     subclasses:
       talk: "Charla"
       workshop: "Taller"
