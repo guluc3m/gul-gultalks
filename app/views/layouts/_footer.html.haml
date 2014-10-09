@@ -2,26 +2,23 @@
   .row
     .large-12.columns
       %hr/
-      .row
-        .large-6.columns
-          .large-12.columns.show-for-medium-up
-            %ul.inline-list
-              %li
-                = link_to t("home"), root_path
-              %li
-                = link_to t("conference.list"), conferences_path
-              %li
-                %a{:href => "#"} Placeholder
-              %li
-                = link_to "gul.es", "gul.es"
-          .large-12.columns
-            %sup.subheader
-              © Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid. 2007 -
-              = Time.now().year
-        / Fortunes
-        .large-6.columns
-          #fortunes
-            = render "partials/fortunes"
+  .row.show-for-medium-up
+    .large-7.columns
+      %ul.inline-list
+        %li
+          = link_to t("home"), root_path
+        %li
+          = link_to t("conference.list"), conferences_path
+        %li
+          = link_to "API", "#"
+        %li
+          = link_to "gul.es", "http://gul.es"
+      %sup.subheader
+        © Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid. 2007 - #{ Time.now().year}
+    / Fortunes
+    .large-5.columns
+      #fortunes
+        = render "partials/fortunes"
   .row
     .small-1.small-centered.columns
       %span.fa-stack.fa-fw.fa-lg
