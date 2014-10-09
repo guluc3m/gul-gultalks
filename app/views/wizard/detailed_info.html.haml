@@ -15,11 +15,11 @@
 
 = form_for(@event, url: wizard_path, method: :put) do |f|
 
-  - @event.errors.full_messages.each do |msg|
-    .row
-      .large-12.columns
-        .alert-box.alert.radius
-          = msg
+  -# - @event.errors.full_messages.each do |msg|
+  -#   .row
+  -#     .large-12.columns
+  -#       .alert-box.alert.radius
+  -#         = msg
 
   .row
     .large-12.columns
@@ -40,7 +40,8 @@
         = t("event.url")
         .right
           %sub#content_url-counter 128
-      = f.url_field :content_url, label: false, maxlength: 128, type: "url", plceholder: "http://", class: "radius lettrify", data: { counter: "#content_url-counter"}
+      = f.url_field :content_url, label: false, type: "url", plceholder: "http://", class: "radius lettrify", data: { counter: "#content_url-counter"}
+
   .row
     .large-12.columns
       %label{for: "code"}
@@ -48,8 +49,7 @@
         = t("event.code")
         .right
           %sub#code-counter 128
-      = f.url_field :code, label: false, maxlength: 128, type: "url", placeholder: "http://", class: "radius lettrify", data: { counter: "#code-counter"}
-
+      = f.url_field :code, label: false, type: "url", placeholder: "http://", class: "radius lettrify", data: { counter: "#code-counter"}
 
   .row
     .large-12.columns
@@ -59,7 +59,7 @@
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.tag_format")}
         .right
           %sub#tags-counter 128
-      = f.text_field :tags, label: false, maxlength: 128, class: "radius lettrify", placeholder: t("event.tag_format"), data: { counter: "#tags-counter"}
+      = f.text_field :tags, label: false, class: "radius lettrify", placeholder: t("event.tag_format"), data: { counter: "#tags-counter"}
 
   .row
     .large-4.columns
@@ -102,7 +102,7 @@
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.notes_requirements")}
         .right
           %sub#comments-counter 300
-      = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius lettrify", size: "10x6", data: { counter: "#comments-counter"}
+      = f.text_area :notes, label: false, pattern: "extended_alphanumeric", class: "radius lettrify", size: "10x6", data: { counter: "#comments-counter"}
       
   .row
     .large-3.columns.right

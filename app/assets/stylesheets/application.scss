@@ -14,4 +14,10 @@
  *= require_tree .
  */
 
-table, fieldset { border-radius: 3px}
+table, fieldset {
+    border-radius: 3px;
+}
+
+.text-error {
+    color: #f04124;
+}

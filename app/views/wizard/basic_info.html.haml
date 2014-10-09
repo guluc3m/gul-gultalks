@@ -10,11 +10,12 @@
 
 = form_for(@event, url: wizard_path, method: :put) do |f|
 
-  - @event.errors.full_messages.each do |msg|
-    .row
-      .large-12.columns
-        .alert-box.alert.radius
-          = msg
+  -# - @event.errors.full_messages.each do |msg|
+  -#   .row
+  -#     .large-12.columns
+  -#       .alert-box.alert.radius
+  -#         - if msg
+  -#           = "Revise los errores en cada campo"
 
   .row
     .large-12.columns
@@ -57,7 +58,7 @@
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.summary_requirements"), class: "radius"}
         .right
           %sub#summary-counter 128
-      = f.text_field :summary, label: false, maxlength: 128, required: true, class: "radius lettrify", data: { counter: "#summary-counter"}
+      = f.text_field :summary, label: false, required: true, class: "radius lettrify", data: { counter: "#summary-counter"}
 
 
   .row
@@ -67,10 +68,10 @@
         = t("event.description")
         %small
           = t("event.required")
-        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.description_requirements")}
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.description_requirements"), class: "radius"}
         .right
-          %sub#description-counter 1400
-      = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius lettrify", size: "10x8", data: { counter: "#description-counter"}
+          %sub#desc-counter 1400
+      = f.text_area :description, label: false, required: true, class: "radius lettrify", size: "10x8", data: { counter: "#desc-counter"}
 
   //.row
   //  .large-12.columns

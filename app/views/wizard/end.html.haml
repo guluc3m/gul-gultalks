@@ -4,7 +4,8 @@
 .row
   .large-12.columns
     %h2.subheader
-      = t("thanks.proposal", event_title: @event.title)
+      -# = t("thanks.proposal", event_title: @event.title)
+      = t("thank_you")
     %hr
 
 - unless @event.errors.nil? || @event.errors.empty?
@@ -14,17 +15,17 @@
       -# - if session["event_wizard"]["errors"].nil? || session["event_wizard"]["errors"].empty? 
         %p.subheader
           Revisa los datos que se muestran a continuación. Si desas hacer algún cambio, puedes volver y modificalo.
-      .alert-box.alert.radius
-        .row
-          .small-1.columns
-            %i.fa.fa-warning.fa-3x
-          .small-11.columns
-            %ul.no-bullet
-              - @event.errors.each do |err|
-                %li
-                  -# - if err.eql? "title"
-                    Revisa el título
-                  = err
+      -# .alert-box.alert.radius
+      -#   .row
+      -#     .small-1.columns
+      -#       %i.fa.fa-warning.fa-3x
+      -#     .small-11.columns
+      -#       %ul.no-bullet
+      -#         - @event.errors.each do |err|
+      -#           %li
+      -#             -# - if err.eql? "title"
+      -#               Revisa el título
+      -#             = err
 
 
 -# - unless session["event_wizard"]["speakers_attributes"].nil? || session["event_wizard"]["speakers_attributes"].empty?
@@ -117,17 +118,21 @@
 
 = form_for(@event, url: wizard_path, method: :put) do |f|
   .row
+    .large-12.columns
+      %h5.subheader
+        = t("thanks.proposal", event_title: @event.title)
+    .large-12.columns
+      %h5.subheader
+        = t("event.validation_email_explanation")
+  .row
     .large-6.columns
       %label{for: "email"}
-        %i.fa.fa-envelope.fa-fw.fa-lg
+        %i.fa.fa-envelope.fa-fw.fa-lg.subheader
         = t("event.validation_email")
         %small
           = t("event.required")
       = f.text_field :validation_email, label: false, maxlength: 64, required: true, type: "email", class: "radius"
 
-    .large-6.columns
-      %label
-        = t("event.validation_email_explanation")
 
   .row
     .large-12.columns
@@ -136,9 +141,7 @@
   .row
     .large-3.columns.right
       // TODO: i18n
-      -# = f.submit_tag t("event.send_event"), class: "button radius expand success", data: {disable_with: "Plase wait..."}
       = f.button type: "submit", class: "button radius expand success", data: {disable_with: "Plase wait..."} do
         = content_tag(:span, t("event.send_event"))
         %i.fa.fa-share.fa-fw.fa-lg
-      -# = f.submit t("event.send_event"), class: "button radius expand success", data: {disable_with: "Plase wait..."}
 
