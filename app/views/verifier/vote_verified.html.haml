@@ -2,8 +2,13 @@
   .medium-12.columns
     %h3
       = t("verifier.vote")
-%br
+%hr
 
-.row
+%p
+      = t("verifier.message")
+    
+    
+    .row
   .large-6.columns
     = link_to t("home"), root_path, class: "button radius expand"
+

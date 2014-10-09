@@ -91,14 +91,12 @@
          
         %li
           %i.fa.fa-building.fa-fw.fa-lg.subheader
-          - if @event.room.present?
-            = t('event.room') + ":"
-            = @event.room
+          - if event.room.present?
+            = t('event.room') + ": #{event.room}"
             // TODO: write a scope like "room.accesible?"
             %i.label.radius.success.fa.fa-wheelchair
           - else
-            = t('event.room').humanize
-            = t('not_available')
+            = t('event.room').humanize + t('not_available')
 
       %ul.no-bullet
         %li
@@ -111,7 +109,7 @@
                   %strong Ver en directo
               = render "partials/video_modal"
             .show-for-small-only
-              = link_to(@event.live_video, target: "_blank" ) do 
+              = link_to(event.live_video, target: "_blank" ) do 
                 .button.tiny.alert.radius
                   %i.fa.fa-youtube-play.fa-fw.fa-lg
                   %strong Ver en directo
