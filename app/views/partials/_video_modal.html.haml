@@ -1,7 +1,22 @@
-#video-modal.reveal-modal.medium{"data-reveal" => ""}
+#video-modal.reveal-modal.medium.show-for-medium-up{"data-reveal" => ""}
   .row
     .large-12.columns
-      .flex-video.widescreen 
-        -# = video_tag("http://techslides.com/demos/sample-videos/small.webm", controls: true, autobuffer: true)
-        = video_path(@event.live_video)
+      - if @event.live_video.present? or @event.video.present? 
+        .flex-video.widescreen
+          - if @event.live_video.present? and !@event.video.present?
+            // FIXME
+            = video_path(@event.live_video)
+          - elsif @event.video.present?
+            = video_tag(@event.video, controls: true, autobuffer: true)
+        %h5
+          = @event.title
+        %p.subheader
+          - @event.speakers.each_with_index.map do |speaker|
+            = speaker.name
+            = ", "
+      - else
+        .alert-box.radius
+          %i.fa.fa-frown-o.fa-fw.fa-2x
+          = t("warning.no_video")
+
   %a.close-reveal-modal ×
