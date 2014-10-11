@@ -3,8 +3,6 @@
 .row
   .columns.show-for-medium-up
     %ul.breadcrumbs
-      -# %li
-      -#   = link_to t("home"), root_path
       %li
         = link_to @conference.title, conference_path(@conference)
       %li.current
@@ -12,13 +10,14 @@
 .row
   .large-12.columns
     = render 'partials/status_tags', event: @event
-    %span.label.radius.secondary.visible-for-medium-up.right
-      = link_to "http://twitter.com/home?status=#{@event.title.truncate(30, separator: ' ')} #{@short_url} - via @guluc3m", target: "_blank" do
-        %i.fa.fa-twitter.fa-2x
-      = link_to "https://www.facebook.com/sharer/sharer.php?u=#{@event.title} #{@short_url} - via http://gul.es", target: "_blank" do
-        %i.fa.fa-facebook.fa-2x
+    .right
+      %span.label.radius.secondary.visible-for-medium-up
+        = link_to "http://twitter.com/home?status=#{@event.title.truncate(30, separator: ' ')} #{@short_url} - via @guluc3m", target: "_blank" do
+          %i.fa.fa-twitter.fa-2x
+        = link_to "https://www.facebook.com/sharer/sharer.php?u=#{@event.title} #{@short_url} - via http://gul.es", target: "_blank" do
+          %i.fa.fa-facebook.fa-2x
     %h2
-      = @event.title
+      = @event.title.humanize
     %h6.subheader
       = @event.summary
 
@@ -91,8 +90,8 @@
          
         %li
           %i.fa.fa-building.fa-fw.fa-lg.subheader
-          - if event.room.present?
-            = t('event.room') + ": #{event.room}"
+          - if @event.room.present?
+            = t('event.room') + ": #{@event.room}"
             // TODO: write a scope like "room.accesible?"
             %i.label.radius.success.fa.fa-wheelchair
           - else
