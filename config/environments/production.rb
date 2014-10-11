@@ -82,13 +82,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  #config.action_mailer.delivery_method = :sendmail
-  # Defaults to:
-  # # config.action_mailer.sendmail_settings = {
-  # #   location: '/usr/sbin/sendmail',
-  # #   arguments: '-i -t'
-  # # }
-
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       address:              Rails.application.secrets[:mailer][:address],
@@ -103,6 +96,6 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.observers = [""]
-  config.action_mailer.default_options = {from: "no-reply@gul.es"}
+  config.action_mailer.default_options = {from: "GUL UC3M - GulTalks " + Figaro.env.no_reply}
 
 end
