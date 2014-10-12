@@ -115,12 +115,13 @@ class Event < ActiveRecord::Base
   # Send a verification email to the provided address, send certificate verifications (if any) and remove the wizard session
   #
   def send_verifier_remove_session
-    Verifier.create(email: validation_email, event_id: self.id, verified: false, verify_type: "event")
+    # Verifier.create(email: validation_email, event_id: self.id, verified: false, verify_type: "event")
     Speaker.where(event_id: self, certificate: true).map do |sp|
       Verifier.create(email: sp.email, event_id: self.id, verified: false, verify_type: "certificate")
     end
     WizardSession.find_by(event_id: self.id).destroy
-    self.update_attributes(wizard_status: "complete")
+    self.update_attributes(wizard_status: "complete", verified: true, shown: true)
+    # self.update_attributes(wizard_status: "complete")
   end
 
   #

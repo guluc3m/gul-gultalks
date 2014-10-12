@@ -114,30 +114,32 @@
               = t("event.comments")
             = session["event_wizard"]["event"]["notes"]
 
-
 = form_for(@event, url: wizard_path, method: :put) do |f|
-  .row
-    .large-6.columns
-      %label{for: "email"}
-        %i.fa.fa-envelope.fa-fw.fa-lg
-        = t("event.validation_email")
-        %small
-          = t("event.required")
-      = f.text_field :validation_email, label: false, maxlength: 64, required: true, type: "email", class: "radius"
+  -# .row
+  -#   .large-6.columns
+  -#     %label{for: "email"}
+  -#       %i.fa.fa-envelope.fa-fw.fa-lg
+  -#       = t("event.validation_email")
+  -#       %small
+  -#         = t("event.required")
+  -#     = f.text_field :validation_email, label: false, maxlength: 64, required: true, type: "email", class: "radius"
 
-    .large-6.columns
-      %label
-        = t("event.validation_email_explanation")
+  -#   .large-6.columns
+  -#     %label
+  -#       = t("event.validation_email_explanation")
+
+  -# Dummy field
+  = f.hidden_field :validation_email 
 
   .row
     .large-12.columns
       = render 'partials/recaptcha'
 
   .row
-    .large-3.columns.right
+    .large-6.columns
       // TODO: i18n
       -# = f.submit_tag t("event.send_event"), class: "button radius expand success", data: {disable_with: "Plase wait..."}
-      = f.button type: "submit", class: "button radius expand success", data: {disable_with: "Plase wait..."} do
+      = f.button type: "submit", class: "button radius expand success" do
         = content_tag(:span, t("event.send_event"))
         %i.fa.fa-share.fa-fw.fa-lg
       -# = f.submit t("event.send_event"), class: "button radius expand success", data: {disable_with: "Plase wait..."}
