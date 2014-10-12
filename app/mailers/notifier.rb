@@ -9,12 +9,12 @@ class Notifier < ActionMailer::Base
     mail(to: email_with_name, subject: t("notifier.tag") + " " + t("notifier.confirmation_certificate.subject"))
   end
 
-  def confirmation_event(verifier)
-    @event = Event.find(verifier.event_id)
-    @url = verify_url(token: verifier.token)
+  # def confirmation_event(verifier)
+  #   @event = Event.find(verifier.event_id)
+  #   @url = verify_url(token: verifier.token)
 
-    mail(to: verifier.email, subject: t("notifier.tag") + " " + t("notifier.confirmation_event.subject"))
-  end
+  #   mail(to: verifier.email, subject: t("notifier.tag") + " " + t("notifier.confirmation_event.subject"))
+  # end
 
   def confirmation_speaker(verifier)
     @event = Event.find(verifier.event_id)
