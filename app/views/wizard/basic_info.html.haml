@@ -45,8 +45,8 @@
           = t("event.required")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.title_requirements"), class: "radius"}
         .right
-          %sub#tile-counter 128
-      = f.text_field :title, label: false, required: true, class: "radius lettrify", data: { counter: "#tile-counter"}
+          %sub 128
+      = f.text_field :title, label: false, maxlength: 128, required: true, class: "radius lettrify"
 
   .row
     .large-12.columns
@@ -57,9 +57,8 @@
           = t("event.required")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.summary_requirements"), class: "radius"}
         .right
-          %sub#summary-counter 128
-      = f.text_field :summary, label: false, required: true, class: "radius lettrify", data: { counter: "#summary-counter"}
-
+          %sub 128
+      = f.text_field :summary, label: false, maxlength: 128, required: true, class: "radius lettrify"
 
   .row
     .large-12.columns
@@ -70,14 +69,13 @@
           = t("event.required")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.description_requirements"), class: "radius"}
         .right
-          %sub#desc-counter 1400
-      = f.text_area :description, label: false, required: true, class: "radius lettrify", size: "10x8", data: { counter: "#desc-counter"}
+          %sub 1400
+      = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius lettrify", size: "10x8"
 
   //.row
   //  .large-12.columns
   //    = check_box("eula", "accepted", { class: 'eula_check' }, "yes", "no")
   //    %span Acepto las condiciones de privacidad
-
       
   .row
     .large-3.columns.right

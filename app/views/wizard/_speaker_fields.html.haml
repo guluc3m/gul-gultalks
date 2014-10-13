@@ -8,8 +8,8 @@
           %small
             = t("event.required")
           .right
-            %sub#name-counter 64
-        = f.text_field :name, label: false, maxlength: 64, required: true, class: "radius lettrify", data: { counter: "#name-counter"}
+            %sub 64
+        = f.text_field :name, label: false, maxlength: 64, required: true, class: "radius lettrify"
 
       .large-4.columns
         %label{for: "email"}
@@ -18,8 +18,8 @@
           %small
             = t("event.required")
           .right
-            %sub#email-counter 64
-        = f.text_field :email, label: false, maxlength: 64, required: true, type: "email", class: "radius", data: { counter: "#email-counter"}
+            %sub 64
+        = f.text_field :email, label: false, maxlength: 64, required: true, type: "email", class: "radius"
 
       .large-4.columns
         %label{for: "twitter"}
