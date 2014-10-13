@@ -5,7 +5,7 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     -# %meta{:content => "#{@conference.title}", :property => "og:title"}/
     %meta{:content => "article", :property => "og:type"}/
-    %meta{:content => "http://www.example.com/", :property => "og:url"}/
+    %meta{:content => "http://cursos.gul.es/", :property => "og:url"}/
     %meta{:content => "http://example.com/image.jpg", :property => "og:image"}/
     %meta{:content => "Description Here", :property => "og:description"}/
     %title
@@ -16,6 +16,7 @@
   %body
     = render 'cookies_eu/cookies_eu'
     / Header and Nav
+
     .off-canvas-wrap{"data-offcanvas" => ""}
       .inner-wrap
         %nav.tab-bar
@@ -27,8 +28,17 @@
             = link_to root_path do
               %h1.title
                 GulTalks
+                - if Conference.find_by(active: true)
+                  %sup
+                    %small{style: "color: white"}
+                      -# FIXME: get year from active conference
+                      -# = Conference.where(active: true)
+                      2014
+                    -# .label.secondary.radius{style:"padding: 0.25em"} BETA
                 %small
                   BETA
+                -# | XVII Jornadas Técnicas del GUL
+                -# .label.alert.radius{style:"padding: 0.25em"} BETA
 
         %aside.left-off-canvas-menu
           %ul.off-canvas-list
@@ -38,28 +48,10 @@
               = link_to t("home"), root_path
             %li
               = link_to t("conference.list"), conferences_path
-
-              -# %ul.left-submenu
-              -#   %li.back
-              -#     %a{:href => "#"} Back
-              -#   %li
-              -#     %label Level 1
-              -#   %li
-              -#     %a{:href => "#"} Link 1
-              -#   %li.has-submenu
-              -#     %a{:href => "#"} Link 2 w/ submenu
-              -#     %ul.left-submenu
-              -#       %li.back
-              -#         %a{:href => "#"} Back
-              -#       %li
-              -#         %label Level 2
-              -#       %li
-              -#         %a{:href => "#"} ...
-              -#   %li
-              -#     %a{:href => "#"} ...
             %li
-              -# = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), { class: "button success tiny radius expand" }
+              = link_to "API", apidocs_path
             %li
+              // TODO: localize
               %label Options
               %br
               .row
@@ -71,6 +63,14 @@
         / End Header and Nav
         %section.main-section
         %br
+        // FIXME
+        - if current_page?(controller: 'conferences', action: 'show')
+          .row
+            .large-12.columns
+              .alert-box.radius{data: {alert: ""}}
+                %i.fa.fa-bug.fa-lg.fa-fw
+                Esta aplicación se encuentra en fase beta, si encuentras algún bug puedes notificarlo en info(at)gul.es, gracias.
+                %a.close{href:""} ×
         = yield
         %a.exit-off-canvas
         / Footer
