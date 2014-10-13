@@ -1,12 +1,5 @@
 - page_title @conference.title
 
-/ .row
-/   .medium-7.columns
-/     %ul.breadcrumbs
-/       %li
-/         = link_to t("home"), root_path
-/       %li.current
-/         = @conference.title
 .row
   .large-12.columns
     %h1
@@ -30,14 +23,14 @@
   .large-12.columns
     - if @conference.show_calendar?
       = render "partials/calendar"
-    - if !@conference.active?
+    - if @conference.active? and @conference.call_for_papers_enabled? 
       .row
         .large-8.large-centered.columns
           .panel.callout.radius
             %h1.text-center
               = distance_of_time_in_words_to_now(@conference.call_for_papers_start_date)
     -# - if @paginated_events.count.zero?
-    - if @conference.call_for_papers_enabled and @paginated_events.count.zero?
+    - if @conference.active? and @conference.call_for_papers_enabled and @paginated_events.count.zero?
       .row
         .medium-6.medium-centered.columns
           .panel.callout.radius
@@ -46,7 +39,7 @@
             %p
               = t("conference.first_to_propose")
 
-    - else
+    - elsif @conference.active?
       %table
         %thead
           %tr
@@ -103,10 +96,11 @@
                       %td.text-center
                         = event.votes
 
-.row
+  -# .row
   -# .large-6.columns
   -#   = link_to t("conference.list"), conferences_path, { class: "button radius expand" }
   -# - if !(Date.today >= @conference.start_date)
+.row
   .large-6.large-centered.columns
     - if @conference.call_for_papers_enabled
       = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), { class: "button success radius expand" }
