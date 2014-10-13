@@ -5,7 +5,7 @@
     .row
       .large-6.columns
         %h4.subheader
-          %i.fa.fa-comments-o
+          %i.fa.fa-comment-o
           Comenta
         %hr
     = form_for([@commentable, @comment], url: {controller: "comments", action: "create", event_id: @event}) do |f|
@@ -33,7 +33,7 @@
       .row
         .large-6.columns
           %label{for: "content"}
-            %i.fa.fa-comment.fa-fw.fa-lg.subheader
+            %i.fa.fa-bars.fa-fw.fa-lg.subheader
             = t("event.comment.comment").humanize
             %small
               = t("event.required")
@@ -42,6 +42,6 @@
       .row
         .large-4.columns
           = render "partials/recaptcha"
-        .large-3.columns
-          = f.submit(t("event.comment.post").humanize, class: "button radius success")
+        .large-8.columns.left
+          = f.submit(t("event.comment.post").humanize, class: "button radius success expand")
 
