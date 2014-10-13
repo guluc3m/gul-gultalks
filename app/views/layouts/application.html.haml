@@ -64,13 +64,13 @@
         %section.main-section
         %br
         // FIXME
-        - if current_page?(controller: 'conferences', action: 'show')
-          .row
-            .large-12.columns
-              .alert-box.radius{data: {alert: ""}}
-                %i.fa.fa-bug.fa-lg.fa-fw
-                Esta aplicación se encuentra en fase beta, si encuentras algún bug puedes notificarlo en info(at)gul.es, gracias.
-                %a.close{href:""} ×
+        -# - if current_page?(controller: 'conferences', action: 'show')
+        .row
+          .large-12.columns
+            .alert-box.radius{data: {alert: ""}}
+              %i.fa.fa-bug.fa-lg.fa-fw
+              Esta aplicación se encuentra en fase beta, si encuentras algún bug puedes notificarlo en info(at)gul.es, gracias.
+              %a.close{href:""} ×
         = yield
         %a.exit-off-canvas
         / Footer
