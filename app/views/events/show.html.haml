@@ -194,9 +194,32 @@
           %i.fa.fa-child.fa-lg
           = t("speaker.propose")
 
+.row
   .large-12.columns
+    %h4.subheader
+      %i.fa.fa-comments-o
+      -# = t("comments").humanize
+      Comentarios
+    -# %sub.right
+    -#   0 comentarios
     %hr{style: "border-style: dashed"}
-    = nested_comments @comments
+    - if @comments.present? 
+      = nested_comments @comments
+    - elsif @conference.active?
+      .row
+        .large-6.large-centered.columns
+          .panel.callout.radius
+            %h2
+              No hay comentarios
+            %p
+              Sé el primero en comentar.
+    - else
+      .row
+        .large-6.large-centered.columns
+          .panel.callout.radius
+            %h5
+              No hay comentarios
+
 
 - if @conference.active?
   = render "comments/form"
