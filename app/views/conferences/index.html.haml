@@ -13,21 +13,31 @@
       = t("conference.list")
     %hr
 
-    .columns
-      .large-block-grid-4
-        - unless @conferences.count.zero?
-          - @conferences.each do |conference|
-            - unless conference.active
-              .panel.radius.expand
-                -# = image_tag("http://placehold.it/230x320")
-                %h4
-                  = link_to conference.title, conference_path(conference)
-                %p
-                  = conference.events.where(accepted: true, subclass: 0).count
-                  = conference.events.where(accepted: true, subclass: 1).count
-        - else
-          .row
-            .large-12.columns
-              .alert-box.radius
-                %i.fa.fa-warning.pull-left.fa-2x
-                = t("warning.no_conferences")
+    %p |
+      A continuación se muestran todas las anteriores ediciones.
+      Pulsa sobre un año y se mostrarán las ediciones para ese año.
+    -# .large-block-grid-4
+    - unless @conferences.count.zero?
+      %dl.accordion{"data-accordion" => ""}
+        - @conferences.map{|conference| conference.start_date.year}.uniq.each do |year|
+          -#     -# - unless conference.active
+          %dd.accordion-navigation
+            %a.subheader{href: "#panel-#{year}"}
+              %b
+                = year
+            .content{id: "panel-#{year}"}
+              %dl
+                - @conferences.select{|conference| !conference.active and conference.start_date.year.eql? year }.map do |conference| 
+                  %dt
+                    = link_to conference.title, conference_path(conference)
+                  %dd
+                    -# = @conference_events_counter(conference, "talk")
+                    // TODO: use to_sentence instead and localize
+                    = "Hubo " + conference.events.where(accepted: true, subclass: "talk").count.to_s + " charlas y " + conference.events.where(accepted: true, subclass: "workshop").count.to_s + " talleres."
+
+    - else
+      .row
+        .large-12.columns
+          .alert-box.radius
+            %i.fa.fa-warning.pull-left.fa-2x
+            = t("warning.no_conferences")
