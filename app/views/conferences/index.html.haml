@@ -22,7 +22,7 @@
         - @conferences.map{|conference| conference.start_date.year}.uniq.each do |year|
           -#     -# - unless conference.active
           %dd.accordion-navigation
-            %a.subheader{href: "#panel-#{year}"}
+            %a{href: "#panel-#{year}"}
               %b
                 = year
             .content{id: "panel-#{year}"}
@@ -31,7 +31,6 @@
                   %dt
                     = link_to conference.title, conference_path(conference)
                   %dd
-                    -# = @conference_events_counter(conference, "talk")
                     // TODO: use to_sentence instead and localize
                     = "Hubo " + conference.events.where(accepted: true, subclass: "talk").count.to_s + " charlas y " + conference.events.where(accepted: true, subclass: "workshop").count.to_s + " talleres."
 
