@@ -11,16 +11,16 @@ class SpeakerCert < Prawn::Document
   end
 
   def header
-    text I18n.t("certificates.speaker.header", chairperson: Rails.application.secrets.org_chairperson), align: :center
+    text I18n.t("certificates.speaker.header"), align: :center
     text I18n.t("certificates.speaker.organization"), style: :bold, align: :center
   end
 
   def certificate
     move_down 50
-    text I18n.t("certificates.speaker.i_certify"), size: 18, style: :bold, align: :center
+    text I18n.t("certificates.speaker.certifies"), size: 18, style: :bold, align: :center
 
     move_down 30
-    text I18n.t("certificates.speaker.speaker_info", name: @speaker.name, conference_num:  RomanNumerals.to_roman(@conference.start_date.year - 2002), month: I18n.l(@conference.start_date, format: :month_only), year: @conference.start_date.year), align: :center
+    text I18n.t("certificates.speaker.speaker_info", name: @speaker.name, conference_title: @conference.title, month: I18n.l(@conference.start_date, format: :month_only), year: @conference.start_date.year), align: :center
 
     move_down 40
     text "#{@event.title}", size: 16, style: :italic, align: :center
@@ -34,6 +34,6 @@ class SpeakerCert < Prawn::Document
     text I18n.t("certificates.speaker.signature_details", location: @event.location, year: @conference.start_date.year), align: :center
 
     move_down 20
-    text I18n.t("certificates.speaker.signature", chairperson: Rails.application.secrets.org_chairperson), align: :center
+    text I18n.t("certificates.speaker.signature"), align: :center
   end
 end
