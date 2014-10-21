@@ -10,11 +10,53 @@
         %a{:href => "http://www.openstreetmap.org/?mlat=40.33249&amp;mlon=-3.76728#map=17/40.33250/-3.76729&amp;layers=N"} Ver mapa más grande
     .large-6.columns
       .row
-        .large-2.columns
-          .fa.fa-bus.fa-2x
-        .large-10.columns
+        .small-1.columns
+          .fa.fa-train.fa-2x.subheader
+        .small-11.columns
+          %h4.subheader
+            En tren o metro
+          %ul.no-bullet
+            %li
+              Parada en Leganés Central
+            %li
+              Cercanías Línea C-5
+            %li
+              Metro Sur
       .row
-        .large-2.columns
-          .fa.fa-car.fa-2x
-        .large-10.columns
+        .small-1.columns
+          .fa.fa-bus.fa-2x.subheader
+        .small-11.columns
+          %h4.subheader
+            En autobús
+          %ul.no-bullet
+            %li
+              Parada: Leganés Central
+            %li
+              Líneas: 432, 450, 480, 482, 486 y 485
+      -# .row
+      -#   .large-2.columns
+      -#     .fa.fa-car.fa-2x.subheader
+      -#   .large-10.columns
+      -#     %h4.subheader
+      -#       En coche
+      -#     %ul.no-bullet
+      -#       %li
+      -#         -# Parking UC3M
+
+      .row
+        .small-1.columns
+          .fa.fa-map-marker.fa-2x.subheader
+        .small-11.columns
+          %ul.no-bullet
+            %li
+              Avenida de la universidad, 30
+            %li
+              28911 Leganés Madrid, España.
+          .row
+            .small-1.columns
+              .fa.fa-compass.subheader
+            = link_to "40º18´54,80” N 3º43´37,93” O","http://www.openstreetmap.org/?mlat=40.33249&amp;mlon=-3.76728#map=17/40.33250/-3.76729&amp;layers=N"   
     %a.close-reveal-modal ×
+
+
+     
