@@ -21,9 +21,9 @@ en:
         sign_in_count: "Sign in count"
       conference:
         active: "Active"
-        call_for_papers_enabled: "Call for papers enabled"
-        call_for_papers_end_date: "Call for papers end date"
-        call_for_papers_start_date: "Call for papers start_date"
+        call_for_papers_enabled: "Call for talks enabled"
+        call_for_papers_end_date: "Call for talks end date"
+        call_for_papers_start_date: "Call for talks start_date"
         coordinator: "Coordinator"
         description: "Description"
         end_date: "End date"
@@ -75,17 +75,15 @@ en:
         verify_type: "Verification type"
   certificates:
     speaker:
-      header: "%{chairperson}, as chairperson of the"
+      header: "_______________________________, as representative of the organization"
       organization: |
         Grupo de Usuarios de Linux
         de la Universidad Carlos III de Madrid
-      i_certify: "CERTIFY"
-      speaker_info: "That  %{name}  has attended the '%{conference_num} Jornadas Técnicas del GUL', that took place during the month of %{month} of %{year}, presenting the lecture:" 
+      certifies: "CERTIFIES"
+      speaker_info: "That  %{name}  has attended  '%{conference_title}' , which took place during the month of %{month} of %{year}, presenting the lecture:" 
       i_sign: "And for the record for the appropriate purposes, I sign and seal this document."
-      signature_details: "In %{location} on the  ___ of _________  %{year}."
-      signature: |
-        Signed: %{chairperson}
-        (chairperson)
+      signature_details: "In %{location} on the  ___ of ___________  %{year}."
+      signature: "Signed:"
   # Emails
   notifier:
     confirmation_certificate:
@@ -141,9 +139,9 @@ en:
   Conference: "Conference"
   Conferences: "Conferences"
   conference:
-    call_for_papers_end_date: "Call for papers end date"
-    call_for_papers_open: "The call for papers is open"
-    call_for_papers_start_date: "Call for papers start date"
+    call_for_papers_end_date: "Call for talks end date"
+    call_for_papers_open: "The call for talks is open"
+    call_for_papers_start_date: "Call for talks start date"
     coordinator: "Coordinator"
     description: "Descripción"
     end_date: "End date"
@@ -154,7 +152,7 @@ en:
     start_date: "Start date"
     status:
       active: "Active"
-      call_for_papers_enabled: "Call for papers enabled"
+      call_for_papers_enabled: "Call for talks enabled"
       show_calendar: "Show calendar"
       voting_enabled: "Voting enabled"
     title: "Title"
@@ -317,6 +315,7 @@ en:
     token: "Token"
     type: "Type"
     types:
+        certificate: "certificate"
         event: "activity"
         speaker: "speaker"
         vote: "vote"

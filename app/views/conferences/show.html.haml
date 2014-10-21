@@ -23,7 +23,7 @@
   .large-12.columns
     - if @conference.show_calendar?
       = render "partials/calendar"
-    - if @conference.active? and @conference.call_for_papers_enabled? 
+    - if @conference.active? and @conference.call_for_papers_enabled? and @conference.call_for_papers_start_date > DateTime.now.to_date 
       .row
         .large-8.large-centered.columns
           .panel.callout.radius
