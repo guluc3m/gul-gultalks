@@ -91,11 +91,11 @@
         %li
           %i.fa.fa-building.fa-fw.fa-lg.subheader
           - if @event.room.present?
-            = t('event.room') + ": #{@event.room}"
+            = "#{t('event.room')}: #{@event.room}"
             // TODO: write a scope like "room.accesible?"
             %i.label.radius.success.fa.fa-wheelchair
           - else
-            = t('event.room').humanize + t('not_available')
+            = "#{t('event.room').humanize} #{t('not_available')}"
 
       %ul.no-bullet
         %li
@@ -156,17 +156,13 @@
       - else
         = t("not_available").humanize
 
-  - if @event.code_url.present?
-    .large-12.columns
-      %span
-        %i.fa.fa-code.fa-fw.subheader
-          = link_to @event.code_url, @event.code, target: "_blank"
-  - else
-    .large-12.columns
-      %span
-        %i.fa.fa-code.fa-fw.subheader
-        = t('event.code').humanize
-        = t("not_available")
+  .large-12.columns
+    %span
+      %i.fa.fa-code.fa-fw.subheader
+      - if @event.code_url.present?
+        = link_to @event.code_url, @event.code, target: "_blank"
+      - else
+        = t("not_available").humanize
   .large-12.columns
     %hr
 
