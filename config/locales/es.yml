@@ -42,7 +42,7 @@ es:
         accepted: "Aceptada"
         assisted_by: "Asistido por"
         cancelled: "Cancelada"
-        code: "Código"
+        code: "Código fuente"
         code_url: "URL del código original"
         conference_id: "Jornada"
         content_url: "Material de apoyo"

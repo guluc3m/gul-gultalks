@@ -38,7 +38,7 @@ en:
         accepted: "Accepted"
         assisted_by: "Assisted by"
         cancelled: "Cancelled"
-        code: "Code"
+        code: "Source code"
         code_url: "Original code URL"
         conference_id: "Conference"
         content_url: "Suppoting material"
