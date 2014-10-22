@@ -163,8 +163,8 @@
   .large-12.columns
     %span
       %i.fa.fa-code.fa-fw.subheader
-      - if @event.code_url.present?
-        = link_to @event.code_url, @event.code, target: "_blank"
+      - if @event.code.present?
+        = link_to @event.code, @event.code, target: "_blank"
       - else
         = t("not_available").humanize
   .large-12.columns
