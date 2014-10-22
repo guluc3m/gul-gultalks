@@ -13,12 +13,13 @@
       %li.current
         = t("speaker.propose")
 
-- flash[:error].each do |msg|
-  .row
-    .large-12.columns
-      .alert-box.alert.radius
-        %i.fa.fa-warning.fa-fw.fa-lg
-        = msg
+- if flash[:error]
+  - flash[:error].each do |msg|
+    .row
+      .large-12.columns
+        .alert-box.alert.radius
+          %i.fa.fa-warning.fa-fw.fa-lg
+          = msg
 
 .row
   .medium-12.columns
