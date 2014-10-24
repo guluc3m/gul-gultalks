@@ -26,6 +26,52 @@ ActiveAdmin.register Event do
   filter :title
   filter :date
 
+  show do |item|
+    attributes_table do
+      row :id
+      row :conference_id
+      row :title
+      row :summary
+      row :description
+      row :subclass do
+        t("event.subclasses.#{item.subclass}").humanize
+      end
+      row :level do
+        t("event.levels.#{item.level}").humanize
+      end
+      row :content_url
+      row :code
+      row :language do
+        if item.language.present?
+          t("event.languages.#{item.language}").humanize
+        else
+          t("not_available").humanize
+        end 
+      end
+      row :notes
+      row :duration do
+        t("event.durations.#{item.duration}").humanize
+      end
+      row :votes
+      row :live_video
+      row :video
+      row :code_url
+      row :location
+      row :room
+      row :start_dtime 
+      row :end_dtime
+      row :shown
+      row :verified
+      row :cancelled
+      row :accepted
+      row :assisted_by
+      row :slug
+      row :wizard_status
+      row :created_at
+      row :updated_at
+    end
+  end
+
   form do |f|
     f.inputs "Info" do
       f.input :conference_id, label: t("Conference"), as: :select, collection: Conference.all
@@ -35,6 +81,7 @@ ActiveAdmin.register Event do
       f.input :subclass, label: t("event.subclass"), as: :select, collection: Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}
       f.input :level, label: t("event.level"), as: :select, collection: Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}
       f.input :duration, label: t("event.duration"), as: :select, collection: Event.durations.keys.collect {|d| [t("event.durations.#{d}").humanize, d]}
+      f.input :language, lavel: t("event.language"), as: :select, collection: t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]}
       f.input :content_url, label: t("event.url")
       f.input :code, label: t("event.code")
       f.input :video, label: t("event.video")

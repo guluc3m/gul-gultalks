@@ -11,7 +11,8 @@ class ConferencesController < ApplicationController
   def show
       @conference = Conference.friendly.find(params[:id])
       @calendar_events = @conference.events.where(shown: true, accepted: true)
-      @paginated_events = @conference.events.select{ |event| event.speaker? && event.shown && event.verified }.paginate(page: params[:page], per_page: 8)
+      #FIXME pagination will be removed
+      @paginated_events = @conference.events.select{ |event| event.speaker? && event.shown && event.verified }.paginate(page: params[:page], per_page: 1000)
       @pending_events = @conference.events.select{ |event| !event.speaker? && event.shown && event.verified }
 
     respond_with(@conference) do |format|

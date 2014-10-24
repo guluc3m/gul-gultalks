@@ -13,13 +13,12 @@
       %li.current
         = t("speaker.propose")
 
-- flash.each do |name, msg|
-  .row
-    .large-12.columns
-      .alert-box.alert.radius
-        .large-2.columns
+- if flash[:error]
+  - flash[:error].each do |msg|
+    .row
+      .large-12.columns
+        .alert-box.alert.radius
           %i.fa.fa-warning.fa-fw.fa-lg
-        .large-10.columns
           = msg
 
 .row
@@ -59,10 +58,10 @@
           = text_field_tag "twitter", nil, class: "radius", maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})"
 
   .row
-    .large-4.columns
+    .large-6.columns
       = check_box_tag "certificate", nil
       %label{for: "certificate"}
-        = t("speaker.certificate")
+        = t("speaker.request_certificate")
 
   .row
     .large-12.columns

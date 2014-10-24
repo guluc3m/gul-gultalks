@@ -22,7 +22,7 @@ role :db, "cursos.gul.es", :primary=> true
 
 # before "deploy:assets:precompile"
 after "deploy", "deploy:restart" 
-after "deploy", "deploy:migrate"
+# after "deploy", "deploy:migrate"
 # after "deploy", "db:seed"
 after "deploy:restart", "deploy:cleanup"
 
