@@ -18,11 +18,12 @@ namespace :cleanup do
       event.destroy
     end
 
-    # Find any session older than 24 hours that may have been orhpaned
-    orphaned_sessions = WizardSession.where("updated_at < ?", 24.hours.ago)
+    # FIXME
+    # Find orphaned sessions
+    # orphaned_sessions = WizardSession.where("updated_at < ?", 24.hours.ago)
 
-    orphaned_sessions.map do |session|
-        session.destroy
-    end
+    # orphaned_sessions.map do |session|
+        # session.destroy
+    # end
   end
 end
