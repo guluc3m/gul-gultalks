@@ -26,10 +26,15 @@ class VerifierController < ApplicationController
         render "certificate_sent"
       elsif verifier.verify_type.eql? "vote"
         event = Event.find(verifier.event_id)
+        conference = Conference.find(event.conference_id)
 
-        event.update_attribute(:votes, event.votes + 1)
-        verifier.update_attribute(:verified, true)
-        render "vote_verified"
+        if conference.voting_enabled
+          event.update_attribute(:votes, event.votes + 1)
+          verifier.update_attribute(:verified, true)
+          render "vote_verified"
+        else
+          render "error"
+        end
       end
       # else
       #   event = Event.find(verifier.event_id)
