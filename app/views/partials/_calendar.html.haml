@@ -89,7 +89,7 @@
         %dt
           = l(d, format: :day_name_num).humanize
           -# = d.day.to_i
-        - @calendar_events.select{ |event| event.start_dtime.day == d.day }.sort_by(&:start_dtime).map do |e|
+        - @calendar_events.select{ |event| event.start_dtime.day == d.day }.sort_by(&:start_dtime).map do |event|
           %dd
             -# = e.title
             = link_to event.title, conference_event_path(@conference, event)
