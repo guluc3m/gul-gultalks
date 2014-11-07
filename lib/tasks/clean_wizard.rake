@@ -17,5 +17,13 @@ namespace :cleanup do
       # Delete event
       event.destroy
     end
+
+    # FIXME
+    # Find orphaned sessions
+    # orphaned_sessions = WizardSession.where("updated_at < ?", 24.hours.ago)
+
+    # orphaned_sessions.map do |session|
+        # session.destroy
+    # end
   end
 end

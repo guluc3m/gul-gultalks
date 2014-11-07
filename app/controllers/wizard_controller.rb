@@ -8,10 +8,15 @@ class WizardController < ApplicationController
   end
 
   def create
-    @event = Event.create(wizard_status: "new", title: "", description: "", summary: "")
-    # Create session-wizard relation
-    WizardSession.create(event_id: @event.id, session_id: session.id)
-    redirect_to wizard_path(steps.first, event_id: @event.id)
+    @conference = Conference.friendly.find(params[:conference_id])
+    if !@conference.call_for_papers_enabled
+      redirect_to conference_path(@conference)
+    else 
+      @event = Event.create(wizard_status: "new", title: "", description: "", summary: "")
+      # Create session-wizard relation
+      WizardSession.create(event_id: @event.id, session_id: session.id)
+      redirect_to wizard_path(steps.first, event_id: @event.id)
+    end
   end
 
   def show

@@ -51,7 +51,7 @@
           %tr
             %th{scope: "column"}
               = t("Events")
-            - if @conference.voting_enabled
+            - if Date.today >= @conference.voting_start_date
               %th.text-center{scope: "column", width: "90"}
                 = t("vote.other").humanize
         %tbody
@@ -63,7 +63,7 @@
                 %h5
                   %small
                     = event.summary
-              - if @conference.voting_enabled
+              - if Date.today >= @conference.voting_start_date
                 %td.text-center
                   = event.votes
       .row
@@ -86,7 +86,7 @@
                 %tr
                   %th{scope: "column"}
                     = t("Events")
-                  - if @conference.voting_enabled
+                  - if Date.today >= @conference.voting_start_date 
                     %th.text-center{scope: "column", width: "90"}
                       = t("vote.other").humanize
               %tbody
@@ -98,7 +98,7 @@
                       %h5
                         %small
                           = event.summary
-                    - if @conference.voting_enabled
+                    - if Date.today >= @conference.voting_start_date
                       %td.text-center
                         = event.votes
 

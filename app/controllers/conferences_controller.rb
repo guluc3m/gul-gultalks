@@ -12,8 +12,8 @@ class ConferencesController < ApplicationController
       @conference = Conference.friendly.find(params[:id])
       @calendar_events = @conference.events.where(shown: true, accepted: true)
       #FIXME pagination will be removed
-      @paginated_events = @conference.events.select{ |event| event.speaker? && event.shown && event.verified }.paginate(page: params[:page], per_page: 1000)
-      @pending_events = @conference.events.select{ |event| !event.speaker? && event.shown && event.verified }
+      @paginated_events = @conference.events.select{ |event| event.speaker? && event.shown && event.verified }.sort_by(&:votes).reverse.paginate(page: params[:page], per_page: 1000)
+      @pending_events = @conference.events.select{ |event| !event.speaker? && event.shown && event.verified }.sort_by(&:votes).reverse
 
     respond_with(@conference) do |format|
       format.ics { render text: @conference.to_ics }

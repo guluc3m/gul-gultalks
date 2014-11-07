@@ -338,7 +338,7 @@ es:
         speaker: "ponente"
         vote: "voto"
     verified: "Verificado"
-    vote: "¡Gracias por verificar to voto!"
+    vote: "¡Gracias por verificar tu voto!"
   vote:
     email: "Email"
     invalid_email: "Email no válido"
