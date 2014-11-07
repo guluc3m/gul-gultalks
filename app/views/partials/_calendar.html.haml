@@ -1,5 +1,5 @@
 /.show-for-touch{"data-magellan-expedition" => "fixed"}
-- days = (@conference.end_date.mjd - @conference.start_date.mjd).to_i
+-# - days = (@conference.end_date.mjd - @conference.start_date.mjd).to_i
 
 .row.hidden-for-large-up.show-for-portrait
   .large-12.columns.large-centered
@@ -27,7 +27,7 @@
 -#             = l(d, format: :day_name_num).humanize
 -#             -# #{@conference.start_date.day + i}
 
-.row.hidden-for-large-up.show-for-portrait
+.row.hidden-for-large-up.show-for-touch
   .large-12.columns
     - (@conference.start_date..@conference.end_date).each do |d|
       %h3.subheader
@@ -38,7 +38,7 @@
             - if event.start_dtime.nil? || event.end_dtime.nil?
               %dd.subheader
                 = t('not_available').humanize
-            - elsif event.end_dtime > DateTime.now
+            - elsif DateTime.now > event.end_dtime 
               // TODO: localize
               Finalizado
             - else
@@ -89,9 +89,17 @@
         %dt
           = l(d, format: :day_name_num).humanize
           -# = d.day.to_i
-        - @calendar_events.select{ |event| event.start_dtime.day == d.day }.map do |e|
+        - @calendar_events.select{ |event| event.start_dtime.day == d.day }.map do |event|
           %dd
             -# = e.title
-            = link_to e.title, conference_event_path(@conference, e)
+            = link_to event.title, conference_event_path(@conference, event)
             %br
-            = "#{e.start_dtime.time.strftime("%H:%M")} - #{e.end_dtime.time.strftime("%H:%M")}"
+            %small
+              = "#{event.start_dtime.time.strftime("%H:%M")} - #{event.end_dtime.time.strftime("%H:%M")}"
+            %small.subheader
+              \//
+              = t('event.room')
+              - if event.room.present?
+                = event.room
+              - else
+                = t "not_available"
