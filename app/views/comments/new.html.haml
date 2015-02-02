@@ -9,6 +9,6 @@
 .row
   .large-6.columns
     %i
-      = @parent.content
+      = simple_format @parent.content, sanitize: true
 
 = render 'form'

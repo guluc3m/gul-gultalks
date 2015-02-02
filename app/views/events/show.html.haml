@@ -210,7 +210,7 @@
               = image_tag("http://placehold.it/65x65")
             .medium-10.columns
               %h4.subheader
-                = comment.name
+                = sanitize comment.name
               %small
                 = comment.created_at.to_s(:long)
               - if comment.ancestry?
@@ -218,7 +218,7 @@
                   = link_to "#comment-#{comment.parent}" do
                     = t("event.comment.response_to").humanize
               %p
-                = simple_format comment.content
+                = simple_format comment.content, sanitize: true
               .actions
                 = link_to new_comment_path(@conference, @event, parent_id: comment) do
                   = t("event.comment.reply").humanize
