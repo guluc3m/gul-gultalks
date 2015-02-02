@@ -6,7 +6,7 @@
       .large-6.columns
         %h4.subheader
           %i.fa.fa-comment-o
-          Comenta
+          = t("event.to_comment").humanize
         %hr
     = form_for([@commentable, @comment], url: {controller: "comments", action: "create", event_id: @event}) do |f|
 

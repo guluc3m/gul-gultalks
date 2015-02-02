@@ -16,13 +16,11 @@ class CommentsController < ApplicationController
     @conference = Conference.find(@event.conference_id)
 
     @parent_id = params.delete(:parent_id)
+    @parent = Comment.find(@parent_id)
     @commentable = find_commentable
     @comment = Comment.new( :parent_id => @parent_id,
                             :commentable_id => @commentable.id,
                             :commentable_type => @commentable.class.to_s)
-    puts @parent_id
-    puts @commentable
-    puts @comment
   end
  
   private
