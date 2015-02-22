@@ -2,22 +2,22 @@
 
 .row
   .large-12.columns
-    %h1
-      = @conference.title
+    -# %h1
+    -#   = @conference.title
     -# %h6.subheader
     -#   = @conference.description
     -# %hr
 
-  .small-9.columns 
-    %h3.subheader
-      %span.grey>= t("date.from")
-      /= l @conference.start_date, :format => :day_only
-      = @conference.start_date.day
-      %span.grey>= t("date.to")
-      /= l @conference.end_date, :format => :day_only
-      = @conference.end_date.day
-      %span.grey>= t("date.of")
-      = l @conference.start_date, format: :month_only
+  -# .small-9.columns 
+  -#   %h3.subheader
+  -#     %span.grey>= t("date.from")
+  -#     /= l @conference.start_date, :format => :day_only
+  -#     = @conference.start_date.day
+  -#     %span.grey>= t("date.to")
+  -#     /= l @conference.end_date, :format => :day_only
+  -#     = @conference.end_date.day
+  -#     %span.grey>= t("date.of")
+  -#     = l @conference.start_date, format: :month_only
 
   - if @conference.call_for_papers_enabled
     .small-3.columns.show-for-medium-up
@@ -27,7 +27,7 @@
 
 .row
   .large-12.columns
-    - if @conference.show_calendar?
+    - if @conference.active? and not @conference.call_for_papers_enabled and @conference.show_calendar?
       = render "partials/calendar"
     - if @conference.active? and @conference.call_for_papers_enabled? and @conference.call_for_papers_start_date > DateTime.now.to_date 
       .row
