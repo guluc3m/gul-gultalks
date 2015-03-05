@@ -2,13 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-//$green: #43ac6a;
-//$red: #f04124;
-//$orange: #f08a24;
-
 .grey {
-    color:cadetblue;
+    // color:cadetblue;
+    color: #6f6f6f;
 }
 .top-bar {
     margin-bottom:1em;
@@ -30,16 +26,8 @@
 //    }
 //}
 
-// New Talk Form
-
-
 .tag-icon {
     font-weight: bold;
     font-size: 21px;
 }
 
-//.breadcrumbs {
-//  border:none;
-//  background: none;
-//  padding-left:0;
-//}
