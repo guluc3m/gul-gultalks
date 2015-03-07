@@ -1,13 +1,26 @@
 class CommentsController < ApplicationController
 
   def create
+    @event = Event.friendly.find(params[:event_id])
+    @conference = Conference.find(@event.conference_id)
+
     @commentable = find_commentable
     @comment = @commentable.comments.build(comment_params)
-    if @comment.save
-      flash[:notice] = "Successfully created comment."
-      redirect_to conference_event_url(params[:conference_id], params[:event_id])
+
+    if verify_recaptcha
+      if @comment.save
+        flash[:notice] = "Successfully created comment."
+        redirect_to conference_event_url(@conference, @event)
+      else
+        flash[:error] = "Error adding comment."
+      end
     else
-      flash[:error] = "Error adding comment."
+      flash[:error] = "Recaptcha error."
+      if !comment_params[:parent_id].empty?
+        redirect_to new_comment_path(@conference, @event, parent_id: comment_params[:parent_id])
+      else
+        redirect_to conference_event_url(@conference, @event)
+      end
     end
   end
 
@@ -22,7 +35,7 @@ class CommentsController < ApplicationController
                             :commentable_id => @commentable.id,
                             :commentable_type => @commentable.class.to_s)
   end
- 
+
   private
   def find_commentable
     params.each do |name, value|

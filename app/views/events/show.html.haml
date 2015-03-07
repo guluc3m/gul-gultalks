@@ -202,8 +202,8 @@
     -# %sub.right
     -#   0 comentarios
     %hr{style: "border-style: dashed"}
-    - if @comments.present? 
-      - @comments.map do |comment| 
+    - if @comments.present?
+      - @comments.map do |comment|
         .row{id: "comment-#{comment.id}"}
           .large-8.columns
             .medium-2.columns
