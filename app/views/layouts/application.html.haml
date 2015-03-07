@@ -25,34 +25,28 @@
               %span
           %section.middle.tab-bar-section
             .row
-              .large-2.columns
+              %div{ :class => (defined?(@conference) ? "large-2 columns" : "large-12 columns") }
                 = link_to root_path do
                   %h1.title
                     GulTalks
-                    -# - if Conference.find_by(active: true)
-                    -#   %sup
-                    -#     %small{style: "color: white"}
-                    -#       -# FIXME: get year from active conference
-                    -#       -# = Conference.where(active: true)
-                    -#       2014
-                    -#     -# .label.secondary.radius{style:"padding: 0.25em"} BETA
                     %small
                       BETA
-              .show-for-landscape
-                .large-7.columns
-                  %h1.title
-                    = @conference.title
-                    -# | XVII Jornadas Técnicas del GUL
-                .large-3.columns 
-                  %h3.subheader
-                    %span.grey>= t("date.from")
-                    /= l @conference.start_date, :format => :day_only
-                    = @conference.start_date.day
-                    %span.grey>= t("date.to")
-                    /= l @conference.end_date, :format => :day_only
-                    = @conference.end_date.day
-                    %span.grey>= t("date.of")
-                    = l @conference.start_date, format: :month_only
+
+              - if defined?(@conference)
+                .show-for-landscape
+                  .large-7.columns
+                    %h1.title
+                      = @conference.title
+                  .large-3.columns
+                    %h3.subheader
+                      %span.grey>= t("date.from")
+                      = @conference.start_date.day
+
+                      %span.grey>= t("date.to")
+                      = @conference.end_date.day
+
+                      %span.grey>= t("date.of")
+                      = l @conference.start_date, format: :month_only
 
         %aside.left-off-canvas-menu
           %ul.off-canvas-list
