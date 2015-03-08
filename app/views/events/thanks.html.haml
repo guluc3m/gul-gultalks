@@ -1,23 +1,14 @@
+- page_title t("event.new_event")
+= render partial: "breadcrumbs"
+
 .row
-  .medium-12.columns
-    %ul.breadcrumbs
-      %li
-        = link_to t("home"), root_path
-      %li
-        = link_to Conference.friendly.find(params[:conference_id]).title, :controller => 'conferences', :action => 'show', :id => params[:conference_id]
-      %li.current
-        = t("event.new_event")
-.row
-  .medium-12.columns
-    %h1 
+  .large-12.columns
+    %h1
       = t("thanks.thank_you")
-    %p 
-      = t("thanks.thanks_msg")
-    %p
-      = t("thanks.contact_msg")
-      = mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS]" 
+    %hr
+
 .row
   .large-6.columns
-    = link_to t("event.back_to_events"), { :controller => 'conferences', :action => 'show', :id => params[:conference_id] }, class: "button radius expand"
+    = link_to t("event.back_to_events"), conference_path(@conference), class: "button radius expand"
   .large-6.columns
-    = link_to t("conference.propose_another_event"), { :controller => 'events', :action => 'new' }, class: "button success radius expand"
+    = link_to t("conference.propose_another_event"), new_conference_event_path(@conference), class: "button success radius expand"

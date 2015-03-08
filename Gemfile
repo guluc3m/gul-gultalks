@@ -83,7 +83,8 @@ gem 'will_paginate'
 gem 'will_paginate-foundation'
 
 # Form Wizard
-gem 'wicked'
+# gem 'wicked'
+gem 'reform'
 
 # iCalendar
 gem 'icalendar'
