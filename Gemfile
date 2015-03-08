@@ -82,8 +82,7 @@ gem 'activevalidators'
 gem 'will_paginate'
 gem 'will_paginate-foundation'
 
-# Form Wizard
-# gem 'wicked'
+# New event form
 gem 'reform'
 
 # iCalendar
@@ -106,7 +105,7 @@ gem 'prawn'
 gem 'ancestry'
 
 # Multiple speakers in form
-gem 'cocoon'
+# gem 'cocoon'
 
 # Session storage
 gem 'activerecord-session_store'

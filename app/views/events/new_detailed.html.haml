@@ -8,12 +8,8 @@
     %h5.subheader
       = t("event.complete_detailed_form")
     %hr
--# .row
--#   .large-12.columns
--#     %h5.subheader
--#       = t("event.complete_detailed_form")
 
-= form_for @form do |f|
+= form_for @form, url: {controller: "events", action: "create_detailed"} do |f|
 
   -# - @event.errors.full_messages.each do |msg|
     .row
@@ -23,15 +19,85 @@
 
   .row
     .large-12.columns
+      %label{for: "subclass"}
+        %i.fa.fa-thumb-tack.fa-fw.fa-lg.subheader
+        = t("event.subclass")
+        %small
+          = t("event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.subclass_requirements"), class: "radius"}
+      .row
+        .large-3.columns
+          = select("basic_event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}, {include_blank: true, selected: "selected"}, class: "radius", required: true, label:false)
+
+      -# .row.hide-for-touch
+      -#   .large-12.columns
+      -#     - Event.subclasses.keys.each do |s|
+      -#       = radio_button("event", "subclass", "#{s}")
+      -#       %label
+      -#         = t("event.subclasses.#{s}").humanize
+
+  .row
+    .large-12.columns
+      %label{for: "title"}
+        %i.fa.fa-bookmark.fa-fw.fa-lg.subheader
+        = t("event.title")
+        %small
+          = t("event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.title_requirements"), class: "radius"}
+        .right
+          %sub 128
+      = f.text_field :title, label: false, maxlength: 128, required: true, class: "radius lettrify"
+
+  .row
+    .large-12.columns
+      %label{for: "summary"}
+        %i.fa.fa-paperclip.fa-fw.fa-lg.subheader
+        = t("event.summary")
+        %small
+          = t("event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.summary_requirements"), class: "radius"}
+        .right
+          %sub 128
+      = f.text_field :summary, label: false, maxlength: 128, required: true, class: "radius lettrify"
+
+  .row
+    .large-12.columns
+      %label{for: "description"}
+        %i.fa.fa-bars.fa-fw.fa-lg.subheader
+        = t("event.description")
+        %small
+          = t("event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.description_requirements"), class: "radius"}
+        .right
+          %sub 1400
+      = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius lettrify", size: "10x8"
+
+
+  -# .row
+    .large-12.columns
       .alert-box.radius{data: {alert: ""}}
         %i.fa.fa-hand-o-right.fa-lg.fa-fw
         = t("warning.up_to_five")
         %a.close{href:""} ×
-      #speakers
-        = f.fields_for :speakers do |speaker|
-          = render "speaker_fields", f: speaker
-        .links.right
+      -# #speakers
+      = f.fields_for :speakers do |speaker|
+        -# = render "partials/speaker_fields", f: speaker
+        = speaker.text_field :name
+        -# .links.right
           = link_to_add_association t("speaker.add"), f, :speakers, class: "button small radius"
+
+  -# .row
+    -# .large-12.columns
+      "POTATO"
+  -# = f.fields_for :speakers do |s|
+    .row
+      .large-12.columns
+        = s.text_field :name, placeholder: "cosa", class: "radius lettrify"
+
+  .row
+    .large-12.columns
+      PATATA
+      = text_field "speakers[0][name]", @form.speakers[0].name
 
   .row
     .large-12.columns
@@ -68,7 +134,7 @@
         = t("event.language")
         %small
           = t("event.required")
-      = select("event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]},{include_blank: true, selected: "selected"}, required: true, class: "radius")
+      = select("detailed_event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]},{include_blank: true, selected: "selected"}, required: true, class: "radius")
 
     .large-4.columns
       %label{for: "duration"}
@@ -76,7 +142,7 @@
         = t("event.duration")
         %small
           = t("event.required")
-      = select("event", "duration", Event.durations.keys.collect {|d| [t("event.durations.#{d}").humanize, d]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
+      = select("detailed_event", "duration", Event.durations.keys.collect {|d| [t("event.durations.#{d}").humanize, d]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
 
     .large-4.columns
       %label{for: "level"}
@@ -84,13 +150,13 @@
         = t("event.level")
         %small
           = t("event.required")
-      = select("event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
+      = select("detailed_event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
       /%span.level-name
 
       -# .row.hide-for-touch
       -#   .large-12.columns
       -#     - Event.levels.keys.each do |l|
-      -#       = radio_button("event", "level", "#{l}")
+      -#       = radio_button("detailed_event", "level", "#{l}")
       -#       %label
       -#         = t("event.levels.#{l}").humanize
 
@@ -103,9 +169,11 @@
         .right
           %sub 300
       = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius lettrify", size: "10x6"
-      
+
   .row
-    .large-3.columns.right
-      = f.button type: "submit",  class: "button radius expand success" do
-        = content_tag(:span, t("event.next_step"))
-        %span.fa.fa-chevron-right.fa-fw.fa-lg
+    .large-12.columns
+      = render 'partials/recaptcha'
+
+  .row
+    .large-12.columns
+      = f.submit("[SEND]", class: "button radius success expand")

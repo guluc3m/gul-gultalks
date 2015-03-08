@@ -1,4 +1,8 @@
+# require 'concerns/nested_form'
+
 class DetailedEventForm < BasicEventForm
+  # Needed for correct behavior of virtual attributes, see https://github.com/apotonick/reform/issues/75
+  # reform_2_0!
 
   property :content_url
   property :code
@@ -7,6 +11,42 @@ class DetailedEventForm < BasicEventForm
   property :duration
   property :level
   property :notes
+
+  collection :speakers do
+    # include Reform::NestedForm
+
+    property :name
+    property :email
+    property :twitter
+    property :certificate
+
+    # validates :email,
+    #   presence: true,
+    #   length: {
+    #       minimum: 5,
+    #       maximum: 64
+    #       # too_short: I18n.t("errors.messages.too_short"),
+    #       # too_long: I18n.t("errors.messages.too_long")
+    #   },
+    #   allow_blank: false,
+    #   email: true,
+    #   uniqueness: {scope: [:event_id]}
+
+    # validates :name,
+    #   presence: true,
+    #   length: {
+    #       minimum: 5,
+    #       maximum: 64
+    #       # too_short: I18n.t("errors.messages.too_short"),
+    #       # too_long: I18n.t("errors.messages.too_long")
+    #   },
+    #   allow_blank: false,
+    #   format: { with: /\A[a-z\W]+\z/i }
+
+    # validates :twitter,
+    #   allow_blank: true,
+    #   twitter: true
+  end
 
   validates :content_url,
       url: true,

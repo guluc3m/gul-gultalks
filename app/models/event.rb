@@ -6,7 +6,8 @@ class Event < ActiveRecord::Base
   friendly_id :title, use: [:slugged, :scoped], scope: :conference
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :speakers
-  accepts_nested_attributes_for :speakers, reject_if: :all_blank, allow_destroy: true
+  # accepts_nested_attributes_for :speakers, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :speakers
 
   # validates :title,
   #     format: { with: /\A[a-z0-9\W]+\z/i },

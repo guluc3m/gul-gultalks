@@ -19,16 +19,43 @@ class EventsController < ApplicationController
     @form = BasicEventForm.new(Event.new)
   end
 
+  def create_basic
+    @conference = Conference.friendly.find(params[:conference_id])
+    puts @conference.inspect
+    if !@conference.call_for_papers_enabled
+      redirect_to conference_path(@conference)
+    end
+
+    event = Event.new
+    event.conference_id = @conference.id
+    # Event verification is disabled by default
+    event.shown = true
+    event.verified = true
+
+    @form = BasicEventForm.new(event)
+    if @form.validate(params[:basic_event]) && verify_recaptcha
+      @form.save
+      render "thanks"
+    else
+      render :new_basic
+    end
+  end
+
   def new_detailed
     @conference = Conference.friendly.find(params[:conference_id])
     if !@conference.call_for_papers_enabled
       redirect_to conference_path(@conference)
     end
 
-    @form = DetailedEventForm.new(Event.new)
+    # @form = DetailedEventForm.new(Event.new)
+    # @form = DetailedEventForm.new(Event.new(speakers: [Speaker.new, Speaker.new]))
+    # event = Event.new
+    # 2.times { event.speakers.build }
+    # @form = DetailedEventForm.new(Event.new)
+    @form = DetailedEventForm.new(Event.new(speakers: [Speaker.new]))
   end
 
-  def create_basic
+  def create_detailed
     @conference = Conference.friendly.find(params[:conference_id])
     puts @conference.inspect
     if !@conference.call_for_papers_enabled
