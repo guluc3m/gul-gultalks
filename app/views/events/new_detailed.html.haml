@@ -73,7 +73,7 @@
       = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius lettrify", size: "10x8"
 
 
-  -# .row
+  .row
     .large-12.columns
       .alert-box.radius{data: {alert: ""}}
         %i.fa.fa-hand-o-right.fa-lg.fa-fw
@@ -93,11 +93,6 @@
     .row
       .large-12.columns
         = s.text_field :name, placeholder: "cosa", class: "radius lettrify"
-
-  .row
-    .large-12.columns
-      PATATA
-      = text_field "speakers[0][name]", @form.speakers[0].name
 
   .row
     .large-12.columns

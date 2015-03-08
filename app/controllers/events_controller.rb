@@ -47,12 +47,19 @@ class EventsController < ApplicationController
       redirect_to conference_path(@conference)
     end
 
-    # @form = DetailedEventForm.new(Event.new)
+    event = Event.new
+    event.speakers.build
+    @form = DetailedEventForm.new(event)
+    # @form = DetailedEventForm.new(Event.new(speakers: [speaker1, speaker2]))
     # @form = DetailedEventForm.new(Event.new(speakers: [Speaker.new, Speaker.new]))
     # event = Event.new
     # 2.times { event.speakers.build }
-    # @form = DetailedEventForm.new(Event.new)
-    @form = DetailedEventForm.new(Event.new(speakers: [Speaker.new]))
+    # speaker = Speaker.new
+    # puts speaker.inspect
+    # @form = DetailedEventForm.new(Event.new(speakers: [Speaker.new]))
+    # @form = DetailedEventForm.new(Event.new(speakers: [speaker]))
+    puts @form.inspect
+    @form
   end
 
   def create_detailed
