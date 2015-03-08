@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+
+gem 'rails', '4.1.9'
+# gem 'rails', '4.2.0'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
@@ -16,16 +18,16 @@ group :production do
     gem 'unicorn'
 end
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+gem 'therubyracer'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -37,7 +39,7 @@ gem 'turbolinks'
 gem 'protected_attributes'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
 
 group :doc do
     # bundle exec rake doc:rails generates the API under doc/api.
@@ -62,7 +64,8 @@ gem 'font-awesome-rails'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem 'haml-rails'
-gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
+# gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
+gem 'rails-i18n'
 #http accept language to have the locale set from browser
 gem 'http_accept_language'
 
@@ -75,6 +78,7 @@ gem 'friendly_id', '~> 5.0.0'
 gem 'acts-as-taggable-on'
 # ActiveAdmin
 gem 'activeadmin', github: 'gregbell/active_admin'
+# gem 'activeadmin'
 gem 'devise'
 gem 'devise-i18n'
 gem 'activevalidators'
