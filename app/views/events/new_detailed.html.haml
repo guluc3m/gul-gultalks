@@ -2,6 +2,12 @@
 = render partial: "breadcrumbs"
 
 .row
+  .large-3.columns
+    = link_to conference_path(params[:conference_id]), { class: "button tiny radius expand" } do
+      %span.fa.fa-chevron-left.fa-fw.fa-lg
+      = t("back").humanize
+
+.row
   .large-12.columns
     %h1.subheader
       = t("event.detailed_info")
@@ -27,7 +33,7 @@
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.subclass_requirements"), class: "radius"}
       .row
         .large-3.columns
-          = select("basic_event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}, {include_blank: true, selected: "selected"}, class: "radius", required: true, label:false)
+          = select("detailed_event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}, {include_blank: true, selected: "selected"}, class: "radius", required: true, label:false)
 
       -# .row.hide-for-touch
       -#   .large-12.columns
@@ -81,8 +87,8 @@
         %a.close{href:""} ×
       -# #speakers
       = f.fields_for :speakers do |speaker|
-        -# = render "partials/speaker_fields", f: speaker
-        = speaker.text_field :name
+        -#FIXME
+        = render "partials/speaker_fields", f: speaker
         -# .links.right
           = link_to_add_association t("speaker.add"), f, :speakers, class: "button small radius"
 

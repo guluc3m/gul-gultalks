@@ -8,7 +8,7 @@ class DetailedEventForm < BasicEventForm
   property :level
   property :notes
 
-  collection :speakers do
+  collection :speakers, skip_if: :all_blank do
 
     property :name
     property :email
@@ -25,7 +25,8 @@ class DetailedEventForm < BasicEventForm
       },
       allow_blank: false,
       email: true,
-      uniqueness: {scope: [:event_id]}
+      uniqueness: {scope: [:event_id]},
+      if: ->(*) { name.present? || email.present? }
 
     validates :name,
       presence: true,
@@ -36,12 +37,16 @@ class DetailedEventForm < BasicEventForm
           # too_long: I18n.t("errors.messages.too_long")
       },
       allow_blank: false,
-      format: { with: /\A[a-z\W]+\z/i }
+      format: { with: /\A[a-z\W]+\z/i },
+      if: ->(*) { name.present? || email.present? }
 
     validates :twitter,
       allow_blank: true,
-      twitter: true
+      twitter: true,
+      if: ->(*) { name.present? && email.present? }
   end
+
+  validates :speakers, presence: true, length: { minimum: 1 }
 
   validates :content_url,
       url: true,

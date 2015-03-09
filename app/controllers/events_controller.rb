@@ -21,7 +21,6 @@ class EventsController < ApplicationController
 
   def create_basic
     @conference = Conference.friendly.find(params[:conference_id])
-    puts @conference.inspect
     if !@conference.call_for_papers_enabled
       redirect_to conference_path(@conference)
     end
@@ -48,39 +47,50 @@ class EventsController < ApplicationController
     end
 
     event = Event.new
-    event.speakers.build
+    5.times { event.speakers.build }
+
     @form = DetailedEventForm.new(event)
-    # @form = DetailedEventForm.new(Event.new(speakers: [speaker1, speaker2]))
-    # @form = DetailedEventForm.new(Event.new(speakers: [Speaker.new, Speaker.new]))
-    # event = Event.new
-    # 2.times { event.speakers.build }
-    # speaker = Speaker.new
-    # puts speaker.inspect
-    # @form = DetailedEventForm.new(Event.new(speakers: [Speaker.new]))
-    # @form = DetailedEventForm.new(Event.new(speakers: [speaker]))
-    puts @form.inspect
-    @form
   end
 
   def create_detailed
     @conference = Conference.friendly.find(params[:conference_id])
-    puts @conference.inspect
     if !@conference.call_for_papers_enabled
       redirect_to conference_path(@conference)
     end
 
     event = Event.new
-    event.conference_id = @conference.id
-    # Event verification is disabled by default
-    event.shown = true
-    event.verified = true
+    5.times { event.speakers.build }
 
-    @form = BasicEventForm.new(event)
-    if @form.validate(params[:basic_event]) && verify_recaptcha
-      @form.save
+    @form = DetailedEventForm.new(event)
+    if @form.validate(params[:detailed_event]) && verify_recaptcha
+      @form.save do |nested|
+        # Save event and tags
+        new_event = Event.new(nested.except("speakers"))
+        new_event.conference_id = @conference.id
+        # Event verification is disabled by default
+        new_event.shown = true
+        new_event.verified = true
+        new_event.tag_list.add(nested["tags"], parse: true)
+        new_event.save
+
+        # Save speakers (only if name and email are present)
+        nested["speakers"].each do |sp|
+          if sp["name"].present? && sp["email"].present?
+            new_speaker = Speaker.new
+            new_speaker.event_id = new_event.id
+            new_speaker.update_attributes(sp)
+            new_speaker.save
+
+            # Create verfier for certificate
+            if sp["certificate"] == "1"
+              Verifier.create(email: new_speaker.email, event_id: new_speaker.event_id, verified: false, verify_type: "certificate")
+            end
+          end
+        end
+      end
       render "thanks"
     else
-      render :new_basic
+      render :new_detailed
     end
   end
 
