@@ -1,5 +1,5 @@
 ActiveAdmin.register Event do
- permit_params :accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :live_video, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :validation_email, :verified, :video, :votes, :wizard_status
+ permit_params :accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :live_video, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :validation_email, :verified, :video, :votes
   menu :label => proc{ t("Events") }
 
 
@@ -46,7 +46,7 @@ ActiveAdmin.register Event do
           t("event.languages.#{item.language}").humanize
         else
           t("not_available").humanize
-        end 
+        end
       end
       row :notes
       row :duration do
@@ -58,7 +58,7 @@ ActiveAdmin.register Event do
       row :code_url
       row :location
       row :room
-      row :start_dtime 
+      row :start_dtime
       row :end_dtime
       row :shown
       row :verified
@@ -66,7 +66,6 @@ ActiveAdmin.register Event do
       row :accepted
       row :assisted_by
       row :slug
-      row :wizard_status
       row :created_at
       row :updated_at
     end
