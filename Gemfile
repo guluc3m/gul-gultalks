@@ -95,7 +95,7 @@ gem 'icalendar'
 # reCAPTCHA
 gem 'recaptcha', :require => 'recaptcha/rails'
 
-# Character countdown 
+# Character countdown
 gem 'lettrics'
 
 # User authentication
@@ -107,9 +107,6 @@ gem 'prawn'
 
 # Public comments
 gem 'ancestry'
-
-# Multiple speakers in form
-# gem 'cocoon'
 
 # Session storage
 gem 'activerecord-session_store'
