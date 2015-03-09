@@ -96,7 +96,7 @@ gem 'icalendar'
 gem 'recaptcha', :require => 'recaptcha/rails'
 
 # Character countdown 
-gem 'lettrics'
+# gem 'lettrics'
 
 # User authentication
 gem 'cancancan', '~> 1.9'
@@ -125,3 +125,7 @@ gem 'cookies_eu'
 
 # Url shortener
 gem 'bitly'
+
+# Identicons
+gem 'ruby_identicon'
+
