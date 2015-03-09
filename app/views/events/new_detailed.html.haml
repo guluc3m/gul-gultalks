@@ -1,0 +1,180 @@
+- page_title t("event.new_event")
+= render partial: "breadcrumbs"
+
+.row
+  .large-3.columns
+    = link_to conference_path(params[:conference_id]), { class: "button tiny radius expand" } do
+      %span.fa.fa-chevron-left.fa-fw.fa-lg
+      = t("back").humanize
+
+.row
+  .large-12.columns
+    %h1.subheader
+      = t("event.detailed_info")
+    %h5.subheader
+      = t("event.complete_detailed_form")
+    %hr
+
+= form_for @form, url: {controller: "events", action: "create_detailed"} do |f|
+
+  -# - @event.errors.full_messages.each do |msg|
+    .row
+      .large-12.columns
+        .alert-box.alert.radius
+          = msg
+
+  .row
+    .large-12.columns
+      %label{for: "subclass"}
+        %i.fa.fa-thumb-tack.fa-fw.fa-lg.subheader
+        = t("event.subclass")
+        %small
+          = t("event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.subclass_requirements"), class: "radius"}
+      .row
+        .large-3.columns
+          = select("detailed_event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}, {include_blank: true, selected: "selected"}, class: "radius", required: true, label:false)
+
+      -# .row.hide-for-touch
+      -#   .large-12.columns
+      -#     - Event.subclasses.keys.each do |s|
+      -#       = radio_button("event", "subclass", "#{s}")
+      -#       %label
+      -#         = t("event.subclasses.#{s}").humanize
+
+  .row
+    .large-12.columns
+      %label{for: "title"}
+        %i.fa.fa-bookmark.fa-fw.fa-lg.subheader
+        = t("event.title")
+        %small
+          = t("event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.title_requirements"), class: "radius"}
+        .right
+          %sub 128
+      = f.text_field :title, label: false, maxlength: 128, required: true, class: "radius lettrify"
+
+  .row
+    .large-12.columns
+      %label{for: "summary"}
+        %i.fa.fa-paperclip.fa-fw.fa-lg.subheader
+        = t("event.summary")
+        %small
+          = t("event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.summary_requirements"), class: "radius"}
+        .right
+          %sub 128
+      = f.text_field :summary, label: false, maxlength: 128, required: true, class: "radius lettrify"
+
+  .row
+    .large-12.columns
+      %label{for: "description"}
+        %i.fa.fa-bars.fa-fw.fa-lg.subheader
+        = t("event.description")
+        %small
+          = t("event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.description_requirements"), class: "radius"}
+        .right
+          %sub 1400
+      = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius lettrify", size: "10x8"
+
+
+  .row
+    .large-12.columns
+      .alert-box.radius{data: {alert: ""}}
+        %i.fa.fa-hand-o-right.fa-lg.fa-fw
+        = t("warning.up_to_five")
+        %a.close{href:""} ×
+      -# #speakers
+      = f.fields_for :speakers do |speaker|
+        -#FIXME
+        = render "partials/speaker_fields", f: speaker
+        -# .links.right
+          = link_to_add_association t("speaker.add"), f, :speakers, class: "button small radius"
+
+  -# .row
+    -# .large-12.columns
+      "POTATO"
+  -# = f.fields_for :speakers do |s|
+    .row
+      .large-12.columns
+        = s.text_field :name, placeholder: "cosa", class: "radius lettrify"
+
+  .row
+    .large-12.columns
+      %label{for: "content_url"}
+        %i.fa.fa-link.fa-fw.fa-lg.subheader
+        = t("event.url")
+        .right
+          %sub 128
+      = f.url_field :content_url, label: false, maxlength: 128, type: "url", placeholder: "http://", class: "radius lettrify"
+
+  .row
+    .large-12.columns
+      %label{for: "code"}
+        %i.fa.fa-code.fa-fw.fa-lg.subheader
+        = t("event.code")
+        .right
+          %sub 128
+      = f.url_field :code, label: false, maxlength: 128, type: "url", placeholder: "http://", class: "radius lettrify"
+
+  .row
+    .large-12.columns
+      %label{for: "tags"}
+        %i.fa.fa-tags.fa-fw.fa-lg.subheader
+        = t("event.tags")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.tag_format")}
+        .right
+          %sub 128
+      = f.text_field :tags, label: false, maxlength: 128, class: "radius lettrify", placeholder: t("event.tag_format")
+
+  .row
+    .large-4.columns
+      %label{for: "language"}
+        %i.fa.fa-globe.fa-fw.fa-lg.subheader
+        = t("event.language")
+        %small
+          = t("event.required")
+      = select("detailed_event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]},{include_blank: true, selected: "selected"}, required: true, class: "radius")
+
+    .large-4.columns
+      %label{for: "duration"}
+        %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
+        = t("event.duration")
+        %small
+          = t("event.required")
+      = select("detailed_event", "duration", Event.durations.keys.collect {|d| [t("event.durations.#{d}").humanize, d]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
+
+    .large-4.columns
+      %label{for: "level"}
+        %i.fa.fa-lightbulb-o.fa-fw.fa-lg.subheader
+        = t("event.level")
+        %small
+          = t("event.required")
+      = select("detailed_event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
+      /%span.level-name
+
+      -# .row.hide-for-touch
+      -#   .large-12.columns
+      -#     - Event.levels.keys.each do |l|
+      -#       = radio_button("detailed_event", "level", "#{l}")
+      -#       %label
+      -#         = t("event.levels.#{l}").humanize
+
+  .row
+    .large-12.columns
+      %label{for: "comments"}
+        %i.fa.fa-comments.fa-fw.fa-lg.subheader
+        = t("event.comments")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.notes_requirements")}
+        .right
+          %sub 300
+      = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius lettrify", size: "10x6"
+
+  .row
+    .large-12.columns
+      = render 'partials/recaptcha'
+
+  .row
+    .large-12.columns
+      = f.submit("[SEND]", class: "button radius success expand")

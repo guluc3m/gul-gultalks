@@ -65,7 +65,6 @@ es:
         verified: "Verificada"
         video: "Vídeo"
         votes: "Votos"
-        wizard_status: "Estado del asistente"
       speaker:
         certificate: "Certificado de actividad"
         confirmed: "Confirmado"
@@ -248,7 +247,6 @@ es:
     missing_speaker: "Actividades sin ponente"
     missing_speaker_msg: "Las siguientes actividades no tienen ponente o responsable para llevarlas a cabo. Si crees que puedes presentar la charla o ayudar en el taller no lo dudes y haz tu propuesta."
     new_event: "Nueva actividad"
-    next_step: "Siguiente paso"
     notes_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     recent: "Actividades recientes"
     required: "Requerido"

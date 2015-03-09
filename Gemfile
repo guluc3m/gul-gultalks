@@ -86,8 +86,8 @@ gem 'activevalidators'
 gem 'will_paginate'
 gem 'will_paginate-foundation'
 
-# Form Wizard
-gem 'wicked'
+# New event form
+gem 'reform'
 
 # iCalendar
 gem 'icalendar'
@@ -96,7 +96,7 @@ gem 'icalendar'
 gem 'recaptcha', :require => 'recaptcha/rails'
 
 # Character countdown 
-# gem 'lettrics'
+gem 'lettrics'
 
 # User authentication
 gem 'cancancan', '~> 1.9'
@@ -107,9 +107,6 @@ gem 'prawn'
 
 # Public comments
 gem 'ancestry'
-
-# Multiple speakers in form
-gem 'cocoon'
 
 # Session storage
 gem 'activerecord-session_store'

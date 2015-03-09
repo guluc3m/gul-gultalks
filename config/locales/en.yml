@@ -59,7 +59,6 @@ en:
         verified: "Verified"
         video: "Video"
         votes: "Votes"
-        wizard_status: "Wizard status"
       speaker:
         certificate: "Activity certificate"
         confirmed: "Confirmed"
@@ -231,7 +230,6 @@ en:
     missing_speaker: "Activities without speaker"
     missing_speaker_msg: "The following activities are missing a speaker that carries them out. If you believe you can present the talk or help in the workshop, do not hesitate to present your proposal."
     new_event: "New activity"
-    next_step: "Next step"
     notes_requirements: "Can only contain alphanumeric characters and hyphens"
     recent: "Recent activities"
     required: "Required"

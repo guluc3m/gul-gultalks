@@ -11,6 +11,7 @@ module Commentable
     @commentable = find_commentable
     @comments = @commentable.comments.sort_by { |comment| comment.created_at }
     @comment = Comment.new
+    @avatar = RubyIdenticon
   end
  
   private

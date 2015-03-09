@@ -1,5 +1,12 @@
 - page_title t("event.new_event")
 = render partial: "breadcrumbs"
+
+.row
+  .large-3.columns
+    = link_to conference_path(params[:conference_id]), { class: "button tiny radius expand" } do
+      %span.fa.fa-chevron-left.fa-fw.fa-lg
+      = t("back").humanize
+
 .row
   .large-12.columns
     %h1.subheader
@@ -8,7 +15,7 @@
       = t("event.complete_basic_form")
     %hr
 
-= form_for(@event, url: wizard_path, method: :put) do |f|
+= form_for @form, url: {controller: "events", action: "create_basic"} do |f|
 
   -# - @event.errors.full_messages.each do |msg|
   -#   .row
@@ -27,7 +34,7 @@
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.subclass_requirements"), class: "radius"}
       .row
         .large-3.columns
-          = select("event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}, {include_blank: true, selected: "selected"}, class: "radius", required: true, label:false)
+          = select("basic_event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}, {include_blank: true, selected: "selected"}, class: "radius", required: true, label:false)
 
       -# .row.hide-for-touch
       -#   .large-12.columns
@@ -76,14 +83,11 @@
   //  .large-12.columns
   //    = check_box("eula", "accepted", { class: 'eula_check' }, "yes", "no")
   //    %span Acepto las condiciones de privacidad
-      
-  .row
-    .large-3.columns.right
-      = f.button class: "button radius expand success" do
-        = content_tag(:span, t("event.next_step"))
-        %span.fa.fa-chevron-right.fa-fw.fa-lg
 
-    .large-3.columns.left
-      = link_to conference_path(params[:conference_id]), { class: "button radius expand" } do
-        %span.fa.fa-chevron-left.fa-fw.fa-lg
-        = t("back").humanize
+  .row
+    .large-12.columns
+      = render 'partials/recaptcha'
+
+  .row
+    .large-12.columns
+      = f.submit("[SEND]", class: "button radius success expand")

@@ -8,14 +8,16 @@ Gultalks::Application.routes.draw do
   # Verifiers
   match 'verify', to: 'verifier#verify', via: :get, path: '/verify'
 
-  # Event wizard
-  match 'new_conference_event', to: 'wizard#create', via: :get, path: '/:conference_id/new'
-  # resources :event_wizard, path: '/:conference_id/new', except: [:new]
-  resources :wizard, path: '/:conference_id/new/:event_id/', except: [:new]
-
   # Conferences
   match 'conferences', to: 'conferences#index', via: :get, path: '/conferences'
   match 'conference', to: 'conferences#show', via: :get, path: '/:id'
+
+  # Event creation
+  match 'new_conference_event', to: 'events#new', via: :get, path: '/:conference_id/new'
+  match 'basic_events', to: 'events#new_basic', via: :get, path: '/:conference_id/new_basic'
+  match 'create_basic_event', to: 'events#create_basic', via: :post, path: '/:conference_id/new_basic/create'
+  match 'detailed_events', to: 'events#new_detailed', via: :get, path: '/:conference_id/new_detailed'
+  match 'create_detailed_event', to: 'events#create_detailed', via: :post, path: '/:conference_id/new_detailed/create'
 
   # Events
   match 'conference_events', to: 'events#index', via: :get, path: '/:conference_id/events'
@@ -28,8 +30,6 @@ Gultalks::Application.routes.draw do
   # Comments
   resources :comments, path: '/:conference_id/:event_id/comments'
 
-
-  
 
   #resources :conferences, path: '/conferencesevents#send_speaker', only: [:index]
   #resources :conferences, path: '', except: [:index] do
