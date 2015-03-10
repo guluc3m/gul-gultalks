@@ -4,6 +4,10 @@ class CommentsController < ApplicationController
     @event = Event.friendly.find(params[:event_id])
     @conference = Conference.find(@event.conference_id)
 
+    if !@conference.active
+      redirect_to conference_path(@conference)
+    end
+
     @commentable = find_commentable
     @comment = @commentable.comments.build(comment_params)
 
@@ -27,6 +31,10 @@ class CommentsController < ApplicationController
   def new
     @event = Event.friendly.find(params[:event_id])
     @conference = Conference.find(@event.conference_id)
+
+    if !@conference.active
+      redirect_to conference_path(@conference)
+    end
 
     @parent_id = params.delete(:parent_id)
     @parent = Comment.find(@parent_id)
