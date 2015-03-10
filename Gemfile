@@ -60,7 +60,7 @@ gem 'capistrano', '~> 2.15.5'
 # gem 'debugger', group: [:development, :test]
 
 #gem 'foundation-icons-sass-rails'
-gem 'font-awesome-rails'
+gem 'font-awesome-rails', '~> 4.3.0.0'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem 'haml-rails'
