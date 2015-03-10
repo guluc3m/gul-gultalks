@@ -59,10 +59,19 @@ class EventsController < ApplicationController
     end
 
     event = Event.new
+    event.conference_id = @conference.id
     5.times { event.speakers.build }
 
     @form = DetailedEventForm.new(event)
-    if @form.validate(params[:detailed_event]) && verify_recaptcha
+
+    total_speakers = 0
+    params[:detailed_event]["speakers_attributes"].each do |key, sp|
+      if sp["name"].present?
+        total_speakers += 1
+      end
+    end
+
+    if @form.validate(params[:detailed_event]) && total_speakers > 0 && total_speakers < 6 && verify_recaptcha
       @form.save do |nested|
         # Save event and tags
         new_event = Event.new(nested.except("speakers"))
