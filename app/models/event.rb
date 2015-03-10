@@ -17,8 +17,7 @@ class Event < ActiveRecord::Base
           too_long: I18n.t("errors.messages.too_long")
       },
       presence: true,
-      uniqueness: { scope: :conference },
-      if: :complete_or_basic?
+      uniqueness: { scope: :conference }
 
   validates :summary,
       format: { with: /\A[a-z0-9\W]+\z/i },
@@ -28,8 +27,7 @@ class Event < ActiveRecord::Base
           too_short: I18n.t("errors.messages.too_short"),
           too_long: I18n.t("errors.messages.too_long")
       },
-      presence: true,
-      if: :complete_or_basic?
+      presence: true
 
   validates :description,
       format: { with: /\A[a-z0-9\W]+\z/i },
@@ -39,8 +37,7 @@ class Event < ActiveRecord::Base
           too_short: I18n.t("errors.messages.too_short"),
           too_long: I18n.t("errors.messages.too_long")
       },
-      presence: true,
-      if: :complete_or_basic?
+      presence: true
 
   validates :content_url,
       url: true,
@@ -50,8 +47,7 @@ class Event < ActiveRecord::Base
           too_short: I18n.t("errors.messages.too_short"),
           too_long: I18n.t("errors.messages.too_long")
       },
-      allow_blank: true,
-      if: :complete_or_detailed?
+      allow_blank: true
 
   validates :code,
       url: true,
@@ -61,22 +57,18 @@ class Event < ActiveRecord::Base
           too_short: I18n.t("errors.messages.too_short"),
           too_long: I18n.t("errors.messages.too_long")
       },
-      allow_blank: true,
-      if: :complete_or_detailed?
+      allow_blank: true
 
   validates :notes,
       allow_blank: true,
-      format: { with: /\A[a-z0-9\W]+\z/i },
-      if: :complete_or_detailed?
+      format: { with: /\A[a-z0-9\W]+\z/i }
 
   validates :language,
       allow_blank: true,
-      inclusion: { in: I18n.t("event.languages").keys.collect {|l| l.to_s} },
-      if: :complete_or_detailed?
+      inclusion: { in: I18n.t("event.languages").keys.collect {|l| l.to_s} }
 
   validates :subclass,
-      presence: true,
-      if: :complete_or_basic?
+      presence: true
 
 
   enum duration: [:unspecified_duration, :t_0, :t_1, :t_2, :t_3, :t_4, :t_5]
