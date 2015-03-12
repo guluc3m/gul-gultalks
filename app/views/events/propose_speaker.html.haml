@@ -1,15 +1,15 @@
 - page_title t("speaker.propose")
 -# = render partial: "partials/breadcrumbs"
 
-.row.show-for-landscape
+.row.show-for-medium-up
   .medium-12.columns
     %ul.breadcrumbs
       %li
         = link_to t("home"), root_path
       %li
         = link_to @conference.title, conference_path(@conference)
-      -# %li
-      -#   = link_to @event.title, conference_event_path(@conference, @event)
+      %li
+        = link_to @event.title, conference_event_path(@conference, @event)
       %li.current
         = t("speaker.propose")
 
@@ -31,7 +31,7 @@
 
 = form_tag send_speaker_conference_event_path(@conference, @event) do
   .row
-    .large-4.columns
+    .large-5.columns
       %label{for: "name"}
         %i.fa.fa-users.fa-fw.fa-lg.subheader
         = t("speaker.name")
@@ -39,7 +39,8 @@
           = t("event.required")
       = text_field_tag "name", nil, class: "radius", required: true, maxlength: 64
 
-    .large-4.columns
+  .row
+    .large-5.columns
       %label{for: "email"}
         %i.fa.fa-envelope.fa-fw.fa-lg.subheader
         = t("speaker.email")
@@ -47,7 +48,8 @@
           = t("event.required")
       = email_field_tag "email", nil, class: "radius", required: true, type: "email", maxlength: 64
 
-    .large-4.columns
+  .row
+    .large-5.columns
       %label{for: "twitter"}
         %i.fa.fa-twitter.fa-fw.fa-lg.subheader
         = t("speaker.twitter")
@@ -58,7 +60,7 @@
           = text_field_tag "twitter", nil, class: "radius", maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})"
 
   .row
-    .large-6.columns
+    .large-5.columns
       = check_box_tag "certificate", nil
       %label{for: "certificate"}
         = t("speaker.request_certificate")
@@ -68,11 +70,11 @@
       = render 'partials/recaptcha'
 
   .row
-    .large-6.columns
+    .large-5.columns
       = submit_tag t("speaker.propose"), class: "button radius success expand"
 
 .row
-  .large-3.columns
+  .large-3.columns.show-for-medium-down
     = link_to conference_event_path(@conference, @event), { class: "button radius expand" } do
       %span.fa.fa-chevron-left.fa-fw.fa-lg
       = t("event.back_to_event").humanize
