@@ -10,12 +10,20 @@
 .row
   .large-12.columns
     = render 'partials/status_tags', event: @event
+    - if not @event.speakers.present? and @conference.call_for_papers_enabled and not @event.cancelled? 
+      = link_to propose_speaker_conference_event_path, class: "label alert radius" do
+        %i.fa.fa-child.fa-lg.fa-fw
+        = t('speaker.unassigned').humanize
+
     .right
       %span.label.radius.secondary.visible-for-medium-up
+        %span
+          // TODO: localize
+          Compártelo:
         = link_to "http://twitter.com/home?status=#{@event.title.truncate(30, separator: ' ')} #{@short_url} - via @guluc3m", target: "_blank" do
-          %i.fa.fa-twitter.fa-2x
+          %i.fa.fa-twitter.fa-lg
         = link_to "https://www.facebook.com/sharer/sharer.php?u=#{@event.title} #{@short_url} - via http://gul.es", target: "_blank" do
-          %i.fa.fa-facebook.fa-2x
+          %i.fa.fa-facebook.fa-lg
     %h2
       = @event.title
     %h6.subheader
@@ -49,13 +57,13 @@
               = @event.assisted_by
             - else
               = t('event.assist.unassigned')
-    - else
-      .row
-        .columns
-          %span.label.alert.radius
-            %i.fa.fa-child.fa-lg.fa-fw
-            %b
-              = t('speaker.unassigned').humanize
+    -# - else
+    -#   .row
+    -#     .columns
+    -#       %span.label.alert.radius
+    -#         %i.fa.fa-child.fa-lg.fa-fw
+    -#         %b
+    -#           = t('speaker.unassigned').humanize
 
     %hr
 
@@ -179,7 +187,7 @@
   - unless @event.cancelled
     - if @conference.voting_enabled
       .large-3.columns.right
-        = link_to  vote_conference_event_path, class: "button success radius expand" do
+        = link_to vote_conference_event_path, class: "button success radius expand" do
           %b
             = t("to_vote")
     - else
@@ -188,25 +196,30 @@
           %i.fa.fa-lock.fa-lg
           = t("to_vote")
 
-    - if !@event.speaker? && @conference.call_for_papers_enabled
-      .large-3.columns.right
-        = link_to propose_speaker_conference_event_path, class: "button radius expand" do
-          %i.fa.fa-child.fa-lg
-          = t("speaker.propose")
+    -# - if !@event.speaker? && @conference.call_for_papers_enabled
+    -#   .large-3.columns.right
+    -#     = link_to propose_speaker_conference_event_path, class: "button radius expand" do
+    -#       %i.fa.fa-child.fa-lg
+    -#       = t("speaker.propose")
 
 .row
   .large-12.columns
-    %h4.subheader
-      %i.fa.fa-comments-o
-      = t("event.comments").humanize
-    -# %sub.right
-    -#   0 comentarios
+    .large-6.columns
+      %h4.subheader
+        %i.fa.fa-comments-o
+        = t("event.comments").humanize
+      -# - if @comments.count.nonzero?
+      -#   .label.radius
+      -#     = @comments.count
+      -# .large-4.comments.show-for-medium-up
+      -#   = link_to "#", class: "label tiny radius success"
+
     %hr{style: "border-style: dashed"}
     - if @comments.present?
       - @comments.map do |comment|
         .row{id: "comment-#{comment.id}"}
           .large-8.columns
-            .medium-2.columns
+            .small-2.columns
               - icon = @avatar.create_base64(comment.name, grid_size: 5, square_size: 64)
               = image_tag "data:image/png;base64,#{icon}"
             .medium-10.columns
