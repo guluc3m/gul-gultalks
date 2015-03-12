@@ -2,9 +2,9 @@
   .row
     .large-12.columns
       %hr/
-  .row.show-for-medium-up
+  .row
     .large-7.columns
-      %ul.inline-list
+      %ul.inline-list.show-for-medium-up
         %li
           = link_to t("home"), root_path
         %li
@@ -12,13 +12,15 @@
         %li
           = link_to "API", apidocs_path
         %li
-          = link_to "gul.es", "http://gul.es"
-        %li
           = link_to "Archivo", "http://ftp.gul.es/pub/gul/cursos/"
+        %li
+          = link_to "Fork us on GitHub", "https://github.com/guluc3m/gul-gultalks"
+        %li
+          = link_to "gul.es", "http://gul.es"
       %sup.subheader
         © Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid. 2007 — #{ Time.now().year }
     / Fortunes
-    .large-5.columns
+    .large-5.columns.show-for-medium-up
       #fortunes
         = render "partials/fortunes"
   .row
