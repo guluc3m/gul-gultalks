@@ -1,4 +1,4 @@
-- if !event.cancelled? and event.created_at.today?
+- if not event.cancelled? and event.created_at.today?
   %span.success.radius.label
     = t("event.status.new").humanize
 %span.info.radius.label
