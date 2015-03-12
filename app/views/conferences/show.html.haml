@@ -58,11 +58,11 @@
           - @paginated_events.map do |event|
             %tr
               %td
-                = link_to event.title, conference_event_path(@conference, event)
+                = link_to h(event.title), conference_event_path(@conference, event)
                 = render partial: "partials/status_tags", locals: {event: event}
                 %h5
                   %small
-                    = event.summary
+                    = h(event.summary)
               - if Date.today >= @conference.voting_start_date
                 %td.text-center
                   = event.votes
@@ -73,7 +73,7 @@
     - if @pending_events.count.nonzero?
       .row
         .large-12.columns
-          %h4.subheader 
+          %h4.subheader
             %i.fa.fa-child.fa-fw.fa-lg
             = t("event.missing_speaker")
           %hr
@@ -93,11 +93,11 @@
                 - @pending_events.map do |event|
                   %tr
                     %td
-                      = link_to event.title, conference_event_path(@conference, event)
+                      = link_to h(event.title), conference_event_path(@conference, event)
                       = render partial: "partials/status_tags", locals: {event: event}
                       %h5
                         %small
-                          = event.summary
+                          = h(event.summary)
                     - if Date.today >= @conference.voting_start_date
                       %td.text-center
                         = event.votes

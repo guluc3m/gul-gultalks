@@ -6,7 +6,7 @@
       %li
         = link_to @conference.title, conference_path(@conference)
       %li.current
-        = @event.title
+        = h(@event.title)
 .row
   .large-12.columns
     = render 'partials/status_tags', event: @event
@@ -17,19 +17,19 @@
         = link_to "https://www.facebook.com/sharer/sharer.php?u=#{@event.title} #{@short_url} - via http://gul.es", target: "_blank" do
           %i.fa.fa-facebook.fa-2x
     %h2
-      = @event.title
+      = h(@event.title)
     %h6.subheader
-      = @event.summary
+      = h(@event.summary)
 
     - if @event.speakers.present?
       .row
         .large-6.columns
           %span
             - @event.speaker_list.each_with_index.map do |speaker, index|
-              = speaker.name
+              = h(speaker.name)
               - if speaker.twitter.present?
                 = "("
-                = link_to "@#{speaker.twitter}", "https://twitter.com/#{speaker.twitter}", target: "_blank"
+                = link_to h("@#{speaker.twitter}"), "https://twitter.com/#{speaker.twitter}", target: "_blank"
                 = ")"
               - unless index+1 == @event.speaker_list.length
                 = ", "
@@ -62,7 +62,7 @@
 .row
   .large-8.columns
     .text-justify
-      = simple_format(@event.description).html_safe
+      = simple_format(h(@event.description))
     -# .row
     -#   .columns
     -#     %div{:style => "position: absolute; bottom: 0; width: 100%; height: 50px; border: 1px solid red;"}
@@ -79,7 +79,7 @@
         %li
           %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
           - unless !@event.start_dtime || !@event.end_dtime
-            = "#{@event.start_dtime.strftime("%H:%M")} - #{@event.end_dtime.strftime("%H:%M")}" 
+            = "#{@event.start_dtime.strftime("%H:%M")} - #{@event.end_dtime.strftime("%H:%M")}"
           - else
             = t("not_available").humanize
         %li
@@ -87,11 +87,11 @@
           %span
             = @event.location
             .show-for-medium-up
-              = link_to "¿Cómo llegar?", "#",  data: { "reveal-id" => "map-modal" } 
+              = link_to "¿Cómo llegar?", "#",  data: { "reveal-id" => "map-modal" }
               = render "partials/map_modal"
             .show-for-small
               = link_to "¿Cómo llegar?", "http://www.openstreetmap.org/?mlat=40.33249&amp;mlon=-3.76728#map=17/40.33250/-3.76729", target: "_blank"
-         
+
         %li
           %i.fa.fa-building.fa-fw.fa-lg.subheader
           - if @event.room.present?
@@ -106,13 +106,13 @@
           // TODO: culd be great with "link_to_if" method
           - if (@event.start_dtime..@event.end_dtime).cover?(Time.now) and @event.live_video.present?
             .show-for-medium-up
-              = link_to("#", data: { "reveal-id" => "video-modal" }) do 
+              = link_to("#", data: { "reveal-id" => "video-modal" }) do
                 .button.tiny.alert.radius
                   %i.fa.fa-youtube-play.fa-fw.fa-lg
                   %strong Ver en directo
               = render "partials/video_modal"
             .show-for-small-only
-              = link_to(event.live_video, target: "_blank" ) do 
+              = link_to(event.live_video, target: "_blank" ) do
                 .button.tiny.alert.radius
                   %i.fa.fa-youtube-play.fa-fw.fa-lg
                   %strong Ver en directo
@@ -122,7 +122,7 @@
               = render "partials/video_modal"
             - else
               = t('not_available').humanize
-            
+
         %li
           %i.fa.fa-globe.fa-fw.fa-lg.subheader
           - if @event.language.present?
@@ -143,7 +143,7 @@
           /%i.fa.fa-info.fa-fw.fa-lg.subheader
           - @event.tag_list.map do |tag|
             .label.info.radius
-              = tag.humanize
+              = h(tag.humanize)
 
       .success.radius.label.large
         %b
@@ -156,7 +156,7 @@
       %i.fa.fa-download.fa-fw.subheader
       //TODO: check 'link_to_if' out
       - if @event.content_url.present?
-        = link_to @event.content_url, @event.content_url, target: "_blank"
+        = link_to h(@event.content_url), @event.content_url, target: "_blank"
       - else
         = t("not_available").humanize
 
@@ -164,7 +164,7 @@
     %span
       %i.fa.fa-code.fa-fw.subheader
       - if @event.code.present?
-        = link_to @event.code, @event.code, target: "_blank"
+        = link_to h(@event.code), @event.code, target: "_blank"
       - else
         = t("not_available").humanize
   .large-12.columns
@@ -211,7 +211,7 @@
               = image_tag "data:image/png;base64,#{icon}"
             .medium-10.columns
               %h4.subheader
-                = sanitize comment.name
+                = h(comment.name)
               %small
                 = comment.created_at.to_s(:long)
               - if comment.ancestry?
@@ -219,7 +219,7 @@
                   = link_to "#comment-#{comment.parent}" do
                     = t("event.comment.response_to").humanize
               %p
-                = simple_format comment.content, sanitize: true
+                = simple_format(h(comment.content))
               .actions
                 = link_to new_comment_path(@conference, @event, parent_id: comment) do
                   = t("event.comment.reply").humanize
@@ -239,7 +239,6 @@
           .panel.callout.radius
             %h5
               No hay comentarios
-
 
 - if @conference.active?
   = render "comments/form"
