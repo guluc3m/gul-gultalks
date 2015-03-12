@@ -339,7 +339,7 @@ es:
     invalid: "Código de verificación no válido"
     speaker: "¡Gracias por verificar tu asistencia!"
     token: "Token"
-    type: "Tipo" 
+    type: "Tipo"
     types:
         certificate: "certificado"
         event: "actividad"
@@ -354,7 +354,7 @@ es:
     other: "votos"
     send_vote: "Enviar voto"
   warning:
-    up_to_five: "Sólo se pueden añadir hasta un máximo de 5 integrantes por actividad." 
+    up_to_five: "Debe haber un mínimo de 1 ponente y un máximo de 5."
     no_conferences: "No se ha podido recuperar ninguna edición."
   will_paginate:
     previous_label: "&#8592; Anterior"
