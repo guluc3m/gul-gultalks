@@ -4,11 +4,11 @@
   .large-6.columns
     %h3.subheader
       = t("event.comment.replying_to")
-      = @parent.name
+      = h(@parent.name)
 
 .row
   .large-6.columns
     %i
-      = simple_format @parent.content, sanitize: true
+      = simple_format(h(@parent.content))
 
 = render 'form'

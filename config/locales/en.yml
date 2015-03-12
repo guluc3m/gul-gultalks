@@ -190,6 +190,8 @@ en:
       name: "Name"
       comment: "Comment"
       email: "email"
+      first_to_comment: "Be the first to comment"
+      no_comments: "No comments"
       post: "Post"
       send_comment: "Send comment"
       reply: "Reply"
@@ -199,9 +201,11 @@ en:
     complete_basic_form: "Complete the form with basic information for the activity."
     complete_detailed_form: "Complete the form with detailed information for the activity."
     detailed_info: "Detailed info"
+    download_ical: "Download calendar (iCal)"
     contact: "Email address"
     description: "Description"
     description_requirements: "Can only contain alphanumeric characters and hyphens."
+    directions: "Directions"
     duration: "Duration"
     durations:
       unspecified_duration: "unspecified"
@@ -213,10 +217,11 @@ en:
       t_5: "more than 2 hours"
     email_requirements: "Not a valid email address"
     end_datetime: "End date and time"
+    finalized: "Finalized"
     i_am_proposing: "No, I am just proposing it"
     i_am_speaker: "Yes, I am going to be the speaker"
     language: "Language"
-    languages: 
+    languages:
       es: "spanish"
       en: "english"
     level: "Level"
@@ -261,6 +266,7 @@ en:
     code_requirements: "Not a valid URL"
     validation_email: "Email address for validation"
     validation_email_explanation: "You need to validate the activity through a link that will be sent to this email address."
+    watch_live: "Watch live"
   Event:
     one: "Activity"
     other: "Activities"

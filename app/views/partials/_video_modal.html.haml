@@ -1,7 +1,7 @@
 #video-modal.reveal-modal.medium.show-for-medium-up{"data-reveal" => ""}
   .row
     .large-12.columns
-      - if @event.live_video.present? or @event.video.present? 
+      - if @event.live_video.present? or @event.video.present?
         .flex-video.widescreen
           - if @event.live_video.present? and !@event.video.present?
             // FIXME
@@ -9,10 +9,10 @@
           - elsif @event.video.present?
             = video_tag(@event.video, controls: true, autobuffer: true)
         %h5
-          = @event.title
+          = h(@event.title)
         %p.subheader
           - @event.speakers.each_with_index.map do |speaker|
-            = speaker.name
+            = h(speaker.name)
             = ", "
       - else
         .alert-box.radius

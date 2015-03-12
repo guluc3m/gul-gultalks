@@ -87,10 +87,10 @@
           %span
             = @event.location
             .show-for-medium-up
-              = link_to "¿Cómo llegar?", "#",  data: { "reveal-id" => "map-modal" }
+              = link_to t("event.directions"), "#",  data: { "reveal-id" => "map-modal" }
               = render "partials/map_modal"
             .show-for-small
-              = link_to "¿Cómo llegar?", "http://www.openstreetmap.org/?mlat=40.33249&amp;mlon=-3.76728#map=17/40.33250/-3.76729", target: "_blank"
+              = link_to t("event.directions"), "http://www.openstreetmap.org/?mlat=40.33249&amp;mlon=-3.76728#map=17/40.33250/-3.76729", target: "_blank"
 
         %li
           %i.fa.fa-building.fa-fw.fa-lg.subheader
@@ -109,13 +109,15 @@
               = link_to("#", data: { "reveal-id" => "video-modal" }) do
                 .button.tiny.alert.radius
                   %i.fa.fa-youtube-play.fa-fw.fa-lg
-                  %strong Ver en directo
+                  %strong
+                    = t("event.watch_live").humanize
               = render "partials/video_modal"
             .show-for-small-only
               = link_to(event.live_video, target: "_blank" ) do
                 .button.tiny.alert.radius
                   %i.fa.fa-youtube-play.fa-fw.fa-lg
-                  %strong Ver en directo
+                  %strong
+                    = t("event.watch_live").humanize
           - else
             %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
             - if @event.video.present?
@@ -133,7 +135,7 @@
         %li
           %i.fa.fa-lightbulb-o.fa-fw.fa-lg.subheader
           - if @event.level.present?
-            Nivel:
+            = "#{t("event.level").humanize}:"
             = t("event.levels.#{@event.level}").humanize
           - else
             = t('not_available').humanize
@@ -230,15 +232,16 @@
         .large-6.large-centered.columns
           .panel.callout.radius
             %h2
-              No hay comentarios
+              = t("event.comment.no_comments").humanize
             %p
-              Sé el primero en comentar.
+              = t("event.comment.first_to_comment").humanize
+
     - else
       .row
         .large-6.large-centered.columns
           .panel.callout.radius
             %h5
-              No hay comentarios
+              = t("event.comment.no_comments").humanize
 
 - if @conference.active?
   = render "comments/form"
