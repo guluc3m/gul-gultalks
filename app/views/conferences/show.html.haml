@@ -44,7 +44,7 @@
               %td
                 = link_to h(event.title), conference_event_path(@conference, event)
                 = render partial: "partials/status_tags", locals: {event: event}
-                - if not event.speakers.present?
+                - if not event.speaker_list.present?
                   .label.alert.radius
                     %i.fa.fa-child.fa-lg.fa-fw
                     = t('speaker.unassigned').humanize

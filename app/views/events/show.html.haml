@@ -10,7 +10,7 @@
 .row
   .large-12.columns
     = render 'partials/status_tags', event: @event
-    - if not @event.speakers.present? and @conference.call_for_papers_enabled and not @event.cancelled? 
+    - if not @event.speaker_list.present? and @conference.call_for_papers_enabled and not @event.cancelled?
       = link_to propose_speaker_conference_event_path, class: "label alert radius" do
         %i.fa.fa-child.fa-lg.fa-fw
         = t('speaker.unassigned').humanize
@@ -29,7 +29,7 @@
     %h6.subheader
       = h(@event.summary)
 
-    - if @event.speakers.present?
+    - if @event.speaker_list.present?
       .row
         .large-6.columns
           %span
