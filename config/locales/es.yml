@@ -206,6 +206,8 @@ es:
       name: "Nombre"
       comment: "Comentario"
       email: "Correo electrónico"
+      first_to_comment: "Sé el primero en comentar"
+      no_comments: "No hay comentarios"
       post: "Publicar"
       reply: "Responder"
       replying_to: "Respondiendo a"
@@ -215,9 +217,11 @@ es:
     complete_basic_form: "Completa el formulario con información básica de la actividad."
     complete_detailed_form: "Completa el formulario con información detallada de la actividad."
     detailed_info: "Información detallada"
+    download_ical: "Descargar calendario (iCal)"
     contact: "Correo electrónico"
     description: "Descripción"
     description_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
+    directions: "Cómo llegar"
     duration: "Duración"
     durations:
       unspecified_duration: "sin especificar"
@@ -229,11 +233,12 @@ es:
       t_5: "más de 2 horas"
     email_requirements: "No es una dirección de correo electrónico válida."
     end_datetime: "Fecha y hora de finalización"
+    finalized: "Finalizado"
     i_am_proposing: "No, sólo lo estoy proponiendo"
     i_am_speaker: "Sí, voy a ser el ponente"
     language: "Idioma"
     # Write here the availabe languages
-    languages: 
+    languages:
       es: "español"
       en: "inglés"
     level: "Nivel"
@@ -278,7 +283,8 @@ es:
     code_requirements: "No es una URL válida, debe empezar por http://"
     validation_email: "Correo electrónico para validación"
     validation_email_explanation: "Es necesario que valides la actividad mediante un enlace que se enviará a esta dirección de correo."
-  Event: 
+    watch_live: "Ver en directo"
+  Event:
     one: "Actividad"
     other: "Actividades"
   Events: "Actividades"
@@ -333,7 +339,7 @@ es:
     invalid: "Código de verificación no válido"
     speaker: "¡Gracias por verificar tu asistencia!"
     token: "Token"
-    type: "Tipo" 
+    type: "Tipo"
     types:
         certificate: "certificado"
         event: "actividad"
@@ -348,7 +354,7 @@ es:
     other: "votos"
     send_vote: "Enviar voto"
   warning:
-    up_to_five: "Sólo se pueden añadir hasta un máximo de 5 integrantes por actividad." 
+    up_to_five: "Debe haber un mínimo de 1 ponente y un máximo de 5."
     no_conferences: "No se ha podido recuperar ninguna edición."
   will_paginate:
     previous_label: "&#8592; Anterior"

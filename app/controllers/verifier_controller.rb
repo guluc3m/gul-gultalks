@@ -18,12 +18,17 @@ class VerifierController < ApplicationController
         end
 
         render "speaker_verified"
+
       elsif verifier.verify_type.eql? "certificate"
         speaker = Speaker.find_by(email: verifier.email, event_id: verifier.event_id)
 
         verifier.update_attribute(:verified, true)
+        # Verifiery may have been created from admin panel, update speaker
+        speaker.update_attribute(:certificate, true)
         Notifier.send_certificate(speaker).deliver
+
         render "certificate_sent"
+
       elsif verifier.verify_type.eql? "vote"
         event = Event.find(verifier.event_id)
         conference = Conference.find(event.conference_id)
@@ -31,7 +36,9 @@ class VerifierController < ApplicationController
         if conference.voting_enabled
           event.update_attribute(:votes, event.votes + 1)
           verifier.update_attribute(:verified, true)
+
           render "vote_verified"
+
         else
           render "error"
         end
@@ -50,7 +57,7 @@ class VerifierController < ApplicationController
       #     # Validate the vote
       #     event.update_attribute(:votes, event.votes + 1)
       #     verifier.update_attribute(:verified, true)
-      #     render "vote_verified"        
+      #     render "vote_verified"
       #   end
       # end
     end

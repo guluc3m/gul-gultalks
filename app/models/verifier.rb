@@ -28,23 +28,22 @@ class Verifier < ActiveRecord::Base
   # enum types: [:certificate, :event, :speaker, :vote]
   enum types: [:certificate, :speaker, :vote]
 
-   private
-   def send_verification
-       if self.verify_type.eql? "certificate"
-         Notifier.confirmation_certificate(self).deliver
-       # elsif self.verify_type.eql? "event"
-         # Notifier.confirmation_event(self).deliver
-       elsif self.verify_type.eql? "vote"
-         Notifier.confirmation_vote(self).deliver
-       elsif self.verify_type.eql? "speaker"
-         Notifier.confirmation_speaker(self).deliver
-       end
-   end
+  private
+  def send_verification
+    if self.verify_type.eql? "certificate"
+      Notifier.confirmation_certificate(self).deliver
+    # elsif self.verify_type.eql? "event"
+      # Notifier.confirmation_event(self).deliver
+    elsif self.verify_type.eql? "vote"
+      Notifier.confirmation_vote(self).deliver
+    elsif self.verify_type.eql? "speaker"
+      Notifier.confirmation_speaker(self).deliver
+    end
+  end
 
-   def generate_token
-       token = SecureRandom.urlsafe_base64(TOKEN_LENGTH, false)
-       puts token
-       generate_token if Verifier.exists?(token: token)
-       self.token = token
-   end
+  def generate_token
+    token = SecureRandom.urlsafe_base64(TOKEN_LENGTH, false)
+    generate_token if Verifier.exists?(token: token)
+    self.token = token
+  end
 end

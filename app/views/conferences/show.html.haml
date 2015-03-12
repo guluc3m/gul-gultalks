@@ -42,7 +42,7 @@
           - @events.map do |event|
             %tr
               %td
-                = link_to event.title, conference_event_path(@conference, event)
+                = link_to h(event.title), conference_event_path(@conference, event)
                 = render partial: "partials/status_tags", locals: {event: event}
                 - if not event.speakers.present?
                   .label.alert.radius
@@ -50,7 +50,7 @@
                     = t('speaker.unassigned').humanize
                 %h5
                   %small
-                    = event.summary
+                    = h(event.summary)
               - if Date.today >= @conference.voting_start_date
                 %td.text-center
                   = event.votes

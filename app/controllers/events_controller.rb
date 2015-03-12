@@ -65,8 +65,8 @@ class EventsController < ApplicationController
     @form = DetailedEventForm.new(event)
 
     total_speakers = 0
-    params[:detailed_event]["speakers_attributes"].each do |key, sp|
-      if sp["name"].present?
+    5.times do |i|
+      if params[:detailed_event]["speakers_attributes"]["#{i}"]["name"].present?
         total_speakers += 1
       end
     end
