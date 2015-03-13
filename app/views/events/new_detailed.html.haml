@@ -78,8 +78,30 @@
           %sub 1400
       = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius lettrify", size: "10x8"
 
+  .row
+    .large-12.columns
+      .alert-box.radius{data: {alert: ""}}
+        %i.fa.fa-hand-o-right.fa-lg.fa-fw
+        = t("warning.up_to_five")
+        %a.close{href:""} ×
 
   .row
+    -# Tabs for bigger screens
+    .large-12.columns
+      .show-for-medium-up
+        %ul.tabs{"data-tab" => ""}
+          - (0..4).each do |index|
+            %li.tab-title
+              %a{href: "#speaker_#{index}"}
+                = t("Speaker") + " #{index}"
+
+  .tabs-content
+    = f.fields_for :speakers do |speaker|
+      .content{id: "speaker_#{speaker.index}"}
+        = render "partials/speaker_fields", f: speaker
+
+
+  -# .row
     .large-12.columns
       .alert-box.radius{data: {alert: ""}}
         %i.fa.fa-hand-o-right.fa-lg.fa-fw
