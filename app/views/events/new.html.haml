@@ -9,14 +9,20 @@
         = t("back").humanize
 
 .row
-  .medium-12.columns
-    %h5.subheader
-      = t("event.are_you_speaker")
-    %p
-      = simple_format(t("event.are_you_speaker_explanation"))
-    %hr
+  .large-12.columns
+    %h1.subheader
+      = t("Nueva Actividad")
+      %hr
 
 .row
+  .large-12.columns
+    %h5.subheader
+      = t("event.are_you_speaker")
+  .large-6.columns
+    .text-justify
+      %p
+        = simple_format(t("event.are_you_speaker_explanation"))
+
   .large-6.columns
     = link_to basic_events_path(@conference), { class: "button radius expand" } do
       -# %span.fa.fa-reply.fa-fw.fa-lg
