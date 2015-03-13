@@ -85,21 +85,34 @@
         = t("warning.up_to_five")
         %a.close{href:""} ×
 
-  .row
-    -# Tabs for bigger screens
-    .large-12.columns
-      .show-for-medium-up
+  -# Tabs for bigger screens
+  -# .show-for-medium-up
+    .row
+      .large-12.columns
         %ul.tabs{"data-tab" => ""}
           - (0..4).each do |index|
             %li.tab-title
               %a{href: "#speaker_#{index}"}
                 = t("Speaker") + " #{index}"
 
-  .tabs-content
-    = f.fields_for :speakers do |speaker|
-      .content{id: "speaker_#{speaker.index}"}
-        = render "partials/speaker_fields", f: speaker
+    .tabs-content
+      = f.fields_for :speakers do |speaker|
+        .content{id: "speaker_#{speaker.index}"}
+          = render "partials/speaker_fields", f: speaker
 
+
+
+  -# Accordion for small screens
+  .show-for-small-up
+    .row
+      .large-12.columns
+        %dl.accordion{"data-accordion" => ""}
+          = f.fields_for :speakers do |speaker|
+            %dd.accordion-navigation
+              %a{href: "#speaker_#{speaker.index}"}
+                = t("Speaker") + " #{speaker.index}"
+              .content{id: "speaker_#{speaker.index}"}
+                = render "partials/speaker_fields", f: speaker
 
   -# .row
     .large-12.columns
