@@ -193,6 +193,10 @@ es:
   # abbr_day_names: [lun, mar, mié, jue, vie, sáb, dom]
   event:
     are_you_speaker: "¿Vas a ser el ponente de esta actividad?"
+    are_you_speaker_explanation: |
+      Si sólo quieres proponer una actividad a la que te gustaría asistir, simplemente deberás dar información como el título, el tema, el tipo de actividad (charla o taller) y una pequeña descripción.
+
+      Sin embargo, si tú, o tu grupo de amigos, quieres/queréis presentar la charla o taller, deberás dar más detalles, incluyendo la información de los ponentes.
     assist:
       one: "asistente"
       other: "asistentes"
