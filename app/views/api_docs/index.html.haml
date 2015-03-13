@@ -12,3 +12,59 @@
     %h1.subheader
       API
     %hr
+    .alert-box.alert.radius
+      %i.fa.fa-warning.fa-2x.fa-fw
+      WARNING: the information below could be outdated. Sorry for the inconvenience.
+    %p
+      All the examples shown here use the
+      %strong application/json
+      http header when performing the requests.
+    %p
+      The root of the application is symbolized by
+      %em BASE_URL
+      (for instance,
+      %strong http://0.0.0.0:3000/
+      in a development environment).
+    %h2 List of conferences
+    %p
+      The API will return a
+      = succeed "," do
+        %em complete list of conferences
+    %p
+      %code
+        BASE_URL/conferences/
+      i.e
+    %h2 Conference details
+    %p
+      In order to obtain
+      = succeed "," do
+        %em a specific conference's details
+      %strong conference id
+      to the previous URL
+    %p
+      %code
+        BASE_URL/conferences/:conference_id
+      i.e cursos.gul.es/conferences/
+    %hr/
+    %h2 List of talks from a conference
+    %p
+      Talks are associated to a conference and accessed through that conference. A
+      %em complete list of talks
+      can be obtained by making a request to:
+    %p
+      %code
+        BASE_URL/conferences/:conference_id/talks
+    %h2 Talk details
+    %p
+      In a similar manner to the
+      = succeed "," do
+        %strong conference details
+      %strong conference id
+      and
+      %em *talk id
+      have to be supplied:
+    %p
+      %code
+        BASE_URL/conferences/:conference_id/talks/:talk_id
+
+      i.e cursos.gul.es/conferences/
