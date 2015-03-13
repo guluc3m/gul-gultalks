@@ -177,6 +177,10 @@ en:
     of: "of"
   event:
     are_you_speaker: "Are you going to be the speaker for this activity?"
+    are_you_speaker_explanation: |
+        If you just want to propose an activity that you would like to attend to, you will only need to give information on the title, the topic, the type of activity (talk or workshop) and a small description.
+
+        However, if you, or your group of friends, want to present the talk or workshop, you will have to give further details, including information on the speakers.
     assist:
       one: "assistant"
       other: "assistants"
@@ -266,6 +270,7 @@ en:
     code_requirements: "Not a valid URL"
     validation_email: "Email address for validation"
     validation_email_explanation: "You need to validate the activity through a link that will be sent to this email address."
+    view_recording: "View recording"
     watch_live: "Watch live"
   Event:
     one: "Activity"
