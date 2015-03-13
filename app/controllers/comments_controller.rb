@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @conference = Conference.find(@event.conference_id)
 
     if !@conference.active
-      redirect_to conference_path(@conference)
+      redirect_to conference_event_path(@conference, @event)
     end
 
     @commentable = find_commentable
@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
     @conference = Conference.find(@event.conference_id)
 
     if !@conference.active
-      redirect_to conference_path(@conference)
+      redirect_to conference_event_path(@conference, @event)
     end
 
     @parent_id = params.delete(:parent_id)

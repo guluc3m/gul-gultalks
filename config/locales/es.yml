@@ -283,6 +283,7 @@ es:
     code_requirements: "No es una URL válida, debe empezar por http://"
     validation_email: "Correo electrónico para validación"
     validation_email_explanation: "Es necesario que valides la actividad mediante un enlace que se enviará a esta dirección de correo."
+    view_recording: "Ver grabación"
     watch_live: "Ver en directo"
   Event:
     one: "Actividad"

@@ -121,7 +121,7 @@
                     = t("event.watch_live").humanize
               = render "partials/video_modal"
             .show-for-small-only
-              = link_to(event.live_video, target: "_blank" ) do
+              = link_to(@event.live_video, target: "_blank" ) do
                 .button.tiny.alert.radius
                   %i.fa.fa-youtube-play.fa-fw.fa-lg
                   %strong
@@ -129,7 +129,10 @@
           - else
             %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
             - if @event.video.present?
-              = render "partials/video_modal"
+              -# FIXME
+              -# = render "partials/video_modal"
+              = link_to(@event.video, target: "_blank") do
+                = t("event.view_recording").humanize
             - else
               = t('not_available').humanize
 
