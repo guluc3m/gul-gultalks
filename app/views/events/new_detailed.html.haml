@@ -18,7 +18,7 @@
 
 = form_for @form, url: {controller: "events", action: "create_detailed"} do |f|
 
-  -# - @event.errors.full_messages.each do |msg|
+  - @form.errors.full_messages.each do |msg|
     .row
       .large-12.columns
         .alert-box.alert.radius

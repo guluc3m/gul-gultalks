@@ -31,11 +31,14 @@ class EventsController < ApplicationController
     event.shown = true
     event.verified = true
 
+    captcha_valid = verify_recaptcha
+
     @form = BasicEventForm.new(event)
-    if @form.validate(params[:basic_event]) && verify_recaptcha
+    if @form.validate(params[:basic_event]) && captcha_valid
       @form.save
       render "thanks"
     else
+      @form.errors.add :base, t("recaptcha.incorrect") if !captcha_valid
       render :new_basic
     end
   end
@@ -71,7 +74,10 @@ class EventsController < ApplicationController
       end
     end
 
-    if @form.validate(params[:detailed_event]) && total_speakers > 0 && total_speakers < 6 && verify_recaptcha
+    captcha_valid = verify_recaptcha
+    speakers_valid = total_speakers > 0 && total_speakers < 6
+
+    if @form.validate(params[:detailed_event]) && captcha_valid && speakers_valid
       @form.save do |nested|
         # Save event and tags
         new_event = Event.new(nested.except("speakers"))
@@ -99,6 +105,8 @@ class EventsController < ApplicationController
       end
       render "thanks"
     else
+      @form.errors.add :base, t("recaptcha.incorrect") if !captcha_valid
+      @form.errors.add :base, t("speaker.min_max") if !speakers_valid
       render :new_detailed
     end
   end

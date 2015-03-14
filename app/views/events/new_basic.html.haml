@@ -18,12 +18,11 @@
 
 = form_for @form, url: {controller: "events", action: "create_basic"} do |f|
 
-  -# - @event.errors.full_messages.each do |msg|
-  -#   .row
-  -#     .large-12.columns
-  -#       .alert-box.alert.radius
-  -#         - if msg
-  -#           = "Revise los errores en cada campo"
+  - @form.errors.full_messages.each do |msg|
+    .row
+      .large-12.columns
+        .alert-box.alert.radius
+          = msg
 
   .row
     .large-12.columns

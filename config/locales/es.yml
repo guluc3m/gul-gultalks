@@ -303,7 +303,7 @@ es:
     enter_words: "Introduce las palabras de encima:"
     help: "Ayuda"
     image: "Obtener una pista de imagen"
-    incorrect: "Incorrecto. Por favor, prueba otra vez."
+    incorrect: "reCAPTCHA incorrecto. Por favor, prueba otra vez."
   speaker:
     add: "Añadir ponente"
     caption: "Ponente %{index} (pulsa para ver detalles)"
@@ -312,6 +312,7 @@ es:
     email: "Email"
     email_requirements: "No es una dirección de e-mail válida"
     invalid: "Ponente no válido"
+    min_max: "Debe haber un mínimo de 1 ponente y un máximo de 5."
     name: "Nombre"
     name_requirements: "Sólo puede contener caracteres literales y guiones"
     propose: "Proponer ponente"
