@@ -238,7 +238,7 @@ es:
     email_requirements: "No es una dirección de correo electrónico válida."
     end_datetime: "Fecha y hora de finalización"
     finalized: "Finalizado"
-    i_am_proposing: "No, sólo lo estoy proponiendo"
+    i_am_proposing: "No, sólo la estoy proponiendo"
     i_am_speaker: "Sí, voy a ser el ponente"
     language: "Idioma"
     # Write here the availabe languages
