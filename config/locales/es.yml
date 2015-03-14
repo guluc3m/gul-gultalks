@@ -306,6 +306,7 @@ es:
     incorrect: "Incorrecto. Por favor, prueba otra vez."
   speaker:
     add: "Añadir ponente"
+    caption: "Ponente %{index} (pulsa para ver detalles)"
     request_certificate: "Quiero recibir certificado como ponente de la actividad"
     confirmed: "Confirmado"
     email: "Email"

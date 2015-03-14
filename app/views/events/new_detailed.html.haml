@@ -110,9 +110,9 @@
         %dl.accordion{"data-accordion" => ""}
           = f.fields_for :speakers do |speaker|
             %dd.accordion-navigation
-              %a{href: "#speaker_#{speaker.index}"}
-                = t("Speaker") + " #{speaker.index}"
-              .content{id: "speaker_#{speaker.index}"}
+              %a{href: "#speaker_#{speaker.index + 1}"}
+                = t("speaker.caption", index: speaker.index + 1)
+              .content{id: "speaker_#{speaker.index + 1}"}
                 = render "partials/speaker_fields", f: speaker
 
   -# .row
