@@ -40,7 +40,7 @@
       .switch.radius.small
         // FIXME: generate Foundation randmom_str as ID
         - rand_id = ('0'..'z').to_a.shuffle.first(6).join
-        %input{id: "switch-#{rand_id}", type: "checkbox"}
+        %input{id: "switch-#{rand_id}", type: "checkbox", name: "detailed_event[speakers_attributes][#{f.index}][certificate]"}
           %label{for: "switch-#{rand_id}"}
           -# %label{for: "certificate"}
           = t('speaker.request_certificate').humanize

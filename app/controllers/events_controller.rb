@@ -97,7 +97,7 @@ class EventsController < ApplicationController
             new_speaker.save
 
             # Create verfier for certificate
-            if sp["certificate"] == "1"
+            if new_speaker.certificate
               Verifier.create(email: new_speaker.email, event_id: new_speaker.event_id, verified: false, verify_type: "certificate")
             end
           end
@@ -158,7 +158,8 @@ class EventsController < ApplicationController
         redirect_to action: "propose_speaker"
       end
     else
-      redirect_to action: "propose_speaker"
+      render :propose_speaker
+      # redirect_to action: "propose_speaker"
     end
   end
 
