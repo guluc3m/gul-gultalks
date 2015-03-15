@@ -131,15 +131,11 @@ class EventsController < ApplicationController
     @event = Event.friendly.find(params[:id])
     @conference = Conference.friendly.find(params[:conference_id])
 
-    # if Conference.friendly.find(params[:conference_id]).call_for_papers_enabled && !Event.friendly.find(params[:id]).speaker?
-    #   respond_with(event) do |format|
-    if @conference.call_for_papers_enabled && !@event.speaker?
-      respond_to do |format|
-        format.html { render action: "propose_speaker" }
-      end
-    else
+    if !@conference.call_for_papers_enabled || @event.speaker?
       redirect_to conference_event_path(@conference, @event)
     end
+
+    @speaker = Speaker.new
   end
 
   def send_speaker
@@ -147,19 +143,24 @@ class EventsController < ApplicationController
     @event = Event.friendly.find(params[:id])
     @conference = Conference.find(@event.conference_id)
 
-    sp = Speaker.new(name: params[:name], email: params[:email], twitter: params[:twitter], certificate: params[:certificate], confirmed: false, event_id: @event.id)
-    ver = Verifier.new(email: params[:email], event_id: @event.id, verified: false, verify_type: "speaker")
+    if !@conference.call_for_papers_enabled || @event.speaker?
+      redirect_to conference_event_path(@conference, @event)
+    end
 
-    if verify_recaptcha
-      if sp.save && ver.save
+    @speaker = Speaker.new(params[:speaker])
+    @speaker.assign_attributes(event_id: @event.id, confirmed: false)
+
+    captcha_valid = verify_recaptcha
+    if @speaker.valid? && captcha_valid
+      verifier = Verifier.new(email: @speaker.email, event_id: @speaker.event_id, verified: false, verify_type: "speaker")
+      if @speaker.save && verifier.save
         render "thanks_speaker"
       else
-        flash[:error] = sp.errors.full_messages
-        redirect_to action: "propose_speaker"
+        render :propose_speaker
       end
     else
+      @speaker.errors.add :base, t("recaptcha.incorrect") if !captcha_valid
       render :propose_speaker
-      # redirect_to action: "propose_speaker"
     end
   end
 

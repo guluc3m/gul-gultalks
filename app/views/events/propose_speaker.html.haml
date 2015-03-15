@@ -13,14 +13,6 @@
       %li.current
         = t("speaker.propose")
 
-- if flash[:error]
-  - flash[:error].each do |msg|
-    .row
-      .large-12.columns
-        .alert-box.alert.radius
-          %i.fa.fa-warning.fa-fw.fa-lg
-          = msg
-
 .row
   .medium-12.columns
     %h1.subheader
@@ -29,7 +21,26 @@
     %p
       = t("speaker.propose_msg")
 
-= form_tag send_speaker_conference_event_path(@conference, @event) do
+= form_for @speaker, url: {controller: "events", action: "send_speaker"} do |form|
+
+  - @speaker.errors.full_messages.each do |msg|
+    .row
+      .large-12.columns
+        .alert-box.alert.radius
+          = msg
+
+  = render "partials/speaker_fields", f: form
+
+  .row
+    .large-12.columns
+      = render "partials/recaptcha"
+
+  .row
+    .large-12.columns
+      = form.submit(t("speaker.propose"), class: "button radius success expand")
+
+
+-# = form_tag send_speaker_conference_event_path(@conference, @event) do
   .row
     .large-5.columns
       %label{for: "name"}
