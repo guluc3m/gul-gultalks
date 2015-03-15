@@ -30,18 +30,24 @@
       .small-10.columns
         = f.text_field :twitter, label: false, maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})", class: "radius"
 
-.row
   .large-12.columns
-    .left
-      .hide-for-touch
-        = f.check_box :certificate, label: false
-        // FIXME!!
-        %label{for: "certificate"}
+    .hide-for-touch
+      = f.check_box :certificate, label: t('speaker.request_certificate').humanize
+      // FIXME!!
+      -# %label{for: "certificate"}
+      -#   = t('speaker.request_certificate').humanize
+    .show-for-touch
+      .switch.radius.small
+        // FIXME: generate Foundation randmom_str as ID
+        - rand_id = ('0'..'z').to_a.shuffle.first(6).join
+        %input{id: "switch-#{rand_id}", type: "checkbox"}
+          %label{for: "switch-#{rand_id}"}
+          -# %label{for: "certificate"}
           = t('speaker.request_certificate').humanize
-      .show-for-touch
-        .switch.radius.small
-          // FIXME: generate Foundation randmom_str as ID
-          %input{id: "switch", type: "checkbox"}
-            %label{for: "switch"}
-          %label{for: "certificate"}
-            = t('speaker.request_certificate').humanize
+
+  -# .row
+  -#   .large-5.columns
+  -#     = check_box_tag "certificate", nil
+  -#     %label{for: "certificate"}
+  -#       = t("speaker.request_certificate")
+
