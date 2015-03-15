@@ -1,5 +1,4 @@
 - page_title t("speaker.propose")
--# = render partial: "partials/breadcrumbs"
 
 .row.show-for-medium-up
   .medium-12.columns
@@ -13,14 +12,6 @@
       %li.current
         = t("speaker.propose")
 
-- if flash[:error]
-  - flash[:error].each do |msg|
-    .row
-      .large-12.columns
-        .alert-box.alert.radius
-          %i.fa.fa-warning.fa-fw.fa-lg
-          = msg
-
 .row
   .medium-12.columns
     %h1.subheader
@@ -29,49 +20,69 @@
     %p
       = t("speaker.propose_msg")
 
-= form_tag send_speaker_conference_event_path(@conference, @event) do
+= form_for @speaker, url: {controller: "events", action: "send_speaker"} do |f|
+
+  - @speaker.errors.full_messages.each do |msg|
+    .row
+      .large-12.columns
+        .alert-box.alert.radius
+          = msg
+
   .row
-    .large-5.columns
+    .large-4.columns
       %label{for: "name"}
         %i.fa.fa-users.fa-fw.fa-lg.subheader
         = t("speaker.name")
         %small
           = t("event.required")
-      = text_field_tag "name", nil, class: "radius", required: true, maxlength: 64
+        .right
+          %sub 64
+      = f.text_field :name, label: false, maxlength: 64, class: "radius lettrify"
 
-  .row
-    .large-5.columns
+    .large-4.columns
       %label{for: "email"}
         %i.fa.fa-envelope.fa-fw.fa-lg.subheader
         = t("speaker.email")
         %small
           = t("event.required")
-      = email_field_tag "email", nil, class: "radius", required: true, type: "email", maxlength: 64
+        .right
+          %sub 64
+      = f.text_field :email, label: false, maxlength: 64, type: "email", class: "radius"
 
-  .row
-    .large-5.columns
+    .large-4.columns
       %label{for: "twitter"}
         %i.fa.fa-twitter.fa-fw.fa-lg.subheader
         = t("speaker.twitter")
       .row.collapse.prefix-radius
         .small-2.columns
-          %span.prefix @
+          %span.prefix
+            %i.fa.fa-at.fa-fw.subheader
         .small-10.columns
-          = text_field_tag "twitter", nil, class: "radius", maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})"
+          = f.text_field :twitter, label: false, maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})", class: "radius"
 
-  .row
-    .large-5.columns
-      = check_box_tag "certificate", nil
-      %label{for: "certificate"}
-        = t("speaker.request_certificate")
+    .large-12.columns
+      .hide-for-touch
+        = f.check_box :certificate, label: t('speaker.request_certificate').humanize
+        // FIXME!!
+        -# %label{for: "certificate"}
+        -#   = t('speaker.request_certificate').humanize
+
+      .show-for-touch
+        .switch.radius.small
+          // FIXME: generate Foundation randmom_str as ID
+          - rand_id = ('0'..'z').to_a.shuffle.first(6).join
+          %input{id: "switch-#{rand_id}", type: "checkbox", name: "speaker[certificate]"}
+            %label{for: "switch-#{rand_id}"}
+            -# %label{for: "certificate"}
+            = t('speaker.request_certificate').humanize
 
   .row
     .large-12.columns
-      = render 'partials/recaptcha'
+      = render "partials/recaptcha"
 
   .row
-    .large-5.columns
-      = submit_tag t("speaker.propose"), class: "button radius success expand"
+    .large-12.columns
+      = f.submit(t("speaker.propose"), class: "button radius success expand")
 
 .row
   .large-3.columns.show-for-medium-down
