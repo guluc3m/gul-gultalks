@@ -118,7 +118,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     figaro (1.0.0)
       thor (~> 0.14)
-    font-awesome-rails (4.2.0.0)
+    font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
     formtastic (2.3.1)
       actionpack (>= 3.0)
@@ -316,7 +316,7 @@ DEPENDENCIES
   devise
   devise-i18n
   figaro
-  font-awesome-rails
+  font-awesome-rails (~> 4.3.0.0)
   foundation-rails
   foundation_rails_helper
   friendly_id (~> 5.0.0)
