@@ -31,12 +31,13 @@
         = f.text_field :twitter, label: false, maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})", class: "radius"
 
   .large-12.columns
-    .hide-for-touch
-      = f.check_box :certificate, label: t('speaker.request_certificate').humanize
-      // FIXME!!
-      -# %label{for: "certificate"}
-      -#   = t('speaker.request_certificate').humanize
-    .show-for-touch
+    -# .hide-for-touch
+    = f.check_box :certificate, label: t('speaker.request_certificate').humanize
+    // FIXME!!
+    -# %label{for: "certificate"}
+    -#   = t('speaker.request_certificate').humanize
+    -# FIXME: Switch behaviour
+    -# .show-for-touch
       .switch.radius.small
         // FIXME: generate Foundation randmom_str as ID
         - rand_id = ('0'..'z').to_a.shuffle.first(6).join
