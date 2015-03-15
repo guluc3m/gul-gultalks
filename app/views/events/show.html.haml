@@ -86,19 +86,23 @@
             = t("not_available").humanize
         %li
           %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
-          - unless !@event.start_dtime || !@event.end_dtime
+          - if @event.start_dtime || @event.end_dtime
             = "#{@event.start_dtime.strftime("%H:%M")} - #{@event.end_dtime.strftime("%H:%M")}"
           - else
             = t("not_available").humanize
         %li
           %i.fa.fa-map-marker.fa-fw.fa-lg.subheader
           %span
-            = @event.location
-            .show-for-medium-up
-              = link_to t("event.directions"), "#",  data: { "reveal-id" => "map-modal" }
-              = render "partials/map_modal"
-            .show-for-small
-              = link_to t("event.directions"), "http://www.openstreetmap.org/?mlat=40.33249&amp;mlon=-3.76728#map=17/40.33250/-3.76729", target: "_blank"
+            - if @event.location.present?
+              = @event.location
+              .show-for-medium-up
+                = link_to t("event.directions"), "#",  data: { "reveal-id" => "map-modal" }
+                = render "partials/map_modal"
+              .show-for-small
+                = link_to t("event.directions"), "http://www.openstreetmap.org/?mlat=40.33249&amp;mlon=-3.76728#map=17/40.33250/-3.76729", target: "_blank"
+            - else
+              = t("not_available").humanize
+
 
         %li
           %i.fa.fa-building.fa-fw.fa-lg.subheader
@@ -156,7 +160,7 @@
           /%i.fa.fa-info.fa-fw.fa-lg.subheader
           - @event.tag_list.map do |tag|
             .label.info.radius
-              = h(tag.humanize)
+              = tag.humanize
 
       .success.radius.label.large
         %b
@@ -201,11 +205,11 @@
           %i.fa.fa-lock.fa-lg
           = t("to_vote")
 
-    -# - if !@event.speaker? && @conference.call_for_papers_enabled
-    -#   .large-3.columns.right
-    -#     = link_to propose_speaker_conference_event_path, class: "button radius expand" do
-    -#       %i.fa.fa-child.fa-lg
-    -#       = t("speaker.propose")
+    - if !@event.speaker? && @conference.call_for_papers_enabled
+      .large-3.columns.right
+        = link_to propose_speaker_conference_event_path, class: "button alert radius expand" do
+          %i.fa.fa-child.fa-lg
+          = t("speaker.propose").humanize
 
 .row
   .large-12.columns
