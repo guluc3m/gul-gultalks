@@ -5,7 +5,9 @@ class ConferencesController < ApplicationController
 
   def index
     @conferences = Conference.all.order('start_date DESC')
-    respond_with @conferences
+    respond_with @conferences do |format|
+      format.json { render text: Hash[@conferences.collect { |c| [c.id, Hash[c.events.collect { |e| [e.id, e] } ]] }].to_json }
+    end
   end
 
   def show
