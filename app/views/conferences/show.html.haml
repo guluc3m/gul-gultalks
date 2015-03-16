@@ -1,5 +1,29 @@
 - page_title @conference.title
 
+- if @conference.active?
+  .row
+    .large-12.columns
+      .alert-box.success.radius{data: {alert: ""}}
+        %span
+          = t("conference.call_for_papers_period")
+          = t("date.from")
+          %b
+            = l(@conference.call_for_papers_start_date, format: :long)
+          = t("date.to")
+          %b
+            = l(@conference.call_for_papers_end_date, format: :long)
+        %br
+        %span
+          = t("conference.voting_period")
+          = t("date.from")
+          %b
+            = l(@conference.voting_start_date, format: :long)
+          = t("date.to")
+          %b
+            = l(@conference.voting_end_date, format: :long)
+        %a.close{href:""} ×
+
+
 - if @conference.call_for_papers_enabled
   .row
     .large-12.columns

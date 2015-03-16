@@ -27,6 +27,7 @@ class EventsController < ApplicationController
 
     event = Event.new
     event.conference_id = @conference.id
+    event.location = @conference.location
     # Event verification is disabled by default
     event.shown = true
     event.verified = true
@@ -63,6 +64,7 @@ class EventsController < ApplicationController
 
     event = Event.new
     event.conference_id = @conference.id
+    event.location = @conference.location
     5.times { event.speakers.build }
 
     @form = DetailedEventForm.new(event)
