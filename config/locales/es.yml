@@ -153,6 +153,7 @@ es:
   conference:
     call_for_papers_end_date: "Fecha de finalización del call for talks"
     call_for_papers_open: "El call for talks está abierto"
+    call_for_papers_period: "Call for talks:"
     call_for_papers_start_date: "Fecha de inicio del call for talks"
     coordinator: "Coordinador"
     description: "Descripción"
@@ -169,6 +170,7 @@ es:
       voting_enabled: "Votaciones habilitadas"
     title: "Título"
     voting_end_date: "Fecha de finalización de votaciones"
+    voting_period: "Votaciones:"
     voting_start_date: "Fecha de inicio de votaciones"
   date:
     formats:
