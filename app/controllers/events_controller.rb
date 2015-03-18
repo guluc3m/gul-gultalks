@@ -64,7 +64,6 @@ class EventsController < ApplicationController
 
     event = Event.new
     event.conference_id = @conference.id
-    event.location = @conference.location
     5.times { event.speakers.build }
 
     @form = DetailedEventForm.new(event)
@@ -84,6 +83,7 @@ class EventsController < ApplicationController
         # Save event and tags
         new_event = Event.new(nested.except("speakers"))
         new_event.conference_id = @conference.id
+        new_event.location = @conference.location
         # Event verification is disabled by default
         new_event.shown = true
         new_event.verified = true
