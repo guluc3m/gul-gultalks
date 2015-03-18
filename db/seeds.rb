@@ -52,11 +52,10 @@ Event.create(
       :summary => 'Uso de software libre en practicas',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '2.3.C03',
       :location => 'Leganés',
-      :start_dtime => '2010-10-08 16:00:00 UTC',
-      :end_dtime => '2010-10-08 18:00:00 UTC',
+      :start_time => '2010-10-08 16:00:00 UTC',
+      :end_time => '2010-10-08 18:00:00 UTC',
       :assisted_by => '',
       :votes => 25,
       :notes => '',
@@ -66,7 +65,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
 
 Event.create(
@@ -74,11 +73,10 @@ Event.create(
       :summary => 'Este muerto esta muy vivo',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
-      :duration => 0,
       :room => '2.3.C03',
       :location => 'Leganés',
-      :start_dtime => '2010-11-09 16:00:00 UTC',
-      :end_dtime => '2010-11-09 18:00:00 UTC',
+      :start_time => '2010-11-09 16:00:00 UTC',
+      :end_time => '2010-11-09 18:00:00 UTC',
       :assisted_by => '',
       :votes => 20,
       :notes => '',
@@ -90,7 +88,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -98,11 +96,10 @@ Event.create(
       :summary => 'Gestion con Puppet',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
-      :duration => 0,
       :room => '2.3.C03',
       :location => 'Leganés',
-      :start_dtime => '2010-11-09 18:00:00 UTC',
-      :end_dtime => '2010-11-09 20:00:00 UTC',
+      :start_time => '2010-11-09 18:00:00 UTC',
+      :end_time => '2010-11-09 20:00:00 UTC',
       :assisted_by => '',
       :votes => 21,
       :notes => '',
@@ -114,7 +111,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => false)
       
 Event.create(
@@ -122,11 +119,10 @@ Event.create(
       :summary => 'MySQL',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '2.3.C03',
       :location => 'Leganés',
-      :start_dtime => '2010-11-10 16:00:00 UTC',
-      :end_dtime => '2010-11-10 18:00:00 UTC',
+      :start_time => '2010-11-10 16:00:00 UTC',
+      :end_time => '2010-11-10 18:00:00 UTC',
       :assisted_by => '',
       :votes => 22,
       :notes => '',
@@ -138,7 +134,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -146,11 +142,10 @@ Event.create(
       :summary => 'Git',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
-      :duration => 0,
       :room => '2.3.C03',
       :location => 'Leganés',
-      :start_dtime => '2010-11-10 18:00:00 UTC',
-      :end_dtime => '2010-11-10 20:00:00 UTC',
+      :start_time => '2010-11-10 18:00:00 UTC',
+      :end_time => '2010-11-10 20:00:00 UTC',
       :assisted_by => '',
       :votes => 20,
       :notes => '',
@@ -162,7 +157,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => false)
 
 Event.create(
@@ -170,11 +165,10 @@ Event.create(
       :summary => 'Audacity',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
-      :duration => 0,
       :room => '2.3.C03',
       :location => 'Leganés',
-      :start_dtime => '2010-11-11 17:00:00 UTC',
-      :end_dtime => '2010-11-11 18:00:00 UTC',
+      :start_time => '2010-11-11 17:00:00 UTC',
+      :end_time => '2010-11-11 18:00:00 UTC',
       :assisted_by => '',
       :votes => 19,
       :notes => '',
@@ -186,7 +180,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -194,11 +188,10 @@ Event.create(
       :summary => 'Uso de Symfony',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '2.3.C03',
       :location => 'Leganés',
-      :start_dtime => '2010-11-11 18:00:00 UTC',
-      :end_dtime => '2010-11-11 20:00:00 UTC',
+      :start_time => '2010-11-11 18:00:00 UTC',
+      :end_time => '2010-11-11 20:00:00 UTC',
       :assisted_by => '',
       :votes => 23,
       :notes => '',
@@ -210,7 +203,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -218,11 +211,10 @@ Event.create(
       :summary => 'Android',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
-      :duration => 0,
       :room => '2.3.C03',
       :location => 'Leganés',
-      :start_dtime => '2010-11-12 16:00:00 UTC',
-      :end_dtime => '2010-11-12 18:00:00 UTC',
+      :start_time => '2010-11-12 16:00:00 UTC',
+      :end_time => '2010-11-12 18:00:00 UTC',
       :assisted_by => '',
       :votes => 20,
       :notes => '',
@@ -233,7 +225,7 @@ Event.create(
       :verified => true,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :conference_id => 1)
 
 Event.create(
@@ -241,11 +233,10 @@ Event.create(
       :summary => 'Metodologia para sysadmins',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '2.3.C03',
       :location => 'Leganés',
-      :start_dtime => '2010-11-12 18:00:00 UTC',
-      :end_dtime => '2010-11-12 20:00:00 UTC',
+      :start_time => '2010-11-12 18:00:00 UTC',
+      :end_time => '2010-11-12 20:00:00 UTC',
       :assisted_by => '',
       :votes => 19,
       :notes => '',
@@ -257,7 +248,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => false)
 
 Event.create(
@@ -265,11 +256,10 @@ Event.create(
       :summary => 'Uso de Qt en diferentes lenguajes',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '',
       :location => 'Leganés',
-      :start_dtime => '',
-      :end_dtime => '',
+      :start_time => '',
+      :end_time => '',
       :assisted_by => '',
       :votes => 10,
       :notes => '',
@@ -281,7 +271,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -289,11 +279,10 @@ Event.create(
       :summary => 'La caja',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '',
       :location => 'Leganés',
-      :start_dtime => '',
-      :end_dtime => '',
+      :start_time => '',
+      :end_time => '',
       :assisted_by => '',
       :votes => 11,
       :notes => '',
@@ -305,7 +294,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -313,11 +302,10 @@ Event.create(
       :summary => 'Distribucion mediante PEAR',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
-      :duration => 0,
       :room => '',
       :location => 'Leganés',
-      :start_dtime => '',
-      :end_dtime => '',
+      :start_time => '',
+      :end_time => '',
       :assisted_by => '',
       :votes => 12,
       :notes => '',
@@ -329,7 +317,7 @@ Event.create(
       :conference_id => 1,
       :accepted => false,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -337,11 +325,10 @@ Event.create(
       :summary => 'PHP y C',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
-      :duration => 0,
       :room => '',
       :location => 'Leganés',
-      :start_dtime => '',
-      :end_dtime => '',
+      :start_time => '',
+      :end_time => '',
       :assisted_by => '',
       :votes => 11,
       :notes => '',
@@ -353,7 +340,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -361,11 +348,10 @@ Event.create(
       :summary => 'Uso de PHP Unit',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '',
       :location => 'Leganés',
-      :start_dtime => '',
-      :end_dtime => '',
+      :start_time => '',
+      :end_time => '',
       :assisted_by => '',
       :votes => 9,
       :notes => '',
@@ -377,7 +363,7 @@ Event.create(
       :conference_id => 1,
       :accepted => false,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -385,11 +371,10 @@ Event.create(
       :summary => 'Arduino',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '',
       :location => 'Leganés',
-      :start_dtime => '',
-      :end_dtime => '',
+      :start_time => '',
+      :end_time => '',
       :assisted_by => '',
       :votes => 10,
       :notes => '',
@@ -401,7 +386,7 @@ Event.create(
       :conference_id => 1,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -409,11 +394,10 @@ Event.create(
       :summary => 'Breve introduccion a Linux',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '7.2.J01',
       :location => 'Leganés',
-      :start_dtime => '2014-03-17 17:00:00 UTC',
-      :end_dtime => '2014-03-17 18:45:00 UTC',
+      :start_time => '2014-03-17 17:00:00 UTC',
+      :end_time => '2014-03-17 18:45:00 UTC',
       :assisted_by => '',
       :votes => 25,
       :notes => '',
@@ -425,7 +409,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -433,11 +417,10 @@ Event.create(
       :summary => 'Introduccion al lenguaje de programacion C',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '7.2.J01',
       :location => 'Leganés',
-      :start_dtime => '2014-03-17 19:00:00 UTC',
-      :end_dtime => '2014-03-17 20:00:00 UTC',
+      :start_time => '2014-03-17 19:00:00 UTC',
+      :end_time => '2014-03-17 20:00:00 UTC',
       :assisted_by => '',
       :votes => 30,
       :notes => '',
@@ -449,7 +432,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -457,11 +440,10 @@ Event.create(
       :summary => 'Introduccion a las licencias de software',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '7.2.J01',
       :location => 'Leganés',
-      :start_dtime => '2014-03-18 18:00:00 UTC',
-      :end_dtime => '2014-03-18 18:45:00 UTC',
+      :start_time => '2014-03-18 18:00:00 UTC',
+      :end_time => '2014-03-18 18:45:00 UTC',
       :assisted_by => '',
       :votes => 26,
       :notes => '',
@@ -473,7 +455,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -481,11 +463,10 @@ Event.create(
       :summary => 'Scala',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '7.2.J01',
       :location => 'Leganés',
-      :start_dtime => '2014-03-18 19:00:00 UTC',
-      :end_dtime => '2014-03-18 19:45:00 UTC',
+      :start_time => '2014-03-18 19:00:00 UTC',
+      :end_time => '2014-03-18 19:45:00 UTC',
       :assisted_by => '',
       :votes => 20,
       :notes => '',
@@ -497,7 +478,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -505,11 +486,10 @@ Event.create(
       :summary => 'Introduccion',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '7.2.J01',
       :location => 'Leganés',
-      :start_dtime => '2014-03-18 20:00:00 UTC',
-      :end_dtime => '2014-03-18 20:45:00 UTC',
+      :start_time => '2014-03-18 20:00:00 UTC',
+      :end_time => '2014-03-18 20:45:00 UTC',
       :assisted_by => '',
       :votes => 21,
       :notes => '',
@@ -521,7 +501,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => false)
       
 Event.create(
@@ -529,11 +509,10 @@ Event.create(
       :summary => 'Introduccion a Bitcoin',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '7.1.J06',
       :location => 'Leganés',
-      :start_dtime => '2014-03-19 17:00:00 UTC',
-      :end_dtime => '2014-03-19 17:45:00 UTC',
+      :start_time => '2014-03-19 17:00:00 UTC',
+      :end_time => '2014-03-19 17:45:00 UTC',
       :assisted_by => '',
       :votes => 31,
       :notes => '',
@@ -545,7 +524,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => false)
 
 Event.create(
@@ -553,11 +532,10 @@ Event.create(
       :summary => 'Introduccion a seguridad',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '7.1.J06',
       :location => 'Leganés',
-      :start_dtime => '2014-03-19 18:00:00 UTC',
-      :end_dtime => '2014-03-19 19:30:00 UTC',
+      :start_time => '2014-03-19 18:00:00 UTC',
+      :end_time => '2014-03-19 19:30:00 UTC',
       :assisted_by => '',
       :votes => 35,
       :notes => '',
@@ -569,7 +547,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -577,11 +555,10 @@ Event.create(
       :summary => 'Introduccion a Zoe',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
-      :duration => 0,
       :room => '7.1.J06',
       :location => 'Leganés',
-      :start_dtime => '2014-03-19 19:45:00 UTC',
-      :end_dtime => '2014-03-19 20:30:00 UTC',
+      :start_time => '2014-03-19 19:45:00 UTC',
+      :end_time => '2014-03-19 20:30:00 UTC',
       :assisted_by => 'Zoe',
       :votes => 34,
       :notes => '',
@@ -593,7 +570,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
       
 Event.create(
@@ -601,11 +578,10 @@ Event.create(
       :summary => 'Introduccion',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '7.2.J01',
       :location => 'Leganés',
-      :start_dtime => '2014-03-20 17:00:00 UTC',
-      :end_dtime => '2014-03-20 17:45:00 UTC',
+      :start_time => '2014-03-20 17:00:00 UTC',
+      :end_time => '2014-03-20 17:45:00 UTC',
       :assisted_by => '',
       :votes => 31,
       :notes => '',
@@ -617,7 +593,7 @@ Event.create(
       :conference_id => 2,
       :accepted => false,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
 
 Event.create(
@@ -625,11 +601,10 @@ Event.create(
       :summary => 'Introduccion al desarrollo con Android',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
-      :duration => 0,
       :room => '7.2.J01',
       :location => 'Leganés',
-      :start_dtime => '2014-03-20 18:00:00 UTC',
-      :end_dtime => '2014-03-20 19:30:00 UTC',
+      :start_time => '2014-03-20 18:00:00 UTC',
+      :end_time => '2014-03-20 19:30:00 UTC',
       :assisted_by => '',
       :votes => 27,
       :notes => '',
@@ -641,7 +616,7 @@ Event.create(
       :conference_id => 2,
       :accepted => false,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => false)
 
 Event.create(
@@ -649,11 +624,10 @@ Event.create(
       :summary => 'Introduccion a WebRTC',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 0,
-      :duration => 0,
       :room => '7.2.J01',
       :location => 'Leganés',
-      :start_dtime => '2014-03-20 19:45:00 UTC',
-      :end_dtime => '2014-03-20 20:30:00 UTC',
+      :start_time => '2014-03-20 19:45:00 UTC',
+      :end_time => '2014-03-20 20:30:00 UTC',
       :assisted_by => '',
       :votes => 29,
       :notes => '',
@@ -665,7 +639,7 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
 
 Event.create(
@@ -673,11 +647,10 @@ Event.create(
       :summary => 'Introduccion a Arduino',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
-      :duration => 0,
       :room => '7.2.J01',
       :location => 'Leganés',
-      :start_dtime => '2014-03-21 17:00:00 UTC',
-      :end_dtime => '2014-03-21 18:30:00 UTC',
+      :start_time => '2014-03-21 17:00:00 UTC',
+      :end_time => '2014-03-21 18:30:00 UTC',
       :assisted_by => '',
       :votes => 30,
       :notes => '',
@@ -689,7 +662,7 @@ Event.create(
       :conference_id => 2,
       :accepted => false,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => false)
 
 Event.create(
@@ -697,11 +670,10 @@ Event.create(
       :summary => 'Introduccion',
       :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna aliquam ante consectetur, congue blandit felis rutrum. Duis eu orci tincidunt, ultrices sem et, pellentesque leo. Fusce interdum justo sit amet dui posuere mattis. Praesent blandit lacinia lectus at auctor. Aliquam erat volutpat. Vestibulum ultricies leo non mauris tempor, eu sodales metus interdum. In at dolor tellus. ',
       :subclass => 1,
-      :duration => 0,
       :room => '7.2.J01',
       :location => 'Leganés',
-      :start_dtime => '2014-03-21 18:45:00 UTC',
-      :end_dtime => '2014-03-21 20:15:00 UTC',
+      :start_time => '2014-03-21 18:45:00 UTC',
+      :end_time => '2014-03-21 20:15:00 UTC',
       :assisted_by => '',
       :votes => 34,
       :notes => '',
@@ -713,5 +685,5 @@ Event.create(
       :conference_id => 2,
       :accepted => true,
       :language => 'es',
-      :wizard_status => "complete",
+      :code_url => '',
       :cancelled => true)
