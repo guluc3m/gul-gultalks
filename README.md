@@ -18,6 +18,7 @@ We think that sqlite is better for development purposes.
 
 ```
 $ rake db:migrate
+$ rake db:seed
 $ rails server -p $PORT
 ```
 
