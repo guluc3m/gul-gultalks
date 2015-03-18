@@ -49,7 +49,7 @@ class Event < ActiveRecord::Base
       },
       allow_blank: true
 
-  validates :code,
+  validates :code_url,
       url: true,
       length: {
           minimum: 5,
