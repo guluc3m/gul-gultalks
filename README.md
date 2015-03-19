@@ -23,14 +23,14 @@ This project started in late december of 2013 for replace the old application ma
 
 To build the app in dev or test environments, use the following command:
 
-```
+```shell
 $ bundle install --without production
 ```
 We think that sqlite is better for development purposes.
 
 #### To run it:
 
-```
+```shell
 $ rake db:migrate
 $ rake db:seed     # Add a pair of conferences for testing only
 $ rails server [-p $PORT] # Port is optional
