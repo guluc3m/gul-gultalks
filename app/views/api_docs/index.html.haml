@@ -15,25 +15,23 @@
     .alert-box.alert.radius
       %i.fa.fa-warning.fa-2x.fa-fw
       WARNING: the information below could be outdated. Sorry for the inconvenience.
-    %p
+    %p      
       All the examples shown here use the
-      %strong application/json
-      http header when performing the requests.
+      %code Accept: application/json
+      HTTP Header when performing the requests.
     %p
-      The root of the application is symbolized by
-      %em BASE_URL
-      (for instance,
-      %strong http://0.0.0.0:3000/
-      in a development environment).
+      The root of the application is 
+      %code http://cursos.gul.es 
+      use 
+      %code http://0.0.0.0:3000 
+      instead in development enviroment.
     %h2 List of conferences
     %p
       The API will return a
       = succeed "," do
         %em complete list of conferences
     %p
-      %code
-        BASE_URL/conferences/
-      i.e
+      %code http://cursos.gul.es/conferences
     %h2 Conference details
     %p
       In order to obtain
@@ -42,9 +40,8 @@
       %strong conference id
       to the previous URL
     %p
-      %code
-        BASE_URL/conferences/:conference_id
-      i.e cursos.gul.es/conferences/
+      %code GET
+      %code http://cursos.gul.es/conferences/:conference_id
     %hr/
     %h2 List of talks from a conference
     %p
@@ -52,8 +49,8 @@
       %em complete list of talks
       can be obtained by making a request to:
     %p
-      %code
-        BASE_URL/conferences/:conference_id/talks
+      %code GET
+      %code http://cursos.gul.es/conferences/:conference_id/talks
     %h2 Talk details
     %p
       In a similar manner to the
@@ -64,7 +61,5 @@
       %em *talk id
       have to be supplied:
     %p
-      %code
-        BASE_URL/conferences/:conference_id/talks/:talk_id
-
-      i.e cursos.gul.es/conferences/
+      %code GET
+      %code http://cursos.gul.es/conferences/:conference_id/talks/:talk_id

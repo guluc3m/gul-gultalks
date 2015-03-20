@@ -117,3 +117,6 @@ tramp
 
 # Production environment variables
 config/application.yml
+
+# Development DB
+db/development.sql
