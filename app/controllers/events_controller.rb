@@ -3,6 +3,16 @@ class EventsController < ApplicationController
   # helper_method :event, :events
   respond_to :html, :json, :xml
 
+  def index
+    @conference = Conference.friendly.find(params[:conference_id])
+    events = @conference.events.where(shown: true, verified: true)
+    respond_with(events) do |format|
+      format.html { redirect_to conference_path(@conference) }
+      format.json { render json: events.as_json(methods: :tag_list) }
+      format.xml { render xml: events.to_xml(methods: :tag_list) }
+    end
+  end
+
   def new
     @conference = Conference.friendly.find(params[:conference_id])
     if !@conference.call_for_papers_enabled
@@ -64,7 +74,6 @@ class EventsController < ApplicationController
 
     event = Event.new
     event.conference_id = @conference.id
-    event.location = @conference.location
     5.times { event.speakers.build }
 
     @form = DetailedEventForm.new(event)
@@ -84,6 +93,7 @@ class EventsController < ApplicationController
         # Save event and tags
         new_event = Event.new(nested.except("speakers"))
         new_event.conference_id = @conference.id
+        new_event.location = @conference.location
         # Event verification is disabled by default
         new_event.shown = true
         new_event.verified = true
@@ -200,14 +210,6 @@ class EventsController < ApplicationController
       redirect_to action: "vote"
     end
   end
-
-  #def index
-  #  respond_with(events) do |format|
-  #    format.html { redirect_to conference_path(params[:conference_id]) }
-  #    format.json { render json: events.as_json(methods: :tag_list) }
-  #    format.xml { render xml: events.to_xml(methods: :tag_list) }
-  #  end
-  #end
 
   #def new
   #  redirect_to new_conference_event_wizard_path
