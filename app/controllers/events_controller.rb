@@ -3,6 +3,16 @@ class EventsController < ApplicationController
   # helper_method :event, :events
   respond_to :html, :json, :xml
 
+  def index
+    @conference = Conference.friendly.find(params[:conference_id])
+    events = @conference.events.where(shown: true, verified: true)
+    respond_with(events) do |format|
+      format.html { redirect_to conference_path(@conference) }
+      format.json { render json: events.as_json(methods: :tag_list) }
+      format.xml { render xml: events.to_xml(methods: :tag_list) }
+    end
+  end
+
   def new
     @conference = Conference.friendly.find(params[:conference_id])
     if !@conference.call_for_papers_enabled
@@ -200,14 +210,6 @@ class EventsController < ApplicationController
       redirect_to action: "vote"
     end
   end
-
-  #def index
-  #  respond_with(events) do |format|
-  #    format.html { redirect_to conference_path(params[:conference_id]) }
-  #    format.json { render json: events.as_json(methods: :tag_list) }
-  #    format.xml { render xml: events.to_xml(methods: :tag_list) }
-  #  end
-  #end
 
   #def new
   #  redirect_to new_conference_event_wizard_path
