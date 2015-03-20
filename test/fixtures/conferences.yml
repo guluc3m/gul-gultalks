@@ -3,29 +3,33 @@
 one:
   title: MyString
   description: MyString
-  creation_date: 2013-12-21
   start_date: 2013-12-21
   end_date: 2013-12-21
   coordinator: MyString
-  active: 
+  active: false
   call_for_papers_enabled: 
   voting_enabled: 
   call_for_papers_start_date: 2013-12-21
   call_for_papers_end_date: 2013-12-21
   voting_start_date: 2013-12-21
   voting_end_date: 2013-12-21
+  location: ''
+  call_for_papers_enabled: false
+  voting_enabled: false
 
 two:
   title: MyString
   description: MyString
-  creation_date: 2013-12-21
   start_date: 2013-12-21
   end_date: 2013-12-21
   coordinator: MyString
-  active: 
+  active: true
   call_for_papers_enabled: 
   voting_enabled: 
   call_for_papers_start_date: 2013-12-21
   call_for_papers_end_date: 2013-12-21
   voting_start_date: 2013-12-21
   voting_end_date: 2013-12-21
+  location: ''
+  call_for_papers_enabled: false
+  voting_enabled: false

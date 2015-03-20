@@ -1,12 +1,17 @@
 language: ruby
 rvm: 
-    - 2.2.0
+  - 2.2.0
 
 before_install:
-    - gem update --system
-    - gem --version
+  - gem update --system
+  - gem --version
+
+script:
+  - rm db/test.sql
+  - bundle exec rake db:create db:migrate RAILS_ENV=test
+  - rake
 
 # bundler_args: --without productiontest
 
 notifications:
-      email: false
+  email: false
