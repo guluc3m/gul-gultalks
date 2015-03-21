@@ -120,3 +120,6 @@ config/application.yml
 
 # Development DB
 db/development.sql
+
+# Development DB
+db/test.sql
