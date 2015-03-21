@@ -11,12 +11,12 @@ class ConferencesController < ApplicationController
   end
 
   def show
-      @conference = Conference.friendly.find(params[:id])
-      @calendar_events = @conference.events.where(shown: true, accepted: true)
-      #FIXME pagination will be removed
-      @events = @conference.events.select{ |event| event.shown && event.verified }.sort_by(&:votes).reverse.paginate(page: params[:page], per_page: 1000)
-      # @paginated_events = @conference.events.select{ |event| event.speaker? && event.shown && event.verified }.sort_by(&:votes).reverse.paginate(page: params[:page], per_page: 1000)
-      # @pending_events = @conference.events.select{ |event| !event.speaker? && event.shown && event.verified }.sort_by(&:votes).reverse
+    @conference = Conference.friendly.find(params[:id])
+    @calendar_events = @conference.events.where(shown: true, accepted: true)
+    #FIXME pagination will be removed
+    @events = @conference.events.select{ |event| event.shown && event.verified }.sort_by(&:votes).reverse.paginate(page: params[:page], per_page: 1000)
+    # @paginated_events = @conference.events.select{ |event| event.speaker? && event.shown && event.verified }.sort_by(&:votes).reverse.paginate(page: params[:page], per_page: 1000)
+    # @pending_events = @conference.events.select{ |event| !event.speaker? && event.shown && event.verified }.sort_by(&:votes).reverse
 
     respond_with(@conference) do |format|
       format.ics { render text: @conference.to_ics }
