@@ -2,16 +2,15 @@ language: ruby
 rvm: 
   - 2.2.0
 
-before_install:
-  - gem update --system
-  - gem --version
-
 script:
   - bundle exec rake db:drop RAILS_ENV=test
   - bundle exec rake db:create db:migrate RAILS_ENV=test
-  - rake
+  - bundle exec rake db:seed RAILS_ENV=test
+  - bundle exec rake test RAILS_ENV=test
 
 bundler_args: --without production
 
 notifications:
   email: false
+
+cache: bundler
