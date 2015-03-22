@@ -45,3 +45,15 @@ $ bundle install --without development
 ```
 Now mysql2 is used as DB engine instead of sqlite.
 
+
+Bugs
+====
+
+Bugs or suggestions? Visit the [issue tracker](https://github.com/guluc3m/gul-gultalks/issues/)
+
+GulTalks tests are run automatically by [Travis CI](https://travis-ci.org/guluc3m/gul-gultalks)
+
+License
+=======
+
+GulTalks is under the MIT License. See the [LICENSE](https://travis-ci.org/guluc3m/gul-gultalks) file.
