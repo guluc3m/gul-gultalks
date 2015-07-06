@@ -127,7 +127,7 @@ ActiveAdmin.setup do |config|
   #
   # You can change the name under which comments are registered:
   # config.comments_registration_name = 'AdminComment'
-  config.allow_comments = false
+  config.comments = false
 
 
   # == Batch Actions

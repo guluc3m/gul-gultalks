@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
-gem 'rails', '4.1.9'
-# gem 'rails', '4.2.0'
+# gem 'rails', '4.1.9'
+gem 'rails', '4.2.1'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
@@ -77,8 +77,8 @@ gem 'friendly_id', '~> 5.0.0'
 # Tags
 gem 'acts-as-taggable-on'
 # ActiveAdmin
-gem 'activeadmin', github: 'gregbell/active_admin'
-# gem 'activeadmin'
+# gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'devise-i18n'
 gem 'activevalidators'
