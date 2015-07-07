@@ -1,0 +1,17 @@
+.row
+  .large-12.columns
+    Tags: 
+    .radius.label
+      %i.fa.fa-wrench.fa-lg
+      = t("event.subclasses.talk").humanize
+    .radius.label
+      %i.fa.fa-bullhorn.fa-lg
+      = t("event.subclasses.workshop").humanize
+    .warning.radius.label
+      %i.fa.fa-child.fa-lg
+      = t('speaker.unassigned').humanize
+    .alert.radius.label
+      %i.fa.fa-lock.fa-lg
+      = t("event.status.cancelled").humanize
+    
+%br
