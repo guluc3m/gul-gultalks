@@ -3,7 +3,7 @@
     .large-12.columns
       %hr/
   .row
-    .large-3.columns
+    .medium-3.columns
       %ul.no-bullet.show-for-medium-up
         %li
           = link_to t("home"), root_path
@@ -11,16 +11,17 @@
           = link_to t("conference.list"), conferences_path
         %li
           = link_to "API", apidocs_path
-    .large-3.columns
+
+    .medium-3.columns
       %ul.no-bullet.show-for-medium-up
         %li
           = link_to "Archivo", "http://ftp.gul.es/pub/gul/cursos/"
         %li
           = link_to "Fork us on GitHub", "https://github.com/guluc3m/gul-gultalks"
         %li
-          = link_to "gul.es", "http://gul.es"
+          = link_to "gul.es", root_url
     / Fortunes
-    .large-6.columns.show-for-medium-up
+    .medium-6.columns.show-for-medium-up
       #fortunes
         = render "partials/fortunes"
   .row
