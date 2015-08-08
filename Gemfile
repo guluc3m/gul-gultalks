@@ -60,7 +60,7 @@ gem 'capistrano', '~> 2.15.5'
 # gem 'debugger', group: [:development, :test]
 
 #gem 'foundation-icons-sass-rails'
-gem 'font-awesome-rails', '~> 4.3.0.0'
+gem 'font-awesome-rails', '~> 4.4.0.0'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem 'haml-rails'
@@ -96,7 +96,7 @@ gem 'icalendar'
 gem 'recaptcha', :require => 'recaptcha/rails'
 
 # Character countdown 
-gem 'lettrics'
+# gem 'lettrics'
 
 # User authentication
 gem 'cancancan', '~> 1.9'
@@ -129,4 +129,5 @@ gem 'ruby_identicon'
 # Meta tags
 gem 'meta-tags'
 
+# Markdown
 gem 'redcarpet'

@@ -30,7 +30,8 @@
         © Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid. 2007 — #{ Time.now().year }
   .row
     .small-1.small-centered.columns
-      %span.fa-stack.fa-fw.fa-lg
-        %i.fa.fa-circle.fa-stack-2x{style: "color:#d8d8d8"}
-        %i.fa.fa-linux.fa-stack-2x.fa-inverse
+      = link_to "https://www.kernel.org/" do
+        %span.fa-stack.fa-fw.fa-lg
+          %i.fa.fa-circle.fa-stack-2x{style: "color:#d8d8d8"}
+          %i.fa.fa-linux.fa-lg.fa-inverse
 = javascript_include_tag "application"

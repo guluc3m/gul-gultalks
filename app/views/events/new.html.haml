@@ -18,19 +18,18 @@
   .large-12.columns
     %h5.subheader
       = t("event.are_you_speaker")
-  .large-6.columns
+  .medium-6.columns
     .text-justify
       %p
         = simple_format(t("event.are_you_speaker_explanation"))
 
-  .large-6.columns
-    = link_to basic_events_path(@conference), { class: "button radius expand" } do
-      -# %span.fa.fa-reply.fa-fw.fa-lg
-      %span.fa.fa-info-circle.fa-fw.fa-lg
-      = t("event.i_am_proposing")
+  .medium-6.columns
+    %br
 
-  .large-6.columns
-    = link_to detailed_events_path(@conference), { class: "button radius success expand" } do
-      %span.fa.fa-child.fa-fw.fa-lg
-      = t("event.i_am_speaker")
-      -# %span.fa.fa-chevron-right.fa-fw.fa-lg
+  .medium-6.columns
+    = link_to basic_events_path(@conference), { class: "button expand" } do
+      %b= t("event.i_am_proposing")
+
+  .medium-6.columns
+    = link_to detailed_events_path(@conference), { class: "button success expand" } do
+      %b= t("event.i_am_speaker")
