@@ -65,7 +65,8 @@
 .row
   .large-8.columns
     .text-justify
-      = simple_format(h(@event.description))
+      = Markdown.new(@event.description).to_html.html_safe
+
 
   .large-4.columns
     .panel.radius
