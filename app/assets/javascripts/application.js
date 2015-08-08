@@ -14,8 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
-//= require lettrics
 //= require cookies_eu
-$(function(){ $(document)
-  .foundation({});
+$(function(){
+    $(document).foundation({});
 });
