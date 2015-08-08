@@ -226,7 +226,7 @@
               = image_tag "data:image/png;base64,#{icon}"
             .medium-10.columns
               %h4.subheader
-                = h(comment.name)
+                = Markdown.new(comment.name).to_html.html_safe
               %small
                 = comment.created_at.to_s(:long)
               - if comment.ancestry?
