@@ -126,3 +126,7 @@ gem 'bitly'
 # Identicons
 gem 'ruby_identicon'
 
+# Meta tags
+gem 'meta-tags'
+
+gem 'redcarpet'
