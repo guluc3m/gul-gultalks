@@ -207,10 +207,13 @@
           %sub 300
       = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius lettrify", size: "10x6"
 
-  .row
-    .large-12.columns
-      = render 'partials/recaptcha'
+  -# .row
+  -#   .large-12.columns
+  -#     = check_box("eula", "accepted", { class: 'eula_check' }, "yes", "no")
+  -#     %span Acepto las #{link_to "condiciones", "#", style: "border-bottom: 1px dashed"} para que la actividad pueda ser grabada y distribuida.
 
   .row
-    .large-12.columns
-      = f.submit(t("event.send_event"), class: "button radius success expand")
+    .medium-4.columns
+      = render 'partials/recaptcha'
+    .medium-4.columns
+      = f.submit(t("event.send_event"), class: "button success expand")

@@ -79,15 +79,9 @@
           %sub 1400
       = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius lettrify", size: "10x8"
 
-  //.row
-  //  .large-12.columns
-  //    = check_box("eula", "accepted", { class: 'eula_check' }, "yes", "no")
-  //    %span Acepto las condiciones de privacidad
 
   .row
-    .large-12.columns
+    .medium-4.columns
       = render 'partials/recaptcha'
-
-  .row
-    .large-12.columns
-      = f.submit(t("event.send_event"), class: "button radius success expand")
+    .medium-4.columns
+      = f.submit(t("event.send_event"), class: "button success expand")
