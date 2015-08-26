@@ -12,7 +12,7 @@ group :development, :test do
     gem 'binding_of_caller'
     # gem 'meta_request'
 end
-# Use mysql2 for production environment 
+# Use mysql2 for production environment
 group :production do
     gem 'mysql2'
     gem 'unicorn'
@@ -52,10 +52,13 @@ end
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
+# DEPRECATED: Use Capistrano for deployment
 #Capistrano deployments
-gem 'capistrano', '~> 2.15.5'
-#
+#gem 'capistrano', '~> 2.15.5'
+
+# Use MIna for deployment
+gem 'mina'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
@@ -95,7 +98,7 @@ gem 'icalendar'
 # reCAPTCHA
 gem 'recaptcha', :require => 'recaptcha/rails'
 
-# Character countdown 
+# Character countdown
 # gem 'lettrics'
 
 # User authentication
