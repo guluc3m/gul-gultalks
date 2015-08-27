@@ -25,8 +25,9 @@ class DetailedEventForm < BasicEventForm
       },
       allow_blank: false,
       email: true,
-      uniqueness: {scope: [:event_id]},
       if: ->(*) { name.present? || email.present? }
+
+    validates_uniqueness_of :email, scope: :event_id
 
     validates :name,
       presence: true,
