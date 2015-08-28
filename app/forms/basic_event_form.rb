@@ -13,8 +13,9 @@ class BasicEventForm < Reform::Form
           too_short: I18n.t("errors.messages.too_short"),
           too_long: I18n.t("errors.messages.too_long")
       },
-      presence: true,
-      uniqueness: { scope: :conference }
+      presence: true
+
+  validates_uniqueness_of :title, scope: :conference
 
   validates :summary,
       format: { with: /\A[a-z0-9\W]+\z/i },
