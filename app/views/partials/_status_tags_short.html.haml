@@ -1,0 +1,18 @@
+- if event.created_at.today? and not event.cancelled?
+  %span.success.radius.label
+    = t("event.status.new").humanize
+- if event.subclass.eql?("workshop")
+  %span.radius.label{ 'data-tooltip aria-haspopup': "true", title:   t("event.subclasses.workshop").humanize }
+    %i.fa.fa-wrench.fa-lg
+- if event.subclass.eql?("talk")
+  %span.radius.label{ 'data-tooltip aria-haspopup': "true", title:   t("event.subclasses.talk").humanize }
+    %i.fa.fa-bullhorn.fa-lg
+  /= t("event.subclasses.#{event.subclass}").humanize
+- if event.cancelled?
+  %span.alert.radius.label{ 'data-tooltip aria-haspopup': "true", title:   t('event.status.cancelled').humanize }
+    %i.fa.fa-lock.fa-lg
+    /= t("event.status.cancelled").humanize
+- if not event.speaker_list.present? and not event.cancelled?
+  %span.warning.radius.label{ 'data-tooltip aria-haspopup': "true", title:   t('speaker.unassigned').humanize }
+    %i.fa.fa-child.fa-lg
+    /= t('speaker.unassigned').humanize

@@ -54,6 +54,7 @@
               = t("conference.first_to_propose")
 
     - else
+      = render partial: "partials/legend"
       %table
         %thead
           %tr
@@ -67,11 +68,7 @@
             %tr
               %td
                 = link_to h(event.title), conference_event_path(@conference, event)
-                = render partial: "partials/status_tags", locals: {event: event}
-                - if not event.speaker_list.present?
-                  .label.alert.radius
-                    %i.fa.fa-child.fa-lg.fa-fw
-                    = t('speaker.unassigned').humanize
+                = render partial: "partials/status_tags_short", locals: {event: event}
                 %h5
                   %small
                     = h(event.summary)

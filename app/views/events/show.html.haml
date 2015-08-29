@@ -16,6 +16,10 @@
         = t('speaker.unassigned').humanize
 
     .right
+      .success.radius.label.large
+        %b
+          = @event.votes
+          = t('vote', count: @event.votes ).humanize
       %span.label.radius.secondary.visible-for-medium-up
         %span
           // TODO: localize
@@ -102,7 +106,8 @@
           - if @event.room.present?
             = "#{t('event.room')}: #{@event.room}"
             // TODO: write a scope like "room.accesible?"
-            %i.label.radius.success.fa.fa-wheelchair
+            %span.label.radius.success
+              %i.fa.fa-wheelchair.fa-lg
           - else
             = "#{t('event.room').humanize} #{t('not_available')}"
 
@@ -148,17 +153,14 @@
           - else
             = t('not_available').humanize
 
-      %ul.no-bullet
-        %li
-          -# %i.fa.fa-info.fa-fw.fa-lg.subheader
-          - @event.tag_list.map do |tag|
-            .label.info.radius
-              = tag.humanize
+      - if @event.tag_list.present?
+        %ul.no-bullet
+          %li
+            -# %i.fa.fa-info.fa-fw.fa-lg.subheader
+            - @event.tag_list.map do |tag|
+              .label.info.radius
+                = tag.humanize
 
-      .success.radius.label.large
-        %b
-          = @event.votes
-          = t('vote', count: @event.votes ).upcase
 
 .row
   .large-12.columns
@@ -210,6 +212,10 @@
       %h4.subheader
         %i.fa.fa-comments-o
         = t("event.comments").humanize
+        -# - total_coments = @coments.count
+        -# - if total_comments
+        %sup.label.secondary.radius
+          10
       -# - if @comments.count.nonzero?
       -#   .label.radius
       -#     = @comments.count
@@ -254,6 +260,7 @@
         .large-6.large-centered.columns
           .panel.callout.radius
             %h5
+              %sub.fa.fa-frown-o.fa-2x.fa-fw
               = t("event.comment.no_comments").humanize
 
 - if @conference.active?
