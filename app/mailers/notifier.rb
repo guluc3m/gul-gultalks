@@ -1,5 +1,7 @@
 class Notifier < ActionMailer::Base
 
+  # Sends a certificate confirmation email with a link the speaker must access
+  # in order to get sent their activity certificate.
   def confirmation_certificate(verifier)
     @event = Event.find(verifier.event_id)
     @url = verify_url(token: verifier.token)
@@ -16,6 +18,8 @@ class Notifier < ActionMailer::Base
   #   mail(to: verifier.email, subject: t("notifier.tag") + " " + t("notifier.confirmation_event.subject"))
   # end
 
+  # Sends a speaker attendance confirmation email with a link the speaker must
+  # access in order to confirm that they want to impart a given activity.
   def confirmation_speaker(verifier)
     @event = Event.find(verifier.event_id)
     @speaker = Speaker.find_by(event_id: verifier.event_id, email: verifier.email)
@@ -25,12 +29,16 @@ class Notifier < ActionMailer::Base
     mail(to: email_with_name, subject: t("notifier.tag") + " " + t("notifier.confirmation_speaker.subject"))
   end
 
+  # Sends a vote confirmation email with a link the user must access in order
+  # to confirm their vote for a given activity.
   def confirmation_vote(verifier)
     @event = Event.find(verifier.event_id)
     @url = verify_url(token: verifier.token)
     mail(to: verifier.email, subject: t("notifier.tag") + " " + t("notifier.confirmation_vote.subject"))
   end
 
+  # Generates a speaker certificate, attaches the resulting PDF file to the
+  # email and sends it to the speaker.
   def send_certificate(speaker)
     @event = Event.find(speaker.event_id)
     @speaker = speaker

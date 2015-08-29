@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 
+  # Stores the new comment in the database.
   def create
     @event = Event.friendly.find(params[:event_id])
     @conference = Conference.find(@event.conference_id)
@@ -28,6 +29,11 @@ class CommentsController < ApplicationController
     end
   end
 
+  # Shows the comment form.
+  #
+  # This method is called when creating a new response to an already existing
+  # comment. Regular comments are created from the `show` method in the
+  # `events` controller and directly call the `create` method.
   def new
     @event = Event.friendly.find(params[:event_id])
     @conference = Conference.find(@event.conference_id)
@@ -45,6 +51,9 @@ class CommentsController < ApplicationController
   end
 
   private
+  # Finds the parent object of the comment.
+  #
+  # Comments may be attached to activities or other comments (responses).
   def find_commentable
     params.each do |name, value|
       #if name =~ /(.+)_id$/

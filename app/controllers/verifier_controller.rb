@@ -1,5 +1,13 @@
 class VerifierController < ApplicationController
 
+  # Verifies whether the given token is valid and performs the proper
+  # validations.
+  #
+  # This method validates:
+  #
+  # - Speaker attendance
+  # - Certificate confirmation
+  # - Vote confirmation
   def verify
     verifier = Verifier.find_by(token: params[:token])
 
