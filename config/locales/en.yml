@@ -130,9 +130,21 @@ en:
         Hello %{name}.
 
         Attached you will find the certificate corresponding to the activity '%{event_title}'.
+    send_edition_token:
+      subject: "Activity edition link"
+      body: |
+        Hello %{name}.
+
+        As you are the first speaker for the activity '%{event_title}', we have sent you its edition link.
+
+        This link is unique to this activity, so anyone that accesses the link will be able to edit the details.
+
+        Your link is:
+
+        %{edition_url}
     footer: |
       --
-      Grupo de Usuarios de la Universidad Carlos III de Madrid 
+      Grupo de Usuarios de la Universidad Carlos III de Madrid
     tag: "[GUL-TALKS]"
   back: "back"
   Conference: "Conference"
@@ -208,6 +220,7 @@ en:
     complete_detailed_form: "Complete the form with detailed information for the activity."
     detailed_info: "Detailed info"
     download_ical: "Download calendar (iCal)"
+    edit_event: "Edit activity"
     contact: "Email address"
     description: "Description"
     description_requirements: "Can only contain alphanumeric characters and hyphens."

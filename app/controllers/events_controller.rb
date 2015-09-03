@@ -132,6 +132,8 @@ class EventsController < ApplicationController
             end
           end
         end
+
+        new_event.send_edition_token
       end
       render "thanks"
     else
@@ -237,6 +239,106 @@ class EventsController < ApplicationController
       end
     else
       redirect_to action: "vote"
+    end
+  end
+
+  # Shows a form where the speaker can edit details on the activity
+  def edit
+    event = Event.find_by(token: params[:token])
+    if event.nil?
+      redirect_to root_path and return
+    end
+
+    @conference = Conference.friendly.find(event.conference_id)
+    if !@conference.active
+      redirect_to conference_path(@conference) and return
+    end
+
+    # Add as many speaker fields as needed
+    (5 - event.speakers.count).times { event.speakers.build }
+
+    @form = DetailedEventForm.new(event)
+  end
+
+  # Save the edited activity
+  def save_edit
+    event = Event.find_by(token: params[:token])
+    if event.nil?
+      redirect_to root_path and return
+    end
+
+    @conference = Conference.friendly.find(event.conference_id)
+    if !@conference.active
+      redirect_to conference_path(@conference) and return
+    end
+
+    # Original speakers
+    original_sps = []
+    event.speakers.each do |sp|
+      original_sps.push(sp.email)
+    end
+
+    new_event = Event.new
+    5.times { new_event.speakers.build }
+
+    @form = DetailedEventForm.new(new_event)
+
+    total_speakers = 0
+    5.times do |i|
+      if params[:detailed_event]["speakers_attributes"]["#{i}"]["name"].present?
+        total_speakers += 1
+      end
+    end
+
+    captcha_valid = verify_recaptcha
+    speakers_valid = total_speakers > 0 && total_speakers < 6
+
+    if @form.validate(params[:detailed_event]) && captcha_valid && speakers_valid
+      @form.save do |nested|
+        # Update event and tags
+        event.update_attributes!(nested.except("speakers"))
+        event.tag_list.add(nested["tags"], parse: true)
+
+        # Update speakers (only if name and email are present and the speaker does not exist)
+        new_sps = []
+
+        nested["speakers"].each do |sp|
+          if sp["name"].present? && sp["email"].present?
+            # Skip existing speakers, but store them for comparison
+            old_sp = Speaker.find_by(email: sp["email"], event_id: event.id)
+            if !old_sp.nil?
+              old_sp.update_attributes(sp)
+              new_sps.push(old_sp.email)
+              next
+            end
+
+            new_speaker = Speaker.new
+            new_speaker.event_id = event.id
+            new_speaker.update_attributes(sp)
+            new_speaker.save
+
+            new_sps.push(new_speaker.email)
+
+            # Create verfier for certificate
+            if new_speaker.certificate && Verifier.find_by(email: new_speaker.email, event_id: new_speaker.event_id).nil?
+              Verifier.create(email: new_speaker.email, event_id: new_speaker.event_id, verified: false, verify_type: "certificate")
+            end
+          end
+        end
+
+        # Remove speakers that are not present in the new array
+        diff = original_sps - new_sps
+
+        diff.each do |sp|
+            Speaker.where(event_id: event.id, email: sp).destroy_all()
+        end
+      end
+
+      redirect_to conference_event_path(@conference, event)
+    else
+      @form.errors.add :base, t("recaptcha.incorrect") if !captcha_valid
+      @form.errors.add :base, t("speaker.min_max") if !speakers_valid
+      render :edit
     end
   end
 

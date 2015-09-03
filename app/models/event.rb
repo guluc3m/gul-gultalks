@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
   has_many :speakers
   accepts_nested_attributes_for :speakers, reject_if: :all_blank, allow_destroy: true
 
+  TOKEN_LENGTH = 32
+
   validates :title,
       format: { with: /\A[a-z0-9\W]+\z/i },
       length: {
@@ -96,6 +98,17 @@ class Event < ActiveRecord::Base
       end
   end
 
+  # Generate and send an edition token to the first speaker in the list
+  def send_edition_token
+    sp = Speaker.where(event_id: self, confirmed: true).first
+    if sp.nil?
+        return false
+    end
+
+    generate_token
+    Notifier.send_edition_token(self, sp).deliver
+  end
+
   private
 
   #
@@ -103,5 +116,12 @@ class Event < ActiveRecord::Base
   #
   def should_generate_new_friendly_id?
       slug.blank? || title_changed?
+  end
+
+  def generate_token
+    token = SecureRandom.urlsafe_base64(TOKEN_LENGTH, false)
+    generate_token if Event.exists?(token: token)
+    self.token = token
+    self.save
   end
 end

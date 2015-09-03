@@ -49,4 +49,14 @@ class Notifier < ActionMailer::Base
     email_with_name = "#{@speaker.name} <#{@speaker.email}>"
     mail(to: email_with_name, subject: t("notifier.tag") + " " + t("notifier.send_certificate.subject"))
   end
+
+  # Sends a unique edition token to the first speaker for the given activity
+  def send_edition_token(event, speaker)
+    @url = edit_event_url(token:event.token)
+    @event = event
+    @speaker = speaker
+
+    email_with_name = "#{@speaker.name} <#{@speaker.email}>"
+    mail(to: email_with_name, subject: t("notifier.tag") + " " + t("notifier.send_edition_token.subject"))
+  end
 end
