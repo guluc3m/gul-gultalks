@@ -6,7 +6,7 @@ Gultalks::Application.routes.draw do
   match 'apidocs', to: 'api_docs#index', via: :get, path: '/apidocs'
 
   # Verifiers
-  match 'verify', to: 'verifier#verify', via: :get, path: '/verify'
+  match 'verify', to: 'verifier#verify', via: :get, path: '/verify/:token'
 
   # Conferences
   match 'conferences', to: 'conferences#index', via: :get, path: '/conferences'
