@@ -186,7 +186,7 @@ class EventsController < ApplicationController
       redirect_to conference_event_path(@conference, @event)
     end
 
-    permitted = params.require(:speaker).permit(:name, :email, :twitter, :certificate)
+    permitted = params.require(:speaker).permit(:certificate, :email, :name, :twitter)
     @speaker = Speaker.new(permitted)
     @speaker.assign_attributes(event_id: @event.id, confirmed: false)
 
