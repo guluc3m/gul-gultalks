@@ -186,7 +186,8 @@ class EventsController < ApplicationController
       redirect_to conference_event_path(@conference, @event)
     end
 
-    @speaker = Speaker.new(params[:speaker])
+    permitted = params.require(:speaker).permit(:name, :email, :twitter, :certificate)
+    @speaker = Speaker.new(permitted)
     @speaker.assign_attributes(event_id: @event.id, confirmed: false)
 
     captcha_valid = verify_recaptcha

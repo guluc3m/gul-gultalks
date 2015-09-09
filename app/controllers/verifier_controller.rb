@@ -25,6 +25,12 @@ class VerifierController < ApplicationController
           Verifier.create(email: speaker.email, event_id: speaker.event_id, verified: false, verify_type: "certificate")
         end
 
+        # Send edition token if it has to be generated
+        event = Event.find(speaker.event_id)
+        if event.token.nil?
+          event.send_edition_token
+        end
+
         render "speaker_verified"
 
       elsif verifier.verify_type.eql? "certificate"

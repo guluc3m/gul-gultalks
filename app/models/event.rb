@@ -79,16 +79,12 @@ class Event < ActiveRecord::Base
 
   # #validates :terms_of_service, acceptance: { accept: 'yes' }
 
-  #
   # List of confirmed speakers
-  #
   def speaker_list
       return Speaker.where(event_id: self, confirmed: true)
   end
 
-  #
   # Whether the event has at least one confirmed speaker or not
-  #
   def speaker?
       sp = Speaker.where(event_id: self, confirmed: true).first
       if sp.nil?
@@ -99,10 +95,15 @@ class Event < ActiveRecord::Base
   end
 
   # Generate and send an edition token to the first speaker in the list
-  def send_edition_token
-    sp = Speaker.where(event_id: self, confirmed: true).first
-    if sp.nil?
-        return false
+  # or the provided Speaker
+  def send_edition_token(speaker=nil)
+    if !speaker
+      sp = Speaker.where(event_id: self, confirmed: true).first
+      if sp.nil?
+          return false
+      end
+    else
+      sp = speaker
     end
 
     generate_token
@@ -111,9 +112,7 @@ class Event < ActiveRecord::Base
 
   private
 
-  #
   # (Re)generate the slug where needed
-  #
   def should_generate_new_friendly_id?
       slug.blank? || title_changed?
   end
