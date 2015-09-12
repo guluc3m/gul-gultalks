@@ -19,7 +19,7 @@ adding many modern development techniques and latest technologies.
 - [Ancestry](https://github.com/stefankroes/ancestry)
 - [Better Errors](https://github.com/charliesome/better_errors)
 - [Mina](http://mina-deploy.github.io/mina/)
-- [and many more...](https://github.com/guluc3m/gul-gultalks/blob/master/LICENSE)
+- [and many more...](https://github.com/guluc3m/gul-gultalks/blob/develop/Gemfile)
 
 ## Development environment
 
@@ -43,13 +43,13 @@ $ rails server [-p $PORT] # Port is optional
 If you want to deploy the app, you have to modify the deploy [config](https://github.com/guluc3m/gul-gultalks/blob/develop/config/deploy.rb) file placed in the
 config directory. Then, you have just type the following command:
 
-```
+```shell
 $ mina deploy [--verbose]
 ```
 
 To build the app in production environment and test it locally, use the following command:
 
-```
+```shell
 $ bundle install --without development
 $ rails server [-p $PORT] # Port is optional
 ```
