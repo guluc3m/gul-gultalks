@@ -13,7 +13,7 @@ set :term_mode, nil
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :domain, 'cursos.gul.es'
-#set :deploy_to, "/gultalks/app" FIXME
+set :deploy_to, "/home/gultalks/app"
 set :repository, 'ssh://git@github.com:guluc3m/gul-gultalks.git'
 set :branch, 'master'
 
@@ -29,7 +29,7 @@ set :lock_file, 'deploy.lock'
 set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log']
 
 # Optional settings:
-set :user, ''    # Username in the server to SSH to.
+set :user, 'gultalks'    # Username in the server to SSH to.
 set :port, '22'     # SSH port number.
 # set :forward_agent, true     # SSH forward_agent.
 
@@ -93,6 +93,7 @@ task :deploy => :environment do
       queue "bundle exec rake db:seed RAILS_ENV=#{rails_env}"
     end
   end
+    set :message, "Deploy is done"
 end
 
 # For help in making your deploy script, see the Mina documentation:

@@ -56,7 +56,7 @@ end
 #Capistrano deployments
 #gem 'capistrano', '~> 2.15.5'
 
-# Use MIna for deployment
+# Use Mina for deployment
 gem 'mina'
 
 # Use debugger
@@ -67,8 +67,10 @@ gem 'font-awesome-rails', '~> 4.4.0.0'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem 'haml-rails'
-# gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
+
+#
 gem 'rails-i18n'
+
 #http accept language to have the locale set from browser
 gem 'http_accept_language'
 
@@ -79,12 +81,14 @@ gem 'friendly_id', '~> 5.0.0'
 
 # Tags
 gem 'acts-as-taggable-on'
+
 # ActiveAdmin
 # gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'devise-i18n'
 gem 'activevalidators'
+
 # Web Pagination
 gem 'will_paginate'
 gem 'will_paginate-foundation'
@@ -97,9 +101,6 @@ gem 'icalendar'
 
 # reCAPTCHA
 gem 'recaptcha', :require => 'recaptcha/rails'
-
-# Character countdown
-# gem 'lettrics'
 
 # User authentication
 gem 'cancancan', '~> 1.9'
