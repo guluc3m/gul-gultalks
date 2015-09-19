@@ -21,7 +21,7 @@
           = t("date.to")
           %b
             = l(@conference.voting_end_date, format: :long)
-        %a.close{href:""} ×
+        %a.close ×
 
 
 - if @conference.call_for_papers_enabled
@@ -30,8 +30,9 @@
       .left
         %h4.subheader
           = t("Actividades")
-      .right.show-for-medium-up
-        = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), { class: "button tiny success radius" }
+      - if @conference.active? and @conference.call_for_papers_enabled and @events.count.nonzero?
+        .right.show-for-small-up
+          = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), {class: "button tiny success radius"}
       %hr
 
 .row
@@ -41,24 +42,26 @@
     - if @conference.active? and @conference.call_for_papers_enabled? and @conference.call_for_papers_start_date > DateTime.now.to_date 
       .row
         .large-8.large-centered.columns
-          .panel.callout.radius
+          .panel
             %h1.text-center
               = distance_of_time_in_words_to_now(@conference.call_for_papers_start_date)
-    - if @conference.active? and @conference.call_for_papers_enabled and @events.count.zero?
+    - elsif @conference.active? and @conference.call_for_papers_enabled and @events.count.zero?
       .row
-        .medium-6.medium-centered.columns
-          .panel.callout.radius
+        .medium-5.medium-centered.columns
+          .panel.text-center
             %h3
               = t("conference.call_for_papers_open")
             %p
               = t("conference.first_to_propose")
+            = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), {class: "button success radius expand"}
 
     - else
       %table
         %thead
           %tr
-            %th{scope: "column"}
+            %th{scope: "column", width: "900"}
               = t("Events")
+              = render partial: "partials/legend_modal"
             - if Date.today >= @conference.voting_start_date
               %th.text-center{scope: "column", width: "90"}
                 = t("vote.other").humanize
@@ -67,11 +70,7 @@
             %tr
               %td
                 = link_to h(event.title), conference_event_path(@conference, event)
-                = render partial: "partials/status_tags", locals: {event: event}
-                - if not event.speaker_list.present?
-                  .label.alert.radius
-                    %i.fa.fa-child.fa-lg.fa-fw
-                    = t('speaker.unassigned').humanize
+                = render partial: "partials/status_tags_short", locals: {event: event}
                 %h5
                   %small
                     = h(event.summary)
@@ -82,45 +81,8 @@
         .large-6.columns-centered.columns
           = will_paginate @events, renderer: FoundationPagination::Rails, container: false, class: "pagination-centered"
 
-    -# - if @pending_events.count.nonzero?
-    -#   .row
-    -#     .large-12.columns
-    -#       %h4.subheader 
-    -#         %i.fa.fa-child.fa-fw.fa-lg
-    -#         = t("event.missing_speaker")
-    -#       %hr
-
-    -#       %p
-    -#         = t("event.missing_speaker_msg")
-
-    -#         %table
-    -#           %thead
-    -#             %tr
-    -#               %th{scope: "column"}
-    -#                 = t("Events")
-    -#               - if Date.today >= @conference.voting_start_date 
-    -#                 %th.text-center{scope: "column", width: "90"}
-    -#                   = t("vote.other").humanize
-    -#           %tbody
-    -#             - @pending_events.map do |event|
-    -#               %tr
-    -#                 %td
-    -#                   = link_to event.title, conference_event_path(@conference, event)
-    -#                   = render partial: "partials/status_tags", locals: {event: event}
-    -#                   %h5
-    -#                     %small
-    -#                       = event.summary
-    -#                 - if Date.today >= @conference.voting_start_date
-    -#                   %td.text-center
-    -#                     = event.votes
-
-  -# .row
-  -# .large-6.columns
-  -#   = link_to t("conference.list"), conferences_path, { class: "button radius expand" }
-  -# - if !(Date.today >= @conference.start_date)
 - if @events.count > 5
   .row
     .large-6.large-centered.columns
       - if @conference.call_for_papers_enabled
         = link_to t("conference.propose_event"), new_conference_event_path(@conference), { class: "button success radius expand" }
-        /  %span.fa.fa-chevron-left.fa-fw.fa-lg
