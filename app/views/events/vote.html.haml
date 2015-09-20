@@ -21,33 +21,31 @@
     %h1.subheader
       = t("to_vote")
     %hr
-  .large-12.columns
+.row
+  .medium-6.columns
     %p
       = t("thanks.vote_msg")
     %p
       = t("thanks.contact_msg")
-      = mail_to "info@gul.es", "info@gul.es", subject: "[GUL TALKS]"
+      = mail_to "info@gul.es", "info@gul.es", subject: "[GulTalks]"
+  .medium-6.columns
+    %label
+      %i.fa.fa-envelope.fa-fw.fa-lg.subheader
+      = t("vote.email")
+      %small
+        = t("event.required")
+      = form_tag send_vote_conference_event_path(@conference, @event) do
+        = email_field_tag "email", nil, class: "radius", required: true,  type: "email", maxlength: 64
+        .row
+          .medium-5.columns
+            = render 'partials/recaptcha'
+            %br
+          .large-4.columns
+            = submit_tag t("vote.send_vote"), class: "button radius success expand"
+
     .row
-      .medium-6.columns
-        %label
-          %i.fa.fa-envelope.fa-fw.fa-lg.subheader
-          = t("vote.email")
-          %small
-            = t("event.required")
-
-= form_tag send_vote_conference_event_path(@conference, @event) do
-  .row
-    .large-5.columns
-      .row
-        .small-12.columns
-          = email_field_tag "email", nil, class: "radius", required: true, type: "email", maxlength: 64
-        .large-12.columns
-          = render 'partials/recaptcha'
-        .large-12.columns
-          = submit_tag t("vote.send_vote"), class: "button radius success expand"
-
-.row.show-for-medium-down
-  .large-3.columns
-    = link_to conference_event_path(@conference, @event), { class: "button radius expand" } do
-      %span.fa.fa-chevron-left.fa-fw.fa-lg
-      = t("event.back_to_event").humanize
+      .show-for-medium-down
+        .large-4.columns
+          = link_to conference_event_path(@conference, @event), { class: "button radius expand" } do
+            %span.fa.fa-chevron-left.fa-fw.fa-lg
+            = t("event.back_to_event").humanize
