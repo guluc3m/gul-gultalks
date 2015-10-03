@@ -3,7 +3,7 @@
     .large-12.columns
       - if @event.live_video.present? or @event.video.present?
         .flex-video.widescreen
-          - if @event.live_video.present? and !@event.video.present?
+          - if @event.live_video.present? and not @event.video.present?
             // FIXME
             = video_path(@event.live_video)
           - elsif @event.video.present?
@@ -11,12 +11,9 @@
         %h5
           = h(@event.title)
         %p.subheader
-          - @event.speakers.each_with_index.map do |speaker|
-            = h(speaker.name)
-            = ", "
+          = @event.map { |speaker| h(speaker.name) }.to_sentence
       - else
         .alert-box.radius
           %i.fa.fa-frown-o.fa-fw.fa-2x
           = t("warning.no_video")
-
   %a.close-reveal-modal ×

@@ -17,8 +17,6 @@
     %h1.subheader
       = t("speaker.propose")
     %hr
-    %p
-      = t("speaker.propose_msg")
 
 = form_for @speaker, url: {controller: "events", action: "send_speaker"} do |f|
 
@@ -29,7 +27,9 @@
           = msg
 
   .row
-    .large-4.columns
+    .large-6.colums
+      %p= t("speaker.propose_msg")
+    .large-6.columns
       %label{for: "name"}
         %i.fa.fa-users.fa-fw.fa-lg.subheader
         = t("speaker.name")
@@ -37,9 +37,8 @@
           = t("event.required")
         .right
           %sub 64
-      = f.text_field :name, label: false, maxlength: 64, class: "radius lettrify"
+      = f.text_field :name, label: false, maxlength: 64, class: "radius"
 
-    .large-4.columns
       %label{for: "email"}
         %i.fa.fa-envelope.fa-fw.fa-lg.subheader
         = t("speaker.email")
@@ -49,7 +48,6 @@
           %sub 64
       = f.text_field :email, label: false, maxlength: 64, type: "email", class: "radius"
 
-    .large-4.columns
       %label{for: "twitter"}
         %i.fa.fa-twitter.fa-fw.fa-lg.subheader
         = t("speaker.twitter")
@@ -60,8 +58,6 @@
         .small-10.columns
           = f.text_field :twitter, label: false, maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})", class: "radius"
 
-    .large-12.columns
-      -# .hide-for-touch
       = f.check_box :certificate, label: t('speaker.request_certificate').humanize
       // FIXME!!
       -# %label{for: "certificate"}
@@ -78,11 +74,10 @@
             = t('speaker.request_certificate').humanize
 
   .row
-    .large-12.columns
+    .medium-5.columns
       = render "partials/recaptcha"
-
-  .row
-    .large-12.columns
+    %br
+    .medium-5.columns
       = f.submit(t("speaker.propose"), class: "button radius success expand")
 
 .row

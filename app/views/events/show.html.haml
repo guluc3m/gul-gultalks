@@ -9,13 +9,20 @@
         = h(@event.title)
 .row
   .large-12.columns
-    = render 'partials/status_tags', event: @event
+    .show-for-medium-up
+      = render 'partials/status_tags_full', event: @event
+    .show-for-small
+      = render 'partials/status_tags_short', event: @event
     - if not @event.speaker_list.present? and @conference.call_for_papers_enabled and not @event.cancelled?
       = link_to propose_speaker_conference_event_path, class: "label alert radius" do
         %i.fa.fa-child.fa-lg.fa-fw
         = t('speaker.unassigned').humanize
 
     .right
+      .success.radius.label.large
+        %b
+          = @event.votes
+          = t('vote', count: @event.votes ).humanize
       %span.label.radius.secondary.visible-for-medium-up
         %span
           // TODO: localize
@@ -63,13 +70,13 @@
     %hr
 
 .row
-  .large-8.columns
+  .medium-8.columns
     .text-justify
       = Markdown.new(@event.description).to_html.html_safe
 
-
-  .large-4.columns
-    .panel.radius
+  / Right panel
+  .medium-4.columns
+    .panel
       %ul.no-bullet
         %li
           %i.fa.fa-calendar.fa-fw.fa-lg.subheader
@@ -89,22 +96,23 @@
             - if @event.location.present?
               = @event.location
               .show-for-medium-up
-                = link_to t("event.directions"), "#",  data: { "reveal-id" => "map-modal" }
+                = link_to t("event.directions"), "#",  data: { "reveal-id" => "map-modal" }, class: "dotted-link"
                 = render "partials/map_modal"
               .show-for-small
                 = link_to t("event.directions"), "http://www.openstreetmap.org/?mlat=40.33249&amp;mlon=-3.76728#map=17/40.33250/-3.76729", target: "_blank"
             - else
               = t("not_available").humanize
 
-
         %li
           %i.fa.fa-building.fa-fw.fa-lg.subheader
           - if @event.room.present?
-            = "#{t('event.room')}: #{@event.room}"
+            = t('event.room').humanize + ": " + @event.room
             // TODO: write a scope like "room.accesible?"
-            %i.label.radius.success.fa.fa-wheelchair
+            %span.label.radius.success
+              %i.fa.fa-wheelchair.fa-lg
           - else
             = "#{t('event.room').humanize} #{t('not_available')}"
+      %hr 
 
       %ul.no-bullet
         %li
@@ -148,17 +156,12 @@
           - else
             = t('not_available').humanize
 
-      %ul.no-bullet
-        %li
-          -# %i.fa.fa-info.fa-fw.fa-lg.subheader
-          - @event.tag_list.map do |tag|
-            .label.info.radius
-              = tag.humanize
-
-      .success.radius.label.large
-        %b
-          = @event.votes
-          = t('vote', count: @event.votes ).upcase
+      - if @event.tag_list.present?
+        %ul.no-bullet
+          %li
+            - @event.tag_list.map do |tag|
+              .label
+                = tag.humanize
 
 .row
   .large-12.columns
@@ -181,25 +184,24 @@
     %hr
 
   .visible-for-medium-down
-    .large-3.columns.left
+    .medium-4.columns.left
       = link_to conference_path(@conference), class: "button radius expand" do
         %span.fa.fa-chevron-left.fa-fw.fa-lg
         = t("event.back_to_events").humanize
 
   - unless @event.cancelled
     - if @conference.voting_enabled
-      .large-3.columns.right
+      .medium-4.columns.right
         = link_to vote_conference_event_path, class: "button success radius expand" do
-          %b
-            = t("to_vote")
+          = t("to_vote")
     - else
-      .large-3.columns.right
+      .medium-3.columns.right
         = link_to "#", disabled: true, class: "button success radius expand" do
           %i.fa.fa-lock.fa-lg
           = t("to_vote")
 
     - if !@event.speaker? && @conference.call_for_papers_enabled
-      .large-3.columns.right
+      .medium-4.columns.right
         = link_to propose_speaker_conference_event_path, class: "button alert radius expand" do
           %i.fa.fa-child.fa-lg
           = t("speaker.propose").humanize
@@ -210,6 +212,10 @@
       %h4.subheader
         %i.fa.fa-comments-o
         = t("event.comments").humanize
+        - if @coments
+          %sup.label.secondary
+            = @coments.count
+            
       -# - if @comments.count.nonzero?
       -#   .label.radius
       -#     = @comments.count
@@ -254,12 +260,8 @@
         .large-6.large-centered.columns
           .panel.callout.radius
             %h5
+              %sub.fa.fa-frown-o.fa-2x.fa-fw
               = t("event.comment.no_comments").humanize
 
 - if @conference.active?
   = render "comments/form"
-
-/.row
-/ .large-6.columns
-/   - if @conference.voting_enabled
-/     = link_to t("to_vote"), { :controller => "events", :action => "vote" }, {:class => "button success radius expand" }
