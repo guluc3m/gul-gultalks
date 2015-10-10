@@ -89,7 +89,7 @@ es:
         Grupo de Usuarios de Linux
         de la Universidad Carlos III de Madrid
       certifies: "CERTIFICA"
-      speaker_info: "Que  %{name}  ha asistido a  '%{conference_title}' , teniendo lugar durante el mes de %{month} de %{year}, presentando la ponencia:" 
+      speaker_info: "Que  %{name}  ha asistido a  '%{conference_title}' , teniendo lugar durante el mes de %{month} de %{year}, presentando la ponencia:"
       i_sign: "Y para que conste a los efectos oportunos, sello y firmo el presente."
       signature_details: "En %{location} a ___ de  ___________ de %{year}."
       signature: "Fdo:"
@@ -332,9 +332,11 @@ es:
     thank_you: "¡Gracias!"
     thanks_msg: "Gracias por proponer una actividad. Pronto recibirás un e-mail de confirmación."
     thank_you_vote: "Gracias por tu voto"
-    vote_msg: "Para evitar el fraude en el proceso de votación, recibirás un e-mail de confirmación para validar tu voto." 
+    vote_msg: "Para evitar el fraude en el proceso de votación, recibirás un e-mail de confirmación para validar tu voto."
     vote_thanks: "¡Gracias por votar!"
-    vote_thanks_msg: "Recuerda comprobar tu bandeja de entrada para validar tu voto."
+    vote_thanks_msg: "Acabas de votar por la actividad '%{title}'."
+    vote_thanks_reminder: "Recuerda comprobar tu bandeja de entrada para validar tu voto."
+    cote_another_one: "Votar otra actividad"
   time:
     from: "de"
     to: "a"

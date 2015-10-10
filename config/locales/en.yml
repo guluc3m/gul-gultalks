@@ -316,7 +316,8 @@ en:
     thank_you_vote: "Thank you for your vote"
     vote_msg: "Thank you for your vote. To avoid fraud in the voting process, you will recieve a confirmation e-mail to validate the vote."
     vote_thanks: "Thank you for voting!"
-    vote_thanks_msg: "Remember to check your inbox in order to validate your vote."
+    vote_thanks_msg: "You just vote for the activity '%{title}."
+    vote_thanks_reminder: "Remember to check your inbox in order to validate your vote."
   time:
     from: "from"
     to: "to"
