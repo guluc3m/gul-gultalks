@@ -10,6 +10,9 @@ group :development, :test do
     gem 'sqlite3'
     gem 'better_errors'
     gem 'binding_of_caller'
+    gem 'guard-livereload', require: false
+    # Use debugger
+    # gem 'debugger', group: [:development, :test]
     # gem 'meta_request'
 end
 # Use mysql2 for production environment 
@@ -56,8 +59,6 @@ end
 #Capistrano deployments
 gem 'capistrano', '~> 2.15.5'
 #
-# Use debugger
-# gem 'debugger', group: [:development, :test]
 
 #gem 'foundation-icons-sass-rails'
 gem 'font-awesome-rails', '~> 4.4.0.0'
@@ -94,9 +95,6 @@ gem 'icalendar'
 
 # reCAPTCHA
 gem 'recaptcha', :require => 'recaptcha/rails'
-
-# Character countdown 
-# gem 'lettrics'
 
 # User authentication
 gem 'cancancan', '~> 1.9'
