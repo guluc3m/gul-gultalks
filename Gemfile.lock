@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: ed11577180885259bac1bffe2e78591e57366915
+  revision: 6e47a747bc4fc6efb7e7ddf2b33be0a3c7c3c329
   specs:
     activeadmin (1.0.0.pre2)
       arbre (~> 1.0, >= 1.0.2)
@@ -131,6 +131,7 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
+    embed (0.0.6)
     erubis (2.7.0)
     eventmachine (1.0.8)
     execjs (2.6.0)
@@ -390,6 +391,7 @@ DEPENDENCIES
   cookies_eu
   devise
   devise-i18n
+  embed
   figaro
   font-awesome-rails (~> 4.4.0.0)
   foundation-rails

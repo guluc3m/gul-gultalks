@@ -15,7 +15,8 @@ group :development, :test do
     # gem 'debugger', group: [:development, :test]
     # gem 'meta_request'
 end
-# Use mysql2 for production environment 
+
+# Use mysql2 for production environment
 group :production do
     gem 'mysql2'
     gem 'unicorn'
@@ -129,3 +130,6 @@ gem 'meta-tags'
 
 # Markdown
 gem 'redcarpet'
+
+# Embedded content (Youtube, Vimeo, etc)
+gem 'embed'

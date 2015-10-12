@@ -44,25 +44,6 @@
                 = h(speaker.name)
               - unless index+1 == @event.speaker_list.length
                 = ", "
-
-        // TODO: DRY!!!
-        .large-6.columns
-          %span.show-for-small-only
-            - if not @event.cancelled and @event.assisted_by.present?
-              %i.fa.fa-support.fa-fw.subheader
-              = t('event.assist.assisted_by').humanize
-              = @event.assisted_by.humanize
-            - elsif @event.accepted and not @event.cancelled
-              %i.fa.fa-support.fa-fw.subheader
-              = t('event.assist.unassigned').humanize
-          %span.show-for-medium-up.right
-            - if not @event.cancelled and @event.assisted_by.present?
-              %i.fa.fa-support.fa-fw.subheader
-              = t('event.assist.assisted_by').humanize
-              = @event.assisted_by.humanize
-            - elsif @event.accepted and not @event.cancelled
-              %i.fa.fa-support.fa-fw.subheader
-              = t('event.assist.unassigned').humanize
     %hr
 
 .row
@@ -119,22 +100,25 @@
                   %i.fa.fa-youtube-play.fa-fw.fa-lg
                   %strong
                     = t("event.watch_live").humanize
-              = render "partials/video_modal"
+              = render "partials/video_modal", live: true
             .show-for-small-only
               = link_to(@event.live_video, target: "_blank" ) do
                 .button.tiny.alert.radius
                   %i.fa.fa-youtube-play.fa-fw.fa-lg
                   %strong
                     = t("event.watch_live").humanize
-          - else
-            %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
-            - if @event.video.present?
-              -# FIXME
-              -# = render "partials/video_modal"
+          - elsif @event.video.present?
+            .show-for-medium-up
+              %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
+              = link_to("#", data: { "reveal-id" => "video-modal" }) do
+                = t("event.view_recording").humanize
+              = render "partials/video_modal", live: false
+            .show-for-small-down
+              %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
               = link_to(@event.video, target: "_blank") do
                 = t("event.view_recording").humanize
-            - else
-              = t('not_available').humanize
+          - else
+            = t('not_available').humanize
 
         %li
           %i.fa.fa-globe.fa-fw.fa-lg.subheader
@@ -150,6 +134,15 @@
             = t("event.levels.#{@event.level}")
           - else
             = t('not_available').humanize
+
+        - if not @event.cancelled
+          -if @event.assisted_by.present?
+            %i.fa.fa-support.fa-fw.fa-lg.subheader
+            = t('event.assist.assisted_by').humanize
+            = @event.assisted_by.humanize
+          - elsif @event.accepted
+            %i.fa.fa-support.fa-fw.subheader
+            = t('event.assist.unassigned').humanize
 
       - if @event.tag_list.present?
         %ul.no-bullet

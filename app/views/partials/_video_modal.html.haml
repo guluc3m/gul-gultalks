@@ -1,22 +1,28 @@
 #video-modal.reveal-modal.medium.show-for-medium-up{"data-reveal" => ""}
-  .row
-    .large-12.columns
-      - if @event.live_video.present? or @event.video.present?
-        .flex-video.widescreen
-          - if @event.live_video.present? and !@event.video.present?
-            // FIXME
-            = video_path(@event.live_video)
-          - elsif @event.video.present?
-            = video_tag(@event.video, controls: true, autobuffer: true)
-        %h5
-          = h(@event.title)
-        %p.subheader
-          - @event.speakers.each_with_index.map do |speaker|
-            = h(speaker.name)
-            = ", "
+  - if @event.live_video.present? or @event.video.present?
+    .flex-video.widescreen
+      - if live == true
+        = embed(@event.live_video)
       - else
-        .alert-box.radius
-          %i.fa.fa-frown-o.fa-fw.fa-2x
-          = t("warning.no_video")
+        = video_tag(@event.video, controls: true, autobuffer: true)
+    %hr
+    %h3.subheader
+      = h(@event.title)
+    %p
+      Presentado por:
+      - @event.speaker_list.each_with_index.map do |speaker, index|
+        - if speaker.twitter.present?
+          = link_to h(speaker.name), "https://twitter.com/#{speaker.twitter}", target: "_blank"
+        - else
+          = h(speaker.name)
+        - unless index+1 == @event.speaker_list.length
+          = ", "
+    %span.right
+      Duración estimada:
+      = distance_of_time_in_words(@event.start_dtime, @event.end_dtime)
+
+  - else
+    %i.fa.fa-frown-o.fa-fw.fa-2x
+    = t("warning.no_video")
 
   %a.close-reveal-modal ×
