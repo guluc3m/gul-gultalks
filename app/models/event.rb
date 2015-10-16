@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
   has_many :speakers
   accepts_nested_attributes_for :speakers, reject_if: :all_blank, allow_destroy: true
 
+  TOKEN_LENGTH = 32
+
   validates :title,
       format: { with: /\A[a-z0-9\W]+\z/i },
       length: {
@@ -77,16 +79,12 @@ class Event < ActiveRecord::Base
 
   # #validates :terms_of_service, acceptance: { accept: 'yes' }
 
-  #
   # List of confirmed speakers
-  #
   def speaker_list
       return Speaker.where(event_id: self, confirmed: true)
   end
 
-  #
   # Whether the event has at least one confirmed speaker or not
-  #
   def speaker?
       sp = Speaker.where(event_id: self, confirmed: true).first
       if sp.nil?
@@ -96,12 +94,33 @@ class Event < ActiveRecord::Base
       end
   end
 
+  # Generate and send an edition token to the first speaker in the list
+  # or the provided Speaker
+  def send_edition_token(speaker=nil)
+    if !speaker
+      sp = Speaker.where(event_id: self, confirmed: true).first
+      if sp.nil?
+          return false
+      end
+    else
+      sp = speaker
+    end
+
+    generate_token
+    Notifier.send_edition_token(self, sp).deliver
+  end
+
   private
 
-  #
   # (Re)generate the slug where needed
-  #
   def should_generate_new_friendly_id?
       slug.blank? || title_changed?
+  end
+
+  def generate_token
+    token = SecureRandom.urlsafe_base64(TOKEN_LENGTH, false)
+    generate_token if Event.exists?(token: token)
+    self.token = token
+    self.save
   end
 end

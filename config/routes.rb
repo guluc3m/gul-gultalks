@@ -22,6 +22,10 @@ Gultalks::Application.routes.draw do
   match 'detailed_events', to: 'events#new_detailed', via: :get, path: '/:conference_id/new_detailed'
   match 'create_detailed_event', to: 'events#create_detailed', via: :post, path: '/:conference_id/new_detailed/create'
 
+  # Event edition
+  match 'edit_event', to: 'events#edit', via: :get, path: '/edit/:token'
+  match 'save_edited_event', to: 'events#save_edit', via: :patch, path: '/edit/:token/save'
+
   # Events
   match 'conference_events', to: 'events#index', via: :get, path: '/:conference_id/events'
   match 'conference_event', to: 'events#show', via: :get, path: '/:conference_id/:id'
