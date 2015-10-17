@@ -145,7 +145,7 @@ en:
     footer: |
       --
       Grupo de Usuarios de la Universidad Carlos III de Madrid
-    tag: "[GUL-TALKS]"
+    tag: "[GulTalks]"
   back: "back"
   Conference: "Conference"
   Conferences: "Conferences"
@@ -320,8 +320,8 @@ en:
   Speaker: "Speaker"
   Speakers: "Speakers"
   thanks:
-    contact_msg: "If you need help, do not hesitate to write to"
-    proposal: "Thank you for proposing '%{event_title}'"
+    contact_msg: "If you need help, do not hesitate to write to "
+    proposal: "Thank you for proposing "
     speaker_thanks: "Thank you for proposing a speaker!"
     speaker_thanks_msg: "The speaker will receive a confirmation email with a link to validate the proposal."
     thank_you: "Thank you!"

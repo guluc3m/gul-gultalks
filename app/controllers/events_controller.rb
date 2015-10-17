@@ -58,7 +58,7 @@ class EventsController < ApplicationController
     @form = BasicEventForm.new(event)
     if @form.validate(params[:basic_event]) && captcha_valid
       @form.save
-      render "thanks"
+      render "thanks", locals: {event: event}
     else
       @form.errors.add :base, t("recaptcha.incorrect") if !captcha_valid
       render :new_basic
@@ -135,7 +135,7 @@ class EventsController < ApplicationController
 
         new_event.send_edition_token
       end
-      render "thanks"
+      render "thanks", locals: { event: event }
     else
       @form.errors.add :base, t("recaptcha.incorrect") if !captcha_valid
       @form.errors.add :base, t("speaker.min_max") if !speakers_valid

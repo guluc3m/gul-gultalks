@@ -158,7 +158,7 @@ es:
       --
       Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid
       Visita <a href="http://gul.es/">gul.es</a>
-    tag: "[GUL-TALKS]"
+    tag: "[GulTalks]"
   back: "atrás"
   Conference: "Jornada"
   Conferences: "Jornadas"
@@ -339,13 +339,13 @@ es:
   Speakers: "Ponentes"
   thanks:
     contact_msg: "Si tienes alguna pregunta, no dudes en escribir a"
-    proposal: "Gracias por tu propuesta para '%{event_title}'"
+    proposal: "Gracias por el evento "
     speaker_thanks: "¡Gracias por proponer un ponente!"
-    speaker_thanks_msg: "El ponente recibirá un e-mail de confirmación para validar la propuesta."
+    speaker_thanks_msg: "El ponente recibirá un correo electrónico de confirmación para validar la propuesta."
     thank_you: "¡Gracias!"
-    thanks_msg: "Gracias por proponer una actividad. Pronto recibirás un e-mail de confirmación."
+    thanks_msg: "Gracias por proponer una actividad. Pronto recibirás un correo electrónico de confirmación."
     thank_you_vote: "Gracias por tu voto"
-    vote_msg: "Para evitar el fraude en el proceso de votación, recibirás un e-mail de confirmación para validar tu voto."
+    vote_msg: "Para evitar el fraude en el proceso de votación, recibirás un correo electrónico de confirmación para validar tu voto."
     vote_thanks: "¡Gracias por votar!"
     vote_thanks_msg: "Acabas de votar por la actividad '%{title}'."
     vote_thanks_reminder: "Recuerda comprobar tu bandeja de entrada para validar tu voto."
@@ -357,11 +357,11 @@ es:
   user: "Usuario"
   Verifiers: "Verificadores"
   verifier:
-    certificate: "Gracias, pronto recibirás en tu e-mail el certificado de la actividad"
+    certificate: "Gracias, pronto recibirás en tu correo electrónico el certificado de la actividad"
     email: "E-mail"
     event: "¡Gracias por verificar la actividad!"
     invalid: "Código de verificación no válido"
-    speaker: "¡Gracias por verificar tu asistencia!"
+    speaker: "¡Gracias por confirmar tu asistencia!"
     token: "Token"
     type: "Tipo"
     types:
