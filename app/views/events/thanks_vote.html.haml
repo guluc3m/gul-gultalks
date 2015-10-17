@@ -4,8 +4,6 @@
   .medium-12.columns
     %ul.breadcrumbs
       %li
-        = link_to t("home"), root_path
-      %li
         = link_to @conference.title, conference_path(@conference)
       %li
         = link_to truncate(@event.title), conference_event_path(@conference, @event)
