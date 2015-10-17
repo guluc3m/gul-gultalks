@@ -27,10 +27,6 @@
         %b
           = @event.votes
           = t('vote', count: @event.votes).humanize
-    - if not @event.speaker_list.present? and @conference.call_for_papers_enabled and not @event.cancelled?
-      = link_to propose_speaker_conference_event_path, class: "label alert radius" do
-        %i.fa.fa-child.fa-lg.fa-fw
-        = t('speaker.unassigned').humanize
 
     %h2
       = h(@event.title)
