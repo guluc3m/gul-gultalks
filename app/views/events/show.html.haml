@@ -118,6 +118,7 @@
               = link_to(@event.video, target: "_blank") do
                 = t("event.view_recording").humanize
           - else
+            %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
             = t('not_available').humanize
 
         %li
