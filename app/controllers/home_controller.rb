@@ -6,9 +6,9 @@ class HomeController < ApplicationController
   def index
     conference = Conference.find_by active: true
     if conference
-      redirect_to conference_path(conference)
-    else
-      redirect_to conferences_path
+      redirect_to conference_path(conference) and return
     end
+
+    redirect_to conferences_path
   end
 end
