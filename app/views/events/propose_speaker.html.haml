@@ -1,14 +1,13 @@
 - page_title t("speaker.propose")
 
+-#= render partial: "partials/breadcrumbs"
 .row.show-for-medium-up
   .medium-12.columns
     %ul.breadcrumbs
       %li
-        = link_to t("home"), root_path
-      %li
         = link_to @conference.title, conference_path(@conference)
       %li
-        = link_to @event.title, conference_event_path(@conference, @event)
+        = link_to truncate(@event.title), conference_event_path(@conference, @event)
       %li.current
         = t("speaker.propose")
 
@@ -27,9 +26,13 @@
           = msg
 
   .row
-    .large-6.colums
+    .medium-6.columns
       %p= t("speaker.propose_msg")
-    .large-6.columns
+      %p
+        = t("thanks.contact_msg")
+        = mail_to "info@gul.es", "info@gul.es", subject: "[GulTalks]"
+
+    .medium-6.columns
       %label{for: "name"}
         %i.fa.fa-users.fa-fw.fa-lg.subheader
         = t("speaker.name")
@@ -73,11 +76,9 @@
             -# %label{for: "certificate"}
             = t('speaker.request_certificate').humanize
 
-  .row
-    .medium-5.columns
+    .medium-6.columns
       = render "partials/recaptcha"
-    %br
-    .medium-5.columns
+      %br
       = f.submit(t("speaker.propose"), class: "button radius success expand")
 
 .row

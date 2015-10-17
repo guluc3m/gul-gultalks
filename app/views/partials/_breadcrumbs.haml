@@ -4,7 +4,7 @@
       %li
         = link_to @conference.title, conference_path(@conference)
       %li.current
-        - if event.present?
+        - if defined? event and event.present?
           = h(event.title)
         - else
           = t("event.new_event")
