@@ -18,6 +18,8 @@ end
 
 # Use mysql2 for production environment
 group :production do
+    # Rails bug <https://github.com/rails/rails/issues/21544>
+    # gem 'mysql2'
     gem 'mysql2', '0.3.20'
     gem 'unicorn'
 end
