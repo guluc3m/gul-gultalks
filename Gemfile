@@ -20,7 +20,7 @@ end
 group :production do
     # Rails bug <https://github.com/rails/rails/issues/21544>
     # gem 'mysql2'
-    gem 'mysql2', '0.3.20'
+    gem 'mysql2', '~> 0.3.18'
     gem 'unicorn'
 end
 # Use SCSS for stylesheets
