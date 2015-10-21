@@ -18,7 +18,7 @@ end
 
 # Use mysql2 for production environment
 group :production do
-    gem 'mysql2'
+    gem 'mysql2', '0.3.20'
     gem 'unicorn'
 end
 # Use SCSS for stylesheets
