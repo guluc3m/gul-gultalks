@@ -28,9 +28,8 @@
                 %b
                   = year
 
-            - seasons.each do |year|
-              - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
-                .content{id: "panel-accordion#{conference.start_date.year}"}
+              .content{id: "panel-accordion-#{year}"}
+                - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
                   .row
                     .medium-3.columns
                       = link_to conference.title, conference_path(conference)
