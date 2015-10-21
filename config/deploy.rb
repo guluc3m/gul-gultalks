@@ -12,10 +12,20 @@ set :term_mode, nil
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, 'cursos.gul.es'
-set :deploy_to, "/home/gultalks/app"
-set :repository, 'ssh://git@github.com:guluc3m/gul-gultalks.git'
-set :branch, 'master'
+case ENV['to']
+when 'production'
+      set :domain, 'cursos.gul.es'
+      set :deploy_to, "/home/gultalks/app"
+      # set :repository, 'ssh://git@github.com:guluc3m/gul-gultalks.git'
+      set :repository, 'https://github.com/guluc3m/gul-gultalks.git'
+      set :branch, 'master'
+else
+      set :domain, 'noguera.gul.uc3m.es'
+      set :deploy_to, "/home/gultalks/app"
+      # set :repository, 'https://git@github.com:guluc3m/gul-gultalks.git'
+      set :repository, 'https://github.com/guluc3m/gul-gultalks.git'
+      set :branch, 'develop'
+end
 
 # For system-wide RVM install.
 # set :rvm_path, '/usr/local/rvm/bin/rvm'
@@ -42,7 +52,7 @@ task :environment do
 
   # For those using RVM, use this to load an RVM version@gemset.
   # invoke :'rvm:use[ruby-1.9.3-p125@default]'
-  invoke :'rvm:use[ruby-2.2.2]'
+  invoke :'rvm:use[ruby-2.2.1]'
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
@@ -80,7 +90,7 @@ task :deploy => :environment do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-    invoke :'deploy:restart'
+    # invoke :'deploy:restart'
     invoke :'deploy:cleanup'
 
     to :launch do
