@@ -2,12 +2,13 @@
 %html
   %head
     %meta{:charset => "utf-8"}/
+    // TODO: replace with gem helper
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    -# %meta{:content => "#{@conference.title}", :property => "og:title"}/
+    %meta{:content => "#{defined?(@conference) ? 'GulTalks - ' + @conference.title : 'GulTalks'}", :property => "og:title"}/
     %meta{:content => "article", :property => "og:type"}/
-    %meta{:content => "http://cursos.gul.es/", :property => "og:url"}/
-    %meta{:content => "http://example.com/image.jpg", :property => "og:image"}/
-    %meta{:content => "Description Here", :property => "og:description"}/
+    %meta{:content => "#{request.original_url}", :property => "og:url"}/
+    -# %meta{:content => "http://example.com/image.jpg", :property => "og:image"}/
+    %meta{:content => "GulTalks", :property => "og:description"}/
     %title
       = page_title
     = stylesheet_link_tag    "application", :media => "all"
