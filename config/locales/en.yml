@@ -130,10 +130,23 @@ en:
         Hello %{name}.
 
         Attached you will find the certificate corresponding to the activity '%{event_title}'.
+    send_edition_token:
+      subject: "Activity edition link"
+      body: |
+        Hello %{name}.
+
+        As you are the first speaker for the activity '%{event_title}', we have sent you its edition link.
+
+        This link is unique to this activity, so anyone that accesses the link will be able to edit the details.
+
+        Your link is:
+
+        %{edition_url}
     footer: |
       --
-      Grupo de Usuarios de la Universidad Carlos III de Madrid 
-    tag: "[GUL-TALKS]"
+      Grupo de Usuarios de la Universidad Carlos III de Madrid
+      Visit gul.es
+    tag: "[GulTalks]"
   back: "back"
   Conference: "Conference"
   Conferences: "Conferences"
@@ -208,6 +221,7 @@ en:
     complete_detailed_form: "Complete the form with detailed information for the activity."
     detailed_info: "Detailed info"
     download_ical: "Download calendar (iCal)"
+    edit_event: "Edit activity"
     contact: "Email address"
     description: "Description"
     description_requirements: "Can only contain alphanumeric characters and hyphens."
@@ -307,8 +321,8 @@ en:
   Speaker: "Speaker"
   Speakers: "Speakers"
   thanks:
-    contact_msg: "If you need help, do not hesitate to write to"
-    proposal: "Thank you for proposing '%{event_title}'"
+    contact_msg: "If you need help, do not hesitate to write to "
+    proposal: "Thank you for proposing "
     speaker_thanks: "Thank you for proposing a speaker!"
     speaker_thanks_msg: "The speaker will receive a confirmation email with a link to validate the proposal."
     thank_you: "Thank you!"
@@ -316,7 +330,8 @@ en:
     thank_you_vote: "Thank you for your vote"
     vote_msg: "Thank you for your vote. To avoid fraud in the voting process, you will recieve a confirmation e-mail to validate the vote."
     vote_thanks: "Thank you for voting!"
-    vote_thanks_msg: "Remember to check your inbox in order to validate your vote."
+    vote_thanks_msg: "You just vote for the activity '%{title}."
+    vote_thanks_reminder: "Remember to check your inbox in order to validate your vote."
   time:
     from: "from"
     to: "to"

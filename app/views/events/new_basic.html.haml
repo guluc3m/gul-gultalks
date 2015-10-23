@@ -36,13 +36,6 @@
         .large-3.columns
           = select("basic_event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}, {include_blank: true, selected: "selected"}, class: "radius", required: true, label:false)
 
-      -# .row.hide-for-touch
-      -#   .large-12.columns
-      -#     - Event.subclasses.keys.each do |s|
-      -#       = radio_button("event", "subclass", "#{s}")
-      -#       %label
-      -#         = t("event.subclasses.#{s}").humanize
-
   .row
     .large-12.columns
       %label{for: "title"}

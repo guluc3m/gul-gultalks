@@ -1,14 +1,31 @@
 - page_title t("event.new_event")
-= render partial: "breadcrumbs"
+
+.row.show-for-medium-up
+  .medium-12.columns
+    %ul.breadcrumbs
+      %li
+        = link_to conference.title, conference_path(conference)
+      %li.current
+        = event.title
 
 .row
-  .large-12.columns
-    %h1
+  .medium-12.columns
+    %h1.subheader
       = t("thanks.thank_you")
     %hr
-
 .row
-  .large-6.columns
-    = link_to t("event.back_to_events"), conference_path(@conference), class: "button radius expand"
-  .large-6.columns
+  .medium-6.columns
+    %p
+      -# = t("thanks.proposal", event_subclass: t("event.subclasses.#{event.subclass}"))
+      = t("thanks.proposal")
+      %em
+        %strong
+          = "'" + event.title + "'"
+    %p
+      = t("thanks.contact_msg")
+      = mail_to "info@gul.es", "info@gul.es", subject: "[GulTalks]"
+
+
+  .medium-6.columns
     = link_to t("conference.propose_another_event"), new_conference_event_path(@conference), class: "button success radius expand"
+    = link_to t("event.back_to_events"), conference_path(conference), class: "button radius expand"

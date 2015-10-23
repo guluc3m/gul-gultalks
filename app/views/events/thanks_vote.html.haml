@@ -1,14 +1,12 @@
 - page_title t("to_vote")
 
-.row.show-for-landscape
+.row.show-for-medium-up
   .medium-12.columns
     %ul.breadcrumbs
       %li
-        = link_to t("home"), root_path
-      %li
         = link_to @conference.title, conference_path(@conference)
       %li
-        = link_to @event.title, conference_event_path(@conference, @event)
+        = link_to truncate(@event.title), conference_event_path(@conference, @event)
       %li.current
         = t("to_vote")
 
@@ -19,8 +17,10 @@
     %hr
 .row
   .medium-6.columns
-    %p.lead
-      = t("thanks.vote_thanks_msg")
+    %p
+      = t("thanks.vote_thanks_msg", :title => @event.title)
+    %p
+      = t("thanks.vote_thanks_reminder")
   .medium-6.columns
     / TODO: tanslate!
     = link_to "Votar otra actividad", conference_path(@conference), :class => "button radius success expand"

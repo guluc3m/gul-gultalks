@@ -15,17 +15,19 @@ class CommentsController < ApplicationController
     if verify_recaptcha
       if @comment.save
         flash[:notice] = "Successfully created comment."
-        redirect_to conference_event_url(@conference, @event)
+        redirect_to conference_event_url(@conference, @event) and return
       else
         flash[:error] = "Error adding comment."
       end
+
     else
       flash[:error] = "Recaptcha error."
+
       if !comment_params[:parent_id].empty?
-        redirect_to new_comment_path(@conference, @event, parent_id: comment_params[:parent_id])
-      else
-        redirect_to conference_event_url(@conference, @event)
+        redirect_to new_comment_path(@conference, @event, parent_id: comment_params[:parent_id]) and return
       end
+
+      redirect_to conference_event_url(@conference, @event) and return
     end
   end
 
@@ -39,7 +41,7 @@ class CommentsController < ApplicationController
     @conference = Conference.find(@event.conference_id)
 
     if !@conference.active
-      redirect_to conference_event_path(@conference, @event)
+      redirect_to conference_event_path(@conference, @event) and return
     end
 
     @parent_id = params.delete(:parent_id)

@@ -12,31 +12,66 @@
     %h1.subheader
       = t("conference.list")
     %hr
-
-    %p |
-      A continuación se muestran todas las anteriores ediciones.
-      Pulsa sobre un año y se mostrarán las ediciones para ese año.
-    -# .large-block-grid-4
     - unless @conferences.count.zero?
-      %dl.accordion{"data-accordion" => ""}
-        - @conferences.map{|conference| conference.start_date.year}.uniq.each do |year|
-          -#     -# - unless conference.active
-          %dd.accordion-navigation
-            %a{href: "#panel-#{year}"}
-              %b
-                = year
-            .content{id: "panel-#{year}"}
-              %dl
-                - @conferences.select{|conference| !conference.active and conference.start_date.year.eql? year }.map do |conference| 
-                  %dt
+      // FIXME: translate
+      .large-12.colums
+        %p |
+          A continuación se muestran todas las anteriores ediciones.
+          Pulsa sobre un año y se mostrarán las ediciones para ese año.
+
+      - seasons = @conferences.map{|conference| conference.start_date.year}.uniq
+      .large-12.colums.show-for-medium-down
+        %ul.accordion{"data-accordion" => ""}
+          - seasons.each do |year|
+            %li.accordion-navigation{class: "#{ seasons.max == year ? 'active' : ''}" }
+              %a{href: "#panel-accordion-#{year}"}
+                %b
+                  = year
+
+              .content{id: "panel-accordion-#{year}"}
+                - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
+                  .row
+                    .medium-3.columns
+                      = link_to conference.title, conference_path(conference)
+                      %dd
+                        // TODO: use to_sentence instead and localize
+                        // TODO: loop over type of events dynamically
+                        - talks = conference.events.where(accepted: true, subclass: "talk").count
+                        - workshops = conference.events.where(accepted: true, subclass: "workshop").count
+                        - if talks > 0 and workshops > 0
+                          = talks.to_s + " charlas y " + workshops.to_s + " talleres."
+                        - else
+                          Sin eventos
+
+      .large-12.colums.show-for-large-up
+        %ul.tabs.vertical{"data-tab" => ""}
+          - seasons.each do |year|
+            %li.tab-title.text-center
+              %a{href: "#panel-#{year}", class: "#{ seasons.max.eql? year ? 'active' : ''}"}
+                %b
+                  = year
+
+        .tabs-content
+          - seasons.each do |year|
+            - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
+              .content{id: "panel-#{conference.start_date.year}"}
+                .row
+                  .medium-3.columns
                     = link_to conference.title, conference_path(conference)
-                  %dd
-                    // TODO: use to_sentence instead and localize
-                    = "Hubo " + conference.events.where(accepted: true, subclass: "talk").count.to_s + " charlas y " + conference.events.where(accepted: true, subclass: "workshop").count.to_s + " talleres."
+                    %dd
+                      // TODO: use to_sentence instead and localize
+                      // TODO: loop over type of events dynamically
+                      - talks = conference.events.where(accepted: true, subclass: "talk").count
+                      - workshops = conference.events.where(accepted: true, subclass: "workshop").count
+                      - if talks > 0 and workshops > 0
+                        = talks.to_s + " charlas y " + workshops.to_s + " talleres."
+                        /#{talks.any? ? '' : talks.to_s + " charlas"} + #{workshops.any? '' : workshops.to_s + " talleres."
+                      - else
+                        Sin eventos
 
     - else
       .row
         .large-12.columns
-          .alert-box.radius
+          .alert-box
             %i.fa.fa-warning.pull-left.fa-2x
             = t("warning.no_conferences")

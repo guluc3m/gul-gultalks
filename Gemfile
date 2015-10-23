@@ -10,11 +10,17 @@ group :development, :test do
     gem 'sqlite3'
     gem 'better_errors'
     gem 'binding_of_caller'
+    gem 'guard-livereload', require: false
+    # Use debugger
+    # gem 'debugger', group: [:development, :test]
     # gem 'meta_request'
 end
+
 # Use mysql2 for production environment
 group :production do
-    gem 'mysql2'
+    # Rails bug <https://github.com/rails/rails/issues/21544>
+    # gem 'mysql2'
+    gem 'mysql2', '~> 0.3.18'
     gem 'unicorn'
 end
 # Use SCSS for stylesheets
@@ -52,17 +58,12 @@ end
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# DEPRECATED: Use Capistrano for deployment
-#Capistrano deployments
+# DEPRECATED: Use Mina for deployment
 #gem 'capistrano', '~> 2.15.5'
 
-# Use Mina for deployment
+# Deployment
 gem 'mina'
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
-#gem 'foundation-icons-sass-rails'
 gem 'font-awesome-rails', '~> 4.4.0.0'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
@@ -135,3 +136,6 @@ gem 'meta-tags'
 
 # Markdown
 gem 'redcarpet'
+
+# Embedded content (Youtube, Vimeo, etc)
+gem 'embed'

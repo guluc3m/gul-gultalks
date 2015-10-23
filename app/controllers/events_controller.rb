@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   def index
     @conference = Conference.friendly.find(params[:conference_id])
     events = @conference.events.where(shown: true, verified: true)
+
     respond_with(events) do |format|
       format.html { redirect_to conference_path(@conference) }
       format.json { render json: events.as_json(methods: :tag_list) }
@@ -23,7 +24,7 @@ class EventsController < ApplicationController
   # (detailed information).
   def new
     @conference = Conference.friendly.find(params[:conference_id])
-    if !@conference.call_for_papers_enabled
+    unless @conference.call_for_papers_enabled
       redirect_to conference_path(@conference)
     end
   end
@@ -32,8 +33,8 @@ class EventsController < ApplicationController
   # activity.
   def new_basic
     @conference = Conference.friendly.find(params[:conference_id])
-    if !@conference.call_for_papers_enabled
-      redirect_to conference_path(@conference)
+    unless @conference.call_for_papers_enabled
+      redirect_to conference_path(@conference) and return
     end
 
     @form = BasicEventForm.new(Event.new)
@@ -42,8 +43,8 @@ class EventsController < ApplicationController
   # Stores the basic activity information in the database.
   def create_basic
     @conference = Conference.friendly.find(params[:conference_id])
-    if !@conference.call_for_papers_enabled
-      redirect_to conference_path(@conference)
+    unless @conference.call_for_papers_enabled
+      redirect_to conference_path(@conference) and return
     end
 
     event = Event.new
@@ -56,21 +57,22 @@ class EventsController < ApplicationController
     captcha_valid = verify_recaptcha
 
     @form = BasicEventForm.new(event)
+
     if @form.validate(params[:basic_event]) && captcha_valid
       @form.save
-      render "thanks"
-    else
-      @form.errors.add :base, t("recaptcha.incorrect") if !captcha_valid
-      render :new_basic
+      render "thanks", locals: {event: event} and return
     end
+
+    @form.errors.add :base, t("recaptcha.incorrect") if !captcha_valid
+    render :new_basic
   end
 
   # Shows a form where the user has to provide detailed information for the
   # activity.
   def new_detailed
     @conference = Conference.friendly.find(params[:conference_id])
-    if !@conference.call_for_papers_enabled
-      redirect_to conference_path(@conference)
+    unless @conference.call_for_papers_enabled
+      redirect_to conference_path(@conference) and return
     end
 
     event = Event.new
@@ -86,8 +88,8 @@ class EventsController < ApplicationController
   # is mailed to them.
   def create_detailed
     @conference = Conference.friendly.find(params[:conference_id])
-    if !@conference.call_for_papers_enabled
-      redirect_to conference_path(@conference)
+    unless @conference.call_for_papers_enabled
+      redirect_to conference_path(@conference) and return
     end
 
     event = Event.new
@@ -128,17 +130,24 @@ class EventsController < ApplicationController
 
             # Create verfier for certificate
             if new_speaker.certificate
-              Verifier.create(email: new_speaker.email, event_id: new_speaker.event_id, verified: false, verify_type: "certificate")
+              Verifier.create(
+                email: new_speaker.email,
+                event_id: new_speaker.event_id,
+                verified: false,
+                verify_type: "certificate")
             end
           end
         end
+
+        new_event.send_edition_token
       end
-      render "thanks"
-    else
-      @form.errors.add :base, t("recaptcha.incorrect") if !captcha_valid
-      @form.errors.add :base, t("speaker.min_max") if !speakers_valid
-      render :new_detailed
+
+      render "thanks", locals: { event: event } and return
     end
+
+    @form.errors.add :base, t("recaptcha.incorrect") if !captcha_valid
+    @form.errors.add :base, t("speaker.min_max") if !speakers_valid
+    render :new_detailed
   end
 
   # Shows the details for an activity, as well as share buttons,comment forms
@@ -147,16 +156,17 @@ class EventsController < ApplicationController
   def show
     @event = Event.friendly.find(params[:id])
     @conference = Conference.friendly.find(params[:conference_id])
+
+    unless @event.shown
+      redirect_to conference_path(@conference) and return
+    end
+
     @short_url = url_shortener(@conference, @event)
 
-    if @event.shown
-      respond_with(@event) do |format|
-        format.json { render json: @event.as_json(methods: :tag_list) }
-        format.xml { render xml: @event.to_xml(methods: :tag_list) }
-        format.ics { render ics: @event.to_ics(methods: :tag_list) }
-      end
-    else
-      redirect_to conference_path(@conference)
+    respond_with(@event) do |format|
+      format.json { render json: @event.as_json(methods: :tag_list) }
+      format.xml { render xml: @event.to_xml(methods: :tag_list) }
+      format.ics { render ics: @event.to_ics(methods: :tag_list) }
     end
   end
 
@@ -167,7 +177,7 @@ class EventsController < ApplicationController
     @conference = Conference.friendly.find(params[:conference_id])
 
     if !@conference.call_for_papers_enabled || @event.speaker?
-      redirect_to conference_event_path(@conference, @event)
+      redirect_to conference_event_path(@conference, @event) and return
     end
 
     @speaker = Speaker.new
@@ -181,24 +191,30 @@ class EventsController < ApplicationController
     @conference = Conference.find(@event.conference_id)
 
     if !@conference.call_for_papers_enabled || @event.speaker?
-      redirect_to conference_event_path(@conference, @event)
+      redirect_to conference_event_path(@conference, @event) and return
     end
 
-    @speaker = Speaker.new(params[:speaker])
+    permitted = params.require(:speaker).permit(:certificate, :email, :name, :twitter)
+    @speaker = Speaker.new(permitted)
     @speaker.assign_attributes(event_id: @event.id, confirmed: false)
 
     captcha_valid = verify_recaptcha
     if @speaker.valid? && captcha_valid
-      verifier = Verifier.new(email: @speaker.email, event_id: @speaker.event_id, verified: false, verify_type: "speaker")
+      verifier = Verifier.new(
+        email: @speaker.email,
+        event_id: @speaker.event_id,
+        verified: false,
+        verify_type: "speaker")
+
       if @speaker.save && verifier.save
-        render "thanks_speaker"
-      else
-        render :propose_speaker
+        render "thanks_speaker" and return
       end
-    else
-      @speaker.errors.add :base, t("recaptcha.incorrect") if !captcha_valid
-      render :propose_speaker
+
+      render :propose_speaker and return
     end
+
+    @speaker.errors.add :base, t("recaptcha.incorrect") if !captcha_valid
+    render :propose_speaker
   end
 
   # Shows the voting form.
@@ -210,14 +226,14 @@ class EventsController < ApplicationController
     @conference = Conference.friendly.find(params[:conference_id])
 
     # if Conference.friendly.find(params[:conference_id]).voting_enabled
-    if @conference.voting_enabled
-      # Generate random key, pass the output as arg to Notifier
-      # respond_with(event) do |format|
-      respond_to do |format|
-        format.html { render action: "vote" }
-      end
-    else
+    unless @conference.voting_enabled
       redirect_to conference_event_path(@conference, @event)
+    end
+
+    # Generate random key, pass the output as arg to Notifier
+    # respond_with(event) do |format|
+    respond_to do |format|
+      format.html { render action: "vote" }
     end
   end
 
@@ -226,18 +242,122 @@ class EventsController < ApplicationController
     @event = Event.friendly.find(params[:id])
     @conference = Conference.find(@event.conference_id)
 
-    ver = Verifier.new(email: params[:email], event_id: @event.id, verified: false, verify_type: "vote")
+    ver = Verifier.new(
+      email: params[:email],
+      event_id: @event.id,
+      verified: false,
+      verify_type: "vote")
 
     if verify_recaptcha
       if ver.save
-        render "thanks_vote"
-      else
-        flash[:error] = t("vote.invalid_email")
-        redirect_to action: "vote"
+        render "thanks_vote" and return
       end
-    else
-      redirect_to action: "vote"
+
+      flash[:error] = t("vote.invalid_email")
+      redirect_to action: "vote" and return
     end
+
+    redirect_to action: "vote"
+  end
+
+  # Shows a form where the speaker can edit details on the activity
+  def edit
+    event = Event.find_by(token: params[:token])
+    if event.nil?
+      redirect_to root_path and return
+    end
+
+    @conference = Conference.friendly.find(event.conference_id)
+    if !@conference.active
+      redirect_to conference_path(@conference) and return
+    end
+
+    # Add as many speaker fields as needed
+    (5 - event.speakers.count).times { event.speakers.build }
+
+    @form = DetailedEventForm.new(event)
+  end
+
+  # Save the edited activity
+  def save_edit
+    event = Event.find_by(token: params[:token])
+    if event.nil?
+      redirect_to root_path and return
+    end
+
+    @conference = Conference.friendly.find(event.conference_id)
+    if !@conference.active
+      redirect_to conference_path(@conference) and return
+    end
+
+    # Original speakers
+    original_sps = []
+    event.speakers.each do |sp|
+      original_sps.push(sp.email)
+    end
+
+    new_event = Event.new
+    5.times { new_event.speakers.build }
+
+    @form = DetailedEventForm.new(new_event)
+
+    total_speakers = 0
+    5.times do |i|
+      if params[:detailed_event]["speakers_attributes"]["#{i}"]["name"].present?
+        total_speakers += 1
+      end
+    end
+
+    captcha_valid = verify_recaptcha
+    speakers_valid = total_speakers > 0 && total_speakers < 6
+
+    if @form.validate(params[:detailed_event]) && captcha_valid && speakers_valid
+      @form.save do |nested|
+        # Update event and tags
+        event.update_attributes!(nested.except("speakers"))
+        event.tag_list.add(nested["tags"], parse: true)
+
+        # Update speakers (only if name and email are present and the speaker does not exist)
+        new_sps = []
+
+        nested["speakers"].each do |sp|
+          if sp["name"].present? && sp["email"].present?
+            # Skip existing speakers, but store them for comparison
+            old_sp = Speaker.find_by(email: sp["email"], event_id: event.id)
+            if !old_sp.nil?
+              old_sp.update_attributes(sp)
+              new_sps.push(old_sp.email)
+              next
+            end
+
+            new_speaker = Speaker.new
+            new_speaker.event_id = event.id
+            new_speaker.update_attributes(sp)
+            new_speaker.save
+
+            new_sps.push(new_speaker.email)
+
+            # Create verfier for certificate
+            if new_speaker.certificate && Verifier.find_by(email: new_speaker.email, event_id: new_speaker.event_id).nil?
+              Verifier.create(email: new_speaker.email, event_id: new_speaker.event_id, verified: false, verify_type: "certificate")
+            end
+          end
+        end
+
+        # Remove speakers that are not present in the new array
+        diff = original_sps - new_sps
+
+        diff.each do |sp|
+            Speaker.where(event_id: event.id, email: sp).destroy_all()
+        end
+      end
+
+      redirect_to conference_event_path(@conference, event) and return
+    end
+
+    @form.errors.add :base, t("recaptcha.incorrect") if !captcha_valid
+    @form.errors.add :base, t("speaker.min_max") if !speakers_valid
+    render :edit
   end
 
   #def new
