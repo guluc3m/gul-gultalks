@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:charset => "utf-8"}/
-    // TODO: replace with gem helper
+    -# TODO: replace with gem helper
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %meta{:content => "#{defined?(@conference) ? 'GulTalks - ' + @conference.title : 'GulTalks'}", :property => "og:title"}/
     %meta{:content => "article", :property => "og:type"}/
@@ -20,7 +20,7 @@
     .off-canvas-wrap{"data-offcanvas" => ""}
       .inner-wrap
         %nav.tab-bar{"data-topbar" => "", role:"navigation", "data-options" => "sticky_on: small"}
-          / TODO: put a back button on top. Only for small screens (handhelds devices)
+          -# TODO: put a back button on top. Only for small screens (handhelds devices)
           -# - if current_page?(controller: 'event', action: 'show')
           -#   %ul.title-area
           -#     %li.no-bullet.name
