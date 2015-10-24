@@ -13,29 +13,31 @@
       = t("conference.list")
     %hr
     - unless @conferences.count.zero?
-      // FIXME: translate
+      -# FIXME: translate
       .large-12.colums
         %p |
           A continuación se muestran todas las anteriores ediciones.
           Pulsa sobre un año y se mostrarán las ediciones para ese año.
 
       - seasons = @conferences.map{|conference| conference.start_date.year}.uniq
-      .large-12.colums.show-for-medium-down
+      .large-12.colums.show-for-small-down
         %ul.accordion{"data-accordion" => ""}
           - seasons.each do |year|
-            %li.accordion-navigation{class: "#{ seasons.max == year ? 'active' : ''}" }
+            %li.accordion-navigation
               %a{href: "#panel-accordion-#{year}"}
                 %b
                   = year
 
-              .content{id: "panel-accordion-#{year}"}
-                - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
-                  .row
-                    .medium-3.columns
-                      = link_to conference.title, conference_path(conference)
-                      %dd
-                        // TODO: use to_sentence instead and localize
-                        // TODO: loop over type of events dynamically
+              .content{id: "panel-accordion-#{year}", class: "#{ seasons.max == year ? 'active' : ''}" }
+                .row
+                  - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
+                    .medium-6.columns
+                      %b
+                        = link_to conference.title, conference_path(conference)
+                      %p
+                        -# TODO: Create helper!!!
+                        -# TODO: use to_sentence instead and localize
+                        -# TODO: loop over type of events dynamically
                         - talks = conference.events.where(accepted: true, subclass: "talk").count
                         - workshops = conference.events.where(accepted: true, subclass: "workshop").count
                         - if talks > 0 and workshops > 0
@@ -43,29 +45,30 @@
                         - else
                           Sin eventos
 
-      .large-12.colums.show-for-large-up
+      .large-12.colums.show-for-medium-up
         %ul.tabs.vertical{"data-tab" => ""}
           - seasons.each do |year|
-            %li.tab-title.text-center
-              %a{href: "#panel-#{year}", class: "#{ seasons.max.eql? year ? 'active' : ''}"}
+            %li.tab-title.text-center{class: "#{ seasons.max.eql? year ? 'active' : ''}"}
+              %a{href: "#panel-tab-#{year}"}
                 %b
                   = year
 
         .tabs-content
           - seasons.each do |year|
-            - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
-              .content{id: "panel-#{conference.start_date.year}"}
-                .row
-                  .medium-3.columns
-                    = link_to conference.title, conference_path(conference)
-                    %dd
-                      // TODO: use to_sentence instead and localize
-                      // TODO: loop over type of events dynamically
+            .content{id: "panel-tab-#{year}", class: "#{ seasons.max == year ? 'active' : ''}"}
+              .row
+                - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
+                  .medium-4.columns
+                    %b
+                      = link_to conference.title, conference_path(conference)
+                    %p
+                      -# TODO: Create helper!!!
+                      -# TODO: use to_sentence instead and localize
+                      -# TODO: loop over type of events dynamically
                       - talks = conference.events.where(accepted: true, subclass: "talk").count
                       - workshops = conference.events.where(accepted: true, subclass: "workshop").count
                       - if talks > 0 and workshops > 0
                         = talks.to_s + " charlas y " + workshops.to_s + " talleres."
-                        /#{talks.any? ? '' : talks.to_s + " charlas"} + #{workshops.any? '' : workshops.to_s + " talleres."
                       - else
                         Sin eventos
 
