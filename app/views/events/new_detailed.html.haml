@@ -86,7 +86,7 @@
   -# Accordion for small screens
   .row
     .large-12.columns
-      .show-for-small-down
+      .show-for-small-up
         %ul.accordion{"data-accordion" => ""}
           = f.fields_for :speakers do |speaker|
             - sp_index = speaker.index + 1
