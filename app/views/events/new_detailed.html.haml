@@ -1,8 +1,9 @@
 - page_title t("event.new_event")
 = render partial: "breadcrumbs"
 
+-# TODO: create helper or partial for this block
 .row
-  .visible-for-medium-down
+  .visible-for-small-down
     .large-3.columns
       = link_to conference_path(params[:conference_id]), { class: "button tiny radius expand" } do
         %span.fa.fa-chevron-left.fa-fw.fa-lg
@@ -22,7 +23,8 @@
     .row
       .large-12.columns
         .alert-box.alert.radius
-          = msg
+          %li
+            = msg
 
   .row
     .large-12.columns
@@ -35,13 +37,6 @@
       .row
         .large-3.columns
           = select("detailed_event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}, {include_blank: true, selected: "selected"}, class: "radius", required: true, label:false)
-
-      -# .row.hide-for-touch
-      -#   .large-12.columns
-      -#     - Event.subclasses.keys.each do |s|
-      -#       = radio_button("event", "subclass", "#{s}")
-      -#       %label
-      -#         = t("event.subclasses.#{s}").humanize
 
   .row
     .large-12.columns
@@ -76,6 +71,8 @@
           = t("event.required")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.description_requirements"), class: "radius"}
         .right
+          %sub.subheader
+            %strong [Markdown enabled]
           %sub 1400
       = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius lettrify", size: "10x8"
 
@@ -86,55 +83,20 @@
         = t("warning.up_to_five")
         %a.close{href:""} ×
 
-  -# Tabs for bigger screens
-  -# .show-for-medium-up
-    .row
-      .large-12.columns
-        %ul.tabs{"data-tab" => ""}
-          - (0..4).each do |index|
-            %li.tab-title
-              %a{href: "#speaker_#{index}"}
-                = t("Speaker") + " #{index}"
-
-    .tabs-content
-      = f.fields_for :speakers do |speaker|
-        .content{id: "speaker_#{speaker.index}"}
-          = render "partials/speaker_fields", f: speaker
-
-
-
   -# Accordion for small screens
-  .show-for-small-up
-    .row
-      .large-12.columns
-        %dl.accordion{"data-accordion" => ""}
+  .row
+    .large-12.columns
+      .show-for-small-down
+        %ul.accordion{"data-accordion" => ""}
           = f.fields_for :speakers do |speaker|
-            %dd.accordion-navigation
-              %a{href: "#speaker_#{speaker.index + 1}"}
-                = t("speaker.caption", index: speaker.index + 1)
-              .content{id: "speaker_#{speaker.index + 1}"}
+            - sp_index = speaker.index + 1
+            %li.accordion-navigation
+              %a.text-center{href: "#speaker_#{sp_index}"}
+                = t("speaker.caption", index: sp_index)
+              .content{id: "speaker_#{sp_index}", class: "#{sp_index == 1 ? 'active' : ''}"}
                 = render "partials/speaker_fields", f: speaker
 
-  -# .row
-    .large-12.columns
-      .alert-box.radius{data: {alert: ""}}
-        %i.fa.fa-hand-o-right.fa-lg.fa-fw
-        = t("warning.up_to_five")
-        %a.close{href:""} ×
-      -# #speakers
-      = f.fields_for :speakers do |speaker|
-        -#FIXME
-        = render "partials/speaker_fields", f: speaker
-        -# .links.right
-          = link_to_add_association t("speaker.add"), f, :speakers, class: "button small radius"
-
-  -# .row
-    -# .large-12.columns
-      "POTATO"
-  -# = f.fields_for :speakers do |s|
-    .row
-      .large-12.columns
-        = s.text_field :name, placeholder: "cosa", class: "radius lettrify"
+      %br
 
   .row
     .large-12.columns
@@ -165,7 +127,7 @@
       = f.text_field :tags, label: false, maxlength: 128, class: "radius lettrify", placeholder: t("event.tag_format")
 
   .row
-    .large-4.columns
+    .medium-4.columns
       %label{for: "language"}
         %i.fa.fa-globe.fa-fw.fa-lg.subheader
         = t("event.language")
@@ -173,7 +135,7 @@
           = t("event.required")
       = select("detailed_event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]},{include_blank: true, selected: "selected"}, required: true, class: "radius")
 
-    .large-4.columns
+    .medium-4.columns
       %label{for: "duration"}
         %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
         = t("event.duration")
@@ -181,21 +143,13 @@
           = t("event.required")
       = select("detailed_event", "duration", Event.durations.keys.collect {|d| [t("event.durations.#{d}").humanize, d]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
 
-    .large-4.columns
+    .medium-4.columns
       %label{for: "level"}
         %i.fa.fa-lightbulb-o.fa-fw.fa-lg.subheader
         = t("event.level")
         %small
           = t("event.required")
       = select("detailed_event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
-      /%span.level-name
-
-      -# .row.hide-for-touch
-      -#   .large-12.columns
-      -#     - Event.levels.keys.each do |l|
-      -#       = radio_button("detailed_event", "level", "#{l}")
-      -#       %label
-      -#         = t("event.levels.#{l}").humanize
 
   .row
     .large-12.columns
@@ -217,3 +171,4 @@
       = render 'partials/recaptcha'
     .medium-4.columns
       = f.submit(t("event.send_event"), class: "button success expand")
+
