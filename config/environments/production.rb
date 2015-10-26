@@ -84,12 +84,12 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address:              Rails.application.secrets[:mailer][:address],
-      port:                 Rails.application.secrets[:mailer][:port],
-      user_name:            Rails.application.secrets[:mailer][:user],
-      password:             Rails.application.secrets[:mailer][:password],
+      address:              Rails.application.secrets["mailer"]["address"],
+      port:                 Rails.application.secrets["mailer"]["port"],
+      user_name:            Rails.application.secrets["mailer"]["user"],
+      password:             Rails.application.secrets["mailer"]["password"],
       authentication:       'plain',
-      enable_starttls_auto: true, 
+      enable_starttls_auto: true,
       openssl_verify_mode:  'none'
   }
 
