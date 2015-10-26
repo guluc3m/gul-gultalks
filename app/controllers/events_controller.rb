@@ -227,7 +227,7 @@ class EventsController < ApplicationController
 
     # if Conference.friendly.find(params[:conference_id]).voting_enabled
     unless @conference.voting_enabled
-      redirect_to conference_event_path(@conference, @event)
+      redirect_to conference_event_path(@conference, @event) and return
     end
 
     # Generate random key, pass the output as arg to Notifier

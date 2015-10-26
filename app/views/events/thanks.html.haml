@@ -4,7 +4,7 @@
   .medium-12.columns
     %ul.breadcrumbs
       %li
-        = link_to conference.title, conference_path(conference)
+        = link_to @conference.title, conference_path(@conference)
       %li.current
         = event.title
 
@@ -28,4 +28,4 @@
 
   .medium-6.columns
     = link_to t("conference.propose_another_event"), new_conference_event_path(@conference), class: "button success radius expand"
-    = link_to t("event.back_to_events"), conference_path(conference), class: "button radius expand"
+    = link_to t("event.back_to_events"), conference_path(@conference), class: "button radius expand"
