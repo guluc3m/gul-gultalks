@@ -61,6 +61,7 @@ es:
         subclass: "Subclase"
         summary: "Resumen"
         title: "Título"
+        token: "Token de edición"
         updated_at: "Última actualización"
         verified: "Verificada"
         video: "Vídeo"

@@ -1,5 +1,5 @@
 ActiveAdmin.register Event do
- permit_params :accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :live_video, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :validation_email, :verified, :video, :votes
+ permit_params :accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :live_video, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :token, :validation_email, :verified, :video, :votes
   menu :label => proc{ t("Events") }
 
 
@@ -68,6 +68,7 @@ ActiveAdmin.register Event do
       row :slug
       row :created_at
       row :updated_at
+      row :token
     end
   end
 
@@ -76,7 +77,7 @@ ActiveAdmin.register Event do
       f.input :conference_id, label: t("Conference"), as: :select, collection: Conference.all
       f.input :title, label: t("event.title")
       f.input :summary, label: t("event.summary")
-      f.input :description, label: t("event.description") 
+      f.input :description, label: t("event.description")
       f.input :subclass, label: t("event.subclass"), as: :select, collection: Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}
       f.input :level, label: t("event.level"), as: :select, collection: Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}
       f.input :duration, label: t("event.duration"), as: :select, collection: Event.durations.keys.collect {|d| [t("event.durations.#{d}").humanize, d]}
@@ -99,6 +100,7 @@ ActiveAdmin.register Event do
       f.input :start_dtime, label: t("event.start_datetime")
       f.input :end_dtime, label: t("event.end_datetime")
       f.input :assisted_by, label: t("event.assisted_by")
+      f.input :token, label: t("event.token")
     end
     f.actions
   end
