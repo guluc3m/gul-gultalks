@@ -17,7 +17,8 @@ module Commentable
   private
  
   def find_commentable
-    return params[:controller].singularize.classify.constantize.find(Event.friendly.find(params[:id]).id)
+    conference = Conference.friendly.find(params[:conference_id])
+    return params[:controller].singularize.classify.constantize.find(Event.where(conference_id: conference.id).friendly.find(params[:id]).id)
   end
  
 end

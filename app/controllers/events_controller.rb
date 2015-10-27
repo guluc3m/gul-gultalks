@@ -154,8 +154,8 @@ class EventsController < ApplicationController
   # the option of proposing a speaker if there is none and a voting button
   # when conference voting is enabled.
   def show
-    @event = Event.friendly.find(params[:id])
     @conference = Conference.friendly.find(params[:conference_id])
+    @event = Event.where(conference_id: @conference.id).friendly.find(params[:id])
 
     unless @event.shown
       redirect_to conference_path(@conference) and return
@@ -173,8 +173,8 @@ class EventsController < ApplicationController
   # Shows a form where the user can propose a speaker for an activity that
   # still does not have one.
   def propose_speaker
-    @event = Event.friendly.find(params[:id])
     @conference = Conference.friendly.find(params[:conference_id])
+    @event = Event.where(conference_id: @conference.id).friendly.find(params[:id])
 
     if !@conference.call_for_papers_enabled || @event.speaker?
       redirect_to conference_event_path(@conference, @event) and return
@@ -187,8 +187,8 @@ class EventsController < ApplicationController
   #
   # The speaker will receive a confirmation email with a `Verifier` link.
   def send_speaker
-    @event = Event.friendly.find(params[:id])
-    @conference = Conference.find(@event.conference_id)
+    @conference = Conference.friendly.find(params[:conference_id])
+    @event = Event.where(conference_id: @conference.id).friendly.find(params[:id])
 
     if !@conference.call_for_papers_enabled || @event.speaker?
       redirect_to conference_event_path(@conference, @event) and return
@@ -222,8 +222,8 @@ class EventsController < ApplicationController
   # The user is asked for an email address where a `Verifier` will be sent in
   # order to confirm their vote.
   def vote
-    @event = Event.friendly.find(params[:id])
     @conference = Conference.friendly.find(params[:conference_id])
+    @event = Event.where(conference_id: @conference.id).friendly.find(params[:id])
 
     # if Conference.friendly.find(params[:conference_id]).voting_enabled
     unless @conference.voting_enabled
@@ -239,8 +239,8 @@ class EventsController < ApplicationController
 
   # Generates the `Verifier` and sends the email to validate the vote
   def send_vote
-    @event = Event.friendly.find(params[:id])
-    @conference = Conference.find(@event.conference_id)
+    @conference = Conference.friendly.find(params[:conference_id])
+    @event = Event.where(conference_id: @conference.id).friendly.find(params[:id])
 
     ver = Verifier.new(
       email: params[:email],

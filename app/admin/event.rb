@@ -1,7 +1,7 @@
 ActiveAdmin.register Event do
  permit_params :accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :live_video, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :token, :validation_email, :verified, :video, :votes
-  menu :label => proc{ t("Events") }
-
+  # menu :label => proc{ t("Events") }
+  belongs_to :conference
 
   controller do
     def find_resource

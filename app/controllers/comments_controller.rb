@@ -2,8 +2,8 @@ class CommentsController < ApplicationController
 
   # Stores the new comment in the database.
   def create
-    @event = Event.friendly.find(params[:event_id])
-    @conference = Conference.find(@event.conference_id)
+    @conference = Conference.friendly.find(params[:conference_id])
+    @event = Event.where(conference_id: @conference.id).friendly.find(params[:event_id])
 
     if !@conference.active
       redirect_to conference_event_path(@conference, @event)
@@ -37,8 +37,8 @@ class CommentsController < ApplicationController
   # comment. Regular comments are created from the `show` method in the
   # `events` controller and directly call the `create` method.
   def new
-    @event = Event.friendly.find(params[:event_id])
-    @conference = Conference.find(@event.conference_id)
+    @conference = Conference.friendly.find(params[:conference_id])
+    @event = Event.where(conference_id: @conference.id).friendly.find(params[:event_id])
 
     if !@conference.active
       redirect_to conference_event_path(@conference, @event) and return
@@ -62,7 +62,8 @@ class CommentsController < ApplicationController
       if ["parent_id", "commentable_id"].include? name
         return name.find(value)
       elsif name.eql?("event_id")
-        return Event.friendly.find(value)
+        conference = Conference.friendly.find(params[:conference_id])
+        return Event.where(conference_id: conference.id).friendly.find(value)
       end
     end
     nil

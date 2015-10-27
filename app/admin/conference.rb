@@ -3,6 +3,12 @@ ActiveAdmin.register Conference do
 
   menu :label => proc{ t("Conferences") }
 
+  sidebar "Events", only: [:show, :edit] do
+    ul do
+      li link_to t("Events"), admin_conference_events_path(conference)
+    end
+  end
+
   controller do
     def find_resource
       scoped_collection.friendly.find(params[:id])

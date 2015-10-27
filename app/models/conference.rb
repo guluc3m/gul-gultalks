@@ -3,7 +3,9 @@ class Conference < ActiveRecord::Base
   has_many :events
   validates_presence_of :title, :description
   validates_uniqueness_of :title
-  friendly_id :title, use: :slugged
+  # ActiveAdmin workaround!
+  friendly_id :title, use: [:slugged, :finders]
+  # friendly_id :title, use: :slugged
 
   def to_ics
     calendar = Icalendar::Calendar.new

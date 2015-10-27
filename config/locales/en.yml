@@ -317,6 +317,7 @@ en:
     name_requirements: "Can only contain literal characters and hyphens"
     propose: "Propose speaker"
     remove_speaker: "Remove speaker"
+    request_certificate: "I want to receive a certificate as speaker of this activity"
     twitter: "Twitter"
     unassigned: "Speaker needed"
   Speaker: "Speaker"
