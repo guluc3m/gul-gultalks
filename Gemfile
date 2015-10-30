@@ -11,6 +11,7 @@ group :development, :test do
     gem 'better_errors'
     gem 'binding_of_caller'
     gem 'guard-livereload', require: false
+    gem 'rails-perftest' '~> 0.0.6'
     # Use debugger
     # gem 'debugger', group: [:development, :test]
     # gem 'meta_request'
