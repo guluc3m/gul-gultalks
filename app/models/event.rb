@@ -77,7 +77,8 @@ class Event < ActiveRecord::Base
   enum level: [:unspecified_level, :noob, :easy, :medium, :hard, :hacker]
   enum subclass: [:talk, :workshop]
 
-  # #validates :terms_of_service, acceptance: { accept: 'yes' }
+  # TODO: if needed add a TOS acceptance message
+  # validates :terms_of_service, acceptance: { accept: 'yes' }
 
   # List of confirmed speakers
   def speaker_list
@@ -86,28 +87,22 @@ class Event < ActiveRecord::Base
 
   # Whether the event has at least one confirmed speaker or not
   def speaker?
-      sp = Speaker.where(event_id: self, confirmed: true).first
-      if sp.nil?
-          return false
-      else
-          return true
-      end
+      speaker = Speaker.where(event_id: self, confirmed: true).first
+      return speaker.nil? ? false : true
   end
 
   # Generate and send an edition token to the first speaker in the list
   # or the provided Speaker
-  def send_edition_token(speaker=nil)
-    if !speaker
-      sp = Speaker.where(event_id: self, confirmed: true).first
-      if sp.nil?
+  def send_edition_token(speaker = nil)
+    if not speaker
+      speaker = Speaker.where(event_id: self, confirmed: true).first
+      if speaker.nil?
           return false
       end
-    else
-      sp = speaker
     end
 
     generate_token
-    Notifier.send_edition_token(self, sp).deliver
+    Notifier.send_edition_token(self, speaker).deliver
   end
 
   private
