@@ -14,30 +14,20 @@ class Verifier < ActiveRecord::Base
             presence: true,
             allow_blank: false
 
-  #validates :token,
-  #          presence: true,
-  #          uniqueness: true
-
-  #validates :verified,
-  #          presence: true
-
-  #validates :verify_type,
-  #          presence: true,
-  #          allow_blank: false
-
-  # enum types: [:certificate, :event, :speaker, :vote]
   enum types: [:certificate, :speaker, :vote]
 
   private
+
   def send_verification
-    if self.verify_type.eql? "certificate"
+    case self.verify_type.eql?
+    when "certificate"
       Notifier.confirmation_certificate(self).deliver
-    # elsif self.verify_type.eql? "event"
-      # Notifier.confirmation_event(self).deliver
-    elsif self.verify_type.eql? "vote"
+    when "vote"
       Notifier.confirmation_vote(self).deliver
-    elsif self.verify_type.eql? "speaker"
+    when "speaker"
       Notifier.confirmation_speaker(self).deliver
+    else
+      return false
     end
   end
 
