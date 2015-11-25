@@ -18,25 +18,26 @@
           .row
             .large-12.columns
               = render partial: "partials/status_tags_short", locals: {event: event}
-            .pull-right
-              .large-12.columns
-                - if event.start_dtime.nil? || event.end_dtime.nil?
-                  .label
-                    = t("not_available").humanize
-                - elsif DateTime.now > event.end_dtime
-                  .label.secondary{style: "border: 1px solid"}
-                    = t("event.finalized").humanize
-                  |
-                - else
-                  %small.subheader
-                    = event.start_dtime.to_s(:time)
-                    = t("time.to")
-                    = event.end_dtime.to_s(:time)
-                  |
-                %small.subheader
-                  = t("event.room")
-                  - if event.room.present?
-                    = event.room
+            - unless event.cancelled?
+              .pull-right
+                .large-12.columns
+                  - if event.start_dtime.nil? || event.end_dtime.nil?
+                    .label
+                      = t("not_available").humanize
+                  - elsif DateTime.now > event.end_dtime
+                    .label.secondary{style: "border: 1px solid"}
+                      = t("event.finalized").humanize
+                    |
                   - else
-                    = t("not_available")
+                    %small.subheader
+                      = event.start_dtime.to_s(:time)
+                      = t("time.to")
+                      = event.end_dtime.to_s(:time)
+                    |
+                  %small.subheader
+                    = t("event.room")
+                    - if event.room.present?
+                      = event.room
+                    - else
+                      = t("not_available")
 
