@@ -1,6 +1,6 @@
 sudo: false
 language: ruby
-rvm: 
+rvm:
   - 2.2.0
 
 script:
@@ -9,7 +9,7 @@ script:
   - bundle exec rake db:seed RAILS_ENV=test
   - bundle exec rake test RAILS_ENV=test
 
-bundler_args: --without production
+bundler_args: --without production --jobs $((`sysctl -n hw.ncpu`-1))
 
 notifications:
   email: false
