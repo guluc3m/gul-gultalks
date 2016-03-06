@@ -45,9 +45,11 @@ gem 'turbolinks'
 gem 'protected_attributes'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
+# Frontend
 gem 'font-awesome-rails', '~> 4.4.0.0'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
+gem 'modernizr-rails'
 gem 'haml-rails'
 gem 'rails-i18n'
 # http accept language to have the locale set from browser

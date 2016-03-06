@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require modernizr
 //= require foundation
-//= require_tree .
 //= require cookies_eu
-$(function(){
-    $(document).foundation({});
-});
+//= require_tree .
+
+$(document).foundation();
