@@ -19,7 +19,7 @@ class Verifier < ActiveRecord::Base
   private
 
   def send_verification
-    case self.verify_type.eql?
+    case self.verify_type
     when "certificate"
       Notifier.confirmation_certificate(self).deliver
     when "vote"

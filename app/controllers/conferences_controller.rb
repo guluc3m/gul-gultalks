@@ -1,14 +1,10 @@
 class ConferencesController < ApplicationController
     require 'will_paginate/array'
-    respond_to :html, :json, :xml, :ics
+    respond_to :html, :ics
 
     # Lists all the conferences present in the database.
-    # May also return the information in JSON format.
     def index
         @conferences = Conference.all.order('start_date DESC')
-        respond_with @conferences do |format|
-            format.json { render text: Hash[@conferences.collect { |c| [c.id, Hash[c.events.collect { |e| [e.id, e] } ]] }].to_json }
-        end
     end
 
     # Shows details on the given conference, its events and a calendar with said
