@@ -1,0 +1,167 @@
+- page_title t("Conferences")
+
+.row
+  .large-12.columns.show-for-medium-up.show-for-landscape
+    %ul.breadcrumbs
+      %li
+        = link_to t("home"), root_path
+      %li.current
+        API
+.row
+  .large-12.columns
+    %h1.subheader
+      API
+
+    %hr
+
+    .alert-box.success.radius
+      %i.fa.fa-info-circle.fa-2x.fa-fw
+      The API consists of a series of endpoints that can be accessed by using
+      HTTP GET method. The responses are formatted using
+      %strong JSON
+      in all cases.
+
+    %p
+      The root of the application is
+      %code http://cursos.gul.es
+      use
+      %code http://0.0.0.0:3000
+      instead in development enviroment.
+
+    %hr
+
+    %h2 List of conferences
+    %p
+      %strong Endpoint:
+      %code /api/conferences
+
+    %p
+      This endpoint returns a list of conferences, which include relevant public
+      information.
+
+    %p
+      Example:
+      %code GET
+      %code http://cursos.gul.es/conferences
+
+    %pre.alert-box.secondary
+      :preserve
+        [
+          {
+          "active": false,
+          "call_for_papers_end_date": "2016-02-24",
+          "call_for_papers_start_date": "2016-03-13",
+          "coordinator": "Adrián Borja Pimentel",
+          "description": "XXVIII Jornadas Técnicas...",
+          "end_date": "2016-04-15",
+          "id": 5,
+          "location": "Leganés",
+          "slug": "xxviii-jornadas-tecnicas-del-gul",
+          "start_date": "2016-04-11",
+          "title": "XXVIII Jornadas Técnicas del GUL",
+          "voting_end_date": "2016-04-18",
+          "voting_start_date": "2016-04-14"
+          }
+        ]
+
+    %hr
+
+    %h2 List of events from a conference
+    %p
+      %strong Endpoint:
+      %code /api/conferences/:id/events
+
+    %p
+      This endpoint returns a list of all the events that belong to the
+      specified conference. The
+      %code :id
+      parameter may be the numeric ID or the slug from a conference.
+
+    %p
+      Speaker details may be accessed through the
+      %code speaker_list
+      attribute, which is a list of speakers for an event.
+
+    %p
+      Example:
+      %code GET
+      %code http://cursos.gul.es/conferences/5/events
+      or
+      %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/events
+
+
+    %pre.alert-box.secondary
+      :preserve
+        [
+          {
+              "accepted": true,
+              "cancelled": false,
+              "code_url": "",
+              "content_url": "",
+              "description": "GIMP es un potente software de tratamiento...",
+              "end_dtime": null,
+              "id": 129,
+              "language": "es",
+              "level": "easy",
+              "location": "Leganés",
+              "room": "",
+              "slug": "gimp-quickies",
+              "speaker_list": [
+                  {
+                    "name": "Clara Luis Mingueza",
+                    "twitter": "_Claralu"
+                  }
+              ],
+              "start_dtime": null,
+              "subclass": "workshop",
+              "summary": "Aprende lo básico en Gimp",
+              "title": "Gimp Quickies!",
+              "votes": 12
+          },
+          {
+              "accepted": true,
+              "cancelled": false,
+              "code_url": "",
+              "content_url": "",
+              "description": "En esta charla veremos una introducción...",
+              "end_dtime": null,
+              "id": 136,
+              "language": "es",
+              "level": "easy",
+              "location": "Leganés",
+              "room": "",
+              "slug": "ya-esta-bien-de-perder-los-cambios-de-tus-practicas-git-al-rescate",
+              "speaker_list": [
+                  {
+                    "name": "Axel Blanco",
+                    "twitter": "drimmark"
+                  }
+              ],
+              "start_dtime": null,
+              "subclass": "talk",
+              "summary": "Una introducción al control de versiones con Git y al paradigma de Git-flow",
+              "title": "Ya está bien de perder los cambios de tus practicas: Git al rescate",
+              "votes": 11
+          },
+
+            ...
+        ]
+
+    %hr
+
+    %h2 Errors
+    %p
+      In case of error, the API will return the HTTP code and a JSON object
+      showing the error messages.
+
+    %p
+      Example:
+      %code GET
+      %code http://cursos.gul.es/conferences/INEXISTENT_CONFERENCE/events
+
+    %pre.alert-box.secondary
+      :preserve
+        {
+          "errors": "conference not found"
+        }
+
