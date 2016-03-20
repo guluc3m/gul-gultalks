@@ -1,2 +1,0 @@
-class ApiDocsController < ApplicationController
-end

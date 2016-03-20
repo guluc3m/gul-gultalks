@@ -105,6 +105,24 @@ class Event < ActiveRecord::Base
     Notifier.send_edition_token(self, speaker).deliver
   end
 
+  # Define fields returned in JSON representation of the model
+  #
+  # Note: `only` is used instead of `except` in order to know better what is
+  # returned
+  def as_json(options={})
+      super(only: [
+          :id, :accepted, :cancelled, :code_url ,:content_url, :description,
+          :end_dtime, :language, :level, :location, :room, :slug, :start_dtime,
+          :subclass, :summary, :title, :votes],
+           include: {
+            speaker_list: {
+                only: [:name, :twitter]
+            }
+           },
+           root: false
+      )
+  end
+
   private
 
   # (Re)generate the slug where needed
