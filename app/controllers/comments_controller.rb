@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @conference = Conference.friendly.find(params[:conference_id])
     @event = Event.where(conference_id: @conference.id).friendly.find(params[:event_id])
 
-    if !@conference.active
+    unless @conference.active
       redirect_to conference_event_path(@conference, @event)
     end
 
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     else
       flash[:error] = "Recaptcha error."
 
-      if !comment_params[:parent_id].empty?
+      unless comment_params[:parent_id].empty?
         redirect_to new_comment_path(@conference, @event, parent_id: comment_params[:parent_id]) and return
       end
 
@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
     @conference = Conference.friendly.find(params[:conference_id])
     @event = Event.where(conference_id: @conference.id).friendly.find(params[:event_id])
 
-    if !@conference.active
+    unless @conference.active
       redirect_to conference_event_path(@conference, @event) and return
     end
 
@@ -53,12 +53,12 @@ class CommentsController < ApplicationController
   end
 
   private
+
   # Finds the parent object of the comment.
   #
   # Comments may be attached to activities or other comments (responses).
   def find_commentable
     params.each do |name, value|
-      #if name =~ /(.+)_id$/
       if ["parent_id", "commentable_id"].include? name
         return name.find(value)
       elsif name.eql?("event_id")
@@ -66,6 +66,7 @@ class CommentsController < ApplicationController
         return Event.where(conference_id: conference.id).friendly.find(value)
       end
     end
+
     nil
   end
 
