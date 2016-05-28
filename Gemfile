@@ -95,3 +95,4 @@ gem 'meta-tags'
 gem 'redcarpet'
 # Embedded content (Youtube, Vimeo, etc)
 gem 'embed'
+gem 'favicon_maker'
