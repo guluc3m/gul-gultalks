@@ -4,6 +4,7 @@
 [![Inline docs](http://inch-ci.org/github/guluc3m/gul-gultalks.svg?branch=master)](http://inch-ci.org/github/guluc3m/gul-gultalks)
 
 This is the GUL's Technical Conferences management system made with Ruby on Rails framework.
+
 This project started in late december of 2013 for replace the old application made with Cake PHP
 framework which was very difficult to maintain and we decided to start from scratch,
 adding many modern development techniques and latest technologies.
@@ -14,10 +15,13 @@ To build the app in dev or test environments, use the following command:
 
 ```shell
 $ bundle install --without production
-# or you can speed it up with
+# or you can speed it up in macOS/OSX with
 $ bundle install --without production --jobs $((`sysctl -n hw.ncpu`-1))
+# or you can speed it up in common GNU/Linux distros with
+$ bundle install --without production --jobs `nproc --ignore=1`
+
 ```
-We think that sqlite is better for development purposes.
+We think that SQLite is better for development purposes.
 
 #### To run it:
 ```shell
@@ -41,7 +45,7 @@ $ bundle install --without development
 $ rails server [-p $PORT] # Port is optional
 ```
 
-Now mysql2 is used as DB engine instead of sqlite.
+Now MySQL is used as DB engine instead of SQLite.
 
 #### Some of the technologies employed
 - [Ruby on Rails](http://rubyonrails.org/)
@@ -58,6 +62,9 @@ Now mysql2 is used as DB engine instead of sqlite.
 - [Mina](http://mina-deploy.github.io/mina/)
 - [and many more...](https://github.com/guluc3m/gul-gultalks/blob/develop/Gemfile)
 
+#### Wiki
+
+For more info about the API or the deploy, check our [wiki](https://github.com/guluc3m/gul-gultalks/wiki)
 
 #### Have a bug/ suggestion?
 Bugs or suggestions? Visit the [issue tracker](https://github.com/guluc3m/gul-gultalks/issues/)
