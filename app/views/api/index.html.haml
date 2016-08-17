@@ -17,7 +17,7 @@
     .alert-box.success.radius
       %i.fa.fa-info-circle.fa-2x.fa-fw
       The API consists of a series of endpoints that can be accessed by using
-      HTTP GET method. The responses are formatted using
+      HTTP GET and POST methods. The responses are formatted using
       %strong JSON
       in all cases.
 
@@ -33,6 +33,7 @@
     %h2 List of conferences
     %p
       %strong Endpoint:
+      %code GET
       %code /api/conferences
 
     %p
@@ -69,6 +70,7 @@
     %h2 List of events from a conference
     %p
       %strong Endpoint:
+      %code GET
       %code /api/conferences/:id/events
 
     %p
@@ -149,10 +151,118 @@
 
     %hr
 
+    %h2 Open the Call for Talks of a conference
+    %p
+      %strong Endpoint:
+      %code POST
+      %code /api/conferences/:id/open_call
+
+    %p
+      This endpoint enables the Call for Talks of the specified conference. The
+      %code :id
+      parameter may be the numeric ID or the slug from a conference.
+
+    .alert-box.warning.radius
+      %i.fa.fa-warning.fa-2x.fa-fw
+      This endpoint requires authentication by means of a token sent in the
+      HTTP header (
+      %code token
+      ). This token can be generated through the admin panel.
+
+    %p
+      Example:
+      %code POST
+      %code http://cursos.gul.es/conferences/5/open_call
+      or
+      %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/open_call
+
+    %hr
+
+    %h2 Close the Call for Talks of a conference
+    %p
+      %strong Endpoint:
+      %code POST
+      %code /api/conferences/:id/close_call
+
+    %p
+      This endpoint disables the Call for Talks of the specified conference. The
+      %code :id
+      parameter may be the numeric ID or the slug from a conference.
+
+    .alert-box.warning.radius
+      %i.fa.fa-warning.fa-2x.fa-fw
+      This endpoint requires authentication by means of a token sent in the
+      HTTP header (
+      %code token
+      ). This token can be generated through the admin panel.
+
+    %p
+      Example:
+      %code POST
+      %code http://cursos.gul.es/conferences/5/close_call
+      or
+      %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/close_call
+
+    %hr
+
+    %h2 Enable votes in a conference
+    %p
+      %strong Endpoint:
+      %code POST
+      %code /api/conferences/:id/enable_voting
+
+    %p
+      This endpoint enables the voting of the specified conference. The
+      %code :id
+      parameter may be the numeric ID or the slug from a conference.
+
+    .alert-box.warning.radius
+      %i.fa.fa-warning.fa-2x.fa-fw
+      This endpoint requires authentication by means of a token sent in the
+      HTTP header (
+      %code token
+      ). This token can be generated through the admin panel.
+
+    %p
+      Example:
+      %code POST
+      %code http://cursos.gul.es/conferences/5/enable_voting
+      or
+      %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/enable_voting
+
+    %hr
+
+    %h2 Disable votes in a conference
+    %p
+      %strong Endpoint:
+      %code POST
+      %code /api/conferences/:id/disable_voting
+
+    %p
+      This endpoint disables the voting of the specified conference. The
+      %code :id
+      parameter may be the numeric ID or the slug from a conference.
+
+    .alert-box.warning.radius
+      %i.fa.fa-warning.fa-2x.fa-fw
+      This endpoint requires authentication by means of a token sent in the
+      HTTP header (
+      %code token
+      ). This token can be generated through the admin panel.
+
+    %p
+      Example:
+      %code POST
+      %code http://cursos.gul.es/conferences/5/disable_voting
+      or
+      %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/disable_voting
+
+    %hr
+
     %h2 Errors
     %p
-      In case of error, the API will return the HTTP code and a JSON object
-      showing the error messages.
+      In case of error, the API will return the HTTP code and, optionally,
+      a JSON object showing the error messages.
 
     %p
       Example:
@@ -165,3 +275,7 @@
           "errors": "conference not found"
         }
 
+    %p
+      Endpoints that require authentication will return a
+      %code 401
+      status code if the authentication failed.

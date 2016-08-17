@@ -21,6 +21,9 @@ es:
         role: "Rol"
         sign_in_count: "Inicios de sesión"
         updated_at: "Última actualización"
+      api_key:
+          token: "Token"
+          description: "Descripción"
       conference:
         active: "Activa"
         call_for_papers_enabled: "Call for talks habilitado"
@@ -83,6 +86,7 @@ es:
         updated_at: "Última actualización"
         verified: "Verificado"
         verify_type: "Tipo de verificación"
+  ApiKeys: "Claves API"
   certificates:
     speaker:
       header: "_______________________________, como representante de la organización"
