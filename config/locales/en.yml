@@ -19,6 +19,9 @@ en:
         remember_created_at: "Remember created at"
         role: "Role"
         sign_in_count: "Sign in count"
+      api_key:
+          token: "Token"
+          description: "Description"
       conference:
         active: "Active"
         call_for_papers_enabled: "Call for talks enabled"
@@ -73,6 +76,7 @@ en:
         token: "Token"
         verified: "Verified"
         verify_type: "Verification type"
+  ApiKeys: "Api Keys"
   certificates:
     speaker:
       header: "_______________________________, as representative of the organization"

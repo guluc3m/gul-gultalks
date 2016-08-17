@@ -5,8 +5,11 @@ Gultalks::Application.routes.draw do
   # Admin
   match 'admin', to: 'admin#index', via: :get, path: '/admin'
 
-  # API Documentation
-  match 'apidocs', to: 'api_docs#index', via: :get, path: '/apidocs'
+  # API
+  match 'api_docs', to: 'api#index', via: :get, path: '/api'
+  match 'api_conferences', to: 'api#conferences', via: :get, path: '/api/conferences'
+  match 'api_conference_events', to: 'api#conference_events', via: :get, path: '/api/conferences/:id/events'
+  match 'api_modify_conference', to: 'api#modify_conference', via: :post, path: '/api/conferences/:id/:task'
 
   # Verifiers
   match 'verify', to: 'verifier#verify', via: :get, path: '/verify/:token'

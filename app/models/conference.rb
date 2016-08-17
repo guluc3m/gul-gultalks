@@ -21,6 +21,18 @@ class Conference < ActiveRecord::Base
     calendar.to_ical
   end
 
+  # Define fields returned in JSON representation of the model
+  #
+  # Note: `only` is used instead of `except` in order to know better what is
+  # returned
+  def as_json(options={})
+      super(only: [
+          :id, :active, :call_for_papers_end_date, :call_for_papers_start_date,
+          :coordinator, :description, :end_date, :location, :slug, :start_date,
+          :title, :voting_end_date, :voting_start_date],
+           root: false)
+  end
+
   private
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
