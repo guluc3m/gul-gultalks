@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
   include Gultalks::Commentable
   # helper_method :event, :events
-  respond_to :html, :json, :xml
 
   # Returns information on all publicly shown events for a given conference.
   #
@@ -10,13 +9,8 @@ class EventsController < ApplicationController
   # user to the `show` method of the `conferences` controller.
   def index
     @conference = Conference.friendly.find(params[:conference_id])
-    events = @conference.events.where(shown: true, verified: true)
-
-    respond_with(events) do |format|
-      format.html { redirect_to conference_path(@conference) }
-      format.json { render json: events.as_json(methods: :tag_list) }
-      format.xml { render xml: events.to_xml(methods: :tag_list) }
-    end
+    # events = @conference.events.where(shown: true, verified: true)
+    redirect_to conference_path(@conference)
   end
 
   # Displays a view where the user can specify wheter they are proposing an
@@ -161,13 +155,7 @@ class EventsController < ApplicationController
       redirect_to conference_path(@conference) and return
     end
 
-    @short_url = url_shortener(@conference, @event)
-
-    respond_with(@event) do |format|
-      format.json { render json: @event.as_json(methods: :tag_list) }
-      format.xml { render xml: @event.to_xml(methods: :tag_list) }
-      format.ics { render ics: @event.to_ics(methods: :tag_list) }
-    end
+    # @short_url = url_shortener(@conference, @event)
   end
 
   # Shows a form where the user can propose a speaker for an activity that
@@ -231,10 +219,7 @@ class EventsController < ApplicationController
     end
 
     # Generate random key, pass the output as arg to Notifier
-    # respond_with(event) do |format|
-    respond_to do |format|
-      format.html { render action: "vote" }
-    end
+    # render :vote
   end
 
   # Generates the `Verifier` and sends the email to validate the vote

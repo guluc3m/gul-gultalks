@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-  respond_to :html, :json, :xml
 
   # Accessing the root redirects to the currently active conference or to the
   # list of (past) conferences is there is no active one.
