@@ -15,3 +15,4 @@ notifications:
   email: false
 
 cache: bundler
+sudo: false
