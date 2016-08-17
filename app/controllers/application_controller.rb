@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
   end
 
+  # Set the locale of the application based on the locale defined in the
+  # user's browser.
   def set_locale
     I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
   end

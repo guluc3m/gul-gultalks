@@ -3,6 +3,8 @@ class ConferencesController < ApplicationController
   # helper_method :conference, :conferences
   respond_to :html, :json, :xml, :ics
 
+  # Lists all the conferences present in the database.
+  # May also return the information in JSON format.
   def index
     @conferences = Conference.all.order('start_date DESC')
     respond_with @conferences do |format|
@@ -10,6 +12,11 @@ class ConferencesController < ApplicationController
     end
   end
 
+  # Shows details on the given conference, its events and a calendar with said
+  # events ordered by date and time.
+  #
+  # If ICS is specified in the request header, returns a .ics file for calendar
+  # applications.
   def show
     @conference = Conference.friendly.find(params[:id])
     @calendar_events = @conference.events.where(shown: true, accepted: true)

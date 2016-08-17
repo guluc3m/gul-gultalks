@@ -3,6 +3,11 @@ class EventsController < ApplicationController
   # helper_method :event, :events
   respond_to :html, :json, :xml
 
+  # Returns information on all publicly shown events for a given conference.
+  #
+  # Currently, this is only useful for API requests, as it returns the
+  # information in either JSON or XML format. A normal request redirects the
+  # user to the `show` method of the `conferences` controller.
   def index
     @conference = Conference.friendly.find(params[:conference_id])
     events = @conference.events.where(shown: true, verified: true)
@@ -13,6 +18,9 @@ class EventsController < ApplicationController
     end
   end
 
+  # Displays a view where the user can specify wheter they are proposing an
+  # activity (basic information) or they want to impart that activity
+  # (detailed information).
   def new
     @conference = Conference.friendly.find(params[:conference_id])
     if !@conference.call_for_papers_enabled
@@ -20,6 +28,8 @@ class EventsController < ApplicationController
     end
   end
 
+  # Shows a form where the user has to provide basic information for the
+  # activity.
   def new_basic
     @conference = Conference.friendly.find(params[:conference_id])
     if !@conference.call_for_papers_enabled
@@ -29,6 +39,7 @@ class EventsController < ApplicationController
     @form = BasicEventForm.new(Event.new)
   end
 
+  # Stores the basic activity information in the database.
   def create_basic
     @conference = Conference.friendly.find(params[:conference_id])
     if !@conference.call_for_papers_enabled
@@ -54,6 +65,8 @@ class EventsController < ApplicationController
     end
   end
 
+  # Shows a form where the user has to provide detailed information for the
+  # activity.
   def new_detailed
     @conference = Conference.friendly.find(params[:conference_id])
     if !@conference.call_for_papers_enabled
@@ -66,6 +79,11 @@ class EventsController < ApplicationController
     @form = DetailedEventForm.new(event)
   end
 
+  # Stores the detailed activity information in the database.
+  #
+  # User can only specify a maximum of 5 speakers. If a speaker wants to
+  # receive a certificate, a `Verifier` is created and its unique link
+  # is mailed to them.
   def create_detailed
     @conference = Conference.friendly.find(params[:conference_id])
     if !@conference.call_for_papers_enabled
@@ -123,6 +141,9 @@ class EventsController < ApplicationController
     end
   end
 
+  # Shows the details for an activity, as well as share buttons,comment forms
+  # the option of proposing a speaker if there is none and a voting button
+  # when conference voting is enabled.
   def show
     @event = Event.friendly.find(params[:id])
     @conference = Conference.friendly.find(params[:conference_id])
@@ -139,6 +160,8 @@ class EventsController < ApplicationController
     end
   end
 
+  # Shows a form where the user can propose a speaker for an activity that
+  # still does not have one.
   def propose_speaker
     @event = Event.friendly.find(params[:id])
     @conference = Conference.friendly.find(params[:conference_id])
@@ -150,8 +173,10 @@ class EventsController < ApplicationController
     @speaker = Speaker.new
   end
 
+  # Stores the proposed speaker in the database.
+  #
+  # The speaker will receive a confirmation email with a `Verifier` link.
   def send_speaker
-    # Used to generate the Verifier and send the email to validate/confirm the speaker
     @event = Event.friendly.find(params[:id])
     @conference = Conference.find(@event.conference_id)
 
@@ -176,6 +201,10 @@ class EventsController < ApplicationController
     end
   end
 
+  # Shows the voting form.
+  #
+  # The user is asked for an email address where a `Verifier` will be sent in
+  # order to confirm their vote.
   def vote
     @event = Event.friendly.find(params[:id])
     @conference = Conference.friendly.find(params[:conference_id])
@@ -192,8 +221,8 @@ class EventsController < ApplicationController
     end
   end
 
+  # Generates the `Verifier` and sends the email to validate the vote
   def send_vote
-    # Used to generate the Verifier and send the email to validate the vote
     @event = Event.friendly.find(params[:id])
     @conference = Conference.find(@event.conference_id)
 

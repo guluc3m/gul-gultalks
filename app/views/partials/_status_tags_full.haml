@@ -1,4 +1,4 @@
-- if  event.created_at.today? and not event.cancelled?
+- if event.created_at.today? and not event.cancelled?
   %span.success.radius.label
     = t("event.status.new").humanize
 %span.radius.label
@@ -6,12 +6,12 @@
     %i.fa.fa-wrench.fa-lg
   - if event.subclass.eql?("talk")
     %i.fa.fa-bullhorn.fa-lg
-  /= t("event.subclasses.#{event.subclass}").humanize
+  = t("event.subclasses.#{event.subclass}").humanize
 - if event.cancelled?
   %span.alert.radius.label
     %i.fa.fa-lock.fa-lg
-    /= t("event.status.cancelled").humanize
+    = t("event.status.cancelled").humanize
 - if not event.speaker_list.present?
   %span.warning.radius.label{'data-tooltip aria-haspopup': "true", title: ""}
     %i.fa.fa-child.fa-lg
-    /= t('speaker.unassigned').humanize
+    = t('speaker.unassigned').humanize

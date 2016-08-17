@@ -12,7 +12,7 @@ group :development, :test do
     gem 'binding_of_caller'
     # gem 'meta_request'
 end
-# Use mysql2 for production environment 
+# Use mysql2 for production environment
 group :production do
     gem 'mysql2'
     gem 'unicorn'
@@ -52,10 +52,13 @@ end
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
+# DEPRECATED: Use Capistrano for deployment
 #Capistrano deployments
-gem 'capistrano', '~> 2.15.5'
-#
+#gem 'capistrano', '~> 2.15.5'
+
+# Use Mina for deployment
+gem 'mina'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
@@ -64,8 +67,10 @@ gem 'font-awesome-rails', '~> 4.4.0.0'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem 'haml-rails'
-# gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
+
+#
 gem 'rails-i18n'
+
 #http accept language to have the locale set from browser
 gem 'http_accept_language'
 
@@ -76,12 +81,14 @@ gem 'friendly_id', '~> 5.0.0'
 
 # Tags
 gem 'acts-as-taggable-on'
+
 # ActiveAdmin
 # gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'devise-i18n'
 gem 'activevalidators'
+
 # Web Pagination
 gem 'will_paginate'
 gem 'will_paginate-foundation'
@@ -94,9 +101,6 @@ gem 'icalendar'
 
 # reCAPTCHA
 gem 'recaptcha', :require => 'recaptcha/rails'
-
-# Character countdown 
-# gem 'lettrics'
 
 # User authentication
 gem 'cancancan', '~> 1.9'

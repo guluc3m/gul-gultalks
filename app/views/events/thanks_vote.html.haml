@@ -14,11 +14,14 @@
 
 .row
   .medium-12.columns
-    %h1
+    %h1.subheader
       = t("thanks.vote_thanks")
-    %p
-      = t("thanks.vote_thanks_msg")
-
+    %hr
 .row
-  .large-6.columns
+  .medium-6.columns
+    %p.lead
+      = t("thanks.vote_thanks_msg")
+  .medium-6.columns
+    / TODO: tanslate!
+    = link_to "Votar otra actividad", conference_path(@conference), :class => "button radius success expand"
     = link_to t("event.back_to_event"), conference_event_path(@conference, @event), :class => "button radius expand"

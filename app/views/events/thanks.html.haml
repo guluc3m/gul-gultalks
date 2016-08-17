@@ -3,12 +3,13 @@
 
 .row
   .large-12.columns
-    %h1
+    %h1.subheader
       = t("thanks.thank_you")
     %hr
 
 .row
-  .large-6.columns
+  .medium-6.columns
+    Muchas grcias por emitir tu voto para la acitvidad , no es necesario que hagas nada más, tu voto será contabilizado automáticamente.
+  .medium-6.columns
     = link_to t("event.back_to_events"), conference_path(@conference), class: "button radius expand"
-  .large-6.columns
     = link_to t("conference.propose_another_event"), new_conference_event_path(@conference), class: "button success radius expand"

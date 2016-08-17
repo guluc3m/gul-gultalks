@@ -28,8 +28,8 @@
 
   .medium-6.columns
     = link_to basic_events_path(@conference), { class: "button expand" } do
-      %b= t("event.i_am_proposing")
+      = t("event.i_am_proposing")
 
   .medium-6.columns
     = link_to detailed_events_path(@conference), { class: "button success expand" } do
-      %b= t("event.i_am_speaker")
+      = t("event.i_am_speaker")

@@ -2,10 +2,10 @@
 -# - days = (@conference.end_date.mjd - @conference.start_date.mjd).to_i
 
 /.row.hidden-for-large-up.show-for-portrait
-.right
-  .row
-    .large-12.columns.large-centered
-      = link_to conference_path(params[:id], format: :ics), {class:"button secondary tiny radius"} do
+.row
+  .large-12.columns
+    .right
+      = link_to conference_path(params[:id], format: :ics), {class: "button secondary tiny radius"} do
         %i.fa.fa-calendar.fa-fw.fa-lg
         = t("event.download_ical")
 
@@ -30,9 +30,7 @@
 -#             = l(d, format: :day_name_num).humanize
 -#             -# #{@conference.start_date.day + i}
 
-= render partial: "partials/legend"
 - (@conference.start_date..@conference.end_date).each_with_index do |d, index|
-  /- if index % 2 == 0
   .large-6.columns
     %h3.subheader
       = l(d, format: :day_name_num).humanize
@@ -43,14 +41,14 @@
         = link_to event.title, conference_event_path(@conference, event)
         .row
           .large-12.columns
-            = render partial: "partials/status_tags", locals: {event: event}
+            = render partial: "partials/status_tags_short", locals: {event: event}
           .right
             .large-12.columns
               - if event.start_dtime.nil? || event.end_dtime.nil?
                 .label
                   = t("not_available").humanize
               - elsif DateTime.now > event.end_dtime
-                .label
+                .label.secondary
                   = t("event.finalized").humanize
                 |
               - else
@@ -65,9 +63,7 @@
                   = event.room
                 - else
                   = t("not_available")
-  %br
-  %br
-      
+
 
 -# .row.hidden-for-small.show-for-landscape
 -#   .large-12.columns
