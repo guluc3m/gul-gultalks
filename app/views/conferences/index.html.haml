@@ -13,65 +13,34 @@
       = t("conference.list")
     %hr
     - unless @conferences.count.zero?
-      -# FIXME: translate
-      .large-12.colums
-        %p |
-          A continuación se muestran todas las anteriores ediciones.
-          Pulsa sobre un año y se mostrarán las ediciones para ese año.
+      // FIXME: translate
+      %p |
+        A continuación se muestran todas las anteriores ediciones.
+        Pulsa sobre un año y se mostrarán las ediciones para ese año.
 
-      - seasons = @conferences.map{|conference| conference.start_date.year}.uniq
-      .large-12.colums.show-for-small-down
-        %ul.accordion{"data-accordion" => ""}
-          - seasons.each do |year|
-            %li.accordion-navigation
-              %a{href: "#panel-accordion-#{year}"}
-                %b
-                  = year
+      - years = Array.new
+      %ul.tabs.vertical{"data-tab" => ""}
+        - @conferences.map{|conference| conference.start_date.year}.uniq.each do |year|
+          %li.tabs-title
+            %a{href: "#panel-#{year}"}
+              %b
+                = year
+                - years.push(year)
 
-              .content{id: "panel-accordion-#{year}", class: "#{ seasons.max == year ? 'active' : ''}" }
-                .row
-                  - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
-                    .medium-6.columns
-                      %b
-                        = link_to conference.title, conference_path(conference)
-                      %p
-                        -# TODO: Create helper!!!
-                        -# TODO: use to_sentence instead and localize
-                        -# TODO: loop over type of events dynamically
-                        - talks = conference.events.where(accepted: true, subclass: "talk").count
-                        - workshops = conference.events.where(accepted: true, subclass: "workshop").count
-                        - if talks > 0 and workshops > 0
-                          = talks.to_s + " charlas y " + workshops.to_s + " talleres."
-                        - else
-                          Sin eventos
+      .tabs-content
+        - years.each do |year|
+          - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
+            .content{id: "panel-#{conference.start_date.year}"}
+              = link_to conference.title, conference_path(conference)
+              %dd
+                // TODO: use to_sentence instead and localize
+                - talks = conference.events.where(accepted: true, cancelled: false, subclass: "talk").count
+                - workshops = conference.events.where(accepted: true, cancelled: false, subclass: "workshop").count
 
-      .large-12.colums.show-for-medium-up
-        %ul.tabs.vertical{"data-tab" => ""}
-          - seasons.each do |year|
-            %li.tab-title.text-center{class: "#{ seasons.max.eql? year ? 'active' : ''}"}
-              %a{href: "#panel-tab-#{year}"}
-                %b
-                  = year
-
-        .tabs-content
-          - seasons.each do |year|
-            .content{id: "panel-tab-#{year}", class: "#{ seasons.max == year ? 'active' : ''}"}
-              .row
-                - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
-                  .medium-4.columns
-                    %b
-                      = link_to conference.title, conference_path(conference)
-                    %p
-                      -# TODO: Create helper!!!
-                      -# TODO: use to_sentence instead and localize
-                      -# TODO: loop over type of events dynamically
-                      - talks = conference.events.where(accepted: true, subclass: "talk").count
-                      - workshops = conference.events.where(accepted: true, subclass: "workshop").count
-                      - if talks > 0 and workshops > 0
-                        = talks.to_s + " charlas y " + workshops.to_s + " talleres."
-                      - else
-                        Sin eventos
-
+                - if talks > 0 and workshops > 0
+                  = talks.to_s + " charlas y " + workshops.to_s + " talleres."
+                - else
+                  Sin eventos
     - else
       .row
         .large-12.columns

@@ -11,9 +11,6 @@ Gultalks::Application.routes.draw do
   match 'api_conference_events', to: 'api#conference_events', via: :get, path: '/api/conferences/:id/events'
   match 'api_modify_conference', to: 'api#modify_conference', via: :post, path: '/api/conferences/:id/:task'
 
-  # Verifiers
-  match 'verify', to: 'verifier#verify', via: :get, path: '/verify/:token'
-
   # Conferences
   match 'conferences', to: 'conferences#index', via: :get, path: '/conferences'
   match 'conference', to: 'conferences#show', via: :get, path: '/:id'
@@ -39,6 +36,9 @@ Gultalks::Application.routes.draw do
   match 'send_speaker_conference_event', to: 'events#send_speaker', via: :post, path: '/:conference_id/:id/propose_speaker'
   match 'vote_conference_event', to: 'events#vote', via: :get, path: '/:conference_id/:id/vote'
   match 'send_vote_conference_event', to: 'events#send_vote', via: :post, path: '/:conference_id/:id/send_vote'
+
+  # Verifiers
+  match 'verify', to: 'verifier#verify', via: :get, path: '/verify/:token'
 
   root 'home#index'
 

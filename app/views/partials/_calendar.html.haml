@@ -1,43 +1,107 @@
+/.show-for-touch{"data-magellan-expedition" => "fixed"}
+-# - days = (@conference.end_date.mjd - @conference.start_date.mjd).to_i
+
+/.row.hidden-for-large-up.show-for-portrait
 .row
   .large-12.columns
-    %h2.subheader
-      Calendario
-      .pull-right
-        = link_to conference_path(params[:id], format: :ics), {class: "button secondary tiny radius"} do
-          %i.fa.fa-calendar.fa-fw.fa-lg
-          = t("event.download_ical")
+    .right
+      = link_to conference_path(params[:id], format: :ics), {class: "button secondary tiny radius"} do
+        %i.fa.fa-calendar.fa-fw.fa-lg
+        = t("event.download_ical")
 
-  - (@conference.start_date..@conference.end_date).each_with_index do |d, index|
-    .medium-6.columns
-      %h3.subheader
-        = l(d, format: :day_name_num).humanize
-      %hr
-      - @calendar_events.select{ |event| event.start_dtime.day == d.day }.sort_by(&:start_dtime).map do |event|
-        .panel{style: "background-color: #f9f9f9"}
-          = link_to event.title, conference_event_path(@conference, event)
-          .row
+/.row.show-for-large-up
+/  .large-12.columns
+/    .right
+/      = link_to conference_path(params[:id], format: :ics) do
+/        %i.fa.fa-calendar.fa-fw
+/        = t("event.download_ical")
+
+// FIXME: fix magellan navigation
+-# .row.hidden-for-large-up.show-for-portrait
+-#   .large-12.columns{"data-magellan-expedition" => "fixed" }
+-#     %dl.sub-nav
+-#       -# - (0..days).each do |i|
+-#       - (@conference.start_date..@conference.end_date).each do |d|
+-#         -# .small-2.columns.left.text-center
+-#         %dd{"data-magellan-arrival" => "#{t('date.abbr_day_names')[d.day.to_i]}", style: "margin-left: 0.5rem"}
+-#           = link_to("##{t('date.abbr_day_names')[d.day.to_i]}") do
+-#             -# = t('date.abbr_day_names')[i].humanize
+-#             -# = l(d, format: :abbr_day_name).humanize
+-#             = l(d, format: :day_name_num).humanize
+-#             -# #{@conference.start_date.day + i}
+
+- (@conference.start_date..@conference.end_date).each_with_index do |d, index|
+  .large-6.columns
+    %h3.subheader
+      = l(d, format: :day_name_num).humanize
+  - @calendar_events.select{ |event| event.start_dtime.day == d.day }.sort_by(&:start_dtime).map do |event|
+    //.small-9.columns{"data-magellan-destination" => "#{t("date.abbr_day_names")[d.day.to_i]}"}
+    .large-6.columns
+      .panel.radius
+        = link_to event.title, conference_event_path(@conference, event)
+        .row
+          .large-12.columns
+            = render partial: "partials/status_tags_short", locals: {event: event}
+          .right
             .large-12.columns
-              = render partial: "partials/status_tags_short", locals: {event: event}
-            - unless event.cancelled?
-              .pull-right
-                .large-12.columns
-                  - if event.start_dtime.nil? || event.end_dtime.nil?
-                    .label
-                      = t("not_available").humanize
-                  - elsif DateTime.now > event.end_dtime
-                    .label.secondary{style: "border: 1px solid"}
-                      = t("event.finalized").humanize
-                    |
-                  - else
-                    %small.subheader
-                      = event.start_dtime.to_s(:time)
-                      = t("time.to")
-                      = event.end_dtime.to_s(:time)
-                    |
-                  %small.subheader
-                    = t("event.room")
-                    - if event.room.present?
-                      = event.room
-                    - else
-                      = t("not_available")
+              - if event.start_dtime.nil? || event.end_dtime.nil?
+                .label
+                  = t("not_available").humanize
+              - elsif DateTime.now > event.end_dtime
+                .label.secondary
+                  = t("event.finalized").humanize
+                |
+              - else
+                %small.subheader
+                  = event.start_dtime.to_s(:time)
+                  = t("time.to")
+                  = event.end_dtime.to_s(:time)
+                |
+              %small.subheader
+                = t("event.room")
+                - if event.room.present?
+                  = event.room
+                - else
+                  = t("not_available")
 
+
+-# .row.hidden-for-small.show-for-landscape
+-#   .large-12.columns
+-#     %table
+-#       %thead
+-#         %tr
+-#           %th.text-center
+-#             %i.fa.fa-clock-o.fa-lg
+-#           - (@conference.start_date..@conference.end_date).each do |d|
+-#             %th.text-center
+-#               = l(d, format: :day_name_num).humanize
+-#       %tbody
+-#       - (@conference.start_date..@conference.end_date).each do |d|
+-#         %tr
+-#           - @calendar_events.select{ |event| event.start_dtime.day == d.day }.map do |event|
+-#             %td.schedule-time
+-#               = "#{event.start_dtime.time.strftime("%H:%M")} - #{event.end_dtime.time.strftime("%H:%M")}"
+-#           - @calendar_events.select{ |event| event.start_dtime.day == d.day }.map do |event|
+-#             %td
+-#               = event.title
+
+
+/.row.hidden-for-small.show-for-landscape
+/  - (@conference.start_date..@conference.end_date).each do |d|
+/    .large-2.columns{class: ("end" if d == @conference.end_date)}
+/      %dl
+/        %dt
+/          = l(d, format: :day_name_num).humanize
+/        - @calendar_events.select{ |event| event.start_dtime.day == d.day }.sort_by(&:start_dtime).map do |event|
+/          %dd
+/            = link_to event.title, conference_event_path(@conference, event)
+/            %br
+/            %small
+/              = "#{event.start_dtime.time.strftime("%H:%M")} - #{event.end_dtime.time.strftime("%H:%M")}"
+/            %small.subheader
+/              \//
+/              = t("event.room")
+/              - if event.room.present?
+/                = event.room
+/              - else
+/                = t("not_available")

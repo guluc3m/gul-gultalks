@@ -6,27 +6,26 @@
   .large-12.columns
     .show-for-medium-up
       = render 'partials/status_tags_full', event: @event
-      .right
-        .success.radius.label
-          %b
-            = @event.votes
-            = t('vote', count: @event.votes).humanize
-        %span.label.radius.secondary.visible-for-medium-up
-          %span
-            // TODO: localize
-            Compártelo:
-          = link_to "http://twitter.com/home?status=#{@event.title.truncate(30, separator: ' ')} #{@short_url} - via @guluc3m", target: "_blank" do
-            %i.fa.fa-twitter.fa-lg
-          = link_to "https://www.facebook.com/sharer/sharer.php?u=#{@event.title} #{@short_url} - via http://gul.es", target: "_blank" do
-            %i.fa.fa-facebook.fa-lg
-          = link_to "https://plus.google.com/share?url=#{@short_url}", target: "_blank" do
-            %i.fa.fa-google-plus.fa-lg
     .show-for-small
       = render 'partials/status_tags_short', event: @event
-      .success.radius.label.pull-right
+    - if not @event.speaker_list.present? and @conference.call_for_papers_enabled and not @event.cancelled?
+      = link_to propose_speaker_conference_event_path, class: "label alert radius" do
+        %i.fa.fa-child.fa-lg.fa-fw
+        = t('speaker.unassigned').humanize
+
+    .right
+      .success.radius.label.large
         %b
           = @event.votes
-          = t('vote', count: @event.votes).humanize
+          = t('vote', count: @event.votes ).humanize
+      %span.label.radius.secondary.visible-for-medium-up
+        %span
+          // TODO: localize
+          Compártelo:
+        = link_to "http://twitter.com/home?status=#{@event.title.truncate(30, separator: ' ')} #{@short_url} - via @guluc3m", target: "_blank" do
+          %i.fa.fa-twitter.fa-lg
+        = link_to "https://www.facebook.com/sharer/sharer.php?u=#{@event.title} #{@short_url} - via http://gul.es", target: "_blank" do
+          %i.fa.fa-facebook.fa-lg
 
     %h2
       = h(@event.title)
@@ -51,7 +50,11 @@
     .text-justify
       = Markdown.new(@event.description).to_html.html_safe
 
+<<<<<<< HEAD
   / Right column panel
+=======
+  / Right panel
+>>>>>>> submerge_wip
   .medium-4.columns
     .panel
       %ul.no-bullet
@@ -136,6 +139,7 @@
           - else
             = t('not_available').humanize
 
+<<<<<<< HEAD
         - if not @event.cancelled
           -if @event.assisted_by.present?
             %i.fa.fa-support.fa-fw.fa-lg.subheader
@@ -145,6 +149,8 @@
             %i.fa.fa-support.fa-fw.subheader
             = t('event.assist.unassigned').humanize
 
+=======
+>>>>>>> submerge_wip
       - if @event.tag_list.present?
         %ul.no-bullet
           %li
@@ -196,9 +202,22 @@
       %h4.subheader
         %i.fa.fa-comments-o
         = t("event.comments").humanize
+<<<<<<< HEAD
         - if @comments.count.nonzero?
           %sup.label.secondary
             = @comments.count
+=======
+
+        - if @coments
+          %sup.label.secondary
+            = @coments.count
+
+      -# - if @comments.count.nonzero?
+      -#   .label.radius
+      -#     = @comments.count
+      -# .large-4.comments.show-for-medium-up
+      -#   = link_to "#", class: "label tiny radius success"
+>>>>>>> submerge_wip
 
     %hr{style: "border-style: dashed"}
     - if @comments.present?

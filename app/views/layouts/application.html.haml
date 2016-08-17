@@ -9,6 +9,7 @@
     %meta{:content => "#{request.original_url}", :property => "og:url"}/
     -# %meta{:content => "http://example.com/image.jpg", :property => "og:image"}/
     %meta{:content => "GulTalks", :property => "og:description"}/
+    -# = display_meta_tags
     %title
       = page_title
     = stylesheet_link_tag    "application", :media => "all"
@@ -18,14 +19,10 @@
     / Header and Nav
     .off-canvas-wrap{"data-offcanvas" => ""}
       .inner-wrap
-        %nav.tab-bar{"data-topbar" => "", role:"navigation", "data-options" => "sticky_on: small"}
-          -# TODO: put a back button on top. Only for small screens (handhelds devices)
-          -# - if current_page?(controller: 'event', action: 'show')
-          -#   %ul.title-area
-          -#     %li.no-bullet.name
-          -#       = link_to "Back", admin_path, { class: "button secondary tiny radius"}
+        %nav.tab-bar
+          -# %nav.top-bar{"data-topbar" => "", role:"navigation", "data-options" => "sticky_on: large"}
           %section.right-small.show-for-medium-down
-            %a.right-off-canvas-toggle.menu-icon
+            %a.left-off-canvas-toggle.menu-icon
               %span
           %section.middle.tab-bar-section
             .row
@@ -51,9 +48,18 @@
                       = l @conference.start_date, format: :month_only
 
         = render "layouts/aside_offcanvas"
+
         / End Header and Nav
         %section.main-section
         %br
+        // FIXME
+        -# - if current_page?(controller: 'conferences', action: 'show')
+        /..row
+        /.  .large-12.columns
+        /.    .alert-box.radius{data: {alert: ""}}
+        /.      %i.fa.fa-bug.fa-lg.fa-fw
+        /.      Esta aplicación se encuentra en fase beta, si encuentras algún bug puedes notificarlo en info(at)gul.es, gracias.
+        /.      %a.close{href:""} ×
 
         = yield
         %a.exit-off-canvas
