@@ -9,28 +9,53 @@
         API
 .row
   .large-12.columns
-    %h1.subheader
-      API
+    .row
+      .large-7.columns
+        %h1.subheader
+          API
 
-    %hr
+        %hr
+        %p.text-justify
+          The GulTalks API consists of a series of endpoints that can be accessed by using
+          HTTP
+          %strong GET
+          and
+          %strong POST
+          methods. The responses are formatted using
+          %strong JSON
+          in all cases.
+        %p.text-justify
+          The root of the application is
+          %code http://cursos.gul.es
+          use
+          %code http://0.0.0.0:3000
+          instead in development enviroment.
+      %br/
+      .large-5.columns
+        .panel.radius.clearfix
+          %h4 Table of Contents
+          %hr
+          %ul
+            %li
+              = link_to "List of Conferences", anchor: "list-conferences"
+            %li
+              = link_to "List of Events from a Conferences", anchor: "list-of-events-from-a-conference"
+            %li
+              = link_to "Open the Call for Talks of a Conference", anchor: "open-the-call-for-talks-of-a-conference"
+            %li
+              = link_to "Close the Call for Talks of a Conference", anchor: "close-the-call-for-talks-of-a-conference"
+            %li
+              = link_to "Enable Votes in a Conference", anchor: "enable-votes-in-a-conference"
+            %li
+              = link_to "Diable Votes in a Conference", anchor: "disable-votes-in-a-conference"
+            %li
+              = link_to "Errors", anchor: "errors"
 
-    .alert-box.success.radius
-      %i.fa.fa-info-circle.fa-2x.fa-fw
-      The API consists of a series of endpoints that can be accessed by using
-      HTTP GET and POST methods. The responses are formatted using
-      %strong JSON
-      in all cases.
 
-    %p
-      The root of the application is
-      %code http://cursos.gul.es
-      use
-      %code http://0.0.0.0:3000
-      instead in development enviroment.
-
-    %hr
-
-    %h2 List of conferences
+    %br/
+    %h2
+      List of conferences
+      = link_to "¶", "#list-conferences", name: "list-conferences"
     %p
       %strong Endpoint:
       %code GET
@@ -41,7 +66,7 @@
       information.
 
     %p
-      Example:
+      %strong Example:
       %code GET
       %code http://cursos.gul.es/conferences
 
@@ -65,9 +90,11 @@
           }
         ]
 
-    %hr
+    %br/
 
-    %h2 List of events from a conference
+    %h2
+      List of events from a conference
+      = link_to "¶", "#list-of-events-from-a-conference", name: "list-of-events-from-a-conference"
     %p
       %strong Endpoint:
       %code GET
@@ -85,7 +112,7 @@
       attribute, which is a list of speakers for an event.
 
     %p
-      Example:
+      %strong Example:
       %code GET
       %code http://cursos.gul.es/conferences/5/events
       or
@@ -149,9 +176,11 @@
             ...
         ]
 
-    %hr
+    %br/
 
-    %h2 Open the Call for Talks of a conference
+    %h2
+      Open the Call for Talks of a conference
+      = link_to "¶", "#open-the-call-for-talks-of-a-conference", name: "open-the-call-for-talks-of-a-conference"
     %p
       %strong Endpoint:
       %code POST
@@ -170,20 +199,21 @@
       ). This token can be generated through the admin panel.
 
     %p
-      Example:
+      %strong Example:
       %code POST
       %code http://cursos.gul.es/conferences/5/open_call
       or
       %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/open_call
 
-    %hr
+    %br/
 
-    %h2 Close the Call for Talks of a conference
+    %h2
+      Close the Call for Talks of a conference
+      = link_to "¶", "#close-the-call-for-talks-of-a-conference", name: "close-the-call-for-talks-of-a-conference"
     %p
       %strong Endpoint:
       %code POST
       %code /api/conferences/:id/close_call
-
     %p
       This endpoint disables the Call for Talks of the specified conference. The
       %code :id
@@ -203,9 +233,11 @@
       or
       %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/close_call
 
-    %hr
+    %br/
 
-    %h2 Enable votes in a conference
+    %h2
+      Enable votes in a conference
+      = link_to "¶", "#enable-votes-in-a-conference", name: "enable-votes-in-a-conference"
     %p
       %strong Endpoint:
       %code POST
@@ -224,15 +256,17 @@
       ). This token can be generated through the admin panel.
 
     %p
-      Example:
+      %strong Example:
       %code POST
       %code http://cursos.gul.es/conferences/5/enable_voting
       or
       %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/enable_voting
 
-    %hr
+    %br/
 
-    %h2 Disable votes in a conference
+    %h2
+      Disable votes in a conference
+      = link_to "¶", "#disable-votes-in-a-conference", name: "disable-votes-in-a-conference"
     %p
       %strong Endpoint:
       %code POST
@@ -251,21 +285,23 @@
       ). This token can be generated through the admin panel.
 
     %p
-      Example:
+      %strong Example:
       %code POST
       %code http://cursos.gul.es/conferences/5/disable_voting
       or
       %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/disable_voting
 
-    %hr
+    %br/
 
-    %h2 Errors
+    %h2
+      Errors
+      = link_to "¶", "#errors", name: "errors"
     %p
       In case of error, the API will return the HTTP code and, optionally,
       a JSON object showing the error messages.
 
     %p
-      Example:
+      %strong Example:
       %code GET
       %code http://cursos.gul.es/conferences/INEXISTENT_CONFERENCE/events
 
