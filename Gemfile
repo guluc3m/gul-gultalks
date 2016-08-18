@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.6'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
@@ -46,7 +46,7 @@ gem 'protected_attributes'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 # Frontend
-gem 'font-awesome-rails', '~> 4.4.0.0'
+gem 'font-awesome-rails'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem 'modernizr-rails'
