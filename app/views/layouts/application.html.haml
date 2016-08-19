@@ -9,8 +9,7 @@
     %meta{:content => "#{request.original_url}", :property => "og:url"}/
     -# %meta{:content => "http://example.com/image.jpg", :property => "og:image"}/
     %meta{:content => "GulTalks", :property => "og:description"}/
-    %title
-      = page_title
+    %title= page_title
     = stylesheet_link_tag    "application", :media => "all"
     = csrf_meta_tags
   %body
@@ -29,9 +28,9 @@
               %span
           %section.middle.tab-bar-section
             .row
-              %div{ :class => (defined?(@conference) ? "large-2 columns" : "large-12 columns") }
+              %div{:class => (defined?(@conference) ? "large-2 columns" : "large-12 columns")}
                 = link_to root_path do
-                  = image_tag("lynx_shield_negative_full.png", height: '32', width: '32', alt: "GUL Lynx Shield", style: "float:left; margin-top: 6px; margin-left:5px")
+                  = image_tag("/favicon-32x32.png", height: '32', width: '32', alt: "GulTalks ", style: "float:left; margin-top: 6px; margin-left:5px")
                   %h1.title
                     GulTalks
                     %small β
