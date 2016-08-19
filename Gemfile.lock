@@ -157,6 +157,7 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gravtastic (3.2.6)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -399,6 +400,7 @@ DEPENDENCIES
   foundation-rails
   foundation_rails_helper
   friendly_id (~> 5.0.0)
+  gravtastic
   guard-livereload
   haml-rails
   http_accept_language

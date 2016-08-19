@@ -97,3 +97,6 @@ gem 'redcarpet'
 gem 'embed'
 # Favicon generator
 gem 'favicon_maker'
+# Gravatars
+gem 'gravtastic'
+

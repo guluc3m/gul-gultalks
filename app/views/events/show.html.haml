@@ -39,7 +39,9 @@
           %span
             - @event.speaker_list.each_with_index.map do |speaker, index|
               - if speaker.twitter.present?
-                = link_to h(speaker.name), "https://twitter.com/#{speaker.twitter}", target: "_blank"
+                - twitter_speaker_url = "https://twitter.com/#{speaker.twitter}"
+                = link_to image_tag(speaker.gravatar_url), twitter_speaker_url, target: "_blank"
+                = link_to h(speaker.name), twitter_speaker_url, target: "_blank"
               - else
                 = h(speaker.name)
               - unless index+1 == @event.speaker_list.length
