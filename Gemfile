@@ -64,9 +64,6 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'devise-i18n'
 gem 'activevalidators'
-# Web Pagination
-gem 'will_paginate'
-gem 'will_paginate-foundation'
 # New event form
 gem 'reform'
 # iCalendar

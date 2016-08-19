@@ -1,5 +1,4 @@
 class ConferencesController < ApplicationController
-    require 'will_paginate/array'
     respond_to :html, :ics
 
     # Lists all the conferences present in the database.
@@ -16,7 +15,7 @@ class ConferencesController < ApplicationController
         @conference = Conference.friendly.find(params[:id])
         @calendar_events = @conference.events.where(shown: true, accepted: true)
         # FEATURE: replace with infinite scroll pagination
-        @events = @conference.events.select{ |event| event.shown && event.verified }.sort_by(&:votes).reverse.paginate(page: params[:page], per_page: 1000)
+        @events = @conference.events.select{ |event| event.shown && event.verified }.sort_by(&:votes).reverse
 
         respond_with(@conference) do |format|
             format.ics { render text: @conference.to_ics }
