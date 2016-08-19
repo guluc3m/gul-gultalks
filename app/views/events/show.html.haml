@@ -12,9 +12,8 @@
             = @event.votes
             = t('vote', count: @event.votes).humanize
         %span.label.radius.secondary.visible-for-medium-up
-          %span
-            // TODO: localize
-            Compártelo:
+          // TODO: localize
+          Compártelo:
           = link_to "http://twitter.com/home?status=#{@event.title.truncate(30, separator: ' ')} #{@short_url} - via @guluc3m", target: "_blank" do
             %i.fa.fa-twitter.fa-lg
           = link_to "https://www.facebook.com/sharer/sharer.php?u=#{@event.title} #{@short_url} - via http://gul.es", target: "_blank" do
