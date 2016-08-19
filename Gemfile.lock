@@ -270,6 +270,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -411,6 +413,7 @@ DEPENDENCIES
   mysql2 (~> 0.3.18)
   prawn
   protected_attributes
+  quiet_assets
   rails (= 4.2.6)
   rails-i18n
   rails-perftest (~> 0.0.6)
