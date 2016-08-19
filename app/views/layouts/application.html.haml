@@ -14,48 +14,10 @@
     = csrf_meta_tags
   %body
     = render 'cookies_eu/consent_banner'
-    / Header and Nav
-    .off-canvas-wrap{"data-offcanvas" => ""}
-      .inner-wrap
-        %nav.tab-bar{"data-topbar" => "", role:"navigation", "data-options" => "sticky_on: small"}
-          -# TODO: put a back button on top. Only for small screens (handhelds devices)
-          -# - if current_page?(controller: 'event', action: 'show')
-          -#   %ul.title-area
-          -#     %li.no-bullet.name
-          -#       = link_to "Back", admin_path, { class: "button secondary tiny radius"}
-          %section.right-small.show-for-medium-down
-            %a.right-off-canvas-toggle.menu-icon
-              %span
-          %section.middle.tab-bar-section
-            .row
-              %div{:class => (defined?(@conference) ? "large-2 columns" : "large-12 columns")}
-                = link_to root_path do
-                  = image_tag("/favicon-32x32.png", height: '32', width: '32', alt: "GulTalks ", style: "float:left; margin-top: 6px; margin-left:5px")
-                  %h1.title
-                    GulTalks
-                    %small β
-
-              - if defined?(@conference)
-                .show-for-large-up
-                  .large-7.columns
-                    %h1.title
-                      = @conference.title
-                  .large-3.columns
-                    %h3.subheader
-                      %span.grey>= t("date.from")
-                      = @conference.start_date.day
-                      %span.grey>= t("date.to")
-                      = @conference.end_date.day
-                      %span.grey>= t("date.of")
-                      = l @conference.start_date, format: :month_only
-
-        = render "layouts/aside_offcanvas"
-        / End Header and Nav
-        %section.main-section
-        %br
-
-        = yield
-        %a.exit-off-canvas
-
-        / Footer
-        = render "layouts/footer"
+    = render "layouts/header", conference: @conference
+    = render "layouts/aside_offcanvas"
+    %section.main-section
+    %br
+    = yield
+    %a.exit-off-canvas
+    = render "layouts/footer"
