@@ -46,12 +46,12 @@
     %hr
 
 .row
-  .medium-8.columns
+  .medium-9.columns
     .text-justify
       = Markdown.new(@event.description).to_html.html_safe
 
   / Right column panel
-  .medium-4.columns
+  .medium-3.columns
     .panel
       %ul.no-bullet
         %li
@@ -174,7 +174,7 @@
 
   - unless @event.cancelled
     - if @conference.voting_enabled
-      .medium-4.columns.right
+      .medium-3.columns.right
         = link_to vote_conference_event_path, class: "button success radius expand" do
           = t("to_vote")
     - else
@@ -184,7 +184,7 @@
           = t("to_vote")
 
     - if !@event.speaker? && @conference.call_for_papers_enabled
-      .medium-4.columns.right
+      .medium-3.columns.right
         = link_to propose_speaker_conference_event_path, class: "button alert radius expand" do
           %i.fa.fa-child.fa-lg
           = t("speaker.propose").humanize
