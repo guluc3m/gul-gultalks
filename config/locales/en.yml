@@ -84,7 +84,7 @@ en:
         Grupo de Usuarios de Linux
         de la Universidad Carlos III de Madrid
       certifies: "CERTIFIES"
-      speaker_info: "That  %{name}  has attended  '%{conference_title}' , which took place during the month of %{month} of %{year}, presenting the lecture:" 
+      speaker_info: "That  %{name}  has attended  '%{conference_title}' , which took place during the month of %{month} of %{year}, presenting the lecture:"
       i_sign: "And for the record for the appropriate purposes, I sign and seal this document."
       signature_details: "In %{location} on the  ___ of ___________  %{year}."
       signature: "Signed:"
@@ -276,8 +276,12 @@ en:
     subclass: "Activity type"
     subclass_requirements: "Choose one activity type"
     subclasses:
-      talk: "Talk"
-      workshop: "Workshop"
+      talk:
+        one: "Talk"
+        other: "%{count} talks"
+      workshop:
+        one: "Workshop"
+        other: "%{count} workshops"
     summary: "Summary"
     summary_requirements: "Can only contain alphanumeric characters and hyphens"
     tags: "Tags"

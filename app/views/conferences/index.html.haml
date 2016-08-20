@@ -25,32 +25,24 @@
           - seasons.each do |year|
             %li.accordion-navigation
               %a{href: "#panel-accordion-#{year}"}
-                %b
+                %strong
                   = year
 
               .content{id: "panel-accordion-#{year}", class: "#{ seasons.max == year ? 'active' : ''}" }
                 .row
                   - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
                     .medium-6.columns
-                      %b
+                      %strong
                         = link_to conference.title, conference_path(conference)
                       %p
-                        -# TODO: Create helper!!!
-                        -# TODO: use to_sentence instead and localize
-                        -# TODO: loop over type of events dynamically
-                        - talks = conference.events.where(accepted: true, subclass: "talk").count
-                        - workshops = conference.events.where(accepted: true, subclass: "workshop").count
-                        - if talks > 0 and workshops > 0
-                          = talks.to_s + " charlas y " + workshops.to_s + " talleres."
-                        - else
-                          Sin eventos
+                        = format_subclasses_string(conference) if not nil
 
       .large-12.colums.show-for-medium-up
         %ul.tabs.vertical{"data-tab" => ""}
           - seasons.each do |year|
-            %li.tab-title.text-center{class: "#{ seasons.max.eql? year ? 'active' : ''}"}
+            %li.tab-title.text-center
               %a{href: "#panel-tab-#{year}"}
-                %b
+                %strong
                   = year
 
         .tabs-content
@@ -59,22 +51,14 @@
               .row
                 - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
                   .medium-4.columns
-                    %b
-                      = link_to conference.title, conference_path(conference)
-                    %p
-                      -# TODO: Create helper!!!
-                      -# TODO: use to_sentence instead and localize
-                      -# TODO: loop over type of events dynamically
-                      - talks = conference.events.where(accepted: true, subclass: "talk").count
-                      - workshops = conference.events.where(accepted: true, subclass: "workshop").count
-                      - if talks > 0 and workshops > 0
-                        = talks.to_s + " charlas y " + workshops.to_s + " talleres."
-                      - else
-                        Sin eventos
-
+                    .panel
+                      %strong
+                        = link_to conference.title, conference_path(conference)
+                      %p
+                        = format_subclasses_string(conference) if not nil
     - else
       .row
         .large-12.columns
           .alert-box
-            %i.fa.fa-warning.pull-left.fa-2x
+            %i.fa.fa-frown-o.pull-left.fa-2x
             = t("warning.no_conferences")

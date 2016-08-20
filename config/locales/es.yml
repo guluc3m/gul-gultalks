@@ -292,8 +292,12 @@ es:
     subclass: "Tipo de actividad"
     subclass_requirements: "Elige el tipo de actividad"
     subclasses:
-      talk: "Charla"
-      workshop: "Taller"
+      talk:
+        one: "Charla"
+        other: "%{count} charlas"
+      workshop:
+        one: "Taller"
+        other: "%{count} talleres"
     summary: "Resumen"
     summary_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
     tags: "Etiquetas"

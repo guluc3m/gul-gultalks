@@ -1,5 +1,6 @@
 class ConferencesController < ApplicationController
     respond_to :html, :ics
+    helper FormattedSubclasesCountStringHelper
 
     # Lists all the conferences present in the database.
     def index
