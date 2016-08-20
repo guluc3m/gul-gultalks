@@ -6,12 +6,12 @@
     %i.fa.fa-wrench.fa-lg
   - if event.subclass.eql?("talk")
     %i.fa.fa-bullhorn.fa-lg
-  = t("event.subclasses.#{event.subclass}").humanize
+  = t("event.subclasses.#{event.subclass}.default")
 - if event.cancelled?
   %span.alert.radius.label
     %i.fa.fa-lock.fa-lg
     = t("event.status.cancelled").humanize
-- if not event.speaker_list.present?
-  %span.warning.radius.label{'data-tooltip aria-haspopup': "true", title: ""}
+- unless event.speaker_list.present?
+  %span.warning.radius.label
     %i.fa.fa-child.fa-lg
     = t('speaker.unassigned').humanize

@@ -277,10 +277,12 @@ en:
     subclass_requirements: "Choose one activity type"
     subclasses:
       talk:
-        one: "Talk"
+        default: "Talk"
+        one: "talk"
         other: "%{count} talks"
       workshop:
-        one: "Workshop"
+        default: "Workshop"
+        one: "workshop"
         other: "%{count} workshops"
     summary: "Summary"
     summary_requirements: "Can only contain alphanumeric characters and hyphens"

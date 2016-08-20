@@ -293,10 +293,12 @@ es:
     subclass_requirements: "Elige el tipo de actividad"
     subclasses:
       talk:
-        one: "Charla"
+        default: "Charla"
+        one: "charla"
         other: "%{count} charlas"
       workshop:
-        one: "Taller"
+        default: "Taller"
+        one: "taller"
         other: "%{count} talleres"
     summary: "Resumen"
     summary_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"

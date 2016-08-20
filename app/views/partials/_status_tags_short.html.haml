@@ -2,14 +2,14 @@
   %span.success.radius.label
     = t("event.status.new").humanize
 - if event.subclass.eql?("workshop")
-  %span.radius.label{'data-tooltip aria-haspopup': "true", title: t("event.subclasses.workshop", count: 1).humanize}
+  %span.radius.label{'data-tooltip aria-haspopup': "true", title: t("event.subclasses.workshop.default").humanize}
     %i.fa.fa-wrench.fa-lg
 - if event.subclass.eql?("talk")
-  %span.radius.label{'data-tooltip aria-haspopup': "true", title: t("event.subclasses.talk", count: 1).humanize}
+  %span.radius.label{'data-tooltip aria-haspopup': "true", title: t("event.subclasses.talk.default").humanize}
     %i.fa.fa-bullhorn.fa-lg
 - if event.cancelled?
   %span.alert.radius.label{'data-tooltip aria-haspopup': "true", title: t('event.status.cancelled').humanize}
     %i.fa.fa-lock.fa-lg
 - if not event.speaker_list.present? and not event.cancelled?
-  %span.warning.radius.label{ 'data-tooltip aria-haspopup': "true", title: t('speaker.unassigned').humanize}
+  %span.warning.radius.label{'data-tooltip aria-haspopup': "true", title: t('speaker.unassigned').humanize}
     %i.fa.fa-child.fa-lg
