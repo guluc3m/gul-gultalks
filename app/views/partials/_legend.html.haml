@@ -5,28 +5,28 @@
       .small-2.columns
         .radius.label.right
           %i.fa.fa-bullhorn.fa-lg
-          = t("event.subclasses.talk").humanize
+          = t("event.subclasses.talk", count: 1).humanize
       .small-10.columns
-        %p Indica que se trata de una charla, es decir, un o varios ponentes exponen sus ideas o conocimientos sobre . Es habitual que los asistentes formulen preguntas a lo largo de la charla o se acerquen al ponente para resolver ciertas dudas.
+        %p Este símbolo indica que se trata de una charla. Un o varios ponentes exponen sus ideas o conocimientos sobre el tema de la charla. Es habitual que los asistentes formulen preguntas a lo largo de la charla o se acerquen al ponente para resolver ciertas dudas al termino de esta.
     .row
       .small-2.columns
         .radius.label.right
           %i.fa.fa-wrench.fa-lg
-          = t("event.subclasses.workshop").humanize
+          = t("event.subclasses.workshop", count: 1).humanize
       .small-10.columns
-        %p Indica que se trata de un taller. los talleres buscan la interacción con los asistentes y que ellos mismos puedan probar lo que se está mostrando. La idea es que sea una actividad dinámica y amena.
+        %p Este símbolo indica que se trata de un taller. Los talleres buscan la interacción con los asistentes y que ellos mismos puedan probar lo que se está mostrando. La idea es realizar una actividad dinámica y amena.
     .row
       .small-2.columns
         .warning.radius.label.right
           %i.fa.fa-child.fa-lg
           = t('speaker.unassigned').humanize
       .small-10.columns
-        %p La activiad carece de alguien que pueda encargarse de ella. Si crees que estás capacitado para dar la charla o taller indicado puesdes proponerte a ti mismo o si por el contrario conoces a alguien que esté capacitado también puedes proponerle a través del formulario.
+        %p La activiad carece de alguien que pueda encargarse de ella. Si crees que estás capacitado para impartir la charla o taller indicado puesdes proponerte a ti mismo o si por el contrario, conoces a alguien que esté capacitado, también puedes proponer a alguien a través del formulario pulsando sobre el botón 'Proponer ponente'.
     .row
       .small-2.columns
         .alert.radius.label.right
           %i.fa.fa-lock.fa-lg
           = t("event.status.cancelled").humanize
       .small-10.columns
-        %p La actividad fue cancelara, por alguna razón, la persona o peronas encargadas han rehusado impartir la actividad. Normalmente esto es ajeno a la al grupo, pero en todo caso intentará comunicar la baja de esta actividad y si es posible el motivo de dicha baja.
+        %p La actividad fue cancelda por alguna razón. La persona o peronas encargadas han rehusado impartir la actividad. Normalmente esta situación ajena a la organización, pero en todo caso intentará comunicar la baja de esta actividad con suficiente antelación y si es posible el motivo de dicha cancelación.
 %br
