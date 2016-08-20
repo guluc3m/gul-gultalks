@@ -236,7 +236,7 @@ es:
       replying_to: "Respondiendo a"
       send_comment: "Enviar comentario"
       requirements: "Sólo puede contener caracteres alfanuméricos y guiones."
-      response_to: "En respuesta a este comentario"
+      response_to: "en respuesta a #%{id}"
     complete_basic_form: "Completa el formulario con información básica de la actividad."
     complete_detailed_form: "Completa el formulario con información detallada de la actividad."
     detailed_info: "Información detallada"

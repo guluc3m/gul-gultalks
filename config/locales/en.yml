@@ -221,7 +221,7 @@ en:
       reply: "Reply"
       replying_to: "Replying to"
       requirements: "Can only contain alphanumeric characters and hyphens."
-      response_to: "In response to this comment"
+      response_to: "in response to #%{id}"
     complete_basic_form: "Complete the form with basic information for the activity."
     complete_detailed_form: "Complete the form with detailed information for the activity."
     detailed_info: "Detailed info"

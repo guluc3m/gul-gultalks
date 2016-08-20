@@ -203,25 +203,29 @@
     - if @comments.present?
       - @comments.map do |comment|
         .row{id: "comment-#{comment.id}"}
-          .large-8.columns
+          .large-10.columns
             .small-2.columns
-              - icon = @avatar.create_base64(comment.name, grid_size: 5, square_size: 64)
+              - icon = @avatar.create_base64(comment.name, grid_size: 9, square_size: 128)
               = image_tag "data:image/png;base64,#{icon}"
-            .medium-10.columns
-              %h4.subheader
-                = Markdown.new(comment.name).to_html.html_safe
-              %small
-                = comment.created_at.to_s(:long)
-              - if comment.ancestry?
-                %p
-                  = link_to "#comment-#{comment.parent}" do
-                    = t("event.comment.response_to").humanize
-              %p
+              %strong.right
+                = link_to "#" + comment.id.to_s, "#comment-#{comment.id}"
+            .small-10.columns
+              %h5
+                = comment.name
+                - if comment.ancestry?
+                  %small.subheader
+                    %i.fa.fa-reply.fa-fw.fa-flip-horizontal
+                    = link_to "#" + comment.ancestry.to_s, "#comment-#{comment.ancestry}"
+                %small.subheader
+                  %strong &nbsp; · &nbsp;
+                  = time_ago_in_words(comment.created_at.to_time, include_seconds: true)
+              %p.text-justify
                 = simple_format(h(comment.content))
               .actions
                 = link_to new_comment_path(@conference, @event, parent_id: comment) do
+                  %i.fa.fa-reply.fa-fw
                   = t("event.comment.reply").humanize
-              %hr
+        %br
 
     - elsif @conference.active?
       .row
