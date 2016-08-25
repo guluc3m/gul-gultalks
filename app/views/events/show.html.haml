@@ -14,12 +14,9 @@
         %span.label.radius.secondary.visible-for-medium-up
           // TODO: localize
           Compártelo:
-          = link_to "http://twitter.com/home?status=#{@event.title.truncate(30, separator: ' ')} #{@short_url} - via @guluc3m", target: "_blank" do
-            %i.fa.fa-twitter.fa-lg
-          = link_to "https://www.facebook.com/sharer/sharer.php?u=#{@event.title} #{@short_url} - via http://gul.es", target: "_blank" do
-            %i.fa.fa-facebook.fa-lg
-          = link_to "https://plus.google.com/share?url=#{@short_url}", target: "_blank" do
-            %i.fa.fa-google-plus.fa-lg
+          != share_event_link(event: @event, provider: "twitter", url: @short_url)
+          != share_event_link(event: @event, provider: "facebook", url: @short_url)
+          != share_event_link(event: @event, provider: "google", url: @short_url)
     .show-for-small
       = render 'partials/status_tags_short', event: @event
       .success.radius.label.pull-right
@@ -36,13 +33,7 @@
       .row
         .large-6.columns
           %span
-            - @event.speaker_list.each_with_index.map do |speaker, index|
-              - if speaker.twitter.present?
-                = link_to h(speaker.name), "https://twitter.com/#{speaker.twitter}", target: "_blank"
-              - else
-                = h(speaker.name)
-              - unless index+1 == @event.speaker_list.length
-                = ", "
+            != twitter_speaker_list(@event)
     %hr
 
 .row
