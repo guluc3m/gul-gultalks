@@ -3,9 +3,9 @@ module SocialUtilsHelper
     require 'uri'
 
     PROVIDER_URL = {
-         'twitter' => 'https://twitter.com/home?status=',
+        'twitter' => 'https://twitter.com/home?status=',
         'facebook' => 'https://www.facebook.com/sharer/sharer.php?u=',
-          'google' => 'https://plus.google.com/share?url='
+        'google' => 'https://plus.google.com/share?url='
     }
 
     def share_event_link (params)
@@ -22,6 +22,7 @@ module SocialUtilsHelper
         icon_class = ["fa", "fa-fw", "fa-lg"]
 
         unless is_valid_url (url)
+            raise
             output.concat(
                 content_tag(:span, content_tag(:i, "", class: icon_class.insert(1, "fa-" << provider)))
             )
@@ -43,9 +44,7 @@ module SocialUtilsHelper
                     content_tag(:a,
                                 content_tag(:i, "", class: icon_class.insert(1, "fa-facebook")),
                                 target: "_blank",
-                                href: PROVIDER_URL[provider] +
-                                event.title +
-                                " " + url + " - via gul.es"
+                                href: PROVIDER_URL[provider] + url
                                )
                 )
             when 'google'

@@ -155,7 +155,7 @@ class EventsController < ApplicationController
       redirect_to conference_path(@conference) and return
     end
 
-    # @short_url = url_shortener(@conference, @event)
+    @short_url = url_shortener(@conference, @event)
   end
 
   # Shows a form where the user can propose a speaker for an activity that
