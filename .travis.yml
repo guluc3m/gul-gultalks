@@ -9,7 +9,7 @@ script:
   - bundle exec rake db:seed RAILS_ENV=test
   - bundle exec rake test RAILS_ENV=test
 
-bundler_args: --without production
+bundler_args: --without production --jobs=3
 
 notifications:
   email: false
