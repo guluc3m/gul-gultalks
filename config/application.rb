@@ -95,11 +95,10 @@ module Gultalks
             icon "mstile-144x144", format: "png"
         end
 
+        puts "Generating favicon assets..."
         # Verbose
         each_icon do |filepath|
-            puts "Generating favicon assets..."
             puts filepath
-            puts "Done"
         end
     end
 
