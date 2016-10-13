@@ -15,9 +15,4 @@
   %body
     = render 'cookies_eu/consent_banner'
     = render "layouts/header", conference: @conference
-    = render "layouts/aside_offcanvas"
-    %section.main-section
-    %br
-    = yield
-    %a.exit-off-canvas
-    = render "layouts/footer"
+    -# = render "layouts/footer"

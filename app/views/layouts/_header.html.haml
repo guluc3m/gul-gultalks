@@ -1,15 +1,7 @@
 / Header and Nav
-.off-canvas-wrap{"data-offcanvas" => ""}
+.off-canvas-wrap.docs-wrap{"data-offcanvas" => ""}
   .inner-wrap
     %nav.tab-bar{"data-topbar" => "", role:"navigation", "data-options" => "sticky_on: small"}
-      -# TODO: put a back button on top. Only for small screens (handhelds devices)
-      -# - if current_page?(controller: 'event', action: 'show')
-      -#   %ul.title-area
-      -#     %li.no-bullet.name
-      -#       = link_to "Back", admin_path, { class: "button secondary tiny radius"}
-      %section.right-small.show-for-medium-down
-        %a.right-off-canvas-toggle.menu-icon
-          %span
       %section.middle.tab-bar-section
         .row
           %div{:class => (defined?(conference) ? "large-2 columns" : "large-12 columns")}
@@ -32,3 +24,15 @@
                   = conference.end_date.day
                   %span.grey>= t("date.of")
                   = l conference.start_date, format: :month_only
+      %section.right-small.show-for-medium-down
+        %a.right-off-canvas-toggle.menu-icon
+          %span
+    = render "layouts/aside_offcanvas"
+    %section.main-section
+      .row
+        .large-12.columns
+          %br
+          = yield
+
+    = render "layouts/footer"
+    %a.exit-off-canvas
