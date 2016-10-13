@@ -34,7 +34,7 @@
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.subclass_requirements"), class: "radius"}
       .row
         .large-3.columns
-          = select("basic_event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}, {include_blank: true, selected: "selected"}, class: "radius", required: true, label:false)
+          = select("basic_event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}.one").humanize, s]}, {include_blank: true, selected: "selected"}, class: "radius", required: true, label:false)
 
   .row
     .large-12.columns
