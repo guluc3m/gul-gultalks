@@ -206,7 +206,7 @@
                 - if comment.ancestry?
                   %small.subheader
                     %i.fa.fa-reply.fa-fw.fa-flip-horizontal
-                    = link_to "#" + comment.ancestry.to_s, "#comment-#{comment.ancestry}"
+                    = link_to "#" + comment.ancestry.last.to_s, "#comment-#{comment.ancestry.last}"
                 %small.subheader
                   %strong &nbsp; · &nbsp;
                   = time_ago_in_words(comment.created_at.to_time, include_seconds: true)
