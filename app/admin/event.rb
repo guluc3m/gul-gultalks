@@ -13,7 +13,7 @@ ActiveAdmin.register Event do
     selectable_column
     column :title
     # column :subclass {|event| status_tag('active', :ok, label: event.subclass) }
-    column (t "event.subclass") {|event| status_tag('active', :yes, :label => t("event.subclasses.#{event.subclass}")) }
+    column (t "event.subclass") {|event| status_tag('active', :yes, :label => t("event.subclasses.#{event.subclass}.default")) }
     column (t "event.level") {|event| t("event.levels.#{event.level}").humanize }
     column :room
     column :shown
@@ -34,7 +34,7 @@ ActiveAdmin.register Event do
       row :summary
       row :description
       row :subclass do
-        t("event.subclasses.#{item.subclass}").humanize
+        t("event.subclasses.#{item.subclass}.default").humanize
       end
       row :level do
         t("event.levels.#{item.level}").humanize
@@ -78,7 +78,7 @@ ActiveAdmin.register Event do
       f.input :title, label: t("event.title")
       f.input :summary, label: t("event.summary")
       f.input :description, label: t("event.description")
-      f.input :subclass, label: t("event.subclass"), as: :select, collection: Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}").humanize, s]}
+      f.input :subclass, label: t("event.subclass"), as: :select, collection: Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}.default").humanize, s]}
       f.input :level, label: t("event.level"), as: :select, collection: Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}
       f.input :duration, label: t("event.duration"), as: :select, collection: Event.durations.keys.collect {|d| [t("event.durations.#{d}").humanize, d]}
       f.input :language, lavel: t("event.language"), as: :select, collection: t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]}
