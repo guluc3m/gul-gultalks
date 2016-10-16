@@ -1,24 +1,16 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.7'
+gem 'rails', '5.0.0'
 
-# Use sqlite3 as the database for Active Record
 group :development, :test do
     gem 'sqlite3'
     gem 'better_errors'
-    gem 'quiet_assets'
     gem 'binding_of_caller'
     gem 'guard-livereload', require: false
     gem 'rails-perftest', '~> 0.0.6'
     gem 'mina'
-
-    # Use debugger
-    # gem 'debugger', group: [:development, :test]
-    # gem 'meta_request'
 end
 
-# Use mysql2 for production environment
 group :production do
     # Rails bug <https://github.com/rails/rails/issues/21544>
     gem 'mysql2', '~> 0.3.18'
@@ -31,27 +23,25 @@ group :doc do
 end
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '~> 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier'
+gem 'uglifier', '~> 3.0.2'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails'
+gem 'coffee-rails', '~> 4.2.1'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer'
+gem 'therubyracer', '~> 0.12.2'
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.2.1'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-# `attr_accessible` no longer belongs in Rails
-gem 'protected_attributes'
+gem 'turbolinks', '~> 5.0.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 # Frontend
-gem 'font-awesome-rails'
-gem 'foundation-rails'
-gem 'foundation_rails_helper'
-gem 'modernizr-rails'
-gem 'haml-rails'
+gem 'font-awesome-rails', '~> 4.6.3'
+gem 'foundation-rails', '~> 6.2.3'
+gem 'foundation_rails_helper', '~> 2.0.0'
+gem 'modernizr-rails', '~> 2.7.1'
+gem 'haml-rails', '~> 0.9.0'
 gem 'rails-i18n'
 # http accept language to have the locale set from browser
 gem 'http_accept_language'
@@ -61,6 +51,7 @@ gem 'friendly_id', '~> 5.0.0'
 gem 'acts-as-taggable-on'
 # ActiveAdmin
 gem 'activeadmin', github: 'activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'devise'
 gem 'devise-i18n'
 gem 'activevalidators'
