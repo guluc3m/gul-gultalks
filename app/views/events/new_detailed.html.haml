@@ -132,7 +132,7 @@
         = t("event.language")
         %small
           = t("event.required")
-      = select("detailed_event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]},{include_blank: true, selected: "selected"}, required: true, class: "radius")
+      = select("detailed_event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}.default").humanize, l]},{include_blank: true, selected: "selected"}, required: true, class: "radius")
 
     .medium-4.columns
       %label{for: "duration"}
@@ -140,7 +140,7 @@
         = t("event.duration")
         %small
           = t("event.required")
-      = select("detailed_event", "duration", Event.durations.keys.collect {|d| [t("event.durations.#{d}").humanize, d]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
+      = select("detailed_event", "duration", Event.durations.keys.collect {|d| [t("event.durations.#{d}.default").humanize, d]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
 
     .medium-4.columns
       %label{for: "level"}
@@ -148,7 +148,7 @@
         = t("event.level")
         %small
           = t("event.required")
-      = select("detailed_event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
+      = select("detailed_event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}.default").humanize, l]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
 
   .row
     .large-12.columns
