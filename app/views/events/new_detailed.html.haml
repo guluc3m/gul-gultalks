@@ -48,7 +48,7 @@
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.title_requirements"), class: "radius"}
         .right
           %sub 128
-      = f.text_field :title, label: false, maxlength: 128, required: true, class: "radius lettrify"
+      = f.text_field :title, label: false, maxlength: 128, required: true, class: "radius"
 
   .row
     .large-12.columns
@@ -60,7 +60,7 @@
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.summary_requirements"), class: "radius"}
         .right
           %sub 128
-      = f.text_field :summary, label: false, maxlength: 128, required: true, class: "radius lettrify"
+      = f.text_field :summary, label: false, maxlength: 128, required: true, class: "radius"
 
   .row
     .large-12.columns
@@ -72,9 +72,9 @@
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.description_requirements"), class: "radius"}
         .right
           %sub.subheader
-            %strong [Markdown enabled]
+            %strong Markdown enabled
           %sub 1400
-      = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius lettrify", size: "10x8"
+      = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius", size: "10x8"
 
   .row
     .large-12.columns
@@ -95,7 +95,6 @@
                 = t("speaker.caption", index: sp_index)
               .content{id: "speaker_#{sp_index}", class: "#{sp_index == 1 ? 'active' : ''}"}
                 = render "partials/speaker_fields", f: speaker
-
       %br
 
   .row
@@ -105,7 +104,7 @@
         = t("event.url")
         .right
           %sub 128
-      = f.url_field :content_url, label: false, maxlength: 128, type: "url", placeholder: "http://", class: "radius lettrify"
+      = f.url_field :content_url, label: false, maxlength: 128, type: "url", placeholder: "http://", class: "radius"
 
   .row
     .large-12.columns
@@ -114,7 +113,7 @@
         = t("event.code")
         .right
           %sub 128
-      = f.url_field :code, label: false, maxlength: 128, type: "url", placeholder: "http://", class: "radius lettrify"
+      = f.url_field :code, label: false, maxlength: 128, type: "url", placeholder: "http://", class: "radius"
 
   .row
     .large-12.columns
@@ -124,7 +123,7 @@
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.tag_format")}
         .right
           %sub 128
-      = f.text_field :tags, label: false, maxlength: 128, class: "radius lettrify", placeholder: t("event.tag_format")
+      = f.text_field :tags, label: false, maxlength: 128, class: "radius", placeholder: t("event.tag_format")
 
   .row
     .medium-4.columns
@@ -159,7 +158,7 @@
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.notes_requirements")}
         .right
           %sub 300
-      = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius lettrify", size: "10x6"
+      = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius", size: "10x6"
 
   -# .row
   -#   .large-12.columns
@@ -168,7 +167,7 @@
 
   .row
     .medium-4.columns
-      = render 'partials/recaptcha'
+      = render partial: 'partials/recaptcha'
     .medium-4.columns
       = f.submit(t("event.send_event"), class: "button success expand")
 
