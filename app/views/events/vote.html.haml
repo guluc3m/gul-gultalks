@@ -43,9 +43,3 @@
           .large-4.columns
             = submit_tag t("vote.send_vote"), class: "button radius success expand"
 
-    .row
-      .show-for-medium-down
-        .large-4.columns
-          = link_to conference_event_path(@conference, @event), { class: "button radius expand" } do
-            %span.fa.fa-chevron-left.fa-fw.fa-lg
-            = t("event.back_to_event").humanize

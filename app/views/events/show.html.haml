@@ -157,12 +157,6 @@
   .large-12.columns
     %hr
 
-  .visible-for-medium-down
-    .medium-4.columns.left
-      = link_to conference_path(@conference), class: "button radius expand" do
-        %span.fa.fa-chevron-left.fa-fw.fa-lg
-        = t("event.back_to_events").humanize
-
   - unless @event.cancelled
     - if @conference.voting_enabled
       .medium-3.columns.right
