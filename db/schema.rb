@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025000502) do
+ActiveRecord::Schema.define(version: 20161024095942) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -51,20 +51,20 @@ ActiveRecord::Schema.define(version: 20161025000502) do
   end
 
   create_table "conferences", force: :cascade do |t|
-    t.string   "title",                      limit: 128,  null: false
-    t.text     "description",                limit: 1024, null: false
-    t.string   "location",                   limit: 32,   null: false
-    t.date     "start_date",                              null: false
-    t.date     "end_date",                                null: false
-    t.string   "coordinator",                             null: false
-    t.boolean  "active",                                  null: false
-    t.boolean  "call_for_papers_enabled",                 null: false
-    t.boolean  "voting_enabled",                          null: false
-    t.boolean  "show_calendar",                           null: false
-    t.date     "call_for_papers_start_date",              null: false
-    t.date     "call_for_papers_end_date",                null: false
-    t.date     "voting_start_date",                       null: false
-    t.date     "voting_end_date",                         null: false
+    t.string   "title",                      limit: 128,                  null: false
+    t.text     "description",                limit: 1024,                 null: false
+    t.string   "location",                   limit: 32,                   null: false
+    t.date     "start_date",                                              null: false
+    t.date     "end_date",                                                null: false
+    t.string   "coordinator",                                             null: false
+    t.boolean  "active",                                                  null: false
+    t.boolean  "call_for_papers_enabled",                                 null: false
+    t.boolean  "voting_enabled",                                          null: false
+    t.boolean  "show_calendar",                           default: false, null: false
+    t.date     "call_for_papers_start_date",                              null: false
+    t.date     "call_for_papers_end_date",                                null: false
+    t.date     "voting_start_date",                                       null: false
+    t.date     "voting_end_date",                                         null: false
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -75,19 +75,20 @@ ActiveRecord::Schema.define(version: 20161025000502) do
     t.string   "summary",                                    null: false
     t.text     "description",   limit: 1400,                 null: false
     t.integer  "subclass",                   default: 0,     null: false
-    t.integer  "level",                      default: 2,     null: false
+    t.integer  "level",                      default: 0,     null: false
     t.string   "content_url",   limit: 128
+    t.string   "code",          limit: 128
     t.string   "language",      limit: 2
     t.text     "notes",         limit: 300
+    t.integer  "duration",                   default: 0,     null: false
     t.integer  "votes",                      default: 0,     null: false
     t.string   "live_video",    limit: 128
     t.string   "video",         limit: 128
     t.string   "code_url",      limit: 128
     t.string   "location",      limit: 64
     t.string   "room"
-    t.date     "date"
-    t.time     "start_dtime"
-    t.time     "end_dtime"
+    t.datetime "start_dtime"
+    t.datetime "end_dtime"
     t.boolean  "shown",                      default: false
     t.boolean  "verified",                   default: false
     t.boolean  "cancelled",                  default: false
@@ -100,22 +101,13 @@ ActiveRecord::Schema.define(version: 20161025000502) do
     t.string   "token",         limit: 50
   end
 
-  create_table "sessions", force: :cascade do |t|
-    t.string   "session_id", null: false
-    t.text     "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
-  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
-
   create_table "speakers", force: :cascade do |t|
-    t.string   "name",       limit: 28,                null: false
-    t.string   "surname",    limit: 36
-    t.string   "email",      limit: 64,                null: false
-    t.integer  "event_id",                             null: false
-    t.boolean  "confirmed",             default: true
+    t.string   "name",        limit: 64,                 null: false
+    t.string   "email",       limit: 64,                 null: false
+    t.string   "twitter",     limit: 64
+    t.integer  "event_id",                               null: false
+    t.boolean  "certificate",            default: false
+    t.boolean  "confirmed",              default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -143,7 +135,7 @@ ActiveRecord::Schema.define(version: 20161025000502) do
   create_table "verifiers", force: :cascade do |t|
     t.string   "email",                                  null: false
     t.integer  "event_id",                               null: false
-    t.string   "token",       limit: 32,                 null: false
+    t.string   "token",       limit: 50,                 null: false
     t.boolean  "verified",               default: false, null: false
     t.string   "verify_type",                            null: false
     t.datetime "created_at"
