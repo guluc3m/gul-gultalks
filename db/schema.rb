@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309140410) do
+ActiveRecord::Schema.define(version: 20161025000502) do
 
-  create_table "admin_users", force: true do |t|
+  create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -32,7 +32,14 @@ ActiveRecord::Schema.define(version: 20150309140410) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
-  create_table "comments", force: true do |t|
+  create_table "api_keys", force: :cascade do |t|
+    t.string   "token"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
     t.string   "name",             limit: 64,  null: false
     t.string   "email",            limit: 64
     t.text     "content",          limit: 256
@@ -43,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150309140410) do
     t.datetime "updated_at"
   end
 
-  create_table "conferences", force: true do |t|
+  create_table "conferences", force: :cascade do |t|
     t.string   "title",                      limit: 128,  null: false
     t.text     "description",                limit: 1024, null: false
     t.string   "location",                   limit: 32,   null: false
@@ -63,7 +70,7 @@ ActiveRecord::Schema.define(version: 20150309140410) do
     t.datetime "updated_at"
   end
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.string   "title",         limit: 128,                  null: false
     t.string   "summary",                                    null: false
     t.text     "description",   limit: 1400,                 null: false
@@ -79,8 +86,8 @@ ActiveRecord::Schema.define(version: 20150309140410) do
     t.string   "location",      limit: 64
     t.string   "room"
     t.date     "date"
-    t.time     "start_time"
-    t.time     "end_time"
+    t.time     "start_dtime"
+    t.time     "end_dtime"
     t.boolean  "shown",                      default: false
     t.boolean  "verified",                   default: false
     t.boolean  "cancelled",                  default: false
@@ -90,9 +97,10 @@ ActiveRecord::Schema.define(version: 20150309140410) do
     t.integer  "conference_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token",         limit: 50
   end
 
-  create_table "sessions", force: true do |t|
+  create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
     t.text     "data"
     t.datetime "created_at"
@@ -102,7 +110,7 @@ ActiveRecord::Schema.define(version: 20150309140410) do
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
 
-  create_table "speakers", force: true do |t|
+  create_table "speakers", force: :cascade do |t|
     t.string   "name",       limit: 28,                null: false
     t.string   "surname",    limit: 36
     t.string   "email",      limit: 64,                null: false
@@ -112,7 +120,7 @@ ActiveRecord::Schema.define(version: 20150309140410) do
     t.datetime "updated_at"
   end
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
@@ -125,14 +133,14 @@ ActiveRecord::Schema.define(version: 20150309140410) do
   add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
-  create_table "verifiers", force: true do |t|
+  create_table "verifiers", force: :cascade do |t|
     t.string   "email",                                  null: false
     t.integer  "event_id",                               null: false
     t.string   "token",       limit: 32,                 null: false
