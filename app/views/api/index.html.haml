@@ -1,5 +1,12 @@
 - page_title "API"
-
+- base_url = "cursos.gul.es/api"
+- toc = ["List of Conferences",
+        "List of Events from a Conference",
+        "Open the Call for Talks of a Conference",
+        "Close the Call for Talks of a Conference",
+        "Enable Votes in a Conference",
+        "Diable Votes in a Conference",
+        "Errors"]
 .row
   .large-12.columns.show-for-medium-up.show-for-landscape
     %ul.breadcrumbs
@@ -13,7 +20,6 @@
       .large-7.medium-7.columns
         %h1.subheader
           API
-
         %hr
         %p.text-justify
           The GulTalks API consists of a series of endpoints that can be accessed by using
@@ -26,7 +32,7 @@
           in all cases.
         %p.text-justify
           The root of the application is
-          %code http://cursos.gul.es
+          %code #{base_url}
           use
           %code http://0.0.0.0:3000
           instead in development enviroment.
@@ -34,284 +40,13 @@
       .large-5.medium-5.columns
         .panel.radius.clearfix
           %h4 Table of Contents
-          %hr
-          %ul
-            %li
-              = link_to "List of Conferences", anchor: "list-conferences"
-            %li
-              = link_to "List of Events from a Conferences", anchor: "list-of-events-from-a-conference"
-            %li
-              = link_to "Open the Call for Talks of a Conference", anchor: "open-the-call-for-talks-of-a-conference"
-            %li
-              = link_to "Close the Call for Talks of a Conference", anchor: "close-the-call-for-talks-of-a-conference"
-            %li
-              = link_to "Enable Votes in a Conference", anchor: "enable-votes-in-a-conference"
-            %li
-              = link_to "Diable Votes in a Conference", anchor: "disable-votes-in-a-conference"
-            %li
-              = link_to "Errors", anchor: "errors"
+          %ul.no-bullet
+            - toc.each do |e|
+              %li
+                = link_to e, anchor: e.parameterize
 
 
-    %br/
-    %h2
-      List of conferences
-      = link_to "¶", "#list-conferences", name: "list-conferences"
-    %p
-      %strong Endpoint:
-      %code GET
-      %code /api/conferences
-
-    %p
-      This endpoint returns a list of conferences, which include relevant public
-      information.
-
-    %p
-      %strong Example:
-      %code GET
-      %code http://cursos.gul.es/conferences
-
-    %pre.alert-box.secondary
-      :preserve
-        [
-          {
-          "active": false,
-          "call_for_papers_end_date": "2016-02-24",
-          "call_for_papers_start_date": "2016-03-13",
-          "coordinator": "Adrián Borja Pimentel",
-          "description": "XXVIII Jornadas Técnicas...",
-          "end_date": "2016-04-15",
-          "id": 5,
-          "location": "Leganés",
-          "slug": "xxviii-jornadas-tecnicas-del-gul",
-          "start_date": "2016-04-11",
-          "title": "XXVIII Jornadas Técnicas del GUL",
-          "voting_end_date": "2016-04-18",
-          "voting_start_date": "2016-04-14"
-          }
-        ]
-
-    %br/
-
-    %h2
-      List of events from a conference
-      = link_to "¶", "#list-of-events-from-a-conference", name: "list-of-events-from-a-conference"
-    %p
-      %strong Endpoint:
-      %code GET
-      %code /api/conferences/:id/events
-
-    %p
-      This endpoint returns a list of all the events that belong to the
-      specified conference. The
-      %code :id
-      parameter may be the numeric ID or the slug from a conference.
-
-    %p
-      Speaker details may be accessed through the
-      %code speaker_list
-      attribute, which is a list of speakers for an event.
-
-    %p
-      %strong Example:
-      %code GET
-      %code http://cursos.gul.es/conferences/5/events
-      or
-      %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/events
-
-
-    %pre.alert-box.secondary
-      :preserve
-        [
-          {
-              "accepted": true,
-              "cancelled": false,
-              "code_url": "",
-              "content_url": "",
-              "description": "GIMP es un potente software de tratamiento...",
-              "end_dtime": null,
-              "id": 129,
-              "language": "es",
-              "level": "easy",
-              "location": "Leganés",
-              "room": "",
-              "slug": "gimp-quickies",
-              "speaker_list": [
-                  {
-                    "name": "Clara Luis Mingueza",
-                    "twitter": "_Claralu"
-                  }
-              ],
-              "start_dtime": null,
-              "subclass": "workshop",
-              "summary": "Aprende lo básico en Gimp",
-              "title": "Gimp Quickies!",
-              "votes": 12
-          },
-          {
-              "accepted": true,
-              "cancelled": false,
-              "code_url": "",
-              "content_url": "",
-              "description": "En esta charla veremos una introducción...",
-              "end_dtime": null,
-              "id": 136,
-              "language": "es",
-              "level": "easy",
-              "location": "Leganés",
-              "room": "",
-              "slug": "ya-esta-bien-de-perder-los-cambios-de-tus-practicas-git-al-rescate",
-              "speaker_list": [
-                  {
-                    "name": "Axel Blanco",
-                    "twitter": "drimmark"
-                  }
-              ],
-              "start_dtime": null,
-              "subclass": "talk",
-              "summary": "Una introducción al control de versiones con Git y al paradigma de Git-flow",
-              "title": "Ya está bien de perder los cambios de tus prácticas: Git al rescate",
-              "votes": 11
-          },
-
-            ...
-        ]
-
-    %br/
-
-    %h2
-      Open the Call for Talks of a conference
-      = link_to "¶", "#open-the-call-for-talks-of-a-conference", name: "open-the-call-for-talks-of-a-conference"
-    %p
-      %strong Endpoint:
-      %code POST
-      %code /api/conferences/:id/open_call
-
-    %p
-      This endpoint enables the Call for Talks of the specified conference. The
-      %code :id
-      parameter may be the numeric ID or the slug from a conference.
-
-    .alert-box.warning.radius
-      %i.fa.fa-warning.fa-2x.fa-fw
-      This endpoint requires authentication by means of a token sent in the
-      HTTP header (
-      %code token
-      ). This token can be generated through the admin panel.
-
-    %p
-      %strong Example:
-      %code POST
-      %code http://cursos.gul.es/conferences/5/open_call
-      or
-      %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/open_call
-
-    %br/
-
-    %h2
-      Close the Call for Talks of a conference
-      = link_to "¶", "#close-the-call-for-talks-of-a-conference", name: "close-the-call-for-talks-of-a-conference"
-    %p
-      %strong Endpoint:
-      %code POST
-      %code /api/conferences/:id/close_call
-    %p
-      This endpoint disables the Call for Talks of the specified conference. The
-      %code :id
-      parameter may be the numeric ID or the slug from a conference.
-
-    .alert-box.warning.radius
-      %i.fa.fa-warning.fa-2x.fa-fw
-      This endpoint requires authentication by means of a token sent in the
-      HTTP header (
-      %code token
-      ). This token can be generated through the admin panel.
-
-    %p
-      Example:
-      %code POST
-      %code http://cursos.gul.es/conferences/5/close_call
-      or
-      %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/close_call
-
-    %br/
-
-    %h2
-      Enable votes in a conference
-      = link_to "¶", "#enable-votes-in-a-conference", name: "enable-votes-in-a-conference"
-    %p
-      %strong Endpoint:
-      %code POST
-      %code /api/conferences/:id/enable_voting
-
-    %p
-      This endpoint enables the voting of the specified conference. The
-      %code :id
-      parameter may be the numeric ID or the slug from a conference.
-
-    .alert-box.warning.radius
-      %i.fa.fa-warning.fa-2x.fa-fw
-      This endpoint requires authentication by means of a token sent in the
-      HTTP header (
-      %code token
-      ). This token can be generated through the admin panel.
-
-    %p
-      %strong Example:
-      %code POST
-      %code http://cursos.gul.es/conferences/5/enable_voting
-      or
-      %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/enable_voting
-
-    %br/
-
-    %h2
-      Disable votes in a conference
-      = link_to "¶", "#disable-votes-in-a-conference", name: "disable-votes-in-a-conference"
-    %p
-      %strong Endpoint:
-      %code POST
-      %code /api/conferences/:id/disable_voting
-
-    %p
-      This endpoint disables the voting of the specified conference. The
-      %code :id
-      parameter may be the numeric ID or the slug from a conference.
-
-    .alert-box.warning.radius
-      %i.fa.fa-warning.fa-2x.fa-fw
-      This endpoint requires authentication by means of a token sent in the
-      HTTP header (
-      %code token
-      ). This token can be generated through the admin panel.
-
-    %p
-      %strong Example:
-      %code POST
-      %code http://cursos.gul.es/conferences/5/disable_voting
-      or
-      %code http://cursos.gul.es/conferences/xxviii-jornadas-tecnicas-del-gul/disable_voting
-
-    %br/
-
-    %h2
-      Errors
-      = link_to "¶", "#errors", name: "errors"
-    %p
-      In case of error, the API will return the HTTP code and, optionally,
-      a JSON object showing the error messages.
-
-    %p
-      %strong Example:
-      %code GET
-      %code http://cursos.gul.es/conferences/INEXISTENT_CONFERENCE/events
-
-    %pre.alert-box.secondary
-      :preserve
-        {
-          "errors": "conference not found"
-        }
-
-    %p
-      Endpoints that require authentication will return a
-      %code 401
-      status code if the authentication failed.
+    - Dir["app/views/api/_*"].each do |file|
+      - partial = File.basename(file, ".haml")[1..-1]
+      %br/
+      = render partial: partial, locals: { base_url: base_url, anchor: partial.gsub(/_/, "-") }

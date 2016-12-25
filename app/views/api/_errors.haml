@@ -1,0 +1,22 @@
+%h2
+  Errors
+  = link_to "¶", "#errors", name: "errors"
+%p
+  In case of error, the API will return the HTTP code and, optionally,
+  a JSON object showing the error messages.
+
+%p
+  %strong Example:
+  %code GET
+  %code #{base_url}/conferences/INEXISTENT_CONFERENCE/events
+
+%pre.alert-box.secondary
+  :preserve
+    {
+      "errors": "conference not found"
+    }
+
+%p
+  Endpoints that require authentication will return a
+  %code 401
+  status code if the authentication failed.

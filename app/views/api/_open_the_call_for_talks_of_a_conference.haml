@@ -1,0 +1,26 @@
+%h2
+  Open the Call for Talks of a conference
+  = link_to "¶", "#open-the-call-for-talks-of-a-conference", name: "open-the-call-for-talks-of-a-conference"
+%p
+  %strong Endpoint:
+  %code POST
+  %code /api/conferences/:id/open_call
+
+%p
+  This endpoint enables the Call for Talks of the specified conference. The
+  %code :id
+  parameter may be the numeric ID or the slug from a conference.
+
+.alert-box.warning.radius
+  %i.fa.fa-warning.fa-2x.fa-fw
+  This endpoint requires authentication by means of a token sent in the
+  HTTP header (
+  %code token
+  ). This token can be generated through the admin panel.
+
+%p
+  %strong Example:
+  %code POST
+  %code #{base_url}/conferences/5/open_call
+  or
+  %code #{base_url}/conferences/xxviii-jornadas-tecnicas-del-gul/open_call
