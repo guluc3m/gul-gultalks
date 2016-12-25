@@ -18,6 +18,10 @@
       // TODO: localize
       %label Options
       %br
-        - if Conference.find_by(call_for_papers_enabled: true)
-          = link_to t("conference.propose_event"), new_conference_event_path(Conference.find_by(call_for_papers_enabled: true)), { class: "button success tiny radius" }
-        = link_to "Admin", admin_path, { class: "button secondary tiny radius"}
+      - if Conference.find_by(call_for_papers_enabled: true)
+        .row
+          .small-12.columns
+            = link_to t("conference.propose_event"), new_conference_event_path(Conference.find_by(call_for_papers_enabled: true)), { class: "button success tiny radius" }
+      .row
+        .small-12.columns
+          = link_to "Admin", admin_path, { class: "button secondary tiny radius"}

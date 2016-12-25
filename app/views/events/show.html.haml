@@ -1,6 +1,6 @@
 - page_title @event.title
 
-= render 'partials/breadcrumbs', event: @event
+= render partial: 'partials/breadcrumbs', event: @event
 
 .row
   .large-12.columns
@@ -90,7 +90,7 @@
                   %i.fa.fa-youtube-play.fa-fw.fa-lg
                   %strong
                     = t("event.watch_live").humanize
-              = render "partials/video_modal", live: true
+              = render partial: "partials/video_modal", live: true
             .show-for-small-only
               = link_to(@event.live_video, target: "_blank" ) do
                 .button.tiny.alert.radius
@@ -102,7 +102,7 @@
               %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
               = link_to("#", data: { "reveal-id" => "video-modal" }) do
                 = t("event.view_recording").humanize
-              = render "partials/video_modal", live: false
+              = render partial: "partials/video_modal", live: false
             .show-for-small-down
               %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
               = link_to(@event.video, target: "_blank") do
@@ -157,12 +157,6 @@
   .large-12.columns
     %hr
 
-  .visible-for-medium-down
-    .medium-4.columns.left
-      = link_to conference_path(@conference), class: "button radius expand" do
-        %span.fa.fa-chevron-left.fa-fw.fa-lg
-        = t("event.back_to_events").humanize
-
   - unless @event.cancelled
     - if @conference.voting_enabled
       .medium-3.columns.right
@@ -174,7 +168,7 @@
           %i.fa.fa-lock.fa-lg
           = t("to_vote")
 
-    - if !@event.speaker? && @conference.call_for_papers_enabled
+    - if not @event.speaker? and @conference.call_for_papers_enabled
       .medium-3.columns.right
         = link_to propose_speaker_conference_event_path, class: "button alert radius expand" do
           %i.fa.fa-child.fa-lg
