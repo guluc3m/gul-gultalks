@@ -1,12 +1,6 @@
 - page_title t("event.new_event")
 
-.row.show-for-medium-up
-  .medium-12.columns
-    %ul.breadcrumbs
-      %li
-        = link_to @conference.title, conference_path(@conference)
-      %li.current
-        = event.title
+= event_breadcrumbs(@conference, nil, "new")
 
 .row
   .medium-12.columns
