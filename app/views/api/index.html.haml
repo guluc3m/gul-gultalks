@@ -5,7 +5,7 @@
         "Open the Call for Talks of a Conference",
         "Close the Call for Talks of a Conference",
         "Enable Votes in a Conference",
-        "Diable Votes in a Conference",
+        "Disable Votes in a Conference",
         "Errors"]
 
 = home_breadcrumbs("api")
@@ -42,7 +42,9 @@
                 = link_to e, anchor: e.parameterize
 
 
-    - Dir["app/views/api/_*"].each do |file|
-      - partial = File.basename(file, ".haml")[1..-1]
+    - toc.each do |e|
+      - anchor = e.parameterize
+      - partial = anchor.gsub(/-/, "_")
+
       %br/
       = render partial: partial, locals: { base_url: base_url, anchor: partial.gsub(/_/, "-") }
