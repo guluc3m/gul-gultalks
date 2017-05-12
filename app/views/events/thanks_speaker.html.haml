@@ -1,16 +1,6 @@
 - page_title t("speaker.propose")
 
-.row.show-for-medium-up
-  .medium-12.columns
-    %ul.breadcrumbs
-      %li
-        = link_to t("home"), root_path
-      %li
-        = link_to @conference.title, conference_path(@conference)
-      %li
-        = link_to @event.title, conference_event_path(@conference, @event)
-      %li.current
-        = t("speaker.propose")
+= event_breadcrumbs(@conference, @event, "speaker")
 
 .row
   .medium-12.columns

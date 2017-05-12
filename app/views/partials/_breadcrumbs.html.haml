@@ -1,0 +1,11 @@
+- last_item = crumbs.length - 1
+
+.row.show-for-medium-up
+  .medium-12.columns
+    %ul.breadcrumbs
+      - crumbs.each_with_index do |crumb, index|
+        %li{ class: ("current" if (index == last_item)) }
+          - if index == last_item or !crumb.key?(:link)
+            = crumb[:text]
+          - else
+            = link_to crumb[:text], crumb[:link]
