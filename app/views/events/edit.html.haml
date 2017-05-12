@@ -1,5 +1,6 @@
 - page_title t("event.edit_event")
-= render partial: "breadcrumbs"
+
+= event_breadcrumbs(@conference, @form, "edit")
 
 .row
   .visible-for-medium-down
@@ -126,7 +127,7 @@
         = t("event.language")
         %small
           = t("event.required")
-      = select("detailed_event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}.default").humanize, l]},{include_blank: true, selected: "selected"}, required: true, class: "radius")
+      = select("detailed_event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]},{include_blank: true, selected: "selected"}, required: true, class: "radius")
 
     .large-4.columns
       %label{for: "duration"}
@@ -134,7 +135,7 @@
         = t("event.duration")
         %small
           = t("event.required")
-      = select("detailed_event", "duration", Event.durations.keys.collect {|d| [t("event.durations.#{d}.default").humanize, d]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
+      = select("detailed_event", "duration", Event.durations.keys.collect {|d| [t("event.durations.#{d}").humanize, d]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
 
     .large-4.columns
       %label{for: "level"}
@@ -142,7 +143,7 @@
         = t("event.level")
         %small
           = t("event.required")
-      = select("detailed_event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}.default").humanize, l]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
+      = select("detailed_event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
 
   .row
     .large-12.columns
@@ -156,7 +157,7 @@
 
   .row
     .medium-4.columns
-      = render :partial 'partials/recaptcha'
+      = render partial: 'partials/recaptcha'
     .medium-4.columns
       = f.submit(t("event.send_event"), class: "button success expand")
 

@@ -155,7 +155,8 @@ class EventsController < ApplicationController
       redirect_to conference_path(@conference) and return
     end
 
-    @short_url = url_shortener(@conference, @event)
+    # @short_url = url_shortener(@conference, @event)
+    @short_url = "http://google.com"
   end
 
   # Shows a form where the user can propose a speaker for an activity that
@@ -396,9 +397,15 @@ class EventsController < ApplicationController
   # Shorten given Url using bit.ly
   #
   def url_shortener(conference, event)
-    bitly = Bitly.client
-    url = bitly.shorten(conference_event_url(conference, event))
-    url.short_url
+    begin
+      bitly = Bitly.client
+      url = bitly.shorten(conference_event_url(conference, event))
+      url.short_url
+
+    rescue
+      # Bitly not properly configured?
+      conference_event_url(conference, event)
+    end
   end
 
   def event_params

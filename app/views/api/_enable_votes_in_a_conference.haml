@@ -1,0 +1,26 @@
+%h2
+  Enable votes in a conference
+  = link_to "¶", "#enable-votes-in-a-conference", name: "enable-votes-in-a-conference"
+%p
+  %strong Endpoint:
+  %code POST
+  %code /api/conferences/:id/enable_voting
+
+%p
+  This endpoint enables the voting of the specified conference. The
+  %code :id
+  parameter may be the numeric ID or the slug from a conference.
+
+.alert-box.warning.radius
+  %i.fa.fa-warning.fa-2x.fa-fw
+  This endpoint requires authentication by means of a token sent in the
+  HTTP header (
+  %code token
+  ). This token can be generated through the admin panel.
+
+%p
+  %strong Example:
+  %code POST
+  %code #{base_url}/conferences/5/enable_voting
+  or
+  %code #{base_url}/conferences/xxviii-jornadas-tecnicas-del-gul/enable_voting

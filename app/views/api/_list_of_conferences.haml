@@ -1,0 +1,36 @@
+%h2
+  List of conferences
+  = link_to "¶", "##{anchor}", name: anchor
+%p
+  %strong Endpoint:
+  %code GET
+  %code /api/conferences
+
+%p
+  This endpoint returns a list of conferences, which include relevant public
+  information.
+
+%p
+  %strong Example:
+  %code GET
+  %code #{base_url}/conferences
+
+%pre.alert-box.secondary
+  :preserve
+    [
+      {
+      "active": false,
+      "call_for_papers_end_date": "2016-02-24",
+      "call_for_papers_start_date": "2016-03-13",
+      "coordinator": "Adrián Borja Pimentel",
+      "description": "XXVIII Jornadas Técnicas...",
+      "end_date": "2016-04-15",
+      "id": 5,
+      "location": "Leganés",
+      "slug": "xxviii-jornadas-tecnicas-del-gul",
+      "start_date": "2016-04-11",
+      "title": "XXVIII Jornadas Técnicas del GUL",
+      "voting_end_date": "2016-04-18",
+      "voting_start_date": "2016-04-14"
+      }
+    ]
