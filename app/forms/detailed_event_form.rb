@@ -2,7 +2,7 @@ class DetailedEventForm < BasicEventForm
 
   property :content_url
   property :code
-  property :tags
+  property :tag_list
   property :language
   property :duration
   property :level
