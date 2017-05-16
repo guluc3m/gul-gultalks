@@ -35,7 +35,7 @@
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.subclass_requirements"), class: "radius"}
       .row
         .large-3.columns
-          = select("detailed_event", "subclass", Event.subclasses.keys.collect {|s| [t("event.subclasses.#{s}.default").humanize, s]}, {include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
+          = f.select(:subclass, Event.subclasses.keys.map {|s| [t("event.subclasses.#{s}.default").humanize, s]}, class: "radius", required: true, label: false)
 
   .row
     .large-12.columns
@@ -86,11 +86,12 @@
       .large-12.columns
         %dl.accordion{"data-accordion" => ""}
           = f.fields_for :speakers do |speaker|
+            - sp_index = speaker.index + 1
             %dd.accordion-navigation
-              %a{href: "#speaker_#{speaker.index + 1}"}
-                = t("speaker.caption", index: speaker.index + 1)
-              .content{id: "speaker_#{speaker.index + 1}"}
-                = render "partials/speaker_fields", f: speaker
+              %a.text-center{href: "#speaker_#{sp_index}"}
+                = t("speaker.caption", index: sp_index)
+              .content{id: "speaker_#{sp_index}"}
+                = render "partials/speaker_fields", f: speaker, index: sp_index
 
   .row
     .large-12.columns
@@ -112,13 +113,13 @@
 
   .row
     .large-12.columns
-      %label{for: "tags"}
+      %label{for: "tag_list"}
         %i.fa.fa-tags.fa-fw.fa-lg.subheader
         = t("event.tags")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.tag_format")}
         .right
           %sub 128
-      = f.text_field :tags, label: false, maxlength: 128, class: "radius", placeholder: t("event.tag_format")
+      = f.text_field :tag_list, label: false, maxlength: 128, class: "radius", placeholder: t("event.tag_format"), value: @form.tag_list.join(",")
 
   .row
     .large-4.columns
@@ -127,7 +128,7 @@
         = t("event.language")
         %small
           = t("event.required")
-      = select("detailed_event", "language", t("event.languages").keys.collect {|l| [t("event.languages.#{l}").humanize, l]},{include_blank: true, selected: "selected"}, required: true, class: "radius")
+      = f.select(:language, t("event.languages").keys.map {|l| [t("event.languages.#{l}").humanize, l]}, class: "radius", required: true, label: false)
 
     .large-4.columns
       %label{for: "duration"}
@@ -135,7 +136,7 @@
         = t("event.duration")
         %small
           = t("event.required")
-      = select("detailed_event", "duration", Event.durations.keys.collect {|d| [t("event.durations.#{d}").humanize, d]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
+      = f.select(:duration, Event.durations.keys.map {|d| [t("event.durations.#{d}").humanize, d]}, class: "radius", required: true, label: false)
 
     .large-4.columns
       %label{for: "level"}
@@ -143,7 +144,7 @@
         = t("event.level")
         %small
           = t("event.required")
-      = select("detailed_event", "level", Event.levels.keys.collect {|l| [t("event.levels.#{l}").humanize, l]}, { include_blank: true, selected: "selected"}, class: "radius", required: true, label: false)
+      = f.select(:level, Event.levels.keys.map {|l| [t("event.levels.#{l}").humanize, l]}, class: "radius", required: true, label: false)
 
   .row
     .large-12.columns

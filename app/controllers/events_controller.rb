@@ -104,14 +104,13 @@ class EventsController < ApplicationController
 
     if @form.validate(params[:detailed_event]) && captcha_valid && speakers_valid
       @form.save do |nested|
-        # Save event and tags
+        # Save event
         new_event = Event.new(nested.except("speakers"))
         new_event.conference_id = @conference.id
         new_event.location = @conference.location
         # Event verification is disabled by default
         new_event.shown = true
         new_event.verified = true
-        new_event.tag_list.add(nested["tags"], parse: true)
         new_event.save
 
         # Save speakers (only if name and email are present)
@@ -299,9 +298,8 @@ class EventsController < ApplicationController
 
     if @form.validate(params[:detailed_event]) && captcha_valid && speakers_valid
       @form.save do |nested|
-        # Update event and tags
+        # Update event
         event.update_attributes!(nested.except("speakers"))
-        event.tag_list.add(nested["tags"], parse: true)
 
         # Update speakers (only if name and email are present and the speaker does not exist)
         new_sps = []
@@ -409,6 +407,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tags, :title, :validation_email, :verified, :votes, speakers_attributes: [:certificate, :confirmed, :email, :event_id, :name, :twitter])
+    params.require(:event).permit(:accepted, :assisted_by, :cancelled, :conference_id, :code ,:content_url, :description, :duration, :end_dtime, :id, :language, :level, :location, :notes, :room, :shown, :slug, :start_dtime, :subclass, :summary, :tag_list, :title, :validation_email, :verified, :votes, speakers_attributes: [:certificate, :confirmed, :email, :event_id, :name, :twitter])
   end
 end
