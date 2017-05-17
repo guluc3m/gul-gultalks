@@ -15,6 +15,7 @@
 //= require modernizr
 //= require foundation
 //= require cookies_eu
+//= require simplemde.min
 //= require_tree .
 
 $(document).foundation();
