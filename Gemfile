@@ -60,7 +60,8 @@ gem 'friendly_id', '~> 5.0.0'
 # Tags
 gem 'acts-as-taggable-on'
 # ActiveAdmin
-gem 'activeadmin', github: 'activeadmin'
+# gem 'activeadmin', github: 'activeadmin'
+gem 'rails_admin', '~> 1.1.1'
 gem 'devise'
 gem 'devise-i18n'
 gem 'activevalidators'

@@ -1,6 +1,8 @@
 Gultalks::Application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+
+  devise_for :admin
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  # devise_for :admin_users, ActiveAdmin::Devise.config
 
   # Admin
   match 'admin', to: 'admin#index', via: :get, path: '/admin'
