@@ -1,13 +1,7 @@
 es:
-  active_admin:
-    access_denied:
-      message: "No dispones de los permisos necesarios"
-    roles:
-      admin: "administrador"
-      assistant: "asistente"
   activerecord:
     attributes:
-      admin_user:
+      admin:
         created_at: "Creado"
         current_sign_in_at: "Inicio de sesión actual"
         current_sign_in_ip: "IP de la sesión actual"

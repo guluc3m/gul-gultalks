@@ -1,13 +1,7 @@
 en:
-  active_admin:
-    access_denied:
-      message: "You do not have the required permissions"
-    roles:
-      admin: "administrator"
-      assistant: "assistant"
   activerecord:
     attributes:
-      admin_user:
+      admin:
         current_sign_in_at: "Current sign in at"
         current_sign_in_ip: "Current sign in IP"
         email: "Email"
