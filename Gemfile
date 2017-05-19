@@ -69,7 +69,7 @@ gem 'reform'
 # iCalendar
 gem 'icalendar'
 # reCAPTCHA
-gem 'recaptcha', :require => 'recaptcha/rails'
+gem 'recaptcha', '0.4.0', :require => 'recaptcha/rails'
 # User authentication
 gem 'cancancan', '~> 1.9'
 gem 'prawn'

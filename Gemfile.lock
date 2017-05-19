@@ -409,7 +409,7 @@ DEPENDENCIES
   rails-i18n
   rails-perftest (~> 0.0.6)
   rails_admin (~> 1.1.1)
-  recaptcha
+  recaptcha (= 0.4.0)
   redcarpet
   reform
   roman-numerals
