@@ -1,4 +1,4 @@
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   extend FriendlyId
   acts_as_taggable
   attr_accessor :tags, :validation_email

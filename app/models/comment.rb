@@ -1,4 +1,4 @@
-class Comment < ActiveRecord::Base
+class Comment < ApplicationRecord
   has_ancestry
   belongs_to :commentable, polymorphic: true
 
