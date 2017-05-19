@@ -8,7 +8,6 @@ gem 'rails', '4.2.7'
 group :development, :test do
     gem 'sqlite3'
     gem 'better_errors'
-    gem 'quiet_assets'
     gem 'binding_of_caller'
     gem 'guard-livereload', require: false
     gem 'rails-perftest', '~> 0.0.6'
