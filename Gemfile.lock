@@ -394,7 +394,7 @@ DEPENDENCIES
   modernizr-rails
   mysql2 (~> 0.3.18)
   prawn
-  rails (~> 5.0.0)
+  rails (~> 5.0.3)
   rails-i18n
   rails-perftest (~> 0.0.6)
   rails_admin
