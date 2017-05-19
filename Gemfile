@@ -2,13 +2,13 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.7'
+gem 'rails', '5'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
     gem 'sqlite3'
     gem 'better_errors'
-    gem 'quiet_assets'
+    #gem 'quiet_assets'
     gem 'binding_of_caller'
     gem 'guard-livereload', require: false
     gem 'rails-perftest', '~> 0.0.6'
@@ -44,13 +44,13 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # `attr_accessible` no longer belongs in Rails
-gem 'protected_attributes'
+#gem 'protected_attributes'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 # Frontend
 gem 'font-awesome-rails'
 gem 'foundation-rails'
-gem 'foundation_rails_helper'
+#gem 'foundation_rails_helper'
 gem 'modernizr-rails'
 gem 'haml-rails'
 gem 'rails-i18n'
@@ -61,7 +61,7 @@ gem 'friendly_id', '~> 5.0.0'
 # Tags
 gem 'acts-as-taggable-on'
 # Rails Admin
-gem 'rails_admin', '~> 1.1.1'
+gem 'rails_admin'
 gem 'devise'
 gem 'devise-i18n'
 gem 'activevalidators'
