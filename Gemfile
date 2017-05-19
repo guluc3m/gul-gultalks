@@ -66,10 +66,12 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'activevalidators'
 # New event form
-gem 'reform'
+# BUG: Gem locked because of this same? (bug?): https://github.com/trailblazer/trailblazer/issues/126
+gem 'reform', '~> 2.1.0'
 # iCalendar
 gem 'icalendar'
 # reCAPTCHA
+# TODO(javierhonduco): Gem locked there because it was broken w/ Rails 5
 gem 'recaptcha', '0.4.0', :require => 'recaptcha/rails'
 # User authentication
 gem 'cancancan', '~> 1.9'
