@@ -1,4 +1,3 @@
-# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
 
   devise_for :admin
@@ -43,5 +42,5 @@ Rails.application.routes.draw do
   match 'send_vote_conference_event', to: 'events#send_vote', via: :post, path: '/:conference_id/:id/vote'
 
   root 'home#index'
-
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
