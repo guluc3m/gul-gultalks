@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# TODO(javierhonduco): haven't uploaded to bleeding-edge
+# Rails, 5.1.1, because of routing imcompatibilities
 gem 'rails', '~> 5.0.3'
 
 # Use sqlite3 as the database for Active Record
