@@ -1,4 +1,4 @@
-class Verifier < ActiveRecord::Base
+class Verifier < ApplicationRecord
   after_create :send_verification
   before_create :generate_token
 
