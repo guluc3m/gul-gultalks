@@ -7,18 +7,10 @@ class Admin < ActiveRecord::Base
   enum role: [:admin, :assistant]
 
   def admin?
-    if self.role == "admin"
-      return true
-    else
-      return false
-    end
+    self.role == 'admin'
   end
 
   def assistant?
-    if self.role == "assistant"
-      return true
-    else
-      return false
-    end
+    self.role == 'assistant'
   end
 end
