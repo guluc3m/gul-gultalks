@@ -1,0 +1,64 @@
+en:
+  mails:
+    notifier:
+      confirmation_certificate:
+		subject: "Certificate confirmation"
+		body: |
+		  Hello %{name}.
+
+		  We have received a certificate request for the activity '%{event_title}'.
+		  Please visit the following link in order to validate it.
+
+		  %{validation_url}
+
+		  Once validated, you will receive the certificate in your email address.      confirmation_event:
+		subject: "Activity confirmation"
+		body: |
+		  Hello.
+
+		  Thank you for proposing the activity '%{event_title}'.
+		  Please, visit the following link in order to validate it.
+
+		  %{validation_url}
+	  confirmation_speaker:
+		subject: "Speaker confirmation"
+		body: |
+		  Hello %{name}.
+
+		  We have received a proposal for you to be the speaker of '%{event_title}'.
+		  If you wish to take care of it, please visit the following link.
+
+		  %{validation_url}
+	  confirmation_vote:
+		subject: "Vote confirmation"
+		body: |
+		  Hello.
+
+		  Thank you for voting the activity '%{event_title}'.
+
+		  Please, visit the following link in order to validate your vote.
+
+		  %{validation_url}
+	  send_certificate:
+		subject: "Activity certificate"
+		body: |
+		  Hello %{name}.
+
+		  Attached you will find the certificate corresponding to the activity '%{event_title}'.
+	  send_edition_token:
+		subject: "Activity edition link"
+		body: |
+		  Hello %{name}.
+
+		  As you are the first speaker for the activity '%{event_title}', we have sent its edition link to you.
+
+		  This link is unique to this activity, so anyone that accesses the link will be able to edit the details.
+
+		  Your link is:
+
+		  %{edition_url}
+	  footer: |
+		--
+		Grupo de Usuarios de la Universidad Carlos III de Madrid
+		Visit gul.es
+	  tag: "[GulTalks]"

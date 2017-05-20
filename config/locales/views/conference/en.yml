@@ -1,0 +1,25 @@
+en:
+  views:
+    conference:
+      call_for_papers_end_date: "Call for talks end date"
+      call_for_papers_open: "The call for talks is open"
+      call_for_papers_period: "Call for talks:"
+      call_for_papers_start_date: "Call for talks start date"
+      coordinator: "Coordinator"
+      description: "Descripción"
+      end_date: "End date"
+      first_to_propose: "Be the first to propose an activity!"
+      list: "Previous editions"
+      propose_another_event: "Propose another activity"
+      propose_event: "Propose activity"
+      start_date: "Start date"
+      status:
+        active: "Active"
+        call_for_papers_enabled: "Call for talks enabled"
+        show_calendar: "Show calendar"
+        voting_enabled: "Voting enabled"
+      title: "Title"
+      voting_end_date: "Voting end date"
+      voting_period: "Voting:"
+      voting_start_date: "Voting start date"
+	  warning_no_conferences: "Unable to recover any previous edition."

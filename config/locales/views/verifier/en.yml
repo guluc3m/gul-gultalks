@@ -1,0 +1,15 @@
+en:
+  views:
+    verifier:
+      invalid: "Invalid verification code"
+      type: "Type"
+      types:
+          certificate: "certificate"
+          event: "activity"
+          speaker: "speaker"
+          vote: "vote"
+      verified: "Verified"
+      verified_certificate: "Thank you, you will soon receive the activity certificate in your email"
+      verified_event: "Thank you for verifying the activity!"
+      verified_speaker: "Thank you for verifying your attendance!"
+      verified_vote: "Thank you for verifying your vote!"

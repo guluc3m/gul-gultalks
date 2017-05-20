@@ -1,0 +1,34 @@
+en:
+  defaults:
+    back: "Back"
+	date:
+	  formats:
+		default: ! '%Y-%m-%d'
+		day_name: ! '%A'
+		day_name_num: ! '%A %d'
+		day_only: ! '%d'
+		long: ! '%B %d, %Y'
+		month_only: ! '%B'
+		month_year: ! '%B %Y'
+		short: ! '%b %d'
+		year: ! '%Y'
+	  order:
+	  - :year
+	  - :month
+	  - :day
+	  from: "from"
+	  to: "to"
+	  of: "of"
+	home: "Home"
+	recaptcha:
+      another: "Get another CAPTCHA"
+      audio: "Get an audio CAPTCHA"
+      enter_numbers: "Enter the numbers you hear:"
+      enter_words: "Enter the words above:"
+      help: "Help"
+      image: "Get an image CAPTCHA"
+      incorrect: "Incorrect reCAPTCHA. Please try again."
+    time:
+      from: "from"
+      to: "to"
+    user: "User"
