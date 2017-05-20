@@ -1,13 +1,13 @@
-- page_title t("event.new_event")
+- page_title t("views.event.new_event")
 
 = event_breadcrumbs(@conference, nil, "new")
 
 .row
   .large-12.columns
     %h1.subheader
-      = t("event.detailed_info")
+      = t("views.event.detailed_info")
     %h5.subheader
-      = t("event.complete_detailed_form")
+      = t("views.event.complete_detailed_form")
     %hr
 
 = form_for @form, url: {controller: "events", action: "create_detailed"} do |f|
@@ -23,22 +23,22 @@
     .large-12.columns
       %label{for: "subclass"}
         %i.fa.fa-thumb-tack.fa-fw.fa-lg.subheader
-        = t("event.subclass")
+        = Event.human_attribute_name("subclass")
         %small
           = t("event.required")
-        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.subclass_requirements"), class: "radius"}
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("views.event.subclass_requirements"), class: "radius"}
       .row
         .large-3.columns
-          = f.select(:subclass, Event.subclasses.keys.map {|s| [t("event.subclasses.#{s}.default").humanize, s]}, class: "radius", required: true, label: false)
+          = f.select(:subclass, Event.subclasses.keys.map {|s| [t("views.event.subclasses.#{s}.default").humanize, s]}, class: "radius", required: true, label: false)
 
   .row
     .large-12.columns
       %label{for: "title"}
         %i.fa.fa-bookmark.fa-fw.fa-lg.subheader
-        = t("event.title")
+        = Event.human_attribute_name("title")
         %small
-          = t("event.required")
-        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.title_requirements"), class: "radius"}
+          = t("views.event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("views.event.title_requirements"), class: "radius"}
         .right
           %sub 128
       = f.text_field :title, label: false, maxlength: 128, required: true, class: "radius"
@@ -47,10 +47,10 @@
     .large-12.columns
       %label{for: "summary"}
         %i.fa.fa-paperclip.fa-fw.fa-lg.subheader
-        = t("event.summary")
+        = Event.human_attribute_name("summary")
         %small
-          = t("event.required")
-        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.summary_requirements"), class: "radius"}
+          = t("views.event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("views.event.summary_requirements"), class: "radius"}
         .right
           %sub 128
       = f.text_field :summary, label: false, maxlength: 128, required: true, class: "radius"
@@ -59,13 +59,16 @@
     .large-12.columns
       %label{for: "description"}
         %i.fa.fa-bars.fa-fw.fa-lg.subheader
-        = t("event.description")
+        = Event.human_attribute_name("description")
         %small
-          = t("event.required")
-        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.description_requirements"), class: "radius"}
+          = t("views.event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("views.event.description_requirements"), class: "radius"}
         .right
           %sub.subheader
-            %strong Markdown enabled
+            %strong
+              [
+              = t("views.event.markdown_enabled")
+              ]
           %sub 1400
       = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius md-textarea", size: "10x8"
 
@@ -73,7 +76,7 @@
     .large-12.columns
       .alert-box.radius{data: {alert: ""}}
         %i.fa.fa-hand-o-right.fa-lg.fa-fw
-        = t("warning.up_to_five")
+        = t("views.speaker.warning_up_to_five")
         %a.close{href:""} ×
 
   -# Accordion for small screens
@@ -85,7 +88,7 @@
             - sp_index = speaker.index + 1
             %li.accordion-navigation
               %a.text-center{href: "#speaker_#{sp_index}"}
-                = t("speaker.caption", index: sp_index)
+                = t("views.speaker.caption", index: sp_index)
               .content{id: "speaker_#{sp_index}", class: "#{sp_index == 1 ? 'active' : ''}"}
                 = render "partials/speaker_fields", f: speaker, index: sp_index
       %br
@@ -94,7 +97,7 @@
     .large-12.columns
       %label{for: "content_url"}
         %i.fa.fa-link.fa-fw.fa-lg.subheader
-        = t("event.url")
+        = Event.human_attribute_name("content_url")
         .right
           %sub 128
       = f.url_field :content_url, label: false, maxlength: 128, type: "url", placeholder: "http://", class: "radius"
@@ -103,7 +106,7 @@
     .large-12.columns
       %label{for: "code"}
         %i.fa.fa-code.fa-fw.fa-lg.subheader
-        = t("event.code")
+        = Event.human_attribute_name("code")
         .right
           %sub 128
       = f.url_field :code, label: false, maxlength: 128, type: "url", placeholder: "http://", class: "radius"
@@ -112,43 +115,43 @@
     .large-12.columns
       %label{for: "tag_list"}
         %i.fa.fa-tags.fa-fw.fa-lg.subheader
-        = t("event.tags")
-        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.tag_format")}
+        = Event.human_attribute_name("tag_list")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("views.event.tag_format")}
         .right
           %sub 128
-      = f.text_field :tag_list, label: false, maxlength: 128, class: "radius", placeholder: t("event.tag_format")
+      = f.text_field :tag_list, label: false, maxlength: 128, class: "radius", placeholder: t("views.event.tag_format")
 
   .row
-    .medium-4.columns
+    .large-4.columns
       %label{for: "language"}
         %i.fa.fa-globe.fa-fw.fa-lg.subheader
-        = t("event.language")
+        = Event.human_attribute_name("language")
         %small
-          = t("event.required")
-      = f.select(:language, t("event.languages").keys.map {|l| [t("event.languages.#{l}").humanize, l]}, class: "radius", required: true, label: false)
+          = t("views.event.required")
+      = f.select(:language, t("views.event.languages").keys.map {|l| [t("views.event.languages.#{l}").humanize, l]}, class: "radius", required: true, label: false)
 
-    .medium-4.columns
+    .large-4.columns
       %label{for: "duration"}
         %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
-        = t("event.duration")
+        = Event.human_attribute_name("duration")
         %small
-          = t("event.required")
-      = f.select(:duration, Event.durations.keys.map {|d| [t("event.durations.#{d}").humanize, d]}, class: "radius", required: true, label: false)
+          = t("views.event.required")
+      = f.select(:duration, Event.durations.keys.map {|d| [t("views.event.durations.#{d}").humanize, d]}, class: "radius", required: true, label: false)
 
-    .medium-4.columns
+    .large-4.columns
       %label{for: "level"}
         %i.fa.fa-lightbulb-o.fa-fw.fa-lg.subheader
-        = t("event.level")
+        = Event.human_attribute_name("level")
         %small
-          = t("event.required")
-      = f.select(:level, Event.levels.keys.map {|l| [t("event.levels.#{l}").humanize, l]}, class: "radius", required: true, label: false)
+          = t("views.event.required")
+      = f.select(:level, Event.levels.keys.map {|l| [t("views.event.levels.#{l}").humanize, l]}, class: "radius", required: true, label: false)
 
   .row
     .large-12.columns
       %label{for: "comments"}
         %i.fa.fa-comments.fa-fw.fa-lg.subheader
-        = t("event.comments")
-        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.notes_requirements")}
+        = Event.human_attribute_name("notes")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("views.event.notes_requirements")}
         .right
           %sub 300
       = f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "radius", size: "10x6"
@@ -162,5 +165,4 @@
     .medium-4.columns
       = render partial: 'partials/recaptcha'
     .medium-4.columns
-      = f.submit(t("event.send_event"), class: "button success expand")
-
+      = f.submit(t("views.event.send_event"), class: "button success expand")

@@ -1,9 +1,11 @@
 %a.dotted-link.right{href: "#", 'data-reveal-id':"legend-modal"}
-  Ver leyenda
+  = t("views.conference.captions.show")
 #legend-modal.reveal-modal.medium{"data-reveal" => "", 'aria-labelledby': "modalTitle", 'aria-hidden': "true", 'role': "dialog"}
-  %h2.subheader{ id: "modalTitle"} Leyenda
+  %h2.subheader{ id: "modalTitle"}
+    = t("views.conference.captions.header")
   %hr
-  %p.lead Descripciones de cada uno de las etiquetas identificativas que acompañan a las actividades.
+  %p.lead
+    = t("views.conference.captions.description")
   = render partial: "partials/legend"
   %a{ class: "close-reveal-modal", 'aria-label': "Close"}
     &#215;

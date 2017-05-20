@@ -75,6 +75,6 @@ class DetailedEventForm < BasicEventForm
 
   validates :language,
       allow_blank: true,
-      inclusion: { in: I18n.t("event.languages").keys.collect {|l| l.to_s} }
+      inclusion: { in: I18n.t("views.event.languages").keys.collect {|l| l.to_s} }
 
 end

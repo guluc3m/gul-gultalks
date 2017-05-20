@@ -1,4 +1,4 @@
-- page_title t("to_vote")
+- page_title t("views.event.to_vote")
 
 = event_breadcrumbs(@conference, @event, "vote")
 
@@ -11,21 +11,21 @@
 .row
   .large-12.columns
     %h1.subheader
-      = t("to_vote")
+      = t("views.event.to_vote")
     %hr
 .row
   .medium-6.columns
     %p
-      = t("thanks.vote_msg")
+      = t("views.thanks.vote_msg")
     %p
-      = t("thanks.contact_msg")
+      = t("views.thanks.contact_msg")
       = mail_to "info@gul.es", "info@gul.es", subject: "[GulTalks]"
   .medium-6.columns
     %label
       %i.fa.fa-envelope.fa-fw.fa-lg.subheader
-      = t("vote.email")
+      = t("views.event.vote.email")
       %small
-        = t("event.required")
+        = t("views.event.required")
       = form_tag send_vote_conference_event_path(@conference, @event) do
         = email_field_tag "email", nil, class: "radius", required: true,  type: "email", maxlength: 64
         .row
@@ -33,5 +33,4 @@
             = render 'partials/recaptcha'
             %br
           .large-4.columns
-            = submit_tag t("vote.send_vote"), class: "button radius success expand"
-
+            = submit_tag t("views.event.vote.send_vote"), class: "button radius success expand"

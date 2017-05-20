@@ -8,12 +8,12 @@ module FormattedSubclasesCountStringHelper
         Event.subclasses.keys.each do |subclass|
             num = conference.events.where(accepted: true, subclass: subclass).count
             unless num.zero?
-                subs_strings.push(t("event.subclasses." + subclass, count: num))
+                subs_strings.push(t("views.event.subclasses." + subclass, count: num))
             end
         end
 
         unless subs_strings.empty?
-            "Hubo " << subs_strings.to_sentence
+            subs_strings.to_sentence
         else
             nil
         end

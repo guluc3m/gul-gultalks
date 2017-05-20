@@ -8,7 +8,7 @@ class Notifier < ActionMailer::Base
     @speaker = Speaker.find_by(event_id: verifier.event_id, email: verifier.email)
 
     email_with_name = "#{@speaker.name} <#{@speaker.email}>"
-    mail(to: email_with_name, subject: t("notifier.tag") + " " + t("notifier.confirmation_certificate.subject"))
+    mail(to: email_with_name, subject: t("mails.notifier.tag") + " " + t("mails.notifier.confirmation_certificate.subject"))
   end
 
   # def confirmation_event(verifier)
@@ -26,7 +26,7 @@ class Notifier < ActionMailer::Base
     @url = verify_url(token: verifier.token)
 
     email_with_name = "#{@speaker.name} <#{@speaker.email}>"
-    mail(to: email_with_name, subject: t("notifier.tag") + " " + t("notifier.confirmation_speaker.subject"))
+    mail(to: email_with_name, subject: t("mails.notifier.tag") + " " + t("mails.notifier.confirmation_speaker.subject"))
   end
 
   # Sends a vote confirmation email with a link the user must access in order
@@ -34,7 +34,7 @@ class Notifier < ActionMailer::Base
   def confirmation_vote(verifier)
     @event = Event.find(verifier.event_id)
     @url = verify_url(token: verifier.token)
-    mail(to: verifier.email, subject: t("notifier.tag") + " " + t("notifier.confirmation_vote.subject"))
+    mail(to: verifier.email, subject: t("mails.notifier.tag") + " " + t("mails.notifier.confirmation_vote.subject"))
   end
 
   # Generates a speaker certificate, attaches the resulting PDF file to the
@@ -47,7 +47,7 @@ class Notifier < ActionMailer::Base
     attachments[cert_name] = SpeakerCert.new(@event, @speaker).render
 
     email_with_name = "#{@speaker.name} <#{@speaker.email}>"
-    mail(to: email_with_name, subject: t("notifier.tag") + " " + t("notifier.send_certificate.subject"))
+    mail(to: email_with_name, subject: t("mails.notifier.tag") + " " + t("mails.notifier.send_certificate.subject"))
   end
 
   # Sends a unique edition token to the first speaker for the given activity
@@ -57,6 +57,6 @@ class Notifier < ActionMailer::Base
     @speaker = speaker
 
     email_with_name = "#{@speaker.name} <#{@speaker.email}>"
-    mail(to: email_with_name, subject: t("notifier.tag") + " " + t("notifier.send_edition_token.subject"))
+    mail(to: email_with_name, subject: t("mails.notifier.tag") + " " + t("mails.notifier.send_edition_token.subject"))
   end
 end

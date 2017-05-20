@@ -1,4 +1,4 @@
-- page_title t("event.new_event")
+- page_title t("views.event.new_event")
 
 = event_breadcrumbs(@conference, nil, "new")
 
@@ -7,14 +7,14 @@
     .large-3.columns
       = link_to conference_path(params[:conference_id]), { class: "button tiny radius expand" } do
         %span.fa.fa-chevron-left.fa-fw.fa-lg
-        = t("back").humanize
+        = t("back")
 
 .row
   .large-12.columns
     %h1.subheader
-      = t("event.basic_info")
+      = t("views.event.basic_info")
     %h5.subheader
-      = t("event.complete_basic_form")
+      = t("views.event.complete_basic_form")
     %hr
 
 = form_for @form, url: {controller: "events", action: "create_basic"} do |f|
@@ -29,22 +29,22 @@
     .large-12.columns
       %label{for: "subclass"}
         %i.fa.fa-thumb-tack.fa-fw.fa-lg.subheader
-        = t("event.subclass")
+        = Event.human_attribute_name("subclass")
         %small
           = t("event.required")
-        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.subclass_requirements"), class: "radius"}
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("views.event.subclass_requirements"), class: "radius"}
       .row
         .large-3.columns
-          = f.select(:subclass, Event.subclasses.keys.map {|s| [t("event.subclasses.#{s}.default").humanize, s]}, class: "radius", required: true, label: false)
+          = f.select(:subclass, Event.subclasses.keys.map {|s| [t("views.event.subclasses.#{s}.default").humanize, s]}, class: "radius", required: true, label: false)
 
   .row
     .large-12.columns
       %label{for: "title"}
         %i.fa.fa-bookmark.fa-fw.fa-lg.subheader
-        = t("event.title")
+        = Event.human_attribute_name("title")
         %small
-          = t("event.required")
-        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.title_requirements"), class: "radius"}
+          = t("views.event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("views.event.title_requirements"), class: "radius"}
         .right
           %sub 128
       = f.text_field :title, label: false, maxlength: 128, required: true, class: "radius"
@@ -53,10 +53,10 @@
     .large-12.columns
       %label{for: "summary"}
         %i.fa.fa-paperclip.fa-fw.fa-lg.subheader
-        = t("event.summary")
+        = Event.human_attribute_name("summary")
         %small
-          = t("event.required")
-        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.summary_requirements"), class: "radius"}
+          = t("views.event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("views.event.summary_requirements"), class: "radius"}
         .right
           %sub 128
       = f.text_field :summary, label: false, maxlength: 128, required: true, class: "radius"
@@ -65,13 +65,16 @@
     .large-12.columns
       %label{for: "description"}
         %i.fa.fa-bars.fa-fw.fa-lg.subheader
-        = t("event.description")
+        = Event.human_attribute_name("description")
         %small
-          = t("event.required")
-        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.description_requirements"), class: "radius"}
+          = t("views.event.required")
+        %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("views.event.description_requirements"), class: "radius"}
         .right
           %sub.subheader
-            %strong [Markdown enabled]
+            %strong
+              [
+              = t("views.event.markdown_enabled")
+              ]
           %sub 1400
       = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius md-textarea", size: "10x8"
 
@@ -80,4 +83,4 @@
     .medium-4.columns
       = render partial: 'partials/recaptcha'
     .medium-4.columns
-      = f.submit(t("event.send_event"), class: "button success expand")
+      = f.submit(t("views.event.send_event"), class: "button success expand")

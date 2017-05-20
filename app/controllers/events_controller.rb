@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  include Gultalks::Commentable
+  include Commentable
   # helper_method :event, :events
 
   # Returns information on all publicly shown events for a given conference.
