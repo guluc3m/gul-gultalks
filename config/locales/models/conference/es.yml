@@ -1,0 +1,25 @@
+es:
+  activerecord:
+    models:
+      conference:
+        one: "jornada"
+        other: "jornadas"
+    attributes:
+      conference:
+        active: "Activa"
+        call_for_papers_enabled: "Call for talks habilitado"
+        call_for_papers_end_date: "Fecha de finalización del Call for talks"
+        call_for_papers_start_date: "Fecha de inicio del Call for talks"
+        coordinator: "Coordinador"
+        created_at: "Creada"
+        description: "Descripción"
+        end_date: "Fecha de finalización"
+        location: "Lugar"
+        show_calendar: "Mostrar calendario"
+        slug: "Slug"
+        start_date: "Fecha de inicio"
+        title: "Título"
+        updated_at: "Última actualización"
+        voting_enabled: "Votaciones habilitadas"
+        voting_end_date: "Fecha de finalización de votaciones"
+        voting_start_date: "Fecha de inicio de votaciones"

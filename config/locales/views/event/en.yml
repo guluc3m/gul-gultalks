@@ -3,9 +3,13 @@ en:
     event:
       are_you_speaker: "Are you going to be the speaker for this activity?"
       are_you_speaker_explanation: |
-          If you just want to propose an activity that you would like to attend to, you will only need to give information on the title, the topic, the type of activity (talk or workshop) and a small description.
+          If you just want to propose an activity that you would like to attend
+          to, you will only need to give information on the title, the topic,
+          the type of activity (talk or workshop) and a small description.
 
-          However, if you, or your group of friends, want to present the talk or workshop, you will have to give further details, including information on the speakers.
+          However, if you, or your group of friends, want to present the talk
+          or workshop, you will have to give further details, including
+          information on the speakers.
       assist:
         unassigned: "Unassigned"
         assisted_by: "Assisted by"

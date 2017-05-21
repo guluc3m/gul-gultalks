@@ -1,0 +1,67 @@
+es:
+  mails:
+    notifier:
+      confirmation_certificate:
+        subject: "Confirmación de certificado"
+        body: |
+          Hola.
+
+          Hemos recibido una petición de certificado para la actividad '%{event_title}'.
+          Por favor, visita el siguiente enlace para validarla.
+
+          %{validation_url}
+
+          Una vez validada, recibirás el certificado en tu dirección de e-mail.
+      confirmation_event:
+        subject: "Confirmación de actividad"
+        body: |
+          Hola.
+
+          Muchas gracias por proponer la actividad '%{event_title}'.
+
+          Por favor, visita el siguiente enlace para validarlo y comprobar que no eres un robot.
+
+          %{validation_url}
+      confirmation_speaker:
+        subject: "Confirmación de ponencia"
+        body: |
+          Hola %{name}.
+
+          Se ha recibido una propuesta para que seas el ponente de '%{event_title}'.
+
+          Si deseas hacerte cargo de ello, por favor, visita el siguiente enlace.
+
+          %{validation_url}
+      confirmation_vote:
+        subject: "Confirmación de voto"
+        body: |
+          Hola.
+
+          Gracias por votar la actividad '%{event_title}'
+
+          Por favor, visita el siguiente enlace para validar tu voto.
+
+          %{validation_url}
+      send_certificate:
+        subject: "Certificado de actividad"
+        body: |
+          Hola %{name}.
+
+          Adjunto encontrarás el certificado para la actividad '%{event_title}'.
+      send_edition_token:
+        subject: "Enlace de edición de actividad"
+        body: |
+          Hola %{name}.
+
+          Dado que eres el primer ponente de la actividad '%{event_title}', te hemos mandado su enlace de edición.
+
+          Este enlace es único para esta actividad, por lo que cualquiera  que acceda al enlace podrá editar los detalles.
+
+          Tu enlace es:
+
+          %{edition_url}
+      footer: |
+        --
+        Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid
+        Visita gul.es
+      tag: "[GulTalks]"

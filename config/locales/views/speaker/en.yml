@@ -12,7 +12,7 @@ en:
       name: "Name"
       name_requirements: "Can only contain literal characters and hyphens"
       propose: "Propose speaker"
-      propose_msg: "Introduce the information of the speaker that you want to propose for this activity"
+      propose_msg: "Enter the information of the speaker that you want to propose for this activity"
       remove_speaker: "Remove speaker"
       request_certificate: "I want to receive a certificate as speaker of this activity"
       twitter: "Twitter"

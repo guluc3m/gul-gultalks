@@ -1,0 +1,20 @@
+es:
+  views:
+    speaker:
+      add: "Añadir ponente"
+      caption: "Ponente %{index} (pulsar para ver detalles)"
+      certificate: "Certificado de la actividad"
+      confirmed: "Confirmado"
+      email: "Email"
+      email_requirements: "No es una dirección de email válida"
+      invalid: "Ponente inválido"
+      min_max: "Debe haber un mínimo de 1 ponente y un máximo de 5."
+      name: "Nombre"
+      name_requirements: "Sólo puede contener letras y guiones"
+      propose: "Proponer ponente"
+      propose_msg: "Introduce la información del ponente al que quieres proponerpara esta actividad"
+      remove_speaker: "Elminar speaker"
+      request_certificate: "Quiero recibir un certificado como ponente de esta actividad"
+      twitter: "Twitter"
+      unassigned: "Falta ponente"
+      warning_up_to_five: "Debe haber un mínimo de 1 ponente y un máximo de 5."

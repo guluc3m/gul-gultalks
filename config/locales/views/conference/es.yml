@@ -1,0 +1,57 @@
+es:
+  views:
+    conference:
+      call_for_papers_end_date: "Fecha de finalización del Call for talks"
+      call_for_papers_open: "El Call for talks está abierto"
+      call_for_papers_period: "Call for talks:"
+      call_for_papers_start_date: "Fecha de inicio delCall for talks"
+      captions:
+          description: |
+              Descripciones de cada una de las etiquetas que aparecen junto a
+              las actividades.
+          cancelled_description: |
+              La actividad ha sido cancelada porque el ponente no puede asistir.
+              Esto suele ocurrir por motivos ajenos a la organización, aunque
+              se intentará notificar dichos casos lo antes posible, incluyendo
+              motivos para la cancelación si fuera posible.
+          header: "Leyenda"
+          one: "Etiqueta"
+          other: "Etiquetas"
+          show: "Ver leyenda"
+          talk_description: |
+              La actividad es una charla. Uno o varios ponentes comparten
+              sus ideas o conocimiento sobre un tema específico.
+              Por lo general, los asistentes hacen preguntas durante la charla
+              o se acercan al final para resolver determinadas dudas.
+          unassigned_description: |
+              La actividad necesita alguien que se encargue de ella. Si crees
+              que puedes dar la charla o taller en cuestión, puedes proponerte
+              como ponente. De lo contrario, si conoces a alguien que pueda
+              hacerlo, puedes proponerle como ponente. Esto se hace usando el
+              formulario de 'Proponer ponente'.
+          workshop_description: |
+              La actividad es un taller. El objetivo de los talleres es el de
+              interactuar con los asistentes y que puedan probar lo que se
+              está mostrando. La idea es tener una actividad dinámica y
+              entretenida.
+      coordinator: "Coordinador"
+      description: "Descripción"
+      end_date: "Fecha de finalización"
+      first_to_propose: "¡Propón la primera actividad!"
+      list: "Ediciones anteriores"
+      previous_editions: |
+          Aquí puedes ver todas las ediciones anteriores.
+          Selecciona un año para mostrar todas las ediciones de dicho año.
+      propose_another_event: "Proponer otra actividad"
+      propose_event: "Proponer actividad"
+      start_date: "Fecha de inicio"
+      status:
+        active: "Activa"
+        call_for_papers_enabled: "Call for talks habilitado"
+        show_calendar: "Mostrar calendario"
+        voting_enabled: "Votaciones habilitadas"
+      title: "Título"
+      voting_end_date: "Fecha de finalización de votaciones"
+      voting_period: "Votaciones:"
+      voting_start_date: "Fecha de inicio de votaciones"
+      warning_no_conferences: "No se pudieron recuperar ediciones anteriores."

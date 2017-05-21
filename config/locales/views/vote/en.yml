@@ -1,8 +1,0 @@
-en:
-  views:
-    vote:
-      email: "Email"
-	  invalid_email: "Invalid email"
-	  one: "vote"
-	  other: "votes"
-	  send_vote: "Send vote"

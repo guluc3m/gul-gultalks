@@ -1,0 +1,113 @@
+es:
+  views:
+    event:
+      are_you_speaker: "¿Vas a ser el ponente de esta actividad?"
+      are_you_speaker_explanation: |
+          Si sólo quieres proponer una actividad a la que te gustaría asistir,
+          únicamente necesitas dar un título, el tema, el tipo de actividad
+          (charla o taller) y una pequeña descripción.
+
+          Si por el contrario tú o tu grupo de amigos queréis presentar una
+          charla o taller, tendrás que dar detalles adicionales, incluyendo
+          información sobre los ponentes.
+      assist:
+        unassigned: "Sin asignar"
+        assisted_by: "Asistida por"
+      back_to_event: "Volver a la actividad"
+      back_to_events: "Volver a las actividades"
+      basic_info: "Información básica"
+      comments: "Comentarios"
+      comment:
+        first_to_comment: "Escribe el primer comentario"
+        no_comments: "Sin comentarios"
+        post: "Publicar"
+        send_comment: "Enviar comentario"
+        reply: "Responder"
+        replying_to: "Respondiendo a"
+        requirements: "Sólo puede contener caracteres alfanuméricos y guiones."
+        response_to: "en respuesta a #%{id}"
+      complete_basic_form: "Completa el formulario con información básica sobre la actividad."
+      complete_detailed_form: "Completa el formulario con información detallada sobre la actividad"
+      contact: "Dirección de email"
+      detailed_info: "Información detallada"
+      description_requirements: "Sólo puede contener caracteres alfanuméricos y guiones."
+      directions: "Cómo llegar"
+      download_ical: "Descargar calendario (iCal)"
+      durations:
+        unspecified_duration: "Sin especificar"
+        t_0: "Menos de 30 minutos"
+        t_1: "30 minutos"
+        t_2: "1 hora"
+        t_3: "1 hora y 30 minutos"
+        t_4: "2 horas"
+        t_5: "Más de 2 horas"
+      edit_event: "Editar actividad"
+      email_requirements: "No es una dirección de correo válida"
+      finalized: "Finalizada"
+      i_am_proposing: "No, sólo la estoy proponiendo"
+      i_am_speaker: "Sí, voy a ser el ponente"
+      languages:
+        es: "Español"
+        en: "Inglés"
+      levels:
+        unspecified_level: "Sin especificar"
+        noob: "Noob"
+        easy: "Fácil"
+        medium: "Medio"
+        hard: "Difícil"
+        hacker: "Hacker"
+      map:
+        lines: "Líneas"
+        stop: "Parada"
+        go_bus: "En bus"
+        go_train: "En tren (Cercanías) o Metro"
+        view_bigger: "Ver mapa más grande"
+      markdown_enabled: "Markdown habilitado"
+      missing_speaker: "Actividades sin ponente"
+      missing_speaker_msg: |
+          Las siguientes actividades necesitan un ponente. Si crees que puedes
+          presentar la charla o taller, no dudes en presentarte.
+      new_event: "Nueva actividad"
+      notes_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
+      recent: "Actividades recientes"
+      required: "Requerido"
+      send_event: "Enviar actividad"
+      share: "Compartir"
+      status:
+        accepted: "Aceptada"
+        active: "Activa"
+        cancelled: "Cancelada"
+        new: "Nueva"
+        shown: "Mostrada"
+        verified: "Validada"
+      subclass_requirements: "Elige un tipo de actividad"
+      subclasses:
+        talk:
+          default: "Charla"
+          one: "charla"
+          other: "%{count} charlas"
+        workshop:
+          default: "Taller"
+          one: "taller"
+          other: "%{count} talleres"
+      summary_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
+      tag_format: "Cada etiqueta debe estar separada por una coma (,)"
+      title_requirements: "Sólo puede contener caracteres alfanuméricos y guiones"
+      to_comment: "Comentar"
+      to_vote: "Votar"
+      url_requirements: "No es una URL válida"
+      code_requirements: "No es una URL válida"
+      validation_email: "Dirección de correo para validación"
+      validation_email_explanation: "Necesitas validar la actividad mediante un enlace que se enviará a tu email."
+      video:
+        estimated_duration: "Duración estimada"
+        presented_by: "Presentada por"
+      view_recording: "Ver grabación"
+      vote:
+        email: "Email"
+        invalid_email: "Email inválido"
+        one: "voto"
+        other: "votos"
+        send_vote: "Enviar voto"
+      warning_no_video: "No se ha encontrado vídeo"
+      watch_live: "Ver en directo"

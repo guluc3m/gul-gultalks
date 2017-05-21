@@ -1,0 +1,36 @@
+es:
+  archive: "Archivo"
+  back: "Atrás"
+  date:
+    formats:
+      default: ! '%d/%m/%Y'
+      day_name: ! '%A'
+      day_name_num: ! '%A %d'
+      day_only: ! '%d'
+      long: ! '%d de %B de %Y'
+      month_only: ! '%B'
+      month_year: ! '%B de %Y'
+      short: ! '%d de %b'
+      year: ! '%Y'
+      order:
+      - :day
+      - :month
+      - :year
+    from: "del"
+    to: "al"
+    of: "de"
+  home: "Inicio"
+  not_available: "No disponible"
+  options: "Opciones"
+  recaptcha:
+    another: "Obtener un nuevo CAPTCHA"
+    audio: "Obtener un CAPTCHA sonoro"
+    enter_numbers: "Introduce los números que escuches:"
+    enter_words: "Introduce las palabras de encima:"
+    help: "Ayuda"
+    image: "Obtener un CAPTCHA de imagen"
+    incorrect: "reCAPTCHA incorrecto. Por favor, prueba otra vez."
+  time:
+    from: "de"
+    to: "a"
+  user: "Usuario"

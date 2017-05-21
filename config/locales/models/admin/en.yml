@@ -1,7 +1,12 @@
 en:
   activerecord:
+    models:
+      admin:
+        one: "admin"
+        other: "admins"
     attributes:
       admin:
+        created_at: "Created at"
         current_sign_in_at: "Current sign in at"
         current_sign_in_ip: "Current sign in IP"
         email: "Email"
@@ -13,3 +18,4 @@ en:
         remember_created_at: "Remember created at"
         role: "Role"
         sign_in_count: "Sign in count"
+        updated_at: "Updated at"

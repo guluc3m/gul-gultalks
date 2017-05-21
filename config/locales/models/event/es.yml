@@ -1,0 +1,37 @@
+es:
+  activerecord:
+    models:
+      event:
+        one: "actividad"
+        other: "actividades"
+    attributes:
+      event:
+        accepted: "Aceptada"
+        assisted_by: "Asistida por"
+        cancelled: "Cancelada"
+        code: "Código fuente"
+        code_url: "URL del código original"
+        comments: "Comentarios"
+        conference_id: "Jornada"
+        content_url: "Material de apoyo (diapositivas, material adicional, etc.)"
+        created_at: "Creada"
+        description: "Descripción"
+        duration: "Duración"
+        end_dtime: "Fecha y hora de finalización"
+        language: "Idioma"
+        level: "Nivel"
+        live_video: "Vídeo en directo"
+        location: "Luger"
+        notes: "Comentarios del ponente"
+        room: "Aula"
+        shown: "Mostrada"
+        start_dtime: "Fecha y hora de inicio"
+        subclass: "Tipo"
+        summary: "Resumen"
+        tag_list: "Etiquetas"
+        title: "Título"
+        token: "Token de edición"
+        verified: "Verificada"
+        video: "Vídeo"
+        votes: "Votos"
+        updated_at: "Última actualización"

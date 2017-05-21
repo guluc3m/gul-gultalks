@@ -19,8 +19,8 @@ en:
           other: "Tags"
           show: "Show captions"
           talk_description: |
-              This symbol means that the activity is a talk. One or several
-              speakers share their ideas or knowledge about a specific topic.
+              The activity is a talk. One or several speakers share their ideas
+              or knowledge about a specific topic.
               Usually, attendees make questions during the talk or approach the
               speaker to solve certain doubts at the end.
           unassigned_description: |
@@ -30,10 +30,9 @@ en:
               who is capable of doing so, you may propose them as speaker.
               This is done through the 'Propose speaker' form.
           workshop_description: |
-              This symbol means that the activity is a workshop. The aim of the
-              workshops is to interact with the attendees and that they can try
-              out what is being shown. The idea is to have a dynamic and
-              entertaining activity.
+              The activity is a workshop. The aim of workshops is to interact
+              with the attendees and that they can try out what is being shown.
+              The idea is to have a dynamic and entertaining activity.
       coordinator: "Coordinator"
       description: "Descripción"
       end_date: "End date"

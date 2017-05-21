@@ -1,0 +1,15 @@
+es:
+  views:
+    verifier:
+      invalid: "Código de validación inválido"
+      type: "Tipo"
+      types:
+          certificate: "certificado"
+          event: "actividad"
+          speaker: "ponente"
+          vote: "voto"
+      verified: "Validado"
+      verified_certificate: "Gracias, pronto recibirás el certificado de la actividad en tu email"
+      verified_event: "¡Gracias por validar la actividad!"
+      verified_speaker: "¡Gracias por validar tu asistencia!"
+      verified_vote: "¡Gracias por validar tu voto!"

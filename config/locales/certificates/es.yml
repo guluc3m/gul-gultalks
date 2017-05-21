@@ -1,0 +1,12 @@
+en:
+  certificates:
+    speaker:
+      header: "_______________________________, como representante de la organización"
+      organization: |
+        Grupo de Usuarios de Linux
+        de la Universidad Carlos III de Madrid
+      certifies: "CERTIFICA"
+      speaker_info: "Que  %{name}  ha asistido a  '%{conference_title}' , teniendo lugar durante el mes de %{month} de %{year}, presentando la ponencia:"
+      i_sign: "Y para que conste a los efectos oportunos, sello y firmo el presente."
+      signature_details: "En %{location} a ___ de  ___________ de %{year}."
+      signature: "Fdo:"
