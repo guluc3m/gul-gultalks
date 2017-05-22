@@ -1,0 +1,6 @@
+.row
+  .medium-4.columns
+    = render partial: 'partials/recaptcha'
+  .medium-4.columns
+    %br
+    = f.submit(t("event.send_event"), class: "button success expand")
