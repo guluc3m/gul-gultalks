@@ -64,8 +64,6 @@
           = t("event.required")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("event.description_requirements"), class: "radius"}
         .right
-          %sub.subheader
-            %strong Markdown enabled
           %sub 1400
       = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius md-textarea", size: "10x8"
 
@@ -163,4 +161,3 @@
       = render partial: 'partials/recaptcha'
     .medium-4.columns
       = f.submit(t("event.send_event"), class: "button success expand")
-
