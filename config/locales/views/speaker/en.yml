@@ -1,0 +1,20 @@
+en:
+  views:
+    speaker:
+      add: "Add speaker"
+      caption: "Speaker %{index} (press to view details)"
+      certificate: "Activity certificate"
+      confirmed: "Confirmed"
+      email: "Email"
+      email_requirements: "Not a valid email address"
+      invalid: "Invalid speaker"
+      min_max: "There has to be a minimum of 1 speaker and a maximum of 5."
+      name: "Name"
+      name_requirements: "Can only contain literal characters and hyphens"
+      propose: "Propose speaker"
+      propose_msg: "Enter the information of the speaker that you want to propose for this activity"
+      remove_speaker: "Remove speaker"
+      request_certificate: "I want to receive a certificate as speaker of this activity"
+      twitter: "Twitter"
+      unassigned: "Speaker needed"
+      warning_up_to_five: "There must be at least 1 speaker and a maximum of 5."

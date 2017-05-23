@@ -9,7 +9,8 @@
     %h3.subheader
       = h(@event.title)
     %p
-      Presentado por:
+      = t("views.event.video.presented_by")
+      :
       - @event.speaker_list.each_with_index.map do |speaker, index|
         - if speaker.twitter.present?
           = link_to h(speaker.name), "https://twitter.com/#{speaker.twitter}", target: "_blank"
@@ -18,11 +19,11 @@
         - unless index+1 == @event.speaker_list.length
           = ", "
     %span.right
-      Duración estimada:
+      = t("views.event.video.estimated_duration")
       = distance_of_time_in_words(@event.start_dtime, @event.end_dtime)
 
   - else
     %i.fa.fa-frown-o.fa-fw.fa-2x
-    = t("warning.no_video")
+    = t("views.event.warning_no_video")
 
   %a.close-reveal-modal ×

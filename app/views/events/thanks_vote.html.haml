@@ -1,19 +1,18 @@
-- page_title t("to_vote")
+- page_title t("views.to_vote")
 
 = event_breadcrumbs(@conference, @event, "vote")
 
 .row
   .medium-12.columns
     %h1.subheader
-      = t("thanks.vote_thanks")
+      = t("views.thanks.vote_thanks")
     %hr
 .row
   .medium-6.columns
     %p
-      = t("thanks.vote_thanks_msg", :title => @event.title)
+      = t("views.thanks.vote_thanks_msg", title: @event.title)
     %p
-      = t("thanks.vote_thanks_reminder")
+      = t("views.thanks.vote_thanks_reminder")
   .medium-6.columns
-    / TODO: tanslate!
-    = link_to "Votar otra actividad", conference_path(@conference), :class => "button radius success expand"
-    = link_to t("event.back_to_event"), conference_event_path(@conference, @event), :class => "button radius expand"
+    = link_to t("views.thanks.vote_another"), conference_path(@conference), :class => "button radius success expand"
+    = link_to t("views.event.back_to_event"), conference_event_path(@conference, @event), :class => "button radius expand"

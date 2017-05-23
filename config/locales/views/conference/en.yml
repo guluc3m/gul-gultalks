@@ -1,0 +1,56 @@
+en:
+  views:
+    conference:
+      call_for_papers_end_date: "Call for talks end date"
+      call_for_papers_open: "The call for talks is open"
+      call_for_papers_period: "Call for talks:"
+      call_for_papers_start_date: "Call for talks start date"
+      captions:
+          description: |
+              Descriptions for each of the tags that appear next to the
+              activities.
+          cancelled_description: |
+              The activity has been cancelled due to the speaker not being able
+              to attend. This is usually out of the control of the organization,
+              although these cases will be notified as soon as possible,
+              including the reason for cancellation, if possible.
+          header: "Captions"
+          one: "Tag"
+          other: "Tags"
+          show: "Show captions"
+          talk_description: |
+              The activity is a talk. One or several speakers share their ideas
+              or knowledge about a specific topic.
+              Usually, attendees make questions during the talk or approach the
+              speaker to solve certain doubts at the end.
+          unassigned_description: |
+              The activity is missing someone to take care of it. If you believe
+              that you are able to deliver the talk or workshop in question, you
+              can propose yourself as a speaker. Otherwise, if you know someone
+              who is capable of doing so, you may propose them as speaker.
+              This is done through the 'Propose speaker' form.
+          workshop_description: |
+              The activity is a workshop. The aim of workshops is to interact
+              with the attendees and that they can try out what is being shown.
+              The idea is to have a dynamic and entertaining activity.
+      coordinator: "Coordinator"
+      description: "Descripción"
+      end_date: "End date"
+      first_to_propose: "Be the first to propose an activity!"
+      list: "Previous editions"
+      previous_editions: |
+        Here you can see all the previous editions.
+        Select a year to display all the editions in that particular year.
+      propose_another_event: "Propose another activity"
+      propose_event: "Propose activity"
+      start_date: "Start date"
+      status:
+        active: "Active"
+        call_for_papers_enabled: "Call for talks enabled"
+        show_calendar: "Show calendar"
+        voting_enabled: "Voting enabled"
+      title: "Title"
+      voting_end_date: "Voting end date"
+      voting_period: "Voting:"
+      voting_start_date: "Voting start date"
+      warning_no_conferences: "Unable to recover any previous edition."

@@ -1,4 +1,4 @@
-- page_title t("speaker.propose")
+- page_title t("views.speaker.propose")
 
 = event_breadcrumbs(@conference, @event, "speaker")
 
@@ -18,33 +18,33 @@
 
   .row
     .medium-6.columns
-      %p= t("speaker.propose_msg")
+      %p= t("views.speaker.propose_msg")
       %p
-        = t("thanks.contact_msg")
+        = t("views.thanks.contact_msg")
         = mail_to "info@gul.es", "info@gul.es", subject: "[GulTalks]"
 
     .medium-6.columns
       %label{for: "name"}
         %i.fa.fa-users.fa-fw.fa-lg.subheader
-        = t("speaker.name")
+        = Speaker.human_attribute_name("name")
         %small
-          = t("event.required")
+          = t("views.event.required")
         .right
           %sub 64
       = f.text_field :name, label: false, maxlength: 64, class: "radius"
 
       %label{for: "email"}
         %i.fa.fa-envelope.fa-fw.fa-lg.subheader
-        = t("speaker.email")
+        = Speaker.human_attribute_name("email")
         %small
-          = t("event.required")
+          = t("views.event.required")
         .right
           %sub 64
       = f.text_field :email, label: false, maxlength: 64, type: "email", class: "radius"
 
       %label{for: "twitter"}
         %i.fa.fa-twitter.fa-fw.fa-lg.subheader
-        = t("speaker.twitter")
+        = Speaker.human_attribute_name("twitter")
       .row.collapse.prefix-radius
         .small-2.columns
           %span.prefix
@@ -52,15 +52,20 @@
         .small-10.columns
           = f.text_field :twitter, label: false, maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})", class: "radius"
 
-      = f.check_box :certificate, label: t('speaker.request_certificate.default').humanize
+      %label{for: "certificate"}
+        = t("views.speaker.request_certificate")
+
+      .switch.radius.small
+        = f.check_box :certificate, label: false, id: "switch-certificate"
+        %label{for: "switch-certificate"}
 
     .medium-6.columns
       = render "partials/recaptcha"
       %br
-      = f.submit(t("speaker.propose"), class: "button radius success expand")
+      = f.submit(t("views.speaker.propose"), class: "button radius success expand")
 
 .row
   .large-3.columns.show-for-medium-down
     = link_to conference_event_path(@conference, @event), { class: "button radius expand" } do
       %span.fa.fa-chevron-left.fa-fw.fa-lg
-      = t("event.back_to_event").humanize
+      = t("views.event.back_to_event").humanize

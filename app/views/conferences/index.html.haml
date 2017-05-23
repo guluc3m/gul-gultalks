@@ -1,18 +1,17 @@
-- page_title t("Conferences")
+- page_title Conference.model_name.human(count: 2)
 
 = home_breadcrumbs("conferences")
 
 .row
   .large-12.columns
     %h1.subheader
-      = t("conference.list")
+      = t("views.conference.list")
     %hr
     - unless @conferences.count.zero?
       -# FIXME: translate
       .large-12.colums
-        %p |
-          A continuación se muestran todas las anteriores ediciones.
-          Pulsa sobre un año y se mostrarán las ediciones para ese año.
+        %p
+          = t("views.conference.previous_editions")
 
       - seasons = @conferences.map{|conference| conference.start_date.year}.uniq
       .large-12.colums.show-for-small-down
@@ -56,4 +55,4 @@
         .large-12.columns
           .alert-box
             %i.fa.fa-frown-o.pull-left.fa-2x
-            = t("warning.no_conferences")
+            = t("views.conference.warning_no_conferences")

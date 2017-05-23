@@ -6,7 +6,7 @@
       .large-6.columns
         %h4.subheader
           %i.fa.fa-comment-o
-          = t("event.to_comment").humanize
+          = t("views.event.to_comment")
         %hr
     = form_for([@commentable, @comment], url: {controller: "comments", action: "create", event_id: @event}) do |f|
 
@@ -16,32 +16,31 @@
         .large-4.columns
           %label{for: "name"}
             %i.fa.fa-user.fa-fw.fa-lg.subheader
-            = t("event.comment.name").humanize
+            = Comment.human_attribute_name("name")
             %small
-              = t("event.required")
+              = t("views.event.required")
           = f.text_field :name, label: false, required: true, class: "radius"
 
       .row
         .large-6.columns
           %label{for: "email"}
             %i.fa.fa-envelope.fa-fw.fa-lg.subheader
-            = t("event.comment.email").humanize
+            = Comment.human_attribute_name("email")
             %small
-              = t("event.required")
+              = t("views.event.required")
           = f.text_field :email, label: false, required: false, type: "email", class: "radius"
 
       .row
         .large-6.columns
           %label{for: "content"}
             %i.fa.fa-bars.fa-fw.fa-lg.subheader
-            = t("event.comment.comment").humanize
+            = Comment.human_attribute_name("content")
             %small
-              = t("event.required")
+              = t("views.event.required")
           = f.text_area :content, label: false, maxlength: 256, required: true, class: "radius", size: "10x8"
 
       .row
         .large-4.columns
           = render "partials/recaptcha"
         .large-2.columns.left
-          = f.submit(t("event.comment.post").humanize, class: "button radius success expand")
-
+          = f.submit(t("views.event.comment.post"), class: "button radius success expand")

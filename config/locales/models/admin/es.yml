@@ -1,0 +1,21 @@
+es:
+  activerecord:
+    models:
+      admin:
+        one: "administrador"
+        other: "administradores"
+    attributes:
+      admin:
+        created_at: "Creado"
+        current_sign_in_at: "Inicio de sesión actual"
+        current_sign_in_ip: "IP de la sesión actual"
+        email: "E-mail"
+        encrypted_password: "Contraseña cifrada"
+        last_sign_in_at: "Último inicio de sesión"
+        last_sign_in_ip: "IP del último inicio de sesión"
+        reset_password_token: "Token de reinicio de contraseña"
+        reset_password_sent_at: "Envío de reinicio de contraseña"
+        remember_created_at: "Creación del recordatorio"
+        role: "Rol"
+        sign_in_count: "Inicios de sesión"
+        updated_at: "Última actualización"

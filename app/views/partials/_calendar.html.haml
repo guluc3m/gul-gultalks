@@ -5,7 +5,7 @@
       .pull-right
         = link_to conference_path(params[:id], format: :ics), {class: "button secondary tiny radius"} do
           %i.fa.fa-calendar.fa-fw.fa-lg
-          = t("event.download_ical")
+          = t("views.event.download_ical")
 
   - (@conference.start_date..@conference.end_date).each_with_index do |d, index|
     .medium-6.columns
@@ -26,7 +26,7 @@
                       = t("not_available").humanize
                   - elsif DateTime.now > event.end_dtime
                     .label.secondary{style: "border: 1px solid"}
-                      = t("event.finalized").humanize
+                      = t("views.event.finalized").humanize
                     |
                   - else
                     %small.subheader
@@ -35,7 +35,7 @@
                       = event.end_dtime.to_s(:time)
                     |
                   %small.subheader
-                    = t("event.room")
+                    = t("views.event.room")
                     - if event.room.present?
                       = event.room
                     - else

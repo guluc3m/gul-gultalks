@@ -1,0 +1,25 @@
+en:
+  activerecord:
+    models:
+      conference:
+        one: "conference"
+        other: "conference"
+    attributes:
+      conference:
+        active: "Active"
+        call_for_papers_enabled: "Call for talks enabled"
+        call_for_papers_end_date: "Call for talks end date"
+        call_for_papers_start_date: "Call for talks start date"
+        coordinator: "Coordinator"
+        created_at: "Created at"
+        description: "Description"
+        end_date: "End date"
+        location: "Location"
+        show_calendar: "Show calendar"
+        slug: "Slug"
+        start_date: "Start date"
+        title: "Title"
+        updated_at: "Updated at"
+        voting_enabled: "Voting enabled"
+        voting_end_date: "Voting end date"
+        voting_start_date: "Voting start date"

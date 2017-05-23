@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      speaker:
+        one: "speaker"
+        other: "speakers"
+    attributes:
+      speaker:
+        certificate: "Wants activity certificate"
+        confirmed: "Confirmed"
+        email: "Email"
+        event_id: "Activity"
+        name: "Name"
+        twitter: "Twitter"

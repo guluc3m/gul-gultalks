@@ -1,16 +1,16 @@
 .row
   .large-12.columns
-    Tags: 
+    = t("views.conference.captions.other"):
     .radius.label
       %i.fa.fa-bullhorn.fa-lg
-      = t("event.subclasses.talk").humanize
+      = t("views.event.subclasses.talk")
     .radius.label
       %i.fa.fa-wrench.fa-lg
-      = t("event.subclasses.workshop").humanize
+      = t("views.event.subclasses.workshop")
     .warning.radius.label
       %i.fa.fa-child.fa-lg
-      = t('speaker.unassigned').humanize
+      = t('views.speaker.unassigned')
     .alert.radius.label
       %i.fa.fa-lock.fa-lg
-      = t("event.status.cancelled").humanize
+      = t("views.event.status.cancelled")
 %br
