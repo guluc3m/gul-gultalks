@@ -64,11 +64,6 @@
           = t("views.event.required")
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("views.event.description_requirements"), class: "radius"}
         .right
-          %sub.subheader
-            %strong
-              [
-              = t("views.event.markdown_enabled")
-              ]
           %sub 1400
       = f.text_area :description, label: false, maxlength: 1400, required: true, class: "radius md-textarea", size: "10x8"
 

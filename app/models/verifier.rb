@@ -2,7 +2,7 @@ class Verifier < ActiveRecord::Base
   after_create :send_verification
   before_create :generate_token
 
-  TOKEN_LENGTH=32
+  TOKEN_LENGTH = 32
 
   validates :email,
             presence: true,
