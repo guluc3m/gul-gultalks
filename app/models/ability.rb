@@ -11,7 +11,6 @@ class Ability
 
        if user.admin?
          can :manage, :all
-
        elsif user.assistant?
          can :manage, Event
          can :manage, Speaker
