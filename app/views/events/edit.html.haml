@@ -9,13 +9,7 @@
         %span.fa.fa-chevron-left.fa-fw.fa-lg
         = t("back")
 
-.row
-  .large-12.columns
-    %h1.subheader
-      = t("views.event.detailed_info")
-    %h5.subheader
-      = t("views.event.complete_detailed_form")
-    %hr
+= render partial: "partials/view_header", locals: { header: "event.detailed_info", subheader: "event.complete_detailed_form" }
 
 = form_for @form, url: {controller: "events", action: "save_edit"} do |f|
 

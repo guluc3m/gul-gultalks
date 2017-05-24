@@ -2,11 +2,7 @@
 
 = event_breadcrumbs(@conference, nil, "new")
 
-.row
-  .large-12.columns
-    %h1.subheader
-      = t("views.event.new_event")
-      %hr
+= render partial: "partials/view_header", locals: { header: "event.new_event" }
 
 .row
   .large-12.columns
