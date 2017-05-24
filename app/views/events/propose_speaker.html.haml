@@ -58,9 +58,3 @@
       = render "partials/recaptcha"
       %br
       = f.submit(t("speaker.propose"), class: "button radius success expand")
-
-.row
-  .large-3.columns.show-for-medium-down
-    = link_to conference_event_path(@conference, @event), { class: "button radius expand" } do
-      %span.fa.fa-chevron-left.fa-fw.fa-lg
-      = t("event.back_to_event").humanize

@@ -3,13 +3,6 @@
 = event_breadcrumbs(@conference, @form, "edit")
 
 .row
-  .visible-for-medium-down
-    .large-3.columns
-      = link_to conference_path(@conference), { class: "button tiny radius expand" } do
-        %span.fa.fa-chevron-left.fa-fw.fa-lg
-        = t("back").humanize
-
-.row
   .large-12.columns
     %h1.subheader
       = t("event.detailed_info")
