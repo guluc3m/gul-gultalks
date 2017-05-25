@@ -7,10 +7,11 @@
     .show-for-medium-up
       = render 'partials/status_tags_full', event: @event
       .right
-        .success.radius.label
-          %b
-            = @event.votes
-            = Event.human_attribute_name("votes")
+        - if @event.votes.nonzero?
+          .success.radius.label
+            %b
+              = @event.votes
+              = Event.human_attribute_name("votes")
         %span.label.radius.secondary.visible-for-medium-up
           = "#{t("views.event.share")}:"
           != share_event_link(event: @event, provider: "twitter", url: @short_url)
