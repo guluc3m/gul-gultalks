@@ -7,10 +7,11 @@
     .show-for-medium-up
       = render 'partials/status_tags_full', event: @event
       .right
-        .success.radius.label
-          %b
-            = @event.votes
-            = Event.human_attribute_name("votes")
+        - if @event.votes.nonzero?
+          .success.radius.label
+            %b
+              = @event.votes
+              = Event.human_attribute_name("votes")
         %span.label.radius.secondary.visible-for-medium-up
           = "#{t("views.event.share")}:"
           != share_event_link(event: @event, provider: "twitter", url: @short_url)
@@ -36,111 +37,13 @@
     %hr
 
 .row
-  .medium-9.columns
+  .medium-8.columns
     .text-justify
       = Markdown.new(@event.description).to_html.html_safe
 
-  / Right column panel
-  .medium-3.columns
-    .panel
-      %ul.no-bullet
-        %li
-          %i.fa.fa-calendar.fa-fw.fa-lg.subheader
-          - if @event.start_dtime
-            = l @event.start_dtime.to_date, format: :long
-          - else
-            = t("not_available")
-        %li
-          %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
-          - if @event.start_dtime || @event.end_dtime
-            = "#{@event.start_dtime.strftime("%H:%M")} - #{@event.end_dtime.strftime("%H:%M")}"
-          - else
-            = t("not_available")
-        %li
-          %i.fa.fa-map-marker.fa-fw.fa-lg.subheader
-          %span
-            - if @event.location.present?
-              = @event.location
-              .show-for-medium-up
-                = link_to t("views.event.directions"), "#",  data: { "reveal-id" => "map-modal" }, class: "dotted-link"
-                = render "partials/map_modal"
-              .show-for-small
-                = link_to t("views.event.directions"), "http://www.openstreetmap.org/?mlat=40.33249&amp;mlon=-3.76728#map=17/40.33250/-3.76729", target: "_blank"
-            - else
-              = t("not_available")
+  / Info panel
+  = render "info_panel", event: @event
 
-        %li
-          %i.fa.fa-building.fa-fw.fa-lg.subheader
-          = "#{Event.human_attribute_name("room")}:"
-          - if @event.room.present?
-            = @event.room
-            // TODO: write a scope like "room.accesible?"
-            %span.label.radius.success
-              %i.fa.fa-wheelchair.fa-lg
-          - else
-            = t("not_available")
-      %hr
-
-      %ul.no-bullet
-        %li
-          - if (@event.start_dtime..@event.end_dtime).cover?(Time.now) and @event.live_video.present?
-            .show-for-medium-up
-              = link_to("#", data: { "reveal-id" => "video-modal" }) do
-                .button.tiny.alert.radius
-                  %i.fa.fa-youtube-play.fa-fw.fa-lg
-                  %strong
-                    = t("views.event.watch_live")
-              = render partial: "partials/video_modal", live: true
-            .show-for-small-only
-              = link_to(@event.live_video, target: "_blank" ) do
-                .button.tiny.alert.radius
-                  %i.fa.fa-youtube-play.fa-fw.fa-lg
-                  %strong
-                    = t("views.event.watch_live")
-          - elsif @event.video.present?
-            .show-for-medium-up
-              %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
-              = link_to("#", data: { "reveal-id" => "video-modal" }) do
-                = t("views.event.view_recording")
-              = render partial: "partials/video_modal", live: false
-            .show-for-small-down
-              %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
-              = link_to(@event.video, target: "_blank") do
-                = t("views.event.view_recording")
-          - else
-            %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
-            = t('not_available')
-
-        %li
-          %i.fa.fa-globe.fa-fw.fa-lg.subheader
-          - if @event.language.present?
-            = t("views.event.languages.#{@event.language}")
-          - else
-            = t('not_available')
-
-        %li
-          %i.fa.fa-lightbulb-o.fa-fw.fa-lg.subheader
-          - if @event.level.present?
-            = "#{Event.human_attribute_name("level")}:"
-            = t("views.event.levels.#{@event.level}")
-          - else
-            = t('not_available')
-
-        - if not @event.cancelled
-          -if @event.assisted_by.present?
-            %i.fa.fa-support.fa-fw.fa-lg.subheader
-            = Event.human_attribute_name("assisted_by")
-            = @event.assisted_by.humanize
-          - elsif @event.accepted
-            %i.fa.fa-support.fa-fw.subheader
-            = t('event.assist.unassigned')
-
-      - if @event.tag_list.present?
-        %ul.no-bullet
-          %li
-            - @event.tag_list.map do |tag|
-              .label
-                = tag.humanize
 
 .row
   .large-12.columns
