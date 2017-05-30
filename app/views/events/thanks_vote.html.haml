@@ -13,6 +13,10 @@
       = t("views.thanks.vote_thanks_msg", title: @event.title)
     %p
       = t("views.thanks.vote_thanks_reminder")
+    %p
+      = t("views.thanks.contact_msg")
+      = mail_to "info@gul.es", "info@gul.es", subject: "[GulTalks]"
+      
   .medium-6.columns
     = link_to t("views.thanks.vote_another"), conference_path(@conference), :class => "button radius success expand"
     = link_to t("views.event.back_to_event"), conference_event_path(@conference, @event), :class => "button radius expand"
