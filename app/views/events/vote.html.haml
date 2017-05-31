@@ -8,11 +8,8 @@
       .alert-box.alert.radius
         = msg
 
-.row
-  .large-12.columns
-    %h1.subheader
-      = t("views.event.to_vote")
-    %hr
+= render partial: "partials/view_header", locals: { header: "event.to_vote" }
+
 .row
   .medium-6.columns
     %p

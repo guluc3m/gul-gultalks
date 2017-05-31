@@ -2,11 +2,10 @@
 
 = home_breadcrumbs("conferences")
 
+= render partial: "partials/view_header", locals: { header: "conference.list" }
+
 .row
   .large-12.columns
-    %h1.subheader
-      = t("views.conference.list")
-    %hr
     - unless @conferences.count.zero?
       -# FIXME: translate
       .large-12.colums

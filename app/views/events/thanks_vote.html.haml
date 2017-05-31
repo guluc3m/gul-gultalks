@@ -2,11 +2,8 @@
 
 = event_breadcrumbs(@conference, @event, "vote")
 
-.row
-  .medium-12.columns
-    %h1.subheader
-      = t("views.thanks.vote_thanks")
-    %hr
+= render partial: "partials/view_header", locals: { header: "thanks.vote_thanks" }
+
 .row
   .medium-6.columns
     %p

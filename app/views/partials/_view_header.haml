@@ -1,0 +1,9 @@
+- if defined? header
+  .row
+    .large-12.columns
+      %h1.subheader
+        = t("views.#{header}")
+      - if defined? subheader
+        %h5.subheader
+          = t("views.#{subheader}")
+      %hr
