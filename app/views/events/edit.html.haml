@@ -1,6 +1,6 @@
 - page_title t("views.event.edit_event")
 
-= event_breadcrumbs(@conference, @form, "edit")
+= event_breadcrumbs(@conference, nil, "edit")
 
 .row
   .visible-for-medium-down
@@ -11,7 +11,7 @@
 
 = render partial: "partials/view_header", locals: { header: "event.detailed_info", subheader: "event.complete_detailed_form" }
 
-= form_for @form, url: {controller: "events", action: "save_edit"} do |f|
+= form_for @form, url: {controller: "events", action: "save_edit"}, method: :patch do |f|
 
   - @form.errors.full_messages.each do |msg|
     .row
@@ -118,7 +118,7 @@
         %i.fa.fa-question-circle.fa-fw{"aria-haspopup" => "true", "data-tooltip" => "", title: t("views.event.tag_format")}
         .right
           %sub 128
-      = f.text_field :tag_list, label: false, maxlength: 128, class: "radius", placeholder: t("views.event.tag_format"), value: @form.tag_list.join(",")
+      = f.text_field :tag_list, label: false, maxlength: 128, class: "radius", placeholder: t("event.tag_format"), value: @form.tag_list
 
   .row
     .large-4.columns

@@ -261,6 +261,7 @@ class EventsController < ApplicationController
     (5 - event.speakers.count).times { event.speakers.build }
 
     @form = DetailedEventForm.new(event)
+    @form.tag_list = event.tag_list.join(",")
   end
 
   # Save the edited activity
