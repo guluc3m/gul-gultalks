@@ -1,16 +1,14 @@
-- page_title t("speaker.propose")
+- page_title t("views.speaker.propose")
 
 = event_breadcrumbs(@conference, @event, "speaker")
 
-.row
-  .medium-12.columns
-    %h1.subheader
-      = t("thanks.speaker_thanks")
-.row
-  .large-6.columns
-    %p
-      = t("thanks.speaker_thanks_msg")
+= render partial: "partials/view_header", locals: { header: "thanks.speaker_thanks" }
 
 .row
   .large-6.columns
-    = link_to t("event.back_to_event"), conference_event_path(@conference, @event), class: "button radius expand"
+    %p
+      = t("views.thanks.speaker_thanks_msg")
+
+.row
+  .large-6.columns
+    = link_to t("views.event.back_to_event"), conference_event_path(@conference, @event), class: "button radius expand"

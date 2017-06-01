@@ -1,0 +1,15 @@
+es:
+  views:
+    thanks:
+      contact_msg: "Si necesitas ayuda, no dudes en escribir a "
+      proposal: "Gracias por proponer la actividad "
+      speaker_thanks: "¡Gracias por proponer un ponente!"
+      speaker_thanks_msg: "El ponente recibirá una confirmación en su correo para validar la propuesta."
+      thank_you: "¡Gracias!"
+      thanks_msg: "Gracias por proponer una actividad. Pronto recibirás un correo de confirmación."
+      thank_you_vote: "Gracias por tu voto"
+      vote_another: "Votar otra actividad"
+      vote_msg: "Gracias por tu voto. Para evitar fraude en las votaciones, recibirás un correo de confirmación para validar tu voto."
+      vote_thanks: "¡Gracias por votar!"
+      vote_thanks_msg: "Has votado la actividad '%{title}'."
+      vote_thanks_reminder: "Recuerda comprobar tu bandeja de entrada para validar tu voto."

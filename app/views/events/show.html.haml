@@ -7,13 +7,13 @@
     .show-for-medium-up
       = render 'partials/status_tags_full', event: @event
       .right
-        .success.radius.label
-          %b
-            = @event.votes
-            = t('vote', count: @event.votes).humanize
+        - if @event.votes.nonzero?
+          .success.radius.label
+            %b
+              = @event.votes
+              = Event.human_attribute_name("votes")
         %span.label.radius.secondary.visible-for-medium-up
-          // TODO: localize
-          Compártelo:
+          = "#{t("views.event.share")}:"
           != share_event_link(event: @event, provider: "twitter", url: @short_url)
           != share_event_link(event: @event, provider: "facebook", url: @short_url)
           != share_event_link(event: @event, provider: "google", url: @short_url)
@@ -22,7 +22,7 @@
       .success.radius.label.pull-right
         %b
           = @event.votes
-          = t('vote', count: @event.votes).humanize
+          = Event.human_attribute_name("votes")
 
     %h2
       = h(@event.title)
@@ -37,123 +37,26 @@
     %hr
 
 .row
-  .medium-9.columns
+  .medium-8.columns
     .text-justify
       = Markdown.new(@event.description).to_html.html_safe
 
-  / Right column panel
-  .medium-3.columns
-    .panel
-      %ul.no-bullet
-        %li
-          %i.fa.fa-calendar.fa-fw.fa-lg.subheader
-          - if @event.start_dtime
-            = l @event.start_dtime.to_date, format: :long
-          - else
-            = t("not_available").humanize
-        %li
-          %i.fa.fa-clock-o.fa-fw.fa-lg.subheader
-          - if @event.start_dtime || @event.end_dtime
-            = "#{@event.start_dtime.strftime("%H:%M")} - #{@event.end_dtime.strftime("%H:%M")}"
-          - else
-            = t("not_available").humanize
-        %li
-          %i.fa.fa-map-marker.fa-fw.fa-lg.subheader
-          %span
-            - if @event.location.present?
-              = @event.location
-              .show-for-medium-up
-                = link_to t("event.directions"), "#",  data: { "reveal-id" => "map-modal" }, class: "dotted-link"
-                = render "partials/map_modal"
-              .show-for-small
-                = link_to t("event.directions"), "http://www.openstreetmap.org/?mlat=40.33249&amp;mlon=-3.76728#map=17/40.33250/-3.76729", target: "_blank"
-            - else
-              = t("not_available").humanize
+  / Info panel
+  = render "info_panel", event: @event
 
-        %li
-          %i.fa.fa-building.fa-fw.fa-lg.subheader
-          - if @event.room.present?
-            = t('event.room').humanize + ": " + @event.room
-            // TODO: write a scope like "room.accesible?"
-            %span.label.radius.success
-              %i.fa.fa-wheelchair.fa-lg
-          - else
-            = "#{t('event.room').humanize} #{t('not_available')}"
-      %hr
-
-      %ul.no-bullet
-        %li
-          - if (@event.start_dtime..@event.end_dtime).cover?(Time.now) and @event.live_video.present?
-            .show-for-medium-up
-              = link_to("#", data: { "reveal-id" => "video-modal" }) do
-                .button.tiny.alert.radius
-                  %i.fa.fa-youtube-play.fa-fw.fa-lg
-                  %strong
-                    = t("event.watch_live").humanize
-              = render partial: "partials/video_modal", live: true
-            .show-for-small-only
-              = link_to(@event.live_video, target: "_blank" ) do
-                .button.tiny.alert.radius
-                  %i.fa.fa-youtube-play.fa-fw.fa-lg
-                  %strong
-                    = t("event.watch_live").humanize
-          - elsif @event.video.present?
-            .show-for-medium-up
-              %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
-              = link_to("#", data: { "reveal-id" => "video-modal" }) do
-                = t("event.view_recording").humanize
-              = render partial: "partials/video_modal", live: false
-            .show-for-small-down
-              %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
-              = link_to(@event.video, target: "_blank") do
-                = t("event.view_recording").humanize
-          - else
-            %i.fa.fa-video-camera.fa-fw.fa-lg.subheader
-            = t('not_available').humanize
-
-        %li
-          %i.fa.fa-globe.fa-fw.fa-lg.subheader
-          - if @event.language.present?
-            = t("event.languages.#{@event.language}").humanize
-          - else
-            = t('not_available').humanize
-
-        %li
-          %i.fa.fa-lightbulb-o.fa-fw.fa-lg.subheader
-          - if @event.level.present?
-            = "#{t("event.level").humanize}:"
-            = t("event.levels.#{@event.level}")
-          - else
-            = t('not_available').humanize
-
-        - if not @event.cancelled
-          -if @event.assisted_by.present?
-            %i.fa.fa-support.fa-fw.fa-lg.subheader
-            = t('event.assist.assisted_by').humanize
-            = @event.assisted_by.humanize
-          - elsif @event.accepted
-            %i.fa.fa-support.fa-fw.subheader
-            = t('event.assist.unassigned').humanize
-
-      - if @event.tag_list.present?
-        %ul.no-bullet
-          %li
-            - @event.tag_list.map do |tag|
-              .label
-                = tag.humanize
 
 .row
   .large-12.columns
     %span
       %i.fa.fa-download.fa-fw.subheader
       = link_to_if(@event.content_url.present?, h(@event.content_url), @event.content_url, target: "_blank") do
-        = t("not_available").humanize
+        = t("not_available")
 
   .large-12.columns
     %span
       %i.fa.fa-code.fa-fw.subheader
       = link_to_if(@event.code.present?, h(@event.code), @event.code, target: "_blank") do
-        = t("not_available").humanize
+        = t("not_available")
   .large-12.columns
     %hr
 
@@ -161,73 +64,20 @@
     - if @conference.voting_enabled
       .medium-3.columns.right
         = link_to vote_conference_event_path, class: "button success radius expand" do
-          = t("to_vote")
+          = t("views.event.to_vote")
     - else
       .medium-3.columns.right
         = link_to "#", disabled: true, class: "button success radius expand" do
           %i.fa.fa-lock.fa-lg
-          = t("to_vote")
+          = t("views.event.to_vote")
 
     - if not @event.speaker? and @conference.call_for_papers_enabled
       .medium-3.columns.right
         = link_to propose_speaker_conference_event_path, class: "button alert radius expand" do
           %i.fa.fa-child.fa-lg
-          = t("speaker.propose").humanize
+          = t("views.speaker.propose")
 
-.row
-  .large-12.columns
-    .large-6.columns
-      %h4.subheader
-        %i.fa.fa-comments-o
-        = t("event.comments").humanize
-        - if @comments.count.nonzero?
-          %sup.label.secondary
-            = @comments.count
-
-    %hr{style: "border-style: dashed"}
-    - if @comments.present?
-      - @comments.map do |comment|
-        .row{id: "comment-#{comment.id}"}
-          .large-10.columns
-            .small-2.columns
-              - icon = @avatar.create_base64(comment.name, grid_size: 9, square_size: 128)
-              = image_tag "data:image/png;base64,#{icon}"
-              %strong.right
-                = link_to "#" + comment.id.to_s, "#comment-#{comment.id}"
-            .small-10.columns
-              %h5
-                = comment.name
-                - if comment.ancestry?
-                  %small.subheader
-                    %i.fa.fa-reply.fa-fw.fa-flip-horizontal
-                    = link_to "#" + comment.ancestry.last.to_s, "#comment-#{comment.ancestry.last}"
-                %small.subheader
-                  %strong &nbsp; · &nbsp;
-                  = time_ago_in_words(comment.created_at.to_time, include_seconds: true)
-              %p.text-justify
-                = simple_format(h(comment.content))
-              .actions
-                = link_to new_comment_path(@conference, @event, parent_id: comment) do
-                  %i.fa.fa-reply.fa-fw
-                  = t("event.comment.reply").humanize
-        %br
-
-    - elsif @conference.active?
-      .row
-        .large-6.large-centered.columns
-          .panel.callout.radius
-            %h2
-              = t("event.comment.no_comments").humanize
-            %p
-              = t("event.comment.first_to_comment").humanize
-
-    - else
-      .row
-        .large-6.large-centered.columns
-          .panel.callout.radius
-            %h5
-              %sub.fa.fa-frown-o.fa-2x.fa-fw
-              = t("event.comment.no_comments").humanize
+= render "comments", conference: @conference, comments: @comments, event: @event
 
 - if @conference.active?
   = render "comments/form"

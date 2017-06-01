@@ -1,0 +1,37 @@
+en:
+  activerecord:
+    models:
+      event:
+        one: "activity"
+        other: "activities"
+    attributes:
+      event:
+        accepted: "Accepted"
+        assisted_by: "Assisted by"
+        cancelled: "Cancelled"
+        code: "Source code"
+        code_url: "Original code URL"
+        comments: "Comments"
+        conference_id: "Conference"
+        content_url: "Supporting material (slides, additional material, etc.)"
+        created_at: "Created at"
+        description: "Description"
+        duration: "Duration"
+        end_dtime: "End date and time"
+        language: "Language"
+        level: "Level"
+        live_video: "Live video"
+        location: "Location"
+        notes: "Speaker comments"
+        room: "Room"
+        shown: "Shown"
+        start_dtime: "Start date and time"
+        subclass: "Type"
+        summary: "Summary"
+        tag_list: "Tags"
+        title: "Title"
+        token: "Edition token"
+        verified: "Verified"
+        video: "Video"
+        votes: "Votes"
+        updated_at: "Updated at"

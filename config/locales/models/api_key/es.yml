@@ -1,0 +1,10 @@
+es:
+  activerecord:
+    models:
+      api_key:
+        one: "Clave API"
+        other: "Claves API"
+    attributes:
+      api_key:
+          token: "Token"
+          description: "Descripción"

@@ -1,0 +1,14 @@
+es:
+  activerecord:
+    models:
+      speaker:
+        one: "ponente"
+        other: "ponentes"
+    attributes:
+      speaker:
+        certificate: "Quiere certificado de actividad"
+        confirmed: "Confirmado"
+        email: "Email"
+        event_id: "Actividad"
+        name: "Nombre"
+        twitter: "Twitter"

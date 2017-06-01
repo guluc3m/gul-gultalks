@@ -5,7 +5,7 @@
     .large-12.columns
       .alert-box.success.radius{data: {alert: ""}}
         %span
-          = t("conference.call_for_papers_period")
+          = t("views.conference.call_for_papers_period")
           = t("date.from")
           %b
             = l(@conference.call_for_papers_start_date, format: :long)
@@ -14,7 +14,7 @@
             = l(@conference.call_for_papers_end_date, format: :long)
         %br
         %span
-          = t("conference.voting_period")
+          = t("views.conference.voting_period")
           = t("date.from")
           %b
             = l(@conference.voting_start_date, format: :long)
@@ -29,10 +29,10 @@
     .large-12.columns
       .left
         %h4.subheader
-          = t("Actividades")
+          = Event.model_name.human(count: 2).humanize
       - if @conference.active? and @conference.call_for_papers_enabled and @events.count.nonzero?
         .right.show-for-small-up
-          = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), {class: "button tiny success radius"}
+          = link_to t("views.conference.propose_event"), new_conference_event_path(conference_id: @conference), {class: "button tiny success radius"}
       %hr
 
 .row
@@ -50,21 +50,21 @@
         .medium-5.medium-centered.columns
           .panel.text-center
             %h3
-              = t("conference.call_for_papers_open")
+              = t("views.conference.call_for_papers_open")
             %p
-              = t("conference.first_to_propose")
-            = link_to t("conference.propose_event"), new_conference_event_path(conference_id: @conference), {class: "button success radius expand"}
+              = t("views.conference.first_to_propose")
+            = link_to t("views.conference.propose_event"), new_conference_event_path(conference_id: @conference), {class: "button success radius expand"}
 
     - else
       %table
         %thead
           %tr
             %th{scope: "column", width: "1000"}
-              = t("Events")
+              = Event.model_name.human(count: 2).humanize
               = render partial: "partials/legend_modal"
             - if Date.today >= @conference.voting_start_date
               %th.text-center{scope: "column", width: "90"}
-                = t("vote.other").humanize
+                = t("views.vote.other").humanize
         %tbody
           - @events.map do |event|
             %tr
@@ -82,4 +82,4 @@
   .row
     .large-6.large-centered.columns
       - if @conference.call_for_papers_enabled
-        = link_to t("conference.propose_event"), new_conference_event_path(@conference), {class: "button success radius expand"}
+        = link_to t("views.conference.propose_event"), new_conference_event_path(@conference), {class: "button success radius expand"}

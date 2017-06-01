@@ -1,0 +1,16 @@
+es:
+  activerecord:
+    models:
+      comment:
+        one: "comentario"
+        other: "comentarios"
+    attributes:
+      comment:
+        ancestry: "Ancestros"
+        commentable_id: "ID de comentable"
+        commentable_type: "Tipo de comentable"
+        content: "Contenido"
+        created_at: "Creado"
+        email: "Email"
+        name: "Nombre"
+        updated_at: "Última actualización"

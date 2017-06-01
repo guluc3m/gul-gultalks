@@ -4,20 +4,22 @@
     %nav.tab-bar{"data-topbar" => "", role:"navigation", "data-options" => "sticky_on: small"}
       %section.middle.tab-bar-section
         .row
-          %div{:class => (defined?(conference) and conference != nil ? "large-2 small-6 columns" : "large-12 columns")}
+          %div{:class => (defined?(conference) and conference != nil ? "large-3 small-6 columns" : "large-12 columns")}
             = link_to root_path do
-              %h1.title
+              %h1.title.left
                 = image_tag("/favicon-32x32.png", height: '32', width: '32', alt: "GulTalks ", style: "margin-top: -6px;")
                 GulTalks
-                %small β
+                %small
+                  %sub
+                    by GUL
 
           - if defined?(conference) and conference != nil
             .show-for-large-up
-              .large-7.columns
+              .large-6.columns
                 %h1.title
                   = conference.title
               .large-3.columns
-                %h3.subheader
+                %h3.subheader.right
                   %span.grey>= t("date.from")
                   = conference.start_date.day
                   %span.grey>= t("date.to")

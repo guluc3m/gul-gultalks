@@ -1,0 +1,13 @@
+es:
+  activerecord:
+    models:
+      verifier:
+        one: "validador"
+        other: "validadores"
+    attributes:
+      verifier:
+        email: "Email"
+        event_id: "Actividad"
+        token: "Token"
+        verified: "Validado"
+        verify_type: "Tipo de validación"

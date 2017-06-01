@@ -10,18 +10,18 @@ module BreadcrumbsHelper
       crumbs.push({ "text": event.title, "link": conference_event_path(conference, event) })
     end
 
-    if action.eql? "edit"
-      crumbs.push({ "text": t("event.edit_event") })
+    case action
+      when "edit"
+        crumbs.push({ "text": t("views.event.edit_event") })
 
-    elsif action.eql? "new"
-      crumbs.push({ "text": t("event.new_event") })
+      when "new"
+        crumbs.push({ "text": t("views.event.new_event") })
 
-    elsif action.eql? "speaker"
-      crumbs.push({ "text": t("speaker.propose") })
+      when "speaker"
+        crumbs.push({ "text": t("views.speaker.propose") })
 
-    elsif action.eql? "vote"
-      crumbs.push({ "text": t("to_vote")} )
-
+      when "vote"
+        crumbs.push({ "text": t("views.event.to_vote")} )
     end
 
     render "partials/breadcrumbs", crumbs: crumbs
@@ -31,13 +31,14 @@ module BreadcrumbsHelper
   def home_breadcrumbs(action="")
     crumbs = []
 
-    crumbs.push({ "text": t("home"), "link": root_path })
+    crumbs.push({ "text": t("defaults.home"), "link": root_path })
 
-    if action.eql? "api"
-      crumbs.push({ "text": "API" })
+    case action
+      when "api"
+        crumbs.push({ "text": "API" })
 
-    elsif action.eql? "conferences"
-      crumbs.push({ "text": t("conference.list") })
+      when "conferences"
+        crumbs.push({ "text": t("views.conference.list") })
     end
 
     render "partials/breadcrumbs", crumbs: crumbs

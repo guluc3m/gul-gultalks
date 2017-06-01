@@ -54,7 +54,8 @@ Now MySQL is used as DB engine instead of SQLite.
 - [CofeeScript](http://coffeescript.org/)
 - [Zurb Foundation](http://foundation.zurb.com/)
 - [Font Aweosme](http://fortawesome.github.io/Font-Awesome/)
-- [Active Admin](http://activeadmin.info/)
+- ~~[Active Admin](http://activeadmin.info/)~~
+- [RailsAdmin](https://github.com/sferik/rails_admin/)
 - [Devise](https://github.com/plataformatec/devise)
 - [CanCanCan](https://github.com/CanCanCommunity/cancancan)
 - [Ancestry](https://github.com/stefankroes/ancestry)

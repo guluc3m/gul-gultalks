@@ -1,0 +1,12 @@
+en:
+  certificates:
+    speaker:
+      header: "_______________________________, as representative of the organization"
+      organization: |
+        Grupo de Usuarios de Linux
+        de la Universidad Carlos III de Madrid
+      certifies: "CERTIFIES"
+      speaker_info: "That  %{name}  has attended  '%{conference_title}' , which took place during the month of %{month} of %{year}, presenting the lecture:"
+      i_sign: "And for the record for the appropriate purposes, I sign and seal this document."
+      signature_details: "In %{location} on the  ___ of ___________  %{year}."
+      signature: "Signed:"

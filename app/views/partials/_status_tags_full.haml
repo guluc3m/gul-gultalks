@@ -1,17 +1,17 @@
 - if event.created_at.today? and not event.cancelled?
   %span.success.radius.label
-    = t("event.status.new").humanize
+    = t("views.event.status.new")
 %span.radius.label
   - if event.subclass.eql?("workshop")
     %i.fa.fa-wrench.fa-lg
   - if event.subclass.eql?("talk")
     %i.fa.fa-bullhorn.fa-lg
-  = t("event.subclasses.#{event.subclass}.default")
+  = t("views.event.subclasses.#{event.subclass}.default")
 - if event.cancelled?
   %span.alert.radius.label
     %i.fa.fa-lock.fa-lg
-    = t("event.status.cancelled").humanize
+    = t("views.event.status.cancelled")
 - unless event.speaker_list.present?
   %span.warning.radius.label
     %i.fa.fa-child.fa-lg
-    = t('speaker.unassigned').humanize
+    = t('views.speaker.unassigned')

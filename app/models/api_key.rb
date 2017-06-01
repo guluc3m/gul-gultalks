@@ -3,9 +3,7 @@ class ApiKey < ApplicationRecord
 
   TOKEN_LENGTH = 32
 
-
   private
-
   def generate_token
     begin
       token = SecureRandom.urlsafe_base64(TOKEN_LENGTH, false)
