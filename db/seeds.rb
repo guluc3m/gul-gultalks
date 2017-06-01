@@ -90,7 +90,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Gestionando la configuracion de nuestros servidores con Puppet',
       :summary => 'Gestion con Puppet',
@@ -113,7 +113,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => false)
-      
+
 Event.create(
       :title => 'Entendiendo y optimizando MySQL',
       :summary => 'MySQL',
@@ -136,7 +136,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Sistemas de control de versiones',
       :summary => 'Git',
@@ -182,7 +182,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Introduccion al desarrollo web',
       :summary => 'Uso de Symfony',
@@ -205,7 +205,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Desarrollando aplicaciones con Android',
       :summary => 'Android',
@@ -273,7 +273,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Pandora',
       :summary => 'La caja',
@@ -296,7 +296,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Empaquetango y distribuyendo software PHP',
       :summary => 'Distribucion mediante PEAR',
@@ -319,7 +319,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Creacion de bibliotecas PHP escritas en C',
       :summary => 'PHP y C',
@@ -342,7 +342,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Pruebas unitarias y cobertura',
       :summary => 'Uso de PHP Unit',
@@ -365,7 +365,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Introduccion a Arduino',
       :summary => 'Arduino',
@@ -388,7 +388,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Introduccion a Linux',
       :summary => 'Breve introduccion a Linux',
@@ -411,7 +411,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Curso de C',
       :summary => 'Introduccion al lenguaje de programacion C',
@@ -434,7 +434,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Licencias al desnudo',
       :summary => 'Introduccion a las licencias de software',
@@ -457,7 +457,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Introduccion a lenguajes funcionales',
       :summary => 'Scala',
@@ -480,7 +480,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Promesas en javascript',
       :summary => 'Introduccion',
@@ -503,7 +503,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => false)
-      
+
 Event.create(
       :title => 'Bitcoin',
       :summary => 'Introduccion a Bitcoin',
@@ -549,7 +549,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Zoe',
       :summary => 'Introduccion a Zoe',
@@ -572,7 +572,7 @@ Event.create(
       :language => 'es',
       :code_url => '',
       :cancelled => true)
-      
+
 Event.create(
       :title => 'Diseño Web',
       :summary => 'Introduccion',

@@ -1,4 +1,4 @@
-class Conference < ActiveRecord::Base
+class Conference < ApplicationRecord
   extend FriendlyId
   has_many :events
   validates_presence_of :title, :description
