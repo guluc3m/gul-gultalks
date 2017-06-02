@@ -11,7 +11,7 @@
           .success.radius.label
             %b
               = @event.votes
-              = Event.human_attribute_name("votes")
+              = Event.human_attribute_name("votes", count: @event.votes)
         %span.label.radius.secondary.visible-for-medium-up
           = "#{t("views.event.share")}:"
           != share_event_link(event: @event, provider: "twitter", url: @short_url)
