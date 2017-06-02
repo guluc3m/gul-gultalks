@@ -13,7 +13,7 @@ group :development, :test do
     gem 'guard-livereload', require: false
     gem 'rails-perftest', '~> 0.0.6'
     gem 'mina'
-
+    gem 'puma'
     # Use debugger
     # gem 'debugger', group: [:development, :test]
     # gem 'meta_request'
