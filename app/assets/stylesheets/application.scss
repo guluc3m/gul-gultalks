@@ -15,16 +15,22 @@
  *= require_tree .
  */
 
-table, fieldset {
-    border-radius: 3px;
-}
+ table, fieldset {
+   border-radius: 3px;
+ }
 
-.text-error {
-    color: #f04124;
-}
+ .text-error {
+   color: #f04124;
+ }
 
-.dotted-link {
-  text-decoration: none;
-  border-bottom: 1px dotted;
-  font-size: 75%
-}
+ .dotted-link {
+   text-decoration: none;
+   border-bottom: 1px dotted;
+   font-size: 75%
+ }
+
+ #logo-subhead {
+   position: absolute;
+   left: 53px;
+   bottom: 11px;
+ }
