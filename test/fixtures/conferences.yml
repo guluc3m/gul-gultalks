@@ -7,8 +7,6 @@ one:
   end_date: 2013-12-21
   coordinator: MyString
   active: false
-  call_for_papers_enabled: 
-  voting_enabled: 
   call_for_papers_start_date: 2013-12-21
   call_for_papers_end_date: 2013-12-21
   voting_start_date: 2013-12-21
@@ -24,12 +22,25 @@ two:
   end_date: 2013-12-21
   coordinator: MyString
   active: true
-  call_for_papers_enabled: 
-  voting_enabled: 
+  call_for_papers_enabled: true
   call_for_papers_start_date: 2013-12-21
   call_for_papers_end_date: 2013-12-21
   voting_start_date: 2013-12-21
   voting_end_date: 2013-12-21
   location: ''
-  call_for_papers_enabled: false
   voting_enabled: false
+
+three:
+  title: MyString
+  description: MyString
+  start_date: 2013-12-21
+  end_date: 2013-12-21
+  coordinator: MyString
+  active: true
+  call_for_papers_enabled: true
+  call_for_papers_start_date: 2013-12-21
+  call_for_papers_end_date: 2013-12-21
+  voting_start_date: 2013-12-21
+  voting_end_date: 2013-12-21
+  location: ''
+  voting_enabled: true

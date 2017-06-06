@@ -12,6 +12,7 @@ one:
   votes: 1
   level: 1
   content_url: MyString
+  conference: two
 
 two:
   title: MyString
@@ -25,3 +26,18 @@ two:
   votes: 1
   level: 1
   content_url: MyString
+  conference: one
+
+three:
+  title: MyString
+  summary: MyString
+  description: MyString
+  room: MyString
+  start_dtime: 2013-12-21 13:35:35
+  end_dtime: 2013-12-21 13:35:35
+  assisted_by: MyString
+  created_at: 2013-12-21 13:35:35
+  votes: 1
+  level: 1
+  content_url: MyString
+  conference: three
