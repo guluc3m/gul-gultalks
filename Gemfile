@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-# TODO(javierhonduco): haven't uploaded to bleeding-edge
-# Rails, 5.1.1, because of routing imcompatibilities
-gem 'rails', '~> 5.0.3'
+gem 'rails', '~> 5.1.1'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
