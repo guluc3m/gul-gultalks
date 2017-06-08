@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '>= 2.3.1'
 
 # TODO(javierhonduco): haven't uploaded to bleeding-edge
 # Rails, 5.1.1, because of routing imcompatibilities
