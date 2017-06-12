@@ -1,4 +1,4 @@
-class CreateVerifiers < ActiveRecord::Migration
+class CreateVerifiers < ActiveRecord::Migration[4.2]
   def change
     create_table :verifiers do |t|
 
