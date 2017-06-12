@@ -1,18 +1,9 @@
-sudo: false
 language: ruby
+sudo: false
+cache: bundler
 rvm:
   - 2.3.1
-
-script:
-  - bundle exec rake db:drop RAILS_ENV=test
-  - bundle exec rake db:create db:migrate RAILS_ENV=test
-  - bundle exec rake db:seed RAILS_ENV=test
-  - bundle exec rake test RAILS_ENV=test
-
-bundler_args: --without production --jobs=3
-
+  - 2.4.1
+  - ruby-head
 notifications:
   email: false
-
-cache: bundler
-sudo: false
