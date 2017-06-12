@@ -64,7 +64,7 @@
               = render partial: "partials/legend_modal"
             - if Date.today >= @conference.voting_start_date
               %th.text-center{scope: "column", width: "90"}
-                = t("views.vote.other").humanize
+                = Event.human_attribute_name("votes", count: 2)
         %tbody
           - @events.map do |event|
             %tr
