@@ -1,51 +1,52 @@
 # GulTalks
-[![License](http://img.shields.io/license/MIT.png?color=red)](https://github.com/guluc3m/gul-gultalks/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/guluc3m/gul-gultalks.svg?branch=develop)](https://travis-ci.org/guluc3m/gul-gultalks)
+[![License](http://img.shields.io/license/MIT.png?color=red)](https://github.com/guluc3m/gul-gultalks/blob/master/LICENSE)
 [![Inline docs](http://inch-ci.org/github/guluc3m/gul-gultalks.svg?branch=master)](http://inch-ci.org/github/guluc3m/gul-gultalks)
 
-This is the GUL's Technical Conferences management system made with Ruby on Rails framework.
+This is UC3M's Linux User Group (or GUL in Spanish) conference management system made with the Ruby on Rails framework.
 
-This project started in late december of 2013 for replace the old application made with Cake PHP
-framework which was very difficult to maintain and we decided to start from scratch,
-adding many modern development techniques and latest technologies.
+The project started in late December of 2013 to replace the old application made with the Cake PHP framework which was very difficult to maintain and we decided to start from scratch, adding many modern development techniques and the latest technologies.
 
+You can see it live [here](https://cursos.gul.es).
 
 #### Development environment
-To build the app in dev or test environments, use the following command:
+Clone it:
+```
+$ git clone https://github.com/guluc3m/gul-gultalks
+$ cd gul-gultalks
+```
 
+Install the dependencies, excluding the production ones:
 ```shell
 $ bundle install --without production
-# or you can speed it up in macOS/OSX with
-$ bundle install --without production --jobs $((`sysctl -n hw.ncpu`-1))
-# or you can speed it up in common GNU/Linux distros with
-$ bundle install --without production --jobs `nproc --ignore=1`
-
 ```
-We think that SQLite is better for development purposes.
 
-#### To run it:
+Migrate the database and add sample data:
 ```shell
-$ rake db:migrate
-$ rake db:seed # Add a pair of conferences for testing only
-$ rails server [-p $PORT] # Port is optional
+$ bin/rails db:migrate
+$ bin/rails db:seed 
 ```
 
-#### Production enviroment (deploy)
-If you want to deploy the app, you have to modify the deploy [config](https://github.com/guluc3m/gul-gultalks/blob/develop/config/deploy.rb) file placed in the
-config directory. Then, you have just type the following command:
+Start the server:
+```shell
+$ bin/rails server [-p $PORT] # Port is optional
+```
+
+And now you should be able see it live! 
+
+#### Running the tests
+Unit tests - which at the moment are really basic and don't cover a lot - can be run with:
+```shell
+$ bin/rails test
+```
+
+#### Deployment
+If you want to deploy the app, you have to modify the deploy [config](https://github.com/guluc3m/gul-gultalks/blob/develop/config/deploy.rb) file placed in the config directory. 
+Then, you have to type the following command:
 
 ```shell
 $ mina deploy [--verbose]
 ```
-
-To build the app in production environment and test it locally, use the following command:
-
-```shell
-$ bundle install --without development
-$ rails server [-p $PORT] # Port is optional
-```
-
-Now MySQL is used as DB engine instead of SQLite.
 
 #### Some of the technologies employed
 - [Ruby on Rails](http://rubyonrails.org/)
@@ -54,23 +55,20 @@ Now MySQL is used as DB engine instead of SQLite.
 - [CofeeScript](http://coffeescript.org/)
 - [Zurb Foundation](http://foundation.zurb.com/)
 - [Font Aweosme](http://fortawesome.github.io/Font-Awesome/)
-- ~~[Active Admin](http://activeadmin.info/)~~
 - [RailsAdmin](https://github.com/sferik/rails_admin/)
 - [Devise](https://github.com/plataformatec/devise)
 - [CanCanCan](https://github.com/CanCanCommunity/cancancan)
 - [Ancestry](https://github.com/stefankroes/ancestry)
 - [Better Errors](https://github.com/charliesome/better_errors)
 - [Mina](http://mina-deploy.github.io/mina/)
-- [and many more...](https://github.com/guluc3m/gul-gultalks/blob/develop/Gemfile)
+- [and many more!](https://github.com/guluc3m/gul-gultalks/blob/develop/Gemfile)
 
 #### Wiki
-
-For more info about the API or the deploy, check our [wiki](https://github.com/guluc3m/gul-gultalks/wiki)
+For more info about the API or the deploy, check the [wiki](https://github.com/guluc3m/gul-gultalks/wiki)
 
 #### Have a bug/ suggestion?
 Bugs or suggestions? Visit the [issue tracker](https://github.com/guluc3m/gul-gultalks/issues/)
 
-GulTalks tests are automatically run by [Travis CI](https://travis-ci.org/guluc3m/gul-gultalks)
 
 License
 =======
