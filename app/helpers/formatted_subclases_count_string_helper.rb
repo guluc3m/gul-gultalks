@@ -15,7 +15,7 @@ module FormattedSubclasesCountStringHelper
         unless subs_strings.empty?
             subs_strings.to_sentence
         else
-            nil
+            t("No events retieved")
         end
     end
 
