@@ -14,18 +14,19 @@
             %small
               = link_to year, "##{year}"
 
-      .large-12.colums
-        - seasons.each do |year|
-          .large-12.columns
-            %h3.subheader{id: "#{year}"}
-              = year
-          - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
-            .large-6.columns.left
-              %span
-                = link_to conference.title, conference_path(conference)
-              %p
-                %small
-                  = format_subclasses_string(conference)
+      .row
+        .large-12.colums
+          - seasons.each do |year|
+            .large-12.columns
+              %h3.subheader{id: "#{year}"}
+                = year
+            - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
+              .large-6.columns.left
+                %span
+                  = link_to conference.title, conference_path(conference)
+                %p
+                  %small
+                    = format_subclasses_string(conference)
 
     - else
       .row
