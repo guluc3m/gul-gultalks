@@ -7,7 +7,8 @@
   .large-12.columns
     - unless @conferences.count.zero?
       - seasons = @conferences.map{|conference| conference.start_date.year}.uniq
-      .large-12.columns
+
+      .large-12.columns.show-for-medium-up
         .right
           - seasons.each do |year|
             %small
@@ -19,7 +20,7 @@
             %h3.subheader{id: "#{year}"}
               = year
           - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
-            .large-6.columns
+            .large-6.columns.left
               %span
                 = link_to conference.title, conference_path(conference)
               %p
