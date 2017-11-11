@@ -49,7 +49,7 @@ gem 'jbuilder'
 gem 'font-awesome-rails'
 # TODO(javierhonduco): lock 5.5.3.2 instead of 6.3.1.0
 # otherwise the stylesheet isn't shown for some reason...
-gem 'foundation-rails', '5.5.3.2'
+# gem 'foundation-rails', '5.5.3.2'
 #gem 'foundation_rails_helper'
 gem 'modernizr-rails'
 gem 'haml-rails'

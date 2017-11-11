@@ -1,0 +1,74 @@
+<% page_title @conference.title %>
+<% @is_voting_date = Date.today >= @conference.voting_start_date %>
+
+<div class="pure-g">
+    <div class="pure-u-1">
+        <h2 class="subheader left"><%= Event.model_name.human(count: 2).humanize %></h2>
+
+        <% if @conference.active? and @conference.call_for_papers_enabled %>
+            <%= link_to t("views.conference.propose_event"), new_conference_event_path(conference_id: @conference), class: "button-success right" %>
+        <% end %>
+    </div>
+</div>
+
+<hr/>
+
+<% if @conference.active? and @conference.call_for_papers_enabled and @events.count.zero? %>
+    <div class="window-gray">
+        <div class="window-title-gray pure-g">
+            <div class="pure-u-1">
+                <span><%= t("views.conference.call_for_papers_open") %></span>
+            </div>
+        </div>
+        <div class="window-content">
+            <span><%= t("views.conference.first_to_propose") %></span>
+        </div>
+<% else %>
+    <div class="window-gray">
+        <div class="window-title-gray pure-g">
+            <div class="pure-u-4-5">
+                <span><%= Event.model_name.human(count: 2).humanize %></span>
+            </div>
+            <div class="pure-u-1-5">
+                <% if @is_voting_date %>
+                    <span><%= Event.human_attribute_name("votes", count: 2) %></span>
+                <% end %>
+            </div>
+        </div>
+        <div class="window-content">
+            <% @events.map do |event| %>
+                <div class="pure-g">
+                    <div class="pure-u-4-5">
+                        <span>
+                            <%= render partial: "partials/status_tags_short", locals: {event: event} %>
+                            <%= link_to h(event.title), conference_event_path(@conference, event) %>
+                            <div><small><%= h(event.summary) %></small></div>
+                        </span>
+                    </div>
+
+                    <div class="pure-u-1-5 align-center">
+                        <% if @is_voting_date %>
+                            <span><%= event.votes %></span>
+                        <% end %>
+                    </div>
+                </div>
+
+                <% unless event == @events.last %>
+                    <hr class="window-separator"/>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<% if @events.count > 5 %>
+    <div class="pure-g">
+        <div class="pure-u-1 pure-u-md-1-3"></div>
+        <div class="pure-u-1 pure-u-md-1-3 align-center">
+            <% if @conference.active? and @conference.call_for_papers_enabled %>
+                <%= link_to t("views.conference.propose_event"), new_conference_event_path(conference_id: @conference), class: "button-success full-width" %>
+            <% end %>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-3"></div>
+    </div>
+<% end %>

@@ -13,9 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require modernizr
-//= require foundation
 //= require cookies_eu
 //= require simplemde.min
 //= require_tree .
-
-$(function(){ $(document).foundation(); });

@@ -1,0 +1,70 @@
+<% page_title Conference.model_name.human(count: 2) %>
+
+<%= home_breadcrumbs("conferences") %>
+
+<%= render partial: "partials/view_header", locals: { header: "conference.list" } %>
+
+<% unless @conferences.count.zero? %>
+    <% seasons = @conferences.map{|conference| conference.start_date.year}.uniq %>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <p><%= t("views.conference.previous_editions") %></p>
+        </div>
+    </div>
+
+    <div class="pure-g">
+    </div>
+<% end %>
+
+.row
+  .large-12.columns
+    - unless @conferences.count.zero?
+      -# FIXME: translate
+      .large-12.colums
+        %p
+          = t("views.conference.previous_editions")
+
+      - seasons = @conferences.map{|conference| conference.start_date.year}.uniq
+      .large-12.colums.show-for-small-down
+        %ul.accordion{"data-accordion" => ""}
+          - seasons.each do |year|
+            %li.accordion-navigation
+              %a{href: "#panel-accordion-#{year}"}
+                %strong
+                  = year
+
+              .content{id: "panel-accordion-#{year}", class: "#{ seasons.max == year ? 'active' : ''}" }
+                .row
+                  - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
+                    .medium-6.columns
+                      %strong
+                        = link_to conference.title, conference_path(conference)
+                      %p
+                        = format_subclasses_string(conference) if not nil
+
+      .large-12.colums.show-for-medium-up
+        %ul.tabs.vertical{"data-tab" => ""}
+          - seasons.each do |year|
+            %li.tab-title.text-center
+              %a{href: "#panel-tab-#{year}"}
+                %strong
+                  = year
+
+        .tabs-content
+          - seasons.each do |year|
+            .content{id: "panel-tab-#{year}", class: "#{ seasons.max == year ? 'active' : ''}"}
+              .row
+                - @conferences.select{|conference| conference.start_date.year.eql? year }.map do |conference|
+                  .medium-4.columns
+                    .panel
+                      %strong
+                        = link_to conference.title, conference_path(conference)
+                      %p
+                        = format_subclasses_string(conference) if not nil
+    - else
+      .row
+        .large-12.columns
+          .alert-box
+            %i.fa.fa-frown-o.pull-left.fa-2x
+            = t("views.conference.warning_no_conferences")

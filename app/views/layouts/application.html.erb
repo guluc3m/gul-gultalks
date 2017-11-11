@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="<% defined?(@conference) ? 'GulTalks - ' + @conference.title : 'GulTalks' %>" property="og:title">
+        <meta content="article" property="og:type">
+        <meta content="<% request.original_url %>" property="og:url">
+        <meta content="GulTalks" property="og:description">
+
+        <title><%= page_title %></title>
+        <%= stylesheet_link_tag "application", media: "all" %>
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
+        <%= render "cookies_eu/consent_banner" %>
+        <%= render "layouts/header", conference: @conference %>
+</html>

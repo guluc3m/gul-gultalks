@@ -1,0 +1,19 @@
+<% last_item = crumbs.length - 1 %>
+
+<div class="pure-g">
+    <div class="pure-u-1 breadcrumbs">
+        <% crumbs.each do |crumb| %>
+            <% is_last = (crumb == crumbs.last) %>
+
+            <% if is_last or !crumb.key?(:link) %>
+                <span><%= crumb[:text] %></span>
+            <% else %>
+                <span><%= link_to crumb[:text], crumb[:link] %></span>
+            <% end %>
+
+            <% unless is_last %>
+                <span>/</span>
+            <% end %>
+        <% end %>
+    </div>
+</div>

@@ -9,9 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require foundation_and_overrides
  *= require font-awesome
  *= require simplemde.min
+ *= require pure-base-min
+ *= require pure-grids-min
+ *= require pure-grids-responsive-min
  *= require_tree .
  */
 
@@ -29,9 +31,3 @@
    font-size: 75%
  }
 
- #logo-subhead {
-   position: absolute;
-   left: 53px;
-   bottom: 11px;
-   color: #999;
- }

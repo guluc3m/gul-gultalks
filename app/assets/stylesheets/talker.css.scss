@@ -1,0 +1,325 @@
+$black: #000000;
+$white: #FFFFFF;
+$near-black: #222;
+$clear-gray: #666666;
+$bright-gray: #999999;
+$dark-gray: #6F6F6F;
+$white-gray: #F4F4F4;
+$dark-blue: #193F65;
+$green-success: #3CB371;
+$green-success-over: #308F5A;
+$blue-primary: #008CBA;
+$blue-primary-over: #007094;
+$red-alert: #F04124;
+$red-alert-over: #CF2A0E;
+$orange-warning: #F08A24;
+$orange-warning-over: #CF6E0E;
+
+
+*, ::before, ::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body {
+	font-size: 100%;
+	height: 100%;
+}
+
+body {
+	background: $white;
+	color: $near-black;
+	cursor: auto;
+	font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1.5;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+body,
+.pure-g [class *= "pure-u"],
+.pure-g-r [class *= "pure-u"] {
+    /* Add your font in here, whether it's a custom font or a normal font */
+	font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+
+a,
+a:link,
+a:visited {
+    color: $blue-primary;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $blue-primary-over;
+}
+
+// Header
+
+#top-bar {
+    color: $clear-gray;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+#logo-title,
+#logo-title:link,
+#logo-title:visited {
+    display: inline-block;
+    color: $clear-gray;
+    text-decoration: none;
+}
+
+#logo-title h1 {
+    font-size: 1.45rem;
+}
+
+#logo-title div {
+    display: inline-block;
+    text-align: left;
+}
+
+#logo-head {
+    display: block;
+    position: relative;
+    top: -5px;
+}
+
+#logo-subhead {
+    color: $bright-gray;
+    display: block;
+    font-size: 50%;
+    margin-left: 2px;
+    position: relative;
+    top: -5px
+}
+
+#top-menu,
+#top-menu:link,
+#top-menu:visited {
+    color: $clear-gray;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    text-decoration: none;
+}
+
+// Main
+.breadcrumbs {
+    border-style: solid;
+    border-width: 1px;
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 0.5625rem 0.875rem 0.5625rem;
+    background-color: $white-gray;
+    border-color: gainsboro;
+    border-radius: 3px;
+}
+
+.breadcrumbs span {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.main-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.window {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.window-title {
+    font-size: 1.1rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+.window-title:before {
+    font-family: FontAwesome;
+    content: "\f120";
+    position: absolute;
+}
+
+.window-content {
+    padding: 20px;
+}
+
+.window-separator {
+    border-color: $black;
+    opacity: 0.3;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.window-blue {
+    @extend .window;
+    border: 1px solid $dark-blue;
+}
+
+.window-title-blue {
+    @extend .window-title;
+    background-color: $dark-blue;
+    color: $white;
+}
+
+.window-gray {
+    @extend .window;
+    border: 1px solid gainsboro;
+}
+
+.window-title-gray {
+    @extend .window-title;
+    background-color: $white-gray;
+    color: $near-black;
+}
+
+.tag {
+    border-radius: 3px;
+    color: $white;
+}
+
+.subheader {
+    line-height: 1.4;
+    color: $dark-gray;
+    font-weight: normal;
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.button,
+.button:link,
+.button:visited {
+    border-radius: 3px;
+    color: $white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-decoration: none;
+}
+
+.button-primary {
+    @extend .button;
+    background-color: $blue-primary;
+}
+
+.button-primary:hover {
+    background-color: $blue-primary-over;
+}
+
+.button-success {
+    @extend .button;
+    background-color: $green-success;
+    color: $white;
+}
+
+.button-success:hover {
+    background-color: $green-success-over;
+}
+
+.button-alert {
+    @extend .button;
+    background-color: $red-alert;
+}
+
+.button-alert:hover {
+    background-color: $red-alert-over;
+}
+
+.button-warning {
+    @extend .button;
+    background-color: $orange-warning;
+    color: $white;
+}
+
+.button-warning:hover {
+    background-color: $orange-warning-over;
+}
+
+
+.label {
+    display: inline-block;
+    font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-weight: normal;
+    line-height: 1;
+    margin-bottom: auto;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 0.25rem 0.5rem 0.25rem;
+    font-size: 0.6875rem;
+    background-color: #008CBA;
+    color: $white;
+}
+
+
+
+// Helper
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.radius {
+    border-radius: 3px;
+}
+
+.full-width {
+    display: block;
+    width: 100%;
+}
+
+
+
+// Color
+
+.success {
+    background-color: $green-success;
+    color: $white;
+}
+
+.primary {
+    background-color: $blue-primary;
+    color: $white;
+}
+
+.alert {
+    background-color: $red-alert;
+    color: $white;
+}
+
+.warning {
+    background-color: $orange-warning;
+    color: $white;
+}

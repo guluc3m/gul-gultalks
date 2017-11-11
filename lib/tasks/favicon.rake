@@ -2,7 +2,8 @@ namespace :favicon do
   desc "Generate favicon assets"
   task generate: :environment do
     FaviconMaker.generate do
-      BASE_IMAGE = "lynx_shield_negative_full.png"
+      # BASE_IMAGE = "lynx_shield_negative_full.png"
+      BASE_IMAGE = "lynx_shield_gray_full.png"
 
       setup do
         template_dir  "app/assets/images"

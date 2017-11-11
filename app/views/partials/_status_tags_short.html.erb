@@ -1,0 +1,19 @@
+<% if event.created_at.today? and not event.cancelled? %>
+    <span class="label success radius"><%= t("views.event.status.new") %></span>
+<% end %>
+
+<% if event.subclass.eql?("workshop") %>
+    <span class="label primary radius"><i class="fa fa-wrench fa-lg"></i></span>
+<% end %>
+
+<% if event.subclass.eql?("talk") %>
+    <span class="label primary radius"><i class="fa fa-bullhorn fa-lg"></i></span>
+<% end %>
+
+<% if event.cancelled? %>
+    <span class="label alert radius"><i class="fa fa-lock fa-lg"></i></span>
+<% end %>
+
+<% if not event.speaker_list.present? and not event.cancelled? %>
+    <span class="label warning radius"><i class="fa fa-child fa-lg"></i></span>
+<% end %>
