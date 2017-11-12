@@ -1,0 +1,111 @@
+<% page_title t("views.speaker.propose") %>
+
+<%= event_breadcrumbs(@conference, @event, "speaker") %>
+
+<div class="pure-g">
+    <div class="pure-u-1">
+        <h1 class="subheader"><%= t("speaker.propose") %></h1>
+        <hr/>
+    </div>
+</div>
+
+<%= form_for @speaker, url: {controller: "events", action: "send_speaker"} do |f| %>
+
+    <% if @speaker.errors.any? %>
+        <div class="window-red">
+            <div class="window-title-red pure-g align-center">
+                <div class="pure-u-1">
+                    <span>Error</span>
+                </div>
+            </div>
+            <div class="window-content">
+                <% @speaker.errors.full_messages.each do |msg| %>
+                    <span>
+                        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                        <%= msg %>
+                    </span>
+                    <br/>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+
+    <div class="pure-g gutters">
+        <div class="pure-u-1 pure-u-md-1-2">
+            <p><%= t("views.speaker.propose_msg") %></p>
+            <p>
+                <%= t("views.thanks.contact_msg") %>
+                <%= mail_to "info@gul.es", "info@gul.es", subject: "[GulTalks]" %>
+            </p>
+        </div>
+
+        <div class="pure-u-1 pure-u-md-1-2">
+            <div class="pure-u-1">
+                <label for="name">
+                    <i class="fa fa-users fa-fw fa-lg subheader"></i>
+                    <%= Speaker.human_attribute_name("name") %>
+                    <small><%= t("views.event.required") %></small>
+                    <span class="right"><sub>64</sub></span>
+                </label>
+
+                <%= f.text_field :name, label: false, maxlength: 64, class: "full-width" %>
+            </div>
+
+            <div class="pure-u-1">
+                <label for="email">
+                    <i class="fa fa-envelope fa-fw fa-lg subheader"></i>
+                    <%= Speaker.human_attribute_name("email") %>
+                    <small><%= t("views.event.required") %></small>
+                    <span class="right"><sub>64</sub></span>
+                </label>
+
+                <%= f.text_field :email, label: false, maxlength: 64, class: "full-width" %>
+            </div>
+
+            <div class="pure-u-1">
+                <label for="twitter">
+                    <i class="fa fa-twitter fa-fw fa-lg subheader"></i>
+                    <%= Speaker.human_attribute_name("twitter") %>
+                    <span class="right"><sub>64</sub></span>
+                </label>
+
+                <div class="pure-g">
+                    <div class="pure-u-1-24">
+                        <i class="fa fa-at fa-fw subheader pre-field"></i>
+                    </div>
+                    <div class="pure-u-23-24">
+                        <%= f.text_field :twitter, label: false, maxlength: 64, pattern: "([A-Za-z0-9_]{1,15})", class: "full-width" %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-u-1">
+                <label for="certificate">
+                    <%= t("views.speaker.request_certificate") %>
+                </label>
+
+                <label for="switch-certificate" class="switch">
+                    <%= f.check_box :certificate, label: false, id: "switch-certificate" %>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="pure-u-1">
+                <%= render "partials/recaptcha" %>
+                <br/>
+                <%= f.submit(t("views.speaker.propose"), class: "button-success radius full-width") %>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<div class="pure-g gutters">
+    <div class="pure-u-1 pure-u-md-1-4">
+        <%= link_to conference_event_path(@conference, @event), class: "button-primary radius full-width" do %>
+            <span>
+                <i class="fa fa-chevron-left fa-fw fa-lg"></i>
+                <%= t("views.event.back_to_event") %>
+            </span>
+        <% end %>
+    </div>
+</div>

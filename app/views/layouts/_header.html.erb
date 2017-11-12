@@ -15,48 +15,64 @@
     <a href="javascript:void(0);" id="top-menu"><i class="fa fa-bars" aria-hidden="true"></i></a>
 </div>
 
-<section class="main-section">
+<div class="container">
+    <section class="main-section">
 
-<%# Conference details %>
-<% if defined?(conference) and conference != nil %>
-    <div class="window-blue">
-        <div class="window-title-blue pure-g">
-            <div class="pure-u-1 pure-u-md-1-2">
-                <span><b><%= conference.title %></b></span>
+        <%# Conference details %>
+        <% if defined?(conference) and conference != nil %>
+            <div class="window-blue">
+                <div class="window-title-blue pure-g">
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <span><b><%= conference.title %></b></span>
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2">
+                        <span><%= t("date.from") %> <%= conference.start_date.day %> <%= t("date.of") %> <%= l(conference.start_date, format: :month_only) %></span>
+                        <span><%= t("date.to") %> <%= conference.end_date.day %> <%= t("date.of") %> <%= l(conference.end_date, format: :month_only) %></span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <span>
+                        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                        <%= t("views.conference.call_for_papers_period") %>
+                        <%= t("date.from") %>
+                        <b><%= l(@conference.call_for_papers_start_date, format: :long) %></b>
+                        <%= t("date.to") %>
+                        <b><%= l(@conference.call_for_papers_end_date, format: :long)%></b>
+                    </span>
+                    <br/>
+                    <span>
+                        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                        <%= t("views.conference.voting_period") %>
+                        <%= t("date.from") %>
+                        <b><%= l(@conference.voting_start_date, format: :long) %></b>
+                        <%= t("date.to") %>
+                        <b><%= l(@conference.voting_end_date, format: :long)%></b>
+                    </span>
+                </div>
             </div>
-            <div class="pure-u-1 pure-u-md-1-2">
-                <span><%= t("date.from") %> <%= conference.start_date.day %> <%= t("date.of") %> <%= l(conference.start_date, format: :month_only) %></span>
-                <span><%= t("date.to") %> <%= conference.end_date.day %> <%= t("date.of") %> <%= l(conference.end_date, format: :month_only) %></span>
+        <% end %>
+
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <%= yield %>
             </div>
         </div>
-        <div class="window-content">
-            <span>
-                <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
-                <%= t("views.conference.call_for_papers_period") %>
-                <%= t("date.from") %>
-                <b><%= l(@conference.call_for_papers_start_date, format: :long) %></b>
-                <%= t("date.to") %>
-                <b><%= l(@conference.call_for_papers_end_date, format: :long)%></b>
-            </span>
-            <br/>
-            <span>
-                <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
-                <%= t("views.conference.voting_period") %>
-                <%= t("date.from") %>
-                <b><%= l(@conference.voting_start_date, format: :long) %></b>
-                <%= t("date.to") %>
-                <b><%= l(@conference.voting_end_date, format: :long)%></b>
-            </span>
-        </div>
-    </div>
-<% end %>
+    </section>
 
-    <div class="pure-g">
-        <div class="pure-u-1-1">
-            <%= yield %>
-        </div>
-    </div>
-</section>
+    <section id="sidebar">
+        <h3>GulTalks</h3>
+        <a id="sidebar-close" href="javascript:void(0);"><i class="fa fa-close fa-fw fa-lg"></i></a>
 
+        <%= link_to t("home"), root_path %>
+        <%= link_to t("views.conference.list"), conferences_path %>
+        <%= link_to "API", api_docs_path %>
+        <%= link_to t("archive"), "http://ftp.gul.es/pub/gul/cursos/" %>
+        <%= link_to "Fork us on GitHub", "https://github.com/guluc3m/gul-gultalks" %>
+        <%= link_to "gul.es", "http://gul.es" %>
+        <br/>
+
+        <%= link_to "Admin", rails_admin_path, { class: "button-primary radius"} %>
+    </section>
+</div>
 
 <%= render "layouts/footer" %>

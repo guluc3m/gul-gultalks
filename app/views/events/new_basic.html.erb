@@ -1,0 +1,113 @@
+<% page_title t("views.event.new_event") %>
+
+<%= event_breadcrumbs(@conference, nil, "new") %>
+
+<div class="pure-g">
+    <div class="pure-u-1-4 show-medium-down">
+        <%= link_to conference_path(params[:conference_id]), class: "button-primary radius full-width" do %>
+            <span class="fa fa-chevron-left fa-fw fa-lg"></span>
+            <%= t("back") %>
+        <% end %>
+    </div>
+</div>
+
+<%= render partial: "partials/view_header", locals: { header: "event.basic_info", subheader: "event.complete_basic_form" } %>
+
+<%= form_for @form, url: {controller: "events", action: "create_basic"} do |f| %>
+    <% if @form.errors.any? %>
+        <div class="window-red">
+            <div class="window-title-red pure-g align-center">
+                <div class="pure-u-1">
+                    <span>Error</span>
+                </div>
+            </div>
+            <div class="window-content">
+                <% @form.errors.full_messages.each do |msg| %>
+                    <span>
+                        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                        <%= msg %>
+                    </span>
+                    <br/>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <label for="subclass">
+                <i class="fa fa-thumb-tack fa-fw fa-lg subheader"></i>
+                <%= Event.human_attribute_name("subclass") %>
+                <small><%= t("views.event.required") %></small>
+                <i class="fa fa-question-circle fa-fw tooltip" data-tooltip="<%= t('views.event.subclass_requirements') %>"></i>
+            </label>
+
+            <div class="pure-g">
+                <div class="pure-u-2-5">
+                    <%= f.select(:subclass, Event.subclasses.keys.map {|s| [t("views.event.subclasses.#{s}.default").humanize, s]}, {}, {class: "full-width", required: true, label: false}) %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <label for="title">
+                <i class="fa fa-bookmark fa-fw fa-lg subheader"></i>
+                <%= Event.human_attribute_name("title") %>
+                <small><%= t("views.event.required") %></small>
+                <i class="fa fa-question-circle fa-fw tooltip" data-tooltip="<%= t('views.event.title_requirements') %>"></i>
+                <span class="right"><sub>128</sub></span>
+            </label>
+        </div>
+
+        <div class="pure-u-1">
+            <%= f.text_field :title, label: false, maxlength: 128, required: true, class: "full-width" %>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <label for="summary">
+                <i class="fa fa-paperclip fa-fw fa-lg subheader"></i>
+                <%= Event.human_attribute_name("summary") %>
+                <small><%= t("views.event.required") %></small>
+                <i class="fa fa-question-circle fa-fw tooltip" data-tooltip="<%= t('views.event.summary_requirements') %>"></i>
+                <span class="right"><sub>128</sub></span>
+            </label>
+        </div>
+
+        <div class="pure-u-1">
+            <%= f.text_field :summary, label: false, maxlength: 128, required: true, class: "full-width" %>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <label for="description">
+                <i class="fa fa-bars fa-fw fa-lg subheader"></i>
+                <%= Event.human_attribute_name("description") %>
+                <small><%= t("views.event.required") %></small>
+                <i class="fa fa-question-circle fa-fw tooltip" data-tooltip="<%= t('views.event.description_requirements') %>"></i>
+                <span class="right">
+                    <sub class="subheader"><strong>[<%= t("views.event.markdown_enabled") %>]</strong></sub>
+                    <sub>1400</sub>
+                </span>
+            </label>
+        </div>
+
+        <div class="pure-u-1">
+            <%= f.text_area :description, label: false, maxlength: 1400, required: true, class: "full-width md-textarea", size: "10x8" %>
+        </div>
+    </div>
+
+    <div class="pure-g extra-margin-top">
+        <div class="pure-u-1 pure-u-md-3-8">
+            <%= render partial: "partials/recaptcha" %>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-4"></div>
+        <div class="pure-u-1 pure-u-md-3-8">
+            <%= f.submit(t("views.event.send_event"), class: "button-success radius full-width") %>
+        </div>
+    </div>
+<% end %>

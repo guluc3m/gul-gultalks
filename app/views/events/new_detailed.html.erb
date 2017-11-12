@@ -1,0 +1,240 @@
+<% page_title t("views.event.new_event") %>
+
+<%= event_breadcrumbs(@conference, nil, "new") %>
+
+<div class="pure-g">
+    <div class="pure-u-1-4 show-medium-down">
+        <%= link_to conference_path(params[:conference_id]), class: "button-primary radius full-width" do %>
+            <span class="fa fa-chevron-left fa-fw fa-lg"></span>
+            <%= t("back") %>
+        <% end %>
+    </div>
+</div>
+
+<%= render partial: "partials/view_header", locals: { header: "event.detailed_info", subheader: "event.complete_detailed_form" } %>
+
+<%= form_for @form, url: {controller: "events", action: "create_detailed"} do |f| %>
+
+    <% if @form.errors.any? %>
+        <div class="window-red">
+            <div class="window-title-red pure-g align-center">
+                <div class="pure-u-1">
+                    <span>Error</span>
+                </div>
+            </div>
+            <div class="window-content">
+                <% @form.errors.full_messages.each do |msg| %>
+                    <span>
+                        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                        <%= msg %>
+                    </span>
+                    <br/>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <label for="subclass">
+                <i class="fa fa-thumb-tack fa-fw fa-lg subheader"></i>
+                <%= Event.human_attribute_name("subclass") %>
+                <small><%= t("views.event.required") %></small>
+                <i class="fa fa-question-circle fa-fw tooltip" data-tooltip="<%= t('views.event.subclass_requirements') %>"></i>
+            </label>
+
+            <div class="pure-g">
+                <div class="pure-u-2-5">
+                    <%= f.select(:subclass, Event.subclasses.keys.map {|s| [t("views.event.subclasses.#{s}.default").humanize, s]}, {include_blank: false}, {class: "full-width", label: false}) %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <label for="title">
+                <i class="fa fa-bookmark fa-fw fa-lg subheader"></i>
+                <%= Event.human_attribute_name("title") %>
+                <small><%= t("views.event.required") %></small>
+                <i class="fa fa-question-circle fa-fw tooltip" data-tooltip="<%= t('views.event.title_requirements') %>"></i>
+                <span class="right"><sub>128</sub></span>
+            </label>
+        </div>
+
+        <div class="pure-u-1">
+            <%= f.text_field :title, label: false, maxlength: 128, required: true, class: "full-width" %>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <label for="summary">
+                <i class="fa fa-paperclip fa-fw fa-lg subheader"></i>
+                <%= Event.human_attribute_name("summary") %>
+                <small><%= t("views.event.required") %></small>
+                <i class="fa fa-question-circle fa-fw tooltip" data-tooltip="<%= t('views.event.summary_requirements') %>"></i>
+                <span class="right"><sub>128</sub></span>
+            </label>
+        </div>
+
+        <div class="pure-u-1">
+            <%= f.text_field :summary, label: false, maxlength: 128, required: true, class: "full-width" %>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <label for="description">
+                <i class="fa fa-bars fa-fw fa-lg subheader"></i>
+                <%= Event.human_attribute_name("description") %>
+                <small><%= t("views.event.required") %></small>
+                <i class="fa fa-question-circle fa-fw tooltip" data-tooltip="<%= t('views.event.description_requirements') %>"></i>
+                <span class="right">
+                    <sub class="subheader"><strong>[<%= t("views.event.markdown_enabled") %>]</strong></sub>
+                    <sub>1400</sub>
+                </span>
+            </label>
+        </div>
+
+        <div class="pure-u-1">
+            <%= f.text_area :description, label: false, maxlength: 1400, required: true, class: "full-width md-textarea", size: "10x8" %>
+        </div>
+    </div>
+
+    <div class="window-blue">
+        <div class="window-title-blue pure-g align-center">
+            <div class="pure-u-1">
+                <span>Info</span>
+            </div>
+        </div>
+        <div class="window-content">
+            <p><%= t("views.speaker.warning_up_to_five") %></p>
+        </div>
+    </div>
+
+    <%= f.fields_for :speakers do |speaker| %>
+        <% sp_index = speaker.index + 1 %>
+
+        <div class="accordion">
+            <div class="accordion-toggle <%= sp_index == 1 ? 'active' : '' %>">
+                <a class="align-center" href="javascript:void(0);"><%= t("views.speaker.caption", index: sp_index) %></a>
+            </div>
+            <div class="accordion-content <%= sp_index != 1 ? 'hidden' : '' %>">
+                <%= render "partials/speaker_fields", f: speaker, index: sp_index %>
+            </div>
+        </div>
+    <% end %>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <label for="content_url">
+                <i class="fa fa-link fa-fw fa-lg subheader"></i>
+                <%= Event.human_attribute_name("content_url") %>
+                <span class="right"><sub>128</sub></span>
+            </label>
+        </div>
+
+        <div class="pure-u-1">
+            <%= f.url_field :content_url, label: false, maxlength: 128, type: "url", placeholder: "http://", class: "full-width" %>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <label for="code">
+                <i class="fa fa-code fa-fw fa-lg subheader"></i>
+                <%= Event.human_attribute_name("code") %>
+                <span class="right"><sub>128</sub></span>
+            </label>
+        </div>
+
+        <div class="pure-u-1">
+            <%= f.url_field :code, label: false, maxlength: 128, type: "url", placeholder: "http://", class: "full-width" %>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <label for="tag_list">
+                <i class="fa fa-tags fa-fw fa-lg subheader"></i>
+                <%= Event.human_attribute_name("tag_list") %>
+                <i class="fa fa-question-circle fa-fw tooltip" data-tooltip="<%= t('views.event.tag_format') %>"></i>
+                <span class="right"><sub>128</sub></span>
+            </label>
+        </div>
+
+        <div class="pure-u-1">
+            <%= f.text_field :tag_list, label: false, maxlength: 128, class: "full-width", placeholder: t("views.event.tag_format") %>
+        </div>
+    </div>
+
+    <div class="pure-g gutters">
+        <div class="pure-u-1 pure-u-md-1-3">
+            <div class="pure-u-1">
+                <label for="language">
+                    <i class="fa fa-globe fa-fw fa-lg subheader"></i>
+                    <%= Event.human_attribute_name("language") %>
+                    <small><%= t("views.event.required") %></small>
+                </label>
+            </div>
+
+            <div class="pure-u-1">
+                <%= f.select(:language, t("views.event.languages").keys.map {|l| [t("views.event.languages.#{l}").humanize, l]}, {include_blank: false}, {class: "full-width", label: false}) %>
+            </div>
+        </div>
+
+        <div class="pure-u-1 pure-u-md-1-3">
+            <div class="pure-u-1">
+                <label for="duration">
+                    <i class="fa fa-clock-o fa-fw fa-lg subheader"></i>
+                    <%= Event.human_attribute_name("duration") %>
+                    <small><%= t("views.event.required") %></small>
+                </label>
+            </div>
+
+            <div class="pure-u-1">
+                <%= f.select(:duration, Event.durations.keys.map {|d| [t("views.event.durations.#{d}").humanize, d]}, {include_blank: false}, {class: "full-width", label: false}) %>
+            </div>
+        </div>
+
+        <div class="pure-u-1 pure-u-md-1-3">
+            <div class="pure-u-1">
+                <label for="level">
+                    <i class="fa fa-lightbulb-o fa-fw fa-lg subheader"></i>
+                    <%= Event.human_attribute_name("level") %>
+                    <small><%= t("views.event.required") %></small>
+                </label>
+            </div>
+
+            <div class="pure-u-1">
+                <%= f.select(:level, Event.levels.keys.map {|l| [t("views.event.levels.#{l}").humanize, l]}, {include_blank: false}, {class: "full-width", label: false}) %>
+            </div>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <label for="commetns">
+                <i class="fa fa-comments fa-fw fa-lg subheader"></i>
+                <%= Event.human_attribute_name("notes") %>
+                <i class="fa fa-question-circle fa-fw tooltip" data-tooltip="<%= t('views.event.notes_requirements') %>"></i>
+                <span class="right"><sub>300</sub></span>
+            </label>
+        </div>
+
+        <div class="pure-u-1">
+            <%= f.text_area :notes, label: false, maxlength: 300, pattern: "extended_alphanumeric", class: "full-width", size: "10x6" %>
+        </div>
+    </div>
+
+    <div class="pure-g extra-margin-top">
+        <div class="pure-u-1 pure-u-md-3-8">
+            <%= render partial: "partials/recaptcha" %>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-4"></div>
+        <div class="pure-u-1 pure-u-md-3-8">
+            <%= f.submit(t("views.event.send_event"), class: "button-success radius full-width") %>
+        </div>
+    </div>
+<% end %>

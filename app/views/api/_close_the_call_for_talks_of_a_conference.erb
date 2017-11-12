@@ -1,0 +1,39 @@
+<h2>
+    Close the Call for Talks of a conference
+    <%= link_to "¶", "#close-the-call-for-talks-of-a-conference", name: "close-the-call-for-talks-of-a-conference" %>
+</h2>
+
+<p>
+    <strong>Endpoint:</strong>
+    <code>POST</code>
+    <code>/api/conferences/:id/close_call</code>
+</p>
+<p>
+    This endpoint disables the Call for Talks of the specified conference. The
+    <code>:id</code>
+    parameter may be the numeric ID or the slug from a conference.
+</p>
+
+<div class="window-orange">
+    <div class="window-title-orange pure-g">
+        <div class="pure-u-1">
+            <i class="fa fa-warning fa-2x fa-fw"></i>
+        </div>
+    </div>
+    <div class="window-content">
+        <span>
+            This endpoint requires authentication by means of a token sent in the
+            HTTP header (
+            <code>token</code>
+            ). This token can be generated through the admin panel.
+        </span>
+    </div>
+</div>
+
+<p>
+    Example:
+    <code>POST</code>
+    <code><%= base_url %>/conferences/5/close_call</code>
+    or
+    <code><%= base_url %>/conferences/xxviii-jornadas-tecnicas-del-gul/close_call</code>
+</p>

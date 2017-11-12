@@ -1,0 +1,59 @@
+<% page_title "API" %>
+<% base_url = "cursos.gul.es/api" %>
+<%toc = ["List of Conferences",
+        "List of Events from a Conference",
+        "Open the Call for Talks of a Conference",
+        "Close the Call for Talks of a Conference",
+        "Enable Votes in a Conference",
+        "Disable Votes in a Conference",
+        "Errors"]
+    %>
+
+<%= home_breadcrumbs("api") %>
+
+<div class="pure-g">
+    <div class="pure-u-1">
+        <div class="pure-g gutters">
+            <div class="pure-u-1 pure-u-md-7-12">
+                <h1 class="subheader">API</h1>
+                <hr/>
+
+                <p>
+                    The GulTalks API consists of a series of endpoints that can be accessed by using
+                    HTTP
+                    <strong>GET</strong>
+                    and
+                    <strong>POST</strong>
+                    methods. The responses are formatted using
+                    <strong>JSON</strong>
+                    in all cases.
+                </p>
+            </div>
+
+            <br/>
+            <div class="pure-u-1 pure-u-md-5-12">
+                <div class="window-gray">
+                    <div class="window-title-gray pure-g">
+                        <div class="pure-u-1">
+                            <span>Table of Contents</span>
+                        </div>
+                    </div>
+                    <div class="window-content">
+                        <% toc.each do |e| %>
+                            <%= link_to e, anchor: e.parameterize %>
+                            <br/>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%- toc.each do |e| %>
+            <% anchor = e.parameterize %>
+            <% partial = anchor.gsub(/-/, "_") %>
+
+            <br/>
+            <%= render partial: partial, locals: { base_url: base_url, anchor: partial.gsub(/_/, "-") } %>
+        <% end %>
+    </div>
+</div>

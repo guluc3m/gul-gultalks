@@ -1,0 +1,57 @@
+<% page_title t("views.event.to_vote") %>
+
+<%= event_breadcrumbs(@conference, @event, "vote") %>
+
+<% if flash.present? %>
+    <div class="window-red">
+        <div class="window-title-red pure-g align-center">
+            <div class="pure-u-1">
+                <span>Error</span>
+            </div>
+        </div>
+        <div class="window-content">
+            <% @flash.each do |name, msg| %>
+                <span>
+                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                    <%= msg %>
+                </span>
+                <br/>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= render partial: "partials/view_header", locals: { header: "event.to_vote" } %>
+
+<div class="pure-g gutters">
+    <div class="pure-u-1 pure-u-md-1-2">
+        <p><%= t("views.thanks.vote_msg") %></p>
+        <p>
+            <%= t("views.thanks.contact_msg") %>
+            <%= mail_to "info@gul.es", "info@gul.es", subject: "[GulTalks]" %>
+        </p>
+    </div>
+
+    <div class="pure-u-1 pure-u-md-1-2">
+        <label>
+            <i class="fa fa-envelope fa-fw fa-lg subheader"></i>
+            <%= t("views.event.vote.email") %>
+
+            <small><%= t("views.event.required") %></small>
+
+            <%= form_tag send_vote_conference_event_path(@conference, @event) do %>
+                <%= email_field_tag "email", nil, class: "full-width", required: true,  type: "email", maxlength: 64 %>
+
+                <div class="pure-g gutters">
+                    <div class="pure-u-1">
+                        <%= render "partials/recaptcha" %>
+                    </div>
+
+                    <div class="pure-u-1">
+                        <%= submit_tag t("views.event.vote.send_vote"), class: "button-success radius full-width" %>
+                    </div>
+                </div>
+            <% end %>
+        </label>
+    </div>
+</div>

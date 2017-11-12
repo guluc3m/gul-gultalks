@@ -1,0 +1,30 @@
+<% page_title t("views.event.new_event") %>
+
+<%= event_breadcrumbs(@conference, nil, "new") %>
+
+<%= render partial: "partials/view_header", locals: { header: "thanks.thank_you" } %>
+
+<div class="pure-g">
+    <div class="pure-u-1 pure-u-md-1-2">
+        <p>
+            <%= t("views.thanks.proposal") %>
+            <em><strong><%= "'" + event.title + "'" %></strong></em>
+        </p>
+
+        <p>
+            <%= t("views.thanks.contact_msg") %>
+            <%= mail_to "info@gul.es", "info@gul.es", subject: "[GulTalks]" %>
+        </p>
+    </div>
+
+    <div class="pure-u-1 pure-u-md-1-2">
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <%= link_to t("views.conference.propose_another_event"), new_conference_event_path(@conference), class: "button-success radius full-width" %>
+            </div>
+            <div class="pure-u-1">
+                <%= link_to t("views.event.back_to_events"), conference_path(@conference), class: "button-primary radius full-width" %>
+            </div>
+        </div>
+    </div>
+</div>

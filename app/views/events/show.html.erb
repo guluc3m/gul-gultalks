@@ -1,0 +1,115 @@
+<% page_title @event.title %>
+
+<%= event_breadcrumbs(@conference, @event) %>
+
+<div class="pure-g">
+    <div class="pure-u-1">
+        <div class="show-medium-up">
+            <%= render 'partials/status_tags_full', event: @event %>
+        </div>
+
+        <div class="show-medium-down">
+            <%= render 'partials/status_tags_short', event: @event %>
+        </div>
+
+        <div class="right">
+            <% if @event.votes.nonzero? %>
+                <span class="label radius success">
+                    <b>
+                        <%= @event.votes %>
+                        <%= Event.human_attribute_name("votes", count: @event.votes) %>
+                    </b>
+                </span>
+            <% end %>
+
+            <span class="label radius primary">
+                <%= "#{t("views.event.share")}:" %>
+                <%= share_event_link(event: @event, provider: "twitter", url: @short_url).html_safe %>
+                <%= share_event_link(event: @event, provider: "facebook", url: @short_url).html_safe %>
+                <%= share_event_link(event: @event, provider: "google", url: @short_url).html_safe %>
+            </span>
+        </div>
+    </div>
+
+    <div class="pure-u-1">
+        <h2><%= h(@event.title) %></h2>
+        <h4 class="subheader"><%= h(@event.summary) %></h4>
+
+        <% if @event.speaker_list.present? %>
+            <div class="pure-g">
+                <div class="pure-u-1-2">
+                    <span><%= twitter_speaker_list(@event).html_safe %>
+                </div>
+            </div>
+        <% end %>
+
+        <hr/>
+    </div>
+</div>
+
+<div class="pure-g gutters">
+    <div class="pure-u-1 pure-u-md-2-3">
+        <%= Markdown.new(@event.description).to_html.html_safe %>
+    </div>
+
+    <%= render "info_panel", event: @event %>
+</div>
+
+<div class="pure-g">
+    <div class="pure-u-1">
+        <span>
+            <i class="fa fa-download fa-fw subheader"></i>
+            <%= link_to_if(@event.content_url.present?, h(@event.content_url), @event.content_url, target: "_blank") do %>
+                <%= t("not_available") %>
+            <% end %>
+        </span>
+    </div>
+
+    <div class="pure-u-1">
+        <span>
+            <i class="fa fa-code fa-fw subheader"></i>
+            <%= link_to_if(@event.code.present?, h(@event.code), @event.code, target: "_blank") do %>
+                <%= t("not_available") %>
+            <% end %>
+        </span>
+    </div>
+
+    
+    <div class="pure-u-1">
+        <hr/>
+    </div>
+</div>
+
+<div class="pure-g gutters">
+    <% unless @event.cancelled %>
+        <% if @conference.voting_enabled %>
+            <div class="pure-u-1 pure-u-md-1-4">
+                <%= link_to vote_conference_event_path, class: "button-success radius full-width" do %>
+                    <%= t("views.event.to_vote") %>
+                <% end %>
+            </div>
+        <% else %>
+            <div class="pure-u-1 pure-u-md-1-4">
+                <%= link_to vote_conference_event_path, class: "button-success radius full-width", disabled: true do %>
+                    <i class="fa fa-lock fa-lg"></i>
+                    <%= t("views.event.to_vote") %>
+                <% end %>
+            </div>
+        <% end %>
+
+        <% if not @event.speaker? and @conference.call_for_papers_enabled %>
+            <div class="pure-u-1 pure-u-md-1-4">
+                <%= link_to propose_speaker_conference_event_path, class: "button-alert radius full-width" do %>
+                    <i class="fa fa-child fa-lg"></i>
+                    <%= t("views.speaker.propose") %>
+                <% end %>
+            </div>
+        <% end %>
+    <% end %>
+</div>
+
+<%= render "comments", conference: @conference, comments: @comments, event: @event %>
+
+<% if @conference.active? %>
+    <%= render "comments/form" %>
+<% end %>

@@ -1,0 +1,40 @@
+<h2>
+    Enable votes in a conference
+    <%= link_to "¶", "#enable-votes-in-a-conference", name: "enable-votes-in-a-conference" %>
+</h2>
+
+<p>
+    <strong>Endpoint:</strong>
+    <code>POST</code>
+    <code>/api/conferences/:id/enable_voting</code>
+</p>
+
+<p>
+  This endpoint enables the voting of the specified conference. The
+  <code>:id</code>
+  parameter may be the numeric ID or the slug from a conference.
+</p>
+
+<div class="window-orange">
+    <div class="window-title-orange pure-g">
+        <div class="pure-u-1">
+            <i class="fa fa-warning fa-2x fa-fw"></i>
+        </div>
+    </div>
+    <div class="window-content">
+        <span>
+            This endpoint requires authentication by means of a token sent in the
+            HTTP header (
+            <code>token</code>
+            ). This token can be generated through the admin panel.
+        </span>
+    </div>
+</div>
+
+<p>
+    <strong>Example:</strong>
+    <code>POST</code>
+    <code><%= base_url %>/conferences/5/enable_voting</code>
+    or
+    <code><%= base_url %>/conferences/xxviii-jornadas-tecnicas-del-gul/enable_voting</code>
+</p>

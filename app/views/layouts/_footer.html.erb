@@ -1,0 +1,48 @@
+<footer>
+    <section class="main-section">
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-4">
+                <ul>
+                    <li><%= link_to t("home"), root_path %></li>
+                    <li><%= link_to t("views.conference.list"), conferences_path %></li>
+                    <li><%= link_to "API", api_docs_path %></li>
+                </ul>
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-4">
+                <ul>
+                    <li><%= link_to t("archive"), "http://ftp.gul.es/pub/gul/cursos/" %></li>
+                    <li><%= link_to "Fork us on GitHub", "https://github.com/guluc3m/gul-gultalks" %></li>
+                    <li><%= link_to "gul.es", "http://gul.es" %></li>
+                </ul>
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div id="fortunes">
+                    <%= render "partials/fortunes" %>
+                </div>
+            </div>
+        </div>
+
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <sup class="subheader">
+                    © Grupo de Usuarios de Linux de la Universidad Carlos III de Madrid. 2007 —  <%= Time.now().year %>
+                </sup>
+            </div>
+        </div>
+
+        <br/>
+        <div class="pure-g">
+            <div class="pure-u-1-12" style="height: 50px">
+                <%= link_to "https://www.kernel.org/", style: "color:#6F6F6F" do %>
+                    <i class="fa fa-stack-2x">
+                        <i class="fa fa-linux fa-lg"></i>
+                    </i>
+                <% end %>
+            </div>
+        </div>
+    </section>
+</footer>
+
+<%= javascript_include_tag "application" %>

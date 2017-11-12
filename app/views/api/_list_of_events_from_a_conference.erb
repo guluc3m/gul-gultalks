@@ -1,0 +1,88 @@
+<h2>
+    List of events from a conference
+    <%= link_to "¶", "#list-of-events-from-a-conference", name: "list-of-events-from-a-conference" %>
+</h2>
+
+<p>
+    <strong>Endpoint:</strong>
+    <code>GET</code>
+    <code>/api/conferences/:id/events</code>
+</p>
+
+<p>
+    This endpoint returns a list of all the events that belong to the
+    specified conference. The
+    <code>:id</code>
+    parameter may be the numeric ID or the slug from a conference.
+</p>
+
+<p>
+    Speaker details may be accessed through the
+    <code>speaker_list</code>
+    attribute, which is a list of speakers for an event.
+</p>
+
+<p>
+    <strong>Example:</strong>
+    <code>GET</code>
+    <code>#{base_url}/conferences/5/events</code>
+    or
+    <code><%= base_url %>/conferences/xxviii-jornadas-tecnicas-del-gul/events</code>
+</p>
+
+<pre>
+    [
+      {
+          "accepted": true,
+          "cancelled": false,
+          "code_url": "",
+          "content_url": "",
+          "description": "GIMP es un potente software de tratamiento...",
+          "end_dtime": null,
+          "id": 129,
+          "language": "es",
+          "level": "easy",
+          "location": "Leganés",
+          "room": "",
+          "slug": "gimp-quickies",
+          "speaker_list": [
+              {
+                "name": "Clara Luis Mingueza",
+                "twitter": "_Claralu"
+              }
+          ],
+          "start_dtime": null,
+          "subclass": "workshop",
+          "summary": "Aprende lo básico en Gimp",
+          "title": "Gimp Quickies!",
+          "votes": 12
+      },
+      {
+          "accepted": true,
+          "cancelled": false,
+          "code_url": "",
+          "content_url": "",
+          "description": "En esta charla veremos una introducción...",
+          "end_dtime": null,
+          "id": 136,
+          "language": "es",
+          "level": "easy",
+          "location": "Leganés",
+          "room": "",
+          "slug": "ya-esta-bien-de-perder-los-cambios-de-tus-practicas-git-al-rescate",
+          "speaker_list": [
+              {
+                "name": "Axel Blanco",
+                "twitter": "drimmark"
+              }
+          ],
+          "start_dtime": null,
+          "subclass": "talk",
+          "summary": "Una introducción al control de versiones con Git y al paradigma de Git-flow",
+          "title": "Ya está bien de perder los cambios de tus prácticas: Git al rescate",
+          "votes": 11
+      },
+
+        ...
+    ]
+</pre>

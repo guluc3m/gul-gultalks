@@ -1,0 +1,29 @@
+<% if event.created_at.today? and not event.cancelled? %>
+    <span class="label radius success"><%= t("views.event.status.new") %></span>
+<% end %>
+
+<span class="label radius">
+    <% if event.subclass.eql?("workshop") %>
+        <i class="fa fa-wrench fa-lg"></i>
+    <% end %>
+
+    <% if event.subclass.eql?("talk") %>
+        <i class="fa fa-bullhorn fa-lg"></i>
+    <% end %>
+
+    <%= t("views.event.subclasses.#{event.subclass}.default") %>
+</span>
+
+<% if event.cancelled? %>
+    <span class="label radius alert">
+        <i class="fa fa-lock fa-lg"></i>
+        <%= t("views.event.status.cancelled") %>
+    </span>
+<% end %>
+
+<% unless event.speaker_list.present? %>
+    <span class="label radius warning">
+        <i class="fa fa-child fa-lg"></i>
+        <%= t('views.speaker.unassigned') %>
+    </span>
+<% end %>

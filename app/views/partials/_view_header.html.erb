@@ -1,0 +1,13 @@
+<% if defined? header %>
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <h1 class="subheader"><%= t("views.#{header}") %></h1>
+
+            <% if defined? subheader %>
+                <h4 class="subheader"><%= t("views.#{subheader}") %></h4>
+            <% end %>
+        </div>
+    </div>
+
+    <hr/>
+<% end %>

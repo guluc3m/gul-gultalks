@@ -1,0 +1,27 @@
+<h2>
+    Errors
+    <%= link_to "¶", "#errors", name: "errors" %>
+</h2>
+
+<p>
+    In case of error, the API will return the HTTP code and, optionally,
+    a JSON object showing the error messages.
+</p>
+
+<p>
+    <strong>Example:</strong>
+    <code>GET</code>
+    <code><%= base_url %>/conferences/INEXISTENT_CONFERENCE/events</code>
+</p>
+
+<pre>
+    {
+      "errors": "conference not found"
+    }
+</pre>
+
+<p>
+  Endpoints that require authentication will return a
+  <code>401</code>
+  status code if the authentication failed.
+</p>

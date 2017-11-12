@@ -1,0 +1,21 @@
+<% page_title t("views.event.to_vote") %>
+
+<%= event_breadcrumbs(@conference, @event, "vote") %>
+
+<%= render partial: "partials/view_header", locals: { header: "thanks.vote_thanks" } %>
+
+<div class="pure-g gutters">
+    <div class="pure-u-1 pure-u-md-1-2">
+        <p><%= t("views.thanks.vote_thanks_msg", title: @event.title) %></p>
+        <p><%= t("views.thanks.vote_thanks_reminder") %></p>
+        <p>
+            <%= t("views.thanks.contact_msg") %>
+            <%= mail_to "info@gul.es", "info@gul.es", subject: "[GulTalks]" %>
+        </p>
+    </div>
+
+    <div class="pure-u-1 pure-u-md-1-2">
+        <%= link_to t("views.thanks.vote_another"), conference_path(@conference), :class => "button-success radius full-width" %>
+        <%= link_to t("views.event.back_to_event"), conference_event_path(@conference, @event), :class => "button-primary radius full-width" %>
+    </div>
+</div>
